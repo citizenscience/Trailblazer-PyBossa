@@ -1,3 +1,12 @@
+# CRUK Project Template
+
+This is a template project, designed to be the starting point of all new 
+project development within CRUK for the PyBossa Citizen Science engine.
+
+This project is based on the Flickr person app from PyBossa
+
+# Original long description now follows
+
 Flickr Person is a **demo application** for PyBossa that shows how you can
 crowdsourcing an image classification problem.
 
@@ -18,8 +27,6 @@ The application provides three simple answers as action buttons:
   * Yes
   * No and
   * I don't know
-
-![](http://farm7.staticflickr.com/6109/6286728068_2f3c6912b8_q.jpg)
 
 Based on the answer of the users, we will be able to classify the photos,
 distributing the tasks (thanks to PyBossa) to different users and volunteers.

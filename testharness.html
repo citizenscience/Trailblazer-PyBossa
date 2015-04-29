@@ -13,6 +13,7 @@
         <script type="text/javascript" src="//citscitools.cancerresearchuk.org/pybossa/static/vendor/modernizr.min.js"></script>
         <script type="text/javascript" language="javascript">
             $(function(){
+//                pybossa.setEndpoint("http://localhost:5000");
                 pybossa.setEndpoint("//citscitools.cancerresearchuk.org/pybossa/");
                 $("#template-container").load("template.html");
             });
@@ -28,8 +29,9 @@
                         <span class="icon-bar"></span>
                     </a>
                     <a class="brand" href="/">
-                        <img src="//citscitools.cancerresearchuk.org/pybossa/static/img/cruk/cruk_logo.png" alt="CRUK">
+                        <img src="//citscitools.cancerresearchuk.org/pybossa/static/img/cruk/cruk_logo.png" alt="CRUK" style="position:relative; top:-10px;">
                     </a>
+                    <h1 class="pull-right" style="position: relative; top: 10px;">CRUK - Citizen Science - Project Testharness</h1>
                 </div>
             </div>
         </div>
@@ -43,13 +45,14 @@
             </script>
             <script src="//citscitools.cancerresearchuk.org/pybossa/static/js/pybossa/pybossa.js" type="text/javascript"></script>
 
-
-            <div class="row">
-                <div class="span12">
-                    <h1>
-                        <a href="/project/flickrperson/">Flickr Person Finder</a>
-                        : Contribute
-                    </h1>
+            <div style="width: 90%; margin: 20px auto;" class="alert alert-info media">
+                <span class="icon-info-sign icon-3x pull-left media-object"></span>
+                <div class="media-body">
+                    <h3 class="media-title">Attention</h3>
+                    <p>
+                        You are currently viewing a test harness page that allows you to conduct project development for
+                        the PyBossa Citizen Science engine hosted by Cancer Research UK
+                    </p>
                 </div>
             </div>
 
