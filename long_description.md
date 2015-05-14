@@ -1,4 +1,4 @@
-# CRUK Project Template
+# CRUK Project Template!
 
 This is a template project, designed to be the starting point of all new 
 project development within CRUK for the PyBossa Citizen Science engine.
