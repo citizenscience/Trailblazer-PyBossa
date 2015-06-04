@@ -15,7 +15,9 @@
         $(function () {
             $.urlParam = function (name, if_not_found) {
                 var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-                return results[1] || if_not_found;
+                if (results && results.length > 0)
+                    return results[1];
+                return if_not_found;
             };
             //pybossa.setEndpoint("http://localhost:5000");
             pybossa.setEndpoint("//citscitools.cancerresearchuk.org/");
