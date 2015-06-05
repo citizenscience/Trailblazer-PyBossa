@@ -1,3 +1,62 @@
+<style type="text/css">
+         .grid-info {
+        float: left;
+        width: 25%;
+        background-color: #efefef;
+        padding: 20px;
+        box-sizing: border-box;
+        margin-right: 20px;
+      }
+      .grid-info span {
+        color: blue;
+        font-size: 18px;
+      }
+      .grid-wrapper {
+        float: left;
+        width: 70%;
+        position: relative;
+        max-width: 500px;
+      }
+
+      .grid-wrapper img {
+            position: absolute;
+            top: 0;
+        width: 500px;
+        height: 500px;
+      }
+      .grid {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        border-spacing: 0;
+      }
+
+      .grid-row {
+        overflow: auto;
+        zoom: 1;
+      }
+      .grid__item {
+        float: left;
+        text-align: center;
+        padding-top: 20px;
+        box-sizing: border-box;
+      }
+      .grid__item::selection {
+        background-color: transparent;
+      }
+      .grid__item.state--success {
+          background-color: rgba(0,163,136,.5);
+          font-weight:bold;
+          color:white;
+      }
+      .grid__item.state--error {
+          background-color: rgba(231,76,60,.5);
+          font-weight:bold;
+          color:white;
+      }
+
+        </style>
+
 <div class="row">
     <!-- Success and Error Messages for the user -->
     <div class="span6 offset2" style="height:50px">
