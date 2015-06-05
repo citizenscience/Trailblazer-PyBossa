@@ -5,7 +5,7 @@
     }
          .grid-info {
         float: left;
-        width: 25%;
+    margin-top: 20px;
         background-color: #efefef;
         padding: 20px;
         box-sizing: border-box;
@@ -135,6 +135,18 @@
         </div><!-- End of Disqus Button section -->
          <!--Disqus thread for the given task -->
         <div id="disqus_thread" style="margin-top:5px;display:none"></div>
+
+
+        <div class="grid-info">
+        <div>You clicked on row: <span id="result-row"></span></div>
+        <div>You clicked on col: <span id="result-col"></span></div>
+        <div>You clicked on item #: <span id="result-item"></span></div>
+        <!-- <div>Total sections: <span id="result-total"></span></div>
+        <pre id="json-text"></pre> -->
+        <!-- <a class="json-btn" id="json-btn">Get JSON</a> -->
+      </div>
+
+
     </div><!-- End of Question and Submission DIV (column) -->
 
         <!--Undo last coordinat-->
