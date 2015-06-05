@@ -73,7 +73,7 @@
             <a class="undo-btn" value='Undo'><i class="icon icon-white icon-arrow-left"></i>Undo</a>
 
     <div class="span6 wrapper grid-wrapper" id="grid-wrapper">
-        <img id="slide" src='sample.jpg' data-zoom-image="sample.jpg"/>
+        <!--<img id="slide" src='sample.jpg' data-zoom-image="sample.jpg"/>-->
         <a id="photo-link" href="#">
             <img id="photo" src="http://i.imgur.com/GeHxzb7.png" style="max-width=100%">
         </a>
@@ -109,10 +109,6 @@
 
 "use strict";
 
-
-
-
-
 var Grid = {
 
     table_cell_list: {},
@@ -138,8 +134,8 @@ var Grid = {
                 var $grid_item = $('<div></div>').addClass('grid__item').appendTo($grid_row);
 
                 $grid_item.css({
-                    width: $("#slide").width() / width,
-                    height: $("#slide").height() / height
+                    width: $("#photo").width() / width,
+                    height: $("#photo").height() / height
                 }).html(i);
 
                 this.spaces[x][y] = {
@@ -211,10 +207,6 @@ var Grid = {
     }
 
 }
-
-
-
-
 
 
 
