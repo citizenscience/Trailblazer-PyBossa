@@ -1,4 +1,8 @@
 <style type="text/css">
+    .img-polaroid {
+        padding: 0;
+        height: 500px !important;
+    }
          .grid-info {
         float: left;
         width: 25%;
@@ -36,11 +40,17 @@
         zoom: 1;
       }
       .grid__item {
+        position: relative;
         float: left;
         text-align: center;
         padding-top: 20px;
         box-sizing: border-box;
       }
+    .grid__item span {
+        position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+    }
       .grid__item::selection {
         background-color: transparent;
       }
@@ -193,7 +203,9 @@ var Grid = {
                 $grid_item.css({
                     width: $("#photo").width() / width,
                     height: $("#photo").height() / height
-                }).html(i);
+                });
+
+                $('<span></span>').appendTo($grid_item).html(i);
 
                 this.spaces[x][y] = {
                     x: x,
