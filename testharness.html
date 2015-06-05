@@ -4,16 +4,81 @@
         <meta charset="utf-8">
         <title>CRUK; Contribute</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
         <link href="//citscitools.cancerresearchuk.org/static/vendor/bootstrap.min.css" rel="stylesheet" type="text/css">
         <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
         <link href="//citscitools.cancerresearchuk.org/static/css/fonts/stylesheet.css" rel="stylesheet">
         <link href="//citscitools.cancerresearchuk.org/static/css/styles.css" rel="stylesheet">
+
+        <style type="text/css">
+
+            .grid-info {
+        float: left;
+        width: 25%;
+        background-color: #efefef;
+        padding: 20px;
+        box-sizing: border-box;
+        margin-right: 20px;
+      }
+      .grid-info span {
+        color: blue;
+        font-size: 18px;
+      }
+      .grid-wrapper {
+        float: left;
+        width: 70%;
+        position: relative;
+        max-width: 500px;
+      }
+
+      .grid-wrapper img {
+            position: absolute;
+            top: 0;
+        width: 500px;
+        height: 500px;
+      }
+      .grid {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        border-spacing: 0;
+      }
+
+      .grid-row {
+        overflow: auto;
+        zoom: 1;
+      }
+      .grid__item {
+        float: left;
+        text-align: center;
+        padding-top: 20px;
+        box-sizing: border-box;
+      }
+      .grid__item::selection {
+        background-color: transparent;
+      }
+      .grid__item.state--success {
+          background-color: rgba(0,163,136,.5);
+          font-weight:bold;
+          color:white;
+      }
+      .grid__item.state--error {
+          background-color: rgba(231,76,60,.5);
+          font-weight:bold;
+          color:white;
+      }
+
+        </style>
+
+
         <script type="text/javascript" src="//citscitools.cancerresearchuk.org/static/vendor/jquery.js"></script>
         <script type="text/javascript" src="//citscitools.cancerresearchuk.org/static/vendor/bootstrap/2.2.1/js/bootstrap.js"></script>
         <script type="text/javascript" src="//citscitools.cancerresearchuk.org/static/vendor/modernizr.min.js"></script>
+
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.4/raphael-min.js"></script>
         <script type="text/javascript" language="javascript">
             $(function(){
-//                pybossa.setEndpoint("http://localhost:5000");
+//              pybossa.setEndpoint("http://localhost:5000");
                 pybossa.setEndpoint("//citscitools.cancerresearchuk.org/");
                 $("#template-container").load("template.html");
             });
