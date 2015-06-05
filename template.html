@@ -117,7 +117,6 @@ var Grid = {
 
     create_grid: function( width, height ){
 
-
         this.width = width;
         this.height = height;
 
@@ -254,7 +253,6 @@ pybossa.taskLoaded(function(task, deferred) {
 pybossa.presentTask(function(task, deferred) {
     if ( !$.isEmptyObject(task) ) {
         loadUserProgress();
-        createCanvas( task );
         $('#photo-link').html('').append(task.info.image);
         $("#photo-link").attr("href", task.info.link);
         $("#question").html(task.info.question);
