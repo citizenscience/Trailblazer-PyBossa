@@ -3,23 +3,41 @@
         padding: 0;
         height: 500px !important;
     }
-         .grid-info {
-        float: left;
-    margin-top: 20px;
+    .grid-info {
         background-color: #efefef;
         padding: 20px;
         box-sizing: border-box;
-        margin-right: 20px;
       }
       .grid-info span {
         color: blue;
         font-size: 18px;
       }
+    .clearfix:before,
+    .clearfix:after {
+      content: " "; /* 1 */
+      display: table; /* 2 */
+    }
+    .clearfix:after {
+      clear: both;
+    }
+
+
+
+    .span-2 {
+
+    }
+
+
+
+
+
+
+
+
+
+
       .grid-wrapper {
-        float: left;
-        width: 70%;
         position: relative;
-        max-width: 500px;
       }
 
       .grid-wrapper img {
@@ -48,8 +66,8 @@
       }
     .grid__item span {
         position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+        top: 50%;
+        transform: translateY(-50%);
     }
       .grid__item::selection {
         background-color: transparent;
@@ -65,103 +83,124 @@
           color:white;
       }
 
-        </style>
-
-<div class="row">
-    <!-- Success and Error Messages for the user -->
-    <div class="span6 offset2" style="height:50px">
-        <div id="success" class="alert alert-success" style="display:none;">
-            <a class="close">×</a>
-            <strong>Well done!</strong> Your answer has been saved
-        </div>
-        <div id="loading" class="alert alert-info" style="display:none;">
-            <a class="close">×</a>
-            Loading next task...
-        </div>
-        <div id="taskcompleted" class="alert alert-info" style="display:none;">
-            <strong>The task has been completed!</strong> Thanks a lot!
-        </div>
-        <div id="finish" class="alert alert-success" style="display:none;">
-            <strong>Congratulations!</strong> You have participated in all available tasks!
-            <br/>
-            <div class="alert-actions">
-                <a class="btn small" href="/">Go back</a>
-                <a class="btn small" href="/app">or, Check other applications</a>
-            </div>
-        </div>
-        <div id="error" class="alert alert-error" style="display:none;">
-            <a class="close">×</a>
-            <strong>Error!</strong> Something went wrong, please contact the site administrators
-        </div>
-    </div> <!-- End Success and Error Messages for the user -->
-</div> <!-- End of Row -->
-
-<!--
-    Task DOM for loading the Flickr Images
-    It uses the class="skeleton" to identify the elements that belong to the
-    task.
--->
-<div class="row skeleton"> <!-- Start Skeleton Row-->
-    <div class="span5 "><!-- Start of Question and Submission DIV (column) -->
-        <h1 id="question">Question</h1> <!-- The question will be loaded here -->
-        <div id="answer"> <!-- Start DIV for the submission buttons -->
-            <!-- If the user clicks this button, the saved answer will be value="yes"-->
-            <button class="btn btn-default btn-answer" value='Yes'><i class="icon icon-white icon-thumbs-up"></i> Yes</button>
-            <!-- If the user clicks this button, the saved answer will be value="no"-->
-            <button class="btn btn-danger btn-answer" value='No'><i class="icon icon-white icon-thumbs-down"></i> No</button>
-            <!-- If the user clicks this button, the saved answer will be value="NoPhoto"-->
-            <button class="btn btn-answer" value='NoPhoto'><i class="icon icon-white icon-exclamation"></i> No photo</button>
-            <!-- If the user clicks this button, the saved answer will be value="NotKnown"-->
-            <button class="btn btn-answer" value='NotKnown'><i class="icon icon-white icon-question-sign"></i> I don't know</button>
 
 
-        </div><!-- End of DIV for the submission buttons -->
-        <!-- Feedback items for the user -->
-        <p>You are working now on task: <span id="task-id" class="label label-warning">#</span></p>
-        <p>You have completed: <span id="done" class="label label-info"></span> tasks from
-        <!-- Progress bar for the user -->
-        <span id="total" class="label label-inverse"></span></p>
-        <div class="progress progress-striped">
-            <div id="progress" rel="tooltip" title="#" class="bar" style="width: 0%;"></div>
-        </div>
-        <!--
-            This application uses Disqus to allow users to provide some feedback.
-            The next section includes a button that when a user clicks on it will
-            load the comments, if any, for the given task
-        -->
-        <div id="disqus_show_btn" style="margin-top:5px;">
-            <button class="btn btn-primary btn-large btn-disqus" onclick="loadDisqus()"><i class="icon-comments"></i> Show comments</button>
-            <button class="btn btn-large btn-disqus" onclick="loadDisqus()" style="display:none"><i class="icon-comments"></i> Hide comments</button>
-        </div><!-- End of Disqus Button section -->
-         <!--Disqus thread for the given task -->
-        <div id="disqus_thread" style="margin-top:5px;display:none"></div>
 
 
-        <div class="grid-info">
-        <div>You clicked on row: <span id="result-row"></span></div>
-        <div>You clicked on col: <span id="result-col"></span></div>
-        <div>You clicked on item #: <span id="result-item"></span></div>
-        <!-- <div>Total sections: <span id="result-total"></span></div>
-        <pre id="json-text"></pre> -->
-        <!-- <a class="json-btn" id="json-btn">Get JSON</a> -->
+    main{
+        //margin-bottom: 20px;
+    }
+    .example-list {
+        font-size: 0;
+        margin-bottom: 50px;
+    }
+    .example-list__item,
+    .next-slide{
+        font-size: 16px;
+        display: inline-block;
+        width: 20%;
+        padding-right: 2px;
+        box-sizing: border-box;
+        vertical-align: top;
+    }
+    .next-slide {
+        padding-right: 0;
+        height: 186px;
+        color: white;
+        background-color: rgba(0,163,136,.5);
+    }
+
+    </style>
+
+<header class="site-header clearfix">
+  <div class="span6 offset2" style="height:50px">
+    <div id="success" class="alert alert-success" style="display:none;">
+      <a class="close">×</a>
+      <strong>Well done!</strong> Your answer has been saved
+    </div>
+    <div id="loading" class="alert alert-info" style="display:none;">
+      <a class="close">×</a> Loading next task...
+    </div>
+    <div id="taskcompleted" class="alert alert-info" style="display:none;">
+      <strong>The task has been completed!</strong> Thanks a lot!
+    </div>
+    <div id="finish" class="alert alert-success" style="display:none;">
+      <strong>Congratulations!</strong> You have participated in all available tasks!
+      <br/>
+      <div class="alert-actions">
+        <a class="btn small" href="/">Go back</a>
+        <a class="btn small" href="/app">or, Check other applications</a>
       </div>
+    </div>
+    <div id="error" class="alert alert-error" style="display:none;">
+      <a class="close">×</a>
+      <strong>Error!</strong> Something went wrong, please contact the site administrators
+    </div>
+  </div>
+</header>
 
+<main class="site-content clearfix">
+  <div class="row clearfix">
+    <div class="span6">
+      <div class="grid-info">
+        <h1 id="question"><span>Question: </span></h1>
+        <p>
+          Nullam quis risus eget urna mollis ornare vel eu leo. Donec id elit non mi porta gravida at eget metus. Nulla vitae elit libero, a pharetra augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur blandit tempus porttitor.
+        </p>
+        <h2><span>Instructions: </span></h2>
+        <p>
+          Nullam quis risus eget urna mollis ornare vel eu leo. Donec id elit non mi porta gravida at eget metus. Nulla vitae elit libero, a pharetra augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur blandit tempus porttitor.
+        </p>
+        <div>You clicked on Row: <span id="result-row"></span></div>
+        <div>You clicked on Column: <span id="result-column"></span></div>
+        <div>You clicked on item #: <span id="result-item"></span></div>
+        <br/>
+        <select id="difficulty">
+          <option value="1">1 - Super easy</option>
+          <option value="2">2 - Easy</option>
+          <option value="3">3 - Average</option>
+          <option value="4">4 - Difficult</option>
+          <option value="5">5 - Very difficult</option>
+        </select>
 
-    </div><!-- End of Question and Submission DIV (column) -->
-
-        <!--Undo last coordinat-->
-            <a class="undo-btn" value='Undo'><i class="icon icon-white icon-arrow-left"></i>Undo</a>
-
+        <select id="grid_size">
+          <option value="2">2x2</option>
+          <option value="3">3x3</option>
+          <option value="4">4x4</option>
+          <option value="5">5x5</option>
+          <option value="6">6x6</option>
+        </select>
+        <button class="btn" id="refresh">reset</button>
+      </div>
+    </div>
     <div class="span6 wrapper grid-wrapper" id="grid-wrapper">
-        <!--<img id="slide" src='sample.jpg' data-zoom-image="sample.jpg"/>-->
         <a id="photo-link" href="#">
             <img id="photo" src="http://i.imgur.com/GeHxzb7.png" style="max-width=100%">
         </a>
         <div id="canvas"></div>
-
     </div>
+  </div>
+</main>
 
-</div><!-- End of Skeleton Row -->
+
+
+
+<div class="example-list">
+    <h2>Examples:</h2>
+    <div class="example-list__item">
+        <img src="http://placehold.it/300x300">
+    </div>
+    <div class="example-list__item">
+        <img src="http://placehold.it/300x300">
+    </div>
+    <div class="example-list__item">
+        <img src="http://placehold.it/300x300">
+    </div>
+    <div class="example-list__item">
+        <img src="http://placehold.it/300x300">
+    </div>
+    <button class="next-slide" id="next-slide">Next slide</button>
+</div>
 
 <script type="text/javascript" async="async">
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
