@@ -350,8 +350,8 @@ Grid.prototype.init = function() {
 
   $("#grid_size") .on("change", $.proxy(this.change_grid, this) );
   $("#difficulty").on("change", $.proxy(this.difficulty, this))
-  $("#refresh")   .on("click, touchstart",  $.proxy(this.change_grid, this) );
-  $("#next-slide").on("click, touchstart",  $.proxy(this.next_slide, this) );
+  $("#refresh")   .on("click touchstart",  $.proxy(this.change_grid, this) );
+  $("#next-slide").on("click touchstart",  $.proxy(this.next_slide, this) );
 
 
 }
@@ -433,12 +433,10 @@ Grid.prototype.activate_cell = function(){
     var grid__item_active = this.grid__item_active;
     var grid__item_node = this.grid__item_active.node;
     var grid__item_active_className = grid__item_node.className.animVal;
-
+    console.log(grid__item_active);
 
     if(clicks === 1) {
         timer = setTimeout(function() {
-
-
           if(grid__item_active_className != "grid__item grid__item--success"){
             grid__item_node.setAttribute("class", "grid__item grid__item--success");
             grid__item_active.has_cancer = true;
@@ -538,7 +536,6 @@ Grid.prototype.difficulty = function(){
   $( "#difficulty option:selected" ).each(function() {
     a = $( this ).val();
   });
-  console.log(a);
   this.task["image_difficulty"] = a;
 }
 
