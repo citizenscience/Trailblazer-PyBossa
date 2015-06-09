@@ -350,8 +350,8 @@ Grid.prototype.init = function() {
 
   $("#grid_size") .on("change", $.proxy(this.change_grid, this) );
   $("#difficulty").on("change", $.proxy(this.difficulty, this))
-  $("#refresh")   .on("click",  $.proxy(this.change_grid, this) );
-  $("#next-slide").on("click",  $.proxy(this.next_slide, this) );
+  $("#refresh")   .on("click, touchstart",  $.proxy(this.change_grid, this) );
+  $("#next-slide").on("click, touchstart",  $.proxy(this.next_slide, this) );
 
 
 }
