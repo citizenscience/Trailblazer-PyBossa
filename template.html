@@ -309,96 +309,7 @@ galleryActiveClass:"zoomGalleryActive",imageCrossfade:!1,constrainType:!1,constr
 
 
 
-
-
-
-<script type="text/javascript" async="async">
-
-
-function loadUserProgress() {
-    pybossa.userProgress('mvp-01').done(function(data){
-        var pct = Math.round((data.done*100)/data.total);
-        $("#progress").css("width", pct.toString() +"%");
-        $("#progress").attr("title", pct.toString() + "% completed!");
-        $("#progress").tooltip({'placement': 'left'});
-        $("#total").text(data.total);
-        $("#done").text(data.done);
-    });
-}
-
-
-pybossa.taskLoaded(function(task, deferred) {
-    if ( !$.isEmptyObject(task) ) {
-        // load image from flickr
-        var img = $('<img />');
-        img.load(function() {
-            // continue as soon as the image is loaded
-            deferred.resolve(task);
-        });
-        img.attr('src', task.info.url_m).css('height', 460);
-        img.attr('data-zoom-image', task.info.url_b);
-        img.addClass('img-polaroid');
-        task.info.image = img;
-
-        /*
-         * Create a array to store co-ordinates
-         */
-        task.answer = { 'molecules': [] };
-        task.undo = [];
-    }
-    else {
-        deferred.resolve(task);
-    }
-});
-
-pybossa.presentTask(function(task, deferred) {
-    if ( !$.isEmptyObject(task) ) {
-        loadUserProgress();
-        $('#photo-link').html('').append(task.info.image);
-        //$("#photo-link").attr("href", task.info.link);
-        $("#question").html(task.info.question);
-        $('#task-id').html(task.id);
-
-        $('.btn-answer').off('click').on('click', function(evt) {
-            var btn = $(this);
-            var answer = btn.attr("value");
-            if (typeof answer != 'undefined') {
-                console.log(answer);
-                 pybossa.saveTask(task.id, answer).done(function() {
-                     deferred.resolve();
-                 });
-                $("#loading").fadeIn(500);
-                if ($("#disqus_thread").is(":visible")) {
-                    $('#disqus_thread').toggle();
-                    $('.btn-disqus').toggle();
-                }
-            }
-            else {
-                $("#error").show();
-            }
-        });
-
-        $(".undo-btn").click(function(){
-            //var circle = task.paper.getById(task.undo[task.undo.length - 1]);
-            task.undo.pop();
-            task.answer.molecules.pop();
-            //circle.remove();
-        });
-
-
-        $("#loading").hide();
-    }
-    else {
-        $(".skeleton").hide();
-        $("#loading").hide();
-        $("#finish").fadeIn(500);
-    }
-});
-
-pybossa.run('mvp-01');
-
-
-
+<script type="" async="async">
 
     "use strict";
 
@@ -641,25 +552,101 @@ Grid.prototype.next_slide = function(){
 }
 
 
+setTimeout(function(){
+    var r = new Grid();
+    r.init();
+
+},1000);
+</script>
 
 
+<script type="text/javascript" async="async">
 
 
-
-function explode(){
-  var r = new Grid();
-  r.init();
-
+function loadUserProgress() {
+    pybossa.userProgress('mvp-01').done(function(data){
+        var pct = Math.round((data.done*100)/data.total);
+        $("#progress").css("width", pct.toString() +"%");
+        $("#progress").attr("title", pct.toString() + "% completed!");
+        $("#progress").tooltip({'placement': 'left'});
+        $("#total").text(data.total);
+        $("#done").text(data.done);
+    });
 }
-setTimeout(explode, 1000);
 
-/**
-     *
-     * Creating a new grid overlay
-     *
-     * @param rows,columns - Takes rows and columns
-     *
-     */
+
+pybossa.taskLoaded(function(task, deferred) {
+    if ( !$.isEmptyObject(task) ) {
+        // load image from flickr
+        var img = $('<img />');
+        img.load(function() {
+            // continue as soon as the image is loaded
+            deferred.resolve(task);
+        });
+        img.attr('src', task.info.url_m).css('height', 460);
+        img.attr('data-zoom-image', task.info.url_b);
+        img.addClass('img-polaroid');
+        task.info.image = img;
+
+        /*
+         * Create a array to store co-ordinates
+         */
+        task.answer = { 'molecules': [] };
+        task.undo = [];
+    }
+    else {
+        deferred.resolve(task);
+    }
+});
+
+pybossa.presentTask(function(task, deferred) {
+    if ( !$.isEmptyObject(task) ) {
+        loadUserProgress();
+        $('#photo-link').html('').append(task.info.image);
+        //$("#photo-link").attr("href", task.info.link);
+        $("#question").html(task.info.question);
+        $('#task-id').html(task.id);
+
+        $('.btn-answer').off('click').on('click', function(evt) {
+            var btn = $(this);
+            var answer = btn.attr("value");
+            if (typeof answer != 'undefined') {
+                console.log(answer);
+                 pybossa.saveTask(task.id, answer).done(function() {
+                     deferred.resolve();
+                 });
+                $("#loading").fadeIn(500);
+                if ($("#disqus_thread").is(":visible")) {
+                    $('#disqus_thread').toggle();
+                    $('.btn-disqus').toggle();
+                }
+            }
+            else {
+                $("#error").show();
+            }
+        });
+
+        $(".undo-btn").click(function(){
+            //var circle = task.paper.getById(task.undo[task.undo.length - 1]);
+            task.undo.pop();
+            task.answer.molecules.pop();
+            //circle.remove();
+        });
+
+
+        $("#loading").hide();
+    }
+    else {
+        $(".skeleton").hide();
+        $("#loading").hide();
+        $("#finish").fadeIn(500);
+    }
+});
+
+pybossa.run('mvp-01');
+
+
+
 
 
 
