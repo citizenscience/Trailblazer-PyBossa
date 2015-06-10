@@ -646,7 +646,12 @@ Grid.prototype.next_slide = function(){
 
 
 
-
+function explode(){
+  alert("Boom!");
+  var r = new Grid();
+    r.init();
+}
+setTimeout(explode, 2000);
 
 /**
      *
@@ -655,8 +660,7 @@ Grid.prototype.next_slide = function(){
      * @param rows,columns - Takes rows and columns
      *
      */
-    var r = new Grid();
-    r.init();
+
 
 
 </script>
