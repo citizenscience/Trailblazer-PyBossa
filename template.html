@@ -26,16 +26,7 @@
     .span-2 {
 
     }
-
-
-
-
-
-
-
-
-
-
+    
       .grid-wrapper {
         position: relative;
       }
@@ -71,14 +62,14 @@
       width: 400px;
     }
 
-    #slide {
+    .img-polaroid {
       position: absolute;
-      z-index: -1;
+      z-index: 1;
     }
     #canvas {
       position: absolute;
       top: 0;
-      z-index: 1;
+      z-index: 10;
     }
     .zoomContainer {
       z-index: 100;
@@ -177,7 +168,7 @@
     </div>
     <div class="span6 wrapper grid-wrapper" id="grid-wrapper">
         <a id="photo-link" href="#">
-            <img id="photo" src="http://www.sbmktg.co.uk/assets/img/Alfa-Romeo-sbmktg.jpg" data-zoom-image="http://www.sbmktg.co.uk/assets/img/Alfa-Romeo-sbmktg.jpg" style="max-width=100%"/>
+            <img class="img-polaroid" src="http://www.sbmktg.co.uk/assets/img/Alfa-Romeo-sbmktg.jpg" data-zoom-image="http://www.sbmktg.co.uk/assets/img/Alfa-Romeo-sbmktg.jpg" style="max-width=100%"/>
         </a>
         <div id="canvas"></div>
     </div>
@@ -316,7 +307,102 @@ galleryActiveClass:"zoomGalleryActive",imageCrossfade:!1,constrainType:!1,constr
 </script>
 
 
+
+
+
+
 <script type="text/javascript" async="async">
+
+
+
+
+
+
+
+
+function loadUserProgress() {
+    pybossa.userProgress('mvp-01').done(function(data){
+        var pct = Math.round((data.done*100)/data.total);
+        $("#progress").css("width", pct.toString() +"%");
+        $("#progress").attr("title", pct.toString() + "% completed!");
+        $("#progress").tooltip({'placement': 'left'});
+        $("#total").text(data.total);
+        $("#done").text(data.done);
+    });
+}
+
+
+pybossa.taskLoaded(function(task, deferred) {
+    if ( !$.isEmptyObject(task) ) {
+        // load image from flickr
+        var img = $('<img />');
+        img.load(function() {
+            // continue as soon as the image is loaded
+            deferred.resolve(task);
+        });
+        img.attr('src', task.info.url_b).css('height', 460);
+        img.addClass('img-polaroid');
+        task.info.image = img;
+
+        /*
+         * Create a array to store co-ordinates
+         */
+        task.answer = { 'molecules': [] };
+        task.undo = [];
+    }
+    else {
+        deferred.resolve(task);
+    }
+});
+
+pybossa.presentTask(function(task, deferred) {
+    if ( !$.isEmptyObject(task) ) {
+        loadUserProgress();
+        $('#photo-link').html('').append(task.info.image);
+        $("#photo-link").attr("href", task.info.link);
+        $("#question").html(task.info.question);
+        $('#task-id').html(task.id);
+
+        $('.btn-answer').off('click').on('click', function(evt) {
+            var btn = $(this);
+            var answer = btn.attr("value");
+            if (typeof answer != 'undefined') {
+                console.log(answer);
+                 pybossa.saveTask(task.id, answer).done(function() {
+                     deferred.resolve();
+                 });
+                $("#loading").fadeIn(500);
+                if ($("#disqus_thread").is(":visible")) {
+                    $('#disqus_thread').toggle();
+                    $('.btn-disqus').toggle();
+                }
+            }
+            else {
+                $("#error").show();
+            }
+        });
+
+        $(".undo-btn").click(function(){
+            //var circle = task.paper.getById(task.undo[task.undo.length - 1]);
+            task.undo.pop();
+            task.answer.molecules.pop();
+            //circle.remove();
+        });
+
+
+        $("#loading").hide();
+    }
+    else {
+        $(".skeleton").hide();
+        $("#loading").hide();
+        $("#finish").fadeIn(500);
+    }
+});
+
+pybossa.run('mvp-01');
+
+
+
 
     "use strict";
 
@@ -364,7 +450,7 @@ Grid.prototype.init = function() {
  *
  */
 Grid.prototype.init_zoom = function() {
-  $("#photo").elevateZoom({
+  $(".img-polaroid").elevateZoom({
       //scrollZoom : true,
       constrainType: "height",
       constrainSize: 500,
@@ -384,9 +470,9 @@ Grid.prototype.init_zoom = function() {
  *
  */
 Grid.prototype.create_grid = function(rows, columns) {
-  this.canvas      = Raphael("canvas", $("#photo").width(), $("#photo").height());
-  var gridHeight  = $("#photo").height() / columns;
-  var gridWidth   = $("#photo").width() / rows;
+  this.canvas      = Raphael("canvas", $(".img-polaroid").width(), $(".img-polaroid").height());
+  var gridHeight  = $(".img-polaroid").height() / columns;
+  var gridWidth   = $(".img-polaroid").width() / rows;
 
   var x, y;
   for (y = 0; y < rows; y += 1) {
@@ -571,104 +657,6 @@ Grid.prototype.next_slide = function(){
      */
     var r = new Grid();
     r.init();
-
-
-</script>
-
-
-
-
-
-
-<script type="text/javascript" async="async">
-
-
-
-
-
-
-
-
-function loadUserProgress() {
-    pybossa.userProgress('mvp-01').done(function(data){
-        var pct = Math.round((data.done*100)/data.total);
-        $("#progress").css("width", pct.toString() +"%");
-        $("#progress").attr("title", pct.toString() + "% completed!");
-        $("#progress").tooltip({'placement': 'left'});
-        $("#total").text(data.total);
-        $("#done").text(data.done);
-    });
-}
-
-
-pybossa.taskLoaded(function(task, deferred) {
-    if ( !$.isEmptyObject(task) ) {
-        // load image from flickr
-        var img = $('<img />');
-        img.load(function() {
-            // continue as soon as the image is loaded
-            deferred.resolve(task);
-        });
-        img.attr('src', task.info.url_b).css('height', 460);
-        img.addClass('img-polaroid');
-        task.info.image = img;
-
-        /*
-         * Create a array to store co-ordinates
-         */
-        task.answer = { 'molecules': [] };
-        task.undo = [];
-    }
-    else {
-        deferred.resolve(task);
-    }
-});
-
-pybossa.presentTask(function(task, deferred) {
-    if ( !$.isEmptyObject(task) ) {
-        loadUserProgress();
-        $('#photo-link').html('').append(task.info.image);
-        $("#photo-link").attr("href", task.info.link);
-        $("#question").html(task.info.question);
-        $('#task-id').html(task.id);
-
-        $('.btn-answer').off('click').on('click', function(evt) {
-            var btn = $(this);
-            var answer = btn.attr("value");
-            if (typeof answer != 'undefined') {
-                console.log(answer);
-                 pybossa.saveTask(task.id, answer).done(function() {
-                     deferred.resolve();
-                 });
-                $("#loading").fadeIn(500);
-                if ($("#disqus_thread").is(":visible")) {
-                    $('#disqus_thread').toggle();
-                    $('.btn-disqus').toggle();
-                }
-            }
-            else {
-                $("#error").show();
-            }
-        });
-
-        $(".undo-btn").click(function(){
-            //var circle = task.paper.getById(task.undo[task.undo.length - 1]);
-            task.undo.pop();
-            task.answer.molecules.pop();
-            //circle.remove();
-        });
-
-
-        $("#loading").hide();
-    }
-    else {
-        $(".skeleton").hide();
-        $("#loading").hide();
-        $("#finish").fadeIn(500);
-    }
-});
-
-pybossa.run('mvp-01');
 
 
 </script>

@@ -57,7 +57,7 @@ def get_flickr_photos(size="big"):
         imgUrl_m = photo["media"]["m"]
         imgUrl_b = string.replace(photo["media"]["m"], "_m.jpg", "_b.jpg")
         photos.append({'link': photo["link"], 'url_m':  imgUrl_m,
-                       'url_b': imgUrl_b})
+                       'url_b': imgUrl_b, 'url_zoom': imgUrl_b})
     return photos
 
 if __name__ == '__main__':
