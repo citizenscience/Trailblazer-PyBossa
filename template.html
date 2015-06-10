@@ -167,9 +167,9 @@
       </div>
     </div>
     <div class="span6 wrapper grid-wrapper" id="grid-wrapper">
-        <a id="photo-link" href="#">
+
             <img class="img-polaroid" src="http://www.sbmktg.co.uk/assets/img/Alfa-Romeo-sbmktg.jpg" data-zoom-image="http://www.sbmktg.co.uk/assets/img/Alfa-Romeo-sbmktg.jpg" style="max-width=100%"/>
-        </a>
+
         <div id="canvas"></div>
     </div>
   </div>
@@ -644,22 +644,25 @@ Grid.prototype.next_slide = function(){
 
 
 
-
+/*
+ * setTimout is for after the images loads
+ * from flickr
+ */
 
 function explode(){
-  alert("Boom!");
-  var r = new Grid();
-    r.init();
-}
-setTimeout(explode, 2000);
-
-/**
+  /**
      *
      * Creating a new grid overlay
      *
      * @param rows,columns - Takes rows and columns
      *
      */
+  var r = new Grid();
+  r.init();
+}
+setTimeout(explode, 1000);
+
+
 
 
 
