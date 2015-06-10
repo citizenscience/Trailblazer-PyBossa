@@ -99,12 +99,6 @@
         box-sizing: border-box;
         vertical-align: top;
     }
-    .next-slide {
-        padding-right: 0;
-        height: 186px;
-        color: white;
-        background-color: rgba(0,163,136,.5);
-    }
 
     </style>
 
@@ -167,11 +161,14 @@
           <option value="6">6x6</option>
         </select>
         <button class="btn" id="refresh">reset</button>
+          <button class="btn" id="next-slide">Next slide</button>
       </div>
     </div>
     <div class="span6 wrapper grid-wrapper" id="grid-wrapper">
-        <a id="photo-link" href="#">
-            <img class="img-polaroid" src="http://www.sbmktg.co.uk/assets/img/Alfa-Romeo-sbmktg.jpg" data-zoom-image="http://www.sbmktg.co.uk/assets/img/Alfa-Romeo-sbmktg.jpg" style="max-width=100%"/>
+        <a id="photo-link">
+            <img class="img-polaroid"
+                 src="http://www.sbmktg.co.uk/assets/img/Alfa-Romeo-sbmktg.jpg"
+                 data-zoom-image="http://www.sbmktg.co.uk/assets/img/Alfa-Romeo-sbmktg.jpg" style="max-width=100%"/>
         </a>
         <div id="canvas"></div>
     </div>
@@ -195,7 +192,10 @@
     <div class="example-list__item">
         <img src="http://placehold.it/300x300">
     </div>
-    <button class="next-slide" id="next-slide">Next slide</button>
+    <div class="example-list__item">
+        <img src="http://placehold.it/300x300">
+    </div>
+
 </div>
 
 <script type="text/javascript" async="async">
@@ -456,7 +456,11 @@ Grid.prototype.init_zoom = function() {
       zoomWindowPosition: 11,
       zoomWindowOffetx: -20,
       zoomWindowWidth:452,
-      zoomWindowHeight:495
+      zoomWindowHeight:495,
+      zoomWindowFadeIn: 500,
+      zoomWindowFadeOut: 500,
+      lensFadeIn: 500,
+      lensFadeOut: 500
   });
 }
 
