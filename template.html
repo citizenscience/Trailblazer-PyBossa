@@ -170,7 +170,7 @@
       </div>
     </div>
     <div class="span6 wrapper grid-wrapper" id="grid-wrapper">
-        <a id="photo-link">
+        <a id="photo-link" href="#">
             <img class="img-polaroid" src="http://www.sbmktg.co.uk/assets/img/Alfa-Romeo-sbmktg.jpg" data-zoom-image="http://www.sbmktg.co.uk/assets/img/Alfa-Romeo-sbmktg.jpg" style="max-width=100%"/>
         </a>
         <div id="canvas"></div>
@@ -650,7 +650,7 @@ Grid.prototype.next_slide = function(){
 
 
 function explode(){
-$("#photo-link").attr("href","");
+    $("#photo-link").removeAttr( "href" )
   var r = new Grid();
   r.init();
 
