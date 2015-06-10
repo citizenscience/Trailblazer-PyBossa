@@ -317,12 +317,6 @@ galleryActiveClass:"zoomGalleryActive",imageCrossfade:!1,constrainType:!1,constr
 <script type="text/javascript" async="async">
 
 
-
-
-
-
-
-
 function loadUserProgress() {
     pybossa.userProgress('mvp-01').done(function(data){
         var pct = Math.round((data.done*100)/data.total);
@@ -343,7 +337,8 @@ pybossa.taskLoaded(function(task, deferred) {
             // continue as soon as the image is loaded
             deferred.resolve(task);
         });
-        img.attr('src', task.info.url_b).css('height', 460);
+        img.attr('src', task.info.url_m).css('height', 460);
+        img.attr('data-zoom-image', task.info.url_b);
         img.addClass('img-polaroid');
         task.info.image = img;
 
@@ -362,7 +357,7 @@ pybossa.presentTask(function(task, deferred) {
     if ( !$.isEmptyObject(task) ) {
         loadUserProgress();
         $('#photo-link').html('').append(task.info.image);
-        $("#photo-link").attr("href", task.info.link);
+        //$("#photo-link").attr("href", task.info.link);
         $("#question").html(task.info.question);
         $('#task-id').html(task.id);
 
@@ -650,7 +645,6 @@ Grid.prototype.next_slide = function(){
 
 
 function explode(){
-    $("#photo-link").removeAttr( "href" )
   var r = new Grid();
   r.init();
 
