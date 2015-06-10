@@ -650,10 +650,12 @@ Grid.prototype.next_slide = function(){
 
 
 function explode(){
+$("#photo-link").attr("href","");
   var r = new Grid();
-    r.init();
+  r.init();
+
 }
-setTimeout(explode, 500);
+setTimeout(explode, 1000);
 
 /**
      *
