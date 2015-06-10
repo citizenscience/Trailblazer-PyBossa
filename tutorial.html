@@ -2,7 +2,7 @@
     <div class="span12">
         <div id="modal" class="modal hide fade">
             <div class="modal-header">
-                <h3>Flickr Person Finder tutorial</h3>
+                <h3>MVP Pathologies Tutorial</h3>
             </div>
             <div id="0" class="modal-body" style="display:none">
                 <p>
@@ -10,6 +10,13 @@
                </p>
             </div>
             <div id="1" class="modal-body" style="display:none">
+                <h1>Test Slide</h1>
+                <p>
+                    <strong>Hi!!</strong> This is a <strong>demo application</strong> that shows how you can do pattern recognition on pictures or images using the PyBossa framework in Crowdcrafting.org.
+               </p>
+                <img src="http://farm7.staticflickr.com/6109/6286728068_2f3c6912b8_q.jpg" class="img-polaroid"/>
+            </div>
+            <div id="2" class="modal-body" style="display:none">
                 <p>The application is really simple. It loads a photo from <a href="http://flickr.com">Flickr</a> and asks you this question: <strong>Do you see a human in this photo?</strong></p>
                 <img src="http://farm7.staticflickr.com/6109/6286728068_2f3c6912b8_q.jpg" class="img-polaroid"/>
                 <p>You will have 3 possible answers:
@@ -23,6 +30,7 @@
                 </p>
                 <p>All you have to do is to click in one of the three possible answers and you will be done. This demo application could be adapted for more complex pattern recognition problems.</p>
             </div>
+
             <div class="modal-footer">
                 <a id="prevBtn" href="#" onclick="showStep('prev')" class="btn">Previous</a>
                 <a id="nextBtn" href="#" onclick="showStep('next')" class="btn btn-success">Next</a>
@@ -36,20 +44,21 @@
     var step = -1;
     function showStep(action) {
         $("#" + step).hide();
+
         if (action == 'next') {
             step = step + 1;
         }
         if (action == 'prev') {
             step = step - 1;
         }
-        if (step == 0) {
+
+        if (step == 0 || step == 1) {
             $("#prevBtn").hide();
-        }
-        else {
+        } else {
             $("#prevBtn").show();
         }
 
-        if (step == 1 ) {
+        if (step == 2) {
             $("#nextBtn").hide();
             $("#startContrib").show();
         }
