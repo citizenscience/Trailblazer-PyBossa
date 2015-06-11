@@ -145,6 +145,15 @@
                     Nullam quis risus eget urna mollis ornare vel eu leo. Donec id elit non mi porta gravida at eget metus. Nulla vitae elit libero, a pharetra augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur blandit tempus porttitor.
                 </p>
 
+                <div class="progress progress-striped">
+                    <div id="progress" rel="tooltip" title="#" class="bar" style="width: 0%;"></div>
+
+                </div>
+                <div class="info">
+                    <div>Total tasks: <span id="total"></span></div>
+                    <div>Completed tasks: <span id="done"></span></div>
+                </div>
+
                 <div>You clicked on Row: <span id="result-row"></span></div>
                 <div>You clicked on Column: <span id="result-column"></span></div>
                 <div>You clicked on item #: <span id="result-item"></span></div>
@@ -196,30 +205,6 @@
     </div>
 
 </div>
-
-<script type="text/javascript" async="async">
-    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-
-    /* * * DON'T EDIT BELOW THIS LINE * * */
-    function loadDisqus() {
-        $("#disqus_thread").toggle();
-        $(".btn-disqus").toggle();
-        var disqus_shortname = 'pybossa'; // required: replace example with your forum shortname
-        //var disqus_identifier = taskId;
-        var disqus_developer = 1;
-
-        (function () {
-            var dsq = document.createElement('script');
-            dsq.type = 'text/javascript';
-            dsq.async = true;
-            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    }
-
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-</noscript>
 
 <script type="text/javascript" async="async">
 
@@ -460,6 +445,17 @@
     }
 
 
+    function loadUserProgress() {
+        pybossa.userProgress('mvp-01').done(function (data) {
+            var pct = Math.round((data.done * 100) / data.total);
+            $("#progress").css("width", pct.toString() + "%");
+            $("#progress").attr("title", pct.toString() + "% completed!");
+            $("#progress").tooltip({'placement': 'bottom'});
+            $("#total").text(data.total);
+            $("#done").text(data.done);
+        });
+    }
+
 
     pybossa.taskLoaded(function (task, deferred) {
 
@@ -488,7 +484,7 @@
 
         if (!$.isEmptyObject(task)) {
 
-            //loadUserProgress();
+            loadUserProgress();
 
             $('#photo-link').html('').append(task.info.image);
             $("#question").html(task.info.question);

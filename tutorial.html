@@ -2,23 +2,49 @@
     <div class="span12">
         <div id="modal" class="modal hide fade">
             <div class="modal-header">
-                <h3>MVP Pathologies Tutorial</h3>
+                <h3>Beta - TrailBlazer Project Tutorial</h3>
             </div>
             <div id="0" class="modal-body" style="display:none">
+                <h1>
+                    Your task is to identify cancer cells.
+                </h1>
                 <p>
+                    These are uneven, often larger cells with a mottled or blotchy surface like the ones highlighted below.
+                </p>
+                <img src="http://placehold.it/700x150" alt=""/>
+            </div>
 
-               </p>
-            </div>
             <div id="1" class="modal-body" style="display:none">
-                <h1>Test Slide</h1>
+                <h1>
+                    You will see other cell types which you should ignore.
+                </h1>
                 <p>
-                    <strong>Hi!!</strong> This is a <strong>demo application</strong> that shows how you can do pattern recognition on pictures or images using the PyBossa framework in Crowdcrafting.org.
-               </p>
+                    These include the smaller, denser cells and the stretched wispy cells, some of these are highlighted below. We’re not looking for these cells.
+                </p>
+
+                <img src="http://placehold.it/175x175" alt=""/>
+                <img src="http://placehold.it/175x175" alt=""/>
+            </div>
+
+            <div id="2" class="modal-body" style="display:none">
+                <h1>Now it’s your turn.</h1>
+
+                <p>
+                    Take a look at the image below. We’d like you to identify which areas of the grid contain cancer cells.
+                    Analyse each grid segment and decide if it contains cancer. Once you’ve decided you can mark the section as follows:
+                    Yes, there are cancer cells – click once to turn the segment green
+                    No, there are no cancer cells – click twice to turn the segment red
+                    There are no cells in this segment – click three times to turn the segment X
+                    Don’t worry if a particular segment is very difficult or you aren’t sure. Sometimes the specialists can find this analysis tricky – so just give it your best shot!
+                </p>
                 <img src="http://farm7.staticflickr.com/6109/6286728068_2f3c6912b8_q.jpg" class="img-polaroid"/>
             </div>
-            <div id="2" class="modal-body" style="display:none">
-                <p>The application is really simple. It loads a photo from <a href="http://flickr.com">Flickr</a> and asks you this question: <strong>Do you see a human in this photo?</strong></p>
+            <div id="3" class="modal-body" style="display:none">
+                <p>The application is really simple. It loads a photo from
+                    <a href="http://flickr.com">Flickr</a> and asks you this question:
+                    <strong>Do you see a human in this photo?</strong></p>
                 <img src="http://farm7.staticflickr.com/6109/6286728068_2f3c6912b8_q.jpg" class="img-polaroid"/>
+
                 <p>You will have 3 possible answers:
                 <ul>
                     <li>Yes,</li>
@@ -46,25 +72,31 @@
         $("#" + step).hide();
 
         if (action == 'next') {
-            step = step + 1;
+            step+=1;
         }
         if (action == 'prev') {
-            step = step - 1;
+            step-=1;
         }
 
-        if (step == 0 || step == 1) {
+        if (step == 0) {
             $("#prevBtn").hide();
         } else {
             $("#prevBtn").show();
         }
 
-        if (step == 2) {
+        if (step == 3) {
             $("#nextBtn").hide();
             $("#startContrib").show();
+        } else {
+            $("#nextBtn").show();
+            $("#startContrib").hide();
         }
         $("#" + step).show();
+
+
     }
 
     showStep('next');
     $("#modal").modal('show');
+
 </script>
