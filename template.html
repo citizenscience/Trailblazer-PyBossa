@@ -165,15 +165,11 @@
                     <option value="6">6x6</option>
                 </select>
                 <button class="btn" id="refresh">reset</button>
-                <button class="btn" id="next-slide">Next slide</button>
+                <button class="btn btn-answer" id="next-slide" value="next">Next slide</button>
             </div>
         </div>
         <div class="span6 wrapper grid-wrapper" id="grid-wrapper">
-            <a id="photo-link">
-                <img class="img-polaroid"
-                     src="http://www.sbmktg.co.uk/assets/img/Alfa-Romeo-sbmktg.jpg"
-                     data-zoom-image="http://www.sbmktg.co.uk/assets/img/Alfa-Romeo-sbmktg.jpg"/>
-            </a>
+            <a id="photo-link"></a>
 
             <div id="canvas"></div>
         </div>
@@ -234,15 +230,13 @@
      * Grid Constructor function
      *
      */
-    function Grid() {
+    function Grid(task) {
         this.canvas;
         this.grid = [];
         this.grid__item_active;
-        this.task = {};
-        this.task["answer"] = [];
-        this.task["image_difficulty"] = 1;
-    }
-    ;
+        this.task = task;
+        this.task.image_difficulty = 1;
+    };
 
 
     /**
@@ -255,6 +249,7 @@
         this.init_zoom();
         this.create_grid(2, 2);
         this.activate_cell();
+        this.task;
 
 
         $("#grid_size").on("change", $.proxy(this.change_grid, this));
@@ -278,8 +273,8 @@
             constrainSize: 274,
             cursor: "pointer",
             zoomWindowPosition: "grid-info",
-            zoomWindowWidth:460,
-            zoomWindowHeight:500,
+            zoomWindowWidth: 460,
+            zoomWindowHeight: 500,
             zoomWindowFadeIn: 500,
             zoomWindowFadeOut: 500,
             lensFadeIn: 500,
@@ -314,9 +309,9 @@
                 grid_item.node.setAttribute("class", "grid__item");
 
 
-                grid_item["x"] = x;
-                grid_item["y"] = y;
-                grid_item["has_cancer"] = null;
+                grid_item.x = x;
+                grid_item.y = y;
+                grid_item.has_cancer = null;
 
                 this.grid.push(grid_item);
 
@@ -383,7 +378,7 @@
         var target_pos = {
             x: parseInt(target.css("left")),
             y: parseInt(target.css("top"))
-        }
+        };
 
         // Center the zoom cursor to middle of square
         target_pos.x = target_pos.x + 30
@@ -395,9 +390,12 @@
             if (value.isPointInside(target_pos.x, target_pos.y)) {
                 active_node = value;
                 _this.show_results(value);
+                //_this.grid.push(obj);
 
             }
         });
+
+
 
         return active_node;
 
@@ -441,44 +439,30 @@
             a = $(this).val();
         });
         console.log(a);
-        this.task["image_difficulty"] = a;
+        this.task.image_difficulty = a;
     }
 
     Grid.prototype.next_slide = function () {
         var _this = this;
+//        console.log(_this);
         $.each(this.grid, function (key, value) {
             var obj = {
                 column: value.x,
                 row: value.y,
-                answer: value["has_cancer"]
+                answer: value.has_cancer
             }
-            _this.task["answer"].push(obj);
+
+            _this.task.answer.push(obj);
         });
 
-        console.log(this.task);
+//     console.log(this.task);
 
     }
 
-    var r = new Grid();
-    r.init();
-
-</script>
-
-<script type="text/javascript" async="async">
-
-    function loadUserProgress() {
-        pybossa.userProgress('mvp-01').done(function (data) {
-            var pct = Math.round((data.done * 100) / data.total);
-            $("#progress").css("width", pct.toString() + "%");
-            $("#progress").attr("title", pct.toString() + "% completed!");
-            $("#progress").tooltip({'placement': 'left'});
-            $("#total").text(data.total);
-            $("#done").text(data.done);
-        });
-    }
 
 
     pybossa.taskLoaded(function (task, deferred) {
+
         if (!$.isEmptyObject(task)) {
             // load image from flickr
             var img = $('<img />');
@@ -486,16 +470,14 @@
                 // continue as soon as the image is loaded
                 deferred.resolve(task);
             });
-            img.attr('src', task.info.url_m).css('height', 460);
+            img.attr('src', task.info.url_b).css('height', 460);
             img.attr('data-zoom-image', task.info.url_b);
             img.addClass('img-polaroid');
             task.info.image = img;
 
-            /*
-             * Create a array to store co-ordinates
-             */
-            task.answer = {'molecules': []};
-            task.undo = [];
+            task.answer = [];
+            task.image_difficulty = 1;
+
         }
         else {
             deferred.resolve(task);
@@ -503,39 +485,50 @@
     });
 
     pybossa.presentTask(function (task, deferred) {
+
         if (!$.isEmptyObject(task)) {
-            loadUserProgress();
+
+            //loadUserProgress();
+
             $('#photo-link').html('').append(task.info.image);
-            //$("#photo-link").attr("href", task.info.link);
             $("#question").html(task.info.question);
             $('#task-id').html(task.id);
+
+            // Init my Grid Constructor
+            var r = new Grid(task);
+            r.init();
 
             $('.btn-answer').off('click').on('click', function (evt) {
                 var btn = $(this);
                 var answer = btn.attr("value");
                 if (typeof answer != 'undefined') {
-                    console.log(answer);
-                    pybossa.saveTask(task.id, answer).done(function () {
+
+
+
+                    $.each(r.grid, function (key, value) {
+                        var obj = {
+                            column: value.x,
+                            row: value.y,
+                            answer: value["has_cancer"]
+                        }
+                        r.task.answer.push(obj);
+                    });
+
+                    pybossa.saveTask(task.id, task.answer).done(function () {
+
+                        $("svg").remove();
+                        $(".zoomContainer").remove();
+                        $(".zoomWindowContainer").remove();
                         deferred.resolve();
                     });
+
                     $("#loading").fadeIn(500);
-                    if ($("#disqus_thread").is(":visible")) {
-                        $('#disqus_thread').toggle();
-                        $('.btn-disqus').toggle();
-                    }
+
                 }
                 else {
                     $("#error").show();
                 }
             });
-
-            $(".undo-btn").click(function () {
-                //var circle = task.paper.getById(task.undo[task.undo.length - 1]);
-                task.undo.pop();
-                task.answer.molecules.pop();
-                //circle.remove();
-            });
-
 
             $("#loading").hide();
         }
