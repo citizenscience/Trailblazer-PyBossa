@@ -1,8 +1,5 @@
 <style type="text/css">
-    .img-polaroid {
-        padding: 0;
-        height: 500px !important;
-    }
+
 
     .grid-info {
         background-color: #efefef;
@@ -15,26 +12,25 @@
         font-size: 18px;
     }
 
+
     .clearfix:before,
     .clearfix:after {
-        content: " "; /* 1 */
-        display: table; /* 2 */
+        content: " ";
+        display: table;
     }
 
     .clearfix:after {
         clear: both;
     }
 
+
+
     .grid-wrapper {
         position: relative;
+        height: 460px;
     }
 
-    .grid-wrapper img {
-        position: absolute;
-        top: 0;
-        width: 500px;
-        height: 500px;
-    }
+
 
     .grid {
         position: absolute;
@@ -43,9 +39,13 @@
         border-spacing: 0;
     }
 
-    .grid-wrapper img {
-        width: 500px;
-        height: 500px;
+
+    .img-polaroid {
+        position: absolute;
+        top: 0;
+        padding: 0;
+        width: 100%;
+        height: auto;
     }
 
     rect.grid__item.grid__item--success {
@@ -102,7 +102,7 @@
 </style>
 
 <header class="site-header clearfix">
-    <div class="span6 offset2" style="height:50px">
+    <div>
         <div id="success" class="alert alert-success" style="display:none;">
             <a class="close">×</a>
             <strong>Well done!</strong> Your answer has been saved
@@ -136,13 +136,13 @@
                 <h1 id="question"><span>Question: </span></h1>
 
                 <p>
-                    Nullam quis risus eget urna mollis ornare vel eu leo. Donec id elit non mi porta gravida at eget metus. Nulla vitae elit libero, a pharetra augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur blandit tempus porttitor.
+                    Nulla vitae elit libero, a pharetra augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur blandit tempus porttitor.
                 </p>
 
                 <h2><span>Instructions: </span></h2>
 
                 <p>
-                    Nullam quis risus eget urna mollis ornare vel eu leo. Donec id elit non mi porta gravida at eget metus. Nulla vitae elit libero, a pharetra augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur blandit tempus porttitor.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur blandit tempus porttitor.
                 </p>
 
                 <div class="progress progress-striped">
@@ -154,10 +154,10 @@
                     <div>Completed tasks: <span id="done"></span></div>
                 </div>
 
-                <div>You clicked on Row: <span id="result-row"></span></div>
-                <div>You clicked on Column: <span id="result-column"></span></div>
-                <div>You clicked on item #: <span id="result-item"></span></div>
-                <br/>
+                <!--<div>You clicked on Row: <span id="result-row"></span></div>-->
+                <!--<div>You clicked on Column: <span id="result-column"></span></div>-->
+                <!--<div>You clicked on item #: <span id="result-item"></span></div>-->
+                <!--<br/>-->
                 <select id="difficulty">
                     <option value="1">1 - Super easy</option>
                     <option value="2">2 - Easy</option>
@@ -166,13 +166,14 @@
                     <option value="5">5 - Very difficult</option>
                 </select>
 
-                <select id="grid_size">
-                    <option value="2">2x2</option>
-                    <option value="3">3x3</option>
-                    <option value="4">4x4</option>
-                    <option value="5">5x5</option>
-                    <option value="6">6x6</option>
-                </select>
+                <!--<select id="grid_size">-->
+                    <!--<option value="2">2x2</option>-->
+                    <!--<option value="3">3x3</option>-->
+                    <!--<option value="4">4x4</option>-->
+                    <!--<option value="5">5x5</option>-->
+                    <!--<option value="6">6x6</option>-->
+                <!--</select>-->
+
                 <button class="btn" id="refresh">reset</button>
                 <button class="btn btn-answer" id="next-slide" value="next">Next slide</button>
             </div>
@@ -221,7 +222,8 @@
         this.grid__item_active;
         this.task = task;
         this.task.image_difficulty = 1;
-    };
+    }
+    ;
 
 
     /**
@@ -232,7 +234,7 @@
     Grid.prototype.init = function () {
 
         this.init_zoom();
-        this.create_grid(2, 2);
+        this.create_grid(6, 6);
         this.activate_cell();
         this.task;
 
@@ -259,7 +261,7 @@
             cursor: "pointer",
             zoomWindowPosition: "grid-info",
             zoomWindowWidth: 460,
-            zoomWindowHeight: 500,
+            zoomWindowHeight: 450,
             zoomWindowFadeIn: 500,
             zoomWindowFadeOut: 500,
             lensFadeIn: 500,
@@ -381,7 +383,6 @@
         });
 
 
-
         return active_node;
 
     }
@@ -404,13 +405,11 @@
         $("#grid_size option:selected").each(function () {
             str = $(this).val();
         });
-        console.log(str);
-
 
         this.grid = [];
         this.canvas.clear();
         $("svg").remove();
-        this.create_grid(str, str);
+        this.create_grid(6,6);
 
         $.each(this.grid, function (key, value) {
             value.id = key;
@@ -498,7 +497,6 @@
                 var btn = $(this);
                 var answer = btn.attr("value");
                 if (typeof answer != 'undefined') {
-
 
 
                     $.each(r.grid, function (key, value) {
