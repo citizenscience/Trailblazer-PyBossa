@@ -85,18 +85,38 @@
     }
 
     .example-list {
-        font-size: 0;
-        margin-bottom: 50px;
     }
 
-    .example-list__item,
-    .next-slide {
-        font-size: 16px;
-        display: inline-block;
+    .example-list__item {
+        position: relative;
         width: 20%;
-        padding-right: 2px;
+        float: left;
+        margin: 0;
+        overflow: hidden;
         box-sizing: border-box;
-        vertical-align: top;
+    }
+
+    .example-list__item:hover .description {
+        opacity: 1;
+        left: 0;
+    }
+
+    .example-list__item .description {
+        position: absolute;
+        bottom: 5px;
+        display: block;
+        text-align: center;
+        width: 100%;
+        color: white;
+        font-family: sans-serif;
+        font-weight: 100;
+        letter-spacing: 1px;
+        background-color: rgba(0, 0, 0, 0.2);
+
+        opacity: 0;
+        -webkit-transition: all 0.6s ease;
+        -moz-transition: all 0.6s ease;
+      -o-transition:      all 0.6s ease;
     }
 
 </style>
@@ -133,16 +153,13 @@
     <div class="row clearfix">
         <div class="span6">
             <div id="grid-info" class="grid-info">
-                <h1 id="question"><span>Question: </span></h1>
-
-                <p>
-                    Nulla vitae elit libero, a pharetra augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur blandit tempus porttitor.
-                </p>
-
+                <h1 id="question">Which grid sections contain cancer cells?</h1>
                 <h2><span>Instructions: </span></h2>
 
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur blandit tempus porttitor.
+                    Click once
+                    Click twice
+
                 </p>
 
                 <div class="progress progress-striped">
@@ -186,26 +203,31 @@
     </div>
 </main>
 
-<div class="example-list">
-    <h2>Examples:</h2>
 
-    <div class="example-list__item">
-        <img src="http://placehold.it/300x300">
-    </div>
-    <div class="example-list__item">
-        <img src="http://placehold.it/300x300">
-    </div>
-    <div class="example-list__item">
-        <img src="http://placehold.it/300x300">
-    </div>
-    <div class="example-list__item">
-        <img src="http://placehold.it/300x300">
-    </div>
-    <div class="example-list__item">
-        <img src="http://placehold.it/300x300">
-    </div>
 
-</div>
+<div class="row example-list clearfix">
+    <h2>Cell Examples</h2>
+    <figure class="example-list__item">
+      <img src="http://placehold.it/300x300"/>
+      <figcaption class="description">Mixed Cancer Cells</figcaption>
+    </figure>
+    <figure class="example-list__item">
+      <img src="http://placehold.it/300x300"/>
+      <figcaption class="description">Stroma - Healthy Cells</figcaption>
+    </figure>
+    <figure class="example-list__item">
+      <img src="http://placehold.it/300x300"/>
+      <figcaption class="description">Stained Cancer Cells</figcaption>
+    </figure>
+    <figure class="example-list__item">
+      <img src="http://placehold.it/300x300"/>
+      <figcaption class="description">Unstained Cancer Cells</figcaption>
+    </figure>
+    <figure class="example-list__item">
+      <img src="http://placehold.it/300x300"/>
+      <figcaption class="description">Grainy Looking Cancer Cells</figcaption>
+    </figure>
+  </div>
 
 <script type="text/javascript" async="async">
 
@@ -223,7 +245,6 @@
         this.task = task;
         this.task.image_difficulty = 1;
     }
-    ;
 
 
     /**
@@ -240,12 +261,12 @@
 
 
         $("#grid_size").on("change", $.proxy(this.change_grid, this));
-        $("#difficulty").on("change", $.proxy(this.difficulty, this))
+        $("#difficulty").on("change", $.proxy(this.image_difficulty, this));
         $("#refresh").on("click", $.proxy(this.change_grid, this));
         $("#next-slide").on("click", $.proxy(this.next_slide, this));
 
 
-    }
+    };
 
 
     /**
@@ -267,7 +288,7 @@
             lensFadeIn: 500,
             lensFadeOut: 500
         });
-    }
+    };
 
 
     /**
@@ -292,7 +313,7 @@
                 var grid_item = this.canvas.rect(moveRight, moveDown, gridWidth, gridHeight)
                     .attr({
                         "stroke": "#fff"
-                    }).animate()
+                    });
                 grid_item.node.setAttribute("class", "grid__item");
 
 
@@ -304,21 +325,40 @@
 
             }
         }
-    }
+    };
 
 
     Grid.prototype.activate_cell = function () {
-        var delay = 200;
+        var delay = 400;
         var clicks = 0;
         var timer = null;
         var _this = this;
+
+//        $("body").on("mousedown", ".zoomLens", function (evt) {
+//            switch (evt.which) {
+//                case 1:
+//                    evt.stopPropagation();
+//                    console.log("case1");
+//                    break;
+//                case 2:
+//                    alert('2');
+//                    break;
+//                case 3:
+//                    evt.preventDefault();
+//                    console.log("double click");
+//                    break;
+//                default:
+//                    console.log("default");
+//            }
+//        });
+
 
         $("body").on("click", ".zoomLens", function (evt) {
 
             evt.preventDefault();
             clicks++;  //count clicks
 
-            this.grid__item_active = _this.loop();
+            this.grid__item_active = _this.find_closest();
 
             var grid__item_active = this.grid__item_active;
             var grid__item_node = this.grid__item_active.node;
@@ -345,7 +385,7 @@
                 clicks = 0;
             }
         });
-    }
+    };
 
 
     /**
@@ -355,7 +395,7 @@
      * that have the clicked coordinates
      *
      */
-    Grid.prototype.loop = function () {
+    Grid.prototype.find_closest = function () {
 
         var _this = this;
         var active_node;
@@ -368,8 +408,8 @@
         };
 
         // Center the zoom cursor to middle of square
-        target_pos.x = target_pos.x + 30
-        target_pos.y = target_pos.y + 30
+        target_pos.x = target_pos.x + 30;
+        target_pos.y = target_pos.y + 30;
 
         // Find the closet grid item
         $.each(this.grid, function (key, value) {
@@ -381,11 +421,8 @@
 
             }
         });
-
-
         return active_node;
-
-    }
+    };
 
     /**
      *
@@ -396,12 +433,11 @@
         $("#result-row").text(active_node.y);
         $("#result-column").text(active_node.x);
         $("#result-item").text(active_node.id + 1);
-    }
+    };
 
 
     Grid.prototype.change_grid = function () {
         var str = "";
-
         $("#grid_size option:selected").each(function () {
             str = $(this).val();
         });
@@ -409,39 +445,38 @@
         this.grid = [];
         this.canvas.clear();
         $("svg").remove();
-        this.create_grid(6,6);
+        this.create_grid(6, 6);
 
         $.each(this.grid, function (key, value) {
             value.id = key;
         });
 
-    }
+    };
 
-    Grid.prototype.difficulty = function () {
-        var a = "";
+    Grid.prototype.image_difficulty = function () {
+        var val = "";
         $("#difficulty option:selected").each(function () {
-            a = $(this).val();
+            val = $(this).val();
         });
-        console.log(a);
-        this.task.image_difficulty = a;
-    }
+        this.task.image_difficulty = val;
+    };
 
     Grid.prototype.next_slide = function () {
         var _this = this;
-//        console.log(_this);
         $.each(this.grid, function (key, value) {
             var obj = {
                 column: value.x,
                 row: value.y,
                 answer: value.has_cancer
-            }
+            };
 
-            _this.task.answer.push(obj);
         });
+    };
 
-//     console.log(this.task);
 
-    }
+    $(document).on("mousedown",function(e){
+        console.log(e.which);
+    });
 
 
     function loadUserProgress() {
@@ -503,8 +538,8 @@
                         var obj = {
                             column: value.x,
                             row: value.y,
-                            answer: value["has_cancer"]
-                        }
+                            answer: value.has_cancer
+                        };
                         r.task.answer.push(obj);
                     });
 
@@ -513,6 +548,7 @@
                         $("svg").remove();
                         $(".zoomContainer").remove();
                         $(".zoomWindowContainer").remove();
+
                         deferred.resolve();
                     });
 

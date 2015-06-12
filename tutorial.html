@@ -11,10 +11,16 @@
                 <p>
                     These are uneven, often larger cells with a mottled or blotchy surface like the ones highlighted below.
                 </p>
-                <img src="http://placehold.it/700x150" alt=""/>
+                <img src="//citscitools.cancerresearchuk.org/static/img/tutorial/cancer-areas.jpg" alt=""/>
             </div>
 
             <div id="1" class="modal-body" style="display:none">
+                <h1>Here's another example of cancer cells</h1>
+                <img src="//citscitools.cancerresearchuk.org/static/img/tutorial/caner-arrows2-min.jpg" alt=""/>
+
+            </div>
+
+            <div id="2" class="modal-body" style="display:none">
                 <h1>
                     You will see other cell types which you should ignore.
                 </h1>
@@ -22,45 +28,54 @@
                     These include the smaller, denser cells and the stretched wispy cells, some of these are highlighted below. We’re not looking for these cells.
                 </p>
 
-                <img src="http://placehold.it/175x175" alt=""/>
-                <img src="http://placehold.it/175x175" alt=""/>
+
+                <img src="//citscitools.cancerresearchuk.org/static/img/tutorial/non-cancer-arrows3-min.jpg" alt=""/>
+                <img src="//citscitools.cancerresearchuk.org/static/img/tutorial/non-cancer-areas.jpg" alt=""/>
             </div>
 
-            <div id="2" class="modal-body" style="display:none">
+
+
+
+            <div id="3" class="modal-body" style="display:none">
                 <h1>Now it’s your turn.</h1>
 
                 <p>
                     Take a look at the image below. We’d like you to identify which areas of the grid contain cancer cells.
-                    Analyse each grid segment and decide if it contains cancer. Once you’ve decided you can mark the section as follows:
+                    Analyse each grid segment and decide if it contains cancer.
+                </p>
+                <img src="//citscitools.cancerresearchuk.org/static/img/tutorial/grid.png" alt=""/>
+
+            </div>
+
+            <div id="4" class="modal-body" style="display:none">
+                <h1>Click once for cancer cells</h1>
+                <p>
+                    Once you’ve decided you can mark the section as follows:
                     Yes, there are cancer cells – click once to turn the segment green
+                </p>
+                <img src="//citscitools.cancerresearchuk.org/static/img/tutorial/grid-yes.png" alt=""/>
+            </div>
+            <div id="5" class="modal-body" style="display:none">
+                <h1>Click twice for non-cancer cells</h1>
+                <p>
                     No, there are no cancer cells – click twice to turn the segment red
-                    There are no cells in this segment – click three times to turn the segment X
+                </p>
+                <img src="//citscitools.cancerresearchuk.org/static/img/tutorial/grid-no.png" alt=""/>
+            </div>
+            <div id="6" class="modal-body" style="display:none">
+                <h1>Click again for blank segments</h1>
+                <br>
+                    There are no cells in this segment – click again to turn the segment blank. </br>
                     Don’t worry if a particular segment is very difficult or you aren’t sure. Sometimes the specialists can find this analysis tricky – so just give it your best shot!
                 </p>
-                <img src="http://farm7.staticflickr.com/6109/6286728068_2f3c6912b8_q.jpg" class="img-polaroid"/>
+                <img src="//citscitools.cancerresearchuk.org/static/img/tutorial/grid-idk.png" alt=""/>
             </div>
-            <div id="3" class="modal-body" style="display:none">
-                <p>The application is really simple. It loads a photo from
-                    <a href="http://flickr.com">Flickr</a> and asks you this question:
-                    <strong>Do you see a human in this photo?</strong></p>
-                <img src="http://farm7.staticflickr.com/6109/6286728068_2f3c6912b8_q.jpg" class="img-polaroid"/>
 
-                <p>You will have 3 possible answers:
-                <ul>
-                    <li>Yes,</li>
-                    <li>No, and</li>
-                    <li>I don't know</li>
-                </ul>
-                </p>
-                <p>
-                </p>
-                <p>All you have to do is to click in one of the three possible answers and you will be done. This demo application could be adapted for more complex pattern recognition problems.</p>
-            </div>
 
             <div class="modal-footer">
                 <a id="prevBtn" href="#" onclick="showStep('prev')" class="btn">Previous</a>
                 <a id="nextBtn" href="#" onclick="showStep('next')" class="btn btn-success">Next</a>
-                <a id="startContrib" href="../mvp-01/newtask" class="btn btn-primary" style="display:none"><i class="icon-thumbs-up"></i> Try the demo!</a>
+                <a id="startContrib" href="../mvp-01/newtask" class="btn btn-primary" style="display:none"><i class="icon-thumbs-up"></i> Start</a>
             </div>
         </div>
     </div>
@@ -84,7 +99,7 @@
             $("#prevBtn").show();
         }
 
-        if (step == 3) {
+        if (step == 6) {
             $("#nextBtn").hide();
             $("#startContrib").show();
         } else {
