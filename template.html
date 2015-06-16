@@ -245,19 +245,19 @@
         this.create_grid(6, 6);
         this.activate_cell();
         this.task;
-
+        var _this = this;
 
         $("#grid_size").on("change", $.proxy(this.change_grid, this));
         $("#difficulty").on("change", $.proxy(this.image_difficulty, this));
         $("#reset").on("click", $.proxy(this.change_grid, this));
         $("#next-slide").on("click", $.proxy(this.next_slide, this));
         $("#select-all").on("click", function() {
-            $.each($(".grid-item"), function(key, value) {
-                value.setAttribute("class", "grid-item grid-item-success");
+            $.each($( _this.grid ), function(key, value) {
+                value.has_cancer = true;
+                value.node.setAttribute("class", "grid-item grid-item-success");
             });
+
         });
-
-
     };
 
 
@@ -525,8 +525,7 @@
                         $("svg").remove();
                         $(".zoomContainer").remove();
                         $(".zoomWindowContainer").remove();
-
-                        //deferred.resolve();
+                        deferred.resolve();
                     });
 
                     $("#loading").fadeIn(500);
