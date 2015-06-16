@@ -8,7 +8,6 @@
     }
 
     .grid-info span {
-        color: blue;
         font-size: 18px;
     }
 
@@ -75,10 +74,7 @@
         z-index: 100;
     }
 
-    .zoomLens {
-        height: 57px !important;
-        width: 57px !important;
-    }
+
 
     main {
     / / margin-bottom : 20 px;
@@ -104,7 +100,7 @@
 
     .example-list__item .description {
         position: absolute;
-        bottom: 45%;
+        bottom: 0;
         display: block;
         text-align: center;
         width: 100%;
@@ -114,11 +110,12 @@
         letter-spacing: 1px;
         background-color: rgba(0, 0, 0, 0.6);
 
-        opacity: 0;
-        -webkit-transition: all 0.6s ease;
-        -moz-transition: all 0.6s ease;
-      -o-transition:      all 0.6s ease;
     }
+
+    #next-slide {
+        float: right;
+    }
+
 
 </style>
 
@@ -154,35 +151,32 @@
     <div class="row clearfix">
         <div class="span6">
             <div id="grid-info" class="grid-info">
-                <h1 id="question">Which grid sections contain cancer cells?</h1>
-                <h2><span>Instructions: </span></h2>
-
+                <h1 id="question">Select which grid sections contain cancer cells?</h1>
                 <p>
-                    Click once
-                    Click twice
-
+                    If you see cancer cells: <br/>
+                    Click once for  <span class="text-success">yes</span> <br/>
+                    Click twice for <span class="text-error">no</span>
                 </p>
 
                 <div class="progress progress-striped">
                     <div id="progress" rel="tooltip" title="#" class="bar" style="width: 0%;"></div>
-
                 </div>
-                <div class="info">
-                    <div>Total tasks: <span id="total"></span></div>
-                    <div>Completed tasks: <span id="done"></span></div>
-                </div>
+                <!--<div class="info">-->
+                    <!--<div>Total tasks: <span id="total"></span></div>-->
+                    <!--<div>Completed tasks: <span id="done"></span></div>-->
+                <!--</div>-->
 
                 <!--<div>You clicked on Row: <span id="result-row"></span></div>-->
                 <!--<div>You clicked on Column: <span id="result-column"></span></div>-->
                 <!--<div>You clicked on item #: <span id="result-item"></span></div>-->
                 <!--<br/>-->
-                <select id="difficulty">
-                    <option value="1">1 - Super easy</option>
-                    <option value="2">2 - Easy</option>
-                    <option value="3">3 - Average</option>
-                    <option value="4">4 - Difficult</option>
-                    <option value="5">5 - Very difficult</option>
-                </select>
+                <!--<select id="difficulty">-->
+                    <!--<option value="1">1 - Super easy</option>-->
+                    <!--<option value="2">2 - Easy</option>-->
+                    <!--<option value="3">3 - Average</option>-->
+                    <!--<option value="4">4 - Difficult</option>-->
+                    <!--<option value="5">5 - Very difficult</option>-->
+                <!--</select>-->
 
                 <!--<select id="grid_size">-->
                     <!--<option value="2">2x2</option>-->
@@ -192,8 +186,9 @@
                     <!--<option value="6">6x6</option>-->
                 <!--</select>-->
 
-                <button class="btn" id="refresh">reset</button>
-                <button class="btn btn-answer" id="next-slide" value="next">Next slide</button>
+                <button class="btn" id="reset">Reset</button>
+                <button class="btn" id="select-all" value="all">Select All</button>
+                <button class="btn btn-answer btn-success" id="next-slide" value="next">Next slide</button>
             </div>
         </div>
         <div class="span6 wrapper grid-wrapper" id="grid-wrapper">
@@ -213,13 +208,14 @@
       <figcaption class="description">Cancer Cells</figcaption>
     </figure>
     <figure class="example-list__item">
-      <img src="//citscitools.cancerresearchuk.org/static/img/legend/non-cancer-legend.jpg" alt=""/>
-      <figcaption class="description">Non-cancer cells</figcaption>
-    </figure>
-    <figure class="example-list__item">
       <img src="//citscitools.cancerresearchuk.org/static/img/legend/cancer-cells-legend2.jpg" alt=""/>
       <figcaption class="description">Cancer Cells</figcaption>
     </figure>
+    <figure class="example-list__item">
+      <img src="//citscitools.cancerresearchuk.org/static/img/legend/non-cancer-legend.jpg" alt=""/>
+      <figcaption class="description">Non-cancer cells</figcaption>
+    </figure>
+
     <figure class="example-list__item">
       <img src="//citscitools.cancerresearchuk.org/static/img/legend/non-cancer-legend2.jpg" alt=""/>
       <figcaption class="description">Non-cancer cells</figcaption>
@@ -230,6 +226,14 @@
     </figure>
   </div>
 
+
+<script type="text/javascript" async="async">
+
+
+
+
+
+</script>
 <script type="text/javascript" async="async">
 
     "use strict";
@@ -263,8 +267,13 @@
 
         $("#grid_size").on("change", $.proxy(this.change_grid, this));
         $("#difficulty").on("change", $.proxy(this.image_difficulty, this));
-        $("#refresh").on("click", $.proxy(this.change_grid, this));
+        $("#reset").on("click", $.proxy(this.change_grid, this));
         $("#next-slide").on("click", $.proxy(this.next_slide, this));
+        $("#select-all").on("click", function(){
+            $.each( $(".grid__item"), function (key, value) {
+                value.setAttribute("class", "grid__item grid__item--success");
+            });
+        });
 
 
     };
@@ -276,20 +285,21 @@
      *
      */
     Grid.prototype.init_zoom = function () {
-        $(".img-polaroid").elevateZoom({
-            //scrollZoom : true,
-            constrainType: "height",
-            constrainSize: 274,
-            cursor: "pointer",
+      $(".img-polaroid").elevateZoom({
+            scrollZoom: true,
+            minZoomLevel: .4,
+            maxZoomLevel: .4,
+            responsive: true,
+            cursor: 'pointer',
             zoomWindowPosition: "grid-info",
-            zoomWindowWidth: 460,
-            zoomWindowHeight: 450,
-            zoomWindowFadeIn: 500,
-            zoomWindowFadeOut: 500,
             lensFadeIn: 500,
-            lensFadeOut: 500
+            lensFadeOut: 500,
+            zoomWindowWidth: 455,
+            zoomWindowHeight: 455,
         });
+
     };
+
 
 
     /**
@@ -354,7 +364,7 @@
 //        });
 
 
-        $("body").on("click", ".zoomLens", function (evt) {
+        $("body").on("click touchstart", ".zoomLens", function (evt) {
 
             evt.preventDefault();
             clicks++;  //count clicks
@@ -476,7 +486,7 @@
 
 
     $(document).on("mousedown",function(e){
-        console.log(e.which);
+        //console.log(e.which);
     });
 
 
@@ -490,6 +500,12 @@
             $("#done").text(data.done);
         });
     }
+
+
+
+    $(".touch .zoomLens").on("touchend", function(){
+        $(".zoomWindow").css("display","block !important");
+    });
 
 
     pybossa.taskLoaded(function (task, deferred) {
@@ -534,7 +550,6 @@
                 var answer = btn.attr("value");
                 if (typeof answer != 'undefined') {
 
-
                     $.each(r.grid, function (key, value) {
                         var obj = {
                             column: value.x,
@@ -544,13 +559,13 @@
                         r.task.answer.push(obj);
                     });
 
-                    pybossa.saveTask(task.id, task.answer).done(function () {
+                    pybossa.saveTask(task.id, task.answer).done(function (data) {
 
                         $("svg").remove();
                         $(".zoomContainer").remove();
                         $(".zoomWindowContainer").remove();
 
-                        deferred.resolve();
+                        //deferred.resolve();
                     });
 
                     $("#loading").fadeIn(500);
@@ -572,4 +587,12 @@
 
     pybossa.run('mvp-01');
 
+
+
+
+    var zoomLens = $(".zoomLens").width();
+    console.log(zoomLens);
+
 </script>
+
+
