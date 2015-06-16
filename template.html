@@ -47,11 +47,11 @@
         height: auto;
     }
 
-    rect.grid__item.grid__item--success {
+    rect.grid-item.grid-item-success {
         fill: rgba(0, 163, 136, .5);
     }
 
-    rect.grid__item.grid__item--error {
+    rect.grid-item.grid-item-error {
         fill: rgba(231, 76, 60, .8);
     }
 
@@ -84,7 +84,7 @@
         margin-bottom: 40px;
     }
 
-    .example-list__item {
+    .example-list-item {
         position: relative;
         width: 20%;
         float: left;
@@ -93,12 +93,12 @@
         box-sizing: border-box;
     }
 
-    .example-list__item:hover .description {
+    .example-list-item:hover .description {
         opacity: 1;
         left: 0;
     }
 
-    .example-list__item .description {
+    .example-list-item .description {
         position: absolute;
         bottom: 0;
         display: block;
@@ -151,7 +151,7 @@
     <div class="row clearfix">
         <div class="span6">
             <div id="grid-info" class="grid-info">
-                <h1 id="question">Select which grid sections contain cancer cells?</h1>
+                <h1 id="question">Select which grid sections contain cancer cells</h1>
                 <p>
                     If you see cancer cells: <br/>
                     Click once for  <span class="text-success">yes</span> <br/>
@@ -192,6 +192,7 @@
             </div>
         </div>
         <div class="span6 wrapper grid-wrapper" id="grid-wrapper">
+            
             <a id="photo-link"></a>
 
             <div id="canvas"></div>
@@ -203,24 +204,24 @@
 
 <div class="row example-list clearfix">
     <h2>Cell Examples</h2>
-    <figure class="example-list__item">
+    <figure class="example-list-item">
       <img src="//citscitools.cancerresearchuk.org/static/img/legend/cancer-cells-legend.jpg" alt=""/>
       <figcaption class="description">Cancer Cells</figcaption>
     </figure>
-    <figure class="example-list__item">
+    <figure class="example-list-item">
       <img src="//citscitools.cancerresearchuk.org/static/img/legend/cancer-cells-legend2.jpg" alt=""/>
       <figcaption class="description">Cancer Cells</figcaption>
     </figure>
-    <figure class="example-list__item">
+    <figure class="example-list-item">
       <img src="//citscitools.cancerresearchuk.org/static/img/legend/non-cancer-legend.jpg" alt=""/>
       <figcaption class="description">Non-cancer cells</figcaption>
     </figure>
 
-    <figure class="example-list__item">
+    <figure class="example-list-item">
       <img src="//citscitools.cancerresearchuk.org/static/img/legend/non-cancer-legend2.jpg" alt=""/>
       <figcaption class="description">Non-cancer cells</figcaption>
     </figure>
-    <figure class="example-list__item">
+    <figure class="example-list-item">
         <img src="//citscitools.cancerresearchuk.org/static/img/legend/non-cancer-legend3.jpg" alt=""/>
       <figcaption class="description">Non-cancer cells</figcaption>
     </figure>
@@ -271,7 +272,7 @@
         $("#next-slide").on("click", $.proxy(this.next_slide, this));
         $("#select-all").on("click", function(){
             $.each( $(".grid__item"), function (key, value) {
-                value.setAttribute("class", "grid__item grid__item--success");
+                value.setAttribute("class", "grid-item grid-item-success");
             });
         });
 
@@ -325,7 +326,7 @@
                     .attr({
                         "stroke": "#fff"
                     });
-                grid_item.node.setAttribute("class", "grid__item");
+                grid_item.node.setAttribute("class", "grid-item");
 
 
                 grid_item.x = x;
@@ -379,18 +380,18 @@
             if (clicks === 1) {
                 timer = setTimeout(function () {
 
-                    if (grid__item_active_className != "grid__item grid__item--success") {
-                        grid__item_node.setAttribute("class", "grid__item grid__item--success");
+                    if (grid__item_active_className != "grid-item grid-item-success") {
+                        grid__item_node.setAttribute("class", "grid-item grid-item-success");
                         grid__item_active.has_cancer = true;
                     } else {
-                        grid__item_node.setAttribute("class", "grid__item");
+                        grid__item_node.setAttribute("class", "grid-item");
                         grid__item_active.has_cancer = null;
                     }          //after action performed, reset counter
                     clicks = 0;
                 }, delay);
             } else {
                 clearTimeout(timer);    //prevent single-click action
-                grid__item_node.setAttribute("class", "grid__item grid__item--error");
+                grid__item_node.setAttribute("class", "grid-item grid-item-error");
                 grid__item_active.has_cancer = false;
 
                 clicks = 0;
@@ -485,9 +486,6 @@
     };
 
 
-    $(document).on("mousedown",function(e){
-        //console.log(e.which);
-    });
 
 
     function loadUserProgress() {
@@ -589,9 +587,6 @@
 
 
 
-
-    var zoomLens = $(".zoomLens").width();
-    console.log(zoomLens);
 
 </script>
 
