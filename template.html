@@ -1,44 +1,36 @@
 <style type="text/css">
-
-
     .grid-info {
         background-color: #efefef;
         padding: 20px;
         box-sizing: border-box;
     }
-
+    
     .grid-info span {
         font-size: 18px;
     }
-
-
+    
     .clearfix:before,
     .clearfix:after {
         content: " ";
         display: table;
     }
-
+    
     .clearfix:after {
         clear: both;
     }
-
-
-
+    
     .grid-wrapper {
         position: relative;
         height: 460px;
     }
-
-
-
+    
     .grid {
         position: absolute;
         top: 0;
         width: 100%;
         border-spacing: 0;
     }
-
-
+    
     .img-polaroid {
         position: absolute;
         top: 0;
@@ -46,44 +38,42 @@
         width: 100%;
         height: auto;
     }
-
+    
     rect.grid-item.grid-item-success {
         fill: rgba(0, 163, 136, .5);
     }
-
+    
     rect.grid-item.grid-item-error {
         fill: rgba(231, 76, 60, .8);
     }
-
+    
     #zoom_01 {
         width: 400px;
     }
-
+    
     .img-polaroid {
         position: absolute;
         z-index: 1;
     }
-
+    
     #canvas {
         position: absolute;
         top: 0;
         z-index: 10;
     }
-
+    
     .zoomContainer {
         z-index: 100;
     }
-
-
-
+    
     main {
-    / / margin-bottom : 20 px;
+        / / margin-bottom: 20 px;
     }
-
-    .example-list{
+    
+    .example-list {
         margin-bottom: 40px;
     }
-
+    
     .example-list-item {
         position: relative;
         width: 20%;
@@ -92,12 +82,12 @@
         overflow: hidden;
         box-sizing: border-box;
     }
-
+    
     .example-list-item:hover .description {
         opacity: 1;
         left: 0;
     }
-
+    
     .example-list-item .description {
         position: absolute;
         bottom: 0;
@@ -109,14 +99,11 @@
         font-weight: 100;
         letter-spacing: 1px;
         background-color: rgba(0, 0, 0, 0.6);
-
     }
-
+    
     #next-slide {
         float: right;
     }
-
-
 </style>
 
 <header class="site-header clearfix">
@@ -153,17 +140,17 @@
             <div id="grid-info" class="grid-info">
                 <h1 id="question">Select which grid sections contain cancer cells</h1>
                 <p>
-                    If you see cancer cells: <br/>
-                    Click once for  <span class="text-success">yes</span> <br/>
-                    Click twice for <span class="text-error">no</span>
+                    If you see cancer cells:
+                    <br/> Click once for <span class="text-success">yes</span>
+                    <br/> Click twice for <span class="text-error">no</span>
                 </p>
 
                 <div class="progress progress-striped">
                     <div id="progress" rel="tooltip" title="#" class="bar" style="width: 0%;"></div>
                 </div>
                 <!--<div class="info">-->
-                    <!--<div>Total tasks: <span id="total"></span></div>-->
-                    <!--<div>Completed tasks: <span id="done"></span></div>-->
+                <!--<div>Total tasks: <span id="total"></span></div>-->
+                <!--<div>Completed tasks: <span id="done"></span></div>-->
                 <!--</div>-->
 
                 <!--<div>You clicked on Row: <span id="result-row"></span></div>-->
@@ -171,19 +158,19 @@
                 <!--<div>You clicked on item #: <span id="result-item"></span></div>-->
                 <!--<br/>-->
                 <!--<select id="difficulty">-->
-                    <!--<option value="1">1 - Super easy</option>-->
-                    <!--<option value="2">2 - Easy</option>-->
-                    <!--<option value="3">3 - Average</option>-->
-                    <!--<option value="4">4 - Difficult</option>-->
-                    <!--<option value="5">5 - Very difficult</option>-->
+                <!--<option value="1">1 - Super easy</option>-->
+                <!--<option value="2">2 - Easy</option>-->
+                <!--<option value="3">3 - Average</option>-->
+                <!--<option value="4">4 - Difficult</option>-->
+                <!--<option value="5">5 - Very difficult</option>-->
                 <!--</select>-->
 
                 <!--<select id="grid_size">-->
-                    <!--<option value="2">2x2</option>-->
-                    <!--<option value="3">3x3</option>-->
-                    <!--<option value="4">4x4</option>-->
-                    <!--<option value="5">5x5</option>-->
-                    <!--<option value="6">6x6</option>-->
+                <!--<option value="2">2x2</option>-->
+                <!--<option value="3">3x3</option>-->
+                <!--<option value="4">4x4</option>-->
+                <!--<option value="5">5x5</option>-->
+                <!--<option value="6">6x6</option>-->
                 <!--</select>-->
 
                 <button class="btn" id="reset">Reset</button>
@@ -192,7 +179,7 @@
             </div>
         </div>
         <div class="span6 wrapper grid-wrapper" id="grid-wrapper">
-            
+
             <a id="photo-link"></a>
 
             <div id="canvas"></div>
@@ -205,38 +192,32 @@
 <div class="row example-list clearfix">
     <h2>Cell Examples</h2>
     <figure class="example-list-item">
-      <img src="//citscitools.cancerresearchuk.org/static/img/legend/cancer-cells-legend.jpg" alt=""/>
-      <figcaption class="description">Cancer Cells</figcaption>
+        <img src="//citscitools.cancerresearchuk.org/static/img/legend/cancer-cells-legend.jpg" alt="" />
+        <figcaption class="description">Cancer Cells</figcaption>
     </figure>
     <figure class="example-list-item">
-      <img src="//citscitools.cancerresearchuk.org/static/img/legend/cancer-cells-legend2.jpg" alt=""/>
-      <figcaption class="description">Cancer Cells</figcaption>
+        <img src="//citscitools.cancerresearchuk.org/static/img/legend/cancer-cells-legend2.jpg" alt="" />
+        <figcaption class="description">Cancer Cells</figcaption>
     </figure>
     <figure class="example-list-item">
-      <img src="//citscitools.cancerresearchuk.org/static/img/legend/non-cancer-legend.jpg" alt=""/>
-      <figcaption class="description">Non-cancer cells</figcaption>
+        <img src="//citscitools.cancerresearchuk.org/static/img/legend/non-cancer-legend.jpg" alt="" />
+        <figcaption class="description">Non-cancer cells</figcaption>
     </figure>
 
     <figure class="example-list-item">
-      <img src="//citscitools.cancerresearchuk.org/static/img/legend/non-cancer-legend2.jpg" alt=""/>
-      <figcaption class="description">Non-cancer cells</figcaption>
+        <img src="//citscitools.cancerresearchuk.org/static/img/legend/non-cancer-legend2.jpg" alt="" />
+        <figcaption class="description">Non-cancer cells</figcaption>
     </figure>
     <figure class="example-list-item">
-        <img src="//citscitools.cancerresearchuk.org/static/img/legend/non-cancer-legend3.jpg" alt=""/>
-      <figcaption class="description">Non-cancer cells</figcaption>
+        <img src="//citscitools.cancerresearchuk.org/static/img/legend/non-cancer-legend3.jpg" alt="" />
+        <figcaption class="description">Non-cancer cells</figcaption>
     </figure>
-  </div>
+</div>
 
 
 <script type="text/javascript" async="async">
-
-
-
-
-
 </script>
 <script type="text/javascript" async="async">
-
     "use strict";
 
     /**
@@ -258,7 +239,7 @@
      * Main initializing method
      *
      */
-    Grid.prototype.init = function () {
+    Grid.prototype.init = function() {
 
         this.init_zoom();
         this.create_grid(6, 6);
@@ -270,8 +251,8 @@
         $("#difficulty").on("change", $.proxy(this.image_difficulty, this));
         $("#reset").on("click", $.proxy(this.change_grid, this));
         $("#next-slide").on("click", $.proxy(this.next_slide, this));
-        $("#select-all").on("click", function(){
-            $.each( $(".grid__item"), function (key, value) {
+        $("#select-all").on("click", function() {
+            $.each($(".grid-item"), function(key, value) {
                 value.setAttribute("class", "grid-item grid-item-success");
             });
         });
@@ -285,8 +266,8 @@
      * For initializing the Zoom functionality
      *
      */
-    Grid.prototype.init_zoom = function () {
-      $(".img-polaroid").elevateZoom({
+    Grid.prototype.init_zoom = function() {
+        $(".img-polaroid").elevateZoom({
             scrollZoom: true,
             minZoomLevel: .4,
             maxZoomLevel: .4,
@@ -308,7 +289,7 @@
      * For creating a grid overlayed over image
      *
      */
-    Grid.prototype.create_grid = function (rows, columns) {
+    Grid.prototype.create_grid = function(rows, columns) {
         this.canvas = Raphael("canvas", $(".img-polaroid").width(), $(".img-polaroid").height());
         var gridHeight = $(".img-polaroid").height() / columns;
         var gridWidth = $(".img-polaroid").width() / rows;
@@ -340,35 +321,16 @@
     };
 
 
-    Grid.prototype.activate_cell = function () {
+    Grid.prototype.activate_cell = function() {
         var delay = 400;
         var clicks = 0;
         var timer = null;
         var _this = this;
 
-//        $("body").on("mousedown", ".zoomLens", function (evt) {
-//            switch (evt.which) {
-//                case 1:
-//                    evt.stopPropagation();
-//                    console.log("case1");
-//                    break;
-//                case 2:
-//                    alert('2');
-//                    break;
-//                case 3:
-//                    evt.preventDefault();
-//                    console.log("double click");
-//                    break;
-//                default:
-//                    console.log("default");
-//            }
-//        });
-
-
-        $("body").on("click touchstart", ".zoomLens", function (evt) {
+        $("body").on("click touchstart", ".zoomLens", function(evt) {
 
             evt.preventDefault();
-            clicks++;  //count clicks
+            clicks++; //count clicks
 
             this.grid__item_active = _this.find_closest();
 
@@ -378,7 +340,7 @@
 
 
             if (clicks === 1) {
-                timer = setTimeout(function () {
+                timer = setTimeout(function() {
 
                     if (grid__item_active_className != "grid-item grid-item-success") {
                         grid__item_node.setAttribute("class", "grid-item grid-item-success");
@@ -386,11 +348,11 @@
                     } else {
                         grid__item_node.setAttribute("class", "grid-item");
                         grid__item_active.has_cancer = null;
-                    }          //after action performed, reset counter
+                    } //after action performed, reset counter
                     clicks = 0;
                 }, delay);
             } else {
-                clearTimeout(timer);    //prevent single-click action
+                clearTimeout(timer); //prevent single-click action
                 grid__item_node.setAttribute("class", "grid-item grid-item-error");
                 grid__item_active.has_cancer = false;
 
@@ -407,7 +369,7 @@
      * that have the clicked coordinates
      *
      */
-    Grid.prototype.find_closest = function () {
+    Grid.prototype.find_closest = function() {
 
         var _this = this;
         var active_node;
@@ -424,7 +386,7 @@
         target_pos.y = target_pos.y + 30;
 
         // Find the closet grid item
-        $.each(this.grid, function (key, value) {
+        $.each(this.grid, function(key, value) {
 
             if (value.isPointInside(target_pos.x, target_pos.y)) {
                 active_node = value;
@@ -441,16 +403,16 @@
      * Add click listener to each grid cell
      *
      */
-    Grid.prototype.show_results = function (active_node) {
+    Grid.prototype.show_results = function(active_node) {
         $("#result-row").text(active_node.y);
         $("#result-column").text(active_node.x);
         $("#result-item").text(active_node.id + 1);
     };
 
 
-    Grid.prototype.change_grid = function () {
+    Grid.prototype.change_grid = function() {
         var str = "";
-        $("#grid_size option:selected").each(function () {
+        $("#grid_size option:selected").each(function() {
             str = $(this).val();
         });
 
@@ -459,23 +421,23 @@
         $("svg").remove();
         this.create_grid(6, 6);
 
-        $.each(this.grid, function (key, value) {
+        $.each(this.grid, function(key, value) {
             value.id = key;
         });
 
     };
 
-    Grid.prototype.image_difficulty = function () {
+    Grid.prototype.image_difficulty = function() {
         var val = "";
-        $("#difficulty option:selected").each(function () {
+        $("#difficulty option:selected").each(function() {
             val = $(this).val();
         });
         this.task.image_difficulty = val;
     };
 
-    Grid.prototype.next_slide = function () {
+    Grid.prototype.next_slide = function() {
         var _this = this;
-        $.each(this.grid, function (key, value) {
+        $.each(this.grid, function(key, value) {
             var obj = {
                 column: value.x,
                 row: value.y,
@@ -489,11 +451,13 @@
 
 
     function loadUserProgress() {
-        pybossa.userProgress('mvp-01').done(function (data) {
+        pybossa.userProgress('mvp-01').done(function(data) {
             var pct = Math.round((data.done * 100) / data.total);
             $("#progress").css("width", pct.toString() + "%");
             $("#progress").attr("title", pct.toString() + "% completed!");
-            $("#progress").tooltip({'placement': 'bottom'});
+            $("#progress").tooltip({
+                'placement': 'bottom'
+            });
             $("#total").text(data.total);
             $("#done").text(data.done);
         });
@@ -501,17 +465,17 @@
 
 
 
-    $(".touch .zoomLens").on("touchend", function(){
-        $(".zoomWindow").css("display","block !important");
+    $(".touch .zoomLens").on("touchend", function() {
+        $(".zoomWindow").css("display", "block !important");
     });
 
 
-    pybossa.taskLoaded(function (task, deferred) {
+    pybossa.taskLoaded(function(task, deferred) {
 
         if (!$.isEmptyObject(task)) {
             // load image from flickr
             var img = $('<img />');
-            img.load(function () {
+            img.load(function() {
                 // continue as soon as the image is loaded
                 deferred.resolve(task);
             });
@@ -523,13 +487,12 @@
             task.answer = [];
             task.image_difficulty = 1;
 
-        }
-        else {
+        } else {
             deferred.resolve(task);
         }
     });
 
-    pybossa.presentTask(function (task, deferred) {
+    pybossa.presentTask(function(task, deferred) {
 
         if (!$.isEmptyObject(task)) {
 
@@ -543,12 +506,12 @@
             var r = new Grid(task);
             r.init();
 
-            $('.btn-answer').off('click').on('click', function (evt) {
+            $('.btn-answer').off('click').on('click', function(evt) {
                 var btn = $(this);
                 var answer = btn.attr("value");
                 if (typeof answer != 'undefined') {
 
-                    $.each(r.grid, function (key, value) {
+                    $.each(r.grid, function(key, value) {
                         var obj = {
                             column: value.x,
                             row: value.y,
@@ -557,7 +520,7 @@
                         r.task.answer.push(obj);
                     });
 
-                    pybossa.saveTask(task.id, task.answer).done(function (data) {
+                    pybossa.saveTask(task.id, task.answer).done(function(data) {
 
                         $("svg").remove();
                         $(".zoomContainer").remove();
@@ -568,15 +531,13 @@
 
                     $("#loading").fadeIn(500);
 
-                }
-                else {
+                } else {
                     $("#error").show();
                 }
             });
 
             $("#loading").hide();
-        }
-        else {
+        } else {
             $(".skeleton").hide();
             $("#loading").hide();
             $("#finish").fadeIn(500);
@@ -584,10 +545,4 @@
     });
 
     pybossa.run('mvp-01');
-
-
-
-
 </script>
-
-
