@@ -192,24 +192,24 @@
 <div class="row example-list clearfix">
     <h2>Cell Examples</h2>
     <figure class="example-list-item">
-        <img src="//citscitools.cancerresearchuk.org/static/img/legend/cancer-cells-legend.jpg" alt="" />
+        <img src="//citscitools.cancerresearchuk.org/static/img/legend/cancer-cells.jpg" alt="" />
         <figcaption class="description">Cancer Cells</figcaption>
     </figure>
     <figure class="example-list-item">
-        <img src="//citscitools.cancerresearchuk.org/static/img/legend/cancer-cells-legend2.jpg" alt="" />
+        <img src="//citscitools.cancerresearchuk.org/static/img/legend/cancer-cells2.jpg" alt="" />
         <figcaption class="description">Cancer Cells</figcaption>
     </figure>
     <figure class="example-list-item">
-        <img src="//citscitools.cancerresearchuk.org/static/img/legend/non-cancer-legend.jpg" alt="" />
+        <img src="//citscitools.cancerresearchuk.org/static/img/legend/healthy-cells.jpg" alt="" />
         <figcaption class="description">Non-cancer cells</figcaption>
     </figure>
 
     <figure class="example-list-item">
-        <img src="//citscitools.cancerresearchuk.org/static/img/legend/non-cancer-legend2.jpg" alt="" />
+        <img src="//citscitools.cancerresearchuk.org/static/img/legend/blood-cells.jpg" alt="" />
         <figcaption class="description">Non-cancer cells</figcaption>
     </figure>
     <figure class="example-list-item">
-        <img src="//citscitools.cancerresearchuk.org/static/img/legend/non-cancer-legend3.jpg" alt="" />
+        <img src="//citscitools.cancerresearchuk.org/static/img/legend/stroma-and-blood-cells.jpg" alt="" />
         <figcaption class="description">Non-cancer cells</figcaption>
     </figure>
 </div>
@@ -497,6 +497,7 @@
         if (!$.isEmptyObject(task)) {
 
             loadUserProgress();
+            console.log(task.info);
 
             $('#photo-link').html('').append(task.info.image);
             $("#question").html(task.info.question);
