@@ -269,8 +269,8 @@
     Grid.prototype.init_zoom = function() {
         $(".img-polaroid").elevateZoom({
             scrollZoom: true,
-            minZoomLevel: .4,
-            maxZoomLevel: .4,
+            minZoomLevel: .6,
+            maxZoomLevel: .6,
             responsive: true,
             cursor: 'pointer',
             zoomWindowPosition: "grid-info",
@@ -497,7 +497,6 @@
         if (!$.isEmptyObject(task)) {
 
             loadUserProgress();
-            console.log(task.info);
 
             $('#photo-link').html('').append(task.info.image);
             $("#question").html(task.info.question);
