@@ -1,66 +1,151 @@
+<style>
+    @media screen and (min-width: 768px) {
+
+        #modal {
+            width: 800px;
+            margin-left: -400px;
+            top: 45%;
+        }
+        .modal-body {
+            max-height: 600px;
+            display: table;
+            padding: 0;
+        }
+        .modal-image,
+        .modal-info {
+            float: left;
+            box-sizing: border-box;
+        }
+        .modal-image {
+            width: 60%;
+
+        }
+        .modal-info {
+            width: 40%;
+            padding: 20px;
+        }
+        .carousel {
+         margin-bottom: 0;
+        }
+.carousel-control {
+    top: 50%;
+}
+    }
+</style>
 <div class="row">
     <div class="span12">
         <div id="modal" class="modal hide fade">
-            <div class="modal-header">
-                <h3>Beta - TrailBlazer Project Tutorial</h3>
-            </div>
+            <!--<div class="modal-header">-->
+                <!--<h3>Beta - TrailBlazer Project Tutorial</h3>-->
+            <!--</div>-->
             <div id="0" class="modal-body" style="display:none">
-                <h1>
-                    Your task is to identify cancer cells.
-                </h1>
-                <p>
-                    These are uneven, often larger cells with a mottled or blotchy surface like the ones highlighted below.
-                </p>
-                <img src="//citscitools.cancerresearchuk.org/static/img/tutorial/cancer-cells-area.jpg" alt=""/>
+
+                <div class="modal-image">
+                    <img src="//citscitools.cancerresearchuk.org/static/img/tutorial/cancer-cells-area.jpg" alt=""/>
+                </div>
+                <div class="modal-info">
+                    <h1>
+                        Your task is to identify cancer cells.
+                    </h1>
+
+                    <p>
+                        These are uneven, often larger cells with a mottled or blotchy surface like the ones highlighted below.
+                    </p>
+                </div>
+
             </div>
 
             <div id="1" class="modal-body" style="display:none">
-                <h1>Here's another example of cancer cells</h1>
-                <img src="//citscitools.cancerresearchuk.org/static/img/tutorial/cancer-chain-rings.jpg" alt=""/>
+
+                <div class="modal-image">
+                     <img src="//citscitools.cancerresearchuk.org/static/img/tutorial/cancer-chain-rings.jpg" alt=""/>
+                </div>
+                <div class="modal-info">
+                    <h1>Here's another example of cancer cells</h1>
+                    <p>
+                        These are often found clustered together.
+                    </p>
+                </div>
+
 
             </div>
 
             <div id="2" class="modal-body" style="display:none">
-                <h1>
-                    You will see other cell types which you should ignore.
-                </h1>
-                <p>
-                    These include the smaller, denser cells and the stretched wispy cells, some of these are highlighted below. We’re not looking for these cells.
-                </p>
 
+                <div class="modal-image">
+                    <div id="myCarousel" class="carousel slide">
+                        <!-- Carousel items -->
+                        <div class="carousel-inner">
+                            <div class="active item">
+                                <img src="//citscitools.cancerresearchuk.org/static/img/tutorial/non-cancer-cells-area-min.jpg" alt=""/>
+                            </div>
+                            <div class="item">
+                                <img src="//citscitools.cancerresearchuk.org/static/img/tutorial/non-cancer-cells-arrows-min.jpg" alt=""/>
+                            </div>
+                        </div>
+                        <!-- Carousel nav -->
+                        <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+                        <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+                    </div>
+                </div>
+                <div class="modal-info">
+                    <h1>
+                        You will see other cell types which you should ignore.
+                    </h1>
 
-                <img src="//citscitools.cancerresearchuk.org/static/img/tutorial/non-cancer-cells-area-min.jpg" alt=""/>
-                <img src="//citscitools.cancerresearchuk.org/static/img/tutorial/non-cancer-cells-arrows-min.jpg" alt=""/>
+                    <p>
+                        These include the smaller, denser cells and the stretched wispy cells, some of these are highlighted below. We’re not looking for these cells.
+                    </p>
+                </div>
+
             </div>
 
 
 
 
             <div id="3" class="modal-body" style="display:none">
-                <h1>Now it’s your turn.</h1>
 
-                <p>
-                    Take a look at the image below. We’d like you to identify which areas of the grid contain cancer cells.
-                    Analyse each grid segment and decide if it contains cancer.
+
+                <div class="modal-image">
+                     <img src="//citscitools.cancerresearchuk.org/static/img/tutorial/tutorial-grid.png" alt=""/>
+                </div>
+                <div class="modal-info">
+                    <h1>Here's an example of what you have to do</h1>
+                    <p>
+                    Take a look at the image below. We’d like you to identify which grid squares contain cancer cells.
+                    Analyse each grid square and decide if it contains cancer.
                 </p>
-                <img src="//citscitools.cancerresearchuk.org/static/img/tutorial/tutorial-grid.png" alt=""/>
-
+                </div>
             </div>
 
             <div id="4" class="modal-body" style="display:none">
-                <h1>Click once for cancer cells</h1>
+
+                <div class="modal-image">
+                     <img src="//citscitools.cancerresearchuk.org/static/img/tutorial/tutorial-yes.png" alt=""/>
+                </div>
+                <div class="modal-info">
+                    <h1>Squares <b>containing</b> cancer cells should be highlighted green</h1>
                 <p>
-                    Once you’ve decided you can mark the section as follows:
-                    Yes, there are cancer cells – click once to turn the segment green
+                    Once you’ve decided you can mark the square as follows:
+                    Yes, there are cancer cells – click once to turn the square green
                 </p>
-                <img src="//citscitools.cancerresearchuk.org/static/img/tutorial/tutorial-yes.png" alt=""/>
+                </div>
+
             </div>
             <div id="5" class="modal-body" style="display:none">
-                <h1>Click twice for non-cancer cells</h1>
-                <p>
-                    No, there are no cancer cells – click twice to turn the segment red
+
+                 <div class="modal-image">
+                     <img src="//citscitools.cancerresearchuk.org/static/img/tutorial/tutorial-yes-no.png" alt=""/>
+                </div>
+                <div class="modal-info">
+                    <h1>Squares <b>not containing</b> cancer cells should be highlighted red</h1>
+                 <p>
+                    Once you’ve decided you can mark the square as follows:
+                    No, there are not cancer cells – click once to turn the square green
                 </p>
-                <img src="//citscitools.cancerresearchuk.org/static/img/tutorial/tutorial-yes-no.png" alt=""/>
+                </div>
+
+
             </div>
 
 
@@ -74,6 +159,10 @@
 </div>
 
 <script>
+
+    $('.carousel').carousel();
+
+
     var step = -1;
     function showStep(action) {
         $("#" + step).hide();
