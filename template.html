@@ -40,11 +40,12 @@
     }
     
     rect.grid-item.grid-item-success {
-        fill: rgba(0, 163, 136, .5);
+        fill: rgba(231, 76, 60, .8);
     }
     
     rect.grid-item.grid-item-error {
-        fill: rgba(231, 76, 60, .8);
+
+        fill: rgba(0, 163, 136, .5);
     }
     
     #zoom_01 {
@@ -64,6 +65,10 @@
     
     .zoomContainer {
         z-index: 100;
+    }
+    .zoomLens {
+        height: 70px;
+        width: 70px;
     }
     
     main {
@@ -214,9 +219,6 @@
     </figure>
 </div>
 
-
-<script type="text/javascript" async="async">
-</script>
 <script type="text/javascript" async="async">
     "use strict";
 
@@ -382,8 +384,8 @@
         };
 
         // Center the zoom cursor to middle of square
-        target_pos.x = target_pos.x + 30;
-        target_pos.y = target_pos.y + 30;
+        target_pos.x = target_pos.x + 34.85;
+        target_pos.y = target_pos.y + 34.85;
 
         // Find the closet grid item
         $.each(this.grid, function(key, value) {
