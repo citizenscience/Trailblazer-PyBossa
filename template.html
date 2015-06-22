@@ -543,10 +543,10 @@
 
                     var a = r.task.image_difficulty;
                     //r.task.image_difficulty.push(a);
+                    task.cheese = "dsfsd";
 
                     pybossa.saveTask(task.id, task.answer).done(function(data) {
 
-                        task.cheese = "dsfsd";
                         console.log(task);
 
                         $("svg").remove();
@@ -575,3 +575,7 @@
         pybossa.run('mvp-01');
     })
 </script>
+
+
+
+
