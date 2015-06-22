@@ -260,7 +260,6 @@
         this.grid__item_active;
         this.task = task;
         this.task.image_difficulty = 1;
-        this.cheese = "asfasdf";
     }
 
 
@@ -505,8 +504,8 @@
             task.info.image = img;
 
             task.answer = [];
-            task.imgDiff = "";
-            task.answer.image_difficulty = 1;
+
+            //task.answer.image_difficulty = 1;
 
         } else {
             deferred.resolve(task);
@@ -542,19 +541,10 @@
                         r.task.answer.push(obj);
                     });
 
-//                    r.task.imgDiff = "Cheese";
-//                    r.task.imgDiff = r.task.image_difficulty;
-                    //r.task.image_difficulty = r.task.image_difficulty;
-                    //r.task.push()
-
-                    //console.log(r.cheese);
-
-
-
+                    var a = r.task.image_difficulty;
+                    r.task.answer.push(a);
 
                     pybossa.saveTask(task.id, task.answer).done(function(data) {
-
-                        console.log(task);
 
                         $("svg").remove();
                         $(".zoomContainer").remove();
