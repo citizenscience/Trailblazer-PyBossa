@@ -504,8 +504,6 @@
             task.info.image = img;
 
             task.answer = [];
-            task.testing = "Testing";
-            task.answer.image_difficulty = 1;
 
         } else {
             deferred.resolve(task);
@@ -541,11 +539,10 @@
                         r.task.answer.push(obj);
                     });
 
-                    var a = r.task.image_difficulty;
+                    var a = {
+                        image_difficulty: r.task.image_difficulty
+                    }
                     r.task.answer.push(a);
-
-                    var b = "testing";
-                    r.task.testingAgain = b;
 
                     pybossa.saveTask(task.id, task.answer).done(function(data) {
 
@@ -553,8 +550,6 @@
                         $(".zoomContainer").remove();
                         $(".zoomWindowContainer").remove();
                         deferred.resolve();
-
-                        console.log(task);
                     });
 
                     $("#loading").fadeIn(500);
