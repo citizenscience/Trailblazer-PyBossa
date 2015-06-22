@@ -279,7 +279,7 @@
         $("#grid_size").on("change", $.proxy(this.change_grid, this));
         $("#difficulty").on("change", $.proxy(this.image_difficulty, this));
         $("#reset").on("click", $.proxy(this.change_grid, this));
-        $("#next-slide").on("click", $.proxy(this.next_slide, this));
+
         $("#select-all").on("click", function() {
             $.each($( _this.grid ), function(key, value) {
                 value.has_cancer = true;
@@ -461,20 +461,10 @@
         $("#difficulty option:selected").each(function() {
             val = $(this).val();
         });
-        this.task.answer.image_difficulty = val;
+        this.task.image_difficulty = val;
+
     };
 
-    Grid.prototype.next_slide = function() {
-        var _this = this;
-        $.each(this.grid, function(key, value) {
-            var obj = {
-                column: value.x,
-                row: value.y,
-                answer: value.has_cancer
-            };
-
-        });
-    };
 
 
 
@@ -514,7 +504,8 @@
             task.info.image = img;
 
             task.answer = [];
-            task.answer.image_difficulty = 1;
+
+            //task.answer.image_difficulty = 1;
 
         } else {
             deferred.resolve(task);
@@ -535,6 +526,7 @@
             var r = new Grid(task);
             r.init();
 
+
             $('.btn-answer').off('click').on('click', function(evt) {
                 var btn = $(this);
                 var answer = btn.attr("value");
@@ -549,8 +541,10 @@
                         r.task.answer.push(obj);
                     });
 
-//                    console.log(task.answer.image_difficulty);
+                    r.task.answer.image_difficulty = task.image_difficulty;
+
                     pybossa.saveTask(task.id, task.answer).done(function(data) {
+
 
                         $("svg").remove();
                         $(".zoomContainer").remove();
