@@ -505,7 +505,7 @@
             task.info.image = img;
 
             task.answer = [];
-            task.cheese = "sdfasdf";
+            task.imgDiff = "";
 
             //task.answer.image_difficulty = 1;
 
@@ -543,6 +543,8 @@
                         r.task.answer.push(obj);
                     });
 
+                    r.task.imgDiff = "Cheese";
+                    r.task.imgDiff = r.task.image_difficulty;
                     //r.task.image_difficulty = r.task.image_difficulty;
                     //r.task.push()
 
@@ -554,10 +556,10 @@
 
                         console.log(task);
 
-//                        $("svg").remove();
-//                        $(".zoomContainer").remove();
-//                        $(".zoomWindowContainer").remove();
-//                        deferred.resolve();
+                        $("svg").remove();
+                        $(".zoomContainer").remove();
+                        $(".zoomWindowContainer").remove();
+                        deferred.resolve();
                     });
 
                     $("#loading").fadeIn(500);
