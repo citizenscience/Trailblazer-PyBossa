@@ -514,7 +514,7 @@
             task.info.image = img;
 
             task.answer = [];
-            task.image_difficulty = 1;
+            task.answer.image_difficulty = 1;
 
         } else {
             deferred.resolve(task);
@@ -549,6 +549,7 @@
                         r.task.answer.push(obj);
                     });
 
+//                    console.log(task.answer.image_difficulty);
                     pybossa.saveTask(task.id, task.answer).done(function(data) {
 
                         $("svg").remove();
