@@ -504,8 +504,8 @@
             task.info.image = img;
 
             task.answer = [];
-
-            //task.answer.image_difficulty = 1;
+            task.testing = "Testing";
+            task.answer.image_difficulty = 1;
 
         } else {
             deferred.resolve(task);
@@ -544,12 +544,17 @@
                     var a = r.task.image_difficulty;
                     r.task.answer.push(a);
 
+                    var b = "testing";
+                    r.task.testingAgain = b;
+
                     pybossa.saveTask(task.id, task.answer).done(function(data) {
 
                         $("svg").remove();
                         $(".zoomContainer").remove();
                         $(".zoomWindowContainer").remove();
                         deferred.resolve();
+
+                        console.log(task);
                     });
 
                     $("#loading").fadeIn(500);
