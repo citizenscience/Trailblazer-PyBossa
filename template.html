@@ -533,6 +533,7 @@
                 if (typeof answer != 'undefined') {
 
                     $.each(r.grid, function(key, value) {
+                        console.log(value);
                         var obj = {
                             column: value.x,
                             row: value.y,
@@ -541,14 +542,15 @@
                         r.task.answer.push(obj);
                     });
 
-                    r.task.answer.image_difficulty = task.image_difficulty;
 
                     pybossa.saveTask(task.id, task.answer).done(function(data) {
 
-                        $("svg").remove();
-                        $(".zoomContainer").remove();
-                        $(".zoomWindowContainer").remove();
-                        deferred.resolve();
+                        task.answer.cheese = "cheader";
+
+//                        $("svg").remove();
+//                        $(".zoomContainer").remove();
+//                        $(".zoomWindowContainer").remove();
+//                        deferred.resolve();
                     });
 
                     $("#loading").fadeIn(500);
