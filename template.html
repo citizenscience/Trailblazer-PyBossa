@@ -542,10 +542,12 @@
                         r.task.answer.push(obj);
                     });
 
+                    var cheese = "cheader";
+                    r.task.answer.push(cheese);
 
                     pybossa.saveTask(task.id, task.answer).done(function(data) {
 
-                        task.answer.cheese = "cheader";
+
 
 //                        $("svg").remove();
 //                        $(".zoomContainer").remove();
