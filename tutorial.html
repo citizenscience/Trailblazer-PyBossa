@@ -132,7 +132,7 @@
             <div id="1" class="modal-body" style="display:none">
 
                 <div class="modal-image">
-                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/cancer-chain-rings.jpg" alt=""/>
+                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/cancer-cells-arrows.jpg" alt=""/>
                 </div>
                 <div class="modal-info">
                     <h1>Here's another example of cancer cells</h1>
@@ -151,10 +151,10 @@
                         <!-- Carousel items -->
                         <div class="carousel-inner">
                             <div class="active item">
-                                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/non-cancer-cells-area-min.jpg" alt=""/>
+                                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/non-cancer-cells-area.jpg" alt=""/>
                             </div>
                             <div class="item">
-                                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/non-cancer-cells-arrows-min.jpg" alt=""/>
+                                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/non-cancer-cells-arrows.jpg" alt=""/>
                             </div>
                         </div>
                         <!-- Carousel nav -->
@@ -177,14 +177,13 @@
             <div id="3" class="modal-body" style="display:none">
 
                 <div class="modal-image">
-                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/tutorial-grid.png" alt=""/>
+                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid.jpg" alt=""/>
                 </div>
                 <div class="modal-info">
-                    <h1>Here's an example of what you have to do</h1>
+                    <h1>Let’s run through an example</h1>
 
                     <p>
-                        Take a look at the image on the left. We’d like you to identify which grid squares contain cancer cells.
-                        Analyse each grid square and decide if it contains cancer.
+                        We have split the images up into a 6x6 grid. Some of the grid sections contain cancer cells and some of them do not. We’re going to show you what to do
                     </p>
                 </div>
             </div>
@@ -192,29 +191,56 @@
             <div id="4" class="modal-body" style="display:none">
 
                 <div class="modal-image">
-                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/tutorial-yes.png" alt=""/>
+                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/zoomed-in.jpg" alt=""/>
                 </div>
                 <div class="modal-info">
-                    <h1>Squares <b>containing</b> cancer cells should be highlighted red</h1>
+                    <h1>Look closely at the cells in each section</h1>
 
                     <p>
-                        Once you’ve decided you can mark the square as follows:
-                        Yes, there are cancer cells – click once to turn the square red
+                        Like we have done here, you can hover over the cells in each section to pull up a zoomed in version and get a closer look.
+                    </p>
+                </div>
+            </div>
+
+            <div id="5" class="modal-body" style="display:none">
+
+                <div class="modal-image">
+                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid-red.jpg" alt=""/>
+                </div>
+                <div class="modal-info">
+                    <h1>We’ve clicked once to highlight sections containing cancer cells red</h1>
+
+                    <p>
+                        Examine each section and if you think it contains cancer cells, you can click once to turn that section red.
                     </p>
                 </div>
 
             </div>
-            <div id="5" class="modal-body" style="display:none">
+            <div id="6" class="modal-body" style="display:none">
 
                 <div class="modal-image">
-                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/tutorial-yes-no.png" alt=""/>
+                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid-red-green.jpg" alt=""/>
                 </div>
                 <div class="modal-info">
-                    <h1>Squares <b>not containing</b> cancer cells should be highlighted green</h1>
+                    <h1>We’ve clicked twice to highlight sections that do <b>not contain</b> cancer cells green</h1>
 
                     <p>
-                        Once you’ve decided you can mark the square as follows:
-                        No, there are not cancer cells – click twice to turn the square green
+                        Examine each section and if you think it <b>does not</b> contain cancer cells, you can click twice to turn that section green.
+                    </p>
+                </div>
+
+            </div>
+
+            <div id="7" class="modal-body" style="display:none">
+
+                <div class="modal-image">
+                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid-red-green.jpg" alt=""/>
+                </div>
+                <div class="modal-info">
+                    <h1>Empty sections can be left blank</h1>
+
+                    <p>
+                       You can ignore any sections that are empty, normally corner and edge sections but not always. You can then click on the green “Next slide” to move onto the next sample.
                     </p>
                 </div>
 
@@ -251,7 +277,7 @@
             $("#prevBtn").show();
         }
 
-        if (step == 5) {
+        if (step == 7) {
             $("#nextBtn").hide();
             $("#startContrib").show();
         } else {
