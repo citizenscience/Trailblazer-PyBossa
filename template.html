@@ -530,9 +530,8 @@
 
                 var answer = {
                     squares: [],
-                    imgDiff: 1
+                    imgDiff: ""
                 };
-
 
                 // Change the square object to have clearer values
 
@@ -549,13 +548,10 @@
                 answer.imgDiff = r.task.answer.img_diff;
 
                 pybossa.saveTask(task.id, answer).done(function (data) {
-//
-                    console.log(answer)
                         $("svg").remove();
                         $(".zoomContainer").remove();
                         $(".zoomWindowContainer").remove();
                         deferred.resolve();
-//
                 });
 
                 $("#loading").fadeIn(500);
