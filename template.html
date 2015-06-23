@@ -542,13 +542,10 @@
 //                        };
 //                        r.task.answer.squares.push(obj);
 //                    });
-    task.answer = "Cheese";
-                    task.info = "Cheadar";
-console.log(task);
+    var gridAnswer = r.task.answer;
 
-                    pybossa.saveTask(task.id, task.answer).done(function (data) {
+                    pybossa.saveTask(task.id, gridAnswer).done(function (data) {
 
-                        console.log(task);
                         $("svg").remove();
                         $(".zoomContainer").remove();
                         $(".zoomWindowContainer").remove();
