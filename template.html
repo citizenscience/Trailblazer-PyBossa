@@ -527,7 +527,6 @@
             var r = new Grid(task);
             r.init();
 
-
             $('.btn-answer').off('click').on('click', function (evt) {
                 var btn = $(this);
                 var answer = btn.attr("value");
@@ -535,18 +534,19 @@
 
                     // Change the square object to have clearer values
 
-//                      $.each(r.task.answer.squares, function (key, value) {
+//                    $.each(r.task.answer.squares, function (key, value) {
 //                        var obj = {
 //                            column: value.x,
 //                            row: value.y,
 //                            answer: value.has_cancer
 //                        };
 //                        r.task.answer.squares.push(obj);
-//                     });
+//                    });
+    task.answer = "Cheese";
+                    task.info = "Cheadar";
+console.log(task);
 
-                    //console.log(task.answer);
-
-                    pybossa.saveTask(task.id).done(function(data) {
+                    pybossa.saveTask(task.id, task.answer).done(function (data) {
 
                         console.log(task);
                         $("svg").remove();
