@@ -257,7 +257,6 @@
     function Grid(task) {
         this.canvas;
         this.task = task;
-        //this.task.answer = task.answer;
 
 //      This is what task looks like:
 //        task.answer = {
@@ -528,36 +527,35 @@
             r.init();
 
             $('.btn-answer').off('click').on('click', function (evt) {
-                var btn = $(this);
-                var answer = btn.attr("value");
-                if (typeof answer != 'undefined') {
 
-                    // Change the square object to have clearer values
+                var answer = [];
 
-//                    $.each(r.task.answer.squares, function (key, value) {
-//                        var obj = {
-//                            column: value.x,
-//                            row: value.y,
-//                            answer: value.has_cancer
-//                        };
+                // Change the square object to have clearer values
+
+                $.each(r.task.answer.squares, function (key, value) {
+                    var obj = {
+                        column: value.x,
+                        row: value.y,
+                        answer: value.has_cancer
+                    };
 //                        r.task.answer.squares.push(obj);
-//                    });
-    var gridAnswer = r.task.answer;
+                    answer.push(obj);
+                });
 
-                    pybossa.saveTask(task.id, gridAnswer).done(function (data) {
+                answer.push(r.task.answer.img_diff);
 
+                pybossa.saveTask(task.id, answer).done(function (data) {
+//
+                    console.log(answer)
                         $("svg").remove();
                         $(".zoomContainer").remove();
                         $(".zoomWindowContainer").remove();
                         deferred.resolve();
+//
+                });
 
-                    });
+                $("#loading").fadeIn(500);
 
-                    $("#loading").fadeIn(500);
-
-                } else {
-                    $("#error").show();
-                }
             });
 
             $("#loading").hide();
