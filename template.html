@@ -530,7 +530,7 @@
 
                 var answer = {
                     squares: [],
-                    img_diff: 1
+                    imgDiff: 1
                 };
 
 
@@ -546,7 +546,7 @@
                     answer.squares.push(obj);
                 });
 
-                answer.img_diff.push(r.task.answer.img_diff);
+                answer.imgDiff = r.task.answer.img_diff;
 
                 pybossa.saveTask(task.id, answer).done(function (data) {
 //
