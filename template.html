@@ -256,10 +256,14 @@
      */
     function Grid(task) {
         this.canvas;
-        this.grid = [];
-        this.grid__item_active;
         this.task = task;
-        this.task.image_difficulty = 1;
+        //this.task.answer = task.answer;
+
+//      This is what task looks like:
+//        task.answer = {
+//            squares: [],
+//            img_diff: 1
+//        }
     }
 
 
@@ -268,20 +272,19 @@
      * Main initializing method
      *
      */
-    Grid.prototype.init = function() {
+    Grid.prototype.init = function () {
 
         this.init_zoom();
         this.create_grid(6, 6);
         this.activate_cell();
-        this.task;
         var _this = this;
 
         $("#grid_size").on("change", $.proxy(this.change_grid, this));
         $("#difficulty").on("change", $.proxy(this.image_difficulty, this));
         $("#reset").on("click", $.proxy(this.change_grid, this));
 
-        $("#select-all").on("click", function() {
-            $.each($( _this.grid ), function(key, value) {
+        $("#select-all").on("click", function () {
+            $.each($(_this.task.answer.squares), function (key, value) {
                 value.has_cancer = true;
                 value.node.setAttribute("class", "grid-item grid-item-success");
             });
@@ -295,7 +298,7 @@
      * For initializing the Zoom functionality
      *
      */
-    Grid.prototype.init_zoom = function() {
+    Grid.prototype.init_zoom = function () {
         $(".img-polaroid").elevateZoom({
             scrollZoom: true,
             minZoomLevel: .6,
@@ -312,13 +315,12 @@
     };
 
 
-
     /**
      *
      * For creating a grid overlayed over image
      *
      */
-    Grid.prototype.create_grid = function(rows, columns) {
+    Grid.prototype.create_grid = function (rows, columns) {
         this.canvas = Raphael("canvas", $(".img-polaroid").width(), $(".img-polaroid").height());
         var gridHeight = $(".img-polaroid").height() / columns;
         var gridWidth = $(".img-polaroid").width() / rows;
@@ -339,24 +341,25 @@
                 grid_item.node.setAttribute("class", "grid-item");
 
 
-                grid_item.x = x;
-                grid_item.y = y;
+                grid_item.column = x;
+                grid_item.row = y;
                 grid_item.has_cancer = null;
 
-                this.grid.push(grid_item);
+                // What is this!?
+                this.task.answer.squares.push(grid_item);
 
             }
         }
     };
 
 
-    Grid.prototype.activate_cell = function() {
+    Grid.prototype.activate_cell = function () {
         var delay = 250;
         var clicks = 0;
         var timer = null;
         var _this = this;
 
-        $("body").on("click touchstart", ".zoomLens", function(evt) {
+        $("body").on("click touchstart", ".zoomLens", function (evt) {
 
             evt.preventDefault();
             clicks++; //count clicks
@@ -369,7 +372,7 @@
 
 
             if (clicks === 1) {
-                timer = setTimeout(function() {
+                timer = setTimeout(function () {
 
                     if (grid__item_active_className != "grid-item grid-item-success") {
                         grid__item_node.setAttribute("class", "grid-item grid-item-success");
@@ -398,7 +401,7 @@
      * that have the clicked coordinates
      *
      */
-    Grid.prototype.find_closest = function() {
+    Grid.prototype.find_closest = function () {
 
         var _this = this;
         var active_node;
@@ -415,7 +418,7 @@
         target_pos.y = target_pos.y + 34.85;
 
         // Find the closet grid item
-        $.each(this.grid, function(key, value) {
+        $.each(_this.task.answer.squares, function (key, value) {
 
             if (value.isPointInside(target_pos.x, target_pos.y)) {
                 active_node = value;
@@ -432,16 +435,16 @@
      * Add click listener to each grid cell
      *
      */
-    Grid.prototype.show_results = function(active_node) {
+    Grid.prototype.show_results = function (active_node) {
         $("#result-row").text(active_node.y);
         $("#result-column").text(active_node.x);
         $("#result-item").text(active_node.id + 1);
     };
 
 
-    Grid.prototype.change_grid = function() {
+    Grid.prototype.change_grid = function () {
         var str = "";
-        $("#grid_size option:selected").each(function() {
+        $("#grid_size option:selected").each(function () {
             str = $(this).val();
         });
 
@@ -450,27 +453,24 @@
         $("svg").remove();
         this.create_grid(6, 6);
 
-        $.each(this.grid, function(key, value) {
+        $.each(this.grid, function (key, value) {
             value.id = key;
         });
 
     };
 
-    Grid.prototype.image_difficulty = function() {
+    Grid.prototype.image_difficulty = function () {
         var val = "";
-        $("#difficulty option:selected").each(function() {
+        $("#difficulty option:selected").each(function () {
             val = $(this).val();
         });
-        this.task.image_difficulty = val;
+        this.task.answer.img_diff = val;
 
     };
 
 
-
-
-
     function loadUserProgress() {
-        pybossa.userProgress('mvp-01').done(function(data) {
+        pybossa.userProgress('mvp-01').done(function (data) {
             var pct = Math.round((data.done * 100) / data.total);
             $("#progress").css("width", pct.toString() + "%");
             $("#progress").attr("title", pct.toString() + "% completed!");
@@ -483,18 +483,17 @@
     }
 
 
-
-    $(".touch .zoomLens").on("touchend", function() {
+    $(".touch .zoomLens").on("touchend", function () {
         $(".zoomWindow").css("display", "block !important");
     });
 
 
-    pybossa.taskLoaded(function(task, deferred) {
+    pybossa.taskLoaded(function (task, deferred) {
 
         if (!$.isEmptyObject(task)) {
             // load image from flickr
             var img = $('<img />');
-            img.load(function() {
+            img.load(function () {
                 // continue as soon as the image is loaded
                 deferred.resolve(task);
             });
@@ -502,15 +501,19 @@
             img.attr('data-zoom-image', task.info.url_b);
             img.addClass('img-polaroid');
             task.info.image = img;
+            //task.answer = [];
 
-            task.answer = [];
+            task.answer = {
+                squares: [],
+                img_diff: 1
+            }
 
         } else {
             deferred.resolve(task);
         }
     });
 
-    pybossa.presentTask(function(task, deferred) {
+    pybossa.presentTask(function (task, deferred) {
 
         if (!$.isEmptyObject(task)) {
 
@@ -525,31 +528,32 @@
             r.init();
 
 
-            $('.btn-answer').off('click').on('click', function(evt) {
+            $('.btn-answer').off('click').on('click', function (evt) {
                 var btn = $(this);
                 var answer = btn.attr("value");
                 if (typeof answer != 'undefined') {
 
-                    $.each(r.grid, function(key, value) {
-                        var obj = {
-                            column: value.x,
-                            row: value.y,
-                            answer: value.has_cancer
-                        };
-                        r.task.answer.push(obj);
-                    });
+                    // Change the square object to have clearer values
 
-                    var a = {
-                        image_difficulty: r.task.image_difficulty
-                    }
-                    r.task.answer.push(a);
+//                      $.each(r.task.answer.squares, function (key, value) {
+//                        var obj = {
+//                            column: value.x,
+//                            row: value.y,
+//                            answer: value.has_cancer
+//                        };
+//                        r.task.answer.squares.push(obj);
+//                     });
 
-                    pybossa.saveTask(task.id, task.answer).done(function(data) {
+                    //console.log(task.answer);
 
+                    pybossa.saveTask(task.id).done(function(data) {
+
+                        console.log(task);
                         $("svg").remove();
                         $(".zoomContainer").remove();
                         $(".zoomWindowContainer").remove();
                         deferred.resolve();
+
                     });
 
                     $("#loading").fadeIn(500);
@@ -568,9 +572,11 @@
     });
 
 
-    $(function(){
+    $(function () {
         pybossa.run('mvp-01');
     })
+
+
 </script>
 
 
