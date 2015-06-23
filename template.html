@@ -528,21 +528,25 @@
 
             $('.btn-answer').off('click').on('click', function (evt) {
 
-                var answer = [];
+                var answer = {
+                    squares: [],
+                    img_diff: 1
+                };
+
 
                 // Change the square object to have clearer values
 
                 $.each(r.task.answer.squares, function (key, value) {
+                    console.log(value);
                     var obj = {
-                        column: value.x,
-                        row: value.y,
+                        column: value.column,
+                        row: value.row,
                         answer: value.has_cancer
                     };
-//                        r.task.answer.squares.push(obj);
-                    answer.push(obj);
+                    answer.squares.push(obj);
                 });
 
-                answer.push(r.task.answer.img_diff);
+                answer.img_diff.push(r.task.answer.img_diff);
 
                 pybossa.saveTask(task.id, answer).done(function (data) {
 //
