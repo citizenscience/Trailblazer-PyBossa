@@ -1,48 +1,62 @@
 <script src="//citscitools.cancerresearchuk.org/static/js/vendor/device.js" type="text/javascript"></script>
 
 <style>
-    @media screen and (min-width: 768px) {
 
-        #modal {
-            width: 800px;
-            margin-left: -400px;
-            top: 45%;
-        }
+    /*
+     * For styling the tutorial modal component
+     * Need to make this responsive and cross browser compatable
+     */
 
-        .modal-body {
-            max-height: 600px;
-            display: table;
-            padding: 0;
-        }
-
-        .modal-image,
-        .modal-info {
-            float: left;
-            word-break: keep-all;
-            /*-webkit-box-sizing: border-box;*/
-            /*-moz-box-sizing: border-box;*/
-            /*box-sizing: border-box;*/
-        }
-
-        .modal-image {
-            width: 460px;
-
-        }
-
-        .modal-info {
-            width: 300px;
-            padding: 20px;
-            /*box-sizing: border-box;*/
-        }
-
-        .carousel {
-            margin-bottom: 0;
-        }
-
-        .carousel-control {
-            top: 50%;
-        }
+    .modal {
+        width: 800px;
+        margin-left: -400px;
+        top: 45%;
     }
+
+    .modal .modal-body {
+        max-height: 600px;
+        display: table;
+        padding: 0;
+    }
+
+    /*
+     * Modal body split into two sections
+     * left is the .modal-image (contains image and carousel)
+     * right is the .modal-info (contains text)
+     */
+
+    .modal .modal-body .modal-image,
+    .modal .modal-body .modal-info {
+        float: left;
+        word-break: keep-all;
+    }
+
+    .modal .modal-body .modal-image {
+        width: 460px;
+    }
+
+    .modal .modal-body .modal-info {
+        width: 300px;
+        padding: 20px;
+    }
+
+    .modal .modal-body .carousel {
+        margin-bottom: 0;
+    }
+
+    .modal .modal-body .carousel-control {
+        top: 50%;
+    }
+
+    /*
+     * Adding a message that appears on
+     * mobile and tablet devices to say that this is currently
+     * a only a desktop application
+     */
+
+    /*
+     * If devices is mobile or tablet then show message
+     */
 
     .ios .wrappy,
     .ipad .wrappy,
@@ -106,9 +120,6 @@
 <div class="row">
     <div class="span12">
         <div id="modal" class="modal hide fade">
-            <!--<div class="modal-header">-->
-            <!--<h3>Beta - TrailBlazer Project Tutorial</h3>-->
-            <!--</div>-->
             <div id="0" class="modal-body" style="display:none">
 
                 <div class="modal-image">
@@ -180,7 +191,7 @@
                     <h1>Let’s run through an example</h1>
 
                     <p>
-                        We have split the images up into a 6x6 grid. Some of the grid sections contain cancer cells and some of them do not. We’re going to show you what to do
+                        We have split the images up into a 6x6 grid. Some of the grid sections contain cancer cells and some of them do not. We’re going to show you what to do.
                     </p>
                 </div>
             </div>
@@ -208,7 +219,7 @@
                     <h1>We’ve clicked once to highlight sections containing cancer cells red</h1>
 
                     <p>
-                        Examine each section and if you think it contains cancer cells, you can click once to turn that section red.
+                        Examine each section and if you think it contains cancer cells (even if you only see one or two cells) click once to turn that section red.
                     </p>
                 </div>
 
@@ -223,7 +234,7 @@
 
                     <p>
                         Examine each section and if you think it
-                        <b>does not</b> contain cancer cells, you can doub to turn that section green.
+                        <b>does not</b> contain any cancer cells, you can double click to turn that section green.
                     </p>
                 </div>
 
@@ -238,7 +249,11 @@
                     <h1>Empty sections can be left blank</h1>
 
                     <p>
-                        You can ignore any sections that are empty, normally corner and edge sections but not always. You can then click on the green “Next slide” to move onto the next sample.
+                        You can ignore any sections that are empty, normally corner and edge sections (but not always).
+                    </p>
+
+                    <p>
+                        You can then click on the green “Next slide” to move onto the next sample.
                     </p>
                 </div>
 
