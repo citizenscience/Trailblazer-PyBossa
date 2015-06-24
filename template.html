@@ -127,7 +127,7 @@
 <header class="site-header clearfix">
     <div>
         <div id="img-difficulty-message" class="alert alert-error" style="display:none;">
-            <a class="close">×</a>
+            <!--<a class="close">×</a>-->
             <strong>Please select an image difficulty from the dropdown below.</strong>
         </div>
         <div id="success" class="alert alert-success" style="display:none;">
@@ -429,6 +429,7 @@
         $("#difficulty option:selected").each(function () {
             val = $(this).val();
         });
+        $("#img-difficulty-message").fadeOut(500);
         this.task.answer.img_diff = parseInt(val);
 
     };
