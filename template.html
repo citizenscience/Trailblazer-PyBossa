@@ -168,7 +168,7 @@
                 <hr>
                 <!--<p>Please select an image difficulty level:</p>-->
                 <select id="difficulty">
-                    <option selected>Please select an image difficulty level:</option>
+                    <option value="0" selected>Please select an image difficulty level:</option>
                     <option value="1">1 - Super easy</option>
                     <option value="2">2 - Easy</option>
                     <option value="3">3 - Average</option>
@@ -493,42 +493,61 @@
             var r = new Grid(task);
             r.init();
 
+
+
             $('.btn-answer').off('click').on('click', function (evt) {
 
-                var answer = {
-                    squares: [],
-                    imgDiff: ""
-                };
 
-                // Change the square object to have clearer values
 
-                $.each(r.task.answer.squares, function (key, value) {
-                    var obj = {
-                        column: value.column,
-                        row: value.row,
-                        answer: value.has_cancer
+
+
+                if( $("#difficulty option:selected").val() == 0 ) {
+
+                    alert("Please select an image difficulty from the dropdown.");
+
+                } else {
+
+
+                    var answer = {
+                        squares: [],
+                        imgDiff: ""
                     };
-                    answer.squares.push(obj);
-                });
 
-                answer.imgDiff = r.task.answer.img_diff;
+                    // Change the square object to have clearer values
 
+                    $.each(r.task.answer.squares, function (key, value) {
+                        var obj = {
+                            column: value.column,
+                            row: value.row,
+                            answer: value.has_cancer
+                        };
+                        answer.squares.push(obj);
+                    });
 
-                /*
-                 * Save the task information and send to PyBossa
-                 */
-                pybossa.saveTask(task.id, answer).done(function (data) {
-
-                    // Clear the raphael canvas and remove zoom
-                    $("svg").remove();
-                    $(".zoomContainer").remove();
-                    $(".zoomWindowContainer").remove();
+                    answer.imgDiff = r.task.answer.img_diff;
 
 
-                    deferred.resolve();
-                });
+                    /*
+                     * Save the task information and send to PyBossa
+                     */
+                    pybossa.saveTask(task.id, answer).done(function (data) {
 
-                $("#loading").fadeIn(500);
+                        // Clear the raphael canvas and remove zoom
+                        $("svg").remove();
+                        $(".zoomContainer").remove();
+                        $(".zoomWindowContainer").remove();
+
+                        deferred.resolve();
+
+                        console.log(answer);
+                    });
+
+                     $("#loading").fadeIn(500);
+
+                }
+
+
+
 
             });
 
