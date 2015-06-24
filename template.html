@@ -127,6 +127,10 @@
 
 <header class="site-header clearfix">
     <div>
+        <div id="img-difficulty-message" class="alert alert-error" style="display:none;">
+            <a class="close">×</a>
+            <strong>Please select an image difficulty from the dropdown below.</strong>
+        </div>
         <div id="success" class="alert alert-success" style="display:none;">
             <a class="close">×</a>
             <strong>Well done!</strong> Your answer has been saved
@@ -471,7 +475,7 @@
 
             task.answer = {
                 squares: [],
-                img_diff: "not selected"
+                img_diff: 0
             }
 
         } else {
@@ -499,18 +503,15 @@
 
 
 
+                /*
+                 * Conditional to check if the image difficulty has been set
+                 */
 
-
-                if( $("#difficulty option:selected").val() == 0 ) {
-
-                    alert("Please select an image difficulty from the dropdown.");
-
-                } else {
-
+                if ($("#difficulty option:selected").val() != 0) {
 
                     var answer = {
                         squares: [],
-                        imgDiff: ""
+                        imgDiff: r.task.answer.img_diff
                     };
 
                     // Change the square object to have clearer values
@@ -524,12 +525,11 @@
                         answer.squares.push(obj);
                     });
 
-                    answer.imgDiff = r.task.answer.img_diff;
-
 
                     /*
                      * Save the task information and send to PyBossa
                      */
+
                     pybossa.saveTask(task.id, answer).done(function (data) {
 
                         // Clear the raphael canvas and remove zoom
@@ -539,10 +539,16 @@
 
                         deferred.resolve();
 
-                        console.log(answer);
+
                     });
 
-                     $("#loading").fadeIn(500);
+                    $("#img-difficulty-message").hide();
+                    $("#loading").fadeIn(500);
+
+
+                } else {
+
+                    $("#img-difficulty-message").fadeIn(500);
 
                 }
 
