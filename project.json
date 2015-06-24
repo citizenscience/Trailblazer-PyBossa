@@ -1,6 +1,6 @@
 {
-    "name": "CRUK mvp-01",
-    "short_name": "mvp-01",
-    "description": "Project template for all cruk projects - based on the flickr person app",
+    "name": "CRUK mvp-01-gold-standard",
+    "short_name": "mvp-01-gold-standard",
+    "description": "This is the project for pathologist to supply gold standard data",
     "question": "Do you see a real human face in this photo?"
 }
