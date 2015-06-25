@@ -237,14 +237,13 @@
 
     // Removing difficulty on mvp-01
     var pathname = window.location.pathname; // Returns path only
-    var url = window.location.href;     // Returns full URL
 
     var mvp01 = false;
-
     if (pathname.indexOf("mvp-01/") >= 0) {
         mvp01 = true;
         $("#difficulty").hide();
     }
+
 
 
     /**
