@@ -234,6 +234,8 @@
      * Random events
      */
 
+    var oldTime;
+
     // Testing touch events of zoom
     $(".touch .zoomLens").on("touchend", function () {
         $(".zoomWindow").css("display", "block !important");
@@ -490,15 +492,70 @@
         });
     }
 
+    function secondsToString(seconds) {
+        var numdays = Math.floor((seconds % 31536000) / 86400);
+        var numhours = Math.floor(((seconds % 31536000) % 86400) / 3600);
+        var numminutes = Math.floor((((seconds % 31536000) % 86400) % 3600) / 60);
+        var numseconds = (((seconds % 31536000) % 86400) % 3600) % 60;
+        return  numdays + " days " + numhours + " hours " + numminutes + " minutes " + numseconds + " seconds";
+    }
+
+
+    navigator.sayswho = (function () {
+        var ua = navigator.userAgent, tem,
+            M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
+        if (/trident/i.test(M[1])) {
+            tem = /\brv[ :]+(\d+)/g.exec(ua) || [];
+            return 'IE ' + (tem[1] || '');
+        }
+        if (M[1] === 'Chrome') {
+            tem = ua.match(/\bOPR\/(\d+)/);
+            if (tem != null) return 'Opera ' + tem[1];
+        }
+        M = M[2] ? [M[1], M[2]] : [navigator.appName, navigator.appVersion, '-?'];
+        if ((tem = ua.match(/version\/(\d+)/i)) != null) M.splice(1, 1, tem[1]);
+        return M.join(' ');
+    })();
+
+
+    var desktop = device.desktop(),
+        mobile = device.mobile(),
+        tablet = device.tablet(),
+        portrait = device.portrait(),
+        landscape = device.landscape(),
+        iphone = device.iphone(),
+        android = device.android(),
+        androidTablet = device.androidTablet(),
+        blackberryTablet = device.blackberryTablet();
+
+
+    function whatDevice() {
+        if (desktop) return "Desktop";
+        if (mobile && portrait)    return "Mobile portrait";
+        if (mobile && portrait)    return "Mobile landscape";
+        if (tablet && portrait)    return "Tablet portrait";
+        if (tablet && landscape)    return "Tablet landscape";
+    }
+
+
+
     /*
      * Quick function to save duplication on save method
      * we pass task object back to PyBossa which has all of our
      * grid square infomation and image difficulty
      */
     function saveTask(r, task, deferred) {
+
+        var newTime = new Date();
+        var ms = newTime - oldTime;
+        var x = ms / 1000;
+
         var answer = {
             squares: [],
-            imgDiff: r.task.answer.img_diff
+            imgDiff: r.task.answer.img_diff,
+            timeTaken: secondsToString(x),
+            device: whatDevice(),
+            browser: navigator.sayswho
         };
 
         // Change the square object to have clearer values
@@ -511,19 +568,19 @@
             answer.squares.push(obj);
         });
 
-
-        /*
-         * Save the task information and send to PyBossa
-         */
-        pybossa.saveTask(task.id, answer).done(function (data) {
-            // Clear the raphael canvas and remove zoom
-            $("svg").remove();
-            $(".zoomContainer").remove();
-            $(".zoomWindowContainer").remove();
-            $("#difficulty").val(0);
-
-            deferred.resolve();
-        });
+    console.log(answer);
+//        /*
+//         * Save the task information and send to PyBossa
+//         */
+//        pybossa.saveTask(task.id, answer).done(function (data) {
+//            // Clear the raphael canvas and remove zoom
+//            $("svg").remove();
+//            $(".zoomContainer").remove();
+//            $(".zoomWindowContainer").remove();
+//            $("#difficulty").val(0);
+//
+//            deferred.resolve();
+//        });
     }
 
 
@@ -558,6 +615,8 @@
         if (!$.isEmptyObject(task)) {
 
             loadUserProgress();
+            oldTime = new Date();
+
 
             $('#photo-link').html('').append(task.info.image);
             $("#question").html(task.info.question);
