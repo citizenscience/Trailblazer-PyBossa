@@ -165,6 +165,7 @@
 
                 <div class="grid-info-instructions">
                     <h1 id="question">Select which grid sections contain cancer cells</h1>
+
                     <p>
                         If you see cancer cells:
                         <br/> Click once for <span class="text-error">yes</span>
@@ -196,6 +197,7 @@
         <!--Right hand side-->
         <div class="span6 wrapper grid-wrapper" id="grid-wrapper">
             <a id="photo-link"></a>
+
             <div class="canvas" id="canvas"></div>
         </div>
     </div>
@@ -229,10 +231,11 @@
 <script type="text/javascript" async="async">
     "use strict";
 
-
     /*
      * Random events
      */
+
+    var oldTime;
 
     // Testing touch events of zoom
     $(".touch .zoomLens").on("touchend", function () {
@@ -242,14 +245,10 @@
     // Removing difficulty on mvp-01
     var pathname = window.location.pathname; // Returns path only
     var mvp01 = false;
-    if (pathname.indexOf("mvp-02/") >= 0) {
+    if (pathname.indexOf("mvp-01/") >= 0) {
         mvp01 = true;
         $("#difficulty").hide();
     }
-
-
-    var old_time;
-    var new_time;
 
 
     /**
@@ -493,11 +492,52 @@
             $("#done").text(data.done);
         });
     }
-     function secondsToString(seconds) {
-            var numminutes = Math.floor((((seconds % 31536000) % 86400) % 3600) / 60);
-            var numseconds = (((seconds % 31536000) % 86400) % 3600) % 60;
-            return numminutes + " minutes " + numseconds + " seconds";
+
+    function secondsToString(seconds) {
+        var numdays = Math.floor((seconds % 31536000) / 86400);
+        var numhours = Math.floor(((seconds % 31536000) % 86400) / 3600);
+        var numminutes = Math.floor((((seconds % 31536000) % 86400) % 3600) / 60);
+        var numseconds = (((seconds % 31536000) % 86400) % 3600) % 60;
+        return numdays + " days " + numhours + " hours " + numminutes + " minutes " + numseconds + " seconds";
+    }
+
+
+    navigator.sayswho = (function () {
+        var ua = navigator.userAgent, tem,
+            M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
+        if (/trident/i.test(M[1])) {
+            tem = /\brv[ :]+(\d+)/g.exec(ua) || [];
+            return 'IE ' + (tem[1] || '');
         }
+        if (M[1] === 'Chrome') {
+            tem = ua.match(/\bOPR\/(\d+)/);
+            if (tem != null) return 'Opera ' + tem[1];
+        }
+        M = M[2] ? [M[1], M[2]] : [navigator.appName, navigator.appVersion, '-?'];
+        if ((tem = ua.match(/version\/(\d+)/i)) != null) M.splice(1, 1, tem[1]);
+        return M.join(' ');
+    })();
+
+
+    var desktop = device.desktop(),
+        mobile = device.mobile(),
+        tablet = device.tablet(),
+        portrait = device.portrait(),
+        landscape = device.landscape(),
+        iphone = device.iphone(),
+        android = device.android(),
+        androidTablet = device.androidTablet(),
+        blackberryTablet = device.blackberryTablet();
+
+
+    function whatDevice() {
+        if (desktop) return "Desktop";
+        if (mobile && portrait)    return "Mobile portrait";
+        if (mobile && portrait)    return "Mobile landscape";
+        if (tablet && portrait)    return "Tablet portrait";
+        if (tablet && landscape)    return "Tablet landscape";
+    }
+
 
     /*
      * Quick function to save duplication on save method
@@ -506,18 +546,17 @@
      */
     function saveTask(r, task, deferred) {
 
-        new_time = new Date();
+        var newTime = new Date();
+        var ms = newTime - oldTime;
+        var x = ms / 1000;
 
-        var ms = new_time - old_time,
-            s = ms / 1000,
-            time = secondsToString(s),
-            answer = {
-                squares: [],
-                imgDiff: r.task.answer.img_diff,
-                task_time: time
-            };
-
-
+        var answer = {
+            squares: [],
+            imgDiff: r.task.answer.img_diff,
+            timeTaken: secondsToString(x),
+            device: whatDevice(),
+            browser: navigator.sayswho
+        };
 
         // Change the square object to have clearer values
         $.each(r.task.answer.squares, function (key, value) {
@@ -563,11 +602,8 @@
 
             task.answer = {
                 squares: [],
-                img_diff: 0,
-                task_time: ""
+                img_diff: 0
             }
-
-
 
         } else {
             deferred.resolve(task);
@@ -578,10 +614,9 @@
 
         if (!$.isEmptyObject(task)) {
 
-
-            old_time = new Date();
-
             loadUserProgress();
+            oldTime = new Date();
+
 
             $('#photo-link').html('').append(task.info.image);
             $("#question").html(task.info.question);
