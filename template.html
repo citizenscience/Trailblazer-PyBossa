@@ -204,24 +204,24 @@
 <div class="row example-list clearfix">
     <h2>Cell Examples</h2>
     <figure class="example-list-item">
-        <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/legend/cancer-cells.jpg" alt=""/>
+        <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/legend/cancer-cells.jpg" alt=""/>
         <figcaption class="description">Cancer Cells</figcaption>
     </figure>
     <figure class="example-list-item">
-        <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/legend/cancer-cells2.jpg" alt=""/>
+        <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/legend/cancer-cells2.jpg" alt=""/>
         <figcaption class="description">Cancer Cells</figcaption>
     </figure>
     <figure class="example-list-item">
-        <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/legend/healthy-cells.jpg" alt=""/>
+        <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/legend/healthy-cells.jpg" alt=""/>
         <figcaption class="description">Healthy cells</figcaption>
     </figure>
 
     <figure class="example-list-item">
-        <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/legend/blood-cells.jpg" alt=""/>
+        <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/legend/blood-cells.jpg" alt=""/>
         <figcaption class="description">Blood cells</figcaption>
     </figure>
     <figure class="example-list-item">
-        <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/legend/stroma-and-blood-cells.jpg" alt=""/>
+        <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/legend/stroma-and-blood-cells.jpg" alt=""/>
         <figcaption class="description">Stroma and blood cells</figcaption>
     </figure>
 </div>
@@ -239,13 +239,17 @@
         $(".zoomWindow").css("display", "block !important");
     });
 
-    // Removing difficulty on mvp-01
+    // Removing difficulty on mvp-02
     var pathname = window.location.pathname; // Returns path only
     var mvp01 = false;
-    if (pathname.indexOf("mvp-01/") >= 0) {
+    if (pathname.indexOf("mvp-02/") >= 0) {
         mvp01 = true;
         $("#difficulty").hide();
     }
+
+
+    var old_time;
+    var new_time;
 
 
     /**
@@ -478,7 +482,7 @@
 
 
     function loadUserProgress() {
-        pybossa.userProgress('mvp-01').done(function (data) {
+        pybossa.userProgress('mvp-02').done(function (data) {
             var pct = Math.round((data.done * 100) / data.total);
             $("#progress").css("width", pct.toString() + "%");
             $("#progress").attr("title", pct.toString() + "% completed!");
@@ -489,6 +493,11 @@
             $("#done").text(data.done);
         });
     }
+     function secondsToString(seconds) {
+            var numminutes = Math.floor((((seconds % 31536000) % 86400) % 3600) / 60);
+            var numseconds = (((seconds % 31536000) % 86400) % 3600) % 60;
+            return numminutes + " minutes " + numseconds + " seconds";
+        }
 
     /*
      * Quick function to save duplication on save method
@@ -496,10 +505,19 @@
      * grid square infomation and image difficulty
      */
     function saveTask(r, task, deferred) {
-        var answer = {
-            squares: [],
-            imgDiff: r.task.answer.img_diff
-        };
+
+        new_time = new Date();
+
+        var ms = new_time - old_time,
+            s = ms / 1000,
+            time = secondsToString(s),
+            answer = {
+                squares: [],
+                imgDiff: r.task.answer.img_diff,
+                task_time: time
+            };
+
+
 
         // Change the square object to have clearer values
         $.each(r.task.answer.squares, function (key, value) {
@@ -511,7 +529,7 @@
             answer.squares.push(obj);
         });
 
-
+        console.log(answer);
         /*
          * Save the task information and send to PyBossa
          */
@@ -545,8 +563,11 @@
 
             task.answer = {
                 squares: [],
-                img_diff: 0
+                img_diff: 0,
+                task_time: ""
             }
+
+
 
         } else {
             deferred.resolve(task);
@@ -556,6 +577,9 @@
     pybossa.presentTask(function (task, deferred) {
 
         if (!$.isEmptyObject(task)) {
+
+
+            old_time = new Date();
 
             loadUserProgress();
 
@@ -601,7 +625,7 @@
 
 
     $(function () {
-        pybossa.run('mvp-01');
+        pybossa.run('mvp-02');
     })
 
 </script>
