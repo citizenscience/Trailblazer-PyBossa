@@ -259,6 +259,7 @@
     function Grid(task) {
         this.canvas;
         this.task = task;
+
     }
 
     /**
@@ -539,6 +540,8 @@
     }
 
 
+
+
     /*
      * Quick function to save duplication on save method
      * we pass task object back to PyBossa which has all of our
@@ -557,6 +560,10 @@
             device: whatDevice(),
             browser: navigator.sayswho
         };
+
+        mixpanel.track('Time taken', {
+            'Time taken': answer.timeTaken
+        });
 
         // Change the square object to have clearer values
         $.each(r.task.answer.squares, function (key, value) {
@@ -602,7 +609,10 @@
 
             task.answer = {
                 squares: [],
-                img_diff: 0
+                img_diff: 0,
+                timeTaken: "",
+                device: "",
+                browser: ""
             }
 
         } else {
