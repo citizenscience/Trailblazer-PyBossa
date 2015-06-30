@@ -402,18 +402,6 @@
     }
 
 
-    // Listen to when the image difficulty select is chnages
-    // and save it into the task object
-    Grid.prototype.image_difficulty = function () {
-        var val = "";
-        $("#difficulty option:selected").each(function () {
-            val = $(this).val();
-        });
-        $("#img-difficulty-message").fadeOut(500);
-        this.task.answer.img_diff = parseInt(val);
-
-    };
-
 
     /*
      *
@@ -526,7 +514,6 @@
 
             task.answer = {
                 squares: [],
-                img_diff: 0,
                 timeTaken: "",
                 device: "",
                 browser: "",
@@ -587,13 +574,12 @@
                         seconds = (((x % 31536000) % 86400) % 3600) % 60;
 
                     // Pass image number into answer
-                    var str = task.info.url_b;
-                    var result = str.replace("//citscitools.cancerresearchuk.org/static/img/mvp-01/", "");
+                    var imgUrl = task.info.url_b;
+                    var result = imgUrl.replace("//citscitools.cancerresearchuk.org/static/img/mvp-01/", "");
 
                     // Create the answer object
                     var answer = {
                         squares: [],
-                        imgDiff: r.task.answer.img_diff,
                         timeTaken: seconds,
                         device: whatDevice(),
                         browser: whatBrowser(),
