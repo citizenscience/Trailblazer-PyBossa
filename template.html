@@ -142,8 +142,6 @@
         </div>
         <div id="finish" class="alert alert-success" style="display:none;">
             <strong>Congratulations!</strong> You have participated in all available tasks!
-            <br/>
-
             <div class="alert-actions">
                 <a class="btn small" href="/">Go back</a>
                 <a class="btn small" href="/app">or, Check other applications</a>
@@ -158,22 +156,19 @@
 
 <main class="site-content clearfix">
     <div class="row clearfix">
-
-        <!--Left hand side-->
         <div class="span6">
             <div id="grid-info" class="grid-info">
+                <h1 id="question">Select which grid sections contain cancer cells</h1>
 
-                <div class="grid-info-instructions">
-                    <h1 id="question">Select which grid sections contain cancer cells</h1>
+                <p>
+                    If you see cancer cells:
+                    <br/> Click once for <span class="text-error">yes</span>
+                    <br/> Double click for <span class="text-success">no</span>
+                </p>
 
-                    <p>
-                        If you see cancer cells:
-                        <br/> Click once for <span class="text-error">yes</span>
-                        <br/> Double click for <span class="text-success">no</span>
-                    </p>
-                </div>
-
-                <select class="selectDropDown grid-info-difficulty" id="difficulty">
+                <hr>
+                <!--<p>Please select an image difficulty level:</p>-->
+                <select id="difficulty">
                     <option value="0" selected>Please select an image difficulty level:</option>
                     <option value="1">1 - Very easy</option>
                     <option value="2">2 - Easy</option>
@@ -182,20 +177,17 @@
                     <option value="5">5 - Very difficult</option>
                 </select>
 
-                <div class="grid-info-buttons">
-                    <button class="btn" id="reset" value="reset">Reset</button>
-                    <button class="btn" id="select-all" value="all">Select All</button>
-                    <button class="btn btn-answer btn-success" id="next-slide" value="next">Next slide</button>
-                </div>
+                <button class="btn" id="reset">Reset</button>
+                <button class="btn" id="select-all" value="all">Select All</button>
+                <button class="btn btn-answer btn-success" id="next-slide" value="next">Next slide</button>
 
                 <div class="progress progress-striped">
                     <div id="progress" rel="tooltip" title="#" class="bar" style="width: 0%;"></div>
                 </div>
             </div>
         </div>
-
-        <!--Right hand side-->
         <div class="span6 wrapper grid-wrapper" id="grid-wrapper">
+
             <a id="photo-link"></a>
 
             <div class="canvas" id="canvas"></div>
@@ -232,7 +224,9 @@
     "use strict";
 
 
-    var oldTime;
+    /*
+     * Random events
+     */
 
     // Testing touch events of zoom
     $(".touch .zoomLens").on("touchend", function () {
@@ -259,7 +253,6 @@
     function Grid(task) {
         this.canvas;
         this.task = task;
-
     }
 
     /**
@@ -269,28 +262,21 @@
      */
     Grid.prototype.init = function () {
 
+        this.init_zoom();
+        this.create_grid(6, 6);
+        this.activate_cell();
         var _this = this;
 
-        // Removing difficulty on mvp-01
-        var pathname = window.location.pathname; // Returns path only
-        var mvp01 = false;
-        if (pathname.indexOf("mvp-01/") >= 0) {
-            mvp01 = true;
-            $("#difficulty").hide();
-        }
-
-
-        //$(".btn").on("click",$.proxy(this.buttonClick, this))
-
-        // Listening for click events
         $("#grid_size").on("change", $.proxy(this.change_grid, this));
         $("#difficulty").on("change", $.proxy(this.image_difficulty, this));
         $("#reset").on("click", $.proxy(this.change_grid, this));
+
         $("#select-all").on("click", function () {
             $.each($(_this.task.answer.squares), function (key, value) {
                 value.has_cancer = true;
                 value.node.setAttribute("class", "grid-item grid-item-success");
             });
+
         });
     };
 
@@ -300,7 +286,19 @@
      *
      */
     Grid.prototype.init_zoom = function () {
-        $(".img-polaroid").elevateZoom();
+        $(".img-polaroid").elevateZoom({
+            scrollZoom: true,
+            minZoomLevel: .6,
+            maxZoomLevel: .6,
+            responsive: true,
+            cursor: 'pointer',
+            zoomWindowPosition: "grid-info",
+            lensFadeIn: 500,
+            lensFadeOut: 500,
+            zoomWindowWidth: 455,
+            zoomWindowHeight: 455,
+        });
+
     };
 
     /**
@@ -308,24 +306,11 @@
      * For creating a grid overlayed over image
      *
      */
-    Grid.prototype.create_grid = function () {
-
-        var rows = 6,
-            columns = 6;
-
-        /*
-         * Using raphael so we can use methods like isPointInside
-         * and calculate how close the click on grid are.
-         * Also nice and cross browser :D
-         *
-         * Maybe d3 might have been better!?
-         */
+    Grid.prototype.create_grid = function (rows, columns) {
         this.canvas = Raphael("canvas", $(".img-polaroid").width(), $(".img-polaroid").height());
         var gridHeight = $(".img-polaroid").height() / columns;
         var gridWidth = $(".img-polaroid").width() / rows;
 
-        // rows = 6 and columns = 6
-        // creates 36 grid squares in raphael
         var x, y;
         for (y = 0; y < rows; y += 1) {
             for (x = 0; x < columns; x += 1) {
@@ -346,8 +331,7 @@
                 grid_item.row = y;
                 grid_item.has_cancer = null;
 
-                // Save all grid squares in array within main task object
-                // We can then grab this when saving the info at the end
+                // What is this!?
                 this.task.answer.squares.push(grid_item);
 
             }
@@ -372,6 +356,7 @@
 
             // Find the cloest grid square to click on the zoomLens
             // @returns the square object, saving it into this.grid__item_active
+
             this.grid__item_active = _this.find_closest();
 
 
@@ -386,7 +371,6 @@
             if (clicks === 1) {
                 timer = setTimeout(function () {
 
-                    // Adds and removes classes to grid squares making them red or green
                     if (grid__item_active_className != "grid-item grid-item-success") {
                         grid__item_node.setAttribute("class", "grid-item grid-item-success");
                         grid__item_active.has_cancer = true;
@@ -426,22 +410,21 @@
         };
 
         // Center the zoom cursor to middle of square
-        target_pos.x = target_pos.x + 30.66;
-        target_pos.y = target_pos.y + 30.66;
+        target_pos.x = target_pos.x + 34.85;
+        target_pos.y = target_pos.y + 34.85;
 
         // Find the closet grid item
         $.each(_this.task.answer.squares, function (key, value) {
+
             if (value.isPointInside(target_pos.x, target_pos.y)) {
                 active_node = value;
+                //_this.grid.push(obj);
+
             }
         });
         return active_node;
     };
 
-    /*
-     * Bit messy at the moment but just clears the grid
-     * and creats a new 6x6 grid
-     */
     Grid.prototype.change_grid = function () {
         var str = "";
         $("#grid_size option:selected").each(function () {
@@ -451,7 +434,7 @@
         this.grid = [];
         this.canvas.clear();
         $("svg").remove();
-        this.create_grid();
+        this.create_grid(6, 6);
 
         $.each(this.grid, function (key, value) {
             value.id = key;
@@ -459,8 +442,6 @@
 
     };
 
-    // Listen to when the image difficulty select is chnages
-    // and save it into the task object
     Grid.prototype.image_difficulty = function () {
         var val = "";
         $("#difficulty option:selected").each(function () {
@@ -470,35 +451,6 @@
         this.task.answer.img_diff = parseInt(val);
 
     };
-
-
-    Grid.prototype.buttonClick = function(evt){
-        var target = $(evt.target).attr("value")
-        if( target == "reset" ) this.change_grid();
-    };
-//    Grid.prototype.selectChange = function(evt){
-////        var val = "";
-////        $("#difficulty option:selected").each(function () {
-////            val = $(this).val();
-////        });
-//    };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     /*
      *
@@ -518,78 +470,14 @@
         });
     }
 
-    function secondsToString(seconds) {
-        var numdays = Math.floor((seconds % 31536000) / 86400);
-        var numhours = Math.floor(((seconds % 31536000) % 86400) / 3600);
-        var numminutes = Math.floor((((seconds % 31536000) % 86400) % 3600) / 60);
-        var numseconds = (((seconds % 31536000) % 86400) % 3600) % 60;
-        return numdays + " days " + numhours + " hours " + numminutes + " minutes " + numseconds + " seconds";
-    }
-
-
-    navigator.sayswho = (function () {
-        var ua = navigator.userAgent, tem,
-            M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
-        if (/trident/i.test(M[1])) {
-            tem = /\brv[ :]+(\d+)/g.exec(ua) || [];
-            return 'IE ' + (tem[1] || '');
-        }
-        if (M[1] === 'Chrome') {
-            tem = ua.match(/\bOPR\/(\d+)/);
-            if (tem != null) return 'Opera ' + tem[1];
-        }
-        M = M[2] ? [M[1], M[2]] : [navigator.appName, navigator.appVersion, '-?'];
-        if ((tem = ua.match(/version\/(\d+)/i)) != null) M.splice(1, 1, tem[1]);
-        return M.join(' ');
-    })();
-
-
-    var desktop = device.desktop(),
-        mobile = device.mobile(),
-        tablet = device.tablet(),
-        portrait = device.portrait(),
-        landscape = device.landscape(),
-        iphone = device.iphone(),
-        android = device.android(),
-        androidTablet = device.androidTablet(),
-        blackberryTablet = device.blackberryTablet();
-
-
-    function whatDevice() {
-        if (desktop) return "Desktop";
-        if (mobile && portrait)    return "Mobile portrait";
-        if (mobile && portrait)    return "Mobile landscape";
-        if (tablet && portrait)    return "Tablet portrait";
-        if (tablet && landscape)    return "Tablet landscape";
-    }
-
-
-
-
-    /*
-     * Quick function to save duplication on save method
-     * we pass task object back to PyBossa which has all of our
-     * grid square infomation and image difficulty
-     */
     function saveTask(r, task, deferred) {
-
-        var newTime = new Date();
-        var ms = newTime - oldTime;
-        var x = ms / 1000;
-
         var answer = {
             squares: [],
-            imgDiff: r.task.answer.img_diff,
-            timeTaken: secondsToString(x),
-            device: whatDevice(),
-            browser: navigator.sayswho
+            imgDiff: r.task.answer.img_diff
         };
 
-//        mixpanel.track('Time taken', {
-//            'Time taken': answer.timeTaken
-//        });
-
         // Change the square object to have clearer values
+
         $.each(r.task.answer.squares, function (key, value) {
             var obj = {
                 column: value.column,
@@ -599,10 +487,11 @@
             answer.squares.push(obj);
         });
 
-        console.log(answer);
+
         /*
          * Save the task information and send to PyBossa
          */
+
         pybossa.saveTask(task.id, answer).done(function (data) {
             // Clear the raphael canvas and remove zoom
             $("svg").remove();
@@ -633,28 +522,19 @@
 
             task.answer = {
                 squares: [],
-                img_diff: 0,
-                timeTaken: "",
-                device: "",
-                browser: ""
+                img_diff: 0
             }
 
         } else {
             deferred.resolve(task);
         }
-
-
     });
 
     pybossa.presentTask(function (task, deferred) {
 
         if (!$.isEmptyObject(task)) {
 
-
-
             loadUserProgress();
-            oldTime = new Date();
-
 
             $('#photo-link').html('').append(task.info.image);
             $("#question").html(task.info.question);
@@ -663,23 +543,20 @@
             // Init my Grid Constructor
             var r = new Grid(task);
             r.init();
-            r.init_zoom();
-            r.create_grid();
-            r.activate_cell();
 
-            // On click of the "next slide" button
+
             $('.btn-answer').off('click').on('click', function (evt) {
 
-                // If we are on project mvp01 save the task normally
-                // Else check if the image difficulty has been set and then save task
+                // If we are on project mvp01 save the task normall
+                // Else check if the image difficulty has been set
                 if (mvp01) {
-                    saveTask(r, task, deferred);
+                    saveTask(r, task,deferred);
                 } else {
                     /*
                      * Conditional to check if the image difficulty has been set
                      */
                     if ($("#difficulty option:selected").val() != 0) {
-                        saveTask(r, task, deferred);
+                        saveTask(r, task,deferred);
                         $("#img-difficulty-message").hide();
                         $("#loading").fadeIn(500);
 
