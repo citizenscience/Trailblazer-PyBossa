@@ -110,7 +110,7 @@
         background-color: rgba(0, 0, 0, 0.6);
     }
 
-    #next-slide {
+    .nextSlideBtn {
         float: right;
     }
 
@@ -173,19 +173,19 @@
                     </p>
                 </div>
 
-                <select class="grid-info-difficulty" id="difficulty">
-                    <option value="0" selected>Please select an image difficulty level:</option>
-                    <option value="1">1 - Very easy</option>
-                    <option value="2">2 - Easy</option>
-                    <option value="3">3 - Average</option>
-                    <option value="4">4 - Difficult</option>
-                    <option value="5">5 - Very difficult</option>
-                </select>
+                <!--<select class="grid-info-difficulty" id="difficulty">-->
+                <!--<option value="0" selected>Please select an image difficulty level:</option>-->
+                <!--<option value="1">1 - Very easy</option>-->
+                <!--<option value="2">2 - Easy</option>-->
+                <!--<option value="3">3 - Average</option>-->
+                <!--<option value="4">4 - Difficult</option>-->
+                <!--<option value="5">5 - Very difficult</option>-->
+                <!--</select>-->
 
                 <div class="grid-info-buttons">
-                    <button class="btn" id="reset">Reset</button>
-                    <button class="btn" id="select-all" value="all">Select All</button>
-                    <button class="btn btn-answer btn-success" id="next-slide" value="next">Next slide</button>
+                    <button class="btn" id="deselectBtn">Deselect All</button>
+                    <button class="btn" id="selectAllBtn" value="all">Select All</button>
+                    <button class="btn btn-answer btn-success nextSlideBtn" id="nextSlideBtn" value="next">Next slide</button>
                 </div>
 
                 <div class="progress progress-striped">
@@ -232,27 +232,13 @@
     "use strict";
 
     /*
-     * Random events
+     * Take a time stamp of the time the page loads
      */
-
     var oldTime;
-
-    // Testing touch events of zoom
-    $(".touch .zoomLens").on("touchend", function () {
-        $(".zoomWindow").css("display", "block !important");
-    });
-
-    // Removing difficulty on mvp-01
-    var pathname = window.location.pathname; // Returns path only
-    var mvp01 = false;
-    if (pathname.indexOf("mvp-01/") >= 0) {
-        mvp01 = true;
-        $("#difficulty").hide();
-    }
 
 
     /**
-     *
+     * grid.js
      * Grid Constructor function
      *
      */
@@ -269,51 +255,38 @@
      */
     Grid.prototype.init = function () {
 
-        this.init_zoom();
-        this.create_grid(6, 6);
+        this.create_grid();
         this.activate_cell();
         var _this = this;
 
         // Listening for click events
-        $("#grid_size").on("change", $.proxy(this.change_grid, this));
-        $("#difficulty").on("change", $.proxy(this.image_difficulty, this));
-        $("#reset").on("click", $.proxy(this.change_grid, this));
+//        $("#difficulty").on("change", $.proxy(this.image_difficulty, this));
 
-        $("#select-all").on("click", function () {
-            $.each($(_this.task.answer.squares), function (key, value) {
-                value.has_cancer = true;
-                value.node.setAttribute("class", "grid-item grid-item-success");
-            });
-        });
-    };
-
-    /**
-     *
-     * For initializing the Zoom functionality
-     *
-     */
-    Grid.prototype.init_zoom = function () {
+        /**
+         *
+         * Initializing the elevateZoom library
+         * www.elevateweb.co.uk/image-zoom
+         *
+         */
         $(".img-polaroid").elevateZoom({
-            scrollZoom: true,
-            minZoomLevel: .6,
-            maxZoomLevel: .6,
-            responsive: true,
-            cursor: 'pointer',
             zoomWindowPosition: "grid-info",
             lensFadeIn: 500,
             lensFadeOut: 500,
+            // Changing these two numbers changes the zoomWindowWidth
+            // Also the side of the .zoomLens (box over image)
             zoomWindowWidth: 455,
             zoomWindowHeight: 455,
         });
 
     };
 
+
     /**
      *
-     * For creating a grid overlayed over image
+     * For creating a grid overlayed over the image
      *
      */
-    Grid.prototype.create_grid = function (rows, columns) {
+    Grid.prototype.create_grid = function () {
 
         /*
          * Using raphael so we can use methods like isPointInside
@@ -322,9 +295,11 @@
          *
          * Maybe d3 might have been better!?
          */
-        this.canvas = Raphael("canvas", $(".img-polaroid").width(), $(".img-polaroid").height());
-        var gridHeight = $(".img-polaroid").height() / columns;
-        var gridWidth = $(".img-polaroid").width() / rows;
+        var rows = 6,
+            columns = 6,
+            canvas = Raphael("canvas", $(".img-polaroid").width(), $(".img-polaroid").height()),
+            gridHeight = $(".img-polaroid").height() / columns,
+            gridWidth = $(".img-polaroid").width() / rows;
 
         // rows = 6 and columns = 6
         // creates 36 grid squares in raphael
@@ -332,29 +307,28 @@
         for (y = 0; y < rows; y += 1) {
             for (x = 0; x < columns; x += 1) {
 
-                var offsetH = y;
-                var offsetW = x;
-                var moveDown = (y + gridHeight - offsetH) * y;
-                var moveRight = (x + gridWidth - offsetW) * x;
-
-                var grid_item = this.canvas.rect(moveRight, moveDown, gridWidth, gridHeight)
-                    .attr({
+                var offsetH = y,
+                    offsetW = x,
+                    moveDown = (y + gridHeight - offsetH) * y,
+                    moveRight = (x + gridWidth - offsetW) * x,
+                    gridSquare = canvas.rect(moveRight, moveDown, gridWidth, gridHeight).attr({
                         "stroke": "#fff"
                     });
-                grid_item.node.setAttribute("class", "grid-item");
 
+                gridSquare.node.setAttribute("class", "grid-item");
 
-                grid_item.column = x;
-                grid_item.row = y;
-                grid_item.has_cancer = null;
+                gridSquare.column = x;
+                gridSquare.row = y;
+                gridSquare.has_cancer = null;
 
                 // Save all grid squares in array within main task object
                 // We can then grab this when saving the info at the end
-                this.task.answer.squares.push(grid_item);
+                this.task.answer.squares.push(gridSquare);
 
             }
         }
     };
+
 
     /**
      *
@@ -362,7 +336,7 @@
      *
      */
     Grid.prototype.activate_cell = function () {
-        var delay = 250;
+
         var clicks = 0;
         var timer = null;
         var _this = this;
@@ -373,36 +347,29 @@
             clicks++; //count clicks
 
             // Find the cloest grid square to click on the zoomLens
-            // @returns the square object, saving it into this.grid__item_active
-            this.grid__item_active = _this.find_closest();
 
-
-            // Needs cleaning up
-            var grid__item_active = this.grid__item_active;
-            var grid__item_node = this.grid__item_active.node;
-            var grid__item_active_className = grid__item_node.className.animVal;
-
+            var activeSquare = _this.find_closest();
+            var activeSquareNode = activeSquare.node;
 
             // Not able to use jQuery .click or .dblclick for some reason i can't remember
             // If we can then should use jQuery...might be quicker and easier
+
             if (clicks === 1) {
                 timer = setTimeout(function () {
-
                     // Adds and removes classes to grid squares making them red or green
-                    if (grid__item_active_className != "grid-item grid-item-success") {
-                        grid__item_node.setAttribute("class", "grid-item grid-item-success");
-                        grid__item_active.has_cancer = true;
+                    if (activeSquareNode.className.animVal != "grid-item grid-item-success") {
+                        activeSquareNode.setAttribute("class", "grid-item grid-item-success");
+                        activeSquare.has_cancer = true;
                     } else {
-                        grid__item_node.setAttribute("class", "grid-item");
-                        grid__item_active.has_cancer = null;
+                        activeSquareNode.setAttribute("class", "grid-item");
+                        activeSquare.has_cancer = null;
                     } //after action performed, reset counter
                     clicks = 0;
-                }, delay);
+                }, 250);
             } else {
                 clearTimeout(timer); //prevent single-click action
-                grid__item_node.setAttribute("class", "grid-item grid-item-error");
-                grid__item_active.has_cancer = false;
-
+                activeSquareNode.setAttribute("class", "grid-item grid-item-error");
+                activeSquare.has_cancer = false;
                 clicks = 0;
             }
         });
@@ -417,15 +384,13 @@
      */
     Grid.prototype.find_closest = function () {
 
-        var _this = this;
-        var active_node;
-
-
-        var target = $(".zoomLens");
-        var target_pos = {
-            x: parseInt(target.css("left")),
-            y: parseInt(target.css("top"))
-        };
+        var _this = this,
+            activeSquare,
+            target = $(".zoomLens"),
+            target_pos = {
+                x: parseInt(target.css("left")),
+                y: parseInt(target.css("top"))
+            };
 
         // Center the zoom cursor to middle of square
         target_pos.x = target_pos.x + 34.85;
@@ -433,36 +398,29 @@
 
         // Find the closet grid item
         $.each(_this.task.answer.squares, function (key, value) {
-
             if (value.isPointInside(target_pos.x, target_pos.y)) {
-                active_node = value;
-                //_this.grid.push(obj);
-
+                activeSquare = value;
             }
         });
-        return active_node;
+        return activeSquare;
     };
 
-    /*
-     * Bit messy at the moment but just clears the grid
-     * and creats a new 6x6 grid
-     */
-    Grid.prototype.change_grid = function () {
-        var str = "";
-        $("#grid_size option:selected").each(function () {
-            str = $(this).val();
-        });
 
-        this.grid = [];
-        this.canvas.clear();
-        $("svg").remove();
-        this.create_grid(6, 6);
+    Grid.prototype.selectAllSquares = function () {
+        for (var i = 0; i < this.task.answer.squares.length; i++) {
+            var gridSquare = this.task.answer.squares[i],
+                gridSquareNode = this.task.answer.squares[i].node;
+            gridSquareNode.setAttribute("class", "grid-item grid-item-success");
+        }
+    }
+    Grid.prototype.deselectAllSquares = function () {
+        for (var i = 0; i < this.task.answer.squares.length; i++) {
+            var gridSquare = this.task.answer.squares[i],
+                gridSquareNode = this.task.answer.squares[i].node;
+            gridSquareNode.setAttribute("class", "grid-item");
+        }
+    }
 
-        $.each(this.grid, function (key, value) {
-            value.id = key;
-        });
-
-    };
 
     // Listen to when the image difficulty select is chnages
     // and save it into the task object
@@ -476,11 +434,28 @@
 
     };
 
+
     /*
      *
-     * End of Grid class */
+     * End of Grid class
+     *
+     * */
 
 
+
+
+
+
+
+
+    /*
+     *
+     * Helpful functions
+     *
+     *
+     */
+
+    // Loads user progress into Grid info
     function loadUserProgress() {
         pybossa.userProgress('mvp-02').done(function (data) {
             var pct = Math.round((data.done * 100) / data.total);
@@ -494,16 +469,41 @@
         });
     }
 
+    // Calculates seconds from milisecond timestamp
     function secondsToString(seconds) {
-        var numdays = Math.floor((seconds % 31536000) / 86400);
-        var numhours = Math.floor(((seconds % 31536000) % 86400) / 3600);
+        var time = {};
+        //var numdays = Math.floor((seconds % 31536000) / 86400);
+        //var numhours = Math.floor(((seconds % 31536000) % 86400) / 3600);
         var numminutes = Math.floor((((seconds % 31536000) % 86400) % 3600) / 60);
         var numseconds = (((seconds % 31536000) % 86400) % 3600) % 60;
-        return numdays + " days " + numhours + " hours " + numminutes + " minutes " + numseconds + " seconds";
+        time.minutes = numminutes;
+        time.seconds = numseconds;
+        return time;
     }
 
+    // uses device.js and works out what device we are using
+    function whatDevice() {
+        var desktop = device.desktop(),
+            mobile = device.mobile(),
+            tablet = device.tablet(),
+            portrait = device.portrait(),
+            landscape = device.landscape(),
+            iphone = device.iphone(),
+            android = device.android(),
+            androidTablet = device.androidTablet(),
+            blackberryTablet = device.blackberryTablet();
 
-    navigator.sayswho = (function () {
+
+        if (desktop) return "Desktop";
+        if (mobile && portrait)    return "Mobile portrait";
+        if (mobile && portrait)    return "Mobile landscape";
+        if (tablet && portrait)    return "Tablet portrait";
+        if (tablet && landscape)    return "Tablet landscape";
+    }
+
+    // Using useragent we find what browser we are using
+    function whatBrowser() {
+        alert("sdfsdf");
         var ua = navigator.userAgent, tem,
             M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
         if (/trident/i.test(M[1])) {
@@ -517,79 +517,17 @@
         M = M[2] ? [M[1], M[2]] : [navigator.appName, navigator.appVersion, '-?'];
         if ((tem = ua.match(/version\/(\d+)/i)) != null) M.splice(1, 1, tem[1]);
         return M.join(' ');
-    })();
-
-
-    var desktop = device.desktop(),
-        mobile = device.mobile(),
-        tablet = device.tablet(),
-        portrait = device.portrait(),
-        landscape = device.landscape(),
-        iphone = device.iphone(),
-        android = device.android(),
-        androidTablet = device.androidTablet(),
-        blackberryTablet = device.blackberryTablet();
-
-
-    function whatDevice() {
-        if (desktop) return "Desktop";
-        if (mobile && portrait)    return "Mobile portrait";
-        if (mobile && portrait)    return "Mobile landscape";
-        if (tablet && portrait)    return "Tablet portrait";
-        if (tablet && landscape)    return "Tablet landscape";
     }
-
-
 
 
     /*
-     * Quick function to save duplication on save method
-     * we pass task object back to PyBossa which has all of our
-     * grid square infomation and image difficulty
+     *
+     * PyBossa stuff
+     * - .taskLoaded
+     * - .presentTask
+     *      - .saveTask
+     *
      */
-    function saveTask(r, task, deferred) {
-
-        var newTime = new Date();
-        var ms = newTime - oldTime;
-        var x = ms / 1000;
-
-        var answer = {
-            squares: [],
-            imgDiff: r.task.answer.img_diff,
-            timeTaken: secondsToString(x),
-            device: whatDevice(),
-            browser: navigator.sayswho
-        };
-
-        mixpanel.track('Time taken', {
-            'Time taken': answer.timeTaken
-        });
-
-        // Change the square object to have clearer values
-        $.each(r.task.answer.squares, function (key, value) {
-            var obj = {
-                column: value.column,
-                row: value.row,
-                answer: value.has_cancer
-            };
-            answer.squares.push(obj);
-        });
-
-        console.log(answer);
-        /*
-         * Save the task information and send to PyBossa
-         */
-        pybossa.saveTask(task.id, answer).done(function (data) {
-            // Clear the raphael canvas and remove zoom
-            $("svg").remove();
-            $(".zoomContainer").remove();
-            $(".zoomWindowContainer").remove();
-            $("#difficulty").val(0);
-
-            deferred.resolve();
-        });
-    }
-
 
     pybossa.taskLoaded(function (task, deferred) {
 
@@ -612,7 +550,8 @@
                 img_diff: 0,
                 timeTaken: "",
                 device: "",
-                browser: ""
+                browser: "",
+                img: task.info.url_b
             }
 
         } else {
@@ -635,26 +574,81 @@
             // Init my Grid Constructor
             var r = new Grid(task);
             r.init();
+            //$("#select-all").on("click", r.selectAllSquares );
+
+            var selectBtn = document.getElementById("selectAllBtn");
+            selectBtn.onclick = function () {
+                r.selectAllSquares();
+            }
+            var deselectBtn = document.getElementById("deselectBtn");
+            deselectBtn.onclick = function () {
+                r.deselectAllSquares();
+            }
+
 
             // On click of the "next slide" button
             $('.btn-answer').off('click').on('click', function (evt) {
 
                 // If we are on project mvp01 save the task normally
                 // Else check if the image difficulty has been set and then save task
-                if (mvp01) {
-                    saveTask(r, task, deferred);
-                } else {
-                    /*
-                     * Conditional to check if the image difficulty has been set
-                     */
-                    if ($("#difficulty option:selected").val() != 0) {
-                        saveTask(r, task, deferred);
-                        $("#img-difficulty-message").hide();
-                        $("#loading").fadeIn(500);
 
-                    } else {
-                        $("#img-difficulty-message").fadeIn(500);
-                    }
+                /*
+                 * Conditional to check if the image difficulty has been set
+                 */
+                if ($("#difficulty option:selected").val() != 0) {
+
+
+                    var newTime = new Date();
+                    var ms = newTime - oldTime;
+                    var x = ms / 1000;
+
+                    var str = task.info.url_b;
+                    var result = str.replace("//citscitools.cancerresearchuk.org/static/img/mvp-01/", "");
+
+                    var answer = {
+                        squares: [],
+                        imgDiff: r.task.answer.img_diff,
+                        timeTaken: secondsToString(x),
+                        device: whatDevice(),
+                        browser: whatBrowser(),
+                        imgNumber: result
+                    };
+
+//                    mixpanel.track('Time taken', {
+//                        'Time taken': answer.timeTaken
+//                    });
+
+                    // Change the square object to have clearer values
+                    $.each(r.task.answer.squares, function (key, value) {
+                        var obj = {
+                            column: value.column,
+                            row: value.row,
+                            answer: value.has_cancer
+                        };
+                        answer.squares.push(obj);
+                    });
+
+                    console.log(answer);
+
+
+                    /*
+                     * Save the task information and send to PyBossa
+                     */
+                    pybossa.saveTask(task.id, answer).done(function (data) {
+
+                        deferred.resolve();
+                        $("svg").remove();
+                        $(".zoomContainer").remove();
+                        $(".zoomWindowContainer").remove();
+                        r.create_grid();
+
+                    });
+
+                    $("#img-difficulty-message").hide();
+                    $("#loading").fadeIn(500);
+
+                } else {
+                    $("#img-difficulty-message").fadeIn(500);
                 }
 
 
@@ -668,6 +662,13 @@
         }
     });
 
+
+    /**
+     *
+     * app.js
+     * General app stuff like inits and buttons listeners
+     *
+     */
 
     $(function () {
         pybossa.run('mvp-02');
