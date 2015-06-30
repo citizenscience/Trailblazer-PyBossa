@@ -240,22 +240,7 @@
     function Grid(task) {
         this.canvas;
         this.task = task;
-
-    }
-
-    /**
-     *
-     * Main initializing method
-     *
-     */
-    Grid.prototype.init = function () {
-
-        this.create_grid();
         this.activate_cell();
-        var _this = this;
-
-        // Listening for click events
-//        $("#difficulty").on("change", $.proxy(this.image_difficulty, this));
 
         /**
          *
@@ -272,8 +257,7 @@
             zoomWindowWidth: 455,
             zoomWindowHeight: 455,
         });
-
-    };
+    }
 
 
     /**
@@ -296,7 +280,6 @@
             gridHeight = $(".img-polaroid").height() / columns,
             gridWidth = $(".img-polaroid").width() / rows;
 
-        // rows = 6 and columns = 6
         // creates 36 grid squares in raphael
         var x, y;
         for (y = 0; y < rows; y += 1) {
@@ -405,6 +388,7 @@
         for (var i = 0; i < this.task.answer.squares.length; i++) {
             var gridSquare = this.task.answer.squares[i],
                 gridSquareNode = this.task.answer.squares[i].node;
+            gridSquare.has_cancer = true;
             gridSquareNode.setAttribute("class", "grid-item grid-item-success");
         }
     }
@@ -412,6 +396,7 @@
         for (var i = 0; i < this.task.answer.squares.length; i++) {
             var gridSquare = this.task.answer.squares[i],
                 gridSquareNode = this.task.answer.squares[i].node;
+            gridSquare.has_cancer = null;
             gridSquareNode.setAttribute("class", "grid-item");
         }
     }
@@ -559,7 +544,6 @@
 
             loadUserProgress();
 
-
             /*
              * Take a time stamp of the time the page loads
              */
@@ -569,10 +553,12 @@
             $("#question").html(task.info.question);
             $('#task-id').html(task.id);
 
-            // Init my Grid Constructor
+            /*
+             * Init my Grid Constructor
+             */
+
             var r = new Grid(task);
-            r.init();
-            //$("#select-all").on("click", r.selectAllSquares );
+            r.create_grid();
 
             var selectBtn = document.getElementById("selectAllBtn");
             selectBtn.onclick = function () {
@@ -585,25 +571,26 @@
 
 
             // On click of the "next slide" button
-            $('.btn-answer').off('click').on('click', function (evt) {
-
-                // If we are on project mvp01 save the task normally
-                // Else check if the image difficulty has been set and then save task
+            $('.btn-answer').off('click').on('click', function () {
 
                 /*
                  * Conditional to check if the image difficulty has been set
                  */
                 if ($("#difficulty option:selected").val() != 0) {
 
+                    // Grab a new timestamp and find out the difference
+                    // This is how long the user has been on the task for
+                    // Then pass it into the answer
+                    var newTime = new Date(),
+                        ms = newTime - oldTime,
+                        x = ms / 1000,
+                        seconds = (((x % 31536000) % 86400) % 3600) % 60;
 
-                    var newTime = new Date();
-                    var ms = newTime - oldTime;
-                    var x = ms / 1000;
-                    var seconds = (((x % 31536000) % 86400) % 3600) % 60;
-
+                    // Pass image number into answer
                     var str = task.info.url_b;
                     var result = str.replace("//citscitools.cancerresearchuk.org/static/img/mvp-01/", "");
 
+                    // Create the answer object
                     var answer = {
                         squares: [],
                         imgDiff: r.task.answer.img_diff,
@@ -613,9 +600,6 @@
                         imgNumber: result
                     };
 
-//                    mixpanel.track('Time taken', {
-//                        'Time taken': answer.timeTaken
-//                    });
 
                     // Change the square object to have clearer values
                     $.each(r.task.answer.squares, function (key, value) {
@@ -629,30 +613,18 @@
 
                     console.log(answer);
 
-
                     /*
                      * Save the task information and send to PyBossa
                      */
                     pybossa.saveTask(task.id, answer).done(function (data) {
-
+                        $("svg, .zoomContainer,.zoomWindowContainer").remove();
                         deferred.resolve();
-                        $("svg").remove();
-                        $(".zoomContainer").remove();
-                        $(".zoomWindowContainer").remove();
-                        r.create_grid();
-
                     });
 
-                    $("#img-difficulty-message").hide();
                     $("#loading").fadeIn(500);
 
-                } else {
-                    $("#img-difficulty-message").fadeIn(500);
                 }
-
-
             });
-
             $("#loading").hide();
         } else {
             $(".skeleton").hide();
