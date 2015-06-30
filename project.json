@@ -1,6 +1,6 @@
 {
     "name": "CRUK mvp-01",
     "short_name": "mvp-01",
-    "description": "This is the project for pathologist to supply gold standard data",
+    "description": "This is the project for MVP-01 general testing",
     "question": "Do you see a real human face in this photo?"
 }
