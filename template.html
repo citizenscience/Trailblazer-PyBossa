@@ -231,11 +231,6 @@
 <script type="text/javascript" async="async">
     "use strict";
 
-    /*
-     * Take a time stamp of the time the page loads
-     */
-    var oldTime;
-
 
     /**
      * grid.js
@@ -469,17 +464,17 @@
         });
     }
 
-    // Calculates seconds from milisecond timestamp
-    function secondsToString(seconds) {
-        var time = {};
-        //var numdays = Math.floor((seconds % 31536000) / 86400);
-        //var numhours = Math.floor(((seconds % 31536000) % 86400) / 3600);
-        var numminutes = Math.floor((((seconds % 31536000) % 86400) % 3600) / 60);
-        var numseconds = (((seconds % 31536000) % 86400) % 3600) % 60;
-        time.minutes = numminutes;
-        time.seconds = numseconds;
-        return time;
-    }
+//    // Calculates seconds from milisecond timestamp
+//    function secondsToString(seconds) {
+//        var time = 0;
+//        //var numdays = Math.floor((seconds % 31536000) / 86400);
+//        //var numhours = Math.floor(((seconds % 31536000) % 86400) / 3600);
+//        //var numminutes = Math.floor((((seconds % 31536000) % 86400) % 3600) / 60);
+//        var numseconds = (((seconds % 31536000) % 86400) % 3600) % 60;
+//
+//        time = numseconds;
+//        return time;
+//    }
 
     // uses device.js and works out what device we are using
     function whatDevice() {
@@ -550,7 +545,7 @@
                 timeTaken: "",
                 device: "",
                 browser: "",
-                img: task.info.url_b
+                img: ""
             }
 
         } else {
@@ -563,8 +558,12 @@
         if (!$.isEmptyObject(task)) {
 
             loadUserProgress();
-            oldTime = new Date();
 
+
+            /*
+             * Take a time stamp of the time the page loads
+             */
+            var oldTime = new Date();
 
             $('#photo-link').html('').append(task.info.image);
             $("#question").html(task.info.question);
@@ -602,12 +601,12 @@
                     var x = ms / 1000;
 
                     var str = task.info.url_b;
-                    var result = str.replace("//citscitools.cancerresearchuk.org/static/img/mvp-01/", "");
+                    var result = str.replace("//citscitools.cancerresearchuk.org/static/img/mvp-02/", "");
 
                     var answer = {
                         squares: [],
                         imgDiff: r.task.answer.img_diff,
-                        timeTaken: secondsToString(x),
+                        timeTaken: (((x % 31536000) % 86400) % 3600) % 60,
                         device: whatDevice(),
                         browser: whatBrowser(),
                         imgNumber: result
