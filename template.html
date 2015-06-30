@@ -599,14 +599,15 @@
                     var newTime = new Date();
                     var ms = newTime - oldTime;
                     var x = ms / 1000;
+                    var seconds = (((x % 31536000) % 86400) % 3600) % 60;
 
                     var str = task.info.url_b;
-                    var result = str.replace("//citscitools.cancerresearchuk.org/static/img/mvp-02/", "");
+                    var result = str.replace("//citscitools.cancerresearchuk.org/static/img/mvp-01/", "");
 
                     var answer = {
                         squares: [],
                         imgDiff: r.task.answer.img_diff,
-                        timeTaken: (((x % 31536000) % 86400) % 3600) % 60,
+                        timeTaken: seconds,
                         device: whatDevice(),
                         browser: whatBrowser(),
                         imgNumber: result
