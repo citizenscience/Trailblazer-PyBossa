@@ -506,7 +506,7 @@
 
 
     function loadUserProgress() {
-        pybossa.userProgress('mvp-02').done(function (data) {
+        pybossa.userProgress('mvp-01').done(function (data) {
             var pct = Math.round((data.done * 100) / data.total);
             $("#progress").css("width", pct.toString() + "%");
             $("#progress").attr("title", pct.toString() + "% completed!");
@@ -642,11 +642,15 @@
         } else {
             deferred.resolve(task);
         }
+
+
     });
 
     pybossa.presentTask(function (task, deferred) {
 
         if (!$.isEmptyObject(task)) {
+
+
 
             loadUserProgress();
             oldTime = new Date();
@@ -697,7 +701,7 @@
 
 
     $(function () {
-        pybossa.run('mvp-02');
+        pybossa.run('mvp-01');
     })
 
 </script>
