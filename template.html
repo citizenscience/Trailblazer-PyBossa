@@ -634,16 +634,16 @@
         pybossa.run('mvp-02');
     })
 
-    // Launch tutoiral modal
-//    var modalBtn = document.getElementById("modalBtn");
-//    modalBtn.onclick = function () {
-//        $("#test").load("tutorial.html", function () {
-//            $(".modal-footer").prepend('' +
-//                '<button type="button" class="btn btn-default pull-left" data-dismiss="modal" aria-hidden="true">' +
-//                '   Close' +
-//                '</button>');
-//        });
-//    }
+     //Launch tutoiral modal
+    var modalBtn = document.getElementById("modalBtn");
+    modalBtn.onclick = function () {
+        $("#test").load("tutorial.html", function () {
+            $(".modal-footer").prepend('' +
+                '<button type="button" class="btn btn-default pull-left" data-dismiss="modal" aria-hidden="true">' +
+                '   Close' +
+                '</button>');
+        });
+    }
 
 
 //    var csrftoken = "{{ csrf_token() }}";
