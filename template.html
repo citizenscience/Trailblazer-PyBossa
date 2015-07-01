@@ -159,6 +159,7 @@
 <main class="site-content clearfix">
     <div class="row clearfix">
 
+        <div id="test"></div>
         <!--Left hand side-->
         <div class="span6">
             <div id="grid-info" class="grid-info">
@@ -185,6 +186,7 @@
                 <div class="grid-info-buttons">
                     <button class="btn" id="deselectBtn">Deselect All</button>
                     <button class="btn" id="selectAllBtn" value="all">Select All</button>
+                    <button class="btn" id="modalBtn"><span class="icon-info-sign"></span></button>
                     <button class="btn btn-answer btn-success nextSlideBtn" id="nextSlideBtn" value="next">Next slide</button>
                 </div>
 
@@ -229,12 +231,14 @@
 </div>
 
 <script type="text/javascript" async="async">
-    "use strict";
 
+    "use strict";
 
     /**
      * grid.js
      * Grid Constructor function
+     * Its a bit of a miss match of vanilla JS and jQuery...sorry,
+     * wanted to do everything in JS but for speed i did jQuery
      *
      */
     function Grid(task) {
@@ -265,7 +269,7 @@
      * For creating a grid overlayed over the image
      *
      */
-    Grid.prototype.create_grid = function () {
+    Grid.prototype.createGrid = function () {
 
         /*
          * Using raphael so we can use methods like isPointInside
@@ -402,7 +406,6 @@
     }
 
 
-
     /*
      *
      * End of Grid class
@@ -437,17 +440,17 @@
         });
     }
 
-//    // Calculates seconds from milisecond timestamp
-//    function secondsToString(seconds) {
-//        var time = 0;
-//        //var numdays = Math.floor((seconds % 31536000) / 86400);
-//        //var numhours = Math.floor(((seconds % 31536000) % 86400) / 3600);
-//        //var numminutes = Math.floor((((seconds % 31536000) % 86400) % 3600) / 60);
-//        var numseconds = (((seconds % 31536000) % 86400) % 3600) % 60;
-//
-//        time = numseconds;
-//        return time;
-//    }
+    //    // Calculates seconds from milisecond timestamp
+    //    function secondsToString(seconds) {
+    //        var time = 0;
+    //        //var numdays = Math.floor((seconds % 31536000) / 86400);
+    //        //var numhours = Math.floor(((seconds % 31536000) % 86400) / 3600);
+    //        //var numminutes = Math.floor((((seconds % 31536000) % 86400) % 3600) / 60);
+    //        var numseconds = (((seconds % 31536000) % 86400) % 3600) % 60;
+    //
+    //        time = numseconds;
+    //        return time;
+    //    }
 
     // uses device.js and works out what device we are using
     function whatDevice() {
@@ -545,7 +548,7 @@
              */
 
             var r = new Grid(task);
-            r.create_grid();
+            r.createGrid();
 
             var selectBtn = document.getElementById("selectAllBtn");
             selectBtn.onclick = function () {
@@ -631,8 +634,18 @@
         pybossa.run('mvp-02');
     })
 
-</script>
+    // Launch tutoiral modal
+    var modalBtn = document.getElementById("modalBtn");
+    modalBtn.onclick = function () {
+        $("#test").load("tutorial.html", function () {
+            $(".modal-footer").prepend('' +
+                '<button type="button" class="btn btn-default pull-left" data-dismiss="modal" aria-hidden="true">' +
+                '   Close' +
+                '</button>');
+        });
+    }
 
+</script>
 
 
 
