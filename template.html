@@ -635,26 +635,26 @@
     })
 
     // Launch tutoiral modal
-    var modalBtn = document.getElementById("modalBtn");
-    modalBtn.onclick = function () {
-        $("#test").load("tutorial.html", function () {
-            $(".modal-footer").prepend('' +
-                '<button type="button" class="btn btn-default pull-left" data-dismiss="modal" aria-hidden="true">' +
-                '   Close' +
-                '</button>');
-        });
-    }
+//    var modalBtn = document.getElementById("modalBtn");
+//    modalBtn.onclick = function () {
+//        $("#test").load("tutorial.html", function () {
+//            $(".modal-footer").prepend('' +
+//                '<button type="button" class="btn btn-default pull-left" data-dismiss="modal" aria-hidden="true">' +
+//                '   Close' +
+//                '</button>');
+//        });
+//    }
 
 
 //    var csrftoken = "{{ csrf_token() }}";
 
-    $.ajaxSetup({
-        beforeSend: function (xhr, settings) {
-            if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type)) {
-                xhr.setRequestHeader("X-CSRFToken", csrftoken);
-            }
-        }
-    });
+//    $.ajaxSetup({
+//        beforeSend: function (xhr, settings) {
+//            if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type)) {
+//                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+//            }
+//        }
+//    });
 
 </script>
 
