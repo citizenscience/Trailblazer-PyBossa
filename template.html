@@ -1,5 +1,55 @@
 <style type="text/css">
 
+
+     /*
+     * For styling the tutorial modal component
+     * Need to make this responsive and cross browser compatable
+     */
+
+    .modal {
+        width: 800px;
+        margin-left: -400px;
+        top: 45%;
+    }
+
+    .modal .modal-body {
+        max-height: 600px;
+        display: table;
+        padding: 0;
+    }
+
+    /*
+     * Modal body split into two sections
+     * left is the .modal-image (contains image and carousel)
+     * right is the .modal-info (contains text)
+     */
+
+    .modal .modal-body .modal-image,
+    .modal .modal-body .modal-info {
+        float: left;
+        word-break: keep-all;
+    }
+
+    .modal .modal-body .modal-image {
+        width: 460px;
+    }
+
+    .modal .modal-body .modal-info {
+        width: 300px;
+        padding: 20px;
+    }
+
+    .modal .modal-body .carousel {
+        margin-bottom: 0;
+    }
+
+    .modal .modal-body .carousel-control {
+        top: 50%;
+    }
+
+
+
+
     /*
      * Utility to clear floats
      */
@@ -124,6 +174,165 @@
     }
 </style>
 
+
+<!--MODAL-->
+<div class="row">
+    <div class="span12">
+        <div id="modal" class="modal hide fade">
+            <div id="0" class="modal-body" style="display:none">
+
+                <div class="modal-image">
+                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/cancer-cells-area.jpg" alt=""/>
+                </div>
+                <div class="modal-info">
+                    <h1>
+                        Your task is to identify cancer cells.
+                    </h1>
+
+                    <p>
+                        These are uneven, often larger cells with a mottled or blotchy surface like the ones highlighted below.
+                    </p>
+                </div>
+
+            </div>
+
+            <div id="1" class="modal-body" style="display:none">
+
+                <div class="modal-image">
+                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/cancer-cells-arrows.jpg" alt=""/>
+                </div>
+                <div class="modal-info">
+                    <h1>Here's another example of cancer cells</h1>
+
+                    <p>
+                        These are often found clustered together.
+                    </p>
+                </div>
+
+            </div>
+
+            <div id="2" class="modal-body" style="display:none">
+
+                <div class="modal-image">
+                    <div id="myCarousel" class="carousel slide">
+                        <!-- Carousel items -->
+                        <div class="carousel-inner">
+                            <div class="active item">
+                                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/non-cancer-cells-area.jpg" alt=""/>
+                            </div>
+                            <div class="item">
+                                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/non-cancer-cells-arrows.jpg" alt=""/>
+                            </div>
+                        </div>
+                        <!-- Carousel nav -->
+                        <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+                        <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+                    </div>
+                </div>
+                <div class="modal-info">
+                    <h1>
+                        You will see other cell types which you should ignore.
+                    </h1>
+
+                    <p>
+                        These include the smaller, denser cells and the stretched wispy cells, some of these are highlighted below. We’re not looking for these cells.
+                    </p>
+                </div>
+
+            </div>
+
+            <div id="3" class="modal-body" style="display:none">
+
+                <div class="modal-image">
+                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid.jpg" alt=""/>
+                </div>
+                <div class="modal-info">
+                    <h1>Let’s run through an example</h1>
+
+                    <p>
+                        We have split the images up into a 6x6 grid. Some of the grid sections contain cancer cells and some of them do not. We’re going to show you what to do.
+                    </p>
+                </div>
+            </div>
+
+            <div id="4" class="modal-body" style="display:none">
+
+                <div class="modal-image">
+                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/zoomed-in.jpg" alt=""/>
+                </div>
+                <div class="modal-info">
+                    <h1>Look closely at the cells in each section</h1>
+
+                    <p>
+                        Like we have done here, you can hover over the cells in each section to pull up a zoomed in version and get a closer look.
+                    </p>
+                </div>
+            </div>
+
+            <div id="5" class="modal-body" style="display:none">
+
+                <div class="modal-image">
+                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid-red.jpg" alt=""/>
+                </div>
+                <div class="modal-info">
+                    <h1>We’ve clicked once to highlight sections containing cancer cells red</h1>
+
+                    <p>
+                        Examine each section and if you think it contains cancer cells (even if you only see one or two cells) click once to turn that section red.
+                    </p>
+                </div>
+
+            </div>
+            <div id="6" class="modal-body" style="display:none">
+
+                <div class="modal-image">
+                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid-red-green.jpg" alt=""/>
+                </div>
+                <div class="modal-info">
+                    <h1>We’ve clicked twice to highlight sections that do <b>not contain</b> cancer cells green</h1>
+
+                    <p>
+                        Examine each section and if you think it
+                        <b>does not</b> contain any cancer cells, you can double click to turn that section green.
+                    </p>
+                </div>
+
+            </div>
+
+            <div id="7" class="modal-body" style="display:none">
+
+                <div class="modal-image">
+                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid-red-green.jpg" alt=""/>
+                </div>
+                <div class="modal-info">
+                    <h1>Empty sections can be left blank</h1>
+
+                    <p>
+                        You can ignore any sections that are empty, normally corner and edge sections (but not always).
+                    </p>
+
+                    <p>
+                        You can then click on the green “Next slide” to move onto the next sample.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal" aria-hidden="true">Close</button>
+                <a id="prevBtn" href="#" class="btn">Previous</a>
+                <a id="nextBtn" href="#" class="btn btn-success">Next</a>
+                <a id="startContrib" class="btn btn-primary" style="display:none"><i class="icon-thumbs-up"></i>Back to task</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
 <header class="site-header clearfix">
     <div>
         <div id="img-difficulty-message" class="alert alert-error" style="display:none;">
@@ -159,7 +368,6 @@
 <main class="site-content clearfix">
     <div class="row clearfix">
 
-        <div id="test"></div>
         <!--Left hand side-->
         <div class="span6">
             <div id="grid-info" class="grid-info">
@@ -634,18 +842,61 @@
         pybossa.run('mvp-02');
     })
 
-    var scripts = document.getElementsByTagName("script");
-    console.log(scripts);
-     //Launch tutoiral modal
+
+    var step = -1;
+    function showStep(action) {
+        $("#" + step).hide();
+
+        if (action == 'next') {
+            step += 1;
+        }
+        if (action == 'prev') {
+            step -= 1;
+        }
+
+        if (step == 0) {
+            $("#prevBtn").hide();
+        } else {
+            $("#prevBtn").show();
+        }
+
+        if (step == 7) {
+            $("#nextBtn").hide();
+            $("#startContrib").show();
+        } else {
+            $("#nextBtn").show();
+            $("#startContrib").hide();
+        }
+        $("#" + step).show();
+
+
+    }
+
+    showStep('next');
+
+    //Launch tutoiral modal
     var modalBtn = document.getElementById("modalBtn");
     modalBtn.onclick = function () {
-        $("#test").load("tutorial.html", function () {
-            $(".modal-footer").prepend('' +
-                '<button type="button" class="btn btn-default pull-left" data-dismiss="modal" aria-hidden="true">' +
-                '   Close' +
-                '</button>');
-        });
+
+//        $(".modal-footer").prepend('' +
+//            '<button type="button" class="btn btn-default pull-left" data-dismiss="modal" aria-hidden="true">' +
+//            '   Close' +
+//            '</button>');
+        $("#modal").modal('show');
+        $('.carousel').carousel();
+
+
     }
+
+    var nextBtn = document.getElementById("nextBtn");
+    nextBtn.onclick = function () {
+        showStep('next');
+    }
+    var prevBtn = document.getElementById("prevBtn");
+    prevBtn.onclick = function () {
+        showStep('prev');
+    }
+
 
 
 //    var csrftoken = "{{ csrf_token() }}";
