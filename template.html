@@ -322,7 +322,7 @@
                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal" aria-hidden="true">Close</button>
                 <a id="prevBtn" href="#" class="btn">Previous</a>
                 <a id="nextBtn" href="#" class="btn btn-success">Next</a>
-                <button type="button" class="btn btn-success pull-right" data-dismiss="modal" aria-hidden="true">Close</button>
+                <button id="goBackBtn" type="button" class="btn btn-primary pull-right" data-dismiss="modal" aria-hidden="true">Back to task</button>
             </div>
         </div>
     </div>
@@ -442,6 +442,19 @@
 
     "use strict";
 
+
+
+
+
+
+
+
+
+
+
+
+
+
     /**
      * grid.js
      * Grid Constructor function
@@ -450,9 +463,13 @@
      *
      */
     function Grid(task) {
-        this.canvas;
+
+        //Modal.call(this);
+
         this.task = task;
-        this.activate_cell();
+        this.activateCell();
+
+
 
         /**
          *
@@ -471,6 +488,7 @@
         });
     }
 
+    //Grid.prototype = Object.create(Modal.prototype);
 
     /**
      *
@@ -525,7 +543,7 @@
      * Listen for lick on .zoomLens and find the closed square
      *
      */
-    Grid.prototype.activate_cell = function () {
+    Grid.prototype.activateCell = function () {
 
         var clicks = 0;
         var timer = null;
@@ -538,7 +556,7 @@
 
             // Find the cloest grid square to click on the zoomLens
 
-            var activeSquare = _this.find_closest();
+            var activeSquare = _this.findClosestSquare();
             var activeSquareNode = activeSquare.node;
 
             // Not able to use jQuery .click or .dblclick for some reason i can't remember
@@ -572,7 +590,7 @@
      * that have the clicked coordinates
      *
      */
-    Grid.prototype.find_closest = function () {
+    Grid.prototype.findClosestSquare = function () {
 
         var _this = this,
             activeSquare,
@@ -619,6 +637,40 @@
      * End of Grid class
      *
      * */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -728,7 +780,8 @@
                 timeTaken: "",
                 device: "",
                 browser: "",
-                img: ""
+                img: "",
+                openModalCount: 0
             }
 
         } else {
@@ -767,14 +820,18 @@
                 r.deselectAllSquares();
             }
 
+            //Launch tutorial modal
+            var openModalCount = 0;
+            var modalBtn = document.getElementById("modalBtn");
+            modalBtn.onclick = function () {
+                $("#modal").modal('show');
+                $('.carousel').carousel();
+                openModalCount++;
+            };
+
 
             // On click of the "next slide" button
             $('.btn-answer').off('click').on('click', function () {
-
-                /*
-                 * Conditional to check if the image difficulty has been set
-                 */
-                if ($("#difficulty option:selected").val() != 0) {
 
                     // Grab a new timestamp and find out the difference
                     // This is how long the user has been on the task for
@@ -794,7 +851,8 @@
                         timeTaken: seconds,
                         device: whatDevice(),
                         browser: whatBrowser(),
-                        imgNumber: result
+                        imgNumber: result,
+                        openModalCount: openModalCount
                     };
 
 
@@ -820,7 +878,7 @@
 
                     $("#loading").fadeIn(500);
 
-                }
+
             });
             $("#loading").hide();
         } else {
@@ -843,6 +901,11 @@
     })
 
 
+    /*
+     * Modal
+     *
+     */
+
     var step = -1;
     function showStep(action) {
         $("#" + step).hide();
@@ -862,10 +925,10 @@
 
         if (step == 7) {
             $("#nextBtn").hide();
-            $("#startContrib").show();
+            $("#goBackBtn").show();
         } else {
             $("#nextBtn").show();
-            $("#startContrib").hide();
+            $("#goBackBtn").hide();
         }
         $("#" + step).show();
 
@@ -873,29 +936,28 @@
     }
 
     showStep('next');
+    var openModalCount = 0;
 
     //Launch tutoiral modal
     var modalBtn = document.getElementById("modalBtn");
     modalBtn.onclick = function () {
 
-//        $(".modal-footer").prepend('' +
-//            '<button type="button" class="btn btn-default pull-left" data-dismiss="modal" aria-hidden="true">' +
-//            '   Close' +
-//            '</button>');
         $("#modal").modal('show');
         $('.carousel').carousel();
-
-
-    }
+    };
 
     var nextBtn = document.getElementById("nextBtn");
     nextBtn.onclick = function () {
         showStep('next');
-    }
+    };
     var prevBtn = document.getElementById("prevBtn");
     prevBtn.onclick = function () {
         showStep('prev');
-    }
+    };
+
+
+
+
 
 
 
