@@ -274,12 +274,21 @@
 
     // Removing difficulty on mvp-01
     var pathname = window.location.pathname; // Returns path only
-    var mvp02 = false;
-    console.log(pathname);
-    if (pathname.indexOf("html") >= 0) {
-        mvp01 = true;
+
+
+    var inTask = "mvp-02/task/";
+    var tutorial = "mvp-02/newtask";
+
+    if (pathname.indexOf(inTask) >= 0) {
         $("#startContrib").remove();
+        $(".modal-footer").prepend('' +
+            '<button type="button" class="btn btn-primary pull-right" data-dismiss="modal" aria-hidden="true">' +
+            '<i class="icon-thumbs-up"></i>' +
+            '   Go back' +
+            '</button>');
     }
+
+
 
     var step = -1;
     function showStep(action) {
@@ -301,10 +310,6 @@
         if (step == 7) {
             $("#nextBtn").hide();
             $("#startContrib").show();
-            $(".modal-footer").prepend('' +
-                '<button type="button" class="btn btn-success pull-right" data-dismiss="modal" aria-hidden="true">' +
-                '   Go back' +
-                '</button>');
         } else {
             $("#nextBtn").show();
             $("#startContrib").hide();
