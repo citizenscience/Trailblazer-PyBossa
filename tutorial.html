@@ -273,6 +273,15 @@
     $('.carousel').carousel();
 
 
+     // Removing difficulty on mvp-01
+    var pathname = window.location.pathname; // Returns path only
+    var mvp02 = false;
+    console.log(pathname);
+    if (pathname.indexOf("html") >= 0) {
+        mvp01 = true;
+        $("#startContrib").remove();
+    }
+
     var step = -1;
     function showStep(action) {
         $("#" + step).hide();
