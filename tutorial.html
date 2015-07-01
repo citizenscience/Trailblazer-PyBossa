@@ -270,8 +270,10 @@
 
 <script>
 
-    $('.carousel').carousel();
 
+
+    var scripts = document.getElementsByTagName("script");
+    console.log(scripts);
     // Removing difficulty on mvp-01
     var pathname = window.location.pathname; // Returns path only
 
@@ -321,5 +323,6 @@
 
     showStep('next');
     $("#modal").modal('show');
+    $('.carousel').carousel();
 
 </script>
