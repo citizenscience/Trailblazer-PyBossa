@@ -369,6 +369,7 @@
             <div id="grid-info" class="grid-info">
 
                 <div class="grid-info-instructions">
+                    mvp-02aa
                     <h1 id="question">Select which grid sections contain cancer cells</h1>
 
                     <p>
@@ -637,7 +638,7 @@
 
     // Loads user progress into Grid info
     function loadUserProgress() {
-        pybossa.userProgress('mvp-02').done(function (data) {
+        pybossa.userProgress('mvp-02a').done(function (data) {
             var pct = Math.round((data.done * 100) / data.total);
             $("#progress").css("width", pct.toString() + "%");
             $("#progress").attr("title", pct.toString() + "% completed!");
@@ -840,7 +841,7 @@
      */
 
     $(function () {
-        pybossa.run('mvp-02');
+        pybossa.run('mvp-02a');
     })
 
 
