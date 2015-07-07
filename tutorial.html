@@ -734,6 +734,7 @@
             <div class="modal-footer">
                 <a id="prevBtn" href="#" onclick="showStep('prev')" class="btn">Previous</a>
                 <a id="nextBtn" href="#" onclick="showStep('next')" class="btn btn-success">Next</a>
+                <a id="startContrib" href="../mvp-02c/newtask" class="btn btn-primary" style="display:none"><i class="icon-thumbs-up"></i> Start</a>
             </div>
         </div>
     </div>
@@ -757,21 +758,7 @@
 
     var idx;
 
-    // Removing difficulty on mvp-01
-    var pathname = window.location.pathname; // Returns path only
 
-
-    var inTask = "mvp-02b/task/";
-    var tutorial = "mvp-02b/newtask";
-
-    if (pathname.indexOf(inTask) >= 0) {
-        $("#startContrib").remove();
-        $(".modal-footer").prepend('' +
-            '<button type="button" class="btn btn-primary pull-right" data-dismiss="modal" aria-hidden="true">' +
-            '<i class="icon-thumbs-up"></i>' +
-            '   Go back' +
-            '</button>');
-    }
 
 
     var step = -1;
@@ -834,11 +821,6 @@
         if (step == 19) {
             $("#nextBtn").hide();
             $("#startContrib").show();
-            $(".modal-footer").prepend('' +
-            '<button type="button" class="btn btn-primary pull-right" data-dismiss="modal" aria-hidden="true">' +
-            '<i class="icon-thumbs-up"></i>' +
-            '   Go back' +
-            '</button>');
         } else {
             $("#nextBtn").show();
             $("#startContrib").hide();

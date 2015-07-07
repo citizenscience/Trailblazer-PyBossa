@@ -808,8 +808,10 @@
 
 
             <div class="modal-footer">
+                <button type="button" class="btn pull-left closeBtn"></i>Close</button>
                 <a id="prevBtn" href="#" onclick="showStep('prev')" class="btn">Previous</a>
                 <a id="nextBtn" href="#" onclick="showStep('next')" class="btn btn-success">Next</a>
+                <button type="button" class="btn btn-primary pull-right closeBtn" id="goBackBtn" style="display:none;"><i class="icon-thumbs-up"></i>Go back</button>
             </div>
         </div>
     </div>
@@ -1268,7 +1270,7 @@
                 $('.carousel').carousel();
                 openModalCount++;
             };
-            $(document).on("click", ".closeBtn, ", function (e) {
+            $(document).on("click", ".closeBtn", function (e) {
                  $('.modal').modal('hide');
                 $.removeData($(".tutorialZoom"), 'elevateZoom');
                 $('.zoomContainer').remove();
@@ -1427,12 +1429,8 @@
 
         if (step == 19) {
             $("#nextBtn").hide();
-            $("#startContrib").show();
-            $(".modal-footer").prepend('' +
-            '<button type="button" class="btn btn-primary pull-right closeBtn" data-dismiss="modal" aria-hidden="true">' +
-            '<i class="icon-thumbs-up"></i>' +
-            '   Go back' +
-            '</button>');
+            $("#goBackBtn").show();
+
         } else {
             $("#nextBtn").show();
             $("#startContrib").hide();
