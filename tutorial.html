@@ -2,7 +2,7 @@
 
 <style>
 
-    /*
+     /*
      * For styling the tutorial modal component
      * Need to make this responsive and cross browser compatable
      */
@@ -19,6 +19,14 @@
         padding: 0;
     }
 
+    .modal-header {
+        text-align: center;
+    }
+
+    .modal.fade.in {
+  top: 45%;
+}
+
     /*
      * Modal body split into two sections
      * left is the .modal-image (contains image and carousel)
@@ -31,11 +39,10 @@
         word-break: keep-all;
     }
 
-    .modal .modal-body .modal-image {
+    .modal .modal-body.has-info .modal-image {
         width: 460px;
     }
-
-    .modal .modal-body .modal-info {
+    .modal .modal-body.has-info .modal-info {
         width: 300px;
         padding: 20px;
     }
@@ -45,9 +52,23 @@
     }
 
     .modal .modal-body .carousel-control {
-        top: 50%;
+        top: 92%;
     }
 
+    .carousel-control.left {
+        left: 85%;
+    }
+
+    .modal .modal-body .modal-image img {
+        width: 460px;
+        float: left;
+    }
+
+    .modal .modal-body .item-content {
+        float: right;
+        width: 300px;
+        padding: 20px;
+    }
     /*
      * Adding a message that appears on
      * mobile and tablet devices to say that this is currently
