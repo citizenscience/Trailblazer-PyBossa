@@ -2,6 +2,11 @@
 
 <style>
 
+
+    .zoomContainer {
+        z-index: 1999;
+    }
+
     /*
      * For styling the tutorial modal component
      * Need to make this responsive and cross browser compatable
@@ -244,16 +249,36 @@
             </div>
 
 
+             <div id="7" class="modal-body" style="display:none">
+
+                <div class="modal-image">
+                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid-red-green.jpg" alt=""/>
+                </div>
+                <div class="modal-info">
+                    <h1>Empty sections can be left blank</h1>
+
+                    <p>
+                        You can ignore any sections that are empty, normally corner and edge sections (but not always).
+                    </p>
+
+                    <p>
+                        You can then click on the green “Next slide” to move onto the next sample.
+                    </p>
+                </div>
+
+            </div>
+
+
 
 
 
 
             <!--new slides added here-->
 
-            <div id="7" class="modal-body" style="display:none">
+            <div id="8" class="modal-body" style="display:none">
 
                 <div class="modal-image">
-                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/guidence-images-1.jpg" alt=""/>
+                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/guidence-images-1.jpg" class="zoom" data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/guidence-images-1.jpg" alt=""/>
                 </div>
                 <div class="modal-info">
                     <h1>Guidance Image 1 – Healthy lung epithelial cells, white blood cells, stroma and cartilage</h1>
@@ -263,15 +288,14 @@
 
                         These cells, are nicely defined, form a nice orderly structure and are all fairly similar to each other. Look really closely and you’ll seen fine hair like structures facing into the airway that are responsible for wafting mucus out of your lungs. This complex, organised and uniform behaviour is lost when these cells become cancerous.
 
-
-        </p>
+                    </p>
                 </div>
 
             </div>
-            <div id="8" class="modal-body" style="display:none">
+            <div id="9" class="modal-body" style="display:none">
 
                 <div class="modal-image">
-                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/guidence-images-1.jpg" alt=""/>
+                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/guidence-images-1.jpg" class="zoom" data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/guidence-images-1.jpg" alt=""/>
                 </div>
                 <div class="modal-info">
                     <h1>Guidance Image 1 – Healthy lung epithelial cells, white blood cells, stroma and cartilage</h1>
@@ -288,10 +312,10 @@
 
 
 
-            <div id="9" class="modal-body" style="display:none">
+            <div id="10" class="modal-body" style="display:none">
 
                 <div class="modal-image">
-                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/guidence-images-2.jpg" alt=""/>
+                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/guidence-images-2.jpg" class="zoom" data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/guidence-images-2.jpg" alt=""/>
                 </div>
                 <div class="modal-info">
                     <h1>Guidance Image 2 – Cancer cells in chains and rings and stroma mixed with blood cells</h1>
@@ -308,10 +332,10 @@
                 </div>
 
             </div>
-            <div id="10" class="modal-body" style="display:none">
+            <div id="11" class="modal-body" style="display:none">
 
                 <div class="modal-image">
-                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/guidence-images-3.jpg" alt=""/>
+                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/guidence-images-3.jpg" class="zoom" data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/guidence-images-3.jpg" alt=""/>
                 </div>
                 <div class="modal-info">
                     <h1>Guidance Image 3 – Cancer cells in clumps and lots of stroma mixed with blood cells</h1>
@@ -324,10 +348,10 @@
                 </div>
 
             </div>
-            <div id="11" class="modal-body" style="display:none">
+            <div id="12" class="modal-body" style="display:none">
 
                 <div class="modal-image">
-                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/guidence-images-4.jpg" alt=""/>
+                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/guidence-images-4.jpg" class="zoom" data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/guidence-images-4.jpg" alt=""/>
                 </div>
                 <div class="modal-info">
                     <h1>Guidance Image 4 – Dead cells, cancer cells in clumps, flood of stroma and lymphocytes</h1>
@@ -342,10 +366,10 @@
                 </div>
 
             </div>
-            <div id="12" class="modal-body" style="display:none">
+            <div id="13" class="modal-body" style="display:none">
 
                 <div class="modal-image">
-                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/guidence-images-5.jpg" alt=""/>
+                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/guidence-images-5.jpg" class="zoom" data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/guidence-images-5.jpg" alt=""/>
                 </div>
                 <div class="modal-info">
                     <h1>Guidance Image 5 – Stroma, blood cells, cartilage, healthy lung epithelia, cancer cells including examples extreme nuclear pleomorphism</h1>
@@ -373,24 +397,7 @@
 
 
 
-            <div id="13" class="modal-body" style="display:none">
 
-                <div class="modal-image">
-                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid-red-green.jpg" alt=""/>
-                </div>
-                <div class="modal-info">
-                    <h1>Empty sections can be left blank</h1>
-
-                    <p>
-                        You can ignore any sections that are empty, normally corner and edge sections (but not always).
-                    </p>
-
-                    <p>
-                        You can then click on the green “Next slide” to move onto the next sample.
-                    </p>
-                </div>
-
-            </div>
 
             <div class="modal-footer">
                 <a id="prevBtn" href="#" onclick="showStep('prev')" class="btn">Previous</a>
@@ -422,9 +429,14 @@
             '</button>');
     }
 
+    $(".zoom").elevateZoom({
+        zoomWindowFadeIn: 500,
+        zoomWindowFadeOut: 500,
+        lensFadeIn: 500,
+        lensFadeOut: 500
+    });
 
-
-    var step = -1;
+        var step = -1;
     function showStep(action) {
         $("#" + step).hide();
 
