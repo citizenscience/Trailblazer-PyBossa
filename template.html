@@ -1238,14 +1238,40 @@
                 r.deselectAllSquares();
             }
 
-            //Launch tutorial modal
+           //Launch tutorial modal
             var openModalCount = 0;
             var modalBtn = document.getElementById("modalBtn");
             modalBtn.onclick = function () {
+
+                $('.modal').modal({
+                    backdrop: 'static',
+                    keyboard: false
+                })
+
+                $.removeData($(".tutorialZoom"), 'elevateZoom');
+                $('.zoomContainer').remove();
+                $('.zoomWindowContainer').remove();
                 $("#modal").modal('show');
                 $('.carousel').carousel();
                 openModalCount++;
             };
+            $(document).on("click", "#closeBtn", function (e) {
+                 $('.modal').modal('hide');
+                $.removeData($(".tutorialZoom"), 'elevateZoom');
+                $('.zoomContainer').remove();
+                $('.zoomWindowContainer').remove();
+
+                $(".img-polaroid").elevateZoom({
+                    zoomWindowPosition: "grid-info",
+                    lensFadeIn: 500,
+                    lensFadeOut: 500,
+                    // Changing these two numbers changes the zoomWindowWidth
+                    // Also the side of the .zoomLens (box over image)
+                    zoomWindowWidth: 455,
+                    zoomWindowHeight: 455,
+                });
+            })
+
 
 
 
@@ -1389,6 +1415,11 @@
         if (step == 19) {
             $("#nextBtn").hide();
             $("#startContrib").show();
+            $(".modal-footer").prepend('' +
+            '<button type="button" class="btn btn-primary pull-right" data-dismiss="modal" aria-hidden="true">' +
+            '<i class="icon-thumbs-up"></i>' +
+            '   Go back' +
+            '</button>');
         } else {
             $("#nextBtn").show();
             $("#startContrib").hide();
