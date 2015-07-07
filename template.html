@@ -1268,7 +1268,7 @@
                 $('.carousel').carousel();
                 openModalCount++;
             };
-            $(document).on("click", "#closeBtn", function (e) {
+            $(document).on("click", ".closeBtn, ", function (e) {
                  $('.modal').modal('hide');
                 $.removeData($(".tutorialZoom"), 'elevateZoom');
                 $('.zoomContainer').remove();
@@ -1429,7 +1429,7 @@
             $("#nextBtn").hide();
             $("#startContrib").show();
             $(".modal-footer").prepend('' +
-            '<button type="button" class="btn btn-primary pull-right" data-dismiss="modal" aria-hidden="true">' +
+            '<button type="button" class="btn btn-primary pull-right closeBtn" data-dismiss="modal" aria-hidden="true">' +
             '<i class="icon-thumbs-up"></i>' +
             '   Go back' +
             '</button>');
