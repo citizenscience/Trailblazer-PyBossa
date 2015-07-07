@@ -680,7 +680,7 @@
             <div id="14" class="modal-body" style="display:none">
 
                 <div class="modal-image">
-                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/guidence-images-1.jpg" alt=""/>
+                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/guidence-images-1.jpg" id="zoom01" data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/guidence-images-1.jpg" alt=""/>
                 </div>
                 <div class="modal-info">
                     <h1>Guidance Image 1 – Healthy lung epithelial cells, white blood cells, stroma and cartilage</h1>
@@ -697,13 +697,13 @@
             <div id="15" class="modal-body" style="display:none">
 
                 <div class="modal-image">
-                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/guidence-images-1.jpg" alt=""/>
+                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/guidence-images-1.jpg" id="zoom02" data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/guidence-images-1.jpg" alt=""/>
                 </div>
                 <div class="modal-info">
                     <h1>Guidance Image 1 – Healthy lung epithelial cells, white blood cells, stroma and cartilage</h1>
 
                     <p>
-                        Just inside of the epithelial cells is a single layer of white blood cells. They can also be found in dense or loose clumps nearby a tumour. They are small, round solid looking cells, indicated here with pink arrows and circles. Take a closer look.
+                         Just inside of the epithelial cells is a single layer of white blood cells. They can also be found in dense or loose clumps nearby a tumour. They are small, round solid looking cells, indicated here with pink arrows and circles. Take a closer look.
                         Circled in orange is cartilage which provides structural support but you will not see too many of these.
 
                         The remaining cells, a few sections of which have been circled and indicated with purple arrows, make up the stroma. These stringy, loosely spread cells provide support and structure in both healthy organs and tumours.
@@ -712,10 +712,12 @@
 
             </div>
 
+
+
             <div id="16" class="modal-body" style="display:none">
 
                 <div class="modal-image">
-                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/guidence-images-2.jpg" alt=""/>
+                    <img class="tutorialZoom" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/guidence-images-2.jpg" id="zoom03" data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/guidence-images-2.jpg" alt=""/>
                 </div>
                 <div class="modal-info">
                     <h1>Guidance Image 2 – Cancer cells in chains and rings and stroma mixed with blood cells</h1>
@@ -735,7 +737,7 @@
             <div id="17" class="modal-body" style="display:none">
 
                 <div class="modal-image">
-                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/guidence-images-3.jpg" alt=""/>
+                    <img class="tutorialZoom" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/guidence-images-3.jpg" id="zoom04" data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/guidence-images-3.jpg" alt=""/>
                 </div>
                 <div class="modal-info">
                     <h1>Guidance Image 3 – Cancer cells in clumps and lots of stroma mixed with blood cells</h1>
@@ -751,7 +753,7 @@
             <div id="18" class="modal-body" style="display:none">
 
                 <div class="modal-image">
-                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/guidence-images-4.jpg" alt=""/>
+                    <img class="tutorialZoom" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/guidence-images-4.jpg" id="zoom05" data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/guidence-images-4.jpg" alt=""/>
                 </div>
                 <div class="modal-info">
                     <h1>Guidance Image 4 – Dead cells, cancer cells in clumps, flood of stroma and lymphocytes</h1>
@@ -769,7 +771,7 @@
             <div id="19" class="modal-body" style="display:none">
 
                 <div class="modal-image">
-                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/guidence-images-5.jpg" alt=""/>
+                    <img class="tutorialZoom" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/guidence-images-5.jpg" id="zoom06" data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/guidence-images-5.jpg" alt=""/>
                 </div>
                 <div class="modal-info">
                     <h1>Guidance Image 5 – Stroma, blood cells, cartilage, healthy lung epithelia, cancer cells including examples extreme nuclear pleomorphism</h1>
@@ -1380,32 +1382,32 @@
         }
 
         switch (step) {
-            case 8:
+            case 14:
                 $('.zoomContainer').remove();
                 $('.zoomWindowContainer').remove();
                 $("#zoom01").elevateZoom();
                 break;
-            case 9:
+            case 15:
                 $('.zoomContainer').remove();
                 $('.zoomWindowContainer').remove();
                 $("#zoom02").elevateZoom();
                 break;
-            case 10:
+            case 16:
                 $('.zoomContainer').remove();
                 $('.zoomWindowContainer').remove();
                 $("#zoom03").elevateZoom();
                 break;
-            case 11:
+            case 17:
                 $('.zoomContainer').remove();
                 $('.zoomWindowContainer').remove();
                 $("#zoom04").elevateZoom();
                 break;
-            case 12:
+            case 18:
                 $('.zoomContainer').remove();
                 $('.zoomWindowContainer').remove();
                 $("#zoom05").elevateZoom();
                 break;
-            case 13:
+            case 19:
                 $('.zoomContainer').remove();
                 $('.zoomWindowContainer').remove();
                 $("#zoom06").elevateZoom();
