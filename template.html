@@ -218,14 +218,26 @@
             <div id="2" class="modal-body" style="display:none">
 
                 <div class="modal-image">
-                    <div id="myCarousel" class="carousel slide">
+                    <div class="carousel slide" id="myCarousel">
                         <!-- Carousel items -->
                         <div class="carousel-inner">
                             <div class="active item">
                                 <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/non-cancer-cells-area.jpg" alt=""/>
+                                <div class="item-inner" style="display:none;">
+                                    <h3>Item Inner Title One</h3>
+                                    <p>
+                                        On click of the "next slide" button
+                                    </p>
+                                </div>
                             </div>
                             <div class="item">
                                 <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/non-cancer-cells-arrows.jpg" alt=""/>
+                                <div class="item-inner" style="display:none;">
+                                    <h3>Item Inner Title Two</h3>
+                                    <p>
+                                        On click of the "next slide" button On click of the "next slide" button
+                                    </p>
+                                </div>
                             </div>
                         </div>
                         <!-- Carousel nav -->
@@ -391,7 +403,7 @@
                     <button class="btn" id="selectAllBtn" value="all">Select All</button>
                     <button class="btn" id="deselectBtn">Deselect All</button>
 
-                    <button class="btn btn-primary" id="modalBtn">Tutorial</button>
+                    <button class="btn btn-primary" id="modalShow">Tutorial</button>
                     <button class="btn btn-answer btn-success nextSlideBtn" id="nextSlideBtn" value="next">Next slide</button>
                 </div>
 
@@ -620,7 +632,7 @@
      *
      * */
 
-
+    /************************************************************************************/
 
 
 
@@ -689,6 +701,19 @@
 
     /*
      *
+     * End of helpful functions
+     *
+     * */
+
+    /************************************************************************************/
+
+
+
+
+
+
+    /*
+     *
      * PyBossa stuff
      * - .taskLoaded
      * - .presentTask
@@ -749,6 +774,7 @@
             var r = new Grid(task);
             r.createGrid();
 
+
             var selectBtn = document.getElementById("selectAllBtn");
             selectBtn.onclick = function () {
                 r.selectAllSquares();
@@ -758,21 +784,39 @@
                 r.deselectAllSquares();
             }
 
+
+
+
+            /*
+             * Launch helper modal!!!
+             *
+             */
+
+
+
             //Launch tutorial modal
             var openModalCount = 0;
-            var modalBtn = document.getElementById("modalBtn");
+            var modalBtn = document.getElementById("modalShow");
             modalBtn.onclick = function () {
-                $("#modal").modal('show');
-                $('.carousel').carousel();
+                $('#modal').modal('show');
+                $('.carousel').carousel({
+                    interval: false
+                });
                 openModalCount++;
             };
 
+            /*************************************************/
 
 
-            // On click of the "next slide" button
+
+
+            /*
+             * Next slide button
+             * On click of the "next slide" button
+             *
+             */
+
             $('.btn-answer').off('click').on('click', function () {
-
-
 
                     // Grab a new timestamp and find out the difference
                     // This is how long the user has been on the task for
@@ -822,6 +866,8 @@
 
             });
 
+            /*************************************************/
+
 
         } else {
 
@@ -844,6 +890,24 @@
     })
 
 
+
+    /*
+     *
+     * End of pybossa shizzel
+     *
+     * */
+
+    /************************************************************************************/
+
+
+
+    function carouselContent(){
+
+    }
+
+
+
+
     /*
      * Modal
      *
@@ -860,34 +924,33 @@
             step -= 1;
         }
 
+        if( $("#" + step + " .carousel").length > 0 ) {
+
+            carouselContent();
+        }
+
+
         if (step == 0) {
             $("#prevBtn").hide();
         } else {
             $("#prevBtn").show();
         }
 
-        if (step == 7) {
+        var $lastStep = $('.modal-body').length -1
+        if (step == $lastStep ) {
             $("#nextBtn").hide();
             $("#goBackBtn").show();
         } else {
             $("#nextBtn").show();
             $("#goBackBtn").hide();
         }
+
         $("#" + step).show();
 
 
     }
 
     showStep('next');
-    var openModalCount = 0;
-
-    //Launch tutoiral modal
-    var modalBtn = document.getElementById("modalBtn");
-    modalBtn.onclick = function () {
-
-        $("#modal").modal('show');
-        $('.carousel').carousel();
-    };
 
     var nextBtn = document.getElementById("nextBtn");
     nextBtn.onclick = function () {
@@ -900,19 +963,6 @@
 
 
 
-
-
-
-
-//    var csrftoken = "{{ csrf_token() }}";
-
-//    $.ajaxSetup({
-//        beforeSend: function (xhr, settings) {
-//            if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type)) {
-//                xhr.setRequestHeader("X-CSRFToken", csrftoken);
-//            }
-//        }
-//    });
 
 </script>
 
