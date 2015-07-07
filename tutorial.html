@@ -464,6 +464,89 @@ There also tends to be a lot of small, round solid looking white blood cells (bu
             </div>
 
 
+
+            <div id="6" class="modal-body" style="display:none">
+
+                <div class="modal-image">
+                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid.jpg" alt=""/>
+                </div>
+                <div class="modal-info">
+                    <h1>Let’s run through an example</h1>
+
+                    <p>
+                        We have split the images up into a 6x6 grid. Some of the grid sections contain cancer cells and some of them do not. We’re going to show you what to do.
+                    </p>
+                </div>
+            </div>
+
+            <div id="7" class="modal-body" style="display:none">
+
+                <div class="modal-image">
+                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/zoomed-in.jpg" alt=""/>
+                </div>
+                <div class="modal-info">
+                    <h1>Look closely at the cells in each section</h1>
+
+                    <p>
+                        Like we have done here, you can hover over the cells in each section to pull up a zoomed in version and get a closer look.
+                    </p>
+                </div>
+            </div>
+
+            <div id="8" class="modal-body" style="display:none">
+
+                <div class="modal-image">
+                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid-red.jpg" alt=""/>
+                </div>
+                <div class="modal-info">
+                    <h1>We’ve clicked once to highlight sections containing cancer cells red</h1>
+
+                    <p>
+                        Examine each section and if you think it contains cancer cells (even if you only see one or two cells) click once to turn that section red.
+                    </p>
+                </div>
+
+            </div>
+            <div id="9" class="modal-body" style="display:none">
+
+                <div class="modal-image">
+                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid-red-green.jpg" alt=""/>
+                </div>
+                <div class="modal-info">
+                    <h1>We’ve clicked twice to highlight sections that do <b>not contain</b> cancer cells green</h1>
+
+                    <p>
+                        Examine each section and if you think it
+                        <b>does not</b> contain any cancer cells, you can double click to turn that section green.
+                    </p>
+
+                    <p>
+                        Before you start analysing, lets take a closer look at some samples
+                    </p>
+                </div>
+
+            </div>
+
+            <div id="10" class="modal-body" style="display:none">
+
+                <div class="modal-image">
+                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid-red-green.jpg" alt=""/>
+                </div>
+                <div class="modal-info">
+                    <h1>Empty sections can be left blank</h1>
+
+                    <p>
+                        You can ignore any sections that are empty, normally corner and edge sections (but not always).
+                    </p>
+
+                    <p>
+                        You can then click on the green “Next slide” to move onto the next sample.
+                    </p>
+                </div>
+
+            </div>
+
+
             <div class="modal-footer">
                 <a id="prevBtn" href="#" onclick="showStep('prev')" class="btn">Previous</a>
                 <a id="nextBtn" href="#" onclick="showStep('next')" class="btn btn-success">Next</a>
@@ -506,7 +589,7 @@ There also tends to be a lot of small, round solid looking white blood cells (bu
 //            $(".modal-info").append($('.carousel-inner .item.active').children().html());
 //        }
 
-        if (step == 5) {
+        if (step == 10) {
             $("#nextBtn").hide();
             $("#startContrib").show();
         } else {
