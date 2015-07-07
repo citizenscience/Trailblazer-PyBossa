@@ -1,11 +1,21 @@
 <style type="text/css">
 
-/*
-    * For styling the tutorial modal component
-    * Need to make this responsive and cross browser compatable
-    */
+     .zoomContainer {
+        z-index: 1999;
+    }
+
+    /*
+     * For styling the tutorial modal component
+     * Need to make this responsive and cross browser compatable
+     */
+
+
+     .modal.fade.in {
+         top: 45%;
+     }
 
     .modal {
+        z-index: 1999 !important;
         width: 800px;
         margin-left: -400px;
         top: 45%;
@@ -15,15 +25,17 @@
         max-height: 600px;
         display: table;
         padding: 0;
+        z-index: 1200 !important;
     }
 
-    .modal-header {
-        text-align: center;
+    .modal-backdrop {
+        z-index: 1000 !important;
+    }
+    .zoomContainer {
+        z-index: 2000 !important;
     }
 
-    .modal.fade.in {
-        top: 45%;
-    }
+
 
     /*
      * Modal body split into two sections
@@ -683,7 +695,7 @@
                     <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/guidence-images-1.jpg" id="zoom01" data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/guidence-images-1.jpg" alt=""/>
                 </div>
                 <div class="modal-info">
-                    <h1>Guidance Image 1 – Healthy lung epithelial cells, white blood cells, stroma and cartilage</h1>
+                    <h2>Guidance Image 1 – Healthy lung epithelial cells, white blood cells, stroma and cartilage</h2>
 
                     <p>
                         This is a healthy section of lung. The large green outline indicates an airway. This is lined by a thin layer of lung epithelial cells. These are indicated by the small green outlines and green arrows. Take a closer look.
@@ -700,7 +712,7 @@
                     <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/guidence-images-1.jpg" id="zoom02" data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/guidence-images-1.jpg" alt=""/>
                 </div>
                 <div class="modal-info">
-                    <h1>Guidance Image 1 – Healthy lung epithelial cells, white blood cells, stroma and cartilage</h1>
+                    <h2>Guidance Image 1 – Healthy lung epithelial cells, white blood cells, stroma and cartilage</h2>
 
                     <p>
                          Just inside of the epithelial cells is a single layer of white blood cells. They can also be found in dense or loose clumps nearby a tumour. They are small, round solid looking cells, indicated here with pink arrows and circles. Take a closer look.
@@ -720,7 +732,7 @@
                     <img class="tutorialZoom" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/guidence-images-2.jpg" id="zoom03" data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/guidence-images-2.jpg" alt=""/>
                 </div>
                 <div class="modal-info">
-                    <h1>Guidance Image 2 – Cancer cells in chains and rings and stroma mixed with blood cells</h1>
+                    <h2>Guidance Image 2 – Cancer cells in chains and rings and stroma mixed with blood cells</h2>
 
                     <p>
                         Here we have lots of cancer cells that have formed loose chains and rings. We have circled four of these structures in red but you can see there are many more.
@@ -740,7 +752,7 @@
                     <img class="tutorialZoom" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/guidence-images-3.jpg" id="zoom04" data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/guidence-images-3.jpg" alt=""/>
                 </div>
                 <div class="modal-info">
-                    <h1>Guidance Image 3 – Cancer cells in clumps and lots of stroma mixed with blood cells</h1>
+                    <h2>Guidance Image 3 – Cancer cells in clumps and lots of stroma mixed with blood cells</h2>
 
                     <p>
                         Here are more cancer cells but this time formed in clusters and clumps, most of which are circled in red.
@@ -756,7 +768,7 @@
                     <img class="tutorialZoom" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/guidence-images-4.jpg" id="zoom05" data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/guidence-images-4.jpg" alt=""/>
                 </div>
                 <div class="modal-info">
-                    <h1>Guidance Image 4 – Dead cells, cancer cells in clumps, flood of stroma and lymphocytes</h1>
+                    <h2>Guidance Image 4 – Dead cells, cancer cells in clumps, flood of stroma and lymphocytes</h2>
 
                     <p>
                         This image is of a very busy sample containing cancer cells, stroma and lots of small, round and solid looking blood cells
@@ -774,7 +786,7 @@
                     <img class="tutorialZoom" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/guidence-images-5.jpg" id="zoom06" data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/guidence-images-5.jpg" alt=""/>
                 </div>
                 <div class="modal-info">
-                    <h1>Guidance Image 5 – Stroma, blood cells, cartilage, healthy lung epithelia, cancer cells including examples extreme nuclear pleomorphism</h1>
+                    <h2>Guidance Image 5 – Stroma, blood cells, cartilage, healthy lung epithelia, cancer cells including examples extreme nuclear pleomorphism</h2>
 
                     <p>
                         In this image shows you most of the cells we have talked about.
@@ -798,7 +810,6 @@
             <div class="modal-footer">
                 <a id="prevBtn" href="#" onclick="showStep('prev')" class="btn">Previous</a>
                 <a id="nextBtn" href="#" onclick="showStep('next')" class="btn btn-success">Next</a>
-                <a id="startContrib" href="../mvp-02c/newtask" class="btn btn-primary" style="display:none"><i class="icon-thumbs-up"></i> Start</a>
             </div>
         </div>
     </div>
