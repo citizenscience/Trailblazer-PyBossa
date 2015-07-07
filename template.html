@@ -916,7 +916,9 @@
                 $('.zoomContainer').remove();
                 $('.zoomWindowContainer').remove();
                 $("#modal").modal('show');
-                $('.carousel').carousel();
+                $('.carousel').carousel({
+        interval: false
+    });
                 openModalCount++;
             };
             $(document).on("click", ".closeBtn", function (e) {
