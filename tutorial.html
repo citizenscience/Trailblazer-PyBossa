@@ -464,9 +464,6 @@ There also tends to be a lot of small, round solid looking white blood cells (bu
             </div>
 
 
-
-
-
             <div class="modal-footer">
                 <a id="prevBtn" href="#" onclick="showStep('prev')" class="btn">Previous</a>
                 <a id="nextBtn" href="#" onclick="showStep('next')" class="btn btn-success">Next</a>
@@ -479,23 +476,6 @@ There also tends to be a lot of small, round solid looking white blood cells (bu
 <script>
 
     var idx;
-
-    // Removing difficulty on mvp-01
-    var pathname = window.location.pathname; // Returns path only
-
-
-    var inTask = "mvp-02b/task/";
-    var tutorial = "mvp-02b/newtask";
-
-    if (pathname.indexOf(inTask) >= 0) {
-        $("#startContrib").remove();
-        $(".modal-footer").prepend('' +
-            '<button type="button" class="btn btn-primary pull-right" data-dismiss="modal" aria-hidden="true">' +
-            '<i class="icon-thumbs-up"></i>' +
-            '   Go back' +
-            '</button>');
-    }
-
 
     var step = -1;
     function showStep(action) {
@@ -545,42 +525,6 @@ There also tends to be a lot of small, round solid looking white blood cells (bu
         interval: false
     });
 
-
-//
-//    $('a[data-slide="prev"]').click(function () {
-//        //console.log( itemLast );
-//        var $currentIndex = $('.carousel-inner .item.active').index();
-//        console.log($currentIndex);
-//        setTimeout(function(){
-//            var a = $('.carousel .active').index('.carousel .item');
-//            console.log(a);
-//            if( a === 2 ) {
-//                var $lastItem = $('.carousel-inner .item:last-child').children().html();
-//                 $(".modal-info").empty().delay(1000).append( $lastItem );
-//            }
-//
-//        }, 1000);
-//
-//        var $prevItem = $('.carousel-inner .item.active').prev().children().html();
-//                 $(".modal-info").empty().delay(1000).append( $prevItem );
-//
-//    });
-//    $('a[data-slide="next"]').click(function () {
-//        //console.log($('.carousel-inner .item.active'));
-//
-//        setTimeout(function(){
-//            var a = $('.carousel .active').index('.carousel .item');
-//            console.log(a);
-//            if( a === 0 ) {
-//                var $firstItem = $('.carousel-inner .item:first-child').children().html();
-//                $(".modal-info").empty().delay(1000).append( $firstItem );
-//            }
-//        }, 1000);
-//
-//        var $nextItem = $('.carousel-inner .item.active').next().children().html();
-//                $(".modal-info").empty().delay(1000).append( $nextItem );
-//
-//    });
 
 
 </script>
