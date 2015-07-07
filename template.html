@@ -1353,10 +1353,38 @@
             $(".modal-body").removeClass("has-info");
         }
 
-//        if (step == 1) {
-//            $(".modal-info").empty();
-//            $(".modal-info").append($('.carousel-inner .item.active').children().html());
-//        }
+        switch (step) {
+            case 8:
+                $('.zoomContainer').remove();
+                $('.zoomWindowContainer').remove();
+                $("#zoom01").elevateZoom();
+                break;
+            case 9:
+                $('.zoomContainer').remove();
+                $('.zoomWindowContainer').remove();
+                $("#zoom02").elevateZoom();
+                break;
+            case 10:
+                $('.zoomContainer').remove();
+                $('.zoomWindowContainer').remove();
+                $("#zoom03").elevateZoom();
+                break;
+            case 11:
+                $('.zoomContainer').remove();
+                $('.zoomWindowContainer').remove();
+                $("#zoom04").elevateZoom();
+                break;
+            case 12:
+                $('.zoomContainer').remove();
+                $('.zoomWindowContainer').remove();
+                $("#zoom05").elevateZoom();
+                break;
+            case 13:
+                $('.zoomContainer').remove();
+                $('.zoomWindowContainer').remove();
+                $("#zoom06").elevateZoom();
+                break;
+        }
 
         if (step == 19) {
             $("#nextBtn").hide();
