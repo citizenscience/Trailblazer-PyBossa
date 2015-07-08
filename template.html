@@ -48,7 +48,38 @@
     }
 
 
+    .carousel-indicators-custom {
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+        margin-left: 0;
+        text-align: center;
+    }
 
+     .carousel-indicators-custom div {
+         list-style-type: none;
+         padding: 10px;
+         width: 20px;
+         display: inline-block;
+         background-color: #FFF;
+         margin-left: 10px;
+         cursor: pointer;
+     }
+
+     .carousel-indicators-custom div.active {
+         background-color: yellow;
+         width: 20px;
+         display: inline-block;
+     }
+
+     .modal-info .item-inner {
+         display: none;
+     }
+
+     .modal-info .item-inner.active {
+         display: block;
+     }
 
     /*
      * Utility to clear floats
@@ -183,20 +214,61 @@
 <div class="row">
     <div class="span12">
         <div id="modal" class="modal hide fade">
+
             <div id="0" class="modal-body" style="display:none">
-
                 <div class="modal-image">
-                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/cancer-cells-area.jpg" alt=""/>
-                </div>
-                <div class="modal-info">
-                    <h1>
-                        Your task is to identify cancer cells.
-                    </h1>
+                    <div class="carousel slide" id="myCarousel0">
+                        <!-- Carousel items -->
+                        <div class="carousel-inner">
+                            <div class="active item">
+                                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/non-cancer-cells-area.jpg" alt=""/>
 
-                    <p>
-                        These are uneven, often larger cells with a mottled or blotchy surface like the ones highlighted below.
-                    </p>
+                                <div class="item-inner">
+                                    <h1>
+                                        1 - You will see other cell types which you should ignore.
+                                    </h1>
+
+                                    <p>
+                                        Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam quis risus eget urna mollis ornare vel eu leo. Sed posuere consectetur est at lobortis.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/non-cancer-cells-arrows.jpg" alt=""/>
+
+                                <div class="item-inner">
+                                    <h1>
+                                        2 - You will see other cell types which you should ignore.
+                                    </h1>
+
+                                    <p>
+                                        Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec sed odio dui. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nulla vitae elit libero, a pharetra augue.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/non-cancer-cells-area.jpg" alt=""/>
+
+                                <div class="item-inner">
+                                    <h1>
+                                        3 - You will see other cell types which you should ignore.
+                                    </h1>
+
+                                    <p>
+                                        Sed posuere consectetur est at lobortis. Nulla vitae elit libero, a pharetra augue. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Sed posuere consectetur est at lobortis.
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="carousel-indicators-custom" id="carouselIndicatorsList0"></div>
+                        <!-- Carousel nav -->
+                        <!--<a class="carousel-control left">&lsaquo;</a>-->
+                        <!--<a class="carousel-control right">&rsaquo;</a>-->
+                    </div>
                 </div>
+                <div class="modal-info"></div>
+
 
             </div>
 
@@ -218,40 +290,15 @@
             <div id="2" class="modal-body" style="display:none">
 
                 <div class="modal-image">
-                    <div class="carousel slide" id="myCarousel">
-                        <!-- Carousel items -->
-                        <div class="carousel-inner">
-                            <div class="active item">
-                                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/non-cancer-cells-area.jpg" alt=""/>
-                                <div class="item-inner" style="display:none;">
-                                    <h3>Item Inner Title One</h3>
-                                    <p>
-                                        On click of the "next slide" button
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/non-cancer-cells-arrows.jpg" alt=""/>
-                                <div class="item-inner" style="display:none;">
-                                    <h3>Item Inner Title Two</h3>
-                                    <p>
-                                        On click of the "next slide" button On click of the "next slide" button
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Carousel nav -->
-                        <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-                        <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
-                    </div>
+                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/cancer-cells-area.jpg" alt=""/>
                 </div>
                 <div class="modal-info">
                     <h1>
-                        You will see other cell types which you should ignore.
+                        Your task is to identify cancer cells.
                     </h1>
 
                     <p>
-                        These include the smaller, denser cells and the stretched wispy cells, some of these are highlighted below. We’re not looking for these cells.
+                        These are uneven, often larger cells with a mottled or blotchy surface like the ones highlighted below.
                     </p>
                 </div>
 
@@ -260,15 +307,59 @@
             <div id="3" class="modal-body" style="display:none">
 
                 <div class="modal-image">
-                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid.jpg" alt=""/>
-                </div>
-                <div class="modal-info">
-                    <h1>Let’s run through an example</h1>
+                    <div class="carousel slide" id="myCarousel3">
+                        <!-- Carousel items -->
+                        <div class="carousel-inner">
+                            <div class="active item">
+                                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/non-cancer-cells-area.jpg" alt=""/>
 
-                    <p>
-                        We have split the images up into a 6x6 grid. Some of the grid sections contain cancer cells and some of them do not. We’re going to show you what to do.
-                    </p>
+                                <div class="item-inner">
+                                    <h1>
+                                        1 - You will see other cell types which you should ignore.
+                                    </h1>
+
+                                    <p>
+                                        Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam quis risus eget urna mollis ornare vel eu leo. Sed posuere consectetur est at lobortis.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/non-cancer-cells-arrows.jpg" alt=""/>
+
+                                <div class="item-inner">
+                                    <h1>
+                                        2 - You will see other cell types which you should ignore.
+                                    </h1>
+
+                                    <p>
+                                        Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec sed odio dui. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nulla vitae elit libero, a pharetra augue.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/non-cancer-cells-area.jpg" alt=""/>
+
+                                <div class="item-inner">
+                                    <h1>
+                                        3 - You will see other cell types which you should ignore.
+                                    </h1>
+
+                                    <p>
+                                        Sed posuere consectetur est at lobortis. Nulla vitae elit libero, a pharetra augue. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Sed posuere consectetur est at lobortis.
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="carousel-indicators-custom" id="carouselIndicatorsList3"></div>
+                        <!-- Carousel nav -->
+                        <!--<a class="carousel-control left">&lsaquo;</a>-->
+                        <!--<a class="carousel-control right">&rsaquo;</a>-->
+                    </div>
                 </div>
+                <div class="modal-info"></div>
+
+
             </div>
 
             <div id="4" class="modal-body" style="display:none">
@@ -299,6 +390,7 @@
                 </div>
 
             </div>
+
             <div id="6" class="modal-body" style="display:none">
 
                 <div class="modal-image">
@@ -333,6 +425,7 @@
                 </div>
 
             </div>
+
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal" aria-hidden="true">Close</button>
@@ -699,6 +792,25 @@
     }
 
 
+     function nextSlideContent(carousel) {
+        return function () {
+
+            // Add and remove active class
+            $('[class^=carousel-selector-]').removeClass('active');
+            $(this).addClass("active");
+
+            var id_selector = $(this).attr("class");
+            var id = id_selector.substr(id_selector.length - 8);
+            id = parseInt(id);
+            var $itemInners = carousel.find(".modal-info .item-inner");
+            $itemInners.removeClass('active');
+            $($itemInners[id - 1]).addClass('active')
+            var $modalId = $(this).parent().parent().parent().parent().attr("id");
+            $('#myCarousel' + $modalId).carousel(id - 1);
+        }
+    }
+
+
     /*
      *
      * End of helpful functions
@@ -793,15 +905,11 @@
              */
 
 
-
             //Launch tutorial modal
             var openModalCount = 0;
             var modalBtn = document.getElementById("modalShow");
             modalBtn.onclick = function () {
                 $('#modal').modal('show');
-                $('.carousel').carousel({
-                    interval: false
-                });
                 openModalCount++;
             };
 
@@ -901,11 +1009,6 @@
 
 
 
-    function carouselContent(){
-
-    }
-
-
 
 
     /*
@@ -913,9 +1016,13 @@
      *
      */
 
+
     var step = -1;
+
     function showStep(action) {
+
         $("#" + step).hide();
+
 
         if (action == 'next') {
             step += 1;
@@ -924,9 +1031,41 @@
             step -= 1;
         }
 
-        if( $("#" + step + " .carousel").length > 0 ) {
+        var $currentStep    = $("#" + step),
+            $carousel       = $("#" + step + " .carousel"),
+            $modalInfo      = $("#" + step + " .modal-info"),
+            $items          = $("#" + step + " .item");
 
-            carouselContent();
+
+        if ( $carousel.length > 0 ) {
+
+            if (!$carousel.data("carousel")) {
+
+                $carousel.carousel({
+                    interval: false
+                });
+
+                $($items).each(function (idx) {
+                    // Adding buttons
+                    var idx = idx + 1,
+                        $item = $(this),
+                        $li = '<div class="carousel-selector-' + idx + '" type="button">' + idx + '</div>';
+
+                    $("#carouselIndicatorsList" + step).append($li);
+
+                    //Adding item-info to modal-info
+                    $(this).children(".item-inner");
+                    $modalInfo.append( $item.children(".item-inner") );
+                });
+
+                $("#" + step).find(".modal-info .item-inner").first().addClass("active");
+                $("#" + step).find(".carousel-indicators-custom div").first().addClass("active");
+
+
+                // When you click on each selector
+                // Load new content
+                $('[class^=carousel-selector-]').on('click', nextSlideContent($("#" + step)));
+            }
         }
 
 
