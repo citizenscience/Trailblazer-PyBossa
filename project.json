@@ -1,6 +1,6 @@
 {
-    "name": "CRUK mvp-janette",
-    "short_name": "mvp-janette",
+    "name": "CRUK mvp-stats",
+    "short_name": "mvp-stats",
     "description": "This is the project for pathologist to supply gold standard data",
     "question": "Do you see a real human face in this photo?"
 }
