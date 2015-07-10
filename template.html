@@ -1,10 +1,9 @@
 <style type="text/css">
 
-
-     /*
-     * For styling the tutorial modal component
-     * Need to make this responsive and cross browser compatable
-     */
+    /*
+    * For styling the tutorial modal component
+    * Need to make this responsive and cross browser compatable
+    */
 
     .modal {
         width: 800px;
@@ -47,7 +46,6 @@
         top: 50%;
     }
 
-
     .carousel-indicators-custom {
         position: absolute;
         bottom: 10px;
@@ -57,29 +55,29 @@
         text-align: center;
     }
 
-     .carousel-indicators-custom div {
-         list-style-type: none;
-         padding: 10px;
-         width: 20px;
-         display: inline-block;
-         background-color: #FFF;
-         margin-left: 10px;
-         cursor: pointer;
-     }
+    .carousel-indicators-custom div {
+        list-style-type: none;
+        padding: 10px;
+        width: 20px;
+        display: inline-block;
+        background-color: #FFF;
+        margin-left: 10px;
+        cursor: pointer;
+    }
 
-     .carousel-indicators-custom div.active {
-         background-color: yellow;
-         width: 20px;
-         display: inline-block;
-     }
+    .carousel-indicators-custom div.active {
+        background-color: yellow;
+        width: 20px;
+        display: inline-block;
+    }
 
-     .modal-info .item-inner {
-         display: none;
-     }
+    .modal-info .item-inner {
+        display: none;
+    }
 
-     .modal-info .item-inner.active {
-         display: block;
-     }
+    .modal-info .item-inner.active {
+        display: block;
+    }
 
     /*
      * Utility to clear floats
@@ -160,6 +158,20 @@
         width: 70px;
     }
 
+
+    /*
+     * Example cell images
+     */
+
+
+    .slick-prev, .slick-next {
+        background-color: #efefef;
+    }
+    .slick-prev:focus, .slick-next:focus {
+        background-color: blue;
+    }
+
+
     .example-list {
         margin-bottom: 40px;
     }
@@ -180,7 +192,7 @@
 
     .example-list-item .description {
         position: absolute;
-        bottom: 0;
+        top: 0;
         display: block;
         text-align: center;
         width: 100%;
@@ -189,6 +201,12 @@
         font-weight: 100;
         letter-spacing: 1px;
         background-color: rgba(0, 0, 0, 0.6);
+    }
+    .example-list-item .description.cancer {
+        background-color: rgba(231, 76, 60, .8);
+    }
+    .example-list-item .description.non-cancer {
+        background-color: rgba(0, 163, 136, .7);
     }
 
     .nextSlideBtn {
@@ -209,7 +227,6 @@
     }
 </style>
 
-
 <!--MODAL-->
 <div class="row">
     <div class="span12">
@@ -229,7 +246,7 @@
                                     </h1>
 
                                     <p>
-                                        Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam quis risus eget urna mollis ornare vel eu leo. Sed posuere consectetur est at lobortis.
+                                        Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis <a href="#" data-toggle="tooltip" data-original-title="this is actually a really important cell called ep">cell</a>. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam quis risus eget urna mollis ornare vel eu leo. Sed posuere consectetur est at lobortis.
                                     </p>
                                 </div>
                             </div>
@@ -268,7 +285,6 @@
                     </div>
                 </div>
                 <div class="modal-info"></div>
-
 
             </div>
 
@@ -359,7 +375,6 @@
                 </div>
                 <div class="modal-info"></div>
 
-
             </div>
 
             <div id="4" class="modal-body" style="display:none">
@@ -426,7 +441,6 @@
 
             </div>
 
-
             <div class="modal-footer">
                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal" aria-hidden="true">Close</button>
                 <a id="prevBtn" href="#" class="btn">Previous</a>
@@ -437,25 +451,22 @@
     </div>
 </div>
 
-
-
-
-
-
 <header class="site-header clearfix">
     <div>
         <div id="success" class="alert alert-success" style="display:none">
             <h2><strong>Well done!</strong> Your answer has been saved</h2>
         </div>
         <div id="loading" class="alert alert-info" style="display:none">
-           <h2> Loading next task...</h2>
+            <h2> Loading next task...</h2>
         </div>
         <div id="taskcompleted" class="alert alert-info" style="display:none">
             <h2><strong>The task has been completed!</strong> Thanks a lot!</h2>
         </div>
         <div id="finish" class="alert alert-success" style="display:none">
-            <h2><strong>Congratulations!</strong> You have participated in all available tasks!</h2>
-            <p>If you have any comments about the Trailblazers project please let us know..</p>
+            <h2><strong>Thank you</strong> for completing the Citizen Science Trailblazer Project!</h2>
+
+            <p>Please let us know your thoughts here.</p>
+
             <div class="alert-actions">
                 <a class="btn small" href="http://citscitools.cancerresearchuk.org/community/mvp-02-feedback/">Give feedback</a>
             </div>
@@ -475,11 +486,10 @@
 
                 <div class="grid-info-instructions">
                     <h1 id="question">Select which grid sections contain cancer cells</h1>
-
                     <p>
-                        If you see cancer cells:
-                        <br/> Click once for <span class="text-error">yes</span>
-                        <br/> Double click for <span class="text-success">no</span>
+                        Click once for <strong>cancer</strong> cells in <span class="text-error">red</span>
+                        <br/> Double click for <strong>non-cancer</strong> cells in <span class="text-success">green</span>
+
                     </p>
                 </div>
 
@@ -515,28 +525,50 @@
     </div>
 </main>
 
+
+<h2>Cell Examples</h2>
 <div class="row example-list clearfix">
-    <h2>Cell Examples</h2>
+
     <figure class="example-list-item">
         <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/legend/cancer-cells.jpg" alt=""/>
-        <figcaption class="description">Cancer Cells</figcaption>
+        <figcaption class="description cancer">Cancer Cells</figcaption>
     </figure>
     <figure class="example-list-item">
         <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/legend/cancer-cells2.jpg" alt=""/>
-        <figcaption class="description">Cancer Cells</figcaption>
+        <figcaption class="description cancer">Cancer Cells  </figcaption>
     </figure>
     <figure class="example-list-item">
         <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/legend/healthy-cells.jpg" alt=""/>
-        <figcaption class="description">Healthy cells</figcaption>
+        <figcaption class="description non-cancer">Healthy cells</figcaption>
+    </figure>
+     <figure class="example-list-item">
+        <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/legend/cancer-cells.jpg" alt=""/>
+        <figcaption class="description cancer">Cancer Cells</figcaption>
+    </figure>
+    <figure class="example-list-item">
+        <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/legend/cancer-cells2.jpg" alt=""/>
+        <figcaption class="description cancer">Cancer Cells</figcaption>
+    </figure>
+    <figure class="example-list-item">
+        <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/legend/healthy-cells.jpg" alt=""/>
+        <figcaption class="description non-cancer">Healthy cells</figcaption>
     </figure>
 
     <figure class="example-list-item">
         <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/legend/blood-cells.jpg" alt=""/>
-        <figcaption class="description">Blood cells</figcaption>
+        <figcaption class="description non-cancer">Blood cells</figcaption>
     </figure>
     <figure class="example-list-item">
         <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/legend/stroma-and-blood-cells.jpg" alt=""/>
-        <figcaption class="description">Stroma and blood cells</figcaption>
+        <figcaption class="description non-cancer">Stroma and blood cells</figcaption>
+    </figure>
+     <figure class="example-list-item">
+        <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/legend/cancer-cells.jpg" alt=""/>
+        <figcaption class="description cancer">Cancer Cells</figcaption>
+    </figure>
+    <figure class="example-list-item">
+        <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/legend/cancer-cells2.jpg" alt=""/>
+        <figcaption class="description cancer">Cancer Cells</figcaption>
     </figure>
 </div>
 
@@ -792,7 +824,7 @@
     }
 
 
-     function nextSlideContent(carousel) {
+    function nextSlideContent(carousel) {
         return function () {
 
             // Add and remove active class
@@ -809,6 +841,15 @@
             $('#myCarousel' + $modalId).carousel(id - 1);
         }
     }
+
+
+    function secondsToString(seconds) {
+        var numhours = Math.floor(((seconds % 31536000) % 86400) / 3600);
+        var numminutes = Math.floor((((seconds % 31536000) % 86400) % 3600) / 60);
+        var numseconds = (((seconds % 31536000) % 86400) % 3600) % 60;
+        return  numhours +  ":" + numminutes + ":" + numseconds.toFixed(2);
+    }
+
 
 
     /*
@@ -897,8 +938,6 @@
             }
 
 
-
-
             /*
              * Launch helper modal!!!
              *
@@ -913,9 +952,28 @@
                 openModalCount++;
             };
 
+
+            $('.grid-info-instructions').tooltip({
+                selector: "a[data-toggle=tooltip]"
+            });
+
+            $('.example-list').tooltip({
+                selector: "a[data-toggle=tooltip]"
+            });
+
+
+            $(document).ready(function () {
+                $('.example-list').slick({
+                    dots: true,
+                    infinite: false,
+                    speed: 300,
+                    slidesToScroll: 1,
+                    slidesToShow: 5
+                });
+            });
+
+
             /*************************************************/
-
-
 
 
             /*
@@ -926,49 +984,49 @@
 
             $('.btn-answer').off('click').on('click', function () {
 
-                    // Grab a new timestamp and find out the difference
-                    // This is how long the user has been on the task for
-                    // Then pass it into the answer
-                    var newTime = new Date(),
-                        ms = newTime - oldTime,
-                        x = ms / 1000,
-                        seconds = (((x % 31536000) % 86400) % 3600) % 60;
+                // Grab a new timestamp and find out the difference
+                // This is how long the user has been on the task for
+                // Then pass it into the answer
+                var newTime = new Date(),
+                    ms = newTime - oldTime,
+                    x = ms / 1000,
+                    seconds = secondsToString(x)
 
-                    // Pass image number into answer
-                    var imgUrl = task.info.url_b;
-                    var result = imgUrl.replace("//citscitools.cancerresearchuk.org/static/img/mvp-01/", "");
+                // Pass image number into answer
+                var imgUrl = task.info.url_b;
+                var result = imgUrl.replace("//citscitools.cancerresearchuk.org/static/img/mvp-01/", "");
 
-                    // Create the answer object
-                    var answer = {
-                        squares: [],
-                        timeTaken: seconds,
-                        device: whatDevice(),
-                        browser: whatBrowser(),
-                        imgNumber: result,
-                        openModalCount: openModalCount
+                // Create the answer object
+                var answer = {
+                    squares: [],
+                    timeTaken: seconds,
+                    device: whatDevice(),
+                    browser: whatBrowser(),
+                    imgNumber: result,
+                    openModalCount: openModalCount
+                };
+
+
+                // Change the square object to have clearer values
+                $.each(r.task.answer.squares, function (key, value) {
+                    var obj = {
+                        column: value.column,
+                        row: value.row,
+                        answer: value.has_cancer
                     };
+                    answer.squares.push(obj);
+                });
 
+                console.log(answer);
 
-                    // Change the square object to have clearer values
-                    $.each(r.task.answer.squares, function (key, value) {
-                        var obj = {
-                            column: value.column,
-                            row: value.row,
-                            answer: value.has_cancer
-                        };
-                        answer.squares.push(obj);
-                    });
-
-                    console.log(answer);
-
-                    /*
-                     * Save the task information and send to PyBossa
-                     */
-                    pybossa.saveTask(task.id, answer).done(function (data) {
-                        $("#success").fadeIn(500).delay(500).fadeOut();
-                        $("svg, .zoomContainer,.zoomWindowContainer").remove();
-                        deferred.resolve();
-                    });
+                /*
+                 * Save the task information and send to PyBossa
+                 */
+                pybossa.saveTask(task.id, answer).done(function (data) {
+                    $("#success").fadeIn(500).delay(500).fadeOut();
+                    $("svg, .zoomContainer,.zoomWindowContainer").remove();
+                    deferred.resolve();
+                });
 
                 //$("#loading").fadeIn(500).delay(500).fadeOut();
 
@@ -981,7 +1039,7 @@
 
             $("#loading").hide();
             $("#finish").fadeIn(500);
-            $(".span6").fadeTo( "slow" , 0.5);
+            $(".span6").fadeTo("slow", 0.5);
         }
     });
 
@@ -996,7 +1054,6 @@
     $(function () {
         pybossa.run('mvp-02');
     })
-
 
 
     /*
@@ -1031,13 +1088,13 @@
             step -= 1;
         }
 
-        var $currentStep    = $("#" + step),
-            $carousel       = $("#" + step + " .carousel"),
-            $modalInfo      = $("#" + step + " .modal-info"),
-            $items          = $("#" + step + " .item");
+        var $currentStep = $("#" + step),
+            $carousel = $("#" + step + " .carousel"),
+            $modalInfo = $("#" + step + " .modal-info"),
+            $items = $("#" + step + " .item");
 
 
-        if ( $carousel.length > 0 ) {
+        if ($carousel.length > 0) {
 
             if (!$carousel.data("carousel")) {
 
@@ -1055,7 +1112,7 @@
 
                     //Adding item-info to modal-info
                     $(this).children(".item-inner");
-                    $modalInfo.append( $item.children(".item-inner") );
+                    $modalInfo.append($item.children(".item-inner"));
                 });
 
                 $("#" + step).find(".modal-info .item-inner").first().addClass("active");
@@ -1075,8 +1132,8 @@
             $("#prevBtn").show();
         }
 
-        var $lastStep = $('.modal-body').length -1
-        if (step == $lastStep ) {
+        var $lastStep = $('.modal-body').length - 1
+        if (step == $lastStep) {
             $("#nextBtn").hide();
             $("#goBackBtn").show();
         } else {
@@ -1099,9 +1156,6 @@
     prevBtn.onclick = function () {
         showStep('prev');
     };
-
-
-
 
 </script>
 
