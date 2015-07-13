@@ -1,17 +1,12 @@
 <style type="text/css">
 
 
-     .zoomContainer {
-        z-index: 1999;
-    }
-
-    /*
+     /*
      * For styling the tutorial modal component
      * Need to make this responsive and cross browser compatable
      */
 
     .modal {
-        z-index: 1999 !important;
         width: 800px;
         margin-left: -400px;
         top: 45%;
@@ -21,16 +16,7 @@
         max-height: 600px;
         display: table;
         padding: 0;
-        z-index: 1200 !important;
     }
-    
-    .modal-backdrop {
-        z-index: 1000 !important;
-    }
-    .zoomContainer {
-        z-index: 2000 !important;
-    }
-    
 
     /*
      * Modal body split into two sections
@@ -60,6 +46,7 @@
     .modal .modal-body .carousel-control {
         top: 50%;
     }
+
 
 
 
@@ -312,15 +299,11 @@
                         Examine each section and if you think it
                         <b>does not</b> contain any cancer cells, you can double click to turn that section green.
                     </p>
-                    <p>
-                        Before you start analysing, lets take a closer look at some samples
-                    </p>
                 </div>
 
             </div>
 
-
-             <div id="7" class="modal-body" style="display:none">
+            <div id="7" class="modal-body" style="display:none">
 
                 <div class="modal-image">
                     <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid-red-green.jpg" alt=""/>
@@ -339,138 +322,16 @@
 
             </div>
 
-
-
-
-
-
-            <!--new slides added here-->
-
-            <div id="8" class="modal-body" style="display:none">
-
-                <div class="modal-image">
-                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/mvp-02a/guidence-images-1.jpg" id="zoom01" data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/mvp-02a/guidence-images-1.jpg" alt=""/>
-                </div>
-                <div class="modal-info">
-                    <h1>Guidance Image 1 – Healthy lung epithelial cells, white blood cells, stroma and cartilage</h1>
-
-                    <p>
-                        This is a healthy section of lung. The large green outline indicates an airway. This is lined by a thin layer of lung epithelial cells. These are indicated by the small green outlines and green arrows. Take a closer look.
-
-                        These cells, are nicely defined, form a nice orderly structure and are all fairly similar to each other. Look really closely and you’ll seen fine hair like structures facing into the airway that are responsible for wafting mucus out of your lungs. This complex, organised and uniform behaviour is lost when these cells become cancerous.
-
-                    </p>
-                </div>
-
-            </div>
-            <div id="9" class="modal-body" style="display:none">
-
-                <div class="modal-image">
-                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/mvp-02a/guidence-images-1.jpg" id="zoom02" data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/mvp-02a/guidence-images-1.jpg" alt=""/>
-                </div>
-                <div class="modal-info">
-                    <h1>Guidance Image 1 – Healthy lung epithelial cells, white blood cells, stroma and cartilage</h1>
-
-                    <p>
-                         Just inside of the epithelial cells is a single layer of white blood cells. They can also be found in dense or loose clumps nearby a tumour. They are small, round solid looking cells, indicated here with pink arrows and circles. Take a closer look.
-                        Circled in orange is cartilage which provides structural support but you will not see too many of these.
-
-                        The remaining cells, a few sections of which have been circled and indicated with purple arrows, make up the stroma. These stringy, loosely spread cells provide support and structure in both healthy organs and tumours.
-                    </p>
-                </div>
-
-            </div>
-
-
-
-            <div id="10" class="modal-body" style="display:none">
-
-                <div class="modal-image">
-                    <img class="tutorialZoom" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/mvp-02a/guidence-images-2.jpg" id="zoom03" data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/mvp-02a/guidence-images-2.jpg" alt=""/>
-                </div>
-                <div class="modal-info">
-                    <h1>Guidance Image 2 – Cancer cells in chains and rings and stroma mixed with blood cells</h1>
-
-                    <p>
-                        Here we have lots of cancer cells that have formed loose chains and rings. We have circled four of these structures in red but you can see there are many more.
-
-                        Cancer are normally unable to form organised shapes and complicated structures. However, sometimes cancer cells make a poor attempt to behave like healthy cells such as the tightly packed, single layer of healthy lung epithelial cells seen in the previous image. This is what you can see in this sample
-
-                        Look closely at these cells and compare them with what you see with the previous healthy epithelial cells. The cells in this image aren’t as nicely defined, are very different to each other, tend to bunch up and occasionally break away to form clusters and lumps. This lack of good, organised and uniform cell behaviour is typical of cancer cells
-
-                        In-between these rings and chains of cancer cells is the stroma, a small section of which is circled in purple. Also in the stroma are some clusters of white blood cells.
-                    </p>
-                </div>
-
-            </div>
-            <div id="11" class="modal-body" style="display:none">
-
-                <div class="modal-image">
-                    <img class="tutorialZoom" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/mvp-02a/guidence-images-3.jpg" id="zoom04" data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/mvp-02a/guidence-images-3.jpg" alt=""/>
-                </div>
-                <div class="modal-info">
-                    <h1>Guidance Image 3 – Cancer cells in clumps and lots of stroma mixed with blood cells</h1>
-
-                    <p>
-                        Here are more cancer cells but this time formed in clusters and clumps, most of which are circled in red.
-
-                        Look closely at the image and look at the features that differ between the cancer cells and the surrounding stroma and blood cells
-                    </p>
-                </div>
-
-            </div>
-            <div id="12" class="modal-body" style="display:none">
-
-                <div class="modal-image">
-                    <img class="tutorialZoom" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/mvp-02a/guidence-images-4.jpg" id="zoom05" data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/mvp-02a/guidence-images-4.jpg" alt=""/>
-                </div>
-                <div class="modal-info">
-                    <h1>Guidance Image 4 – Dead cells, cancer cells in clumps, flood of stroma and lymphocytes</h1>
-
-                    <p>
-                        This image is of a very busy sample containing cancer cells, stroma and lots of small, round and solid looking blood cells
-
-                        Look really closely inside the red circled areas and try to spot the boundary between the cancer cells and the stroma/blood cells by looking really closely at the shapes and organisation of the cells
-
-                        The brown circle and arrow here indicates a collection of dead cells. These can be ignored
-                    </p>
-                </div>
-
-            </div>
-            <div id="13" class="modal-body" style="display:none">
-
-                <div class="modal-image">
-                    <img class="tutorialZoom" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/mvp-02a/guidence-images-5.jpg" id="zoom06" data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/mvp-02a/guidence-images-5.jpg" alt=""/>
-                </div>
-                <div class="modal-info">
-                    <h1>Guidance Image 5 – Stroma, blood cells, cartilage, healthy lung epithelia, cancer cells including examples extreme nuclear pleomorphism</h1>
-
-                    <p>
-                        In this image shows you most of the cells we have talked about.
-
-                        The green outlines some healthy lung epithelial cells. Look at uniform and well organised they are.
-
-                        The orange outline indicates some cartilage
-
-                        The purple circles indicates some sections of the stroma while the pink circle indicates a cluster of white blood cells
-
-                        The red outlines indicates some clumps of cancer cells below the healthy epithelial cells. But there are more clumps of cancer cells above and to the right of the piece of cartilage. The red arrow points to some of the cancer cells that are particularly good examples of just how odd and variable cancer cells can become.
-
-                        Like in the previous example, try to identify the boundary between cancer cells and stroma.
-                    </p>
-                </div>
-
-            </div>
-
             <div class="modal-footer">
-                <a href="#" class="btn closeBtn" style="float: left;">Close</a>
-                <a id="prevBtn" href="#" onclick="showStep('prev')" class="btn">Previous</a>
-                <a id="nextBtn" href="#" onclick="showStep('next')" class="btn btn-success">Next</a>
-                <button type="button" class="btn btn-primary pull-right closeBtn" id="goBackBtn" data-dismiss="modal" aria-hidden="true" style="display:none"><i class="icon-thumbs-up"></i>Go back</button>
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal" aria-hidden="true">Close</button>
+                <a id="prevBtn" href="#" class="btn">Previous</a>
+                <a id="nextBtn" href="#" class="btn btn-success">Next</a>
+                <button id="goBackBtn" type="button" class="btn btn-primary pull-right" data-dismiss="modal" aria-hidden="true">Back to task</button>
             </div>
         </div>
     </div>
 </div>
+
 
 
 
@@ -607,8 +468,6 @@
             zoomWindowWidth: 455,
             zoomWindowHeight: 455,
         });
-
-
     }
 
     //Grid.prototype = Object.create(Modal.prototype);
@@ -778,7 +637,7 @@
 
     // Loads user progress into Grid info
     function loadUserProgress() {
-        pybossa.userProgress('mvp-02a').done(function (data) {
+        pybossa.userProgress('mvp-02').done(function (data) {
             var pct = Math.round((data.done * 100) / data.total);
             $("#progress").css("width", pct.toString() + "%");
             $("#progress").attr("title", pct.toString() + "% completed!");
@@ -826,9 +685,6 @@
         if ((tem = ua.match(/version\/(\d+)/i)) != null) M.splice(1, 1, tem[1]);
         return M.join(' ');
     }
-
-
-
 
 
     /*
@@ -906,38 +762,10 @@
             var openModalCount = 0;
             var modalBtn = document.getElementById("modalBtn");
             modalBtn.onclick = function () {
-
-                $('.modal').modal({
-                    backdrop: 'static',
-                    keyboard: false
-                })
-
-                $.removeData($(".tutorialZoom"), 'elevateZoom');
-                $('.zoomContainer').remove();
-                $('.zoomWindowContainer').remove();
                 $("#modal").modal('show');
-                $('.carousel').carousel({
-        interval: false
-    });
+                $('.carousel').carousel();
                 openModalCount++;
             };
-            $(document).on("click", ".closeBtn", function (e) {
-                 $('.modal').modal('hide');
-                $.removeData($(".tutorialZoom"), 'elevateZoom');
-                $('.zoomContainer').remove();
-                $('.zoomWindowContainer').remove();
-
-                $(".img-polaroid").elevateZoom({
-                    zoomWindowPosition: "grid-info",
-                    lensFadeIn: 500,
-                    lensFadeOut: 500,
-                    // Changing these two numbers changes the zoomWindowWidth
-                    // Also the side of the .zoomLens (box over image)
-                    zoomWindowWidth: 455,
-                    zoomWindowHeight: 455,
-                });
-            })
-
 
 
 
@@ -1012,7 +840,7 @@
      */
 
     $(function () {
-        pybossa.run('mvp-02a');
+        pybossa.run('mvp-02');
     })
 
 
@@ -1032,14 +860,13 @@
             step -= 1;
         }
 
-         if (step == 0) {
+        if (step == 0) {
             $("#prevBtn").hide();
         } else {
             $("#prevBtn").show();
         }
 
-
-        if (step == 13) {
+        if (step == 7) {
             $("#nextBtn").hide();
             $("#goBackBtn").show();
         } else {
@@ -1049,42 +876,18 @@
         $("#" + step).show();
 
 
-        switch (step) {
-            case 8:
-                $('.zoomContainer').remove();
-                $('.zoomWindowContainer').remove();
-                $("#zoom01").elevateZoom();
-                break;
-            case 9:
-                $('.zoomContainer').remove();
-                $('.zoomWindowContainer').remove();
-                $("#zoom02").elevateZoom();
-                break;
-            case 10:
-                $('.zoomContainer').remove();
-                $('.zoomWindowContainer').remove();
-                $("#zoom03").elevateZoom();
-                break;
-            case 11:
-                $('.zoomContainer').remove();
-                $('.zoomWindowContainer').remove();
-                $("#zoom04").elevateZoom();
-                break;
-            case 12:
-                $('.zoomContainer').remove();
-                $('.zoomWindowContainer').remove();
-                $("#zoom05").elevateZoom();
-                break;
-            case 13:
-                $('.zoomContainer').remove();
-                $('.zoomWindowContainer').remove();
-                $("#zoom06").elevateZoom();
-                break;
-        }
-
     }
-    showStep('next');
 
+    showStep('next');
+    var openModalCount = 0;
+
+    //Launch tutoiral modal
+    var modalBtn = document.getElementById("modalBtn");
+    modalBtn.onclick = function () {
+
+        $("#modal").modal('show');
+        $('.carousel').carousel();
+    };
 
     var nextBtn = document.getElementById("nextBtn");
     nextBtn.onclick = function () {
@@ -1094,6 +897,8 @@
     prevBtn.onclick = function () {
         showStep('prev');
     };
+
+
 
 
 
