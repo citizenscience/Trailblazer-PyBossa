@@ -2,109 +2,105 @@
 
 <style>
 
-
-     .zoomContainer {
-        z-index: 1999;
+    .zoomContainer {
+    z-index: 1999;
     }
 
     /*
-     * For styling the tutorial modal component
-     * Need to make this responsive and cross browser compatable
-     */
+    * For styling the tutorial modal component
+    * Need to make this responsive and cross browser compatable
+    */
 
     .modal {
-        z-index: 1999 !important;
-        width: 800px;
-        margin-left: -400px;
-        top: 45%;
+    z-index: 1999 !important;
+    width: 800px;
+    margin-left: -400px;
+    top: 45%;
     }
 
     .modal .modal-body {
-        max-height: 600px;
-        display: table;
-        padding: 0;
-        z-index: 1200 !important;
+    max-height: 600px;
+    display: table;
+    padding: 0;
+    z-index: 1200 !important;
     }
 
     .modal-backdrop {
-        z-index: 1000 !important;
+    z-index: 1000 !important;
     }
     .zoomContainer {
-        z-index: 2000 !important;
+    z-index: 2000 !important;
     }
 
-
-
     /*
-     * Modal body split into two sections
-     * left is the .modal-image (contains image and carousel)
-     * right is the .modal-info (contains text)
-     */
+    * Modal body split into two sections
+    * left is the .modal-image (contains image and carousel)
+    * right is the .modal-info (contains text)
+    */
 
     .modal .modal-body .modal-image,
     .modal .modal-body .modal-info {
-        float: left;
-        word-break: keep-all;
+    float: left;
+    word-break: keep-all;
     }
 
     .modal .modal-body .modal-image {
-        width: 460px;
+    width: 460px;
     }
 
     .modal .modal-body .modal-info {
-        width: 300px;
-        padding: 20px;
+    width: 300px;
+    padding: 20px;
     }
 
     .modal .modal-body .carousel {
-        margin-bottom: 0;
+    margin-bottom: 0;
     }
 
     .modal .modal-body .carousel-control {
-        top: 50%;
+    top: 50%;
     }
 
     .carousel-indicators-custom {
-        position: absolute;
-        right: -325px;
-  bottom: 15px;
-  text-align: center;
+    position: absolute;
+    right: -325px;
+    bottom: 15px;
+    text-align: center;
     }
 
     .carousel-indicators-custom div {
-        list-style-type: none;
-        padding: 10px;
-        width: 20px;
-        display: inline-block;
-        background-color: #efefef;
-        margin-left: 10px;
-        cursor: pointer;
+    list-style-type: none;
+    padding: 10px;
+    width: 20px;
+    display: inline-block;
+    background-color: #efefef;
+    margin-left: 10px;
+    cursor: pointer;
     }
 
     .carousel-indicators-custom div.active {
-        background-color: yellow;
-        width: 20px;
-        display: inline-block;
+    background-color: yellow;
+    width: 20px;
+    display: inline-block;
     }
 
     .modal-info .item-inner {
-        display: none;
+    display: none;
     }
 
     .modal-info .item-inner.active {
-        display: block;
+    display: block;
     }
 
+    /*
+    * Adding a message that appears on
+    * mobile and tablet devices to say that this is currently
+    * a only a desktop application
+    */
 
     /*
-     * Adding a message that appears on
-     * mobile and tablet devices to say that this is currently
-     * a only a desktop application
-     */
-
-    /*
-     * If devices is mobile or tablet then show message
-     */
+    * If devices is mobile or tablet then show message
+    */
 
     .ios .wrappy,
     .ipad .wrappy,
@@ -113,42 +109,42 @@
     .andriod .wrappy,
     .androidTablet .wrappy,
     .blackberry .wrappy {
-        display: block;
+    display: block;
     }
 
     .wrappy {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        width: 100%;
-        height: 100%;
-        line-height: 1.2;
-        z-index: 1100;
-        background-color: rgba(0, 0, 0, 0.9)
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    line-height: 1.2;
+    z-index: 1100;
+    background-color: rgba(0, 0, 0, 0.9)
     }
 
     .device-message {
-        font-size: 0;
-        height: 100%;
-        margin: 0 auto;
-        position: relative;
-        text-align: center;
+    font-size: 0;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
     }
 
     .casper {
-        height: 100%;
-        display: inline-block;
-        vertical-align: middle;
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
     }
 
     .device-message-inner {
-        display: inline-block;
-        vertical-align: middle;
-        padding: 38px;
-        background-color: white;
-        width: 50%;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 38px;
+    background-color: white;
+    width: 50%;
     }
 </style>
 
@@ -170,7 +166,6 @@
     <div class="span12">
         <div id="modal" class="modal hide fade">
 
-
             <div id="0" class="modal-body" style="display:none">
 
                 <div class="modal-image">
@@ -178,6 +173,7 @@
                 </div>
                 <div class="modal-info">
                     <h1>Welcome to Trailblazer!</h1>
+
                     <p>
                         We need your help identifying cancer cells, from healthy cells in images like the one to the left.
                     </p>
@@ -194,12 +190,13 @@
                     <h1>
                         Healthy cells are very strictly organised and controlled.
                     </h1>
+
                     <p>
                         This is similar to the houses in this town. They’ve been carefully planned and built to strict guidelines,
 
-taking other houses in the area into consideration. Permission is needed to make any changes to this
+                        taking other houses in the area into consideration. Permission is needed to make any changes to this
 
-highly regulated town.
+                        highly regulated town.
                     </p>
                 </div>
             </div>
@@ -213,16 +210,18 @@ highly regulated town.
                     <h1>
                         But, in cancer, cells become less tightly controlled.
                     </h1>
+
                     <p>
                         When cells become cancerous, they become less tightly controlled. They replicate to make more cells
 
-whenever and however they can with little consideration to rules and regulations.
-</p>
+                        whenever and however they can with little consideration to rules and regulations.
+                    </p>
+
                     <p>
 
-Our town is rapidly expanding, with buildings of all shapes and sizes sprouting up wherever they find
+                        Our town is rapidly expanding, with buildings of all shapes and sizes sprouting up wherever they find
 
-space.
+                        space.
                     </p>
                 </div>
             </div>
@@ -236,17 +235,19 @@ space.
                     <h1>
                         In serious cases, cancer becomes a sprawling mass of disorganised cells, which take on all kinds of
 
-shapes and sizes.
+                        shapes and sizes.
                     </h1>
-                    <p>
-                       In serious cases, cancer becomes a sprawling mass of disorganised cells, which take on all kinds of
 
-shapes and sizes.
-</p>
+                    <p>
+                        In serious cases, cancer becomes a sprawling mass of disorganised cells, which take on all kinds of
+
+                        shapes and sizes.
+                    </p>
+
                     <p>
                         Our town has grown into a crowded and varied city. With continued growth and lack of control, it starts
 
-to spread and take over neighbouring areas.
+                        to spread and take over neighbouring areas.
                     </p>
                 </div>
             </div>
@@ -263,29 +264,36 @@ to spread and take over neighbouring areas.
 
                                 <div class="item-inner">
                                     <h1>
-                                        To identify <b>cancer cells</b>, look for <b>blotchy cells</b> grouped together in <b>uneven clumps</b>, <b>loose rings</b> or
+                                        To identify <b>cancer cells</b>, look for
+                                        <b>blotchy cells</b> grouped together in <b>uneven clumps</b>,
+                                        <b>loose rings</b> or
                                         <b>broken chains</b>.
                                     </h1>
+
                                     <p>
-Move your mouse over the image on the left to zoom in and see more detail.
+                                        Move your mouse over the image on the left to zoom in and see more detail.
                                     </p>
                                 </div>
                             </div>
                             <div class="item">
                                 <img class="tutorialZoom4" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/mvp-02a/new-guidence-images/38-cancer.png"
                                      data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/mvp-02a/new-guidence-images/38-cancer-outline.png" alt=""/>
+
                                 <div class="item-inner">
                                     <h1>
-                                        We’ve highlighted the <b>cancer cells</b> in <b class="text-error">red</b> in this image.
+                                        We’ve highlighted the <b>cancer cells</b> in
+                                        <b class="text-error">red</b> in this image.
                                     </h1>
                                 </div>
                             </div>
                             <div class="item">
                                 <img class="tutorialZoom4" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/mvp-02a/new-guidence-images/38-non-cancer.jpeg"
                                      data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/mvp-02a/new-guidence-images/38-non-cancer-outline.png" alt=""/>
+
                                 <div class="item-inner">
                                     <h1>
-                                        The remaining cells are <b>healthy</b> and have been highlighted in <b class="text-success">green</b>. They include:
+                                        The remaining cells are <b>healthy</b> and have been highlighted in
+                                        <b class="text-success">green</b>. They include:
                                     </h1>
 
                                     <ol>
@@ -332,9 +340,11 @@ Move your mouse over the image on the left to zoom in and see more detail.
                                         Cancer cells can look very different from image to image.
 
                                     </h1>
+
                                     <p>
                                         Move your mouse over the image on the left to zoom in and see more detail.
                                     </p>
+
                                     <p>
                                         This time they have irregular rings and chains with a few uneven clumps of cells
                                     </p>
@@ -346,7 +356,8 @@ Move your mouse over the image on the left to zoom in and see more detail.
 
                                 <div class="item-inner">
                                     <h1>
-                                        We’ve highlighted the cancer cells in <b class="text-error">red</b> for this image.
+                                        We’ve highlighted the cancer cells in
+                                        <b class="text-error">red</b> for this image.
                                     </h1>
                                 </div>
                             </div>
@@ -356,7 +367,8 @@ Move your mouse over the image on the left to zoom in and see more detail.
 
                                 <div class="item-inner">
                                     <h1>
-                                        There will be different types of <b>healthy cells</b> in the images. The two most common types will be:
+                                        There will be different types of
+                                        <b>healthy cells</b> in the images. The two most common types will be:
                                     </h1>
                                     <ol>
                                         <li>Blood cells.
@@ -405,8 +417,6 @@ Move your mouse over the image on the left to zoom in and see more detail.
 
             </div>
 
-
-
             <div id="6" class="modal-body" style="display:none">
 
                 <div class="modal-image">
@@ -446,13 +456,14 @@ Move your mouse over the image on the left to zoom in and see more detail.
                 </div>
                 <div class="modal-info">
                     <h1>
-                        For any section <b>containing a cancer cell</b>, we’ve <b>clicked once</b> to turn it <b class="text-error">red</b>
+                        For any section <b>containing a cancer cell</b>, we’ve <b>clicked once</b> to turn it
+                        <b class="text-error">red</b>
                     </h1>
 
                     <p>
                         Examine each section and if you think it contains cancer cells (even if you only see one or two cells)
 
-<b>click once to turn that section <strong class="text-error">red.</strong></b>
+                        <b>click once to turn that section <strong class="text-error">red.</strong></b>
                     </p>
                 </div>
 
@@ -465,11 +476,13 @@ Move your mouse over the image on the left to zoom in and see more detail.
                 </div>
                 <div class="modal-info">
                     <h1>
-                        For any section that <b>only contains healthy cells</b>, we’ve <b>double clicked</b> to turn it <b class="text-success">green</b>
+                        For any section that <b>only contains healthy cells</b>, we’ve <b>double clicked</b> to turn it
+                        <b class="text-success">green</b>
                     </h1>
 
                     <p>
-                        Examine each section and if you think it <b>only contains healthy cells</b>, you can <b>double click</b> to turn that section <strong class="text-success">green</strong>.
+                        Examine each section and if you think it <b>only contains healthy cells</b>, you can
+                        <b>double click</b> to turn that section <strong class="text-success">green</strong>.
                     </p>
                 </div>
 
@@ -486,13 +499,14 @@ Move your mouse over the image on the left to zoom in and see more detail.
                     </h1>
 
                     <p>
-                       You can ignore any sections that are empty, normally corner and edge sections (but not always).
+                        You can ignore any sections that are empty, normally corner and edge sections (but not always).
 
-You can then click on the green “Next slide” to move onto the next sample.
+                        You can then click on the green “Next slide” to move onto the next sample.
                     </p>
                 </div>
 
             </div>
+
 
 
 
@@ -512,9 +526,11 @@ You can then click on the green “Next slide” to move onto the next sample.
                                     <h1>
                                         Sample image 1
                                     </h1>
+
                                     <h2>
                                         Have a look at the image on the left and try to identify the areas of cancer cells. Then click on 2 to see the answer.
                                     </h2>
+
                                     <p>
                                         Scroll the mouse over the image to get a closer look
                                     </p>
@@ -528,6 +544,7 @@ You can then click on the green “Next slide” to move onto the next sample.
                                     <h1>
                                         Sample image 1
                                     </h1>
+
                                     <h2>
                                         The cancer cells have been outlined in <b class="text-error">red</b>.
                                     </h2>
@@ -535,7 +552,8 @@ You can then click on the green “Next slide” to move onto the next sample.
                                     <p>
                                         lineMost are quite large but their
 
-shapes and sizes are quite different.</p>
+                                        shapes and sizes are quite different.</p>
+
                                     <p>
 
                                         They have formed uneven, lumpy rings and chains.
@@ -550,6 +568,7 @@ shapes and sizes are quite different.</p>
                                     <h1>
                                         Sample image 1
                                     </h1>
+
                                     <h2>
                                         Healthy cells have been outlined in <b class="text-success">green</b>.
                                     </h2>
@@ -558,6 +577,7 @@ shapes and sizes are quite different.</p>
                                         The longer and thinner blue cells are stromal cells.
 
                                     </p>
+
                                     <p>
                                         The small blue round cells and the dark brown spots are blood cells.
                                     </p>
@@ -583,8 +603,16 @@ shapes and sizes are quite different.</p>
 
                                 <div class="item-inner">
                                     <h1>
-                                        Scroll the mouse over the image to get a closer look
+                                        Sample image 2
                                     </h1>
+
+                                    <h2>
+                                        Have a look at the image on the left and try to identify the areas of cancer cells. Then click on 2 to see the answer.
+                                    </h2>
+
+                                    <p>
+                                        Scroll the mouse over the image to get a closer look
+                                    </p>
 
                                 </div>
                             </div>
@@ -594,8 +622,12 @@ shapes and sizes are quite different.</p>
 
                                 <div class="item-inner">
                                     <h1>
-                                        The cancer cells have been outlined in red.
+                                        Sample image 2
                                     </h1>
+
+                                    <h2>
+                                        The cancer cells have been outlined in red.
+                                    </h2>
 
                                     <p>
                                         They are large with strange, blotchy patterns. No two
@@ -610,8 +642,13 @@ shapes and sizes are quite different.</p>
 
                                 <div class="item-inner">
                                     <h1>
-                                        Healthy cells have been outlined in <b class="text-success">green</b>.
+                                        Sample image 2
                                     </h1>
+
+                                    <h2>
+                                        Healthy cells have been outlined in <b class="text-success">green</b>.
+                                    </h2>
+
                                     <p>
                                         The surrounding cells are a flood of small, dark and round blood cells mixed with light blue and wispy
 
@@ -639,9 +676,16 @@ shapes and sizes are quite different.</p>
 
                                 <div class="item-inner">
                                     <h1>
-                                        Scroll the mouse over the image to get a closer look
-
+                                        Sample image 3
                                     </h1>
+
+                                    <h2>
+                                        Have a look at the image on the left and try to identify the areas of cancer cells. Then click on 2 to see the answer.
+                                    </h2>
+
+                                    <p>
+                                        Scroll the mouse over the image to get a closer look
+                                    </p>
                                 </div>
                             </div>
                             <div class="item">
@@ -650,8 +694,13 @@ shapes and sizes are quite different.</p>
 
                                 <div class="item-inner">
                                     <h1>
-                                        The cancer cells have been outlined in <b class="text-error">red</b>. They have formed rounded clumps.
+                                        Sample image 3
                                     </h1>
+
+                                    <h2>
+                                        The cancer cells have been outlined in
+                                        <b class="text-error">red</b>. They have formed rounded clumps.
+                                    </h2>
 
                                     <p>
                                         You can clearly see the outlines of these clumps of cancer cells.
@@ -664,11 +713,17 @@ shapes and sizes are quite different.</p>
 
                                 <div class="item-inner">
                                     <h1>
-                                        Healthy cells have been outlined in <b class="text-success">green</b>.
+                                        Sample image 3
                                     </h1>
-    <p>
-        The healthy cells surrounding the cancer clumps include the small round dark blue or dark brown spots of the blood cells.
-    </p>
+
+                                    <h2>
+                                        Healthy cells have been outlined in <b class="text-success">green</b>.
+                                    </h2>
+
+                                    <p>
+                                        The healthy cells surrounding the cancer clumps include the small round dark blue or dark brown spots of the blood cells.
+                                    </p>
+
                                     <p>
                                         There are also plenty of stretched looking wispy stromal cells.
                                     </p>
@@ -690,12 +745,17 @@ shapes and sizes are quite different.</p>
                 </div>
                 <div class="modal-info">
                     <h1>
-                        Scroll the mouse over the image to get a closer look
+                        Sample image 4
                     </h1>
+
+                    <p>
+                        Scroll the mouse over the image to get a closer look
+                    </p>
 
                     <p>
                         <b>This image is pretty much all cancer cells!</b>
                     </p>
+
                     <p>
 
                         They form strange blotchy patterns with no two cells looking the same. There’s a complete lack of
@@ -718,9 +778,16 @@ shapes and sizes are quite different.</p>
 
                                 <div class="item-inner">
                                     <h1>
-                                        Scroll the mouse over the image to get a closer look
-
+                                        Sample image 5
                                     </h1>
+
+                                    <h2>
+                                        Have a look at the image on the left and try to identify the areas of cancer cells. Then click on 2 to see the answer.
+                                    </h2>
+
+                                    <p>
+                                        Scroll the mouse over the image to get a closer look
+                                    </p>
 
                                     <p>
                                         There are lots of different cell types in this image.
@@ -733,16 +800,19 @@ shapes and sizes are quite different.</p>
 
                                 <div class="item-inner">
                                     <h1>
-                                        The cancer cells are outlined in <b class="text-error">red</b>.
+                                        Sample image 5
                                     </h1>
 
                                     <p>
-                                        The cancer cells are outlined in <b class="text-error">red</b>. Some of these cells have taken on very weird shapes and grown exceptionally large.
+                                        The cancer cells are outlined in
+                                        <b class="text-error">red</b>. Some of these cells have taken on very weird shapes and grown exceptionally large.
                                     </p>
-                                    <p>
-                                        In <b class="text-success">green</b>, we have outlined some healthy lung cells. They are organised and tightly arranged, forming
 
-a tight barrier around the airway in the centre of the image.
+                                    <p>
+                                        In
+                                        <b class="text-success">green</b>, we have outlined some healthy lung cells. They are organised and tightly arranged, forming
+
+                                        a tight barrier around the airway in the centre of the image.
                                     </p>
                                 </div>
                             </div>
@@ -753,22 +823,29 @@ a tight barrier around the airway in the centre of the image.
 
                                 <div class="item-inner">
                                     <h1>
-                                        Now look at the cluster of blood cells outlined in <b class="text-success">green</b>.
+                                        Sample image 5
                                     </h1>
 
+                                    <h2>
+                                        Now look at the cluster of blood cells outlined in
+                                        <b class="text-success">green</b>.
+                                    </h2>
+
                                     <p>
-                                        They are much smaller and uniform looking than the cancer cells outlined in <b class="text-error">red</b>.
+                                        They are much smaller and uniform looking than the cancer cells outlined in
+                                        <b class="text-error">red</b>.
                                     </p>
                                 </div>
                             </div>
 
                             <div class="item">
                                 <img class="tutorialZoom15" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/mvp-02a/new-guidence-images/11-cartilage.png"
-                                     data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/mvp-02a/new-guidence-images/11-cartilage.png" alt=""/>
+                                     data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/mvp-02a/new-guidence-images/11-cartilage-outline.png" alt=""/>
 
                                 <div class="item-inner">
                                     <h1>
-                                        Here, we have outlined the strange structure in the centre of the image in <b class="text-success">green</b>.
+                                        Here, we have outlined the strange structure in the centre of the image in
+                                        <b class="text-success">green</b>.
                                     </h1>
 
                                     <p>
@@ -893,6 +970,13 @@ var step = -1;
             step -= 1;
         }
 
+        if( step == 14 ) {
+        alert("dsfd");
+             $('.zoomContainer').remove();
+                $('.zoomWindowContainer').remove();
+                $(".tutorialZoom14").elevateZoom();
+        }
+
         var $currentStep = $("#" + step),
             $carousel = $("#" + step + " .carousel"),
             $modalInfo = $("#" + step + " .modal-info"),
@@ -971,5 +1055,6 @@ var step = -1;
     prevBtn.onclick = function () {
         showStep('prev');
     };
+
 
 </script>
