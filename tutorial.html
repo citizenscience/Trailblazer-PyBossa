@@ -785,36 +785,15 @@ a tight barrier around the airway in the centre of the image.
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn closeBtnbtn-default pull-left" id="closeBtn" data-dismiss="modal" aria-hidden="true">Close</button>
                 <a id="prevBtn" href="#" class="btn">Previous</a>
                 <a id="nextBtn" href="#" class="btn btn-success">Next</a>
-                <button id="goBackBtn" type="button" class="btn btn-primary pull-right" data-dismiss="modal" aria-hidden="true">Back to task</button>
+                <a id="startContrib" href="../mvp-02b/newtask" class="btn btn-primary" style="display:none"><i class="icon-thumbs-up"></i> Start</a>
             </div>
         </div>
     </div>
 </div>
 
 <script>
-
-
-
-
-    // Removing difficulty on mvp-01
-    var pathname = window.location.pathname; // Returns path only
-
-
-    var inTask = "mvp-02b/task/";
-    var tutorial = "mvp-02b/newtask";
-
-    if (pathname.indexOf(inTask) >= 0) {
-        $("#startContrib").remove();
-        $(".modal-footer").prepend('' +
-            '<button type="button" class="btn btn-primary pull-right" data-dismiss="modal" aria-hidden="true">' +
-            '<i class="icon-thumbs-up"></i>' +
-            '   Go back' +
-            '</button>');
-    }
-
 
 
      function nextSlideContent(carousel) {
@@ -914,10 +893,10 @@ a tight barrier around the airway in the centre of the image.
         var $lastStep = $('.modal-body').length - 1
         if (step == $lastStep) {
             $("#nextBtn").hide();
-            $("#goBackBtn").show();
+            $("#startContrib").show();
         } else {
             $("#nextBtn").show();
-            $("#goBackBtn").hide();
+            $("#startContrib").hide();
         }
 
         $("#" + step).show();
