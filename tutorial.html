@@ -517,10 +517,10 @@ You can then click on the green “Next slide” to move onto the next sample.
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn closeBtnbtn-default pull-left" id="closeBtn" data-dismiss="modal" aria-hidden="true">Close</button>
                 <a id="prevBtn" href="#" class="btn">Previous</a>
                 <a id="nextBtn" href="#" class="btn btn-success">Next</a>
-                <button id="goBackBtn" type="button" class="btn btn-primary pull-right" data-dismiss="modal" aria-hidden="true">Back to task</button>
+
+                <a id="startContrib" href="../mvp-02a/newtask" class="btn btn-primary" style="display:none"><i class="icon-thumbs-up"></i> Start</a>
             </div>
         </div>
     </div>
@@ -531,21 +531,7 @@ You can then click on the green “Next slide” to move onto the next sample.
 
 
 
-    // Removing difficulty on mvp-01
-    var pathname = window.location.pathname; // Returns path only
 
-
-    var inTask = "mvp-02a/task/";
-    var tutorial = "mvp-02a/newtask";
-
-    if (pathname.indexOf(inTask) >= 0) {
-        $("#startContrib").remove();
-        $(".modal-footer").prepend('' +
-            '<button type="button" class="btn btn-primary pull-right" data-dismiss="modal" aria-hidden="true">' +
-            '<i class="icon-thumbs-up"></i>' +
-            '   Go back' +
-            '</button>');
-    }
 
 
 
@@ -646,10 +632,10 @@ $('.modal').modal({
         var $lastStep = $('.modal-body').length - 1
         if (step == $lastStep) {
             $("#nextBtn").hide();
-            $("#goBackBtn").show();
+            $("#startContrib").show();
         } else {
             $("#nextBtn").show();
-            $("#goBackBtn").hide();
+            $("#startContrib").hide();
         }
 
         $("#" + step).show();
