@@ -1061,7 +1061,7 @@ You can then click on the green “Next slide” to move onto the next sample.
         return function () {
 
             // Add and remove active class
-            $('[class^=carousel-selector-]').removeClass('active');
+            $(this).parent().children().removeClass("active");
             $(this).addClass("active");
 
             var id_selector = $(this).attr("class");
