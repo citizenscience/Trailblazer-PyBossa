@@ -367,7 +367,8 @@ Our town is rapidly expanding, with buildings of all shapes and sizes sprouting 
                         <!-- Carousel items -->
                         <div class="carousel-inner">
                             <div class="active item">
-                                <img class="tutorialZoom" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/mvp-02a/new-guidence-images/38.png" alt=""/>
+                                <img class="tutorialZoom4" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/mvp-02a/new-guidence-images/38.png"
+                                     data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/mvp-02a/new-guidence-images/38@2x.jpeg" alt=""/>
 
                                 <div class="item-inner">
                                     <h1>
@@ -377,7 +378,8 @@ Our town is rapidly expanding, with buildings of all shapes and sizes sprouting 
                                 </div>
                             </div>
                             <div class="item">
-                                <img class="tutorialZoom" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/mvp-02a/new-guidence-images/38-cancer.png" alt=""/>
+                                <img class="tutorialZoom4" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/mvp-02a/new-guidence-images/38-cancer.png"
+                                     data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/mvp-02a/new-guidence-images/38@2x.jpeg" alt=""/>
                                 <div class="item-inner">
                                     <h1>
                                         1b - We’ve highlighted the cancer cells in <b class="text-error">red</b> for this image
@@ -385,7 +387,8 @@ Our town is rapidly expanding, with buildings of all shapes and sizes sprouting 
                                 </div>
                             </div>
                             <div class="item">
-                                <img class="tutorialZoom" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/mvp-02a/new-guidence-images/38-non-cancer.jpeg" alt=""/>
+                                <img class="tutorialZoom4" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/mvp-02a/new-guidence-images/38-non-cancer.jpeg"
+                                     data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/mvp-02a/new-guidence-images/38@2x.jpeg" alt=""/>
                                 <div class="item-inner">
                                     <h1>
                                         1c - The remaining cells are <b>healthy</b> and have been highlighted in <b class="text-success">green</b>. They include:
@@ -1616,6 +1619,11 @@ a tight barrier around the airway in the centre of the image.
 
         if ($carousel.length > 0) {
 
+                $('.zoomContainer').remove();
+                $('.zoomWindowContainer').remove();
+                var tutoiral = ".tutorialZoom" + step;
+                $(tutoiral).elevateZoom();
+
             if (!$carousel.data("carousel")) {
 
                 $carousel.carousel({
@@ -1624,9 +1632,7 @@ a tight barrier around the airway in the centre of the image.
 
 
 
-                //$('.zoomContainer').remove();
-                //$('.zoomWindowContainer').remove();
-                //$("#zoom01").elevateZoom();
+
 
 
                 $($items).each(function (idx) {
