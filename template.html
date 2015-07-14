@@ -1337,7 +1337,7 @@ a tight barrier around the airway in the centre of the image.
         return function () {
 
             // Add and remove active class
-            $('[class^=carousel-selector-]').removeClass('active');
+            $(this).parent().children().removeClass("active");
             $(this).addClass("active");
 
             var id_selector = $(this).attr("class");
