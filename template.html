@@ -855,8 +855,8 @@ a tight barrier around the airway in the centre of the image.
                             </div>
 
                             <div class="item">
-                                <img class="tutorialZoom15" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/mvp-02a/new-guidence-images/11-cartaliage.png"
-                                     data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/mvp-02a/new-guidence-images/11-cancer-outline.png" alt=""/>
+                                <img class="tutorialZoom15" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/mvp-02a/new-guidence-images/11-cartilage.png"
+                                     data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/mvp-02a/new-guidence-images/11-cartilage-outline.png" alt=""/>
 
                                 <div class="item-inner">
                                     <h1>
@@ -1337,7 +1337,7 @@ a tight barrier around the airway in the centre of the image.
         return function () {
 
             // Add and remove active class
-            $('[class^=carousel-selector-]').removeClass('active');
+            $(this).parent().children().removeClass("active");
             $(this).addClass("active");
 
             var id_selector = $(this).attr("class");
@@ -1414,8 +1414,6 @@ a tight barrier around the airway in the centre of the image.
     });
 
     pybossa.presentTask(function (task, deferred) {
-
-    console.log(task);
 
         if (!$.isEmptyObject(task)) {
 
@@ -1637,10 +1635,12 @@ a tight barrier around the airway in the centre of the image.
 
         if ($carousel.length > 0) {
 
+
+
+
                 $('.zoomContainer').remove();
                 $('.zoomWindowContainer').remove();
                 var tutorial = ".tutorialZoom" + step;
-                console.log(tutorial);
                 $(tutorial).elevateZoom();
 
             if (!$carousel.data("carousel")) {
@@ -1648,11 +1648,6 @@ a tight barrier around the airway in the centre of the image.
                 $carousel.carousel({
                     interval: false
                 });
-
-
-
-
-
 
                 $($items).each(function (idx) {
                     // Adding buttons
@@ -1675,6 +1670,7 @@ a tight barrier around the airway in the centre of the image.
                 // Load new content
                 $('[class^=carousel-selector-]').on('click', nextSlideContent($("#" + step)));
             }
+
         }
 
 
