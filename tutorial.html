@@ -529,10 +529,9 @@ You can then click on the green “Next slide” to move onto the next sample.
             </div>
 
             <div class="modal-footer">
-
                 <a id="prevBtn" href="#" class="btn">Previous</a>
                 <a id="nextBtn" href="#" class="btn btn-success">Next</a>
-                <a id="startContrib" href="../mvp-02/newtask" class="btn btn-primary" style="display:none"><i class="icon-thumbs-up"></i> Start</a>
+                <a id="startContrib" href="../mvp-02a/newtask" class="btn btn-primary" style="display:none"><i class="icon-thumbs-up"></i> Start</a>
             </div>
         </div>
     </div>
@@ -647,10 +646,10 @@ var step = -1;
         var $lastStep = $('.modal-body').length - 1
         if (step == $lastStep) {
             $("#nextBtn").hide();
-            $("#goBackBtn").show();
+            $("#startContrib").show();
         } else {
             $("#nextBtn").show();
-            $("#goBackBtn").hide();
+            $("#startContrib").hide();
         }
 
         $("#" + step).show();
