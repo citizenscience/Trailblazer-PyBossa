@@ -719,6 +719,7 @@
         <div id="error" class="alert alert-error" style="display:none">
             <h2><strong>Error!</strong> Something went wrong, please contact the site administrators</h2>
         </div>
+
     </div>
 </header>
 
@@ -740,10 +741,9 @@
 
                     </p>
 
-                    <p id="imgId">
-
-                    </p>
+                    <p id="imgId"></p>
                 </div>
+
 
                 <!--<select class="grid-info-difficulty" id="difficulty">-->
                 <!--<option value="0" selected>Please select an image difficulty level:</option>-->
@@ -765,6 +765,12 @@
                 <div class="progress progress-striped">
                     <div id="progress" rel="tooltip" title="#" class="bar" style="width: 0%;"></div>
                 </div>
+            </div>
+            <br/>
+
+            <div id="errorClick" class="alert alert-info" style="display:none">
+                <h2>If you are having problems clicking the grid, please refresh the page by clicking
+                    <b onclick="location.reload();" style="cursor:pointer;"><u>here</u></b></h2>
             </div>
         </div>
 
@@ -1244,16 +1250,16 @@
                 $('.zoomContainer').remove();
                 $('.zoomWindowContainer').remove();
 
+                $("#errorClick").show();
+
                 $(".img-polaroid").elevateZoom({
                     zoomWindowPosition: "grid-info",
                     lensFadeIn: 500,
                     lensFadeOut: 500,
-
-                    // Changing these two numbers changes the zoomWindowWidth
-                    // Also the side of the .zoomLens (box over image)
                     zoomWindowWidth: 455,
                     zoomWindowHeight: 455,
                 });
+
             })
 
 
