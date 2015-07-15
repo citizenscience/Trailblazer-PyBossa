@@ -103,8 +103,6 @@
     * If devices is mobile or tablet then show message
     */
 
-
-
     .wrappy {
         display: none;
         position: fixed;
@@ -117,7 +115,6 @@
         z-index: 3000 !important;
         background-color: rgba(0, 0, 0, 0.9)
     }
-
 
     .wrappy.active,
     .ios .wrappy,
@@ -160,14 +157,13 @@
             <img src="//citscitools.cancerresearchuk.org/static/img/cruk/cruk-logo-tiny.png" alt="CRUK">
             </br>
             <h1>Please view on Chrome or Firefox on a desktop computer</h1>
+
             <h3>We are currently working on development for other devices and Internet Explorer</h3>
             <br>
             <a href="http://citscitools.cancerresearchuk.org/community/about/" class="btn">Find out more</a>
         </div>
     </div>
 </div>
-
-
 
 
 <!--MODAL-->
@@ -263,12 +259,14 @@
                                     data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/38@2x-min.png" alt=""/>
 
                                 <div class="item-inner">
-                                     <h1>
+                                    <h1>
                                         Sample image 1
                                     </h1>
+
                                     <h2>
                                         Move your mouse over the image on the left to zoom in and see more detail.
                                     </h2>
+
                                     <p>
                                         To identify <b>cancer cells</b>, look for
                                         <b>blotchy cells</b> grouped together in <b>uneven clumps</b>,
@@ -287,6 +285,7 @@
                                     <h1>
                                         Sample image 1
                                     </h1>
+
                                     <h2>
                                         We’ve highlighted the <b>cancer cells</b> in
                                         <b class="text-error">red</b> in this image.
@@ -298,9 +297,10 @@
                                     data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/38-non-cancer-outline@2x-min.png" alt=""/>
 
                                 <div class="item-inner">
-                                     <h1>
+                                    <h1>
                                         Sample image 1
                                     </h1>
+
                                     <h2>
                                         The remaining cells are <b>healthy</b> and have been highlighted in
                                         <b class="text-success">green</b>. They include:
@@ -425,9 +425,9 @@
                                         We've highlighted clusters of blood cells in <b class="text-success">green</b>
                                     </h2>
                                     <li>Blood cells.
-                                        <li>These are small, dark blue and round.</li>
-                                        <li>Sometimes appear as dark brown spots</li>
-                                        <li>They can appear loosely spread out or in very dense clusters.</li>
+                                    <li>These are small, dark blue and round.</li>
+                                    <li>Sometimes appear as dark brown spots</li>
+                                    <li>They can appear loosely spread out or in very dense clusters.</li>
                                     </li>
                                 </div>
                             </div>
@@ -534,8 +534,6 @@
             </div>
 
 
-
-
             <!--THIS IS MVP-02B-->
 
             <!--WITH CAROUSEL-->
@@ -577,6 +575,7 @@
 
                                     <p>
                                         Most are quite large but their shapes and sizes are quite different.
+
                                     <p>
 
                                         They have formed uneven, lumpy rings and chains.
@@ -633,7 +632,7 @@
                                         Have a look at the image on the left and try to identify the areas of cancer cells. Then click on 2 to see the answer.
                                     </h2>
 
-                                   <p>
+                                    <p>
                                         Move your mouse over the image on the left to zoom in and see more detail.
                                     </p>
 
@@ -771,19 +770,17 @@
                         Sample image 6
                     </h1>
 
-                    <p>
-                                        Move your mouse over the image on the left to zoom in and see more detail.
-                                    </p>
+                    <h2>
+                        This image is pretty much all cancer cells!
+                    </h2>
 
                     <p>
-                        <b>This image is pretty much all cancer cells!</b>
+                        They form strange blotchy patterns with no two cells looking the same. There’s a complete lack of
+                        organisation or uniformity.
                     </p>
 
                     <p>
-
-                        They form strange blotchy patterns with no two cells looking the same. There’s a complete lack of
-
-                        organisation or uniformity.
+                        Move your mouse over the image on the left to zoom in and see more detail.
                     </p>
                 </div>
 
@@ -826,10 +823,10 @@
                                         Sample image 7
                                     </h1>
 
-                                    <p>
+                                    <h2>
                                         The cancer cells are outlined in
                                         <b class="text-error">red</b>. Some of these cells have taken on very weird shapes and grown exceptionally large.
-                                    </p>
+                                    </h2>
 
                                     <p>
                                         In
@@ -944,7 +941,6 @@
         </div>
     </div>
 </div>
-
 
 
 <script>
@@ -1117,7 +1113,7 @@
     };
 
     BrowserDetect.init();
-    if( BrowserDetect.browser == 'Explorer' ) {
+    if (BrowserDetect.browser == 'Explorer') {
         $(".wrappy").addClass("active");
     }
 
