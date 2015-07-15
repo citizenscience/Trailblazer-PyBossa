@@ -103,16 +103,7 @@
     * If devices is mobile or tablet then show message
     */
 
-    .wrappy .active,
-    .ios .wrappy,
-    .ipad .wrappy,
-    .mobile .wrappy,
-    .tablet .wrappy,
-    .andriod .wrappy,
-    .androidTablet .wrappy,
-    .blackberry .wrappy {
-        display: block;
-    }
+
 
     .wrappy {
         display: none;
@@ -125,6 +116,18 @@
         line-height: 1.2;
         z-index: 3000 !important;
         background-color: rgba(0, 0, 0, 0.9)
+    }
+
+
+    .wrappy.active,
+    .ios .wrappy,
+    .ipad .wrappy,
+    .mobile .wrappy,
+    .tablet .wrappy,
+    .andriod .wrappy,
+    .androidTablet .wrappy,
+    .blackberry .wrappy {
+        display: block;
     }
 
     .device-message {
