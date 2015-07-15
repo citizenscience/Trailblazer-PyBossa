@@ -164,140 +164,6 @@
 
 
 
-<script>
-
-
-    function nextSlideContent(carousel) {
-        return function () {
-
-            // Add and remove active class
-            $(this).parent().children().removeClass("active");
-            $(this).addClass("active");
-
-            var id_selector = $(this).attr("class");
-            var id = id_selector.substr(id_selector.length - 8);
-            id = parseInt(id);
-            var $itemInners = carousel.find(".modal-info .item-inner");
-            $itemInners.removeClass('active');
-            $($itemInners[id - 1]).addClass('active')
-            var $modalId = $(this).parent().parent().parent().parent().attr("id");
-            $('#myCarousel' + $modalId).carousel(id - 1);
-        }
-    }
-
-
-    /*
-     * Modal
-     *
-     */
-
-    $('.modal').modal({
-        backdrop: 'static',
-        keyboard: false
-    });
-
-
-    var step = -1;
-
-    function showStep(action) {
-
-        $("#" + step).hide();
-
-
-        if (action == 'next') {
-            step += 1;
-        }
-        if (action == 'prev') {
-            step -= 1;
-        }
-
-        if (step == 14) {
-
-            $('.zoomContainer').remove();
-            $('.zoomWindowContainer').remove();
-            $(".tutorialZoom14").elevateZoom();
-        }
-
-        var $currentStep = $("#" + step),
-            $carousel = $("#" + step + " .carousel"),
-            $modalInfo = $("#" + step + " .modal-info"),
-            $items = $("#" + step + " .item");
-
-        if ($carousel.length > 0) {
-
-            $('.zoomContainer').remove();
-            $('.zoomWindowContainer').remove();
-            var tutorial = ".tutorialZoom" + step;
-            $(tutorial).elevateZoom();
-
-            if (!$carousel.data("carousel")) {
-
-                $carousel.carousel({
-                    interval: false
-                });
-
-
-                $($items).each(function (idx) {
-                    // Adding buttons
-                    var idx = idx + 1,
-                        $item = $(this),
-                        $li = '<div class="carousel-selector-' + idx + '" type="button">' + idx + '</div>';
-
-                    $("#carouselIndicatorsList" + step).append($li);
-
-                    //Adding item-info to modal-info
-                    $(this).children(".item-inner");
-                    $modalInfo.append($item.children(".item-inner"));
-                });
-
-                $("#" + step).find(".modal-info .item-inner").first().addClass("active");
-                $("#" + step).find(".carousel-indicators-custom div").first().addClass("active");
-
-
-                // When you click on each selector
-                // Load new content
-                $('[class^=carousel-selector-]').on('click', nextSlideContent($("#" + step)));
-            }
-        }
-
-
-        if (step == 0) {
-            $("#prevBtn").hide();
-        } else {
-            $("#prevBtn").show();
-        }
-
-        var $lastStep = $('.modal-body').length - 1
-        if (step == $lastStep) {
-            $("#nextBtn").hide();
-            $("#startContrib").show();
-        } else {
-            $("#nextBtn").show();
-            $("#startContrib").hide();
-        }
-
-        $("#" + step).show();
-
-
-    }
-
-    showStep('next');
-
-    var nextBtn = document.getElementById("nextBtn");
-    nextBtn.onclick = function () {
-        showStep('next');
-    };
-    var prevBtn = document.getElementById("prevBtn");
-    prevBtn.onclick = function () {
-        showStep('prev');
-    };
-
-
-</script>
-
-
-
-
 
 <!--MODAL-->
 <div class="row">
@@ -1062,3 +928,136 @@
         </div>
     </div>
 </div>
+
+<script>
+
+
+    function nextSlideContent(carousel) {
+        return function () {
+
+            // Add and remove active class
+            $(this).parent().children().removeClass("active");
+            $(this).addClass("active");
+
+            var id_selector = $(this).attr("class");
+            var id = id_selector.substr(id_selector.length - 8);
+            id = parseInt(id);
+            var $itemInners = carousel.find(".modal-info .item-inner");
+            $itemInners.removeClass('active');
+            $($itemInners[id - 1]).addClass('active')
+            var $modalId = $(this).parent().parent().parent().parent().attr("id");
+            $('#myCarousel' + $modalId).carousel(id - 1);
+        }
+    }
+
+
+    /*
+     * Modal
+     *
+     */
+
+    $('.modal').modal({
+        backdrop: 'static',
+        keyboard: false
+    });
+
+
+    var step = -1;
+
+    function showStep(action) {
+
+        $("#" + step).hide();
+
+
+        if (action == 'next') {
+            step += 1;
+        }
+        if (action == 'prev') {
+            step -= 1;
+        }
+
+        if (step == 14) {
+
+            $('.zoomContainer').remove();
+            $('.zoomWindowContainer').remove();
+            $(".tutorialZoom14").elevateZoom();
+        }
+
+        var $currentStep = $("#" + step),
+            $carousel = $("#" + step + " .carousel"),
+            $modalInfo = $("#" + step + " .modal-info"),
+            $items = $("#" + step + " .item");
+
+        if ($carousel.length > 0) {
+
+            $('.zoomContainer').remove();
+            $('.zoomWindowContainer').remove();
+            var tutorial = ".tutorialZoom" + step;
+            $(tutorial).elevateZoom();
+
+            if (!$carousel.data("carousel")) {
+
+                $carousel.carousel({
+                    interval: false
+                });
+
+
+                $($items).each(function (idx) {
+                    // Adding buttons
+                    var idx = idx + 1,
+                        $item = $(this),
+                        $li = '<div class="carousel-selector-' + idx + '" type="button">' + idx + '</div>';
+
+                    $("#carouselIndicatorsList" + step).append($li);
+
+                    //Adding item-info to modal-info
+                    $(this).children(".item-inner");
+                    $modalInfo.append($item.children(".item-inner"));
+                });
+
+                $("#" + step).find(".modal-info .item-inner").first().addClass("active");
+                $("#" + step).find(".carousel-indicators-custom div").first().addClass("active");
+
+
+                // When you click on each selector
+                // Load new content
+                $('[class^=carousel-selector-]').on('click', nextSlideContent($("#" + step)));
+            }
+        }
+
+
+        if (step == 0) {
+            $("#prevBtn").hide();
+        } else {
+            $("#prevBtn").show();
+        }
+
+        var $lastStep = $('.modal-body').length - 1
+        if (step == $lastStep) {
+            $("#nextBtn").hide();
+            $("#startContrib").show();
+        } else {
+            $("#nextBtn").show();
+            $("#startContrib").hide();
+        }
+
+        $("#" + step).show();
+
+
+    }
+
+    showStep('next');
+
+    var nextBtn = document.getElementById("nextBtn");
+    nextBtn.onclick = function () {
+        showStep('next');
+    };
+    var prevBtn = document.getElementById("prevBtn");
+    prevBtn.onclick = function () {
+        showStep('prev');
+    };
+
+
+</script>
+
+
