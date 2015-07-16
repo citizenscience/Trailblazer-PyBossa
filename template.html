@@ -1,278 +1,3 @@
-<style type="text/css">
-
-
-    .zoomContainer {
-        z-index: 1999;
-    }
-
-    /*
-     * For styling the tutorial modal component
-     * Need to make this responsive and cross browser compatable
-     */
-
-    .modal {
-        z-index: 1999 !important;
-        width: 800px;
-        margin-left: -400px;
-        top: 45%;
-    }
-
-    .modal .modal-body {
-        max-height: 600px;
-        display: table;
-        padding: 0;
-        z-index: 1200 !important;
-    }
-
-    .modal-backdrop {
-        z-index: 1000 !important;
-    }
-
-    .zoomContainer {
-        z-index: 2000 !important;
-    }
-
-    /*
-     * Modal body split into two sections
-     * left is the .modal-image (contains image and carousel)
-     * right is the .modal-info (contains text)
-     */
-
-    .modal .modal-body .modal-image,
-    .modal .modal-body .modal-info {
-        float: left;
-        word-break: keep-all;
-    }
-
-    .modal .modal-body .modal-image {
-        width: 460px;
-    }
-
-    .modal .modal-body .modal-info {
-        width: 300px;
-        padding: 20px;
-    }
-
-    .modal .modal-body .carousel {
-        margin-bottom: 0;
-    }
-
-    .modal .modal-body .carousel-control {
-        top: 50%;
-    }
-
-    .carousel-indicators-custom {
-        position: absolute;
-        right: -325px;
-        bottom: 15px;
-        text-align: center;
-    }
-
-    .carousel-indicators-custom div {
-        list-style-type: none;
-        padding: 10px;
-        width: 20px;
-        display: inline-block;
-        background-color: #efefef;
-        margin-left: 10px;
-        cursor: pointer;
-    }
-
-    .carousel-indicators-custom div.active {
-        background-color: yellow;
-        width: 20px;
-        display: inline-block;
-    }
-
-    .modal-info .item-inner {
-        display: none;
-    }
-
-    .modal-info .item-inner.active {
-        display: block;
-    }
-
-    /*
-     * Utility to clear floats
-     */
-    .clearfix:before,
-    .clearfix:after {
-        content: " ";
-        display: table;
-    }
-
-    .clearfix:after {
-        clear: both;
-    }
-
-    /*
-     * Left column with grid infomation
-     */
-
-    .grid-info {
-        background-color: #efefef;
-        padding: 20px;
-        box-sizing: border-box;
-    }
-
-    .grid-info span {
-        font-size: 18px;
-    }
-
-    /*
-     * Right column including grid
-     */
-    .grid-wrapper {
-        position: relative;
-        height: 460px;
-    }
-
-    .grid {
-        position: absolute;
-        top: 0;
-        width: 100%;
-        border-spacing: 0;
-    }
-
-    .img-polaroid {
-        position: absolute;
-        z-index: 1;
-        top: 0;
-        padding: 0;
-        width: 100%;
-        height: auto;
-    }
-
-    rect.grid-item.grid-item-success {
-        fill: rgba(231, 76, 60, .8);
-    }
-
-    rect.grid-item.grid-item-error {
-
-        fill: rgba(0, 163, 136, .5);
-    }
-
-    #zoom_01 {
-        width: 400px;
-    }
-
-    #canvas {
-        position: absolute;
-        top: 0;
-        z-index: 10;
-    }
-
-    .zoomContainer {
-        z-index: 100;
-    }
-
-    .zoomLens {
-        height: 70px;
-        width: 70px;
-    }
-
-    /*
-     * Slick Slider
-     */
-
-    .slick-prev,
-    .slick-prev:hover {
-        background-color: rgba(231, 76, 60, .8);
-    }
-
-    .slick-prev:focus {
-        background-color: rgba(231, 76, 60, .8);
-    }
-
-    .slick-next,
-    .slick-next:hover {
-        background-color: rgba(0, 163, 136, .5);
-    }
-
-    .slick-next:focus {
-        background-color: rgba(0, 163, 136, .5);
-    }
-
-    .slick-disabled {
-        background-color: transparent;
-    }
-
-    /*
-     * Example cell images
-     */
-
-    .example-list {
-        margin-bottom: 40px;
-    }
-
-    .example-list-item {
-        position: relative;
-        width: 20%;
-        float: left;
-        margin: 0;
-        overflow: hidden;
-        box-sizing: border-box;
-        margin-right: 5px;
-    }
-
-    .example-list-item.last {
-        margin-right: 0;
-    }
-
-    .example-list-item:hover .description {
-        opacity: 1;
-        left: 0;
-    }
-
-    .example-list-item .description {
-        position: absolute;
-        top: 0;
-        display: block;
-        text-align: center;
-        width: 100%;
-        color: white;
-        font-family: sans-serif;
-        font-weight: 100;
-        letter-spacing: 1px;
-        background-color: rgba(0, 0, 0, 0.6);
-    }
-
-    .example-list-item .description.cancer {
-        background-color: rgba(231, 76, 60, .8);
-    }
-
-    .example-list-item .description.non-cancer {
-        background-color: rgba(0, 163, 136, .7);
-    }
-
-    .nextSlideBtn {
-        float: right;
-    }
-
-    #difficulty {
-        width: 100%;
-    }
-
-    .progress {
-        margin-bottom: 0;
-        margin-top: 20px;
-    }
-
-    .site-header .alert {
-        text-align: center;
-    }
-
-    .zoomWindowContainer:after {
-        content: " ";
-        position: absolute;
-        height: 40px;
-        width: 40px;
-        left: 50%;
-        top: 50%;
-        margin-top: -20px;
-        margin-bottom: -20px;
-    }
-</style>
 
 
 <!--MODAL-->
@@ -1219,632 +944,800 @@
 
 
 <script type="text/javascript" async="async">
+"use strict";
 
-    "use strict";
+/**
+ * Grid Constructor function
+ * =======================
+ * Its a bit of a miss match of vanilla JS and jQuery...sorry,
+ * wanted to do everything in JS but for speed i did jQuery
+ * =======================
+ *
+ *
+ */
 
-    /**
-     * grid.js
-     * Grid Constructor function
-     * Its a bit of a miss match of vanilla JS and jQuery...sorry,
-     * wanted to do everything in JS but for speed i did jQuery
+function Grid(task) {
+
+    //Modal.call(this);
+
+
+
+    this.task = task;
+    this.activateCell();
+
+
+}
+
+//Grid.prototype = Object.create(Modal.prototype);
+
+/**
+ *
+ * For creating a grid overlayed over the image
+ *
+ */
+Grid.prototype.createGrid = function() {
+
+    /*
+     * Using raphael so we can use methods like isPointInside
+     * and calculate how close the click on grid are.
+     * Also nice and cross browser :D
      *
+     * Maybe d3 might have been better!?
      */
-    function Grid(task) {
+    var rows = 6,
+        columns = 6,
+        canvas = Raphael("canvas", $(".img-polaroid").width(), $(".img-polaroid").height()),
+        gridHeight = $(".img-polaroid").height() / columns,
+        gridWidth = $(".img-polaroid").width() / rows;
 
-        //Modal.call(this);
+    // creates 36 grid squares in raphael
+    var x, y;
+    for (y = 0; y < rows; y += 1) {
+        for (x = 0; x < columns; x += 1) {
 
-        this.task = task;
-        this.activateCell();
+            var offsetH = y,
+                offsetW = x,
+                moveDown = (y + gridHeight - offsetH) * y,
+                moveRight = (x + gridWidth - offsetW) * x,
+                gridSquare = canvas.rect(moveRight, moveDown, gridWidth, gridHeight).attr({
+                    "stroke": "#fff"
+                });
 
-        /**
-         *
-         * Initializing the elevateZoom library
-         * www.elevateweb.co.uk/image-zoom
-         *
-         */
-        $(".img-polaroid").elevateZoom({
-            zoomWindowPosition: "grid-info",
-            lensFadeIn: 500,
-            lensFadeOut: 500,
-            cursor: "pointer",
-            // Changing these two numbers changes the zoomWindowWidth
-            // Also the side of the .zoomLens (box over image)
-            zoomWindowWidth: 455,
-            zoomWindowHeight: 455,
-        });
+            gridSquare.node.setAttribute("class", "grid-item");
+
+            gridSquare.column = x;
+            gridSquare.row = y;
+            gridSquare.has_cancer = null;
+
+            // Save all grid squares in array within main task object
+            // We can then grab this when saving the info at the end
+            this.task.answer.squares.push(gridSquare);
+
+        }
+    }
+};
+
+
+/**
+ *
+ * Listen for lick on .zoomLens and find the closed square
+ *
+ */
+Grid.prototype.activateCell = function() {
+
+    var clicks = 0;
+    var timer = null;
+    var _this = this;
+
+    $("body").on("click touchstart", ".zoomLens", function(evt) {
+
+        evt.preventDefault();
+        clicks++; //count clicks
+
+        // Find the cloest grid square to click on the zoomLens
+
+        var activeSquare = _this.findClosestSquare();
+        var activeSquareNode = activeSquare.node;
+
+        // Not able to use jQuery .click or .dblclick for some reason i can't remember
+        // If we can then should use jQuery...might be quicker and easier
+
+        if (clicks === 1) {
+            timer = setTimeout(function() {
+                // Adds and removes classes to grid squares making them red or green
+                if (activeSquareNode.className.animVal != "grid-item grid-item-success") {
+                    activeSquareNode.setAttribute("class", "grid-item grid-item-success");
+                    activeSquare.has_cancer = true;
+                } else {
+                    activeSquareNode.setAttribute("class", "grid-item");
+                    activeSquare.has_cancer = null;
+                } //after action performed, reset counter
+                clicks = 0;
+            }, 250);
+        } else {
+            clearTimeout(timer); //prevent single-click action
+            activeSquareNode.setAttribute("class", "grid-item grid-item-error");
+            activeSquare.has_cancer = false;
+            clicks = 0;
+        }
+    });
+};
+
+
+/**
+ *
+ * Loop through the grid items
+ * and find the closest matching grid
+ * that have the clicked coordinates
+ *
+ */
+Grid.prototype.findClosestSquare = function() {
+
+    var _this = this,
+        activeSquare,
+        target = $(".zoomLens"),
+        target_pos = {
+            x: parseInt(target.css("left")),
+            y: parseInt(target.css("top"))
+        };
+
+    // Center the zoom cursor to middle of square
+    target_pos.x = target_pos.x + 34.85;
+    target_pos.y = target_pos.y + 34.85;
+
+    // Find the closet grid item
+    $.each(_this.task.answer.squares, function(key, value) {
+        if (value.isPointInside(target_pos.x, target_pos.y)) {
+            activeSquare = value;
+        }
+    });
+    return activeSquare;
+};
+
+
+Grid.prototype.selectAllSquares = function() {
+    for (var i = 0; i < this.task.answer.squares.length; i++) {
+        var gridSquare = this.task.answer.squares[i],
+            gridSquareNode = this.task.answer.squares[i].node;
+        gridSquare.has_cancer = true;
+        gridSquareNode.setAttribute("class", "grid-item grid-item-success");
+    }
+}
+Grid.prototype.deselectAllSquares = function() {
+    for (var i = 0; i < this.task.answer.squares.length; i++) {
+        var gridSquare = this.task.answer.squares[i],
+            gridSquareNode = this.task.answer.squares[i].node;
+        gridSquare.has_cancer = null;
+        gridSquareNode.setAttribute("class", "grid-item");
+    }
+}
+
+
+
+
+/*
+ *
+ * Modal
+ * =======================
+ *
+ *
+ *
+ */
+
+
+function Modal() {
+    this.step = -1;
+}
+
+Modal.prototype.open = function() {
+
+    //Grid.call(this);
+
+    $('.modal').modal({
+        backdrop: 'static',
+        keyboard: false
+    });
+    this.showStep("next");
+
+
+}
+
+
+//Modal.prototype = Object.create(Grid.prototype);
+
+
+
+Modal.prototype.showStep = function(action) {
+
+    var z = new Zoom();
+
+    $("#" + this.step).hide();
+
+
+    if (action == 'next') {
+        this.step += 1;
+    }
+    if (action == 'prev') {
+        this.step -= 1;
     }
 
-    //Grid.prototype = Object.create(Modal.prototype);
+    if (this.step == 14) {
+        $('.zoomContainer').remove();
+        $('.zoomWindowContainer').remove();
+        $(".tutorialZoom14").elevateZoom();
+    }
 
-    /**
-     *
-     * For creating a grid overlayed over the image
-     *
-     */
-    Grid.prototype.createGrid = function () {
+    var $currentStep = $("#" + this.step),
+        $carousel = $("#" + this.step + " .carousel"),
+        $modalInfo = $("#" + this.step + " .modal-info"),
+        $items = $("#" + this.step + " .item");
+
+    if ($carousel.length > 0) {
+
+        $('.zoomContainer').remove();
+        $('.zoomWindowContainer').remove();
+        var tutorial = ".tutorialZoom" + this.step;
+
+        $(tutorial).elevateZoom();
+
+        if (!$carousel.data("carousel")) {
+
+            $carousel.carousel({
+                interval: false
+            });
+            var $indicatorList = $("#carouselIndicatorsList" + this.step);
+
+            $($items).each(function(idx) {
+                // Adding buttons
+                var idx = idx + 1,
+                    $item = $(this),
+                    $li = '<div class="carousel-selector-' + idx + '" type="button">' + idx + '</div>';
+
+                $indicatorList.append($li);
+
+                //Adding item-info to modal-info
+                $(this).children(".item-inner");
+                $modalInfo.append($item.children(".item-inner"));
+            });
+
+            $("#" + this.step).find(".modal-info .item-inner").first().addClass("active");
+            $("#" + this.step).find(".carousel-indicators-custom div").first().addClass("active");
+
+
+            // When you click on each selector
+            // Load new content
+            $('[class^=carousel-selector-]').on('click', this.nextSlideContent($("#" + this.step)));
+        }
+    }
+
+
+    if (this.step == 0) {
+        $("#prevBtn").hide();
+    } else {
+        $("#prevBtn").show();
+    }
+
+    var $lastStep = $('.modal-body').length - 1
+    if (this.step == $lastStep) {
+        $("#nextBtn").hide();
+        $("#goBackBtn").show();
+    } else {
+        $("#nextBtn").show();
+        $("#goBackBtn").hide();
+    }
+
+    $("#" + this.step).show();
+
+}
+
+Modal.prototype.nextSlideContent = function(carousel) {
+
+    return function() {
+
+        // Add and remove active class
+        $(this).parent().children().removeClass("active");
+        $(this).addClass("active");
+
+        var id_selector = $(this).attr("class");
+        var id = id_selector.substr(id_selector.length - 8);
+        id = parseInt(id);
+        var $itemInners = carousel.find(".modal-info .item-inner");
+        $itemInners.removeClass('active');
+        $($itemInners[id - 1]).addClass('active')
+        var $modalId = $(this).parent().parent().parent().parent().attr("id");
+        $('#myCarousel' + $modalId).carousel(id - 1);
+    }
+
+}
+
+Modal.prototype.carousel = function() {
+
+
+}
+
+Modal.prototype.close = function() {
+
+
+}
+
+
+
+
+/*
+ *
+ * Elevate Zoom
+ * =======================
+ *
+ *
+ */
+
+
+function Zoom() {
+    //Grid.call(this);
+}
+
+//Zoom.prototype = Object.create(Grid.prototype);
+
+Zoom.prototype.addZoom = function(element) {
+
+
+    element.elevateZoom({
+        zoomWindowPosition: "grid-info",
+        lensFadeIn: 500,
+        lensFadeOut: 500,
+        zoomWindowWidth: 455,
+        zoomWindowHeight: 455,
+    });
+}
+
+Zoom.prototype.removeZoom = function(element) {
+
+    $.removeData(element, 'elevateZoom');
+    $('.zoomContainer').remove();
+    $('.zoomWindowContainer').remove();
+
+}
+
+
+
+
+/*
+ *
+ * Helpful functions
+ * =======================
+ *
+ */
+
+
+
+/*
+ *
+ * loadUserProgress()
+ * =======================
+ * Loads user progress into Grid info
+ *
+ *
+ */
+
+function loadUserProgress() {
+    pybossa.userProgress('mvp-02').done(function(data) {
+        var pct = Math.round((data.done * 100) / data.total);
+        $("#progress").css("width", pct.toString() + "%");
+        $("#progress").attr("title", pct.toString() + "% completed!");
+        $("#progress").tooltip({
+            'placement': 'bottom'
+        });
+        $("#total").text(data.total);
+        $("#done").text(data.done);
+    });
+}
+
+
+
+
+/*
+ *
+ * whatDevice()
+ * =======================
+ * uses device.js and works out what device we are using
+ *
+ *
+ */
+
+function whatDevice() {
+    var desktop = device.desktop(),
+        mobile = device.mobile(),
+        tablet = device.tablet(),
+        portrait = device.portrait(),
+        landscape = device.landscape(),
+        iphone = device.iphone(),
+        android = device.android(),
+        androidTablet = device.androidTablet(),
+        blackberryTablet = device.blackberryTablet();
+
+
+    if (desktop) return "Desktop";
+    if (mobile && portrait) return "Mobile portrait";
+    if (mobile && portrait) return "Mobile landscape";
+    if (tablet && portrait) return "Tablet portrait";
+    if (tablet && landscape) return "Tablet landscape";
+}
+
+
+
+
+/*
+ *
+ * secondsToString()
+ * =======================
+ * Finds out how long the user has spent on the particular task.
+ * We then return this value back into the task.answer object which we get back in pybossa
+ *
+ *
+ */
+
+function secondsToString(seconds) {
+    var numhours = Math.floor(((seconds % 31536000) % 86400) / 3600);
+    var numminutes = Math.floor((((seconds % 31536000) % 86400) % 3600) / 60);
+    var numseconds = (((seconds % 31536000) % 86400) % 3600) % 60;
+    return numhours + ":" + numminutes + ":" + numseconds.toFixed(2);
+}
+
+
+
+
+/*
+ *
+ * BrowserDetect()
+ * =======================
+ * We use modenizr to find out with browser we are on and what version.
+ * We then return this value back into the task.answer object which we get back in pybossa
+ *
+ * http://stackoverflow.com/questions/13478303/correct-way-to-use-modernizr-to-detect-ie
+ *
+ *
+ */
+
+var BrowserDetect = {
+    init: function() {
+        this.browser = this.searchString(this.dataBrowser) || "Other";
+        this.version = this.searchVersion(navigator.userAgent) || this.searchVersion(navigator.appVersion) || "Unknown";
+    },
+    searchString: function(data) {
+        for (var i = 0; i < data.length; i++) {
+            var dataString = data[i].string;
+            this.versionSearchString = data[i].subString;
+
+            if (dataString.indexOf(data[i].subString) !== -1) {
+                return data[i].identity;
+            }
+        }
+    },
+    searchVersion: function(dataString) {
+        var index = dataString.indexOf(this.versionSearchString);
+        if (index === -1) {
+            return;
+        }
+
+        var rv = dataString.indexOf("rv:");
+        if (this.versionSearchString === "Trident" && rv !== -1) {
+            return parseFloat(dataString.substring(rv + 3));
+        } else {
+            return parseFloat(dataString.substring(index + this.versionSearchString.length + 1));
+        }
+    },
+
+    dataBrowser: [{
+        string: navigator.userAgent,
+        subString: "Chrome",
+        identity: "Chrome"
+    }, {
+        string: navigator.userAgent,
+        subString: "MSIE",
+        identity: "Explorer"
+    }, {
+        string: navigator.userAgent,
+        subString: "Trident",
+        identity: "Explorer"
+    }, {
+        string: navigator.userAgent,
+        subString: "Firefox",
+        identity: "Firefox"
+    }, {
+        string: navigator.userAgent,
+        subString: "Safari",
+        identity: "Safari"
+    }, {
+        string: navigator.userAgent,
+        subString: "Opera",
+        identity: "Opera"
+    }]
+
+};
+
+BrowserDetect.init();
+
+if (BrowserDetect.browser == 'Explorer') {
+    $(".wrappy").addClass("active");
+}
+
+
+
+
+
+
+
+/*
+ * .taskLoaded()
+ * =======================
+ * taskLoaded is the first pybossa method that is called
+ * =======================
+ *
+ *
+ */
+
+pybossa.taskLoaded(function(task, deferred) {
+
+
+    if (!$.isEmptyObject(task)) {
+        // load image from flickr
+        var img = $('<img />');
+        img.load(function() {
+            // continue as soon as the image is loaded
+            deferred.resolve(task);
+        });
+
+        img.attr('src', task.info.url_b).css('height', 460);
+        img.attr('data-zoom-image', task.info.url_b);
+        img.addClass('img-polaroid');
+        task.info.image = img;
+
+
+        task.answer = {
+            squares: [],
+            timeTaken: "",
+            device: "",
+            browser: "",
+            img: "",
+            openModalCount: 0
+        }
+
+    } else {
+        deferred.resolve(task);
+    }
+});
+
+
+
+
+/*
+ * .presentTask()
+ * =======================
+ * This grabs the task via an API call using pybossa.js. We retreive all of the task infomation
+ * in an object called task that we pass into the presentTask method. We first check if there is a task
+ * If there is then we initalize the Grid constructor and other methods.
+ * =======================
+ *
+ */
+
+
+pybossa.presentTask(function(task, deferred) {
+
+
+    if (!$.isEmptyObject(task)) {
+
+
+        loadUserProgress();
+
+        /* THESE AND ERROR PUMPING OUT WITH THIS !?!
+
+        $('.example-list').slick({
+            dots: true,
+            infinite: false,
+            speed: 300,
+            slidesToScroll: 5,
+            slidesToShow: 5
+        });
+
+        */
+
+
+
+
+        var openModalCount = 0;
 
         /*
-         * Using raphael so we can use methods like isPointInside
-         * and calculate how close the click on grid are.
-         * Also nice and cross browser :D
-         *
-         * Maybe d3 might have been better!?
+         * Take a time stamp of the time the page loads
          */
-        var rows = 6,
-            columns = 6,
-            canvas = Raphael("canvas", $(".img-polaroid").width(), $(".img-polaroid").height()),
-            gridHeight = $(".img-polaroid").height() / columns,
-            gridWidth = $(".img-polaroid").width() / rows;
+        var oldTime = new Date();
 
-        // creates 36 grid squares in raphael
-        var x, y;
-        for (y = 0; y < rows; y += 1) {
-            for (x = 0; x < columns; x += 1) {
+        $('#photo-link').html('').append(task.info.image);
+        $("#question").html(task.info.question);
+        $('#task-id').html(task.id);
 
-                var offsetH = y,
-                    offsetW = x,
-                    moveDown = (y + gridHeight - offsetH) * y,
-                    moveRight = (x + gridWidth - offsetW) * x,
-                    gridSquare = canvas.rect(moveRight, moveDown, gridWidth, gridHeight).attr({
-                        "stroke": "#fff"
-                    });
+        var imgUrl = task.info.url_b;
+        var result = imgUrl.replace("//citscitools.cancerresearchuk.org/static/img/mvp-01/", "");
+        $("#imgId").html("Image ID: " + "<strong>" + result + "</strong>");
 
-                gridSquare.node.setAttribute("class", "grid-item");
 
-                gridSquare.column = x;
-                gridSquare.row = y;
-                gridSquare.has_cancer = null;
 
-                // Save all grid squares in array within main task object
-                // We can then grab this when saving the info at the end
-                this.task.answer.squares.push(gridSquare);
 
-            }
+        /*
+         *
+         * Init Trailblazer
+         *
+         *
+         *
+         */
+
+
+        var grid = new Grid(task);
+        grid.createGrid();
+
+        var zoom = new Zoom();
+        zoom.addZoom($(".img-polaroid"));
+
+        var modal = new Modal();
+
+
+
+        /*
+         *
+         * Event Listeners
+         *
+         *
+         */
+
+        var selectBtn = document.getElementById("selectAllBtn");
+        selectBtn.onclick = function() {
+            grid.selectAllSquares();
         }
-    };
+        var deselectBtn = document.getElementById("deselectBtn");
+        deselectBtn.onclick = function() {
+            grid.deselectAllSquares();
+        }
 
 
-    /**
-     *
-     * Listen for lick on .zoomLens and find the closed square
-     *
-     */
-    Grid.prototype.activateCell = function () {
 
-        var clicks = 0;
-        var timer = null;
-        var _this = this;
 
-        $("body").on("click touchstart", ".zoomLens", function (evt) {
+        var modalBtn = document.getElementById("modalShow");
+        modalBtn.onclick = function() {
+            modal.open();
+            zoom.removeZoom($(".tutorialZoom"));
+            openModalCount++;
+        };
 
-            evt.preventDefault();
-            clicks++; //count clicks
+        var closeBtn = document.getElementById("closeBtn");
+        closeBtn.onclick = function() {
+            zoom.removeZoom($(".tutorialZoom"));
+            $("#errorClick").show();
+            zoom.addZoom($(".img-polaroid"));
+        };
+        var goBackBtn = document.getElementById("closeBtn");
+        closeBtn.onclick = function() {
+            zoom.removeZoom($(".tutorialZoom"));
+            $("#errorClick").show();
+            zoom.addZoom($(".img-polaroid"));
+        };
 
-            // Find the cloest grid square to click on the zoomLens
+        var nextBtn = document.getElementById("nextBtn");
+        nextBtn.onclick = function() {
+            modal.showStep('next');
+        };
+        var prevBtn = document.getElementById("prevBtn");
+        prevBtn.onclick = function() {
+            modal.showStep('prev');
+        };
 
-            var activeSquare = _this.findClosestSquare();
-            var activeSquareNode = activeSquare.node;
 
-            // Not able to use jQuery .click or .dblclick for some reason i can't remember
-            // If we can then should use jQuery...might be quicker and easier
 
-            if (clicks === 1) {
-                timer = setTimeout(function () {
-                    // Adds and removes classes to grid squares making them red or green
-                    if (activeSquareNode.className.animVal != "grid-item grid-item-success") {
-                        activeSquareNode.setAttribute("class", "grid-item grid-item-success");
-                        activeSquare.has_cancer = true;
-                    } else {
-                        activeSquareNode.setAttribute("class", "grid-item");
-                        activeSquare.has_cancer = null;
-                    } //after action performed, reset counter
-                    clicks = 0;
-                }, 250);
-            } else {
-                clearTimeout(timer); //prevent single-click action
-                activeSquareNode.setAttribute("class", "grid-item grid-item-error");
-                activeSquare.has_cancer = false;
-                clicks = 0;
-            }
+
+        /*
+         *
+         * Tooltips - not used yet
+         *
+         *
+         *
+         */
+
+        $('.grid-info-instructions').tooltip({
+            selector: "a[data-toggle=tooltip]"
         });
-    };
 
-    /**
-     *
-     * Loop through the grid items
-     * and find the closest matching grid
-     * that have the clicked coordinates
-     *
-     */
-    Grid.prototype.findClosestSquare = function () {
-
-        var _this = this,
-            activeSquare,
-            target = $(".zoomLens"),
-            target_pos = {
-                x: parseInt(target.css("left")),
-                y: parseInt(target.css("top"))
-            };
-
-        // Center the zoom cursor to middle of square
-        target_pos.x = target_pos.x + 34.85;
-        target_pos.y = target_pos.y + 34.85;
-
-        // Find the closet grid item
-        $.each(_this.task.answer.squares, function (key, value) {
-            if (value.isPointInside(target_pos.x, target_pos.y)) {
-                activeSquare = value;
-            }
+        $('.example-list').tooltip({
+            selector: "a[data-toggle=tooltip]"
         });
-        return activeSquare;
-    };
-
-
-    Grid.prototype.selectAllSquares = function () {
-        for (var i = 0; i < this.task.answer.squares.length; i++) {
-            var gridSquare = this.task.answer.squares[i],
-                gridSquareNode = this.task.answer.squares[i].node;
-            gridSquare.has_cancer = true;
-            gridSquareNode.setAttribute("class", "grid-item grid-item-success");
-        }
-    }
-    Grid.prototype.deselectAllSquares = function () {
-        for (var i = 0; i < this.task.answer.squares.length; i++) {
-            var gridSquare = this.task.answer.squares[i],
-                gridSquareNode = this.task.answer.squares[i].node;
-            gridSquare.has_cancer = null;
-            gridSquareNode.setAttribute("class", "grid-item");
-        }
-    }
-
-
-    /*
-     *
-     * End of Grid class
-     *
-     * */
-
-    /************************************************************************************/
 
 
 
 
+        /*
+         *
+         * "Next Slide" Button
+
+         * On click of the "next slide" button
+         *
+         *
+         *
+         */
 
 
+        $('.btn-answer').off('click').on('click', function() {
 
-    /*
-     *
-     * Helpful functions
-     *
-     *
-     */
+            // Grab a new timestamp and find out the difference
+            // This is how long the user has been on the task for
+            // Then pass it into the answer
+            var newTime = new Date(),
+                ms = newTime - oldTime,
+                x = ms / 1000,
+                seconds = secondsToString(x)
 
-    // Loads user progress into Grid info
-    function loadUserProgress() {
-        pybossa.userProgress('mvp-02').done(function (data) {
-            var pct = Math.round((data.done * 100) / data.total);
-            $("#progress").css("width", pct.toString() + "%");
-            $("#progress").attr("title", pct.toString() + "% completed!");
-            $("#progress").tooltip({
-                'placement': 'bottom'
-            });
-            $("#total").text(data.total);
-            $("#done").text(data.done);
-        });
-    }
-
-    // uses device.js and works out what device we are using
-    function whatDevice() {
-        var desktop = device.desktop(),
-            mobile = device.mobile(),
-            tablet = device.tablet(),
-            portrait = device.portrait(),
-            landscape = device.landscape(),
-            iphone = device.iphone(),
-            android = device.android(),
-            androidTablet = device.androidTablet(),
-            blackberryTablet = device.blackberryTablet();
-
-
-        if (desktop) return "Desktop";
-        if (mobile && portrait)    return "Mobile portrait";
-        if (mobile && portrait)    return "Mobile landscape";
-        if (tablet && portrait)    return "Tablet portrait";
-        if (tablet && landscape)    return "Tablet landscape";
-    }
-
-    // Using useragent we find what browser we are using
-    function whatBrowser() {
-        var ua = navigator.userAgent, tem,
-            M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
-        if (/trident/i.test(M[1])) {
-            tem = /\brv[ :]+(\d+)/g.exec(ua) || [];
-            return 'IE ' + (tem[1] || '');
-        }
-        if (M[1] === 'Chrome') {
-            tem = ua.match(/\bOPR\/(\d+)/);
-            if (tem != null) return 'Opera ' + tem[1];
-        }
-        M = M[2] ? [M[1], M[2]] : [navigator.appName, navigator.appVersion, '-?'];
-        if ((tem = ua.match(/version\/(\d+)/i)) != null) M.splice(1, 1, tem[1]);
-        return M.join(' ');
-    }
-
-
-    function nextSlideContent(carousel) {
-        return function () {
-
-            // Add and remove active class
-            $(this).parent().children().removeClass("active");
-            $(this).addClass("active");
-
-            var id_selector = $(this).attr("class");
-            var id = id_selector.substr(id_selector.length - 8);
-            id = parseInt(id);
-            var $itemInners = carousel.find(".modal-info .item-inner");
-            $itemInners.removeClass('active');
-            $($itemInners[id - 1]).addClass('active')
-            var $modalId = $(this).parent().parent().parent().parent().attr("id");
-            $('#myCarousel' + $modalId).carousel(id - 1);
-        }
-    }
-
-
-    function secondsToString(seconds) {
-        var numhours = Math.floor(((seconds % 31536000) % 86400) / 3600);
-        var numminutes = Math.floor((((seconds % 31536000) % 86400) % 3600) / 60);
-        var numseconds = (((seconds % 31536000) % 86400) % 3600) % 60;
-        return numhours + ":" + numminutes + ":" + numseconds.toFixed(2);
-    }
-
-
-    /*
-     *
-     * End of helpful functions
-     *
-     * */
-
-    /************************************************************************************/
-
-
-
-
-
-
-    /*
-     *
-     * PyBossa stuff
-     * - .taskLoaded
-     * - .presentTask
-     *      - .saveTask
-     *
-     */
-
-    pybossa.taskLoaded(function (task, deferred) {
-
-        if (!$.isEmptyObject(task)) {
-            // load image from flickr
-            var img = $('<img />');
-            img.load(function () {
-                // continue as soon as the image is loaded
-                deferred.resolve(task);
-            });
-
-            img.attr('src', task.info.url_b).css('height', 460);
-            img.attr('data-zoom-image', task.info.url_b);
-            img.addClass('img-polaroid');
-            task.info.image = img;
-
-
-            task.answer = {
-                squares: [],
-                timeTaken: "",
-                device: "",
-                browser: "",
-                img: "",
-                openModalCount: 0
-            }
-
-        } else {
-            deferred.resolve(task);
-        }
-    });
-
-    pybossa.presentTask(function (task, deferred) {
-
-
-        if (!$.isEmptyObject(task)) {
-
-            loadUserProgress();
-
-
-            /*
-             * Take a time stamp of the time the page loads
-             */
-            var oldTime = new Date();
-
-            $('#photo-link').html('').append(task.info.image);
-            $("#question").html(task.info.question);
-            $('#task-id').html(task.id);
-
+            // Pass image number into answer
             var imgUrl = task.info.url_b;
             var result = imgUrl.replace("//citscitools.cancerresearchuk.org/static/img/mvp-01/", "");
-            $("#imgId").html("Image ID: " + "<strong>" + result + "</strong>");
-
-            /*
-             * Init my Grid Constructor
-             */
-
-            var r = new Grid(task);
-            r.createGrid();
 
 
-            var selectBtn = document.getElementById("selectAllBtn");
-            selectBtn.onclick = function () {
-                r.selectAllSquares();
-            }
-            var deselectBtn = document.getElementById("deselectBtn");
-            deselectBtn.onclick = function () {
-                r.deselectAllSquares();
-            }
-
-
-            /*
-             * Launch helper modal!!!
-             *
-             */
-
-
-            //Launch tutorial modal
-            var openModalCount = 0;
-            var modalBtn = document.getElementById("modalShow");
-            modalBtn.onclick = function () {
-                $('.modal').modal({
-                    backdrop: 'static',
-                    keyboard: false
-                });
-                $.removeData($(".tutorialZoom"), 'elevateZoom');
-                $('.zoomContainer').remove();
-                $('.zoomWindowContainer').remove();
-                openModalCount++;
+            // Create the answer object
+            var answer = {
+                squares: [],
+                timeTaken: seconds,
+                device: whatDevice(),
+                browser: BrowserDetect.browser + " V." + BrowserDetect.version,
+                imgNumber: result,
+                openModalCount: openModalCount
             };
-            $(document).on("click", "#closeBtn, #goBackBtn", function (e) {
-
-                $.removeData($(".tutorialZoom"), 'elevateZoom');
-                $('.zoomContainer').remove();
-                $('.zoomWindowContainer').remove();
-
-                $("#errorClick").show();
-
-                $(".img-polaroid").elevateZoom({
-                    zoomWindowPosition: "grid-info",
-                    lensFadeIn: 500,
-                    lensFadeOut: 500,
-
-                    // Changing these two numbers changes the zoomWindowWidth
-                    // Also the side of the .zoomLens (box over image)
-                    zoomWindowWidth: 455,
-                    zoomWindowHeight: 455,
-                });
-            })
 
 
-            $('.grid-info-instructions').tooltip({
-                selector: "a[data-toggle=tooltip]"
+            // Change the square object to have clearer values
+            $.each(grid.task.answer.squares, function(key, value) {
+                var obj = {
+                    column: value.column,
+                    row: value.row,
+                    answer: value.has_cancer
+                };
+                answer.squares.push(obj);
             });
 
-            $('.example-list').tooltip({
-                selector: "a[data-toggle=tooltip]"
-            });
-
-
-            $(document).ready(function () {
-                $('.example-list').slick({
-                    dots: true,
-                    infinite: false,
-                    speed: 300,
-                    slidesToScroll: 5,
-                    slidesToShow: 5
-                });
-            });
-
-
-            /*************************************************/
-
+            console.log(answer);
 
             /*
-             * Next slide button
-             * On click of the "next slide" button
-             *
+             * Save the task information and send to PyBossa
              */
 
-            $('.btn-answer').off('click').on('click', function () {
+            //pybossa.saveTask(task.id, answer).done(function (data) {
+            //    $("#success").fadeIn(500).delay(500).fadeOut();
+            //    $("svg, .zoomContainer,.zoomWindowContainer").remove();
+            //    deferred.resolve();
+            //});
 
-                // Grab a new timestamp and find out the difference
-                // This is how long the user has been on the task for
-                // Then pass it into the answer
-                var newTime = new Date(),
-                    ms = newTime - oldTime,
-                    x = ms / 1000,
-                    seconds = secondsToString(x)
+            //$("#loading").fadeIn(500).delay(500).fadeOut();
 
-                // Pass image number into answer
-                var imgUrl = task.info.url_b;
-                var result = imgUrl.replace("//citscitools.cancerresearchuk.org/static/img/mvp-01/", "");
-
-
-                // Create the answer object
-                var answer = {
-                    squares: [],
-                    timeTaken: seconds,
-                    device: whatDevice(),
-                    browser: whatBrowser(),
-                    imgNumber: result,
-                    openModalCount: openModalCount
-                };
-
-
-                // Change the square object to have clearer values
-                $.each(r.task.answer.squares, function (key, value) {
-                    var obj = {
-                        column: value.column,
-                        row: value.row,
-                        answer: value.has_cancer
-                    };
-                    answer.squares.push(obj);
-                });
-
-                //console.log(answer);
-
-                /*
-                 * Save the task information and send to PyBossa
-                 */
-                pybossa.saveTask(task.id, answer).done(function (data) {
-                    $("#success").fadeIn(500).delay(500).fadeOut();
-                    $("svg, .zoomContainer,.zoomWindowContainer").remove();
-                    deferred.resolve();
-                });
-
-                //$("#loading").fadeIn(500).delay(500).fadeOut();
-
-            });
-
-            /*************************************************/
-
-
-        } else {
-
-            $("#loading").hide();
-            $("#finish").fadeIn(500);
-            $(".span6").fadeTo("slow", 0.5);
-        }
-    });
-
-
-    /**
-     *
-     * app.js
-     * General app stuff like inits and buttons listeners
-     *
-     */
-
-    $(function () {
-        pybossa.run('mvp-02');
-    })
-
-
-    /*
-     *
-     * End of pybossa shizzel
-     *
-     * */
-
-    /************************************************************************************/
+        });
 
 
 
 
+    } else {
 
-    /*
-     * Modal
-     *
-     */
-
-
-    var step = -1;
-
-    function showStep(action) {
-
-        $("#" + step).hide();
-
-
-        if (action == 'next') {
-            step += 1;
-        }
-        if (action == 'prev') {
-            step -= 1;
-        }
-
-        if (step == 14) {
-            $('.zoomContainer').remove();
-            $('.zoomWindowContainer').remove();
-            $(".tutorialZoom14").elevateZoom();
-        }
-
-        var $currentStep = $("#" + step),
-            $carousel = $("#" + step + " .carousel"),
-            $modalInfo = $("#" + step + " .modal-info"),
-            $items = $("#" + step + " .item");
-
-        if ($carousel.length > 0) {
-
-            $('.zoomContainer').remove();
-            $('.zoomWindowContainer').remove();
-            var tutorial = ".tutorialZoom" + step;
-
-            $(tutorial).elevateZoom();
-
-            if (!$carousel.data("carousel")) {
-
-                $carousel.carousel({
-                    interval: false
-                });
-
-
-                $($items).each(function (idx) {
-                    // Adding buttons
-                    var idx = idx + 1,
-                        $item = $(this),
-                        $li = '<div class="carousel-selector-' + idx + '" type="button">' + idx + '</div>';
-
-                    $("#carouselIndicatorsList" + step).append($li);
-
-                    //Adding item-info to modal-info
-                    $(this).children(".item-inner");
-                    $modalInfo.append($item.children(".item-inner"));
-                });
-
-                $("#" + step).find(".modal-info .item-inner").first().addClass("active");
-                $("#" + step).find(".carousel-indicators-custom div").first().addClass("active");
-
-
-                // When you click on each selector
-                // Load new content
-                $('[class^=carousel-selector-]').on('click', nextSlideContent($("#" + step)));
-            }
-        }
-
-
-        if (step == 0) {
-            $("#prevBtn").hide();
-        } else {
-            $("#prevBtn").show();
-        }
-
-        var $lastStep = $('.modal-body').length - 1
-        if (step == $lastStep) {
-            $("#nextBtn").hide();
-            $("#goBackBtn").show();
-        } else {
-            $("#nextBtn").show();
-            $("#goBackBtn").hide();
-        }
-
-        $("#" + step).show();
-
-
+        $("#loading").hide();
+        $("#finish").fadeIn(500);
+        $(".span6").fadeTo("slow", 0.5);
     }
+});
 
-    showStep('next');
 
-    var nextBtn = document.getElementById("nextBtn");
-    nextBtn.onclick = function () {
-        showStep('next');
-    };
-    var prevBtn = document.getElementById("prevBtn");
-    prevBtn.onclick = function () {
-        showStep('prev');
-    };
+
+
+/*
+ * General app stuff like inits and buttons listeners
+ *
+ *
+ *
+ */
+
+$(function() {
+    pybossa.run('mvp-02');
+})
 
 </script>
 
