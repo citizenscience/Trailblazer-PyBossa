@@ -1,6 +1,6 @@
 {
-    "name": "CRUK mvp-01-gold-standard",
+    "name": "CRUK Trailblazer gold standard (lung)",
     "short_name": "mvp-01-gold-standard",
-    "description": "This is the project for pathologist to supply gold standard data",
+    "description": "For pathologists to supply gold standard data for lung TMAs",
     "question": "Do you see a real human face in this photo?"
 }
