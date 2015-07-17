@@ -1,6 +1,6 @@
 {
-    "name": "CRUK Trailblazer gold standard (lung)",
-    "short_name": "mvp-01-gold-standard",
-    "description": "For pathologists to supply gold standard data for lung TMAs",
+    "name": "CRUK Trailblazer gold standard (bladder Ki67)",
+    "short_name": "mvp-gold-std-bladder-ki67",
+    "description": "For pathologists to supply gold standard data for bladder(Ki67) TMAs",
     "question": "Do you see a real human face in this photo?"
 }
