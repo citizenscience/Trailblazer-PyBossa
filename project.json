@@ -1,6 +1,6 @@
 {
-    "name": "CRUK mvp-stats",
+    "name": "CRUK Trailblazer (stats)",
     "short_name": "mvp-stats",
-    "description": "This is the project for pathologist to supply gold standard data",
+    "description": "PyBossa project for Janette to experiment with stats work",
     "question": "Do you see a real human face in this photo?"
 }
