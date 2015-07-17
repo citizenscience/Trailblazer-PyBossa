@@ -1,6 +1,6 @@
 {
-    "name": "CRUK mvp-01",
+    "name": "CRUK Trailblazer 1",
     "short_name": "mvp-01",
-    "description": "This is the project for MVP-01 general testing",
+    "description": "This first release of the Trailblazer project to baseline pathology analysis accuracy",
     "question": "Do you see a real human face in this photo?"
 }
