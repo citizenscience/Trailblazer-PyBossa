@@ -814,9 +814,15 @@
     </div>
 </header>
 
-<main class="site-content clearfix">
-    <div class="row clearfix">
 
+
+<main class="site-content clearfix">
+
+
+
+    <div class="mechanic-content" id="mechanic-content" style="display:none;">
+
+    <div class="row clearfix">
         <!--Left hand side-->
         <div class="span6">
             <div id="grid-info" class="grid-info">
@@ -831,10 +837,7 @@
                         <br/> Leave blank for empty sections.
 
                     </p>
-
-                    <p id="imgId">
-
-                    </p>
+                    <p id="imgId"></p>
                 </div>
 
                 <!--<select class="grid-info-difficulty" id="difficulty">-->
@@ -869,81 +872,324 @@
         <div class="span6 wrapper grid-wrapper" id="grid-wrapper">
             <a id="photo-link"></a>
 
-            <div class="canvas" id="canvas"></div>
+            <div class="canvas" id="mechanicCanvas"></div>
         </div>
     </div>
+
+    </div>
+
+
+    <div class="feedback-content" id="feedback-content">
+
+    <div class="row clearfix">
+        <!--Left hand side-->
+        <div class="span12">
+            <h1 id="question">Feedback</h1>
+        </div>
+
+        <div class="span6">
+            <div id="grid-info" class="grid-info">
+
+                <div class="grid-info-instructions">
+
+                    <p>
+                        Click once for <strong>cancer</strong> cells in <span class="text-error">red</span>
+                        <br/> Double click for <strong>non-cancer</strong> cells in
+                        <span class="text-success">green</span>
+                        <br/> Leave blank for empty sections.
+
+                    </p>
+                    <p id="imgId"></p>
+                </div>
+
+                <div class="grid-info-buttons">
+                    <a class="btn btn-primary" id="finish-feedback">
+                        Finished
+                    </a>
+                     <a class="btn " id="showAnswers">
+                        Show answers
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+        <!--Right hand side-->
+        <div class="span6 wrapper grid-wrapper" id="grid-wrapper">
+            <a id="feedback-photo-link"></a>
+            <div class="canvas" id="feedbackCanvas"></div>
+        </div>
+    </div>
+
+    </div>
+
+
+
 </main>
 
 
-<h2>Cell Examples</h2>
-<div class="row example-list clearfix">
+<!--<h2>Cell Examples</h2>-->
+<!--<div class="row example-list clearfix">-->
 
-    <figure class="example-list-item">
-        <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example1.jpg" alt=""/>
-        <figcaption class="description cancer">Cancer Cells</figcaption>
-    </figure>
-    <figure class="example-list-item">
-        <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example2.jpg" alt=""/>
-        <figcaption class="description cancer">Cancer Cells</figcaption>
-    </figure>
-    <figure class="example-list-item">
-        <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example3.jpg" alt=""/>
-        <figcaption class="description cancer">Cancer Cells</figcaption>
-    </figure>
-    <figure class="example-list-item">
-        <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example4.jpg" alt=""/>
-        <figcaption class="description cancer">Cancer Cells</figcaption>
-    </figure>
-    <figure class="example-list-item">
-        <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example5.jpg" alt=""/>
-        <figcaption class="description cancer">Cancer Cells</figcaption>
-    </figure>
-    <figure class="example-list-item">
-        <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example6.jpg" alt=""/>
-        <figcaption class="description cancer">Cancer Cells</figcaption>
-    </figure>
-    <figure class="example-list-item">
-        <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example7.jpg" alt=""/>
-        <figcaption class="description cancer">Cancer Cells</figcaption>
-    </figure>
-    <figure class="example-list-item">
-        <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example8.jpg" alt=""/>
-        <figcaption class="description cancer">Cancer Cells</figcaption>
-    </figure>
-    <figure class="example-list-item">
-        <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example9.jpg" alt=""/>
-        <figcaption class="description cancer">Cancer Cells</figcaption>
-    </figure>
-    <figure class="example-list-item">
-        <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example10.jpg" alt=""/>
-        <figcaption class="description cancer">Cancer Cells</figcaption>
-    </figure>
+    <!--<figure class="example-list-item">-->
+        <!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example1.jpg" alt=""/>-->
+        <!--<figcaption class="description cancer">Cancer Cells</figcaption>-->
+    <!--</figure>-->
+    <!--<figure class="example-list-item">-->
+        <!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example2.jpg" alt=""/>-->
+        <!--<figcaption class="description cancer">Cancer Cells</figcaption>-->
+    <!--</figure>-->
+    <!--<figure class="example-list-item">-->
+        <!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example3.jpg" alt=""/>-->
+        <!--<figcaption class="description cancer">Cancer Cells</figcaption>-->
+    <!--</figure>-->
+    <!--<figure class="example-list-item">-->
+        <!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example4.jpg" alt=""/>-->
+        <!--<figcaption class="description cancer">Cancer Cells</figcaption>-->
+    <!--</figure>-->
+    <!--<figure class="example-list-item">-->
+        <!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example5.jpg" alt=""/>-->
+        <!--<figcaption class="description cancer">Cancer Cells</figcaption>-->
+    <!--</figure>-->
+    <!--<figure class="example-list-item">-->
+        <!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example6.jpg" alt=""/>-->
+        <!--<figcaption class="description cancer">Cancer Cells</figcaption>-->
+    <!--</figure>-->
+    <!--<figure class="example-list-item">-->
+        <!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example7.jpg" alt=""/>-->
+        <!--<figcaption class="description cancer">Cancer Cells</figcaption>-->
+    <!--</figure>-->
+    <!--<figure class="example-list-item">-->
+        <!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example8.jpg" alt=""/>-->
+        <!--<figcaption class="description cancer">Cancer Cells</figcaption>-->
+    <!--</figure>-->
+    <!--<figure class="example-list-item">-->
+        <!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example9.jpg" alt=""/>-->
+        <!--<figcaption class="description cancer">Cancer Cells</figcaption>-->
+    <!--</figure>-->
+    <!--<figure class="example-list-item">-->
+        <!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example10.jpg" alt=""/>-->
+        <!--<figcaption class="description cancer">Cancer Cells</figcaption>-->
+    <!--</figure>-->
 
 
-    <figure class="example-list-item">
-        <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-healthy-cells/example-healthy-blood-cells.jpg" alt=""/>
-        <figcaption class="description non-cancer">Healthy cells</figcaption>
-    </figure>
-    <figure class="example-list-item">
-        <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-healthy-cells/example-healthy-lung-stromal-cartilage.jpg" alt=""/>
-        <figcaption class="description non-cancer">Healthy cells</figcaption>
-    </figure>
-    <figure class="example-list-item">
-        <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-healthy-cells/example-healthy-stromal-and-blood-cells.jpg" alt=""/>
-        <figcaption class="description non-cancer">Healthy cells</figcaption>
-    </figure>
-    <figure class="example-list-item">
-        <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-healthy-cells/example-healthy-stromal-and-blood-cells2.jpg" alt=""/>
-        <figcaption class="description non-cancer">Healthy cells</figcaption>
-    </figure>
-    <figure class="example-list-item last">
-        <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-healthy-cells/example-healthy-stromal-cells.jpg" alt=""/>
-        <figcaption class="description non-cancer">Healthy cells</figcaption>
-    </figure>
-</div>
+    <!--<figure class="example-list-item">-->
+        <!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-healthy-cells/example-healthy-blood-cells.jpg" alt=""/>-->
+        <!--<figcaption class="description non-cancer">Healthy cells</figcaption>-->
+    <!--</figure>-->
+    <!--<figure class="example-list-item">-->
+        <!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-healthy-cells/example-healthy-lung-stromal-cartilage.jpg" alt=""/>-->
+        <!--<figcaption class="description non-cancer">Healthy cells</figcaption>-->
+    <!--</figure>-->
+    <!--<figure class="example-list-item">-->
+        <!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-healthy-cells/example-healthy-stromal-and-blood-cells.jpg" alt=""/>-->
+        <!--<figcaption class="description non-cancer">Healthy cells</figcaption>-->
+    <!--</figure>-->
+    <!--<figure class="example-list-item">-->
+        <!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-healthy-cells/example-healthy-stromal-and-blood-cells2.jpg" alt=""/>-->
+        <!--<figcaption class="description non-cancer">Healthy cells</figcaption>-->
+    <!--</figure>-->
+    <!--<figure class="example-list-item last">-->
+        <!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-healthy-cells/example-healthy-stromal-cells.jpg" alt=""/>-->
+        <!--<figcaption class="description non-cancer">Healthy cells</figcaption>-->
+    <!--</figure>-->
+<!--</div>-->
+
+
+
+
+
 
 
 <script type="text/javascript" async="async">
+
+
+var data = [{
+    "info": {
+        "imgUrl": "//citscitools.cancerresearchuk.org/static/img/mvp-01/2.jpg",
+        "imgNumber": "2.jpg",
+        "timeTaken": "0:0:34.34",
+        "openModalCount": 1,
+        "device": "Desktop",
+        "squares": [{
+            "column": 0,
+            "answer": null,
+            "row": 0
+        }, {
+            "column": 1,
+            "answer": true,
+            "row": 0,
+            "feedback": "This is a blah blah cell"
+        }, {
+            "column": 2,
+            "answer": true,
+            "row": 0
+        }, {
+            "column": 3,
+            "answer": true,
+            "row": 0,
+            "feedback": "This is a blah blah cell"
+        }, {
+            "column": 4,
+            "answer": false,
+            "row": 0
+        }, {
+            "column": 5,
+            "answer": null,
+            "row": 0
+        }, {
+            "column": 0,
+            "answer": true,
+            "row": 1,
+            "feedback": "This is a blah blah cell"
+        }, {
+            "column": 1,
+            "answer": true,
+            "row": 1,
+            "feedback": "This is a blah blah cell"
+        }, {
+            "column": 2,
+            "answer": true,
+            "row": 1,
+            "feedback": "This is a blah blah cell"
+        }, {
+            "column": 3,
+            "answer": true,
+            "row": 1
+        }, {
+            "column": 4,
+            "answer": false,
+            "row": 1,
+            "feedback": "This is a blah blah cell"
+        }, {
+            "column": 5,
+            "answer": false,
+            "row": 1,
+            "feedback": "This is a blah blah cell"
+        }, {
+            "column": 0,
+            "answer": true,
+            "row": 2
+        }, {
+            "column": 1,
+            "answer": true,
+            "row": 2
+        }, {
+            "column": 2,
+            "answer": false,
+            "row": 2,
+            "feedback": "This is a blah blah cell"
+        }, {
+            "column": 3,
+            "answer": false,
+            "row": 2
+        }, {
+            "column": 4,
+            "answer": false,
+            "row": 2,
+            "feedback": "This is a blah blah cell"
+        }, {
+            "column": 5,
+            "answer": false,
+            "row": 2,
+            "feedback": "This is a blah blah cell"
+        }, {
+            "column": 0,
+            "answer": true,
+            "row": 3
+        }, {
+            "column": 1,
+            "answer": true,
+            "row": 3
+        }, {
+            "column": 2,
+            "answer": true,
+            "row": 3
+        }, {
+            "column": 3,
+            "answer": false,
+            "row": 3
+        }, {
+            "column": 4,
+            "answer": false,
+            "row": 3,
+            "feedback": "This is a blah blah cell"
+        }, {
+            "column": 5,
+            "answer": false,
+            "row": 3,
+            "feedback": "This is a blah blah cell"
+        }, {
+            "column": 0,
+            "answer": true,
+            "row": 4
+        }, {
+            "column": 1,
+            "answer": true,
+            "row": 4,
+            "feedback": "This is a blah blah cell"
+        }, {
+            "column": 2,
+            "answer": true,
+            "row": 4
+        }, {
+            "column": 3,
+            "answer": false,
+            "row": 4
+        }, {
+            "column": 4,
+            "answer": false,
+            "row": 4
+        }, {
+            "column": 5,
+            "answer": false,
+            "row": 4,
+            "feedback": "This is a blah blah cell"
+        }, {
+            "column": 0,
+            "answer": null,
+            "row": 5,
+            "feedback": "This is a blah blah cell"
+        }, {
+            "column": 1,
+            "answer": true,
+            "row": 5,
+            "feedback": "This is a blah blah cell"
+        }, {
+            "column": 2,
+            "answer": true,
+            "row": 5
+        }, {
+            "column": 3,
+            "answer": false,
+            "row": 5
+        }, {
+            "column": 4,
+            "answer": false,
+            "row": 5
+        }, {
+            "column": 5,
+            "answer": null,
+            "row": 5,
+            "feedback": "This is a blah blah cell"
+        }],
+        "browser": "Chrome 43"
+    },
+    "user_id": 3,
+    "task_id": 1931,
+    "created": "2015-07-17T10:07:02.597568",
+    "finish_time": "2015-07-17T10:07:02.597581",
+    "calibration": null,
+    "user_ip": null,
+    "timeout": null,
+    "project_id": 9,
+    "id": 1413
+}];
+
+
+
+
+
 "use strict";
 
 /**
@@ -958,12 +1204,19 @@
 
 function Grid(task) {
 
-    //Modal.call(this);
 
+    if( typeof task != 'undefined') {
+        this.task = task;
+        this.activateCell();
+    } else {
+        this.feedbackObj = {
+            answer : {
+                squares: []
+            }
+        };
+        this.activateCell();
+    }
 
-
-    this.task = task;
-    this.activateCell();
 
 
 }
@@ -975,18 +1228,12 @@ function Grid(task) {
  * For creating a grid overlayed over the image
  *
  */
-Grid.prototype.createGrid = function() {
+Grid.prototype.createGrid = function( canvasElement ) {
 
-    /*
-     * Using raphael so we can use methods like isPointInside
-     * and calculate how close the click on grid are.
-     * Also nice and cross browser :D
-     *
-     * Maybe d3 might have been better!?
-     */
+
     var rows = 6,
         columns = 6,
-        canvas = Raphael("canvas", $(".img-polaroid").width(), $(".img-polaroid").height()),
+        canvas = Raphael( canvasElement, $(".img-polaroid").width(), $(".img-polaroid").height()),
         gridHeight = $(".img-polaroid").height() / columns,
         gridWidth = $(".img-polaroid").width() / rows;
 
@@ -1011,7 +1258,13 @@ Grid.prototype.createGrid = function() {
 
             // Save all grid squares in array within main task object
             // We can then grab this when saving the info at the end
-            this.task.answer.squares.push(gridSquare);
+
+
+            if( typeof this.task != 'undefined') {
+                this.task.answer.squares.push(gridSquare);
+            } else {
+                this.feedbackObj.answer.squares.push(gridSquare);
+            }
 
         }
     }
@@ -1025,13 +1278,15 @@ Grid.prototype.createGrid = function() {
  */
 Grid.prototype.activateCell = function() {
 
-    var clicks = 0;
-    var timer = null;
-    var _this = this;
+    var clicks = 0,
+        timer = null,
+        _this = this;
 
     $("body").on("click touchstart", ".zoomLens", function(evt) {
 
+
         evt.preventDefault();
+
         clicks++; //count clicks
 
         // Find the cloest grid square to click on the zoomLens
@@ -1042,26 +1297,51 @@ Grid.prototype.activateCell = function() {
         // Not able to use jQuery .click or .dblclick for some reason i can't remember
         // If we can then should use jQuery...might be quicker and easier
 
+        // SINGLE CLICK
         if (clicks === 1) {
-            timer = setTimeout(function() {
-                // Adds and removes classes to grid squares making them red or green
-                if (activeSquareNode.className.animVal != "grid-item grid-item-success") {
-                    activeSquareNode.setAttribute("class", "grid-item grid-item-success");
-                    activeSquare.has_cancer = true;
-                } else {
-                    activeSquareNode.setAttribute("class", "grid-item");
-                    activeSquare.has_cancer = null;
-                } //after action performed, reset counter
-                clicks = 0;
-            }, 250);
-        } else {
+
+                (function(activeSquareNode){
+                    timer = setTimeout(function(){
+                        // Adds and removes classes to grid squares making them red or green
+                        if (activeSquareNode.className.animVal != "grid-item grid-item-success") {
+
+
+                            activeSquareNode.setAttribute("class", "grid-item grid-item-success");
+                            activeSquare.has_cancer = true;
+
+                            _this.checkAnswer( true, activeSquare );
+
+                        } else {
+
+                            activeSquareNode.setAttribute("class", "grid-item");
+                            activeSquare.has_cancer = null;
+
+                            _this.checkAnswer( null, activeSquare );
+
+
+
+                        } //after action performed, reset counter
+                        clicks = 0;
+                     }, 250);
+
+                }(activeSquareNode));
+
+        }
+        // DOUBLE CLICK
+        else {
             clearTimeout(timer); //prevent single-click action
+
             activeSquareNode.setAttribute("class", "grid-item grid-item-error");
             activeSquare.has_cancer = false;
+
+            _this.checkAnswer( false, activeSquare );
+
             clicks = 0;
         }
     });
 };
+
+
 
 
 /**
@@ -1081,18 +1361,93 @@ Grid.prototype.findClosestSquare = function() {
             y: parseInt(target.css("top"))
         };
 
+
     // Center the zoom cursor to middle of square
     target_pos.x = target_pos.x + 34.85;
     target_pos.y = target_pos.y + 34.85;
 
     // Find the closet grid item
-    $.each(_this.task.answer.squares, function(key, value) {
-        if (value.isPointInside(target_pos.x, target_pos.y)) {
-            activeSquare = value;
-        }
-    });
+
+    if( typeof this.task != 'undefined') {
+        $.each(_this.task.answer.squares, function(key, value) {
+            if (value.isPointInside(target_pos.x, target_pos.y)) {
+                activeSquare = value;
+            }
+        });
+    } else {
+        $.each(_this.feedbackObj.answer.squares, function(key, value) {
+            if (value.isPointInside(target_pos.x, target_pos.y)) {
+                activeSquare = value;
+            }
+        });
+    }
+
     return activeSquare;
 };
+
+
+Grid.prototype.checkAnswer = function( action, activeSquare ) {
+
+    var state = action,
+        pathologistAnswer,
+        activeSquare = activeSquare;
+
+    $.each(data[0].info, function(key, value) {
+
+        if( typeof(value[activeSquare.id]) == 'object' ) {
+            // Find the pathologist answer for that square
+            pathologistAnswer = value[activeSquare.id];
+        }
+
+    });
+
+    //console.log("has cancer: " + state);
+    //console.log("pathologist says: " + pathologistAnswer.answer );
+    //console.log(activeSquare);
+
+    if (state == pathologistAnswer.answer) {
+        //console.log("Both agree");
+    } else {
+        //console.log("Dont agree");
+        if( pathologistAnswer.answer === true ) {
+            alert("The pathologies said it contained cancer");
+            activeSquare.node.setAttribute("class", "grid-item grid-item-success");
+        }
+        if( pathologistAnswer.answer === false ) {
+            alert("The pathologies said it did not contained cancer");
+            activeSquare.node.setAttribute("class", "grid-item grid-item-error");
+        }
+        if( pathologistAnswer.answer === null ) {
+            alert("The pathologies said this square was clear");
+             activeSquare.node.setAttribute("class", "grid-item");
+        }
+    }
+
+
+    // compare if the answer is the same
+
+    /* if( pathologistAnswer.answer === state ) {
+        if( pathologistAnswer.feedback ) {
+            alert("Welldone that what our patholgist said! " + pathologistAnswer.feedback );
+        }
+    } else {
+        if( pathologistAnswer.feedback ) {
+            alert( "Ah man! " + pathologistAnswer.feedback );
+        }
+    } */
+
+    // show the feedback
+}
+
+
+Grid.prototype.showPathologistAnswers = function() {
+
+    for (var i = 0; i < data[0].info.squares.length; i++) {
+        console.log( data[0].info.squares[i] );
+        console.log();
+    }
+
+}
 
 
 Grid.prototype.selectAllSquares = function() {
@@ -1296,6 +1651,10 @@ Zoom.prototype.removeZoom = function(element) {
     $('.zoomContainer').remove();
     $('.zoomWindowContainer').remove();
 
+}
+
+Zoom.prototype.alert = function() {
+    alert("SDFSDFASDF");
 }
 
 
@@ -1572,7 +1931,7 @@ pybossa.presentTask(function(task, deferred) {
 
 
         var grid = new Grid(task);
-        grid.createGrid();
+        grid.createGrid("mechanicCanvas");
 
         var zoom = new Zoom();
         zoom.addZoom($(".img-polaroid"));
@@ -1736,7 +2095,51 @@ pybossa.presentTask(function(task, deferred) {
  */
 
 $(function() {
-    pybossa.run('mvp-02');
+
+
+    var cookie = $.cookie('mvp-03feedback');
+
+    if( cookie != null ) {
+        $("#feedback-content").show();
+
+        var data_obj = data[0].info;
+        var imgUrl = data[0].info.imgUrl;
+
+        var img = $('<img />');
+        img.attr('src', imgUrl);
+        img.attr('data-zoom-image', imgUrl);
+        img.addClass('img-polaroid');
+
+        $('#feedback-photo-link').append(img);
+
+        $("#mechanic-content").hide();
+
+        var grid = new Grid();
+            grid.createGrid("feedbackCanvas");
+
+        var zoom = new Zoom();
+            zoom.addZoom($(".img-polaroid"));
+
+        var showAnswers = document.getElementById("showAnswers");
+        showAnswers.onclick = function() {
+            grid.showPathologistAnswers();
+        };
+
+    }
+
+    $("#finish-feedback").on("click",function(){
+        $.cookie('mvp-03feedback', true );
+
+        $(".feedback-photo-link").remove();
+        $.removeData(".feedback-photo-link", 'elevateZoom');
+        $('.zoomContainer').remove();
+        $('.zoomWindowContainer').remove();
+
+        $("#feedback-content").hide();
+        $("#mechanic-content").show();
+        pybossa.run('mvp-02');
+    });
+
 })
 
 </script>
