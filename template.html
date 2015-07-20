@@ -1,4 +1,9 @@
+<style>
+    .grid-info {
+        margin-bottom: 20px;
+    }
 
+</style>
 
 <!--MODAL-->
 <div class="row">
@@ -881,6 +886,7 @@
 
     <div class="feedback-content" id="feedback-content">
 
+
     <div class="row clearfix">
         <!--Left hand side-->
         <div class="span12">
@@ -890,8 +896,7 @@
         <div class="span6">
             <div id="grid-info" class="grid-info">
 
-                <div class="grid-info-instructions">
-
+                <div class="grid-info-instructions" id="feedbackStep0">
                     <p>
                         Click once for <strong>cancer</strong> cells in <span class="text-error">red</span>
                         <br/> Double click for <strong>non-cancer</strong> cells in
@@ -899,19 +904,72 @@
                         <br/> Leave blank for empty sections.
 
                     </p>
+
+                    <p>
+                        This time we’ll give you immediate feedback on whether our
+                        expert pathologists agreed with you.
+
+                        You can change your answer as often as you want.
+
+                        When you’re done click Next Slide
+                    </p>
+
                     <p id="imgId"></p>
                 </div>
 
+                <div class="grid-info-instructions" id="feedbackStep1" style="display:none;">
+                    <p>
+                        Click once for <strong>cancer</strong> cells in <span class="text-error">red</span>
+                        <br/> Double click for <strong>non-cancer</strong> cells in
+                        <span class="text-success">green</span>
+                        <br/> Leave blank for empty sections.
+
+                    </p>
+
+                    <p>
+                        step2
+                    </p>
+
+                    <p id="imgId"></p>
+                </div>
+
+                <div class="grid-info-instructions" id="feedbackStep2" style="display:none;">
+                    <p>
+                        Click once for <strong>cancer</strong> cells in <span class="text-error">red</span>
+                        <br/> Double click for <strong>non-cancer</strong> cells in
+                        <span class="text-success">green</span>
+                        <br/> Leave blank for empty sections.
+
+                    </p>
+
+                    <p>
+                        step3
+                    </p>
+
+                    <p id="imgId"></p>
+                </div>
+
+
+
+
                 <div class="grid-info-buttons">
-                    <a class="btn btn-primary" id="finish-feedback">
+                    <a class="btn btn-primary pull-right" id="next-feedback-step">
+                        Next slide
+                    </a>
+                    <a class="btn btn-success pull-right" id="finish-feedback" style="display:none;">
                         Finished
                     </a>
-                     <a class="btn " id="showAnswers">
+                    <a class="btn " id="showAnswers">
                         Show answers
                     </a>
                 </div>
 
             </div>
+            <div id="pathologistFeedback" class="alert alert-info">
+                <h2><strong>Our expert pathologists said:</strong></h2>
+                <p></p>
+            </div>
+
         </div>
 
         <!--Right hand side-->
@@ -1003,194 +1061,617 @@
 
 <script type="text/javascript" async="async">
 
-
-var data = [{
-    "info": {
-        "imgUrl": "//citscitools.cancerresearchuk.org/static/img/mvp-01/2.jpg",
-        "imgNumber": "2.jpg",
-        "timeTaken": "0:0:34.34",
-        "openModalCount": 1,
-        "device": "Desktop",
-        "squares": [{
-            "column": 0,
-            "answer": null,
-            "row": 0
-        }, {
-            "column": 1,
-            "answer": true,
-            "row": 0,
-            "feedback": "This is a blah blah cell"
-        }, {
-            "column": 2,
-            "answer": true,
-            "row": 0
-        }, {
-            "column": 3,
-            "answer": true,
-            "row": 0,
-            "feedback": "This is a blah blah cell"
-        }, {
-            "column": 4,
-            "answer": false,
-            "row": 0
-        }, {
-            "column": 5,
-            "answer": null,
-            "row": 0
-        }, {
-            "column": 0,
-            "answer": true,
-            "row": 1,
-            "feedback": "This is a blah blah cell"
-        }, {
-            "column": 1,
-            "answer": true,
-            "row": 1,
-            "feedback": "This is a blah blah cell"
-        }, {
-            "column": 2,
-            "answer": true,
-            "row": 1,
-            "feedback": "This is a blah blah cell"
-        }, {
-            "column": 3,
-            "answer": true,
-            "row": 1
-        }, {
-            "column": 4,
-            "answer": false,
-            "row": 1,
-            "feedback": "This is a blah blah cell"
-        }, {
-            "column": 5,
-            "answer": false,
-            "row": 1,
-            "feedback": "This is a blah blah cell"
-        }, {
-            "column": 0,
-            "answer": true,
-            "row": 2
-        }, {
-            "column": 1,
-            "answer": true,
-            "row": 2
-        }, {
-            "column": 2,
-            "answer": false,
-            "row": 2,
-            "feedback": "This is a blah blah cell"
-        }, {
-            "column": 3,
-            "answer": false,
-            "row": 2
-        }, {
-            "column": 4,
-            "answer": false,
-            "row": 2,
-            "feedback": "This is a blah blah cell"
-        }, {
-            "column": 5,
-            "answer": false,
-            "row": 2,
-            "feedback": "This is a blah blah cell"
-        }, {
-            "column": 0,
-            "answer": true,
-            "row": 3
-        }, {
-            "column": 1,
-            "answer": true,
-            "row": 3
-        }, {
-            "column": 2,
-            "answer": true,
-            "row": 3
-        }, {
-            "column": 3,
-            "answer": false,
-            "row": 3
-        }, {
-            "column": 4,
-            "answer": false,
-            "row": 3,
-            "feedback": "This is a blah blah cell"
-        }, {
-            "column": 5,
-            "answer": false,
-            "row": 3,
-            "feedback": "This is a blah blah cell"
-        }, {
-            "column": 0,
-            "answer": true,
-            "row": 4
-        }, {
-            "column": 1,
-            "answer": true,
-            "row": 4,
-            "feedback": "This is a blah blah cell"
-        }, {
-            "column": 2,
-            "answer": true,
-            "row": 4
-        }, {
-            "column": 3,
-            "answer": false,
-            "row": 4
-        }, {
-            "column": 4,
-            "answer": false,
-            "row": 4
-        }, {
-            "column": 5,
-            "answer": false,
-            "row": 4,
-            "feedback": "This is a blah blah cell"
-        }, {
-            "column": 0,
-            "answer": null,
-            "row": 5,
-            "feedback": "This is a blah blah cell"
-        }, {
-            "column": 1,
-            "answer": true,
-            "row": 5,
-            "feedback": "This is a blah blah cell"
-        }, {
-            "column": 2,
-            "answer": true,
-            "row": 5
-        }, {
-            "column": 3,
-            "answer": false,
-            "row": 5
-        }, {
-            "column": 4,
-            "answer": false,
-            "row": 5
-        }, {
-            "column": 5,
-            "answer": null,
-            "row": 5,
-            "feedback": "This is a blah blah cell"
-        }],
-        "browser": "Chrome 43"
+var data = [
+    {
+        "info": {
+            "imgNumber": "//citscitools.cancerresearchuk.org/static/img/mvp-01/2.jpg",
+            "timeTaken": "0:0:41.88",
+            "openModalCount": 0,
+            "device": "Desktop",
+            "squares": [
+                {
+                    "column": 0,
+                    "answer": null,
+                    "row": 0
+                },
+                {
+                    "column": 1,
+                    "answer": true,
+                    "row": 0
+                },
+                {
+                    "column": 2,
+                    "answer": true,
+                    "row": 0
+                },
+                {
+                    "column": 3,
+                    "answer": true,
+                    "row": 0
+                },
+                {
+                    "column": 4,
+                    "answer": false,
+                    "row": 0
+                },
+                {
+                    "column": 5,
+                    "answer": null,
+                    "row": 0
+                },
+                {
+                    "column": 0,
+                    "answer": true,
+                    "row": 1
+                },
+                {
+                    "column": 1,
+                    "answer": true,
+                    "row": 1
+                },
+                {
+                    "column": 2,
+                    "answer": true,
+                    "row": 1
+                },
+                {
+                    "column": 3,
+                    "answer": true,
+                    "row": 1
+                },
+                {
+                    "column": 4,
+                    "answer": false,
+                    "row": 1
+                },
+                {
+                    "column": 5,
+                    "answer": false,
+                    "row": 1
+                },
+                {
+                    "column": 0,
+                    "answer": true,
+                    "row": 2
+                },
+                {
+                    "column": 1,
+                    "answer": true,
+                    "row": 2
+                },
+                {
+                    "column": 2,
+                    "answer": false,
+                    "row": 2
+                },
+                {
+                    "column": 3,
+                    "answer": false,
+                    "row": 2
+                },
+                {
+                    "column": 4,
+                    "answer": false,
+                    "row": 2
+                },
+                {
+                    "column": 5,
+                    "answer": false,
+                    "row": 2
+                },
+                {
+                    "column": 0,
+                    "answer": true,
+                    "row": 3
+                },
+                {
+                    "column": 1,
+                    "answer": true,
+                    "row": 3
+                },
+                {
+                    "column": 2,
+                    "answer": true,
+                    "row": 3
+                },
+                {
+                    "column": 3,
+                    "answer": false,
+                    "row": 3
+                },
+                {
+                    "column": 4,
+                    "answer": false,
+                    "row": 3
+                },
+                {
+                    "column": 5,
+                    "answer": false,
+                    "row": 3
+                },
+                {
+                    "column": 0,
+                    "answer": true,
+                    "row": 4
+                },
+                {
+                    "column": 1,
+                    "answer": true,
+                    "row": 4
+                },
+                {
+                    "column": 2,
+                    "answer": true,
+                    "row": 4
+                },
+                {
+                    "column": 3,
+                    "answer": false,
+                    "row": 4
+                },
+                {
+                    "column": 4,
+                    "answer": false,
+                    "row": 4
+                },
+                {
+                    "column": 5,
+                    "answer": false,
+                    "row": 4
+                },
+                {
+                    "column": 0,
+                    "answer": null,
+                    "row": 5
+                },
+                {
+                    "column": 1,
+                    "answer": true,
+                    "row": 5
+                },
+                {
+                    "column": 2,
+                    "answer": true,
+                    "row": 5
+                },
+                {
+                    "column": 3,
+                    "answer": false,
+                    "row": 5
+                },
+                {
+                    "column": 4,
+                    "answer": false,
+                    "row": 5
+                },
+                {
+                    "column": 5,
+                    "answer": null,
+                    "row": 5
+                }
+            ],
+            "browser": "Chrome 43"
+        },
+        "user_id": 3,
+        "task_id": 1971,
+        "created": "2015-07-20T11:40:07.640660",
+        "finish_time": "2015-07-20T11:40:07.640672",
+        "calibration": null,
+        "user_ip": null,
+        "timeout": null,
+        "project_id": 9,
+        "id": 1500
     },
-    "user_id": 3,
-    "task_id": 1931,
-    "created": "2015-07-17T10:07:02.597568",
-    "finish_time": "2015-07-17T10:07:02.597581",
-    "calibration": null,
-    "user_ip": null,
-    "timeout": null,
-    "project_id": 9,
-    "id": 1413
-}];
+    {
+        "info": {
+            "imgNumber": "//citscitools.cancerresearchuk.org/static/img/mvp-01/4.jpg",
+            "timeTaken": "0:0:40.16",
+            "openModalCount": 0,
+            "device": "Desktop",
+            "squares": [
+                {
+                    "column": 0,
+                    "answer": null,
+                    "row": 0
+                },
+                {
+                    "column": 1,
+                    "answer": null,
+                    "row": 0
+                },
+                {
+                    "column": 2,
+                    "answer": null,
+                    "row": 0
+                },
+                {
+                    "column": 3,
+                    "answer": null,
+                    "row": 0
+                },
+                {
+                    "column": 4,
+                    "answer": null,
+                    "row": 0
+                },
+                {
+                    "column": 5,
+                    "answer": null,
+                    "row": 0
+                },
+                {
+                    "column": 0,
+                    "answer": null,
+                    "row": 1
+                },
+                {
+                    "column": 1,
+                    "answer": false,
+                    "row": 1
+                },
+                {
+                    "column": 2,
+                    "answer": false,
+                    "row": 1
+                },
+                {
+                    "column": 3,
+                    "answer": false,
+                    "row": 1
+                },
+                {
+                    "column": 4,
+                    "answer": false,
+                    "row": 1
+                },
+                {
+                    "column": 5,
+                    "answer": null,
+                    "row": 1
+                },
+                {
+                    "column": 0,
+                    "answer": false,
+                    "row": 2
+                },
+                {
+                    "column": 1,
+                    "answer": false,
+                    "row": 2
+                },
+                {
+                    "column": 2,
+                    "answer": false,
+                    "row": 2
+                },
+                {
+                    "column": 3,
+                    "answer": false,
+                    "row": 2
+                },
+                {
+                    "column": 4,
+                    "answer": true,
+                    "row": 2
+                },
+                {
+                    "column": 5,
+                    "answer": true,
+                    "row": 2
+                },
+                {
+                    "column": 0,
+                    "answer": true,
+                    "row": 3
+                },
+                {
+                    "column": 1,
+                    "answer": true,
+                    "row": 3
+                },
+                {
+                    "column": 2,
+                    "answer": false,
+                    "row": 3
+                },
+                {
+                    "column": 3,
+                    "answer": false,
+                    "row": 3
+                },
+                {
+                    "column": 4,
+                    "answer": true,
+                    "row": 3
+                },
+                {
+                    "column": 5,
+                    "answer": true,
+                    "row": 3
+                },
+                {
+                    "column": 0,
+                    "answer": true,
+                    "row": 4
+                },
+                {
+                    "column": 1,
+                    "answer": true,
+                    "row": 4
+                },
+                {
+                    "column": 2,
+                    "answer": false,
+                    "row": 4
+                },
+                {
+                    "column": 3,
+                    "answer": false,
+                    "row": 4
+                },
+                {
+                    "column": 4,
+                    "answer": false,
+                    "row": 4
+                },
+                {
+                    "column": 5,
+                    "answer": false,
+                    "row": 4
+                },
+                {
+                    "column": 0,
+                    "answer": true,
+                    "row": 5
+                },
+                {
+                    "column": 1,
+                    "answer": false,
+                    "row": 5
+                },
+                {
+                    "column": 2,
+                    "answer": false,
+                    "row": 5
+                },
+                {
+                    "column": 3,
+                    "answer": false,
+                    "row": 5
+                },
+                {
+                    "column": 4,
+                    "answer": false,
+                    "row": 5
+                },
+                {
+                    "column": 5,
+                    "answer": false,
+                    "row": 5
+                }
+            ],
+            "browser": "Chrome 43"
+        },
+        "user_id": 3,
+        "task_id": 1972,
+        "created": "2015-07-20T11:40:47.905264",
+        "finish_time": "2015-07-20T11:40:47.905277",
+        "calibration": null,
+        "user_ip": null,
+        "timeout": null,
+        "project_id": 9,
+        "id": 1501
+    },
+    {
+        "info": {
+            "imgNumber": "//citscitools.cancerresearchuk.org/static/img/mvp-01/15.jpg",
+            "timeTaken": "0:0:32.18",
+            "openModalCount": 0,
+            "device": "Desktop",
+            "squares": [
+                {
+                    "column": 0,
+                    "answer": null,
+                    "row": 0
+                },
+                {
+                    "column": 1,
+                    "answer": null,
+                    "row": 0
+                },
+                {
+                    "column": 2,
+                    "answer": true,
+                    "row": 0
+                },
+                {
+                    "column": 3,
+                    "answer": true,
+                    "row": 0
+                },
+                {
+                    "column": 4,
+                    "answer": true,
+                    "row": 0
+                },
+                {
+                    "column": 5,
+                    "answer": null,
+                    "row": 0
+                },
+                {
+                    "column": 0,
+                    "answer": null,
+                    "row": 1
+                },
+                {
+                    "column": 1,
+                    "answer": false,
+                    "row": 1
+                },
+                {
+                    "column": 2,
+                    "answer": true,
+                    "row": 1
+                },
+                {
+                    "column": 3,
+                    "answer": true,
+                    "row": 1
+                },
+                {
+                    "column": 4,
+                    "answer": true,
+                    "row": 1
+                },
+                {
+                    "column": 5,
+                    "answer": true,
+                    "row": 1
+                },
+                {
+                    "column": 0,
+                    "answer": false,
+                    "row": 2
+                },
+                {
+                    "column": 1,
+                    "answer": false,
+                    "row": 2
+                },
+                {
+                    "column": 2,
+                    "answer": true,
+                    "row": 2
+                },
+                {
+                    "column": 3,
+                    "answer": true,
+                    "row": 2
+                },
+                {
+                    "column": 4,
+                    "answer": true,
+                    "row": 2
+                },
+                {
+                    "column": 5,
+                    "answer": true,
+                    "row": 2
+                },
+                {
+                    "column": 0,
+                    "answer": false,
+                    "row": 3
+                },
+                {
+                    "column": 1,
+                    "answer": false,
+                    "row": 3
+                },
+                {
+                    "column": 2,
+                    "answer": true,
+                    "row": 3
+                },
+                {
+                    "column": 3,
+                    "answer": true,
+                    "row": 3
+                },
+                {
+                    "column": 4,
+                    "answer": true,
+                    "row": 3
+                },
+                {
+                    "column": 5,
+                    "answer": true,
+                    "row": 3
+                },
+                {
+                    "column": 0,
+                    "answer": true,
+                    "row": 4
+                },
+                {
+                    "column": 1,
+                    "answer": true,
+                    "row": 4
+                },
+                {
+                    "column": 2,
+                    "answer": true,
+                    "row": 4
+                },
+                {
+                    "column": 3,
+                    "answer": true,
+                    "row": 4
+                },
+                {
+                    "column": 4,
+                    "answer": true,
+                    "row": 4
+                },
+                {
+                    "column": 5,
+                    "answer": true,
+                    "row": 4
+                },
+                {
+                    "column": 0,
+                    "answer": null,
+                    "row": 5
+                },
+                {
+                    "column": 1,
+                    "answer": true,
+                    "row": 5
+                },
+                {
+                    "column": 2,
+                    "answer": true,
+                    "row": 5
+                },
+                {
+                    "column": 3,
+                    "answer": true,
+                    "row": 5
+                },
+                {
+                    "column": 4,
+                    "answer": true,
+                    "row": 5
+                },
+                {
+                    "column": 5,
+                    "answer": true,
+                    "row": 5
+                }
+            ],
+            "browser": "Chrome 43"
+        },
+        "user_id": 3,
+        "task_id": 1973,
+        "created": "2015-07-20T11:41:20.199301",
+        "finish_time": "2015-07-20T11:41:20.199314",
+        "calibration": null,
+        "user_ip": null,
+        "timeout": null,
+        "project_id": 9,
+        "id": 1502
+    }
+]
+
 
 
 
 
 
 "use strict";
+
+
 
 /**
  * Grid Constructor function
@@ -1204,6 +1685,7 @@ var data = [{
 
 function Grid(task) {
 
+    this.canvas;
 
     if( typeof task != 'undefined') {
         this.task = task;
@@ -1216,6 +1698,9 @@ function Grid(task) {
         };
         this.activateCell();
     }
+
+    this.tickCross = [];
+
 
 
 
@@ -1230,11 +1715,13 @@ function Grid(task) {
  */
 Grid.prototype.createGrid = function( canvasElement ) {
 
+
     var rows = 6,
         columns = 6,
-        canvas = Raphael( canvasElement, $(".img-polaroid").width(), $(".img-polaroid").height()),
-        gridHeight = $(".img-polaroid").height() / columns,
-        gridWidth = $(".img-polaroid").width() / rows;
+        gridHeight = 460 / columns,
+        gridWidth = 460 / rows;
+
+        this.canvas = Raphael( canvasElement, 460, 460);
 
     // creates 36 grid squares in raphael
     var x, y;
@@ -1245,7 +1732,7 @@ Grid.prototype.createGrid = function( canvasElement ) {
                 offsetW = x,
                 moveDown = (y + gridHeight - offsetH) * y,
                 moveRight = (x + gridWidth - offsetW) * x,
-                gridSquare = canvas.rect(moveRight, moveDown, gridWidth, gridHeight).attr({
+                gridSquare = this.canvas.rect(moveRight, moveDown, gridWidth, gridHeight).attr({
                     "stroke": "#fff"
                 });
 
@@ -1267,6 +1754,8 @@ Grid.prototype.createGrid = function( canvasElement ) {
 
         }
     }
+
+
 };
 
 
@@ -1291,6 +1780,7 @@ Grid.prototype.activateCell = function() {
         // Find the cloest grid square to click on the zoomLens
 
         var activeSquare = _this.findClosestSquare();
+
         var activeSquareNode = activeSquare.node;
 
         // Not able to use jQuery .click or .dblclick for some reason i can't remember
@@ -1308,14 +1798,23 @@ Grid.prototype.activateCell = function() {
                             activeSquareNode.setAttribute("class", "grid-item grid-item-success");
                             activeSquare.has_cancer = true;
 
-                            _this.checkAnswer( true, activeSquare );
+
+
+                            if ( $("#feedback-content").is(':visible') ) {
+                                _this.checkAnswer( true, activeSquare );
+                            }
+
 
                         } else {
 
                             activeSquareNode.setAttribute("class", "grid-item");
                             activeSquare.has_cancer = null;
 
-                            _this.checkAnswer( null, activeSquare );
+
+                            if ( $("#feedback-content").is(':visible') ) {
+                                _this.checkAnswer( null, activeSquare );
+                            }
+
 
 
 
@@ -1333,7 +1832,10 @@ Grid.prototype.activateCell = function() {
             activeSquareNode.setAttribute("class", "grid-item grid-item-error");
             activeSquare.has_cancer = false;
 
-            _this.checkAnswer( false, activeSquare );
+            if ( $("#feedback-content").is(':visible') ) {
+                                _this.checkAnswer( false, activeSquare );
+                            }
+
 
             clicks = 0;
         }
@@ -1361,11 +1863,16 @@ Grid.prototype.findClosestSquare = function() {
         };
 
 
+
+
     // Center the zoom cursor to middle of square
     target_pos.x = target_pos.x + 34.85;
     target_pos.y = target_pos.y + 34.85;
 
+
+
     // Find the closet grid item
+
 
     if( typeof this.task != 'undefined') {
         $.each(_this.task.answer.squares, function(key, value) {
@@ -1375,12 +1882,14 @@ Grid.prototype.findClosestSquare = function() {
         });
     } else {
         $.each(_this.feedbackObj.answer.squares, function(key, value) {
+
             if (value.isPointInside(target_pos.x, target_pos.y)) {
                 activeSquare = value;
             }
         });
     }
 
+    console.log(activeSquare);
     return activeSquare;
 };
 
@@ -1391,35 +1900,63 @@ Grid.prototype.checkAnswer = function( action, activeSquare ) {
         pathologistAnswer,
         activeSquare = activeSquare;
 
-    $.each(data[0].info, function(key, value) {
-
+    $.each(data[step].info, function(key, value) {
         if( typeof(value[activeSquare.id]) == 'object' ) {
             // Find the pathologist answer for that square
             pathologistAnswer = value[activeSquare.id];
         }
-
     });
+
+    console.log(pathologistAnswer);
+
+
+
+
+
+
+    //console.log(activeSquaree);
 
     //console.log("has cancer: " + state);
     //console.log("pathologist says: " + pathologistAnswer.answer );
-    //console.log(activeSquare);
+    //console.log(activeSquare.attr("x"));
+
+    var activeSquarePosX = activeSquare.attr("x") + 30 ,
+        activeSquarePosY = activeSquare.attr("y") + 30;
+
+     var  x = Math.floor(activeSquare.attr("x"));
+          var y = Math.floor(activeSquare.attr("y"));
+          var tick =    "M " + (x + 15) + "," + (y + 35) +  " L " + (x + 30) + "," + (y + 50) + " L " + (x + 60) + "," + (y + 20);
+          var cross =   "M " + (x + 15) + "," + (y + 15) +  " L " + (x + 60) + "," + (y + 60) + "M " + (x + 15) + "," + (y + 60) + " L " + (x + 60) + "," + (y + 15) ;
+
+
+
+
 
     if (state == pathologistAnswer.answer) {
-        //console.log("Both agree");
+         $("#pathologistFeedback").removeClass("alert-info").addClass("alert-success");
+         $("#pathologistFeedback p").text("Well done! This is what our pathologist said");
+         var tick = this.canvas.path(tick).attr("stroke-width","3px");
+         this.tickCross.push(tick);
     } else {
         //console.log("Dont agree");
         if( pathologistAnswer.answer === true ) {
-            alert("The pathologies said it contained cancer");
-            activeSquare.node.setAttribute("class", "grid-item grid-item-success");
+            $("#pathologistFeedback").removeClass("alert-success").addClass("alert-info");
+            $("#pathologistFeedback p").text("The pathologies said it contained cancer");
+            //activeSquare.node.setAttribute("class", "grid-item grid-item-success");
+
         }
         if( pathologistAnswer.answer === false ) {
-            alert("The pathologies said it did not contained cancer");
-            activeSquare.node.setAttribute("class", "grid-item grid-item-error");
+            $("#pathologistFeedback").removeClass("alert-success").addClass("alert-info");
+            $("#pathologistFeedback p").text("The pathologies said it did not contained cancer");
+            //activeSquare.node.setAttribute("class", "grid-item grid-item-error");
         }
         if( pathologistAnswer.answer === null ) {
-            alert("The pathologies said this square was clear");
-             activeSquare.node.setAttribute("class", "grid-item");
+            $("#pathologistFeedback").removeClass("alert-success").addClass("alert-info");
+            $("#pathologistFeedback p").text("The pathologies said this square was clear");
+            //activeSquare.node.setAttribute("class", "grid-item");
         }
+        var cross = this.canvas.path(cross).attr("stroke-width","3px");
+        this.tickCross.push(cross);
     }
 
 
@@ -1435,26 +1972,31 @@ Grid.prototype.checkAnswer = function( action, activeSquare ) {
         }
     } */
 
-    // show the feedback
+
+
+
 }
+
+
+
 
 
 Grid.prototype.showPathologistAnswers = function() {
 
-    for (var i = 0; i < data[0].info.squares.length; i++) {
+    for (var i = 0; i < data[step].info.squares.length; i++) {
 
         var gridSquare = this.feedbackObj.answer.squares[i],
             gridSquareNode = this.feedbackObj.answer.squares[i].node,
-            pathologistAnswer = data[0].info.squares[i].answer;
-            console.log( data[0].info.squares[i].answer );
+            pathologistAnswer = data[step].info.squares[i].answer;
+            console.log( data[step].info.squares[i].answer );
 
-            if(  data[0].info.squares[i].answer == true ) {
+            if(  data[step].info.squares[i].answer == true ) {
                 gridSquareNode.setAttribute("class", "grid-item grid-item-success");
             }
-            if(  data[0].info.squares[i].answer == false ) {
+            if(  data[step].info.squares[i].answer == false ) {
                 gridSquareNode.setAttribute("class", "grid-item grid-item-error");
             }
-            if(  data[0].info.squares[i].answer == null ) {
+            if(  data[step].info.squares[i].answer == null ) {
                 gridSquareNode.setAttribute("class", "grid-item");
             }
     }
@@ -1470,6 +2012,7 @@ Grid.prototype.selectAllSquares = function() {
         gridSquareNode.setAttribute("class", "grid-item grid-item-success");
     }
 }
+
 Grid.prototype.deselectAllSquares = function() {
     for (var i = 0; i < this.task.answer.squares.length; i++) {
         var gridSquare = this.task.answer.squares[i],
@@ -1641,12 +2184,12 @@ Modal.prototype.close = function() {
 
 function Zoom() {
     //Grid.call(this);
+
 }
 
 //Zoom.prototype = Object.create(Grid.prototype);
 
 Zoom.prototype.addZoom = function(element) {
-
 
     element.elevateZoom({
         zoomWindowPosition: "grid-info",
@@ -1658,6 +2201,8 @@ Zoom.prototype.addZoom = function(element) {
 }
 
 Zoom.prototype.removeZoom = function(element) {
+
+
 
     $.removeData(element, 'elevateZoom');
     $('.zoomContainer').remove();
@@ -2082,14 +2627,8 @@ pybossa.presentTask(function(task, deferred) {
             //});
 
             //$("#loading").fadeIn(500).delay(500).fadeOut();
-
         });
-
-
-
-
     } else {
-
         $("#loading").hide();
         $("#finish").fadeIn(500);
         $(".span6").fadeTo("slow", 0.5);
@@ -2106,15 +2645,25 @@ pybossa.presentTask(function(task, deferred) {
  *
  */
 
-$(function() {
 
-    var cookie = $.cookie('mvp-03feedback');
 
-    if( cookie != null ) {
-        $("#feedback-content").show();
+ var step = -1;
 
-        var data_obj = data[0].info;
-        var imgUrl = data[0].info.imgUrl;
+    function showFeedbackStep(action) {
+
+        $("#feedbackStep" + step).hide();
+
+        if (action == 'next') {
+            step += 1;
+        }
+
+
+        $("svg, .img-polaroid, .zoomContainer, .zoomWindowContainer, .feedback-photo-link").remove();
+        $.removeData(".feedback-photo-link", 'elevateZoom');
+
+
+        var data_obj = data[step].info;
+        var imgUrl = data[step].info.imgNumber;
 
         var img = $('<img />');
         img.attr('src', imgUrl);
@@ -2123,12 +2672,12 @@ $(function() {
 
         $('#feedback-photo-link').append(img);
 
-        $("#mechanic-content").hide();
 
-        var grid = new Grid();
+
+            var grid = new Grid();
             grid.createGrid("feedbackCanvas");
 
-        var zoom = new Zoom();
+            var zoom = new Zoom();
             zoom.addZoom($(".img-polaroid"));
 
         var showAnswers = document.getElementById("showAnswers");
@@ -2136,6 +2685,50 @@ $(function() {
             grid.showPathologistAnswers();
         };
 
+
+
+
+
+
+
+
+
+
+
+
+
+    if( step == 2 ) {
+        $("#next-feedback-step").hide();
+        $("#finish-feedback").show();
+    }
+
+        $("#feedbackStep" + step).show();
+    }
+
+
+
+
+var nextFeedbackBtn = document.getElementById("next-feedback-step");
+    nextFeedbackBtn.onclick = function () {
+
+        showFeedbackStep('next');
+
+    };
+
+
+
+//finish-feedback
+
+
+
+
+$(function() {
+
+    var cookie = $.cookie('mvp-03feedback');
+
+    if( cookie != null ) {
+        showFeedbackStep('next');
+        $("#feedback-content").show();
     }
 
     $("#finish-feedback").on("click",function(){
