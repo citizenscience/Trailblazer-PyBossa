@@ -1230,7 +1230,6 @@ function Grid(task) {
  */
 Grid.prototype.createGrid = function( canvasElement ) {
 
-
     var rows = 6,
         columns = 6,
         canvas = Raphael( canvasElement, $(".img-polaroid").width(), $(".img-polaroid").height()),
@@ -1443,8 +1442,21 @@ Grid.prototype.checkAnswer = function( action, activeSquare ) {
 Grid.prototype.showPathologistAnswers = function() {
 
     for (var i = 0; i < data[0].info.squares.length; i++) {
-        console.log( data[0].info.squares[i] );
-        console.log();
+
+        var gridSquare = this.feedbackObj.answer.squares[i],
+            gridSquareNode = this.feedbackObj.answer.squares[i].node,
+            pathologistAnswer = data[0].info.squares[i].answer;
+            console.log( data[0].info.squares[i].answer );
+
+            if(  data[0].info.squares[i].answer == true ) {
+                gridSquareNode.setAttribute("class", "grid-item grid-item-success");
+            }
+            if(  data[0].info.squares[i].answer == false ) {
+                gridSquareNode.setAttribute("class", "grid-item grid-item-error");
+            }
+            if(  data[0].info.squares[i].answer == null ) {
+                gridSquareNode.setAttribute("class", "grid-item");
+            }
     }
 
 }
@@ -2096,7 +2108,6 @@ pybossa.presentTask(function(task, deferred) {
 
 $(function() {
 
-
     var cookie = $.cookie('mvp-03feedback');
 
     if( cookie != null ) {
@@ -2140,7 +2151,7 @@ $(function() {
         pybossa.run('mvp-02');
     });
 
-})
+}())
 
 </script>
 
