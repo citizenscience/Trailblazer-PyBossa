@@ -962,6 +962,7 @@
                     <a class="btn " id="showAnswers">
                         Show answers
                     </a>
+
                 </div>
 
             </div>
@@ -1072,7 +1073,8 @@ var data = [
                 {
                     "column": 0,
                     "answer": null,
-                    "row": 0
+                    "row": 0,
+                    "cellInfo": "This is a blah blah cell"
                 },
                 {
                     "column": 1,
@@ -1102,12 +1104,14 @@ var data = [
                 {
                     "column": 0,
                     "answer": true,
-                    "row": 1
+                    "row": 1,
+                    "cellInfo": "This is a blah blah cell"
                 },
                 {
                     "column": 1,
                     "answer": true,
-                    "row": 1
+                    "row": 1,
+                    "cellInfo": "This is a blah blah cell"
                 },
                 {
                     "column": 2,
@@ -1127,12 +1131,14 @@ var data = [
                 {
                     "column": 5,
                     "answer": false,
-                    "row": 1
+                    "row": 1,
+                    "cellInfo": "This is a blah blah cell"
                 },
                 {
                     "column": 0,
                     "answer": true,
-                    "row": 2
+                    "row": 2,
+                    "cellInfo": "This is a blah blah cell"
                 },
                 {
                     "column": 1,
@@ -1724,9 +1730,13 @@ Grid.prototype.createGrid = function( canvasElement ) {
         this.canvas = Raphael( canvasElement, 460, 460);
 
     // creates 36 grid squares in raphael
-    var x, y;
+
+
+    var x, y, i = -1;
     for (y = 0; y < rows; y += 1) {
         for (x = 0; x < columns; x += 1) {
+
+            i++;
 
             var offsetH = y,
                 offsetW = x,
@@ -1737,6 +1747,9 @@ Grid.prototype.createGrid = function( canvasElement ) {
                 });
 
             gridSquare.node.setAttribute("class", "grid-item");
+
+            /* Make sure grid squares start from id 0 */
+            gridSquare.id = i;
 
             gridSquare.column = x;
             gridSquare.row = y;
@@ -1754,6 +1767,8 @@ Grid.prototype.createGrid = function( canvasElement ) {
 
         }
     }
+
+
 
 
 };
@@ -1909,11 +1924,6 @@ Grid.prototype.checkAnswer = function( action, activeSquare ) {
 
     console.log(pathologistAnswer);
 
-
-
-
-
-
     //console.log(activeSquaree);
 
     //console.log("has cancer: " + state);
@@ -1929,10 +1939,7 @@ Grid.prototype.checkAnswer = function( action, activeSquare ) {
           var cross =   "M " + (x + 15) + "," + (y + 15) +  " L " + (x + 60) + "," + (y + 60) + "M " + (x + 15) + "," + (y + 60) + " L " + (x + 60) + "," + (y + 15) ;
 
 
-
-
-
-    if (state == pathologistAnswer.answer) {
+    if (state === pathologistAnswer.answer) {
          $("#pathologistFeedback").removeClass("alert-info").addClass("alert-success");
          $("#pathologistFeedback p").text("Well done! This is what our pathologist said");
          var tick = this.canvas.path(tick).attr("stroke-width","3px");
@@ -1949,11 +1956,13 @@ Grid.prototype.checkAnswer = function( action, activeSquare ) {
             $("#pathologistFeedback").removeClass("alert-success").addClass("alert-info");
             $("#pathologistFeedback p").text("The pathologies said it did not contained cancer");
             //activeSquare.node.setAttribute("class", "grid-item grid-item-error");
+
         }
         if( pathologistAnswer.answer === null ) {
             $("#pathologistFeedback").removeClass("alert-success").addClass("alert-info");
             $("#pathologistFeedback p").text("The pathologies said this square was clear");
             //activeSquare.node.setAttribute("class", "grid-item");
+
         }
         var cross = this.canvas.path(cross).attr("stroke-width","3px");
         this.tickCross.push(cross);
@@ -2191,18 +2200,16 @@ function Zoom() {
 
 Zoom.prototype.addZoom = function(element) {
 
+
     element.elevateZoom({
         zoomWindowPosition: "grid-info",
+
         lensFadeIn: 500,
-        lensFadeOut: 500,
-        zoomWindowWidth: 455,
-        zoomWindowHeight: 455,
+        lensFadeOut: 500
     });
 }
 
 Zoom.prototype.removeZoom = function(element) {
-
-
 
     $.removeData(element, 'elevateZoom');
     $('.zoomContainer').remove();
