@@ -962,6 +962,9 @@
                     <a class="btn " id="showAnswers">
                         Show answers
                     </a>
+                    <a class="btn " id="hideAnswers">
+                        Hide answers
+                    </a>
 
                 </div>
 
@@ -1968,22 +1971,6 @@ Grid.prototype.checkAnswer = function( action, activeSquare ) {
         this.tickCross.push(cross);
     }
 
-
-    // compare if the answer is the same
-
-    /* if( pathologistAnswer.answer === state ) {
-        if( pathologistAnswer.feedback ) {
-            alert("Welldone that what our patholgist said! " + pathologistAnswer.feedback );
-        }
-    } else {
-        if( pathologistAnswer.feedback ) {
-            alert( "Ah man! " + pathologistAnswer.feedback );
-        }
-    } */
-
-
-
-
 }
 
 
@@ -2008,6 +1995,21 @@ Grid.prototype.showPathologistAnswers = function() {
             if(  data[step].info.squares[i].answer == null ) {
                 gridSquareNode.setAttribute("class", "grid-item");
             }
+    }
+
+}
+
+
+Grid.prototype.hidePathologistAnswers = function() {
+
+    for (var i = 0; i < data[step].info.squares.length; i++) {
+
+        var gridSquare = this.feedbackObj.answer.squares[i],
+            gridSquareNode = this.feedbackObj.answer.squares[i].node,
+            pathologistAnswer = data[step].info.squares[i].answer;
+
+            gridSquareNode.setAttribute("class", "grid-item");
+
     }
 
 }
@@ -2690,6 +2692,11 @@ pybossa.presentTask(function(task, deferred) {
         var showAnswers = document.getElementById("showAnswers");
         showAnswers.onclick = function() {
             grid.showPathologistAnswers();
+        };
+
+         var hideAnswers = document.getElementById("hideAnswers");
+        hideAnswers.onclick = function() {
+            grid.hidePathologistAnswers();
         };
 
 
