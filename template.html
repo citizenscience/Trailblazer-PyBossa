@@ -783,15 +783,23 @@
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn closeBtnbtn-default pull-left closeBtn" id="closeBtn" data-dismiss="modal" aria-hidden="true">Close</button>
+                <button type="button" class="btn closeBtnbtn-default pull-left closeBtn" id="closeBtn" data-dismiss="modal" aria-hidden="true" style="display:none;">Close</button>
                 <a id="prevBtn" href="#" class="btn">Previous</a>
                 <a id="nextBtn" href="#" class="btn btn-success">Next</a>
-
-                <button id="goBackBtn" type="button" class="btn btn-primary closeBtn pull-right " data-dismiss="modal" aria-hidden="true">Back to task</button>
+                <a id="startContrib"  data-dismiss="modal" aria-hidden="true" class="btn btn-primary closeBtn" ><i class="icon-thumbs-up"></i> Start</a>
+                <button id="goBackBtn" type="button" class="btn btn-primary closeBtn pull-right " data-dismiss="modal" aria-hidden="true" style="display:none;">Back to task</button>
             </div>
         </div>
     </div>
 </div>
+
+
+
+
+
+
+
+
 
 <header class="site-header clearfix">
     <div>
@@ -826,6 +834,9 @@
     <div class="mechanic-content" id="mechanic-content" style="display:none;">
 
         <div class="row clearfix">
+            <div class="span12">
+                <h1>Mechanic</h1>
+            </div>
             <!--Left hand side-->
             <div class="span6">
                 <div id="grid-info" class="grid-info">
@@ -1698,9 +1709,9 @@
         this.canvas;
         this.feedbackStep = step;
         this.tickCross = [];
+        this.task = task;
 
-        var cookie = $.cookie('mvp-03feedback');
-        if ($.cookie('mvp-03feedback')) {
+        if ( typeof this.task == "undefined" ) {
             this.feedbackObj = {
                 answer: {
                     squares: []
@@ -1710,6 +1721,7 @@
         } else {
             this.task = task;
             this.activateCell();
+
         }
 
 
@@ -1762,7 +1774,6 @@
 
                 // Save all grid squares in array within main task object
                 // We can then grab this when saving the info at the end
-
 
                 if (typeof this.task != 'undefined') {
                     this.task.answer.squares.push(gridSquare);
@@ -2160,10 +2171,10 @@
         var $lastStep = $('.modal-body').length - 1;
         if (this.step == $lastStep) {
             $("#nextBtn").hide();
-            $("#goBackBtn").show();
+            //$("#goBackBtn").show();
         } else {
             $("#nextBtn").show();
-            $("#goBackBtn").hide();
+            //$("#goBackBtn").hide();
         }
 
         $currentStep.show();
@@ -2717,8 +2728,8 @@
         // State of the page to show to the user
         var page_state = "mechanic";
 
-        // Check if the page should in show feedback state
-        var cookie_feedback = $.cookie(cookie_feedback_name, true);
+        // Check if the page should be in show feedback state
+        var cookie_feedback = $.cookie(cookie_feedback_name);
         if (cookie_feedback != null)
             page_state = "feedback";
 
@@ -2730,13 +2741,30 @@
 
 
         if (page_state == "feedback") {
+
             showFeedbackStep('next');
             $("#feedback-content").show();
         }
         else if (page_state == "tutorial") {
-           var m = new Modal;
-           m.open();
+
+            var m = new Modal;
+            m.open();
+
+            $("#feedback-content").hide();
+
+            var nextBtn = document.getElementById("nextBtn");
+            nextBtn.onclick = function () {
+                m.showStep('next');
+            };
+            var prevBtn = document.getElementById("prevBtn");
+            prevBtn.onclick = function () {
+                m.showStep('prev');
+            };
+
         }
+
+
+        console.log("end: " + page_state);
 
     }
 
@@ -2744,19 +2772,25 @@
 
         UpdatePageState();
 
-
         $("#finish-feedback").on("click", function () {
-            $.cookie(cookie_feedback_name, false);
 
-            $(".feedback-photo-link").remove();
-            $.removeData(".feedback-photo-link", 'elevateZoom');
-            $('.zoomContainer').remove();
-            $('.zoomWindowContainer').remove();
-
+            console.log("Clicked feedback");
             $("#feedback-content").hide();
             $("#mechanic-content").show();
-            pybossa.run(project_short_name);
+
+            //pybossa.run(project_short_name);
+
         });
+
+        $("#startContrib").on("click", function () {
+            $.cookie(cookie_tutorial_name, "seen");
+            $.cookie(cookie_feedback_name, true);
+            UpdatePageState();
+        });
+
+
+
+
 
     });
 
