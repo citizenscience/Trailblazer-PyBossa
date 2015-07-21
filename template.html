@@ -2713,6 +2713,7 @@
 
 
     function UpdatePageState() {
+
         // State of the page to show to the user
         var page_state = "mechanic";
 
@@ -2733,7 +2734,8 @@
             $("#feedback-content").show();
         }
         else if (page_state == "tutorial") {
-            Modal().open();
+           var m = new Modal;
+           m.open();
         }
 
     }
@@ -2741,6 +2743,7 @@
     $(function () {
 
         UpdatePageState();
+
 
         $("#finish-feedback").on("click", function () {
             $.cookie(cookie_feedback_name, false);
