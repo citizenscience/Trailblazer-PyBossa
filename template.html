@@ -820,66 +820,66 @@
 </header>
 
 
-
 <main class="site-content clearfix">
-
 
 
     <div class="mechanic-content" id="mechanic-content" style="display:none;">
 
-    <div class="row clearfix">
-        <!--Left hand side-->
-        <div class="span6">
-            <div id="grid-info" class="grid-info">
+        <div class="row clearfix">
+            <!--Left hand side-->
+            <div class="span6">
+                <div id="grid-info" class="grid-info">
 
-                <div class="grid-info-instructions">
-                    <h1 id="question">Select which grid sections contain cancer cells</h1>
+                    <div class="grid-info-instructions">
+                        <h1 id="question">Select which grid sections contain cancer cells</h1>
 
-                    <p>
-                        Click once for <strong>cancer</strong> cells in <span class="text-error">red</span>
-                        <br/> Double click for <strong>non-cancer</strong> cells in
-                        <span class="text-success">green</span>
-                        <br/> Leave blank for empty sections.
+                        <p>
+                            Click once for <strong>cancer</strong> cells in <span class="text-error">red</span>
+                            <br/> Double click for <strong>non-cancer</strong> cells in
+                            <span class="text-success">green</span>
+                            <br/> Leave blank for empty sections.
 
-                    </p>
-                    <p id="imgId"></p>
+                        </p>
+
+                        <p id="imgId"></p>
+                    </div>
+
+                    <!--<select class="grid-info-difficulty" id="difficulty">-->
+                    <!--<option value="0" selected>Please select an image difficulty level:</option>-->
+                    <!--<option value="1">1 - Very easy</option>-->
+                    <!--<option value="2">2 - Easy</option>-->
+                    <!--<option value="3">3 - Average</option>-->
+                    <!--<option value="4">4 - Difficult</option>-->
+                    <!--<option value="5">5 - Very difficult</option>-->
+                    <!--</select>-->
+
+                    <div class="grid-info-buttons">
+                        <button class="btn" id="selectAllBtn" value="all">Select All</button>
+                        <button class="btn" id="deselectBtn">Deselect All</button>
+
+                        <button class="btn btn-primary" id="modalShow">Tutorial</button>
+                        <button class="btn btn-answer btn-success nextSlideBtn" id="nextSlideBtn" value="next">Next slide</button>
+                    </div>
+
+                    <div class="progress progress-striped">
+                        <div id="progress" rel="tooltip" title="#" class="bar" style="width: 0%;"></div>
+                    </div>
                 </div>
+                <br/>
 
-                <!--<select class="grid-info-difficulty" id="difficulty">-->
-                <!--<option value="0" selected>Please select an image difficulty level:</option>-->
-                <!--<option value="1">1 - Very easy</option>-->
-                <!--<option value="2">2 - Easy</option>-->
-                <!--<option value="3">3 - Average</option>-->
-                <!--<option value="4">4 - Difficult</option>-->
-                <!--<option value="5">5 - Very difficult</option>-->
-                <!--</select>-->
-
-                <div class="grid-info-buttons">
-                    <button class="btn" id="selectAllBtn" value="all">Select All</button>
-                    <button class="btn" id="deselectBtn">Deselect All</button>
-
-                    <button class="btn btn-primary" id="modalShow">Tutorial</button>
-                    <button class="btn btn-answer btn-success nextSlideBtn" id="nextSlideBtn" value="next">Next slide</button>
-                </div>
-
-                <div class="progress progress-striped">
-                    <div id="progress" rel="tooltip" title="#" class="bar" style="width: 0%;"></div>
+                <div id="errorClick" class="alert alert-info" style="display:none">
+                    <h2>If you are having problems clicking the grid, please refresh the page by clicking
+                        <b onclick="location.reload();" style="cursor:pointer;"><u>here</u></b></h2>
                 </div>
             </div>
-            <br/>
-            <div id="errorClick" class="alert alert-info" style="display:none">
-                <h2>If you are having problems clicking the grid, please refresh the page by clicking
-                    <b onclick="location.reload();" style="cursor:pointer;"><u>here</u></b></h2>
+
+            <!--Right hand side-->
+            <div class="span6 wrapper grid-wrapper" id="grid-wrapper">
+                <a id="photo-link"></a>
+
+                <div class="canvas" id="mechanicCanvas"></div>
             </div>
         </div>
-
-        <!--Right hand side-->
-        <div class="span6 wrapper grid-wrapper" id="grid-wrapper">
-            <a id="photo-link"></a>
-
-            <div class="canvas" id="mechanicCanvas"></div>
-        </div>
-    </div>
 
     </div>
 
@@ -887,107 +887,106 @@
     <div class="feedback-content" id="feedback-content">
 
 
-    <div class="row clearfix">
-        <!--Left hand side-->
-        <div class="span12">
-            <h1 id="question">Feedback</h1>
-        </div>
+        <div class="row clearfix">
+            <!--Left hand side-->
+            <div class="span12">
+                <h1 id="question">Feedback</h1>
+            </div>
 
-        <div class="span6">
-            <div id="grid-info" class="grid-info">
+            <div class="span6">
+                <div id="grid-info" class="grid-info">
 
-                <div class="grid-info-instructions" id="feedbackStep0">
-                    <p>
-                        Click once for <strong>cancer</strong> cells in <span class="text-error">red</span>
-                        <br/> Double click for <strong>non-cancer</strong> cells in
-                        <span class="text-success">green</span>
-                        <br/> Leave blank for empty sections.
+                    <div class="grid-info-instructions" id="feedbackStep0">
+                        <p>
+                            Click once for <strong>cancer</strong> cells in <span class="text-error">red</span>
+                            <br/> Double click for <strong>non-cancer</strong> cells in
+                            <span class="text-success">green</span>
+                            <br/> Leave blank for empty sections.
 
-                    </p>
+                        </p>
 
-                    <p>
-                        This time we’ll give you immediate feedback on whether our
-                        expert pathologists agreed with you.
+                        <p>
+                            This time we’ll give you immediate feedback on whether our
+                            expert pathologists agreed with you.
 
-                        You can change your answer as often as you want.
+                            You can change your answer as often as you want.
 
-                        When you’re done click Next Slide
-                    </p>
+                            When you’re done click Next Slide
+                        </p>
 
-                    <p id="imgId"></p>
+                        <p id="imgId"></p>
+                    </div>
+
+                    <div class="grid-info-instructions" id="feedbackStep1" style="display:none;">
+                        <p>
+                            Click once for <strong>cancer</strong> cells in <span class="text-error">red</span>
+                            <br/> Double click for <strong>non-cancer</strong> cells in
+                            <span class="text-success">green</span>
+                            <br/> Leave blank for empty sections.
+
+                        </p>
+
+                        <p>
+                            step2
+                        </p>
+
+                        <p id="imgId"></p>
+                    </div>
+
+                    <div class="grid-info-instructions" id="feedbackStep2" style="display:none;">
+                        <p>
+                            Click once for <strong>cancer</strong> cells in <span class="text-error">red</span>
+                            <br/> Double click for <strong>non-cancer</strong> cells in
+                            <span class="text-success">green</span>
+                            <br/> Leave blank for empty sections.
+
+                        </p>
+
+                        <p>
+                            step3
+                        </p>
+
+                        <p id="imgId"></p>
+                    </div>
+
+
+                    <div class="grid-info-buttons">
+                        <a class="btn btn-primary pull-right" id="next-feedback-step">
+                            Next slide
+                        </a>
+                        <a class="btn btn-success pull-right" id="finish-feedback" style="display:none;">
+                            Finished
+                        </a>
+                        <a class="btn " id="showAnswers">
+                            Show answers
+                        </a>
+                        <a class="btn " id="hideAnswers">
+                            Hide answers
+                        </a>
+
+                        <a class="btn btn-success" id="checkMyWorkBtn">
+                            Check my work
+                        </a>
+                    </div>
+
                 </div>
+                <div id="pathologistFeedback" class="alert alert-info">
+                    <h2><strong>Our expert pathologists said:</strong></h2>
 
-                <div class="grid-info-instructions" id="feedbackStep1" style="display:none;">
-                    <p>
-                        Click once for <strong>cancer</strong> cells in <span class="text-error">red</span>
-                        <br/> Double click for <strong>non-cancer</strong> cells in
-                        <span class="text-success">green</span>
-                        <br/> Leave blank for empty sections.
-
-                    </p>
-
-                    <p>
-                        step2
-                    </p>
-
-                    <p id="imgId"></p>
-                </div>
-
-                <div class="grid-info-instructions" id="feedbackStep2" style="display:none;">
-                    <p>
-                        Click once for <strong>cancer</strong> cells in <span class="text-error">red</span>
-                        <br/> Double click for <strong>non-cancer</strong> cells in
-                        <span class="text-success">green</span>
-                        <br/> Leave blank for empty sections.
-
-                    </p>
-
-                    <p>
-                        step3
-                    </p>
-
-                    <p id="imgId"></p>
-                </div>
-
-
-
-
-                <div class="grid-info-buttons">
-                    <a class="btn btn-primary pull-right" id="next-feedback-step">
-                        Next slide
-                    </a>
-                    <a class="btn btn-success pull-right" id="finish-feedback" style="display:none;">
-                        Finished
-                    </a>
-                    <a class="btn " id="showAnswers">
-                        Show answers
-                    </a>
-                    <a class="btn " id="hideAnswers">
-                        Hide answers
-                    </a>
-
-                    <a class="btn btn-success" id="checkMyWorkBtn">
-                        Check my work
-                    </a>
+                    <p></p>
                 </div>
 
             </div>
-            <div id="pathologistFeedback" class="alert alert-info">
-                <h2><strong>Our expert pathologists said:</strong></h2>
-                <p></p>
+
+            <!--Right hand side-->
+            <div class="span6 wrapper grid-wrapper" id="grid-wrapper">
+                <a id="feedback-photo-link"></a>
+
+                <div class="canvas" id="feedbackCanvas"></div>
             </div>
-
         </div>
 
-        <!--Right hand side-->
-        <div class="span6 wrapper grid-wrapper" id="grid-wrapper">
-            <a id="feedback-photo-link"></a>
-            <div class="canvas" id="feedbackCanvas"></div>
-        </div>
     </div>
-
-    </div>
-
 
 
 </main>
@@ -996,832 +995,820 @@
 <!--<h2>Cell Examples</h2>-->
 <!--<div class="row example-list clearfix">-->
 
-    <!--<figure class="example-list-item">-->
-        <!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-03/examples/cancer-examples/cancer-cells-example1.jpg" alt=""/>-->
-        <!--<figcaption class="description cancer">Cancer Cells</figcaption>-->
-    <!--</figure>-->
-    <!--<figure class="example-list-item">-->
-        <!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-03/examples/cancer-examples/cancer-cells-example2.jpg" alt=""/>-->
-        <!--<figcaption class="description cancer">Cancer Cells</figcaption>-->
-    <!--</figure>-->
-    <!--<figure class="example-list-item">-->
-        <!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-03/examples/cancer-examples/cancer-cells-example3.jpg" alt=""/>-->
-        <!--<figcaption class="description cancer">Cancer Cells</figcaption>-->
-    <!--</figure>-->
-    <!--<figure class="example-list-item">-->
-        <!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-03/examples/cancer-examples/cancer-cells-example4.jpg" alt=""/>-->
-        <!--<figcaption class="description cancer">Cancer Cells</figcaption>-->
-    <!--</figure>-->
-    <!--<figure class="example-list-item">-->
-        <!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-03/examples/cancer-examples/cancer-cells-example5.jpg" alt=""/>-->
-        <!--<figcaption class="description cancer">Cancer Cells</figcaption>-->
-    <!--</figure>-->
-    <!--<figure class="example-list-item">-->
-        <!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-03/examples/cancer-examples/cancer-cells-example6.jpg" alt=""/>-->
-        <!--<figcaption class="description cancer">Cancer Cells</figcaption>-->
-    <!--</figure>-->
-    <!--<figure class="example-list-item">-->
-        <!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-03/examples/cancer-examples/cancer-cells-example7.jpg" alt=""/>-->
-        <!--<figcaption class="description cancer">Cancer Cells</figcaption>-->
-    <!--</figure>-->
-    <!--<figure class="example-list-item">-->
-        <!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-03/examples/cancer-examples/cancer-cells-example8.jpg" alt=""/>-->
-        <!--<figcaption class="description cancer">Cancer Cells</figcaption>-->
-    <!--</figure>-->
-    <!--<figure class="example-list-item">-->
-        <!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-03/examples/cancer-examples/cancer-cells-example9.jpg" alt=""/>-->
-        <!--<figcaption class="description cancer">Cancer Cells</figcaption>-->
-    <!--</figure>-->
-    <!--<figure class="example-list-item">-->
-        <!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-03/examples/cancer-examples/cancer-cells-example10.jpg" alt=""/>-->
-        <!--<figcaption class="description cancer">Cancer Cells</figcaption>-->
-    <!--</figure>-->
+<!--<figure class="example-list-item">-->
+<!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-03/examples/cancer-examples/cancer-cells-example1.jpg" alt=""/>-->
+<!--<figcaption class="description cancer">Cancer Cells</figcaption>-->
+<!--</figure>-->
+<!--<figure class="example-list-item">-->
+<!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-03/examples/cancer-examples/cancer-cells-example2.jpg" alt=""/>-->
+<!--<figcaption class="description cancer">Cancer Cells</figcaption>-->
+<!--</figure>-->
+<!--<figure class="example-list-item">-->
+<!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-03/examples/cancer-examples/cancer-cells-example3.jpg" alt=""/>-->
+<!--<figcaption class="description cancer">Cancer Cells</figcaption>-->
+<!--</figure>-->
+<!--<figure class="example-list-item">-->
+<!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-03/examples/cancer-examples/cancer-cells-example4.jpg" alt=""/>-->
+<!--<figcaption class="description cancer">Cancer Cells</figcaption>-->
+<!--</figure>-->
+<!--<figure class="example-list-item">-->
+<!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-03/examples/cancer-examples/cancer-cells-example5.jpg" alt=""/>-->
+<!--<figcaption class="description cancer">Cancer Cells</figcaption>-->
+<!--</figure>-->
+<!--<figure class="example-list-item">-->
+<!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-03/examples/cancer-examples/cancer-cells-example6.jpg" alt=""/>-->
+<!--<figcaption class="description cancer">Cancer Cells</figcaption>-->
+<!--</figure>-->
+<!--<figure class="example-list-item">-->
+<!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-03/examples/cancer-examples/cancer-cells-example7.jpg" alt=""/>-->
+<!--<figcaption class="description cancer">Cancer Cells</figcaption>-->
+<!--</figure>-->
+<!--<figure class="example-list-item">-->
+<!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-03/examples/cancer-examples/cancer-cells-example8.jpg" alt=""/>-->
+<!--<figcaption class="description cancer">Cancer Cells</figcaption>-->
+<!--</figure>-->
+<!--<figure class="example-list-item">-->
+<!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-03/examples/cancer-examples/cancer-cells-example9.jpg" alt=""/>-->
+<!--<figcaption class="description cancer">Cancer Cells</figcaption>-->
+<!--</figure>-->
+<!--<figure class="example-list-item">-->
+<!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-03/examples/cancer-examples/cancer-cells-example10.jpg" alt=""/>-->
+<!--<figcaption class="description cancer">Cancer Cells</figcaption>-->
+<!--</figure>-->
 
 
-    <!--<figure class="example-list-item">-->
-        <!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-03/examples/cancer-healthy-cells/example-healthy-blood-cells.jpg" alt=""/>-->
-        <!--<figcaption class="description non-cancer">Healthy cells</figcaption>-->
-    <!--</figure>-->
-    <!--<figure class="example-list-item">-->
-        <!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-03/examples/cancer-healthy-cells/example-healthy-lung-stromal-cartilage.jpg" alt=""/>-->
-        <!--<figcaption class="description non-cancer">Healthy cells</figcaption>-->
-    <!--</figure>-->
-    <!--<figure class="example-list-item">-->
-        <!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-03/examples/cancer-healthy-cells/example-healthy-stromal-and-blood-cells.jpg" alt=""/>-->
-        <!--<figcaption class="description non-cancer">Healthy cells</figcaption>-->
-    <!--</figure>-->
-    <!--<figure class="example-list-item">-->
-        <!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-03/examples/cancer-healthy-cells/example-healthy-stromal-and-blood-cells2.jpg" alt=""/>-->
-        <!--<figcaption class="description non-cancer">Healthy cells</figcaption>-->
-    <!--</figure>-->
-    <!--<figure class="example-list-item last">-->
-        <!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-03/examples/cancer-healthy-cells/example-healthy-stromal-cells.jpg" alt=""/>-->
-        <!--<figcaption class="description non-cancer">Healthy cells</figcaption>-->
-    <!--</figure>-->
+<!--<figure class="example-list-item">-->
+<!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-03/examples/cancer-healthy-cells/example-healthy-blood-cells.jpg" alt=""/>-->
+<!--<figcaption class="description non-cancer">Healthy cells</figcaption>-->
+<!--</figure>-->
+<!--<figure class="example-list-item">-->
+<!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-03/examples/cancer-healthy-cells/example-healthy-lung-stromal-cartilage.jpg" alt=""/>-->
+<!--<figcaption class="description non-cancer">Healthy cells</figcaption>-->
+<!--</figure>-->
+<!--<figure class="example-list-item">-->
+<!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-03/examples/cancer-healthy-cells/example-healthy-stromal-and-blood-cells.jpg" alt=""/>-->
+<!--<figcaption class="description non-cancer">Healthy cells</figcaption>-->
+<!--</figure>-->
+<!--<figure class="example-list-item">-->
+<!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-03/examples/cancer-healthy-cells/example-healthy-stromal-and-blood-cells2.jpg" alt=""/>-->
+<!--<figcaption class="description non-cancer">Healthy cells</figcaption>-->
+<!--</figure>-->
+<!--<figure class="example-list-item last">-->
+<!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-03/examples/cancer-healthy-cells/example-healthy-stromal-cells.jpg" alt=""/>-->
+<!--<figcaption class="description non-cancer">Healthy cells</figcaption>-->
+<!--</figure>-->
 <!--</div>-->
-
-
-
-
-
 
 
 <script type="text/javascript" async="async">
 
+    var project_short_name = "{{ project.short_name }}";
+    if (project_short_name == "")
+        project_short_name = "mvp-03";
 
-var data = [
-    {
-        "info": {
-            "imgNumber": "//citscitools.cancerresearchuk.org/static/img/mvp-01/2.jpg",
-            "timeTaken": "0:0:41.88",
-            "openModalCount": 0,
-            "device": "Desktop",
-            "squares": [
-                {
-                    "column": 0,
-                    "answer": null,
-                    "row": 0,
-                    "cellInfo": "This is a blah blah cell"
-                },
-                {
-                    "column": 1,
-                    "answer": true,
-                    "row": 0
-                },
-                {
-                    "column": 2,
-                    "answer": true,
-                    "row": 0
-                },
-                {
-                    "column": 3,
-                    "answer": true,
-                    "row": 0
-                },
-                {
-                    "column": 4,
-                    "answer": false,
-                    "row": 0
-                },
-                {
-                    "column": 5,
-                    "answer": null,
-                    "row": 0
-                },
-                {
-                    "column": 0,
-                    "answer": true,
-                    "row": 1,
-                    "cellInfo": "This is a blah blah cell"
-                },
-                {
-                    "column": 1,
-                    "answer": true,
-                    "row": 1,
-                    "cellInfo": "This is a blah blah cell"
-                },
-                {
-                    "column": 2,
-                    "answer": true,
-                    "row": 1
-                },
-                {
-                    "column": 3,
-                    "answer": true,
-                    "row": 1
-                },
-                {
-                    "column": 4,
-                    "answer": false,
-                    "row": 1
-                },
-                {
-                    "column": 5,
-                    "answer": false,
-                    "row": 1,
-                    "cellInfo": "This is a blah blah cell"
-                },
-                {
-                    "column": 0,
-                    "answer": true,
-                    "row": 2,
-                    "cellInfo": "This is a blah blah cell"
-                },
-                {
-                    "column": 1,
-                    "answer": true,
-                    "row": 2
-                },
-                {
-                    "column": 2,
-                    "answer": false,
-                    "row": 2
-                },
-                {
-                    "column": 3,
-                    "answer": false,
-                    "row": 2
-                },
-                {
-                    "column": 4,
-                    "answer": false,
-                    "row": 2
-                },
-                {
-                    "column": 5,
-                    "answer": false,
-                    "row": 2
-                },
-                {
-                    "column": 0,
-                    "answer": true,
-                    "row": 3
-                },
-                {
-                    "column": 1,
-                    "answer": true,
-                    "row": 3
-                },
-                {
-                    "column": 2,
-                    "answer": true,
-                    "row": 3
-                },
-                {
-                    "column": 3,
-                    "answer": false,
-                    "row": 3
-                },
-                {
-                    "column": 4,
-                    "answer": false,
-                    "row": 3
-                },
-                {
-                    "column": 5,
-                    "answer": false,
-                    "row": 3
-                },
-                {
-                    "column": 0,
-                    "answer": true,
-                    "row": 4
-                },
-                {
-                    "column": 1,
-                    "answer": true,
-                    "row": 4
-                },
-                {
-                    "column": 2,
-                    "answer": true,
-                    "row": 4
-                },
-                {
-                    "column": 3,
-                    "answer": false,
-                    "row": 4
-                },
-                {
-                    "column": 4,
-                    "answer": false,
-                    "row": 4
-                },
-                {
-                    "column": 5,
-                    "answer": false,
-                    "row": 4
-                },
-                {
-                    "column": 0,
-                    "answer": null,
-                    "row": 5
-                },
-                {
-                    "column": 1,
-                    "answer": true,
-                    "row": 5
-                },
-                {
-                    "column": 2,
-                    "answer": true,
-                    "row": 5
-                },
-                {
-                    "column": 3,
-                    "answer": false,
-                    "row": 5
-                },
-                {
-                    "column": 4,
-                    "answer": false,
-                    "row": 5
-                },
-                {
-                    "column": 5,
-                    "answer": null,
-                    "row": 5
-                }
-            ],
-            "browser": "Chrome 43"
+    var cookie_feedback_name = project_short_name + 'feedback';
+    var cookie_tutorial_name = project_short_name + 'tutorial';
+
+
+
+    var data = [
+        {
+            "info": {
+                "imgNumber": "//citscitools.cancerresearchuk.org/static/img/mvp-01/2.jpg",
+                "timeTaken": "0:0:41.88",
+                "openModalCount": 0,
+                "device": "Desktop",
+                "squares": [
+                    {
+                        "column": 0,
+                        "answer": null,
+                        "row": 0,
+                        "cellInfo": "This is a blah blah cell"
+                    },
+                    {
+                        "column": 1,
+                        "answer": true,
+                        "row": 0
+                    },
+                    {
+                        "column": 2,
+                        "answer": true,
+                        "row": 0
+                    },
+                    {
+                        "column": 3,
+                        "answer": true,
+                        "row": 0
+                    },
+                    {
+                        "column": 4,
+                        "answer": false,
+                        "row": 0
+                    },
+                    {
+                        "column": 5,
+                        "answer": null,
+                        "row": 0
+                    },
+                    {
+                        "column": 0,
+                        "answer": true,
+                        "row": 1,
+                        "cellInfo": "This is a blah blah cell"
+                    },
+                    {
+                        "column": 1,
+                        "answer": true,
+                        "row": 1,
+                        "cellInfo": "This is a blah blah cell"
+                    },
+                    {
+                        "column": 2,
+                        "answer": true,
+                        "row": 1
+                    },
+                    {
+                        "column": 3,
+                        "answer": true,
+                        "row": 1
+                    },
+                    {
+                        "column": 4,
+                        "answer": false,
+                        "row": 1
+                    },
+                    {
+                        "column": 5,
+                        "answer": false,
+                        "row": 1,
+                        "cellInfo": "This is a blah blah cell"
+                    },
+                    {
+                        "column": 0,
+                        "answer": true,
+                        "row": 2,
+                        "cellInfo": "This is a blah blah cell"
+                    },
+                    {
+                        "column": 1,
+                        "answer": true,
+                        "row": 2
+                    },
+                    {
+                        "column": 2,
+                        "answer": false,
+                        "row": 2
+                    },
+                    {
+                        "column": 3,
+                        "answer": false,
+                        "row": 2
+                    },
+                    {
+                        "column": 4,
+                        "answer": false,
+                        "row": 2
+                    },
+                    {
+                        "column": 5,
+                        "answer": false,
+                        "row": 2
+                    },
+                    {
+                        "column": 0,
+                        "answer": true,
+                        "row": 3
+                    },
+                    {
+                        "column": 1,
+                        "answer": true,
+                        "row": 3
+                    },
+                    {
+                        "column": 2,
+                        "answer": true,
+                        "row": 3
+                    },
+                    {
+                        "column": 3,
+                        "answer": false,
+                        "row": 3
+                    },
+                    {
+                        "column": 4,
+                        "answer": false,
+                        "row": 3
+                    },
+                    {
+                        "column": 5,
+                        "answer": false,
+                        "row": 3
+                    },
+                    {
+                        "column": 0,
+                        "answer": true,
+                        "row": 4
+                    },
+                    {
+                        "column": 1,
+                        "answer": true,
+                        "row": 4
+                    },
+                    {
+                        "column": 2,
+                        "answer": true,
+                        "row": 4
+                    },
+                    {
+                        "column": 3,
+                        "answer": false,
+                        "row": 4
+                    },
+                    {
+                        "column": 4,
+                        "answer": false,
+                        "row": 4
+                    },
+                    {
+                        "column": 5,
+                        "answer": false,
+                        "row": 4
+                    },
+                    {
+                        "column": 0,
+                        "answer": null,
+                        "row": 5
+                    },
+                    {
+                        "column": 1,
+                        "answer": true,
+                        "row": 5
+                    },
+                    {
+                        "column": 2,
+                        "answer": true,
+                        "row": 5
+                    },
+                    {
+                        "column": 3,
+                        "answer": false,
+                        "row": 5
+                    },
+                    {
+                        "column": 4,
+                        "answer": false,
+                        "row": 5
+                    },
+                    {
+                        "column": 5,
+                        "answer": null,
+                        "row": 5
+                    }
+                ],
+                "browser": "Chrome 43"
+            },
+            "user_id": 3,
+            "task_id": 1971,
+            "created": "2015-07-20T11:40:07.640660",
+            "finish_time": "2015-07-20T11:40:07.640672",
+            "calibration": null,
+            "user_ip": null,
+            "timeout": null,
+            "project_id": 9,
+            "id": 1500
         },
-        "user_id": 3,
-        "task_id": 1971,
-        "created": "2015-07-20T11:40:07.640660",
-        "finish_time": "2015-07-20T11:40:07.640672",
-        "calibration": null,
-        "user_ip": null,
-        "timeout": null,
-        "project_id": 9,
-        "id": 1500
-    },
-    {
-        "info": {
-            "imgNumber": "//citscitools.cancerresearchuk.org/static/img/mvp-01/4.jpg",
-            "timeTaken": "0:0:40.16",
-            "openModalCount": 0,
-            "device": "Desktop",
-            "squares": [
-                {
-                    "column": 0,
-                    "answer": null,
-                    "row": 0
-                },
-                {
-                    "column": 1,
-                    "answer": null,
-                    "row": 0
-                },
-                {
-                    "column": 2,
-                    "answer": null,
-                    "row": 0
-                },
-                {
-                    "column": 3,
-                    "answer": null,
-                    "row": 0
-                },
-                {
-                    "column": 4,
-                    "answer": null,
-                    "row": 0
-                },
-                {
-                    "column": 5,
-                    "answer": null,
-                    "row": 0
-                },
-                {
-                    "column": 0,
-                    "answer": null,
-                    "row": 1
-                },
-                {
-                    "column": 1,
-                    "answer": false,
-                    "row": 1
-                },
-                {
-                    "column": 2,
-                    "answer": false,
-                    "row": 1
-                },
-                {
-                    "column": 3,
-                    "answer": false,
-                    "row": 1
-                },
-                {
-                    "column": 4,
-                    "answer": false,
-                    "row": 1
-                },
-                {
-                    "column": 5,
-                    "answer": null,
-                    "row": 1
-                },
-                {
-                    "column": 0,
-                    "answer": false,
-                    "row": 2
-                },
-                {
-                    "column": 1,
-                    "answer": false,
-                    "row": 2
-                },
-                {
-                    "column": 2,
-                    "answer": false,
-                    "row": 2
-                },
-                {
-                    "column": 3,
-                    "answer": false,
-                    "row": 2
-                },
-                {
-                    "column": 4,
-                    "answer": true,
-                    "row": 2
-                },
-                {
-                    "column": 5,
-                    "answer": true,
-                    "row": 2
-                },
-                {
-                    "column": 0,
-                    "answer": true,
-                    "row": 3
-                },
-                {
-                    "column": 1,
-                    "answer": true,
-                    "row": 3
-                },
-                {
-                    "column": 2,
-                    "answer": false,
-                    "row": 3
-                },
-                {
-                    "column": 3,
-                    "answer": false,
-                    "row": 3
-                },
-                {
-                    "column": 4,
-                    "answer": true,
-                    "row": 3
-                },
-                {
-                    "column": 5,
-                    "answer": true,
-                    "row": 3
-                },
-                {
-                    "column": 0,
-                    "answer": true,
-                    "row": 4
-                },
-                {
-                    "column": 1,
-                    "answer": true,
-                    "row": 4
-                },
-                {
-                    "column": 2,
-                    "answer": false,
-                    "row": 4
-                },
-                {
-                    "column": 3,
-                    "answer": false,
-                    "row": 4
-                },
-                {
-                    "column": 4,
-                    "answer": false,
-                    "row": 4
-                },
-                {
-                    "column": 5,
-                    "answer": false,
-                    "row": 4
-                },
-                {
-                    "column": 0,
-                    "answer": true,
-                    "row": 5
-                },
-                {
-                    "column": 1,
-                    "answer": false,
-                    "row": 5
-                },
-                {
-                    "column": 2,
-                    "answer": false,
-                    "row": 5
-                },
-                {
-                    "column": 3,
-                    "answer": false,
-                    "row": 5
-                },
-                {
-                    "column": 4,
-                    "answer": false,
-                    "row": 5
-                },
-                {
-                    "column": 5,
-                    "answer": false,
-                    "row": 5
-                }
-            ],
-            "browser": "Chrome 43"
+        {
+            "info": {
+                "imgNumber": "//citscitools.cancerresearchuk.org/static/img/mvp-01/4.jpg",
+                "timeTaken": "0:0:40.16",
+                "openModalCount": 0,
+                "device": "Desktop",
+                "squares": [
+                    {
+                        "column": 0,
+                        "answer": null,
+                        "row": 0
+                    },
+                    {
+                        "column": 1,
+                        "answer": null,
+                        "row": 0
+                    },
+                    {
+                        "column": 2,
+                        "answer": null,
+                        "row": 0
+                    },
+                    {
+                        "column": 3,
+                        "answer": null,
+                        "row": 0
+                    },
+                    {
+                        "column": 4,
+                        "answer": null,
+                        "row": 0
+                    },
+                    {
+                        "column": 5,
+                        "answer": null,
+                        "row": 0
+                    },
+                    {
+                        "column": 0,
+                        "answer": null,
+                        "row": 1
+                    },
+                    {
+                        "column": 1,
+                        "answer": false,
+                        "row": 1
+                    },
+                    {
+                        "column": 2,
+                        "answer": false,
+                        "row": 1
+                    },
+                    {
+                        "column": 3,
+                        "answer": false,
+                        "row": 1
+                    },
+                    {
+                        "column": 4,
+                        "answer": false,
+                        "row": 1
+                    },
+                    {
+                        "column": 5,
+                        "answer": null,
+                        "row": 1
+                    },
+                    {
+                        "column": 0,
+                        "answer": false,
+                        "row": 2
+                    },
+                    {
+                        "column": 1,
+                        "answer": false,
+                        "row": 2
+                    },
+                    {
+                        "column": 2,
+                        "answer": false,
+                        "row": 2
+                    },
+                    {
+                        "column": 3,
+                        "answer": false,
+                        "row": 2
+                    },
+                    {
+                        "column": 4,
+                        "answer": true,
+                        "row": 2
+                    },
+                    {
+                        "column": 5,
+                        "answer": true,
+                        "row": 2
+                    },
+                    {
+                        "column": 0,
+                        "answer": true,
+                        "row": 3
+                    },
+                    {
+                        "column": 1,
+                        "answer": true,
+                        "row": 3
+                    },
+                    {
+                        "column": 2,
+                        "answer": false,
+                        "row": 3
+                    },
+                    {
+                        "column": 3,
+                        "answer": false,
+                        "row": 3
+                    },
+                    {
+                        "column": 4,
+                        "answer": true,
+                        "row": 3
+                    },
+                    {
+                        "column": 5,
+                        "answer": true,
+                        "row": 3
+                    },
+                    {
+                        "column": 0,
+                        "answer": true,
+                        "row": 4
+                    },
+                    {
+                        "column": 1,
+                        "answer": true,
+                        "row": 4
+                    },
+                    {
+                        "column": 2,
+                        "answer": false,
+                        "row": 4
+                    },
+                    {
+                        "column": 3,
+                        "answer": false,
+                        "row": 4
+                    },
+                    {
+                        "column": 4,
+                        "answer": false,
+                        "row": 4
+                    },
+                    {
+                        "column": 5,
+                        "answer": false,
+                        "row": 4
+                    },
+                    {
+                        "column": 0,
+                        "answer": true,
+                        "row": 5
+                    },
+                    {
+                        "column": 1,
+                        "answer": false,
+                        "row": 5
+                    },
+                    {
+                        "column": 2,
+                        "answer": false,
+                        "row": 5
+                    },
+                    {
+                        "column": 3,
+                        "answer": false,
+                        "row": 5
+                    },
+                    {
+                        "column": 4,
+                        "answer": false,
+                        "row": 5
+                    },
+                    {
+                        "column": 5,
+                        "answer": false,
+                        "row": 5
+                    }
+                ],
+                "browser": "Chrome 43"
+            },
+            "user_id": 3,
+            "task_id": 1972,
+            "created": "2015-07-20T11:40:47.905264",
+            "finish_time": "2015-07-20T11:40:47.905277",
+            "calibration": null,
+            "user_ip": null,
+            "timeout": null,
+            "project_id": 9,
+            "id": 1501
         },
-        "user_id": 3,
-        "task_id": 1972,
-        "created": "2015-07-20T11:40:47.905264",
-        "finish_time": "2015-07-20T11:40:47.905277",
-        "calibration": null,
-        "user_ip": null,
-        "timeout": null,
-        "project_id": 9,
-        "id": 1501
-    },
-    {
-        "info": {
-            "imgNumber": "//citscitools.cancerresearchuk.org/static/img/mvp-01/15.jpg",
-            "timeTaken": "0:0:32.18",
-            "openModalCount": 0,
-            "device": "Desktop",
-            "squares": [
-                {
-                    "column": 0,
-                    "answer": null,
-                    "row": 0
-                },
-                {
-                    "column": 1,
-                    "answer": null,
-                    "row": 0
-                },
-                {
-                    "column": 2,
-                    "answer": true,
-                    "row": 0
-                },
-                {
-                    "column": 3,
-                    "answer": true,
-                    "row": 0
-                },
-                {
-                    "column": 4,
-                    "answer": true,
-                    "row": 0
-                },
-                {
-                    "column": 5,
-                    "answer": null,
-                    "row": 0
-                },
-                {
-                    "column": 0,
-                    "answer": null,
-                    "row": 1
-                },
-                {
-                    "column": 1,
-                    "answer": false,
-                    "row": 1
-                },
-                {
-                    "column": 2,
-                    "answer": true,
-                    "row": 1
-                },
-                {
-                    "column": 3,
-                    "answer": true,
-                    "row": 1
-                },
-                {
-                    "column": 4,
-                    "answer": true,
-                    "row": 1
-                },
-                {
-                    "column": 5,
-                    "answer": true,
-                    "row": 1
-                },
-                {
-                    "column": 0,
-                    "answer": false,
-                    "row": 2
-                },
-                {
-                    "column": 1,
-                    "answer": false,
-                    "row": 2
-                },
-                {
-                    "column": 2,
-                    "answer": true,
-                    "row": 2
-                },
-                {
-                    "column": 3,
-                    "answer": true,
-                    "row": 2
-                },
-                {
-                    "column": 4,
-                    "answer": true,
-                    "row": 2
-                },
-                {
-                    "column": 5,
-                    "answer": true,
-                    "row": 2
-                },
-                {
-                    "column": 0,
-                    "answer": false,
-                    "row": 3
-                },
-                {
-                    "column": 1,
-                    "answer": false,
-                    "row": 3
-                },
-                {
-                    "column": 2,
-                    "answer": true,
-                    "row": 3
-                },
-                {
-                    "column": 3,
-                    "answer": true,
-                    "row": 3
-                },
-                {
-                    "column": 4,
-                    "answer": true,
-                    "row": 3
-                },
-                {
-                    "column": 5,
-                    "answer": true,
-                    "row": 3
-                },
-                {
-                    "column": 0,
-                    "answer": true,
-                    "row": 4
-                },
-                {
-                    "column": 1,
-                    "answer": true,
-                    "row": 4
-                },
-                {
-                    "column": 2,
-                    "answer": true,
-                    "row": 4
-                },
-                {
-                    "column": 3,
-                    "answer": true,
-                    "row": 4
-                },
-                {
-                    "column": 4,
-                    "answer": true,
-                    "row": 4
-                },
-                {
-                    "column": 5,
-                    "answer": true,
-                    "row": 4
-                },
-                {
-                    "column": 0,
-                    "answer": null,
-                    "row": 5
-                },
-                {
-                    "column": 1,
-                    "answer": true,
-                    "row": 5
-                },
-                {
-                    "column": 2,
-                    "answer": true,
-                    "row": 5
-                },
-                {
-                    "column": 3,
-                    "answer": true,
-                    "row": 5
-                },
-                {
-                    "column": 4,
-                    "answer": true,
-                    "row": 5
-                },
-                {
-                    "column": 5,
-                    "answer": true,
-                    "row": 5
-                }
-            ],
-            "browser": "Chrome 43"
-        },
-        "user_id": 3,
-        "task_id": 1973,
-        "created": "2015-07-20T11:41:20.199301",
-        "finish_time": "2015-07-20T11:41:20.199314",
-        "calibration": null,
-        "user_ip": null,
-        "timeout": null,
-        "project_id": 9,
-        "id": 1502
-    }
-]
-
-
-
-
-
-
-"use strict";
-
-
-
-/**
- * Grid Constructor function
- * =======================
- * Its a bit of a miss match of vanilla JS and jQuery...sorry,
- * wanted to do everything in JS but for speed i did jQuery
- * =======================
- *
- *
- */
-
-function Grid(task) {
-
-    this.canvas;
-    this.feedbackStep = step;
-    this.tickCross = [];
-
-    var cookie = $.cookie('mvp-03feedback');
-    if( $.cookie('mvp-03feedback') ) {
-        this.feedbackObj = {
-            answer : {
-                squares: []
-            }
-        };
-        this.activateCell();
-    } else {
-        this.task = task;
-        this.activateCell();
-    }
-
-
-
-
-
-
-
-
-}
-
-//Grid.prototype = Object.create(Modal.prototype);
-
-/**
- *
- * For creating a grid overlayed over the image
- *
- */
-Grid.prototype.createGrid = function( canvasElement ) {
-
-
-    var rows = 6,
-        columns = 6,
-        gridHeight = 460 / columns,
-        gridWidth = 460 / rows;
-
-        this.canvas = Raphael( canvasElement, 460, 460);
-
-
-
-    // creates 36 grid squares in raphael
-
-
-    var x, y, i = -1;
-    for (y = 0; y < rows; y += 1) {
-        for (x = 0; x < columns; x += 1) {
-
-            i++;
-
-            var offsetH = y,
-                offsetW = x,
-                moveDown = (y + gridHeight - offsetH) * y,
-                moveRight = (x + gridWidth - offsetW) * x,
-                gridSquare = this.canvas.rect(moveRight, moveDown, gridWidth, gridHeight).attr({
-                    "stroke": "#fff"
-                });
-
-
-
-            gridSquare.node.setAttribute("class", "grid-item");
-
-            /* Make sure grid squares start from id 0 */
-            gridSquare.id = i;
-
-            gridSquare.column = x;
-            gridSquare.row = y;
-            gridSquare.has_cancer = null;
-
-            // Save all grid squares in array within main task object
-            // We can then grab this when saving the info at the end
-
-
-            if( typeof this.task != 'undefined') {
-                this.task.answer.squares.push(gridSquare);
-            } else {
-                this.feedbackObj.answer.squares.push(gridSquare);
-            }
-
+        {
+            "info": {
+                "imgNumber": "//citscitools.cancerresearchuk.org/static/img/mvp-01/15.jpg",
+                "timeTaken": "0:0:32.18",
+                "openModalCount": 0,
+                "device": "Desktop",
+                "squares": [
+                    {
+                        "column": 0,
+                        "answer": null,
+                        "row": 0
+                    },
+                    {
+                        "column": 1,
+                        "answer": null,
+                        "row": 0
+                    },
+                    {
+                        "column": 2,
+                        "answer": true,
+                        "row": 0
+                    },
+                    {
+                        "column": 3,
+                        "answer": true,
+                        "row": 0
+                    },
+                    {
+                        "column": 4,
+                        "answer": true,
+                        "row": 0
+                    },
+                    {
+                        "column": 5,
+                        "answer": null,
+                        "row": 0
+                    },
+                    {
+                        "column": 0,
+                        "answer": null,
+                        "row": 1
+                    },
+                    {
+                        "column": 1,
+                        "answer": false,
+                        "row": 1
+                    },
+                    {
+                        "column": 2,
+                        "answer": true,
+                        "row": 1
+                    },
+                    {
+                        "column": 3,
+                        "answer": true,
+                        "row": 1
+                    },
+                    {
+                        "column": 4,
+                        "answer": true,
+                        "row": 1
+                    },
+                    {
+                        "column": 5,
+                        "answer": true,
+                        "row": 1
+                    },
+                    {
+                        "column": 0,
+                        "answer": false,
+                        "row": 2
+                    },
+                    {
+                        "column": 1,
+                        "answer": false,
+                        "row": 2
+                    },
+                    {
+                        "column": 2,
+                        "answer": true,
+                        "row": 2
+                    },
+                    {
+                        "column": 3,
+                        "answer": true,
+                        "row": 2
+                    },
+                    {
+                        "column": 4,
+                        "answer": true,
+                        "row": 2
+                    },
+                    {
+                        "column": 5,
+                        "answer": true,
+                        "row": 2
+                    },
+                    {
+                        "column": 0,
+                        "answer": false,
+                        "row": 3
+                    },
+                    {
+                        "column": 1,
+                        "answer": false,
+                        "row": 3
+                    },
+                    {
+                        "column": 2,
+                        "answer": true,
+                        "row": 3
+                    },
+                    {
+                        "column": 3,
+                        "answer": true,
+                        "row": 3
+                    },
+                    {
+                        "column": 4,
+                        "answer": true,
+                        "row": 3
+                    },
+                    {
+                        "column": 5,
+                        "answer": true,
+                        "row": 3
+                    },
+                    {
+                        "column": 0,
+                        "answer": true,
+                        "row": 4
+                    },
+                    {
+                        "column": 1,
+                        "answer": true,
+                        "row": 4
+                    },
+                    {
+                        "column": 2,
+                        "answer": true,
+                        "row": 4
+                    },
+                    {
+                        "column": 3,
+                        "answer": true,
+                        "row": 4
+                    },
+                    {
+                        "column": 4,
+                        "answer": true,
+                        "row": 4
+                    },
+                    {
+                        "column": 5,
+                        "answer": true,
+                        "row": 4
+                    },
+                    {
+                        "column": 0,
+                        "answer": null,
+                        "row": 5
+                    },
+                    {
+                        "column": 1,
+                        "answer": true,
+                        "row": 5
+                    },
+                    {
+                        "column": 2,
+                        "answer": true,
+                        "row": 5
+                    },
+                    {
+                        "column": 3,
+                        "answer": true,
+                        "row": 5
+                    },
+                    {
+                        "column": 4,
+                        "answer": true,
+                        "row": 5
+                    },
+                    {
+                        "column": 5,
+                        "answer": true,
+                        "row": 5
+                    }
+                ],
+                "browser": "Chrome 43"
+            },
+            "user_id": 3,
+            "task_id": 1973,
+            "created": "2015-07-20T11:41:20.199301",
+            "finish_time": "2015-07-20T11:41:20.199314",
+            "calibration": null,
+            "user_ip": null,
+            "timeout": null,
+            "project_id": 9,
+            "id": 1502
         }
+    ]
+
+
+    "use strict";
+
+
+    /**
+     * Grid Constructor function
+     * =======================
+     * Its a bit of a miss match of vanilla JS and jQuery...sorry,
+     * wanted to do everything in JS but for speed i did jQuery
+     * =======================
+     *
+     *
+     */
+
+    function Grid(task) {
+
+        this.canvas;
+        this.feedbackStep = step;
+        this.tickCross = [];
+
+        var cookie = $.cookie('mvp-03feedback');
+        if ($.cookie('mvp-03feedback')) {
+            this.feedbackObj = {
+                answer: {
+                    squares: []
+                }
+            };
+            this.activateCell();
+        } else {
+            this.task = task;
+            this.activateCell();
+        }
+
+
     }
 
+    //Grid.prototype = Object.create(Modal.prototype);
+
+    /**
+     *
+     * For creating a grid overlayed over the image
+     *
+     */
+    Grid.prototype.createGrid = function (canvasElement) {
 
 
+        var rows = 6,
+            columns = 6,
+            gridHeight = 460 / columns,
+            gridWidth = 460 / rows;
 
-};
-
-
-/**
- *
- * Listen for lick on .zoomLens and find the closed square
- *
- */
-Grid.prototype.activateCell = function() {
-
-    var clicks = 0,
-        timer = null,
-        _this = this;
-
-    $("body").on("click touchstart", ".zoomLens", function(evt) {
+        this.canvas = Raphael(canvasElement, 460, 460);
 
 
-        evt.preventDefault();
+        // creates 36 grid squares in raphael
 
-        clicks++; //count clicks
 
-        // Find the cloest grid square to click on the zoomLens
+        var x, y, i = -1;
+        for (y = 0; y < rows; y += 1) {
+            for (x = 0; x < columns; x += 1) {
 
-        var activeSquare = _this.findClosestSquare();
+                i++;
 
-        var activeSquareNode = activeSquare.node;
+                var offsetH = y,
+                    offsetW = x,
+                    moveDown = (y + gridHeight - offsetH) * y,
+                    moveRight = (x + gridWidth - offsetW) * x,
+                    gridSquare = this.canvas.rect(moveRight, moveDown, gridWidth, gridHeight).attr({
+                        "stroke": "#fff"
+                    });
 
-        // Not able to use jQuery .click or .dblclick for some reason i can't remember
-        // If we can then should use jQuery...might be quicker and easier
 
-        // SINGLE CLICK
-        if (clicks === 1) {
+                gridSquare.node.setAttribute("class", "grid-item");
 
-                (function(activeSquareNode){
-                    timer = setTimeout(function(){
+                /* Make sure grid squares start from id 0 */
+                gridSquare.id = i;
+
+                gridSquare.column = x;
+                gridSquare.row = y;
+                gridSquare.has_cancer = null;
+
+                // Save all grid squares in array within main task object
+                // We can then grab this when saving the info at the end
+
+
+                if (typeof this.task != 'undefined') {
+                    this.task.answer.squares.push(gridSquare);
+                } else {
+                    this.feedbackObj.answer.squares.push(gridSquare);
+                }
+
+            }
+        }
+
+
+    };
+
+
+    /**
+     *
+     * Listen for lick on .zoomLens and find the closed square
+     *
+     */
+    Grid.prototype.activateCell = function () {
+
+        var clicks = 0,
+            timer = null,
+            _this = this;
+
+        $("body").on("click touchstart", ".zoomLens", function (evt) {
+
+
+            evt.preventDefault();
+
+            clicks++; //count clicks
+
+            // Find the cloest grid square to click on the zoomLens
+
+            var activeSquare = _this.findClosestSquare();
+
+            var activeSquareNode = activeSquare.node;
+
+            // Not able to use jQuery .click or .dblclick for some reason i can't remember
+            // If we can then should use jQuery...might be quicker and easier
+
+            // SINGLE CLICK
+            if (clicks === 1) {
+
+                (function (activeSquareNode) {
+                    timer = setTimeout(function () {
                         // Adds and removes classes to grid squares making them red or green
                         if (activeSquareNode.className.animVal != "grid-item grid-item-success") {
 
@@ -1830,9 +1817,8 @@ Grid.prototype.activateCell = function() {
                             activeSquare.has_cancer = true;
 
 
-
-                            if ( $("#feedback-content").is(':visible') ) {
-                                _this.checkAnswer( true, activeSquare );
+                            if ($("#feedback-content").is(':visible')) {
+                                _this.checkAnswer(true, activeSquare);
                             }
 
 
@@ -1842,218 +1828,198 @@ Grid.prototype.activateCell = function() {
                             activeSquare.has_cancer = null;
 
 
-                            if ( $("#feedback-content").is(':visible') ) {
-                                _this.checkAnswer( null, activeSquare );
+                            if ($("#feedback-content").is(':visible')) {
+                                _this.checkAnswer(null, activeSquare);
                             }
-
-
 
 
                         } //after action performed, reset counter
                         clicks = 0;
-                     }, 250);
+                    }, 250);
 
                 }(activeSquareNode));
 
-        }
-        // DOUBLE CLICK
-        else {
-            clearTimeout(timer); //prevent single-click action
-
-            activeSquareNode.setAttribute("class", "grid-item grid-item-error activated");
-            activeSquare.has_cancer = false;
-
-            if ( $("#feedback-content").is(':visible') ) {
-                _this.checkAnswer( false, activeSquare );
             }
+            // DOUBLE CLICK
+            else {
+                clearTimeout(timer); //prevent single-click action
+
+                activeSquareNode.setAttribute("class", "grid-item grid-item-error activated");
+                activeSquare.has_cancer = false;
+
+                if ($("#feedback-content").is(':visible')) {
+                    _this.checkAnswer(false, activeSquare);
+                }
 
 
-            clicks = 0;
-        }
-    });
-};
-
-
-
-
-/**
- *
- * Loop through the grid items
- * and find the closest matching grid
- * that have the clicked coordinates
- *
- */
-Grid.prototype.findClosestSquare = function() {
-
-    var _this = this,
-        activeSquare,
-        target = $(".zoomLens"),
-        target_pos = {
-            x: parseInt(target.css("left")),
-            y: parseInt(target.css("top"))
-        };
-
-
-
-
-    // Center the zoom cursor to middle of square
-    target_pos.x = target_pos.x + 34.85;
-    target_pos.y = target_pos.y + 34.85;
-
-
-
-    // Find the closet grid item
-
-
-    if( typeof this.task != 'undefined') {
-        $.each(_this.task.answer.squares, function(key, value) {
-            if (value.isPointInside(target_pos.x, target_pos.y)) {
-                activeSquare = value;
+                clicks = 0;
             }
         });
-    } else {
-        $.each(_this.feedbackObj.answer.squares, function(key, value) {
-            if (value.isPointInside(target_pos.x, target_pos.y)) {
-                activeSquare = value;
+    };
+
+
+    /**
+     *
+     * Loop through the grid items
+     * and find the closest matching grid
+     * that have the clicked coordinates
+     *
+     */
+    Grid.prototype.findClosestSquare = function () {
+
+        var _this = this,
+            activeSquare,
+            target = $(".zoomLens"),
+            target_pos = {
+                x: parseInt(target.css("left")),
+                y: parseInt(target.css("top"))
+            };
+
+
+        // Center the zoom cursor to middle of square
+        target_pos.x = target_pos.x + 34.85;
+        target_pos.y = target_pos.y + 34.85;
+
+
+        // Find the closet grid item
+
+
+        if (typeof this.task != 'undefined') {
+            $.each(_this.task.answer.squares, function (key, value) {
+                if (value.isPointInside(target_pos.x, target_pos.y)) {
+                    activeSquare = value;
+                }
+            });
+        } else {
+            $.each(_this.feedbackObj.answer.squares, function (key, value) {
+                if (value.isPointInside(target_pos.x, target_pos.y)) {
+                    activeSquare = value;
+                }
+            });
+        }
+
+        ///console.log(activeSquare);
+        return activeSquare;
+    };
+
+
+    /*
+     * Grid.checkAnswer
+     * =======================
+     *
+     *
+     */
+
+    Grid.prototype.checkAnswer = function (action, activeSquare) {
+
+        var state = action,
+            pathologistAnswer,
+            activeSquare = activeSquare;
+
+        $.each(data[step].info, function (key, value) {
+            if (typeof(value[activeSquare.id]) == 'object') {
+                // Find the pathologist answer for that square
+                pathologistAnswer = value[activeSquare.id];
             }
         });
-    }
 
-    ///console.log(activeSquare);
-    return activeSquare;
-};
+        var activeSquarePosCX = activeSquare.attr("x") + 30,
+            activeSquarePosCY = activeSquare.attr("y") + 30;
 
+        var parentId = activeSquare.id;
 
-
-
-/*
- * Grid.checkAnswer
- * =======================
- *
- *
- */
-
-Grid.prototype.checkAnswer = function( action, activeSquare ) {
-
-    var state = action,
-        pathologistAnswer,
-        activeSquare = activeSquare;
-
-    $.each(data[step].info, function(key, value) {
-        if( typeof(value[activeSquare.id]) == 'object' ) {
-            // Find the pathologist answer for that square
-            pathologistAnswer = value[activeSquare.id];
-        }
-    });
-
-    var activeSquarePosCX = activeSquare.attr("x") + 30 ,
-        activeSquarePosCY = activeSquare.attr("y") + 30;
-
-    var parentId = activeSquare.id;
-
-    $.each( this.tickCross, function(key, value) {
-            if( parentId === value["data-parent_id"]){
+        $.each(this.tickCross, function (key, value) {
+            if (parentId === value["data-parent_id"]) {
                 value.remove();
             }
-     });
+        });
 
-    var x = Math.floor(activeSquare.attr("x"));
-    var y = Math.floor(activeSquare.attr("y"));
-    var tick =    "M " + (x + 15) + "," + (y + 35) +  " L " + (x + 30) + "," + (y + 50) + " L " + (x + 60) + "," + (y + 20);
-    var cross =   "M " + (x + 20) + "," + (y + 20) +  " L " + (x + 55) + "," + (y + 55) + "M " + (x + 20) + "," + (y + 55) + " L " + (x + 55) + "," + (y + 20) ;
-
-
+        var x = Math.floor(activeSquare.attr("x"));
+        var y = Math.floor(activeSquare.attr("y"));
+        var tick = "M " + (x + 15) + "," + (y + 35) + " L " + (x + 30) + "," + (y + 50) + " L " + (x + 60) + "," + (y + 20);
+        var cross = "M " + (x + 20) + "," + (y + 20) + " L " + (x + 55) + "," + (y + 55) + "M " + (x + 20) + "," + (y + 55) + " L " + (x + 55) + "," + (y + 20);
 
 
+        if (state === pathologistAnswer.answer) {
 
+            $("#pathologistFeedback").removeClass("alert-info").addClass("alert-success");
+            $("#pathologistFeedback p").text("Well done! This is what our pathologist said");
+            var tick = this.canvas.path(tick).attr("stroke-width", "3px");
+            tick["data-parent_id"] = parentId;
+            this.tickCross.push(tick);
 
+        } else {
+            //console.log("Dont agree");
+            if (pathologistAnswer.answer === true) {
+                $("#pathologistFeedback").removeClass("alert-success").addClass("alert-info");
+                $("#pathologistFeedback p").text("The pathologies said it contained cancer");
+                //activeSquare.node.setAttribute("class", "grid-item grid-item-success");
+            }
+            if (pathologistAnswer.answer === false) {
+                $("#pathologistFeedback").removeClass("alert-success").addClass("alert-info");
+                $("#pathologistFeedback p").text("The pathologies said it did not contained cancer");
+                //activeSquare.node.setAttribute("class", "grid-item grid-item-error");
+            }
+            if (pathologistAnswer.answer === null) {
+                $("#pathologistFeedback").removeClass("alert-success").addClass("alert-info");
+                $("#pathologistFeedback p").text("The pathologies said this square was clear");
+                //activeSquare.node.setAttribute("class", "grid-item");
+            }
 
-    if (state === pathologistAnswer.answer) {
+            var cross = this.canvas.path(cross).attr("stroke-width", "3px");
+            cross["data-parent_id"] = parentId;
+            this.tickCross.push(cross);
 
-         $("#pathologistFeedback").removeClass("alert-info").addClass("alert-success");
-         $("#pathologistFeedback p").text("Well done! This is what our pathologist said");
-         var tick = this.canvas.path(tick).attr("stroke-width","3px");
-         tick["data-parent_id"] = parentId;
-         this.tickCross.push(tick);
-
-    } else {
-        //console.log("Dont agree");
-        if( pathologistAnswer.answer === true ) {
-            $("#pathologistFeedback").removeClass("alert-success").addClass("alert-info");
-            $("#pathologistFeedback p").text("The pathologies said it contained cancer");
-            //activeSquare.node.setAttribute("class", "grid-item grid-item-success");
         }
-        if( pathologistAnswer.answer === false ) {
-            $("#pathologistFeedback").removeClass("alert-success").addClass("alert-info");
-            $("#pathologistFeedback p").text("The pathologies said it did not contained cancer");
-            //activeSquare.node.setAttribute("class", "grid-item grid-item-error");
-        }
-        if( pathologistAnswer.answer === null ) {
-            $("#pathologistFeedback").removeClass("alert-success").addClass("alert-info");
-            $("#pathologistFeedback p").text("The pathologies said this square was clear");
-            //activeSquare.node.setAttribute("class", "grid-item");
-        }
-
-        var cross = this.canvas.path(cross).attr("stroke-width","3px");
-        cross["data-parent_id"] = parentId;
-        this.tickCross.push(cross);
-
     }
-}
 
 
+    Grid.prototype.showPathologistAnswers = function () {
 
+        for (var i = 0; i < data[step].info.squares.length; i++) {
 
+            var gridSquare = this.feedbackObj.answer.squares[i],
+                gridSquareNode = this.feedbackObj.answer.squares[i].node,
+                pathologistAnswer = data[step].info.squares[i].answer;
+            console.log(data[step].info.squares[i].answer);
 
-Grid.prototype.showPathologistAnswers = function() {
-
-    for (var i = 0; i < data[step].info.squares.length; i++) {
-
-        var gridSquare = this.feedbackObj.answer.squares[i],
-            gridSquareNode = this.feedbackObj.answer.squares[i].node,
-            pathologistAnswer = data[step].info.squares[i].answer;
-            console.log( data[step].info.squares[i].answer );
-
-            if(  data[step].info.squares[i].answer == true ) {
+            if (data[step].info.squares[i].answer == true) {
                 gridSquareNode.setAttribute("class", "grid-item grid-item-success");
             }
-            if(  data[step].info.squares[i].answer == false ) {
+            if (data[step].info.squares[i].answer == false) {
                 gridSquareNode.setAttribute("class", "grid-item grid-item-error");
             }
-            if(  data[step].info.squares[i].answer == null ) {
+            if (data[step].info.squares[i].answer == null) {
                 gridSquareNode.setAttribute("class", "grid-item");
             }
-    }
-
-}
-
-
-
-
-Grid.prototype.checkMyWork = function() {
-
-    alert("CHECKING YOUR WORK");
-
-}
-
-
-
-Grid.prototype.hidePathologistAnswers = function() {
-
-    var element;
-
-    function hasClass(element, cls) {
-        return (' ' + element.getAttribute("class") + ' ').indexOf(' ' + cls + ' ') > -1;
+        }
 
     }
 
-    for (var i = 0; i < data[step].info.squares.length; i++) {
 
-        var gridSquare = this.feedbackObj.answer.squares[i],
-            gridSquareNode = this.feedbackObj.answer.squares[i].node,
-            pathologistAnswer = data[step].info.squares[i].answer;
+    Grid.prototype.checkMyWork = function () {
 
-            if( hasClass(gridSquareNode, "activated") ) {
+        alert("CHECKING YOUR WORK");
+
+    }
+
+
+    Grid.prototype.hidePathologistAnswers = function () {
+
+        var element;
+
+        function hasClass(element, cls) {
+            return (' ' + element.getAttribute("class") + ' ').indexOf(' ' + cls + ' ') > -1;
+
+        }
+
+        for (var i = 0; i < data[step].info.squares.length; i++) {
+
+            var gridSquare = this.feedbackObj.answer.squares[i],
+                gridSquareNode = this.feedbackObj.answer.squares[i].node,
+                pathologistAnswer = data[step].info.squares[i].answer;
+
+            if (hasClass(gridSquareNode, "activated")) {
                 console.log(this);
                 alert("has class");
             } else {
@@ -2061,654 +2027,624 @@ Grid.prototype.hidePathologistAnswers = function() {
             }
 
 
+        }
 
     }
 
-}
 
-
-Grid.prototype.selectAllSquares = function() {
-    for (var i = 0; i < this.task.answer.squares.length; i++) {
-        var gridSquare = this.task.answer.squares[i],
-            gridSquareNode = this.task.answer.squares[i].node;
-        gridSquare.has_cancer = true;
-        gridSquareNode.setAttribute("class", "grid-item grid-item-success");
-    }
-}
-
-Grid.prototype.deselectAllSquares = function() {
-    for (var i = 0; i < this.task.answer.squares.length; i++) {
-        var gridSquare = this.task.answer.squares[i],
-            gridSquareNode = this.task.answer.squares[i].node;
-        gridSquare.has_cancer = null;
-        gridSquareNode.setAttribute("class", "grid-item");
-    }
-}
-
-
-
-
-/*
- *
- * Modal
- * =======================
- *
- *
- *
- */
-
-
-function Modal() {
-    this.step = -1;
-}
-
-Modal.prototype.open = function() {
-
-    //Grid.call(this);
-
-    $('.modal').modal({
-        backdrop: 'static',
-        keyboard: false
-    });
-    this.showStep("next");
-
-
-}
-
-
-//Modal.prototype = Object.create(Grid.prototype);
-
-
-
-Modal.prototype.showStep = function(action) {
-
-    var z = new Zoom();
-
-    $("#" + this.step).hide();
-
-
-    if (action == 'next') {
-        this.step += 1;
-    }
-    if (action == 'prev') {
-        this.step -= 1;
+    Grid.prototype.selectAllSquares = function () {
+        for (var i = 0; i < this.task.answer.squares.length; i++) {
+            var gridSquare = this.task.answer.squares[i],
+                gridSquareNode = this.task.answer.squares[i].node;
+            gridSquare.has_cancer = true;
+            gridSquareNode.setAttribute("class", "grid-item grid-item-success");
+        }
     }
 
-    if (this.step == 14) {
-        $('.zoomContainer').remove();
-        $('.zoomWindowContainer').remove();
-        $(".tutorialZoom14").elevateZoom();
-    }
-
-    var $currentStep = $("#" + this.step),
-        $carousel = $("#" + this.step + " .carousel"),
-        $modalInfo = $("#" + this.step + " .modal-info"),
-        $items = $("#" + this.step + " .item");
-
-    if ($carousel.length > 0) {
-
-        $('.zoomContainer').remove();
-        $('.zoomWindowContainer').remove();
-        var tutorial = ".tutorialZoom" + this.step;
-
-        $(tutorial).elevateZoom();
-
-        if (!$carousel.data("carousel")) {
-
-            $carousel.carousel({
-                interval: false
-            });
-            var $indicatorList = $("#carouselIndicatorsList" + this.step);
-
-            $($items).each(function(idx) {
-                // Adding buttons
-                var idx = idx + 1,
-                    $item = $(this),
-                    $li = '<div class="carousel-selector-' + idx + '" type="button">' + idx + '</div>';
-
-                $indicatorList.append($li);
-
-                //Adding item-info to modal-info
-                $(this).children(".item-inner");
-                $modalInfo.append($item.children(".item-inner"));
-            });
-
-            $("#" + this.step).find(".modal-info .item-inner").first().addClass("active");
-            $("#" + this.step).find(".carousel-indicators-custom div").first().addClass("active");
-
-
-            // When you click on each selector
-            // Load new content
-            $('[class^=carousel-selector-]').on('click', this.nextSlideContent($("#" + this.step)));
+    Grid.prototype.deselectAllSquares = function () {
+        for (var i = 0; i < this.task.answer.squares.length; i++) {
+            var gridSquare = this.task.answer.squares[i],
+                gridSquareNode = this.task.answer.squares[i].node;
+            gridSquare.has_cancer = null;
+            gridSquareNode.setAttribute("class", "grid-item");
         }
     }
 
 
-    if (this.step == 0) {
-        $("#prevBtn").hide();
-    } else {
-        $("#prevBtn").show();
+    /*
+     *
+     * Modal
+     * =======================
+     *
+     *
+     *
+     */
+
+
+    function Modal() {
+        this.step = -1;
     }
 
-    var $lastStep = $('.modal-body').length - 1
-    if (this.step == $lastStep) {
-        $("#nextBtn").hide();
-        $("#goBackBtn").show();
-    } else {
-        $("#nextBtn").show();
-        $("#goBackBtn").hide();
-    }
-
-    $("#" + this.step).show();
-
-}
-
-Modal.prototype.nextSlideContent = function(carousel) {
-
-    return function() {
-
-        // Add and remove active class
-        $(this).parent().children().removeClass("active");
-        $(this).addClass("active");
-
-        var id_selector = $(this).attr("class");
-        var id = id_selector.substr(id_selector.length - 8);
-        id = parseInt(id);
-        var $itemInners = carousel.find(".modal-info .item-inner");
-        $itemInners.removeClass('active');
-        $($itemInners[id - 1]).addClass('active')
-        var $modalId = $(this).parent().parent().parent().parent().attr("id");
-        $('#myCarousel' + $modalId).carousel(id - 1);
-    }
-
-}
-
-Modal.prototype.carousel = function() {
-
-
-}
-
-Modal.prototype.close = function() {
-
-
-}
-
-
-
-
-/*
- *
- * Elevate Zoom
- * =======================
- *
- *
- */
-
-
-function Zoom() {
-    //Grid.call(this);
-
-}
-
-//Zoom.prototype = Object.create(Grid.prototype);
-
-Zoom.prototype.addZoom = function(element) {
-
-
-    element.elevateZoom({
-        zoomWindowPosition: "grid-info",
-
-        lensFadeIn: 500,
-        lensFadeOut: 500
-    });
-}
-
-Zoom.prototype.removeZoom = function(element) {
-
-    $.removeData(element, 'elevateZoom');
-    $('.zoomContainer').remove();
-    $('.zoomWindowContainer').remove();
-
-}
-
-Zoom.prototype.alert = function() {
-    alert("SDFSDFASDF");
-}
-
-
-
-
-/*
- *
- * Helpful functions
- * =======================
- *
- */
-
-
-
-/*
- *
- * loadUserProgress()
- * =======================
- * Loads user progress into Grid info
- *
- *
- */
-
-function loadUserProgress() {
-    pybossa.userProgress('mvp-03').done(function(data) {
-        var pct = Math.round((data.done * 100) / data.total);
-        $("#progress").css("width", pct.toString() + "%");
-        $("#progress").attr("title", pct.toString() + "% completed!");
-        $("#progress").tooltip({
-            'placement': 'bottom'
+    Modal.prototype.open = function () {
+        $('.modal').modal({
+            backdrop: 'static',
+            keyboard: false
         });
-        $("#total").text(data.total);
-        $("#done").text(data.done);
-    });
-}
+        this.showStep(0);
+    };
 
 
+    Modal.prototype.getCurrentStep = function() {
+        return $("#" + this.step);
+    };
 
 
-/*
- *
- * whatDevice()
- * =======================
- * uses device.js and works out what device we are using
- *
- *
- */
+    Modal.prototype.showStep = function (action) {
 
-function whatDevice() {
-    var desktop = device.desktop(),
-        mobile = device.mobile(),
-        tablet = device.tablet(),
-        portrait = device.portrait(),
-        landscape = device.landscape(),
-        iphone = device.iphone(),
-        android = device.android(),
-        androidTablet = device.androidTablet(),
-        blackberryTablet = device.blackberryTablet();
+        var z = new Zoom();
+
+        var $currentStep = this.getCurrentStep();
+        if ($currentStep.is(":visible"))
+            $currentStep.hide();
 
 
-    if (desktop) return "Desktop";
-    if (mobile && portrait) return "Mobile portrait";
-    if (mobile && portrait) return "Mobile landscape";
-    if (tablet && portrait) return "Tablet portrait";
-    if (tablet && landscape) return "Tablet landscape";
-}
+        if (typeof action == "number") {
+            this.step = action;
+        }
+        else{
 
-
-
-
-/*
- *
- * secondsToString()
- * =======================
- * Finds out how long the user has spent on the particular task.
- * We then return this value back into the task.answer object which we get back in pybossa
- *
- *
- */
-
-function secondsToString(seconds) {
-    var numhours = Math.floor(((seconds % 31536000) % 86400) / 3600);
-    var numminutes = Math.floor((((seconds % 31536000) % 86400) % 3600) / 60);
-    var numseconds = (((seconds % 31536000) % 86400) % 3600) % 60;
-    return numhours + ":" + numminutes + ":" + numseconds.toFixed(2);
-}
-
-
-
-
-/*
- *
- * BrowserDetect()
- * =======================
- * We use modenizr to find out with browser we are on and what version.
- * We then return this value back into the task.answer object which we get back in pybossa
- *
- * http://stackoverflow.com/questions/13478303/correct-way-to-use-modernizr-to-detect-ie
- *
- *
- */
-
-var BrowserDetect = {
-    init: function() {
-        this.browser = this.searchString(this.dataBrowser) || "Other";
-        this.version = this.searchVersion(navigator.userAgent) || this.searchVersion(navigator.appVersion) || "Unknown";
-    },
-    searchString: function(data) {
-        for (var i = 0; i < data.length; i++) {
-            var dataString = data[i].string;
-            this.versionSearchString = data[i].subString;
-
-            if (dataString.indexOf(data[i].subString) !== -1) {
-                return data[i].identity;
+            if (action == 'next') {
+                this.step += 1;
+            }
+            if (action == 'prev') {
+                this.step -= 1;
             }
         }
-    },
-    searchVersion: function(dataString) {
-        var index = dataString.indexOf(this.versionSearchString);
-        if (index === -1) {
-            return;
+
+        if (this.step == 14) {
+            $('.zoomContainer').remove();
+            $('.zoomWindowContainer').remove();
+            $(".tutorialZoom14").elevateZoom();
         }
 
-        var rv = dataString.indexOf("rv:");
-        if (this.versionSearchString === "Trident" && rv !== -1) {
-            return parseFloat(dataString.substring(rv + 3));
+        var $currentStep = this.getCurrentStep(),
+            $carousel = $("#" + this.step + " .carousel"),
+            $modalInfo = $("#" + this.step + " .modal-info"),
+            $items = $("#" + this.step + " .item");
+
+        if ($carousel.length > 0) {
+
+            $('.zoomContainer').remove();
+            $('.zoomWindowContainer').remove();
+            var tutorial = ".tutorialZoom" + this.step;
+
+            $(tutorial).elevateZoom();
+
+            if (!$carousel.data("carousel")) {
+
+                $carousel.carousel({
+                    interval: false
+                });
+                var $indicatorList = $("#carouselIndicatorsList" + this.step);
+
+                $($items).each(function (idx) {
+                    // Adding buttons
+                    var idx = idx + 1,
+                        $item = $(this),
+                        $li = '<div class="carousel-selector-' + idx + '" type="button">' + idx + '</div>';
+
+                    $indicatorList.append($li);
+
+                    //Adding item-info to modal-info
+                    $(this).children(".item-inner");
+                    $modalInfo.append($item.children(".item-inner"));
+                });
+
+                $currentStep.find(".modal-info .item-inner").first().addClass("active");
+                $currentStep.find(".carousel-indicators-custom div").first().addClass("active");
+
+
+                // When you click on each selector
+                // Load new content
+                $('[class^=carousel-selector-]').on('click', this.nextSlideContent($currentStep));
+            }
+        }
+
+
+        if (this.step == 0) {
+            $("#prevBtn").hide();
         } else {
-            return parseFloat(dataString.substring(index + this.versionSearchString.length + 1));
-        }
-    },
-
-    dataBrowser: [{
-        string: navigator.userAgent,
-        subString: "Chrome",
-        identity: "Chrome"
-    }, {
-        string: navigator.userAgent,
-        subString: "MSIE",
-        identity: "Explorer"
-    }, {
-        string: navigator.userAgent,
-        subString: "Trident",
-        identity: "Explorer"
-    }, {
-        string: navigator.userAgent,
-        subString: "Firefox",
-        identity: "Firefox"
-    }, {
-        string: navigator.userAgent,
-        subString: "Safari",
-        identity: "Safari"
-    }, {
-        string: navigator.userAgent,
-        subString: "Opera",
-        identity: "Opera"
-    }]
-
-};
-
-BrowserDetect.init();
-
-if (BrowserDetect.browser == 'Explorer') {
-    $(".wrappy").addClass("active");
-}
-
-
-
-
-
-
-
-/*
- * .taskLoaded()
- * =======================
- * taskLoaded is the first pybossa method that is called
- * =======================
- *
- *
- */
-
-pybossa.taskLoaded(function(task, deferred) {
-
-
-    if (!$.isEmptyObject(task)) {
-        // load image from flickr
-        var img = $('<img />');
-        img.load(function() {
-            // continue as soon as the image is loaded
-            deferred.resolve(task);
-        });
-
-        img.attr('src', task.info.url_b).css('height', 460);
-        img.attr('data-zoom-image', task.info.url_b);
-        img.addClass('img-polaroid');
-        task.info.image = img;
-
-
-        task.answer = {
-            squares: [],
-            timeTaken: "",
-            device: "",
-            browser: "",
-            img: "",
-            openModalCount: 0
+            $("#prevBtn").show();
         }
 
-    } else {
-        deferred.resolve(task);
+        var $lastStep = $('.modal-body').length - 1;
+        if (this.step == $lastStep) {
+            $("#nextBtn").hide();
+            $("#goBackBtn").show();
+        } else {
+            $("#nextBtn").show();
+            $("#goBackBtn").hide();
+        }
+
+        $currentStep.show();
+
+    };
+
+    Modal.prototype.nextSlideContent = function (carousel) {
+
+        return function () {
+
+            // Add and remove active class
+            $(this).parent().children().removeClass("active");
+            $(this).addClass("active");
+
+            var id_selector = $(this).attr("class");
+            var id = id_selector.substr(id_selector.length - 8);
+            id = parseInt(id);
+            var $itemInners = carousel.find(".modal-info .item-inner");
+            $itemInners.removeClass('active');
+            $($itemInners[id - 1]).addClass('active')
+            var $modalId = $(this).parent().parent().parent().parent().attr("id");
+            $('#myCarousel' + $modalId).carousel(id - 1);
+        }
+
     }
-});
+
+    Modal.prototype.carousel = function () {
 
 
+    }
+
+    Modal.prototype.close = function () {
 
 
-/*
- * .presentTask()
- * =======================
- * This grabs the task via an API call using pybossa.js. We retreive all of the task infomation
- * in an object called task that we pass into the presentTask method. We first check if there is a task
- * If there is then we initalize the Grid constructor and other methods.
- * =======================
- *
- */
+    }
 
 
-pybossa.presentTask(function(task, deferred) {
+    /*
+     *
+     * Elevate Zoom
+     * =======================
+     *
+     *
+     */
 
 
-    if (!$.isEmptyObject(task)) {
+    function Zoom() {
+        //Grid.call(this);
+
+    }
+
+    //Zoom.prototype = Object.create(Grid.prototype);
+
+    Zoom.prototype.addZoom = function (element) {
 
 
-        loadUserProgress();
+        element.elevateZoom({
+            zoomWindowPosition: "grid-info",
 
-        /* THESE AND ERROR PUMPING OUT WITH THIS !?!
-
-        $('.example-list').slick({
-            dots: true,
-            infinite: false,
-            speed: 300,
-            slidesToScroll: 5,
-            slidesToShow: 5
+            lensFadeIn: 500,
+            lensFadeOut: 500
         });
+    }
 
-        */
+    Zoom.prototype.removeZoom = function (element) {
 
+        $.removeData(element, 'elevateZoom');
+        $('.zoomContainer').remove();
+        $('.zoomWindowContainer').remove();
 
+    }
 
-
-        var openModalCount = 0;
-
-        /*
-         * Take a time stamp of the time the page loads
-         */
-        var oldTime = new Date();
-
-        $('#photo-link').html('').append(task.info.image);
-        $("#question").html(task.info.question);
-        $('#task-id').html(task.id);
-
-        var imgUrl = task.info.url_b;
-        var result = imgUrl.replace("//citscitools.cancerresearchuk.org/static/img/mvp-01/", "");
-        $("#imgId").html("Image ID: " + "<strong>" + result + "</strong>");
+    Zoom.prototype.alert = function () {
+        alert("SDFSDFASDF");
+    }
 
 
-
-
-        /*
-         *
-         * Init Trailblazer
-         *
-         *
-         *
-         */
-
-
-        var grid = new Grid(task);
-        grid.createGrid("mechanicCanvas");
-
-        var zoom = new Zoom();
-        zoom.addZoom($(".img-polaroid"));
-
-        var modal = new Modal();
+    /*
+     *
+     * Helpful functions
+     * =======================
+     *
+     */
 
 
 
-        /*
-         *
-         * Event Listeners
-         *
-         *
-         */
+    /*
+     *
+     * loadUserProgress()
+     * =======================
+     * Loads user progress into Grid info
+     *
+     *
+     */
 
-        var selectBtn = document.getElementById("selectAllBtn");
-        selectBtn.onclick = function() {
-            grid.selectAllSquares();
+    function loadUserProgress() {
+        pybossa.userProgress('mvp-03').done(function (data) {
+            var pct = Math.round((data.done * 100) / data.total);
+            $("#progress").css("width", pct.toString() + "%");
+            $("#progress").attr("title", pct.toString() + "% completed!");
+            $("#progress").tooltip({
+                'placement': 'bottom'
+            });
+            $("#total").text(data.total);
+            $("#done").text(data.done);
+        });
+    }
+
+
+    /*
+     *
+     * whatDevice()
+     * =======================
+     * uses device.js and works out what device we are using
+     *
+     *
+     */
+
+    function whatDevice() {
+        var desktop = device.desktop(),
+            mobile = device.mobile(),
+            tablet = device.tablet(),
+            portrait = device.portrait(),
+            landscape = device.landscape(),
+            iphone = device.iphone(),
+            android = device.android(),
+            androidTablet = device.androidTablet(),
+            blackberryTablet = device.blackberryTablet();
+
+
+        if (desktop) return "Desktop";
+        if (mobile && portrait) return "Mobile portrait";
+        if (mobile && portrait) return "Mobile landscape";
+        if (tablet && portrait) return "Tablet portrait";
+        if (tablet && landscape) return "Tablet landscape";
+    }
+
+
+    /*
+     *
+     * secondsToString()
+     * =======================
+     * Finds out how long the user has spent on the particular task.
+     * We then return this value back into the task.answer object which we get back in pybossa
+     *
+     *
+     */
+
+    function secondsToString(seconds) {
+        var numhours = Math.floor(((seconds % 31536000) % 86400) / 3600);
+        var numminutes = Math.floor((((seconds % 31536000) % 86400) % 3600) / 60);
+        var numseconds = (((seconds % 31536000) % 86400) % 3600) % 60;
+        return numhours + ":" + numminutes + ":" + numseconds.toFixed(2);
+    }
+
+
+    /*
+     *
+     * BrowserDetect()
+     * =======================
+     * We use modenizr to find out with browser we are on and what version.
+     * We then return this value back into the task.answer object which we get back in pybossa
+     *
+     * http://stackoverflow.com/questions/13478303/correct-way-to-use-modernizr-to-detect-ie
+     *
+     *
+     */
+
+    var BrowserDetect = {
+        init: function () {
+            this.browser = this.searchString(this.dataBrowser) || "Other";
+            this.version = this.searchVersion(navigator.userAgent) || this.searchVersion(navigator.appVersion) || "Unknown";
+        },
+        searchString: function (data) {
+            for (var i = 0; i < data.length; i++) {
+                var dataString = data[i].string;
+                this.versionSearchString = data[i].subString;
+
+                if (dataString.indexOf(data[i].subString) !== -1) {
+                    return data[i].identity;
+                }
+            }
+        },
+        searchVersion: function (dataString) {
+            var index = dataString.indexOf(this.versionSearchString);
+            if (index === -1) {
+                return;
+            }
+
+            var rv = dataString.indexOf("rv:");
+            if (this.versionSearchString === "Trident" && rv !== -1) {
+                return parseFloat(dataString.substring(rv + 3));
+            } else {
+                return parseFloat(dataString.substring(index + this.versionSearchString.length + 1));
+            }
+        },
+
+        dataBrowser: [{
+            string: navigator.userAgent,
+            subString: "Chrome",
+            identity: "Chrome"
+        }, {
+            string: navigator.userAgent,
+            subString: "MSIE",
+            identity: "Explorer"
+        }, {
+            string: navigator.userAgent,
+            subString: "Trident",
+            identity: "Explorer"
+        }, {
+            string: navigator.userAgent,
+            subString: "Firefox",
+            identity: "Firefox"
+        }, {
+            string: navigator.userAgent,
+            subString: "Safari",
+            identity: "Safari"
+        }, {
+            string: navigator.userAgent,
+            subString: "Opera",
+            identity: "Opera"
+        }]
+
+    };
+
+    BrowserDetect.init();
+
+    if (BrowserDetect.browser == 'Explorer') {
+        $(".wrappy").addClass("active");
+    }
+
+
+    /*
+     * .taskLoaded()
+     * =======================
+     * taskLoaded is the first pybossa method that is called
+     * =======================
+     *
+     *
+     */
+
+    pybossa.taskLoaded(function (task, deferred) {
+
+
+        if (!$.isEmptyObject(task)) {
+            // load image from flickr
+            var img = $('<img />');
+            img.load(function () {
+                // continue as soon as the image is loaded
+                deferred.resolve(task);
+            });
+
+            img.attr('src', task.info.url_b).css('height', 460);
+            img.attr('data-zoom-image', task.info.url_b);
+            img.addClass('img-polaroid');
+            task.info.image = img;
+
+
+            task.answer = {
+                squares: [],
+                timeTaken: "",
+                device: "",
+                browser: "",
+                img: "",
+                openModalCount: 0
+            }
+
+        } else {
+            deferred.resolve(task);
         }
-        var deselectBtn = document.getElementById("deselectBtn");
-        deselectBtn.onclick = function() {
-            grid.deselectAllSquares();
-        }
+    });
 
 
+    /*
+     * .presentTask()
+     * =======================
+     * This grabs the task via an API call using pybossa.js. We retreive all of the task infomation
+     * in an object called task that we pass into the presentTask method. We first check if there is a task
+     * If there is then we initalize the Grid constructor and other methods.
+     * =======================
+     *
+     */
 
 
-        var modalBtn = document.getElementById("modalShow");
-        modalBtn.onclick = function() {
-            modal.open();
-            zoom.removeZoom($(".tutorialZoom"));
-            openModalCount++;
-        };
-
-        var closeBtn = document.getElementById("closeBtn");
-        closeBtn.onclick = function() {
-            zoom.removeZoom($(".tutorialZoom"));
-            $("#errorClick").show();
-            zoom.addZoom($(".img-polaroid"));
-        };
-        var goBackBtn = document.getElementById("closeBtn");
-        closeBtn.onclick = function() {
-            zoom.removeZoom($(".tutorialZoom"));
-            $("#errorClick").show();
-            zoom.addZoom($(".img-polaroid"));
-        };
-
-        var nextBtn = document.getElementById("nextBtn");
-        nextBtn.onclick = function() {
-            modal.showStep('next');
-        };
-        var prevBtn = document.getElementById("prevBtn");
-        prevBtn.onclick = function() {
-            modal.showStep('prev');
-        };
+    pybossa.presentTask(function (task, deferred) {
 
 
+        if (!$.isEmptyObject(task)) {
 
 
-        /*
-         *
-         * Tooltips - not used yet
-         *
-         *
-         *
-         */
+            loadUserProgress();
 
-        $('.grid-info-instructions').tooltip({
-            selector: "a[data-toggle=tooltip]"
-        });
+            /* THESE AND ERROR PUMPING OUT WITH THIS !?!
 
-        $('.example-list').tooltip({
-            selector: "a[data-toggle=tooltip]"
-        });
+             $('.example-list').slick({
+             dots: true,
+             infinite: false,
+             speed: 300,
+             slidesToScroll: 5,
+             slidesToShow: 5
+             });
+
+             */
 
 
+            var openModalCount = 0;
 
+            /*
+             * Take a time stamp of the time the page loads
+             */
+            var oldTime = new Date();
 
-        /*
-         *
-         * "Next Slide" Button
+            $('#photo-link').html('').append(task.info.image);
+            $("#question").html(task.info.question);
+            $('#task-id').html(task.id);
 
-         * On click of the "next slide" button
-         *
-         *
-         *
-         */
-
-
-        $('.btn-answer').off('click').on('click', function() {
-
-            // Grab a new timestamp and find out the difference
-            // This is how long the user has been on the task for
-            // Then pass it into the answer
-            var newTime = new Date(),
-                ms = newTime - oldTime,
-                x = ms / 1000,
-                seconds = secondsToString(x)
-
-            // Pass image number into answer
             var imgUrl = task.info.url_b;
             var result = imgUrl.replace("//citscitools.cancerresearchuk.org/static/img/mvp-01/", "");
+            $("#imgId").html("Image ID: " + "<strong>" + result + "</strong>");
 
 
-            // Create the answer object
-            var answer = {
-                squares: [],
-                timeTaken: seconds,
-                device: whatDevice(),
-                browser: BrowserDetect.browser + " V." + BrowserDetect.version,
-                imgNumber: result,
-                openModalCount: openModalCount
+            /*
+             *
+             * Init Trailblazer
+             *
+             *
+             *
+             */
+
+
+            var grid = new Grid(task);
+            grid.createGrid("mechanicCanvas");
+
+            var zoom = new Zoom();
+            zoom.addZoom($(".img-polaroid"));
+
+            var modal = new Modal();
+
+
+            /*
+             *
+             * Event Listeners
+             *
+             *
+             */
+
+            var selectBtn = document.getElementById("selectAllBtn");
+            selectBtn.onclick = function () {
+                grid.selectAllSquares();
+            }
+            var deselectBtn = document.getElementById("deselectBtn");
+            deselectBtn.onclick = function () {
+                grid.deselectAllSquares();
+            }
+
+
+            var modalBtn = document.getElementById("modalShow");
+            modalBtn.onclick = function () {
+                modal.open();
+                zoom.removeZoom($(".tutorialZoom"));
+                openModalCount++;
+            };
+
+            var closeBtn = document.getElementById("closeBtn");
+            closeBtn.onclick = function () {
+                zoom.removeZoom($(".tutorialZoom"));
+                $("#errorClick").show();
+                zoom.addZoom($(".img-polaroid"));
+            };
+            var goBackBtn = document.getElementById("closeBtn");
+            closeBtn.onclick = function () {
+                zoom.removeZoom($(".tutorialZoom"));
+                $("#errorClick").show();
+                zoom.addZoom($(".img-polaroid"));
+            };
+
+            var nextBtn = document.getElementById("nextBtn");
+            nextBtn.onclick = function () {
+                modal.showStep('next');
+            };
+            var prevBtn = document.getElementById("prevBtn");
+            prevBtn.onclick = function () {
+                modal.showStep('prev');
             };
 
 
-            // Change the square object to have clearer values
-            $.each(grid.task.answer.squares, function(key, value) {
-                var obj = {
-                    column: value.column,
-                    row: value.row,
-                    answer: value.has_cancer
-                };
-                answer.squares.push(obj);
-            });
-
-            console.log(answer);
-
             /*
-             * Save the task information and send to PyBossa
+             *
+             * Tooltips - not used yet
+             *
+             *
+             *
              */
 
-            //pybossa.saveTask(task.id, answer).done(function (data) {
-            //    $("#success").fadeIn(500).delay(500).fadeOut();
-            //    $("svg, .zoomContainer,.zoomWindowContainer").remove();
-            //    deferred.resolve();
-            //});
+            $('.grid-info-instructions').tooltip({
+                selector: "a[data-toggle=tooltip]"
+            });
 
-            //$("#loading").fadeIn(500).delay(500).fadeOut();
-        });
-    } else {
-        $("#loading").hide();
-        $("#finish").fadeIn(500);
-        $(".span6").fadeTo("slow", 0.5);
-    }
-});
+            $('.example-list').tooltip({
+                selector: "a[data-toggle=tooltip]"
+            });
 
 
+            /*
+             *
+             * "Next Slide" Button
+
+             * On click of the "next slide" button
+             *
+             *
+             *
+             */
 
 
-/*
- * General app stuff like inits and buttons listeners
- *
- *
- *
- */
+            $('.btn-answer').off('click').on('click', function () {
+
+                // Grab a new timestamp and find out the difference
+                // This is how long the user has been on the task for
+                // Then pass it into the answer
+                var newTime = new Date(),
+                    ms = newTime - oldTime,
+                    x = ms / 1000,
+                    seconds = secondsToString(x)
+
+                // Pass image number into answer
+                var imgUrl = task.info.url_b;
+                var result = imgUrl.replace("//citscitools.cancerresearchuk.org/static/img/mvp-01/", "");
 
 
+                // Create the answer object
+                var answer = {
+                    squares: [],
+                    timeTaken: seconds,
+                    device: whatDevice(),
+                    browser: BrowserDetect.browser + " V." + BrowserDetect.version,
+                    imgNumber: result,
+                    openModalCount: openModalCount
+                };
 
- var step = -1;
+
+                // Change the square object to have clearer values
+                $.each(grid.task.answer.squares, function (key, value) {
+                    var obj = {
+                        column: value.column,
+                        row: value.row,
+                        answer: value.has_cancer
+                    };
+                    answer.squares.push(obj);
+                });
+
+                console.log(answer);
+
+                /*
+                 * Save the task information and send to PyBossa
+                 */
+
+                //pybossa.saveTask(task.id, answer).done(function (data) {
+                //    $("#success").fadeIn(500).delay(500).fadeOut();
+                //    $("svg, .zoomContainer,.zoomWindowContainer").remove();
+                //    deferred.resolve();
+                //});
+
+                //$("#loading").fadeIn(500).delay(500).fadeOut();
+            });
+        } else {
+            $("#loading").hide();
+            $("#finish").fadeIn(500);
+            $(".span6").fadeTo("slow", 0.5);
+        }
+    });
+
+
+    /*
+     * General app stuff like inits and buttons listeners
+     *
+     *
+     *
+     */
+
+
+    var step = -1;
 
     function showFeedbackStep(action) {
 
@@ -2734,52 +2670,38 @@ pybossa.presentTask(function(task, deferred) {
         $('#feedback-photo-link').append(img);
 
 
+        var grid = new Grid();
+        grid.createGrid("feedbackCanvas");
 
-            var grid = new Grid();
-            grid.createGrid("feedbackCanvas");
-
-            var zoom = new Zoom();
-            zoom.addZoom($(".img-polaroid"));
+        var zoom = new Zoom();
+        zoom.addZoom($(".img-polaroid"));
 
         var showAnswers = document.getElementById("showAnswers");
-        showAnswers.onclick = function() {
+        showAnswers.onclick = function () {
             grid.showPathologistAnswers();
         };
 
-         var hideAnswers = document.getElementById("hideAnswers");
-        hideAnswers.onclick = function() {
+        var hideAnswers = document.getElementById("hideAnswers");
+        hideAnswers.onclick = function () {
             grid.hidePathologistAnswers();
         };
 
-         var checkMyWorkBtn = document.getElementById("checkMyWorkBtn");
-        checkMyWorkBtn.onclick = function() {
+        var checkMyWorkBtn = document.getElementById("checkMyWorkBtn");
+        checkMyWorkBtn.onclick = function () {
             grid.checkMyWork();
         };
 
 
-
-
-
-
-
-
-
-
-
-
-
-    if( step == 2 ) {
-        $("#next-feedback-step").hide();
-        $("#finish-feedback").show();
-    }
+        if (step == 2) {
+            $("#next-feedback-step").hide();
+            $("#finish-feedback").show();
+        }
 
         $("#feedbackStep" + step).show();
     }
 
 
-
-
-var nextFeedbackBtn = document.getElementById("next-feedback-step");
+    var nextFeedbackBtn = document.getElementById("next-feedback-step");
     nextFeedbackBtn.onclick = function () {
 
         showFeedbackStep('next');
@@ -2787,35 +2709,53 @@ var nextFeedbackBtn = document.getElementById("next-feedback-step");
     };
 
 
-
-//finish-feedback
-
+    //finish-feedback
 
 
+    function UpdatePageState() {
+        // State of the page to show to the user
+        var page_state = "mechanic";
 
-$(function() {
+        // Check if the page should in show feedback state
+        var cookie_feedback = $.cookie(cookie_feedback_name, true);
+        if (cookie_feedback != null)
+            page_state = "feedback";
 
-    var cookie = $.cookie('mvp-03feedback', true);
 
-    if( cookie != null ) {
-        showFeedbackStep('next');
-        $("#feedback-content").show();
+        // Check if the page should be in tutorial state
+        var cookie_tutorial = $.cookie(cookie_tutorial_name);
+        if (cookie_tutorial == null || cookie_tutorial != "seen")
+            page_state = "tutorial";
+
+
+        if (page_state == "feedback") {
+            showFeedbackStep('next');
+            $("#feedback-content").show();
+        }
+        else if (page_state == "tutorial") {
+            Modal().open();
+        }
+
     }
 
-    $("#finish-feedback").on("click",function(){
-        $.cookie('mvp-03feedback', false );
+    $(function () {
 
-        $(".feedback-photo-link").remove();
-        $.removeData(".feedback-photo-link", 'elevateZoom');
-        $('.zoomContainer').remove();
-        $('.zoomWindowContainer').remove();
+        UpdatePageState();
 
-        $("#feedback-content").hide();
-        $("#mechanic-content").show();
-        pybossa.run('mvp-03');
+        $("#finish-feedback").on("click", function () {
+            $.cookie(cookie_feedback_name, false);
+
+            $(".feedback-photo-link").remove();
+            $.removeData(".feedback-photo-link", 'elevateZoom');
+            $('.zoomContainer').remove();
+            $('.zoomWindowContainer').remove();
+
+            $("#feedback-content").hide();
+            $("#mechanic-content").show();
+            pybossa.run(project_short_name);
+        });
+
     });
-
-});
 
 </script>
 
