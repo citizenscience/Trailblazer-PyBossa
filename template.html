@@ -966,6 +966,9 @@
                         Hide answers
                     </a>
 
+                    <a class="btn btn-success" id="checkMyWorkBtn">
+                        Check my work
+                    </a>
                 </div>
 
             </div>
@@ -1064,6 +1067,7 @@
 
 
 <script type="text/javascript" async="async">
+
 
 var data = [
     {
@@ -1695,20 +1699,25 @@ var data = [
 function Grid(task) {
 
     this.canvas;
+    this.feedbackStep = step;
+    this.tickCross = [];
 
-    if( typeof task != 'undefined') {
-        this.task = task;
-        this.activateCell();
-    } else {
+    var cookie = $.cookie('mvp-03feedback');
+    if( $.cookie('mvp-03feedback') ) {
         this.feedbackObj = {
             answer : {
                 squares: []
             }
         };
         this.activateCell();
+    } else {
+        this.task = task;
+        this.activateCell();
     }
 
-    this.tickCross = [];
+
+
+
 
 
 
@@ -1732,6 +1741,8 @@ Grid.prototype.createGrid = function( canvasElement ) {
 
         this.canvas = Raphael( canvasElement, 460, 460);
 
+
+
     // creates 36 grid squares in raphael
 
 
@@ -1748,6 +1759,8 @@ Grid.prototype.createGrid = function( canvasElement ) {
                 gridSquare = this.canvas.rect(moveRight, moveDown, gridWidth, gridHeight).attr({
                     "stroke": "#fff"
                 });
+
+
 
             gridSquare.node.setAttribute("class", "grid-item");
 
@@ -1813,7 +1826,7 @@ Grid.prototype.activateCell = function() {
                         if (activeSquareNode.className.animVal != "grid-item grid-item-success") {
 
 
-                            activeSquareNode.setAttribute("class", "grid-item grid-item-success");
+                            activeSquareNode.setAttribute("class", "grid-item grid-item-success activated");
                             activeSquare.has_cancer = true;
 
 
@@ -1847,12 +1860,12 @@ Grid.prototype.activateCell = function() {
         else {
             clearTimeout(timer); //prevent single-click action
 
-            activeSquareNode.setAttribute("class", "grid-item grid-item-error");
+            activeSquareNode.setAttribute("class", "grid-item grid-item-error activated");
             activeSquare.has_cancer = false;
 
             if ( $("#feedback-content").is(':visible') ) {
-                                _this.checkAnswer( false, activeSquare );
-                            }
+                _this.checkAnswer( false, activeSquare );
+            }
 
 
             clicks = 0;
@@ -1900,17 +1913,25 @@ Grid.prototype.findClosestSquare = function() {
         });
     } else {
         $.each(_this.feedbackObj.answer.squares, function(key, value) {
-
             if (value.isPointInside(target_pos.x, target_pos.y)) {
                 activeSquare = value;
             }
         });
     }
 
-    console.log(activeSquare);
+    ///console.log(activeSquare);
     return activeSquare;
 };
 
+
+
+
+/*
+ * Grid.checkAnswer
+ * =======================
+ *
+ *
+ */
 
 Grid.prototype.checkAnswer = function( action, activeSquare ) {
 
@@ -1925,52 +1946,59 @@ Grid.prototype.checkAnswer = function( action, activeSquare ) {
         }
     });
 
-    console.log(pathologistAnswer);
+    var activeSquarePosCX = activeSquare.attr("x") + 30 ,
+        activeSquarePosCY = activeSquare.attr("y") + 30;
 
-    //console.log(activeSquaree);
+    var parentId = activeSquare.id;
 
-    //console.log("has cancer: " + state);
-    //console.log("pathologist says: " + pathologistAnswer.answer );
-    //console.log(activeSquare.attr("x"));
+    $.each( this.tickCross, function(key, value) {
+            if( parentId === value["data-parent_id"]){
+                value.remove();
+            }
+     });
 
-    var activeSquarePosX = activeSquare.attr("x") + 30 ,
-        activeSquarePosY = activeSquare.attr("y") + 30;
+    var x = Math.floor(activeSquare.attr("x"));
+    var y = Math.floor(activeSquare.attr("y"));
+    var tick =    "M " + (x + 15) + "," + (y + 35) +  " L " + (x + 30) + "," + (y + 50) + " L " + (x + 60) + "," + (y + 20);
+    var cross =   "M " + (x + 20) + "," + (y + 20) +  " L " + (x + 55) + "," + (y + 55) + "M " + (x + 20) + "," + (y + 55) + " L " + (x + 55) + "," + (y + 20) ;
 
-     var  x = Math.floor(activeSquare.attr("x"));
-          var y = Math.floor(activeSquare.attr("y"));
-          var tick =    "M " + (x + 15) + "," + (y + 35) +  " L " + (x + 30) + "," + (y + 50) + " L " + (x + 60) + "," + (y + 20);
-          var cross =   "M " + (x + 15) + "," + (y + 15) +  " L " + (x + 60) + "," + (y + 60) + "M " + (x + 15) + "," + (y + 60) + " L " + (x + 60) + "," + (y + 15) ;
+
+
+
+
 
 
     if (state === pathologistAnswer.answer) {
+
          $("#pathologistFeedback").removeClass("alert-info").addClass("alert-success");
          $("#pathologistFeedback p").text("Well done! This is what our pathologist said");
          var tick = this.canvas.path(tick).attr("stroke-width","3px");
+         tick["data-parent_id"] = parentId;
          this.tickCross.push(tick);
+
     } else {
         //console.log("Dont agree");
         if( pathologistAnswer.answer === true ) {
             $("#pathologistFeedback").removeClass("alert-success").addClass("alert-info");
             $("#pathologistFeedback p").text("The pathologies said it contained cancer");
             //activeSquare.node.setAttribute("class", "grid-item grid-item-success");
-
         }
         if( pathologistAnswer.answer === false ) {
             $("#pathologistFeedback").removeClass("alert-success").addClass("alert-info");
             $("#pathologistFeedback p").text("The pathologies said it did not contained cancer");
             //activeSquare.node.setAttribute("class", "grid-item grid-item-error");
-
         }
         if( pathologistAnswer.answer === null ) {
             $("#pathologistFeedback").removeClass("alert-success").addClass("alert-info");
             $("#pathologistFeedback p").text("The pathologies said this square was clear");
             //activeSquare.node.setAttribute("class", "grid-item");
-
         }
-        var cross = this.canvas.path(cross).attr("stroke-width","3px");
-        this.tickCross.push(cross);
-    }
 
+        var cross = this.canvas.path(cross).attr("stroke-width","3px");
+        cross["data-parent_id"] = parentId;
+        this.tickCross.push(cross);
+
+    }
 }
 
 
@@ -2000,7 +2028,24 @@ Grid.prototype.showPathologistAnswers = function() {
 }
 
 
+
+
+Grid.prototype.checkMyWork = function() {
+
+    alert("CHECKING YOUR WORK");
+
+}
+
+
+
 Grid.prototype.hidePathologistAnswers = function() {
+
+    var element;
+
+    function hasClass(element, cls) {
+        return (' ' + element.getAttribute("class") + ' ').indexOf(' ' + cls + ' ') > -1;
+
+    }
 
     for (var i = 0; i < data[step].info.squares.length; i++) {
 
@@ -2008,7 +2053,14 @@ Grid.prototype.hidePathologistAnswers = function() {
             gridSquareNode = this.feedbackObj.answer.squares[i].node,
             pathologistAnswer = data[step].info.squares[i].answer;
 
-            gridSquareNode.setAttribute("class", "grid-item");
+            if( hasClass(gridSquareNode, "activated") ) {
+                console.log(this);
+                alert("has class");
+            } else {
+                gridSquareNode.setAttribute("class", "grid-item");
+            }
+
+
 
     }
 
@@ -2699,6 +2751,11 @@ pybossa.presentTask(function(task, deferred) {
             grid.hidePathologistAnswers();
         };
 
+         var checkMyWorkBtn = document.getElementById("checkMyWorkBtn");
+        checkMyWorkBtn.onclick = function() {
+            grid.checkMyWork();
+        };
+
 
 
 
@@ -2738,7 +2795,7 @@ var nextFeedbackBtn = document.getElementById("next-feedback-step");
 
 $(function() {
 
-    var cookie = $.cookie('mvp-03feedback');
+    var cookie = $.cookie('mvp-03feedback', true);
 
     if( cookie != null ) {
         showFeedbackStep('next');
@@ -2746,7 +2803,7 @@ $(function() {
     }
 
     $("#finish-feedback").on("click",function(){
-        $.cookie('mvp-03feedback', true );
+        $.cookie('mvp-03feedback', false );
 
         $(".feedback-photo-link").remove();
         $.removeData(".feedback-photo-link", 'elevateZoom');
