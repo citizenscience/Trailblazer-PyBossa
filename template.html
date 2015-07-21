@@ -1,6 +1,7 @@
 <style>
     .grid-info {
         margin-bottom: 20px;
+        overflow: auto;
     }
 
 </style>
@@ -962,21 +963,24 @@
 
 
                     <div class="grid-info-buttons">
-                        <a class="btn btn-primary pull-right" id="next-feedback-step">
+                        <a class="btn btn-success pull-right" id="nextFeedbackStep">
                             Next slide
                         </a>
-                        <a class="btn btn-success pull-right" id="finish-feedback" style="display:none;">
+                        <a class="btn btn-primary pull-right" id="finishFeedback" style="display:none;">
                             Finished
                         </a>
-                        <a class="btn " id="showAnswers">
+                        <a class="btn " id="showAnswers" style="display:none;">
                             Show answers
                         </a>
-                        <a class="btn " id="hideAnswers">
+                        <a class="btn " id="hideAnswers" style="display:none;">
                             Hide answers
                         </a>
 
-                        <a class="btn btn-success" id="checkMyWorkBtn">
-                            Check my work
+                        <a class="btn btn-primary" id="showMyAnalysisBtn" style="display:none;">
+                            Show my analysis
+                        </a>
+                        <a class="btn btn-primary" id="hideMyAnalysisBtn" style="display:none;">
+                            Hide my analysis
                         </a>
                     </div>
 
@@ -1784,7 +1788,6 @@
             }
         }
 
-
     };
 
 
@@ -1808,9 +1811,11 @@
 
             // Find the cloest grid square to click on the zoomLens
 
-            var activeSquare = _this.findClosestSquare();
+            if(  step == 1 ) _this.hideMyAnalysis();
 
+            var activeSquare = _this.findClosestSquare();
             var activeSquareNode = activeSquare.node;
+
 
             // Not able to use jQuery .click or .dblclick for some reason i can't remember
             // If we can then should use jQuery...might be quicker and easier
@@ -1818,7 +1823,7 @@
             // SINGLE CLICK
             if (clicks === 1) {
 
-                (function (activeSquareNode) {
+                //(function (activeSquareNode) {
                     timer = setTimeout(function () {
                         // Adds and removes classes to grid squares making them red or green
                         if (activeSquareNode.className.animVal != "grid-item grid-item-success") {
@@ -1848,7 +1853,7 @@
                         clicks = 0;
                     }, 250);
 
-                }(activeSquareNode));
+                //}(activeSquareNode));
 
             }
             // DOUBLE CLICK
@@ -1955,7 +1960,12 @@
 
             $("#pathologistFeedback").removeClass("alert-info").addClass("alert-success");
             $("#pathologistFeedback p").text("Well done! This is what our pathologist said");
+
+
             var tick = this.canvas.path(tick).attr("stroke-width", "3px");
+
+            if( step == 1 ) tick.attr("opacity",0);
+
             tick["data-parent_id"] = parentId;
             this.tickCross.push(tick);
 
@@ -1978,10 +1988,16 @@
             }
 
             var cross = this.canvas.path(cross).attr("stroke-width", "3px");
+
+            if( step == 1 ) cross.attr("opacity",0);
+
             cross["data-parent_id"] = parentId;
             this.tickCross.push(cross);
 
         }
+
+
+        if( this.tickCross.length > 0 && step == 1 ) $("#showMyAnalysisBtn, #hideMyAnalysisBtn").show();
     }
 
 
@@ -1992,7 +2008,7 @@
             var gridSquare = this.feedbackObj.answer.squares[i],
                 gridSquareNode = this.feedbackObj.answer.squares[i].node,
                 pathologistAnswer = data[step].info.squares[i].answer;
-            console.log(data[step].info.squares[i].answer);
+
 
             if (data[step].info.squares[i].answer == true) {
                 gridSquareNode.setAttribute("class", "grid-item grid-item-success");
@@ -2008,11 +2024,17 @@
     }
 
 
-    Grid.prototype.checkMyWork = function () {
+    Grid.prototype.showMyAnalysis = function () {
+        $.each(this.tickCross, function (key, value) {
+            value.attr("opacity",1);
+        });
+    };
 
-        alert("CHECKING YOUR WORK");
-
-    }
+    Grid.prototype.hideMyAnalysis = function () {
+        $.each(this.tickCross, function (key, value) {
+            value.attr("opacity",0);
+        });
+    };
 
 
     Grid.prototype.hidePathologistAnswers = function () {
@@ -2031,7 +2053,6 @@
                 pathologistAnswer = data[step].info.squares[i].answer;
 
             if (hasClass(gridSquareNode, "activated")) {
-                console.log(this);
                 alert("has class");
             } else {
                 gridSquareNode.setAttribute("class", "grid-item");
@@ -2697,22 +2718,33 @@
             grid.hidePathologistAnswers();
         };
 
-        var checkMyWorkBtn = document.getElementById("checkMyWorkBtn");
-        checkMyWorkBtn.onclick = function () {
-            grid.checkMyWork();
+        var showMyAnalysis = document.getElementById("showMyAnalysisBtn");
+        showMyAnalysis.onclick = function () {
+            grid.showMyAnalysis();
+        };
+        var hideMyAnalysis = document.getElementById("hideMyAnalysisBtn");
+        hideMyAnalysis.onclick = function () {
+            grid.hideMyAnalysis();
         };
 
 
+        if (step == 1) {
+            //$("#showAnswers").show();
+            //$("#hideAnswers").show();
+            //$("#checkMyWorkBtn").show();
+        }
+
+
         if (step == 2) {
-            $("#next-feedback-step").hide();
-            $("#finish-feedback").show();
+            $("#nextFeedbackStep").hide();
+            $("#finishFeedback").show();
         }
 
         $("#feedbackStep" + step).show();
     }
 
 
-    var nextFeedbackBtn = document.getElementById("next-feedback-step");
+    var nextFeedbackBtn = document.getElementById("nextFeedbackStep");
     nextFeedbackBtn.onclick = function () {
 
         showFeedbackStep('next');
@@ -2720,17 +2752,17 @@
     };
 
 
-    //finish-feedback
-
 
     function UpdatePageState() {
 
         // State of the page to show to the user
         var page_state = "mechanic";
 
+
+
         // Check if the page should be in show feedback state
         var cookie_feedback = $.cookie(cookie_feedback_name);
-        if (cookie_feedback != null)
+        if (cookie_feedback != null )
             page_state = "feedback";
 
 
@@ -2738,6 +2770,13 @@
         var cookie_tutorial = $.cookie(cookie_tutorial_name);
         if (cookie_tutorial == null || cookie_tutorial != "seen")
             page_state = "tutorial";
+
+
+
+        // Check if the page should be in show feedback state
+        var cookie_feedback = $.cookie(cookie_feedback_name);
+        if (cookie_feedback == "false"  )
+            page_state = "mechanic";
 
 
         if (page_state == "feedback") {
@@ -2761,10 +2800,11 @@
                 m.showStep('prev');
             };
 
+        } else {
+            $("#feedback-content").hide();
+            $("#mechanic-content").show();
+            pybossa.run(project_short_name);
         }
-
-
-        console.log("end: " + page_state);
 
     }
 
@@ -2772,14 +2812,10 @@
 
         UpdatePageState();
 
-        $("#finish-feedback").on("click", function () {
 
-            console.log("Clicked feedback");
-            $("#feedback-content").hide();
-            $("#mechanic-content").show();
-
-            //pybossa.run(project_short_name);
-
+        $("#finishFeedback").on("click", function () {
+            //$.cookie(cookie_feedback_name, false);
+            //UpdatePageState();
         });
 
         $("#startContrib").on("click", function () {
