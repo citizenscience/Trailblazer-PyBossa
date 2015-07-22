@@ -6,10 +6,59 @@
 
 </style>
 
-<!--MODAL-->
+<!--MODALS-->
 <div class="row">
     <div class="span12">
-        <div id="modal" class="modal hide fade">
+
+        <!-- Summary Modal -->
+        <div id="summaryModal" class="modal hide fade">
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/38.png" alt=""/>
+                </div>
+                <div class="modal-info">
+                    <h1>
+                        You can now get started analysing cancer images
+                    </h1>
+                    <ul>
+                        <li>
+                            To identify <b>cancer cells</b>, look for <b>blotchy cells</b> grouped together in
+                            <b>uneven clumps, loose rings</b> or <b>broken chains.</b>
+                        </li>
+                        <li>
+                            <b>Click once</b> to turn sections <b>containing cancer cells
+                            <strong class="text-error">red</strong></b>
+                        </li>
+                        <li>
+                            Healthy cells include the dark blue or dark brown, small and round blood cells
+                        </li>
+                        <li>
+                            Other healthy cells includes the light blue stretched and wispy looking stromal cells
+                        </li>
+                        <li>
+                            <b>Double click</b> to turn sections that only <b>contain healthy cells
+                            <strong class="text-success">green</strong></b>
+                        </li>
+                        <li>
+                            <b>Leave blank</b> sections that <b>do not contain any cells</b>
+                        </li>
+                        <li>
+                            Images can contain no cancer, a few cancer cells, lots of cancer cells or all cancer cells
+                        </li>
+                        Press Start to begin analysing!
+                    </ul>
+                </div>
+                <div class="summary-modal-footer">
+                    <button class="btn" id="startMechanicBtn" data-dismiss="modal" aria-hidden="true">Practise</button>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <!-- Tutoiral Modal -->
+        <div id="tutorialModal" class="modal hide fade">
 
             <div id="0" class="modal-body" style="display:none">
 
@@ -744,7 +793,7 @@
                 </div>
                 <div class="modal-info">
                     <h1>
-                        You can now get started analysing cancer images
+                        You can now get practise analysing cancer images
                     </h1>
                     <ul>
                         <li>
@@ -762,9 +811,6 @@
                             Healthy cells include the dark blue or dark brown, small and round blood cells
                         </li>
                         <li>
-                            Other healthy cells includes the light blue stretched and wispy looking stromal cells
-                        </li>
-                        <li>
                             <b>Double click</b> to turn sections that only <b>contain healthy cells
                             <strong class="text-success">green</strong></b>
                         </li>
@@ -774,10 +820,6 @@
                         <li>
                             Images can contain no cancer, a few cancer cells, lots of cancer cells or all cancer cells
                         </li>
-                        <li>
-                            You can come back to this tutorial at any time. Just press the blue Tutorial button on your screen
-                        </li>
-                        Press Start to begin analysing!
                     </ul>
                 </div>
 
@@ -787,7 +829,7 @@
                 <button type="button" class="btn closeBtnbtn-default pull-left closeBtn" id="closeBtn" data-dismiss="modal" aria-hidden="true" style="display:none;">Close</button>
                 <a id="prevBtn" href="#" class="btn">Previous</a>
                 <a id="nextBtn" href="#" class="btn btn-success">Next</a>
-                <a id="startContrib"  data-dismiss="modal" aria-hidden="true" class="btn btn-primary closeBtn" ><i class="icon-thumbs-up"></i> Start</a>
+                <a id="startFeedbackBtn"   class="btn btn-primary closeBtn" data-dismiss="modal" aria-hidden="true" style="display:none;"><i class="icon-thumbs-up" ></i> Practise</a>
                 <button id="goBackBtn" type="button" class="btn btn-primary closeBtn pull-right " data-dismiss="modal" aria-hidden="true" style="display:none;">Back to task</button>
             </div>
         </div>
@@ -976,6 +1018,9 @@
                             Hide answers
                         </a>
 
+                         <a class="btn btn-success pull-right disabled" id="checkMyWorkBtn" style="display:none;">
+                            Check my work
+                        </a>
                         <a class="btn btn-primary" id="showMyAnalysisBtn" style="display:none;">
                             Show my analysis
                         </a>
@@ -1083,8 +1128,6 @@
 
     var cookie_feedback_name = project_short_name + 'feedback';
     var cookie_tutorial_name = project_short_name + 'tutorial';
-
-
 
     var data = [
         {
@@ -1997,7 +2040,11 @@
         }
 
 
-        if( this.tickCross.length > 0 && step == 1 ) $("#showMyAnalysisBtn, #hideMyAnalysisBtn").show();
+        if( this.tickCross.length > 0 && step == 1 ) {
+            $("#checkMyWorkBtn").removeClass("disabled");
+            //$("#showMyAnalysisBtn, #hideMyAnalysisBtn, #nextFeedbackStep").show();
+            //$("#checkMyWorkBtn").hide();
+        }
     }
 
 
@@ -2097,8 +2144,8 @@
         this.step = -1;
     }
 
-    Modal.prototype.open = function () {
-        $('.modal').modal({
+    Modal.prototype.open = function (modal) {
+        $(modal).modal({
             backdrop: 'static',
             keyboard: false
         });
@@ -2145,7 +2192,6 @@
             $items = $("#" + this.step + " .item");
 
         if ($carousel.length > 0) {
-
             $('.zoomContainer').remove();
             $('.zoomWindowContainer').remove();
             var tutorial = ".tutorialZoom" + this.step;
@@ -2189,10 +2235,12 @@
             $("#prevBtn").show();
         }
 
-        var $lastStep = $('.modal-body').length - 1;
+        var $lastStep = $('#tutorialModal .modal-body').length - 1;
         if (this.step == $lastStep) {
             $("#nextBtn").hide();
             //$("#goBackBtn").show();
+            //$("#startContrib").show();
+            $("#startFeedbackBtn").show();
         } else {
             $("#nextBtn").show();
             //$("#goBackBtn").hide();
@@ -2231,6 +2279,19 @@
 
 
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     /*
@@ -2554,7 +2615,7 @@
 
             var modalBtn = document.getElementById("modalShow");
             modalBtn.onclick = function () {
-                modal.open();
+                modal.open( "#tutorialModal" );
                 zoom.removeZoom($(".tutorialZoom"));
                 openModalCount++;
             };
@@ -2686,6 +2747,20 @@
             step += 1;
         }
 
+        if (step == 1) {
+            $("#nextFeedbackStep").hide();
+            $("#checkMyWorkBtn").show();
+        }
+
+
+        if (step == 2) {
+            $("#nextFeedbackStep").hide();
+            $("#finishFeedback").show();
+        }
+
+
+
+
 
         $("svg, .img-polaroid, .zoomContainer, .zoomWindowContainer, .feedback-photo-link").remove();
         $.removeData(".feedback-photo-link", 'elevateZoom');
@@ -2728,17 +2803,17 @@
         };
 
 
-        if (step == 1) {
+        var checkMyWork = document.getElementById("checkMyWorkBtn");
+        checkMyWork.onclick = function () {
+            if( $(this).hasClass("disabled") ) return
+            $("#showMyAnalysisBtn").show();
+            $("#hideMyAnalysisBtn").show();
+            grid.showMyAnalysis();
             //$("#showAnswers").show();
             //$("#hideAnswers").show();
-            //$("#checkMyWorkBtn").show();
-        }
-
-
-        if (step == 2) {
-            $("#nextFeedbackStep").hide();
-            $("#finishFeedback").show();
-        }
+            $("#nextFeedbackStep").show();
+            $("#checkMyWorkBtn").hide();
+        };
 
         $("#feedbackStep" + step).show();
     }
@@ -2779,6 +2854,8 @@
             page_state = "mechanic";
 
 
+
+        console.log(page_state);
         if (page_state == "feedback") {
 
             showFeedbackStep('next');
@@ -2787,7 +2864,9 @@
         else if (page_state == "tutorial") {
 
             var m = new Modal;
-            m.open();
+            m.open( "#tutorialModal" );
+
+
 
             $("#feedback-content").hide();
 
@@ -2813,17 +2892,30 @@
         UpdatePageState();
 
 
-        $("#finishFeedback").on("click", function () {
-            //$.cookie(cookie_feedback_name, false);
-            //UpdatePageState();
-        });
 
-        $("#startContrib").on("click", function () {
+
+        $("#startFeedbackBtn").on("click", function () {
             $.cookie(cookie_tutorial_name, "seen");
             $.cookie(cookie_feedback_name, true);
             UpdatePageState();
         });
 
+        $("#finishFeedback").on("click", function () {
+            var zoom = new Zoom();
+            zoom.removeZoom($(".img-polaroid"));
+
+            var m = new Modal;
+            m.open( "#summaryModal" );
+        });
+
+        $("#startMechanicBtn").on("click", function(e){
+            e.preventDefault();
+
+            //$.removeCookie(cookie_tutorial_name, { path: '/' });
+            //$.cookie(cookie_tutorial_name, null);
+            $.cookie(cookie_feedback_name, false);
+            UpdatePageState();
+        });
 
 
 
