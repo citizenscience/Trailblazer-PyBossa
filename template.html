@@ -2500,20 +2500,13 @@
 
     pybossa.taskLoaded(function (task, deferred) {
 
+         if (!$.isEmptyObject(task)) {
 
-        if (!$.isEmptyObject(task)) {
-            // load image from flickr
             var img = $('<img />');
-            img.load(function () {
-                // continue as soon as the image is loaded
-                deferred.resolve(task);
-            });
-
-            img.attr('src', task.info.url_b).css('height', 460);
-            img.attr('data-zoom-image', task.info.url_b);
-            img.addClass('img-polaroid');
-            task.info.image = img;
-
+                img.attr('src', task.info.url_b).css('height', 460);
+                img.attr('data-zoom-image', task.info.url_b);
+                img.addClass('img-polaroid');
+                task.info.image = img;
 
             task.answer = {
                 squares: [],
@@ -2524,9 +2517,18 @@
                 openModalCount: 0
             }
 
+            img.load(function () {
+
+                // continue as soon as the image is loaded
+                deferred.resolve(task);
+
+            });
+
         } else {
+
             deferred.resolve(task);
         }
+
     });
 
 
@@ -2543,11 +2545,13 @@
 
     pybossa.presentTask(function (task, deferred) {
 
-
+    alert("dfsdf");
         if (!$.isEmptyObject(task)) {
 
 
             loadUserProgress();
+
+
 
             /* THESE AND ERROR PUMPING OUT WITH THIS !?!
 
@@ -2586,7 +2590,6 @@
              *
              */
 
-
             var grid = new Grid(task);
             grid.createGrid("mechanicCanvas");
 
@@ -2615,6 +2618,7 @@
 
             var modalBtn = document.getElementById("modalShow");
             modalBtn.onclick = function () {
+
                 modal.open( "#tutorialModal" );
                 zoom.removeZoom($(".tutorialZoom"));
                 openModalCount++;
@@ -2722,6 +2726,7 @@
                 //$("#loading").fadeIn(500).delay(500).fadeOut();
             });
         } else {
+
             $("#loading").hide();
             $("#finish").fadeIn(500);
             $(".span6").fadeTo("slow", 0.5);
@@ -2855,7 +2860,6 @@
 
 
 
-        console.log(page_state);
         if (page_state == "feedback") {
 
             showFeedbackStep('next');
@@ -2903,7 +2907,6 @@
         $("#finishFeedback").on("click", function () {
             var zoom = new Zoom();
             zoom.removeZoom($(".img-polaroid"));
-
             var m = new Modal;
             m.open( "#summaryModal" );
         });
