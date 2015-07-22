@@ -1873,13 +1873,17 @@ To hide the shading and ticks/crosses click Hide my analysis
             // SINGLE CLICK
             if (clicks === 1) {
 
+
+
                 //(function (activeSquareNode) {
                     timer = setTimeout(function () {
                         // Adds and removes classes to grid squares making them red or green
+
+            console.log(activeSquareNode.className.animVal);
                         if (activeSquareNode.className.animVal != "grid-item grid-item-success") {
 
 
-                            activeSquareNode.setAttribute("class", "grid-item grid-item-success activated");
+                            activeSquareNode.setAttribute("class", "grid-item grid-item-success");
                             activeSquare.has_cancer = true;
 
 
@@ -1892,7 +1896,6 @@ To hide the shading and ticks/crosses click Hide my analysis
 
                             activeSquareNode.setAttribute("class", "grid-item");
                             activeSquare.has_cancer = null;
-
 
                             if ($("#feedback-content").is(':visible')) {
                                 _this.checkAnswer(null, activeSquare);
@@ -1910,7 +1913,7 @@ To hide the shading and ticks/crosses click Hide my analysis
             else {
                 clearTimeout(timer); //prevent single-click action
 
-                activeSquareNode.setAttribute("class", "grid-item grid-item-error activated");
+                activeSquareNode.setAttribute("class", "grid-item grid-item-error");
                 activeSquare.has_cancer = false;
 
                 if ($("#feedback-content").is(':visible')) {
