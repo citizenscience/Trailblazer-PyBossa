@@ -1879,7 +1879,6 @@ To hide the shading and ticks/crosses click Hide my analysis
                     timer = setTimeout(function () {
                         // Adds and removes classes to grid squares making them red or green
 
-            console.log(activeSquareNode.className.animVal);
                         if (activeSquareNode.className.animVal != "grid-item grid-item-success") {
 
 
@@ -1967,7 +1966,7 @@ To hide the shading and ticks/crosses click Hide my analysis
             });
         }
 
-        ///console.log(activeSquare);
+
         return activeSquare;
     };
 
@@ -2505,7 +2504,7 @@ To hide the shading and ticks/crosses click Hide my analysis
     BrowserDetect.init();
 
     if (BrowserDetect.browser == 'Explorer') {
-        $(".wrappy").addClass("active");
+        //$(".wrappy").addClass("active");
     }
 
 
