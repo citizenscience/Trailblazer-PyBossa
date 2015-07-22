@@ -2239,7 +2239,15 @@
             $("#nextBtn").hide();
             //$("#goBackBtn").show();
             //$("#startContrib").show();
-            $("#startFeedbackBtn").show();
+
+            if ($("#mechanic-content").is(':visible')) {
+                $("#startFeedbackBtn").hide();
+                $("#goBackBtn").show();
+            } else {
+                $("#startFeedbackBtn").show();
+                $("#goBackBtn").hide();
+            }
+
         } else {
             $("#nextBtn").show();
             //$("#goBackBtn").hide();
@@ -2888,8 +2896,7 @@
             $("#feedback-content").hide();
             $("#mechanic-content").show();
 
-            $("#startFeedbackBtn").hide();
-            $("#goBackBtn").show();
+
             pybossa.run("mvp-03");
 
         }
