@@ -2740,7 +2740,7 @@ To hide the shading and ticks/crosses click Hide my analysis
                  */
 
                 pybossa.saveTask(task.id, answer).done(function (data) {
-                    $("#success").fadeIn(500).delay(500).fadeOut();
+                    $("#success").fadeIn(500).delay(1000).fadeOut();
                     $("svg, .zoomContainer,.zoomWindowContainer").remove();
                     deferred.resolve();
                 });
@@ -2767,8 +2767,6 @@ To hide the shading and ticks/crosses click Hide my analysis
     var step = -1;
 
     function showFeedbackStep(action) {
-
-        alert("showFeedbackStep");
 
         $("#feedbackStep" + step).hide();
 
@@ -2927,7 +2925,6 @@ To hide the shading and ticks/crosses click Hide my analysis
         $("#finishFeedback").on("click", function () {
             $("svg, .feedback-img-polaroid, .zoomContainer, .zoomWindowContainer, .feedback-photo-link").remove();
             $.removeData(".feedback-photo-link", 'elevateZoom');
-
             var m = new Modal;
             m.open( "#summaryModal" );
         });
