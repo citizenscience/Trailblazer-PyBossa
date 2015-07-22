@@ -829,8 +829,8 @@
                 <button type="button" class="btn closeBtnbtn-default pull-left closeBtn" id="closeBtn" data-dismiss="modal" aria-hidden="true" style="display:none;">Close</button>
                 <a id="prevBtn" href="#" class="btn">Previous</a>
                 <a id="nextBtn" href="#" class="btn btn-success">Next</a>
-                <a id="startFeedbackBtn"   class="btn btn-primary closeBtn" data-dismiss="modal" aria-hidden="true" style="display:none;"><i class="icon-thumbs-up" ></i> Practise</a>
-                <button id="goBackBtn" type="button" class="btn btn-primary closeBtn pull-right " data-dismiss="modal" aria-hidden="true" style="display:none;">Back to task</button>
+                <a class="btn btn-primary closeBtn" id="startFeedbackBtn"    data-dismiss="modal" aria-hidden="true" style="display:none;"><i class="icon-thumbs-up" ></i> Practise</a>
+                <button class="btn btn-primary closeBtn pull-right " id="goBackBtn" type="button"  data-dismiss="modal" aria-hidden="true" style="display:none;">Back to task</button>
             </div>
         </div>
     </div>
@@ -895,7 +895,7 @@
 
                         </p>
 
-                        <p id="imgId"></p>
+                        <p class="imgId"></p>
                     </div>
 
                     <!--<select class="grid-info-difficulty" id="difficulty">-->
@@ -910,8 +910,7 @@
                     <div class="grid-info-buttons">
                         <button class="btn" id="selectAllBtn" value="all">Select All</button>
                         <button class="btn" id="deselectBtn">Deselect All</button>
-
-                        <button class="btn btn-primary" id="modalShow">Tutorial</button>
+                        <button class="btn btn-primary" id="showTutorialModalBtn">Tutorial</button>
                         <button class="btn btn-answer btn-success nextSlideBtn" id="nextSlideBtn" value="next">Next slide</button>
                     </div>
 
@@ -968,7 +967,7 @@
                             When you’re done click Next Slide
                         </p>
 
-                        <p id="imgId"></p>
+                        <p class="imgId"></p>
                     </div>
 
                     <div class="grid-info-instructions" id="feedbackStep1" style="display:none;">
@@ -984,7 +983,7 @@
                             step2
                         </p>
 
-                        <p id="imgId"></p>
+                        <p class="imgId"></p>
                     </div>
 
                     <div class="grid-info-instructions" id="feedbackStep2" style="display:none;">
@@ -1000,7 +999,7 @@
                             step3
                         </p>
 
-                        <p id="imgId"></p>
+                        <p class="imgId"></p>
                     </div>
 
 
@@ -2545,7 +2544,6 @@
 
     pybossa.presentTask(function (task, deferred) {
 
-    alert("dfsdf");
         if (!$.isEmptyObject(task)) {
 
 
@@ -2579,7 +2577,7 @@
 
             var imgUrl = task.info.url_b;
             var result = imgUrl.replace("//citscitools.cancerresearchuk.org/static/img/mvp-01/", "");
-            $("#imgId").html("Image ID: " + "<strong>" + result + "</strong>");
+            $(".imgId").html("Image ID: " + "<strong>" + result + "</strong>");
 
 
             /*
@@ -2616,12 +2614,15 @@
             }
 
 
-            var modalBtn = document.getElementById("modalShow");
-            modalBtn.onclick = function () {
+            var showTutorialModalBtn = document.getElementById("showTutorialModalBtn");
+            showTutorialModalBtn.onclick = function () {
+
 
                 modal.open( "#tutorialModal" );
                 zoom.removeZoom($(".tutorialZoom"));
                 openModalCount++;
+
+
             };
 
             var closeBtn = document.getElementById("closeBtn");
@@ -2887,6 +2888,8 @@
             $("#feedback-content").hide();
             $("#mechanic-content").show();
 
+            $("#startFeedbackBtn").hide();
+            $("#goBackBtn").show();
             pybossa.run("mvp-03");
 
         }
@@ -2913,7 +2916,6 @@
 
         $("#startMechanicBtn").on("click", function(e){
             e.preventDefault();
-
             //$.removeCookie(cookie_tutorial_name, { path: '/' });
             //$.cookie(cookie_tutorial_name, null);
             $.cookie(cookie_feedback_name, false);
