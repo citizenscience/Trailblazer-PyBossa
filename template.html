@@ -2789,7 +2789,7 @@ To hide the shading and ticks/crosses click Hide my analysis
 
 
 
-        $("svg, .img-polaroid, .zoomContainer, .zoomWindowContainer, .feedback-photo-link").remove();
+        $("svg, .feedback-img-polaroid, .zoomContainer, .zoomWindowContainer, .feedback-photo-link").remove();
         $.removeData(".feedback-photo-link", 'elevateZoom');
 
 
@@ -2799,7 +2799,7 @@ To hide the shading and ticks/crosses click Hide my analysis
         var img = $('<img />');
         img.attr('src', imgUrl);
         img.attr('data-zoom-image', imgUrl);
-        img.addClass('img-polaroid');
+        img.addClass('feedback-img-polaroid');
 
         $('#feedback-photo-link').append(img);
 
@@ -2808,7 +2808,7 @@ To hide the shading and ticks/crosses click Hide my analysis
         grid.createGrid("feedbackCanvas");
 
         var zoom = new Zoom();
-        zoom.addZoom($(".img-polaroid"));
+        zoom.addZoom($(".feedback-img-polaroid"));
 
         var showAnswers = document.getElementById("showAnswers");
         showAnswers.onclick = function () {
@@ -2909,7 +2909,6 @@ To hide the shading and ticks/crosses click Hide my analysis
             $("#feedback-content").hide();
             $("#mechanic-content").show();
 
-
             pybossa.run("mvp-03");
 
         }
@@ -2928,23 +2927,15 @@ To hide the shading and ticks/crosses click Hide my analysis
         });
 
         $("#finishFeedback").on("click", function () {
-            var zoom = new Zoom();
-            zoom.removeZoom($(".img-polaroid"));
+            //var zoom = new Zoom();
+            //zoom.removeZoom($(".img-polaroid"));
             var m = new Modal;
             m.open( "#summaryModal" );
         });
 
-        $("#startMechanicBtn").on("click", function(e){
-            e.preventDefault();
-
-            var zoom = new Zoom();
-            zoom.removeZoom($(".tutorialZoom, .img-polaroid"));
-                $("#errorClick").show();
-                zoom.addZoom($(".img-polaroid"));
+        $("#startMechanicBtn").on("click", function(){
             $.cookie(cookie_feedback_name, false);
             UpdatePageState();
-
-
         });
 
 
