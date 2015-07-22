@@ -2936,10 +2936,15 @@ To hide the shading and ticks/crosses click Hide my analysis
 
         $("#startMechanicBtn").on("click", function(e){
             e.preventDefault();
-            //$.removeCookie(cookie_tutorial_name, { path: '/' });
-            //$.cookie(cookie_tutorial_name, null);
+
+            var zoom = new Zoom();
+            zoom.removeZoom($(".tutorialZoom, .img-polaroid"));
+                $("#errorClick").show();
+                zoom.addZoom($(".img-polaroid"));
             $.cookie(cookie_feedback_name, false);
             UpdatePageState();
+
+
         });
 
 
