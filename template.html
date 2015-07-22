@@ -1933,6 +1933,8 @@ To hide the shading and ticks/crosses click Hide my analysis
      * that have the clicked coordinates
      *
      */
+
+
     Grid.prototype.findClosestSquare = function () {
 
         var _this = this,
@@ -2129,6 +2131,7 @@ To hide the shading and ticks/crosses click Hide my analysis
         }
     }
 
+
     Grid.prototype.deselectAllSquares = function () {
         for (var i = 0; i < this.task.answer.squares.length; i++) {
             var gridSquare = this.task.answer.squares[i],
@@ -2137,6 +2140,9 @@ To hide the shading and ticks/crosses click Hide my analysis
             gridSquareNode.setAttribute("class", "grid-item");
         }
     }
+
+
+
 
 
     /*
@@ -2152,6 +2158,7 @@ To hide the shading and ticks/crosses click Hide my analysis
     function Modal() {
         this.step = -1;
     }
+
 
     Modal.prototype.open = function (modal) {
         $(modal).modal({
@@ -2269,6 +2276,7 @@ To hide the shading and ticks/crosses click Hide my analysis
 
     };
 
+
     Modal.prototype.nextSlideContent = function (carousel) {
 
         return function () {
@@ -2289,25 +2297,17 @@ To hide the shading and ticks/crosses click Hide my analysis
 
     }
 
+
     Modal.prototype.carousel = function () {
 
 
     }
 
+
     Modal.prototype.close = function () {
 
 
     }
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -2323,15 +2323,10 @@ To hide the shading and ticks/crosses click Hide my analysis
 
 
     function Zoom() {
-        //Grid.call(this);
 
     }
 
-    //Zoom.prototype = Object.create(Grid.prototype);
-
     Zoom.prototype.addZoom = function (element) {
-
-
         element.elevateZoom({
             zoomWindowPosition: "grid-info",
 
@@ -2348,9 +2343,8 @@ To hide the shading and ticks/crosses click Hide my analysis
 
     }
 
-    Zoom.prototype.alert = function () {
-        alert("SDFSDFASDF");
-    }
+
+
 
 
     /*
@@ -2359,7 +2353,6 @@ To hide the shading and ticks/crosses click Hide my analysis
      * =======================
      *
      */
-
 
 
     /*
@@ -2393,6 +2386,7 @@ To hide the shading and ticks/crosses click Hide my analysis
      *
      *
      */
+
 
     function whatDevice() {
         var desktop = device.desktop(),
@@ -2503,9 +2497,17 @@ To hide the shading and ticks/crosses click Hide my analysis
 
     BrowserDetect.init();
 
-    if (BrowserDetect.browser == 'Explorer') {
-        //$(".wrappy").addClass("active");
-    }
+    /*
+        For displaying a message on IE
+
+        if (BrowserDetect.browser == 'Explorer') {
+            //$(".wrappy").addClass("active");
+        }
+    */
+
+
+
+
 
 
     /*
@@ -2549,6 +2551,13 @@ To hide the shading and ticks/crosses click Hide my analysis
         }
 
     });
+
+
+
+
+
+
+
 
 
     /*
@@ -2755,6 +2764,10 @@ To hide the shading and ticks/crosses click Hide my analysis
     });
 
 
+
+
+
+
     /*
      * General app stuff like inits and buttons listeners
      *
@@ -2772,13 +2785,10 @@ To hide the shading and ticks/crosses click Hide my analysis
         if (action == 'next') {
             step += 1;
         }
-
         if (step == 1) {
             $("#nextFeedbackStep").hide();
             $("#checkMyWorkBtn").show();
         }
-
-
         if (step == 2) {
             $("#nextFeedbackStep").hide();
             $("#finishFeedback").show();
@@ -2786,7 +2796,6 @@ To hide the shading and ticks/crosses click Hide my analysis
 
         $("svg, .feedback-img-polaroid, .zoomContainer, .zoomWindowContainer, .feedback-photo-link").remove();
         $.removeData(".feedback-photo-link", 'elevateZoom');
-
 
         var data_obj = data[step].info;
         var imgUrl = data[step].info.imgNumber;
@@ -2797,6 +2806,7 @@ To hide the shading and ticks/crosses click Hide my analysis
         img.addClass('feedback-img-polaroid');
 
         $('#feedback-photo-link').append(img);
+
 
 
         var grid = new Grid();
@@ -2824,15 +2834,12 @@ To hide the shading and ticks/crosses click Hide my analysis
             grid.hideMyAnalysis();
         };
 
-
         var checkMyWork = document.getElementById("checkMyWorkBtn");
         checkMyWork.onclick = function () {
             if( $(this).hasClass("disabled") ) return
             $("#showMyAnalysisBtn").show();
             $("#hideMyAnalysisBtn").show();
             grid.showMyAnalysis();
-            //$("#showAnswers").show();
-            //$("#hideAnswers").show();
             $("#nextFeedbackStep").show();
             $("#checkMyWorkBtn").hide();
         };
@@ -2843,10 +2850,13 @@ To hide the shading and ticks/crosses click Hide my analysis
 
     var nextFeedbackBtn = document.getElementById("nextFeedbackStep");
     nextFeedbackBtn.onclick = function () {
-
         showFeedbackStep('next');
-
     };
+
+
+
+
+
 
 
 
@@ -2855,30 +2865,22 @@ To hide the shading and ticks/crosses click Hide my analysis
         // State of the page to show to the user
         var page_state = "mechanic";
 
-
-
         // Check if the page should be in show feedback state
         var cookie_feedback = $.cookie(cookie_feedback_name);
         if (cookie_feedback != null )
             page_state = "feedback";
-
 
         // Check if the page should be in tutorial state
         var cookie_tutorial = $.cookie(cookie_tutorial_name);
         if (cookie_tutorial == null || cookie_tutorial != "seen")
             page_state = "tutorial";
 
-
-
         // Check if the page should be in show feedback state
         var cookie_feedback = $.cookie(cookie_feedback_name);
         if (cookie_feedback == "false"  )
             page_state = "mechanic";
 
-
-
         if (page_state == "feedback") {
-
             showFeedbackStep('next');
             $("#feedback-content").show();
         }
@@ -2887,14 +2889,13 @@ To hide the shading and ticks/crosses click Hide my analysis
             var m = new Modal;
             m.open( "#tutorialModal" );
 
-
-
             $("#feedback-content").hide();
 
             var nextBtn = document.getElementById("nextBtn");
             nextBtn.onclick = function () {
                 m.showStep('next');
             };
+
             var prevBtn = document.getElementById("prevBtn");
             prevBtn.onclick = function () {
                 m.showStep('prev');
@@ -2903,9 +2904,7 @@ To hide the shading and ticks/crosses click Hide my analysis
         } else {
             $("#feedback-content").hide();
             $("#mechanic-content").show();
-
             pybossa.run("mvp-03");
-
         }
 
     }
@@ -2913,7 +2912,6 @@ To hide the shading and ticks/crosses click Hide my analysis
     $(function () {
 
         UpdatePageState();
-
 
         $("#startFeedbackBtn").on("click", function () {
             $.cookie(cookie_tutorial_name, "seen");
@@ -2932,9 +2930,6 @@ To hide the shading and ticks/crosses click Hide my analysis
             $.cookie(cookie_feedback_name, false);
             UpdatePageState();
         });
-
-
-
 
     });
 
