@@ -48,10 +48,10 @@
                         Press Start to begin analysing!
                     </ul>
                 </div>
-                <div class="summary-modal-footer">
-                    <button class="btn" id="startMechanicBtn" data-dismiss="modal" aria-hidden="true">Practise</button>
-                </div>
             </div>
+            <div class="modal-footer">
+                    <button class="btn btn-primary" id="startMechanicBtn" data-dismiss="modal" aria-hidden="true"><i class="icon-thumbs-up"></i> Start</button>
+                </div>
         </div>
 
 
@@ -1008,8 +1008,8 @@
                         <a class="btn btn-success pull-right" id="nextFeedbackStep">
                             Next slide
                         </a>
-                        <a class="btn btn-primary pull-right" id="finishFeedback" style="display:none;">
-                            Finished
+                        <a class="btn btn-success pull-right" id="finishFeedback" style="display:none;">
+                            Start analysis
                         </a>
                         <a class="btn " id="showAnswers" style="display:none;">
                             Show answers
@@ -1021,10 +1021,10 @@
                          <a class="btn btn-success pull-right disabled" id="checkMyWorkBtn" style="display:none;">
                             Check my work
                         </a>
-                        <a class="btn btn-primary" id="showMyAnalysisBtn" style="display:none;">
+                        <a class="btn" id="showMyAnalysisBtn" style="display:none;">
                             Show my analysis
                         </a>
-                        <a class="btn btn-primary" id="hideMyAnalysisBtn" style="display:none;">
+                        <a class="btn" id="hideMyAnalysisBtn" style="display:none;">
                             Hide my analysis
                         </a>
                     </div>
@@ -2007,7 +2007,7 @@
 
             var tick = this.canvas.path(tick).attr("stroke-width", "3px");
 
-            if( step == 1 ) tick.attr("opacity",0);
+            if( step == 1 || step == 2) tick.attr("opacity",0);
 
             tick["data-parent_id"] = parentId;
             this.tickCross.push(tick);
@@ -2032,7 +2032,7 @@
 
             var cross = this.canvas.path(cross).attr("stroke-width", "3px");
 
-            if( step == 1 ) cross.attr("opacity",0);
+            if( step == 1 || step == 2) cross.attr("opacity",0);
 
             cross["data-parent_id"] = parentId;
             this.tickCross.push(cross);
@@ -2882,7 +2882,9 @@
         } else {
             $("#feedback-content").hide();
             $("#mechanic-content").show();
-            pybossa.run(project_short_name);
+
+            pybossa.run("mvp-03");
+
         }
 
     }
@@ -2890,8 +2892,6 @@
     $(function () {
 
         UpdatePageState();
-
-
 
 
         $("#startFeedbackBtn").on("click", function () {
