@@ -2243,6 +2243,7 @@
             if ($("#mechanic-content").is(':visible')) {
                 $("#startFeedbackBtn").hide();
                 $("#goBackBtn").show();
+                $("#closeBtn").show();
             } else {
                 $("#startFeedbackBtn").show();
                 $("#goBackBtn").hide();
@@ -2639,8 +2640,8 @@
                 $("#errorClick").show();
                 zoom.addZoom($(".img-polaroid"));
             };
-            var goBackBtn = document.getElementById("closeBtn");
-            closeBtn.onclick = function () {
+            var goBackBtn = document.getElementById("goBackBtn");
+            goBackBtn.onclick = function () {
                 zoom.removeZoom($(".tutorialZoom"));
                 $("#errorClick").show();
                 zoom.addZoom($(".img-polaroid"));
