@@ -2518,7 +2518,7 @@
             }
 
             img.load(function () {
-
+                console.log(task);
                 // continue as soon as the image is loaded
                 deferred.resolve(task);
 
@@ -2913,6 +2913,7 @@
 
         $("#startMechanicBtn").on("click", function(e){
             e.preventDefault();
+            window.location = "../mvp-03/newtask"
 
             //$.removeCookie(cookie_tutorial_name, { path: '/' });
             //$.cookie(cookie_tutorial_name, null);
