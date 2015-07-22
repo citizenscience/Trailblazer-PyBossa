@@ -2728,11 +2728,11 @@
                  * Save the task information and send to PyBossa
                  */
 
-                //pybossa.saveTask(task.id, answer).done(function (data) {
-                //    $("#success").fadeIn(500).delay(500).fadeOut();
-                //    $("svg, .zoomContainer,.zoomWindowContainer").remove();
-                //    deferred.resolve();
-                //});
+                pybossa.saveTask(task.id, answer).done(function (data) {
+                    $("#success").fadeIn(500).delay(500).fadeOut();
+                    $("svg, .zoomContainer,.zoomWindowContainer").remove();
+                    deferred.resolve();
+                });
 
                 //$("#loading").fadeIn(500).delay(500).fadeOut();
             });
