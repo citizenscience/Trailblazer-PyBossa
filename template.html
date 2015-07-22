@@ -122,6 +122,12 @@
         margin-bottom: 0;
         margin-top: 20px;
     }
+
+
+    .span6 {
+
+        width: 48% !important;
+    }
 </style>
 
 <header class="site-header clearfix">
@@ -155,7 +161,7 @@
 </header>
 
 <main class="site-content clearfix">
-    <div class="row clearfix">
+    <div class="row-fluid clearfix">
         <div class="span6">
             <div id="grid-info" class="grid-info">
                 <h1 id="question">Select which grid sections contain cancer cells</h1>
@@ -223,6 +229,8 @@
 <script type="text/javascript" async="async">
     "use strict";
 
+
+    $("body > .container").removeClass("container").addClass("container-fluid");
 
     /*
      * Random events
