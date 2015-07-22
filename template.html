@@ -2768,6 +2768,8 @@ To hide the shading and ticks/crosses click Hide my analysis
 
     function showFeedbackStep(action) {
 
+        alert("showFeedbackStep");
+
         $("#feedbackStep" + step).hide();
 
         if (action == 'next') {
@@ -2784,10 +2786,6 @@ To hide the shading and ticks/crosses click Hide my analysis
             $("#nextFeedbackStep").hide();
             $("#finishFeedback").show();
         }
-
-
-
-
 
         $("svg, .feedback-img-polaroid, .zoomContainer, .zoomWindowContainer, .feedback-photo-link").remove();
         $.removeData(".feedback-photo-link", 'elevateZoom');
@@ -2927,8 +2925,9 @@ To hide the shading and ticks/crosses click Hide my analysis
         });
 
         $("#finishFeedback").on("click", function () {
-            //var zoom = new Zoom();
-            //zoom.removeZoom($(".img-polaroid"));
+            $("svg, .feedback-img-polaroid, .zoomContainer, .zoomWindowContainer, .feedback-photo-link").remove();
+            $.removeData(".feedback-photo-link", 'elevateZoom');
+
             var m = new Modal;
             m.open( "#summaryModal" );
         });
