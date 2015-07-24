@@ -31,7 +31,7 @@
         <div id="summaryModal" class="modal hide fade">
             <div class="modal-body">
                 <div class="modal-image">
-                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/38.png" alt=""/>
+                    <img id="firstImg" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/38.png" alt=""/>
                 </div>
                 <div class="modal-info">
                     <h1>
@@ -1143,8 +1143,6 @@ To hide the shading and ticks/crosses click Hide my analysis
 
 
 
-
-
     var project_short_name = "{{ project.short_name }}";
     if (project_short_name == "")
         project_short_name = "mvp-03";
@@ -1763,7 +1761,13 @@ To hide the shading and ticks/crosses click Hide my analysis
             "project_id": 9,
             "id": 1502
         }
-    ]
+    ];
+
+
+
+
+
+
 
 
     "use strict";
@@ -1782,8 +1786,7 @@ To hide the shading and ticks/crosses click Hide my analysis
     function Grid(task) {
 
         this.canvas;
-        this.feedbackStep = step;
-        this.tickCross = [];
+
         this.task = task;
 
 
@@ -1794,21 +1797,10 @@ To hide the shading and ticks/crosses click Hide my analysis
             feedback.
         */
 
-        if( typeof this.task !== "undefined" ) {
+
             this.task = task;
             this.zoomLensClickEvent();
-        }
 
-        else {
-             this.feedbackObj = {
-                tickCross: [],
-                feedbackStep: step,
-                answer: {
-                    squares: []
-                }
-            };
-            this.zoomLensClickEvent();
-        }
     }
 
 
@@ -1862,11 +1854,9 @@ To hide the shading and ticks/crosses click Hide my analysis
                     We can then grab this when saving the info at the end
                 */
 
-                if (typeof this.task != 'undefined') {
+
                     this.task.answer.squares.push(gridSquare);
-                } else {
-                    this.feedbackObj.answer.squares.push(gridSquare);
-                }
+
 
             }
         }
@@ -1880,6 +1870,243 @@ To hide the shading and ticks/crosses click Hide my analysis
     */
 
     Grid.prototype.zoomLensClickEvent = function () {
+
+        var clicks = 0,
+            timer = null,
+            _this = this;
+
+        $("body").on("click touchstart", ".zoomLens", function (evt) {
+            evt.preventDefault();
+            clicks++; //count clicks
+
+
+
+            var activeSquare = _this.findClosestSquare();
+            var activeSquareNode = activeSquare.node;
+
+
+            /*
+                Not able to use jQuery .click or .dblclick for some reason i can't remember
+                If we can then should use jQuery...might be quicker and easier
+            */
+
+
+
+
+             if (activeSquareNode.className.animVal === "grid-item") {
+
+                activeSquareNode.setAttribute("class", "grid-item grid-item-success");
+                activeSquare.has_cancer = true;
+
+
+                    _this.checkAnswer(true, activeSquare);
+
+
+
+             } else if( activeSquareNode.className.animVal === "grid-item grid-item-success" ) {
+
+                activeSquareNode.setAttribute("class", "grid-item grid-item-error");
+                activeSquare.has_cancer = false;
+
+
+                    _this.checkAnswer(false, activeSquare);
+
+
+
+             } else {
+
+                activeSquareNode.setAttribute("class", "grid-item");
+                            activeSquare.has_cancer = null;
+
+
+                    _this.checkAnswer(null, activeSquare);
+
+
+             } //after action performed, reset counter
+
+
+        });
+    };
+
+
+    /*
+        Loop through the grid items and find the closest matching grid that have the clicked coordinates
+    */
+
+    Grid.prototype.findClosestSquare = function () {
+
+        var _this = this,
+            activeSquare,
+            target = $(".zoomLens"),
+            target_pos = {
+                x: parseInt(target.css("left")),
+                y: parseInt(target.css("top"))
+            };
+
+        // Center the zoom cursor to middle of square
+        target_pos.x = target_pos.x + 34.85;
+        target_pos.y = target_pos.y + 34.85;
+
+
+        // Find the closet grid item
+
+
+            $.each(_this.task.answer.squares, function (key, value) {
+                if (value.isPointInside(target_pos.x, target_pos.y)) {
+                    activeSquare = value;
+                }
+            });
+
+        return activeSquare;
+    };
+
+
+
+
+
+    /*
+        Selects all of the grid squares turning them red and changing the defalut
+        square answer to "true" is does have cancer
+    */
+
+    Grid.prototype.selectAllSquares = function () {
+        for (var i = 0; i < this.task.answer.squares.length; i++) {
+            var gridSquare = this.task.answer.squares[i],
+                gridSquareNode = this.task.answer.squares[i].node;
+            gridSquare.has_cancer = true;
+            gridSquareNode.setAttribute("class", "grid-item grid-item-success");
+        }
+    }
+
+
+    /*
+        Deselects all of the grid squares turning them to have no fill color.
+        This also changes the cancer value to "null"
+    */
+
+    Grid.prototype.deselectAllSquares = function () {
+        for (var i = 0; i < this.task.answer.squares.length; i++) {
+            var gridSquare = this.task.answer.squares[i],
+                gridSquareNode = this.task.answer.squares[i].node;
+            gridSquare.has_cancer = null;
+            gridSquareNode.setAttribute("class", "grid-item");
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    "use strict";
+
+
+    /**
+     * Grid Constructor function
+     * =======================
+     * Its a bit of a miss match of vanilla JS and jQuery...sorry,
+     * wanted to do everything in JS but for speed i did jQuery
+     * =======================
+     *
+     *
+     */
+
+    function FeedbackGrid() {
+
+        this.canvas;
+        this.feedbackStep = step;
+        this.tickCross = [];
+
+             this.feedbackObj = {
+                tickCross: [],
+                feedbackStep: step,
+                answer: {
+                    squares: []
+                }
+            };
+            this.zoomLensClickEvent();
+
+    }
+
+
+    /*
+        For creating a grid overlayed over the image
+    */
+
+    FeedbackGrid.prototype.createGrid = function (canvasElement) {
+
+
+        var rows = 6,
+            columns = 6,
+            gridHeight = 460 / columns,
+            gridWidth = 460 / rows;
+
+        this.canvas = Raphael(canvasElement, 460, 460);
+
+
+        /*
+            creates 36 grid squares in raphael
+        */
+
+        var x, y, i = -1;
+        for (y = 0; y < rows; y += 1) {
+            for (x = 0; x < columns; x += 1) {
+
+                i++;
+
+                var offsetH = y,
+                    offsetW = x,
+                    moveDown = (y + gridHeight - offsetH) * y,
+                    moveRight = (x + gridWidth - offsetW) * x,
+                    gridSquare = this.canvas.rect(moveRight, moveDown, gridWidth, gridHeight).attr({
+                        "stroke": "#fff"
+                    });
+                gridSquare.node.setAttribute("class", "grid-item");
+
+
+                /*
+                    Make sure grid squares start from id 0
+                */
+
+                gridSquare.id = i;
+
+                gridSquare.column = x;
+                gridSquare.row = y;
+                gridSquare.has_cancer = null;
+
+
+                this.feedbackObj.answer.squares.push(gridSquare);
+
+
+            }
+        }
+
+    };
+
+
+    /*
+        Initalise and listen for the click on on the little zoom lens and then
+        use Raphaeljs functions to find the closest square.
+    */
+
+    FeedbackGrid.prototype.zoomLensClickEvent = function () {
 
         var clicks = 0,
             timer = null,
@@ -1908,9 +2135,9 @@ To hide the shading and ticks/crosses click Hide my analysis
                 activeSquareNode.setAttribute("class", "grid-item grid-item-success");
                 activeSquare.has_cancer = true;
 
-                if ($("#feedback-content").is(':visible')) {
+
                     _this.checkAnswer(true, activeSquare);
-                }
+
 
 
              } else if( activeSquareNode.className.animVal === "grid-item grid-item-success" ) {
@@ -1918,9 +2145,9 @@ To hide the shading and ticks/crosses click Hide my analysis
                 activeSquareNode.setAttribute("class", "grid-item grid-item-error");
                 activeSquare.has_cancer = false;
 
-                if ($("#feedback-content").is(':visible')) {
+
                     _this.checkAnswer(false, activeSquare);
-                }
+
 
 
              } else {
@@ -1928,76 +2155,11 @@ To hide the shading and ticks/crosses click Hide my analysis
                 activeSquareNode.setAttribute("class", "grid-item");
                             activeSquare.has_cancer = null;
 
-                if ($("#feedback-content").is(':visible')) {
+
                     _this.checkAnswer(null, activeSquare);
-                }
+
 
              } //after action performed, reset counter
-
-
-
-
-
-
-
-/*
-            // SINGLE CLICK
-            if (clicks === 1) {
-
-
-
-
-                //(function (activeSquareNode) {
-                    timer = setTimeout(function () {
-                        // Adds and removes classes to grid squares making them red or green
-
-                        if (activeSquareNode.className.animVal != "grid-item grid-item-success") {
-
-                            activeSquareNode.setAttribute("class", "grid-item grid-item-success");
-                            activeSquare.has_cancer = true;
-
-
-                            if ($("#feedback-content").is(':visible')) {
-                                _this.checkAnswer(true, activeSquare);
-                            }
-
-
-                        } else {
-
-
-                            activeSquareNode.setAttribute("class", "grid-item grid-item-error");
-                            activeSquare.has_cancer = false;
-
-                            if ($("#feedback-content").is(':visible')) {
-                                _this.checkAnswer(false, activeSquare);
-                            }
-
-                        } //after action performed, reset counter
-                        clicks = 0;
-                    }, 250);
-
-                //}(activeSquareNode));
-
-            }
-            // DOUBLE CLICK
-            else {
-                clearTimeout(timer); //prevent single-click action
-
-                activeSquareNode.setAttribute("class", "grid-item");
-                            activeSquare.has_cancer = null;
-
-                            if ($("#feedback-content").is(':visible')) {
-                                _this.checkAnswer(null, activeSquare);
-                            }
-
-
-
-                clicks = 0;
-            }
-
-
-
-            */
 
         });
     };
@@ -2007,7 +2169,7 @@ To hide the shading and ticks/crosses click Hide my analysis
         Loop through the grid items and find the closest matching grid that have the clicked coordinates
     */
 
-    Grid.prototype.findClosestSquare = function () {
+    FeedbackGrid.prototype.findClosestSquare = function () {
 
         var _this = this,
             activeSquare,
@@ -2024,19 +2186,12 @@ To hide the shading and ticks/crosses click Hide my analysis
 
         // Find the closet grid item
 
-        if (typeof this.task != 'undefined') {
-            $.each(_this.task.answer.squares, function (key, value) {
-                if (value.isPointInside(target_pos.x, target_pos.y)) {
-                    activeSquare = value;
-                }
-            });
-        } else {
             $.each(_this.feedbackObj.answer.squares, function (key, value) {
                 if (value.isPointInside(target_pos.x, target_pos.y)) {
                     activeSquare = value;
                 }
             });
-        }
+
         return activeSquare;
     };
 
@@ -2046,7 +2201,7 @@ To hide the shading and ticks/crosses click Hide my analysis
         pathologist said about the same square.
     */
 
-    Grid.prototype.checkAnswer = function (action, activeSquare) {
+    FeedbackGrid.prototype.checkAnswer = function (action, activeSquare) {
 
         var state = action,
             pathologistAnswer,
@@ -2159,7 +2314,7 @@ To hide the shading and ticks/crosses click Hide my analysis
         Displays the pathologist tick's and cross's by changing the opacity of the square
     */
 
-    Grid.prototype.showMyAnalysis = function () {
+    FeedbackGrid.prototype.showMyAnalysis = function () {
         $.each(this.tickCross, function (key, value) {
             value.attr("opacity",1);
         });
@@ -2170,41 +2325,12 @@ To hide the shading and ticks/crosses click Hide my analysis
         Hide the pathologist tick's and cross's by changing the opacity of the square
     */
 
-    Grid.prototype.hideMyAnalysis = function () {
+    FeedbackGrid.prototype.hideMyAnalysis = function () {
         $.each(this.tickCross, function (key, value) {
             value.attr("opacity",0);
         });
     };
 
-
-    /*
-        Selects all of the grid squares turning them red and changing the defalut
-        square answer to "true" is does have cancer
-    */
-
-    Grid.prototype.selectAllSquares = function () {
-        for (var i = 0; i < this.task.answer.squares.length; i++) {
-            var gridSquare = this.task.answer.squares[i],
-                gridSquareNode = this.task.answer.squares[i].node;
-            gridSquare.has_cancer = true;
-            gridSquareNode.setAttribute("class", "grid-item grid-item-success");
-        }
-    }
-
-
-    /*
-        Deselects all of the grid squares turning them to have no fill color.
-        This also changes the cancer value to "null"
-    */
-
-    Grid.prototype.deselectAllSquares = function () {
-        for (var i = 0; i < this.task.answer.squares.length; i++) {
-            var gridSquare = this.task.answer.squares[i],
-                gridSquareNode = this.task.answer.squares[i].node;
-            gridSquare.has_cancer = null;
-            gridSquareNode.setAttribute("class", "grid-item");
-        }
-    }
 
 
     /*
@@ -2212,7 +2338,7 @@ To hide the shading and ticks/crosses click Hide my analysis
         the pathologist answers.
     */
 
-    Grid.prototype.showPathologistAnswers = function () {
+    FeedbackGrid.prototype.showPathologistAnswers = function () {
 
         for (var i = 0; i < data[step].info.squares.length; i++) {
 
@@ -2237,6 +2363,18 @@ To hide the shading and ticks/crosses click Hide my analysis
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
     /*
      *
      * Modal
@@ -2249,6 +2387,8 @@ To hide the shading and ticks/crosses click Hide my analysis
 
     function Modal() {
         this.step = -1;
+
+
     }
 
 
@@ -2262,6 +2402,7 @@ To hide the shading and ticks/crosses click Hide my analysis
             backdrop: 'static',
             keyboard: false
         });
+
         this.showStep(0);
     };
 
@@ -2308,6 +2449,7 @@ To hide the shading and ticks/crosses click Hide my analysis
             $('.zoomContainer').remove();
             $('.zoomWindowContainer').remove();
             var tutorial = ".tutorialZoom" + this.step;
+
 
             $(tutorial).elevateZoom();
 
@@ -2367,6 +2509,8 @@ To hide the shading and ticks/crosses click Hide my analysis
 
         }
 
+
+
         $currentStep.show();
 
     };
@@ -2392,6 +2536,11 @@ To hide the shading and ticks/crosses click Hide my analysis
             $($itemInners[id - 1]).addClass('active')
             var $modalId = $(this).parent().parent().parent().parent().attr("id");
             $('#myCarousel' + $modalId).carousel(id - 1);
+
+
+
+
+
         }
 
     }
@@ -2883,29 +3032,29 @@ To hide the shading and ticks/crosses click Hide my analysis
         $('#feedback-photo-link').append(img);
 
 
-        var grid = new Grid();
-        grid.createGrid("feedbackCanvas");
+        var feedbackGrid = new FeedbackGrid();
+        feedbackGrid.createGrid("feedbackCanvas");
 
         var zoom = new Zoom();
         zoom.addZoom($(".feedback-img-polaroid"));
 
         var showAnswers = document.getElementById("showAnswers");
         showAnswers.onclick = function () {
-            grid.showPathologistAnswers();
+            feedbackGrid.showPathologistAnswers();
         };
 
         var hideAnswers = document.getElementById("hideAnswers");
         hideAnswers.onclick = function () {
-            grid.hidePathologistAnswers();
+            feedbackGrid.hidePathologistAnswers();
         };
 
         var showMyAnalysis = document.getElementById("showMyAnalysisBtn");
         showMyAnalysis.onclick = function () {
-            grid.showMyAnalysis();
+            feedbackGrid.showMyAnalysis();
         };
         var hideMyAnalysis = document.getElementById("hideMyAnalysisBtn");
         hideMyAnalysis.onclick = function () {
-            grid.hideMyAnalysis();
+            feedbackGrid.hideMyAnalysis();
         };
 
 
