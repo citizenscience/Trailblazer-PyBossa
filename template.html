@@ -1024,11 +1024,21 @@ To hide the shading and ticks/crosses click Hide my analysis
 
 
                 </div>
-                <div id="pathologistFeedback" class="alert alert-info">
-                    <h2><strong>Our expert pathologists said:</strong></h2>
+                <div class="alert alert-info" id="pathologistFeedback" style="display:none;">
 
-                    <p></p>
+                    <div class="" id="pathologistsText" >
+                        <h2>
+                            <strong>Our expert pathologists said:</strong>
+                        </h2>
+                        <p></p>
+                    </div>
+
                 </div>
+                <p id="feedbackProgressText" style="display:none;"></p>
+                 <div class="progress progress-success progress-striped" style="display:none;" >
+
+                        <div class="bar" id="feedbackProgress" ></div>
+                    </div>
 
             </div>
 
@@ -1116,23 +1126,23 @@ To hide the shading and ticks/crosses click Hide my analysis
 
 <!--<figure class="example-list-item">-->
 <!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-03/examples/cancer-healthy-cells/example-healthy-blood-cells.jpg" alt=""/>-->
-<!--<figcaption class="description non-cancer">Healthy cells</figcaption>-->
+<!--<figcaption class="description non-cancer">Non-cancer Cells</figcaption>-->
 <!--</figure>-->
 <!--<figure class="example-list-item">-->
 <!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-03/examples/cancer-healthy-cells/example-healthy-lung-stromal-cartilage.jpg" alt=""/>-->
-<!--<figcaption class="description non-cancer">Healthy cells</figcaption>-->
+<!--<figcaption class="description non-cancer">Non-cancer Cells</figcaption>-->
 <!--</figure>-->
 <!--<figure class="example-list-item">-->
 <!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-03/examples/cancer-healthy-cells/example-healthy-stromal-and-blood-cells.jpg" alt=""/>-->
-<!--<figcaption class="description non-cancer">Healthy cells</figcaption>-->
+<!--<figcaption class="description non-cancer">Non-cancer Cells</figcaption>-->
 <!--</figure>-->
 <!--<figure class="example-list-item">-->
 <!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-03/examples/cancer-healthy-cells/example-healthy-stromal-and-blood-cells2.jpg" alt=""/>-->
-<!--<figcaption class="description non-cancer">Healthy cells</figcaption>-->
+<!--<figcaption class="description non-cancer">Non-cancer Cells</figcaption>-->
 <!--</figure>-->
 <!--<figure class="example-list-item last">-->
 <!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-03/examples/cancer-healthy-cells/example-healthy-stromal-cells.jpg" alt=""/>-->
-<!--<figcaption class="description non-cancer">Healthy cells</figcaption>-->
+<!--<figcaption class="description non-cancer">Non-cancer Cells</figcaption>-->
 <!--</figure>-->
 <!--</div>-->
 
@@ -1873,11 +1883,24 @@ Grid.prototype.deselectAllSquares = function() {
 
 
 
-"use strict";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /**
- * Grid Constructor function
+ * FeedbackGrid Constructor function
  * =======================
  * Its a bit of a miss match of vanilla JS and jQuery...sorry,
  * wanted to do everything in JS but for speed i did jQuery
@@ -1960,98 +1983,98 @@ FeedbackGrid.prototype.createGrid = function(canvasElement) {
 
 
 /*
-    Initalise and listen for the click on on the little zoom lens and then
-    use Raphaeljs functions to find the closest square.
-*/
+        Initalise and listen for the click on on the little zoom lens and then
+        use Raphaeljs functions to find the closest square.
+    */
 
-FeedbackGrid.prototype.zoomLensClickEvent = function() {
+    FeedbackGrid.prototype.zoomLensClickEvent = function () {
 
-    var clicks = 0,
-        timer = null,
-        _this = this;
+        var clicks = 0,
+            timer = null,
+            _this = this;
 
-    $("body").on("click touchstart", ".zoomLens", function(evt) {
-        evt.preventDefault();
-        clicks++; //count clicks
+        $("body").on("click touchstart", ".zoomLens", function (evt) {
+            evt.preventDefault();
+            clicks++; //count clicks
 
-        if (step == 1) _this.hideMyAnalysis();
+            if(  step == 1 ) _this.hideMyAnalysis();
 
-        var activeSquare = _this.findClosestSquare();
-        var activeSquareNode = activeSquare.node;
-
-
-        /*
-            Not able to use jQuery .click or .dblclick for some reason i can't remember
-            If we can then should use jQuery...might be quicker and easier
-        */
+            var activeSquare = _this.findClosestSquare();
+            var activeSquareNode = activeSquare.node;
 
 
-
-
-        if (activeSquareNode.className.animVal === "grid-item") {
-
-            activeSquareNode.setAttribute("class", "grid-item grid-item-success");
-            activeSquare.has_cancer = true;
-
-
-            _this.checkAnswer(true, activeSquare);
+            /*
+                Not able to use jQuery .click or .dblclick for some reason i can't remember
+                If we can then should use jQuery...might be quicker and easier
+            */
 
 
 
-        } else if (activeSquareNode.className.animVal === "grid-item grid-item-success") {
 
-            activeSquareNode.setAttribute("class", "grid-item grid-item-error");
-            activeSquare.has_cancer = false;
+             if (activeSquareNode.className.animVal === "grid-item") {
 
-
-            _this.checkAnswer(false, activeSquare);
+                activeSquareNode.setAttribute("class", "grid-item grid-item-success");
+                activeSquare.has_cancer = true;
 
 
-
-        } else {
-
-            activeSquareNode.setAttribute("class", "grid-item");
-            activeSquare.has_cancer = null;
+                    _this.checkAnswer(true, activeSquare);
 
 
-            _this.checkAnswer(null, activeSquare);
+
+             } else if( activeSquareNode.className.animVal === "grid-item grid-item-success" ) {
+
+                activeSquareNode.setAttribute("class", "grid-item grid-item-error");
+                activeSquare.has_cancer = false;
 
 
-        } //after action performed, reset counter
-
-    });
-};
+                    _this.checkAnswer(false, activeSquare);
 
 
-/*
-    Loop through the grid items and find the closest matching grid that have the clicked coordinates
-*/
 
-FeedbackGrid.prototype.findClosestSquare = function() {
+             } else {
 
-    var _this = this,
-        activeSquare,
-        target = $(".zoomLens"),
-        target_pos = {
-            x: parseInt(target.css("left")),
-            y: parseInt(target.css("top"))
-        };
-
-    // Center the zoom cursor to middle of square
-    target_pos.x = target_pos.x + 34.85;
-    target_pos.y = target_pos.y + 34.85;
+                activeSquareNode.setAttribute("class", "grid-item");
+                            activeSquare.has_cancer = null;
 
 
-    // Find the closet grid item
+                    _this.checkAnswer(null, activeSquare);
 
-    $.each(_this.feedbackObj.answer.squares, function(key, value) {
-        if (value.isPointInside(target_pos.x, target_pos.y)) {
-            activeSquare = value;
-        }
-    });
 
-    return activeSquare;
-};
+             } //after action performed, reset counter
+
+        });
+    };
+
+
+    /*
+        Loop through the grid items and find the closest matching grid that have the clicked coordinates
+    */
+
+    FeedbackGrid.prototype.findClosestSquare = function () {
+
+        var _this = this,
+            activeSquare,
+            target = $(".zoomLens"),
+            target_pos = {
+                x: parseInt(target.css("left")),
+                y: parseInt(target.css("top"))
+            };
+
+        // Center the zoom cursor to middle of square
+        target_pos.x = target_pos.x + 34.85;
+        target_pos.y = target_pos.y + 34.85;
+
+
+        // Find the closet grid item
+
+            $.each(_this.feedbackObj.answer.squares, function (key, value) {
+                if (value.isPointInside(target_pos.x, target_pos.y)) {
+                    activeSquare = value;
+                }
+            });
+
+        return activeSquare;
+    };
 
 
 /*
@@ -2094,12 +2117,14 @@ FeedbackGrid.prototype.checkAnswer = function(action, activeSquare) {
         $("#pathologistFeedback").removeClass("alert-info").addClass("alert-success");
         $("#pathologistFeedback p").text("Well done! This is what our pathologist said");
 
-
         var tick = this.canvas.path(tick).attr("stroke-width", "3px");
 
         if (step > 0) tick.attr("opacity", 0);
         tick["data-parent_id"] = parentId;
+        tick["class"] = "tick";
         this.tickCross.push(tick);
+
+
 
     } else {
 
@@ -2111,24 +2136,43 @@ FeedbackGrid.prototype.checkAnswer = function(action, activeSquare) {
             $("#pathologistFeedback").removeClass("alert-success").addClass("alert-info");
             $("#pathologistFeedback p").text("The pathologies said it contained cancer");
             //activeSquare.node.setAttribute("class", "grid-item grid-item-success");
+            activeSquare.has_cancer = true;
         }
         if (pathologistAnswer.answer === false) {
             $("#pathologistFeedback").removeClass("alert-success").addClass("alert-info");
             $("#pathologistFeedback p").text("The pathologies said it did not contained cancer");
             //activeSquare.node.setAttribute("class", "grid-item grid-item-error");
+            activeSquare.has_cancer = false;
         }
         if (pathologistAnswer.answer === null) {
             $("#pathologistFeedback").removeClass("alert-success").addClass("alert-info");
             $("#pathologistFeedback p").text("The pathologies said this square was clear");
             //activeSquare.node.setAttribute("class", "grid-item");
+            activeSquare.has_cancer = null;
         }
 
         var cross = this.canvas.path(cross).attr("stroke-width", "3px");
-
         if (step > 0) cross.attr("opacity", 0);
-
         cross["data-parent_id"] = parentId;
+        cross["class"] = "cross";
+
+
+
+
+        var parentId = activeSquare.id;
+
+
+
+            console.log(activeSquare.node);
+        if( activeSquare.has_cancer === false ){
+
+
+
+
+        }
+
         this.tickCross.push(cross);
+
 
 
     }
@@ -2149,15 +2193,12 @@ FeedbackGrid.prototype.checkAnswer = function(action, activeSquare) {
 
     var checkMyWork = document.getElementById("checkMyWorkBtn");
     checkMyWork.onclick = function() {
-
         if ($(this).hasClass("disabled")) return
-
         $(this).hide();
         $("#showMyAnalysisBtn").show();
         $("#hideMyAnalysisBtn").show();
         _this.showMyAnalysis();
-        $("#nextFeedbackStep").show();
-
+        //$("#nextFeedbackStep").show();
     };
 
 
@@ -2170,6 +2211,7 @@ FeedbackGrid.prototype.checkAnswer = function(action, activeSquare) {
 */
 
 FeedbackGrid.prototype.showMyAnalysis = function() {
+    this.updateFeedbackProgress();
     $.each(this.tickCross, function(key, value) {
         value.attr("opacity", 1);
     });
@@ -2185,6 +2227,85 @@ FeedbackGrid.prototype.hideMyAnalysis = function() {
         value.attr("opacity", 0);
     });
 };
+
+
+
+FeedbackGrid.prototype.updateFeedbackProgress = function() {
+
+    var $feedbackProgressBar = $("#feedbackProgress"),
+        totalSquares = 36;
+
+
+    var correctSquares = 0;
+
+    $.each(this.tickCross, function(key, value) {
+        value.attr("opacity", 1);
+
+        if( value["class"] === "tick" ) {
+            correctSquares++;
+        }
+    });
+
+    var totalMarkedSquares = this.checkBlankSquares();
+
+    function between(x, min, max) {
+        return x >= min && x <= max;
+    }
+    function percentage(x, maxSquares) {
+        return Math.floor(( x / totalMarkedSquares) * 100);
+    }
+
+
+
+    var percentage = percentage(correctSquares);
+
+    $feedbackProgressBar.width( percentage + "%");
+
+    //$("#feedbackProgressText").text( "Well done! " + percentage + "%" + " of your chosen squares are correct. ");
+    $("#feedbackProgressText").text( "Well done! " +percentage + "%" + " of the total grid are correct");
+
+
+
+    /*
+
+
+        IDEAS:
+        ===========================
+
+
+        ADD THE BUTTON TO BECOMSE ACTIVE AND ADD A DISABLED CLASS BEFORE
+
+
+        SHOULD WE JUST SHOW ONE GRID SQUARE AT A TIME THATS ZOOMED IN LIKE THE
+        ORIGINAL PYBOSSA PROJECT? OR SPLIT THE SCREEN INTO FOUR? SIMPLER UX??? FEWER TICK STATES!!
+
+
+
+
+
+
+    */
+
+    if( percentage >= 75 ) {
+        $("#nextFeedbackStep").show();
+    }
+
+    this.checkBlankSquares();
+
+};
+
+
+FeedbackGrid.prototype.checkBlankSquares = function() {
+    var blankSquares = 0;
+    $.each(data[step]["info"]["squares"], function(key,value) {
+        if( value.answer === null ) {
+            blankSquares++;
+        }
+    });
+    return 36 - blankSquares;
+};
+
+
 
 
 
@@ -2213,6 +2334,17 @@ FeedbackGrid.prototype.showPathologistAnswers = function() {
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2842,6 +2974,7 @@ function showFeedbackStep(action) {
 
     if (step > 0) {
         $("#checkMyWorkBtn").show().addClass("disabled");
+        $("#pathologistFeedback, #feedbackProgressText, .progress-success").show();
         $("#showMyAnalysisBtn,#hideMyAnalysisBtn,#nextFeedbackStep").hide();
     }
 
@@ -2895,6 +3028,11 @@ function showFeedbackStep(action) {
 
 var nextFeedbackBtn = document.getElementById("nextFeedbackStep");
 nextFeedbackBtn.onclick = function() {
+
+
+    $("#feedbackProgress").width( "0%");
+    $("#feedbackProgressText").text("");
+
 
     var lastFeedbackStep = ($(".grid-info-instructions").length - 1) - 1;
 
