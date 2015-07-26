@@ -2106,16 +2106,22 @@ FeedbackGrid.prototype.checkAnswer = function(action, activeSquare) {
         if (typeof(value[activeSquare.id]) == 'object') {
             // Find the pathologist answer for that square
             pathologistAnswer = value[activeSquare.id];
+
         }
     });
 
     var activeSquarePosCX = activeSquare.attr("x") + 30,
-        activeSquarePosCY = activeSquare.attr("y") + 30;
-
-    var parentId = activeSquare.id;
+        activeSquarePosCY = activeSquare.attr("y") + 30,
+        parentId = activeSquare.id,
+        tc = this.tickCross;
 
     $.each(this.tickCross, function(key, value) {
-        if (parentId === value["data-parent_id"]) {
+        if ( parentId === value["data-parent_id"] ) {
+            //var index = tc.indexOf(value);
+            //if (index > -1) {
+            //     tc.splice(index, 1);
+            //     value.remove();
+            //}
             value.remove();
         }
     });
@@ -2125,25 +2131,34 @@ FeedbackGrid.prototype.checkAnswer = function(action, activeSquare) {
     var tick = "M " + (x + 15) + "," + (y + 35) + " L " + (x + 30) + "," + (y + 50) + " L " + (x + 60) + "," + (y + 20);
     var cross = "M " + (x + 20) + "," + (y + 20) + " L " + (x + 55) + "," + (y + 55) + "M " + (x + 20) + "," + (y + 55) + " L " + (x + 55) + "," + (y + 20);
 
+
     if (state === pathologistAnswer.answer) {
+
+        /*
+            If pathologist aggree with the answer given
+        */
 
         var tick = this.canvas.path(tick).attr("stroke-width", "3px");
 
-        if (step > 0) tick.attr("opacity", 0);
         tick["data-parent_id"] = parentId;
         tick["class"] = "tick";
         this.tickCross.push(tick);
 
         $("#pathologistFeedback").removeClass("alert-info").addClass("alert-success");
 
+        activeSquare.animate({
+            "fill-opacity": 1
+        },1000);
+
+
+
         if (step > 0) {
             $("#pathologistFeedback").hide();
+            tick.attr("opacity", 0);
         } else {
             $("#pathologistFeedback").show();
             $("#pathologistFeedback p").text("Well done!");
         }
-
-
 
 
     } else {
@@ -2152,30 +2167,39 @@ FeedbackGrid.prototype.checkAnswer = function(action, activeSquare) {
             Don't agree
         */
 
-        $(activeSquare.node).animate({
-            "fill-opacity": 1
-        },100);
+
+
 
         var cross = this.canvas.path(cross).attr("stroke-width", "3px");
-        if (step > 0) cross.attr("opacity", 0);
+
         cross["data-parent_id"] = parentId;
         cross["class"] = "cross";
         this.tickCross.push(cross);
 
         $("#pathologistFeedback").removeClass("alert-success").addClass("alert-info");
 
+        //activeSquare.node.setAttribute("class", "grid-item");
 
         if (step > 0) {
             $("#pathologistFeedback").hide();
+            cross.attr("opacity", 0);
         } else {
+        activeSquare.animate({
+            "fill-opacity": .5
+        },1000);
             $("#pathologistFeedback").show();
             $("#pathologistFeedback p").text("Our pathologists didn’t agree with you on that one.  Try again, and remember to look at the reference images below for guidance");
         }
 
+        //activeSquare = "";
 
 
 
-        this.hideWrongSquares(activeSquare, cross);
+        cross.animate({
+            "stroke-opacity": 0.6
+        });
+
+        //this.hideWrongSquares(activeSquare, cross);
     }
 
 
