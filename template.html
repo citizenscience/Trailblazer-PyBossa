@@ -1204,6 +1204,7 @@ var data = [{
 
 function Grid(task) {
 
+    this.canvas;
 
     if( typeof task != 'undefined') {
         this.task = task;
@@ -1214,6 +1215,7 @@ function Grid(task) {
                 squares: []
             }
         };
+        this.tickCross = [];
         this.activateCell();
     }
 
@@ -1232,9 +1234,10 @@ Grid.prototype.createGrid = function( canvasElement ) {
 
     var rows = 6,
         columns = 6,
-        canvas = Raphael( canvasElement, $(".img-polaroid").width(), $(".img-polaroid").height()),
         gridHeight = $(".img-polaroid").height() / columns,
         gridWidth = $(".img-polaroid").width() / rows;
+
+        this.canvas = Raphael( canvasElement, $(".img-polaroid").width(), $(".img-polaroid").height());
 
     // creates 36 grid squares in raphael
     var x, y;
@@ -1245,7 +1248,7 @@ Grid.prototype.createGrid = function( canvasElement ) {
                 offsetW = x,
                 moveDown = (y + gridHeight - offsetH) * y,
                 moveRight = (x + gridWidth - offsetW) * x,
-                gridSquare = canvas.rect(moveRight, moveDown, gridWidth, gridHeight).attr({
+                gridSquare = this.canvas.rect(moveRight, moveDown, gridWidth, gridHeight).attr({
                     "stroke": "#fff"
                 });
 
@@ -1392,7 +1395,6 @@ Grid.prototype.checkAnswer = function( action, activeSquare ) {
         activeSquare = activeSquare;
 
     $.each(data[0].info, function(key, value) {
-
         if( typeof(value[activeSquare.id]) == 'object' ) {
             // Find the pathologist answer for that square
             pathologistAnswer = value[activeSquare.id];
@@ -1400,42 +1402,90 @@ Grid.prototype.checkAnswer = function( action, activeSquare ) {
 
     });
 
-    //console.log("has cancer: " + state);
-    //console.log("pathologist says: " + pathologistAnswer.answer );
-    //console.log(activeSquare);
+    var activeSquarePosCX = activeSquare.attr("x") + 30,
+        activeSquarePosCY = activeSquare.attr("y") + 30;
+
+    var parentId = activeSquare.id;
+
+    var tc = this.tickCross;
+    $.each(this.tickCross, function(key, value) {
+        if (parentId === value["data-parent_id"]) {
+            var index = tc.indexOf(value);
+            if (index > -1) {
+                 tc.splice(index, 1);
+                 value.remove();
+            }
+        }
+    });
+
+    var x = Math.floor(activeSquare.attr("x"));
+    var y = Math.floor(activeSquare.attr("y"));
+    var tick = "M " + (x + 15) + "," + (y + 35) + " L " + (x + 30) + "," + (y + 50) + " L " + (x + 60) + "," + (y + 20);
+    var cross = "M " + (x + 20) + "," + (y + 20) + " L " + (x + 55) + "," + (y + 55) + "M " + (x + 20) + "," + (y + 55) + " L " + (x + 55) + "," + (y + 20);
+
 
     if (state == pathologistAnswer.answer) {
         //console.log("Both agree");
+
+        var tick = this.canvas.path(tick).attr("stroke-width", "3px");
+
+
+        tick["data-parent_id"] = parentId;
+        tick["class"] = "tick";
+        this.tickCross.push(tick);
+
+        $(activeSquare.node).animate({
+                "fill-opacity": "1"
+            },100);
+
+
     } else {
         //console.log("Dont agree");
         if( pathologistAnswer.answer === true ) {
             alert("The pathologies said it contained cancer");
-            activeSquare.node.setAttribute("class", "grid-item grid-item-success");
+            //activeSquare.node.setAttribute("class", "grid-item grid-item-success");
         }
         if( pathologistAnswer.answer === false ) {
             alert("The pathologies said it did not contained cancer");
-            activeSquare.node.setAttribute("class", "grid-item grid-item-error");
+            //activeSquare.node.setAttribute("class", "grid-item grid-item-error");
         }
         if( pathologistAnswer.answer === null ) {
             alert("The pathologies said this square was clear");
-             activeSquare.node.setAttribute("class", "grid-item");
+             //activeSquare.node.setAttribute("class", "grid-item");
         }
+
+        var cross = this.canvas.path(cross).attr("stroke-width", "3px");
+
+        cross["data-parent_id"] = parentId;
+        cross["class"] = "cross";
+        this.tickCross.push(cross);
+
+        //activeSquare.node.setAttribute("class", "grid-item");
+
+
+
+            $(activeSquare.node).animate({
+                "fill-opacity": "0"
+            },2000);
+
+            cross.animate({
+                "opacity": "0"
+            },2000);
+
+            setTimeout(function(){
+                cross.remove();
+            },2000);
+
+
+
     }
 
 
-    // compare if the answer is the same
+    console.log(this.tickCross);
 
-    /* if( pathologistAnswer.answer === state ) {
-        if( pathologistAnswer.feedback ) {
-            alert("Welldone that what our patholgist said! " + pathologistAnswer.feedback );
-        }
-    } else {
-        if( pathologistAnswer.feedback ) {
-            alert( "Ah man! " + pathologistAnswer.feedback );
-        }
-    } */
 
-    // show the feedback
+
+
 }
 
 
