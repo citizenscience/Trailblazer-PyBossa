@@ -956,7 +956,6 @@
 
     <div class="feedback-content" id="feedback-content">
 
-
         <div class="row clearfix">
             <!--Left hand side-->
             <div class="span12">
@@ -969,13 +968,16 @@
                     <div class="grid-info-instructions" id="feedbackStep0">
                         <h2>
                             Click once for <strong>cancer</strong> cells in <span class="text-error">RED</span>
-                            <br/> Double click for <strong>non-cancer</strong> cells in <span class="text-success">GREEN</span>
+                            <br/> Double click for <strong>non-cancer</strong> cells in
+                            <span class="text-success">GREEN</span>
                             <br/> Leave blank for empty sections.
                         </h2>
+
                         <p>
                             This time we’ll give you immediate feedback on whether our
                             expert pathologists agreed with you.
                         </p>
+
                         <p>
                             You can change your answer as often as you want.
 
@@ -986,9 +988,10 @@
                     </div>
 
                     <div class="grid-info-instructions" id="feedbackStep1" style="display:none;">
-                         <h2>
+                        <h2>
                             Click once for <strong>cancer</strong> cells in <span class="text-error">RED</span>
-                            <br/> Double click for <strong>non-cancer</strong> cells in <span class="text-success">GREEN</span>
+                            <br/> Double click for <strong>non-cancer</strong> cells in
+                            <span class="text-success">GREEN</span>
                             <br/> Leave blank for empty sections.
                         </h2>
 
@@ -1000,20 +1003,21 @@
                     </div>
 
                     <div class="grid-info-instructions" id="feedbackStep2" style="display:none;">
-                         <h2>
+                        <h2>
                             Click once for <strong>cancer</strong> cells in <span class="text-error">RED</span>
-                            <br/> Double click for <strong>non-cancer</strong> cells in <span class="text-success">GREEN</span>
+                            <br/> Double click for <strong>non-cancer</strong> cells in
+                            <span class="text-success">GREEN</span>
                             <br/> Leave blank for empty sections.
                         </h2>
 
                         <p>
                             We’ve compared your analysis with that made by our expert pathologists.
 
-Mouse over the image to explore differences.
+                            Mouse over the image to explore differences.
 
-To reveal areas of cancer click Show cancer cells.
+                            To reveal areas of cancer click Show cancer cells.
 
-To hide the shading and ticks/crosses click Hide my analysis
+                            To hide the shading and ticks/crosses click Hide my analysis
 
                         </p>
 
@@ -1023,58 +1027,62 @@ To hide the shading and ticks/crosses click Hide my analysis
 
 
 
+                    <p id="feedbackProgressText" style="display:none;"></p>
+                    <div class="progress progress-success progress-striped" style="display:none;">
+                        <div class="bar" id="feedbackProgress"></div>
+                    </div>
+
+
+
                 </div>
+
                 <div class="alert alert-info" id="pathologistFeedback" style="display:none;">
 
-                    <div class="" id="pathologistsText" >
+                    <div class="" id="pathologistsText">
                         <h2>
                             <strong>Our expert pathologists said:</strong>
                         </h2>
+
                         <p></p>
                     </div>
 
                 </div>
-                <p id="feedbackProgressText" style="display:none;"></p>
-                 <div class="progress progress-success progress-striped" style="display:none;" >
-
-                        <div class="bar" id="feedbackProgress" ></div>
-                    </div>
 
             </div>
 
             <!--Right hand side-->
             <div class="span6 right wrapper grid-wrapper" id="grid-wrapper">
                 <a id="feedback-photo-link"></a>
-                <div class="canvas" id="feedbackCanvas"></div>
-                 <div class="grid-info-buttons">
-                        <a class="btn btn-success pull-right" id="nextFeedbackStep">
-                            Next slide
-                        </a>
-                        <a class="btn btn-success pull-right" id="finishFeedback" style="display:none;">
-                            Next
-                        </a>
-                        <a class="btn " id="showAnswers" style="display:none;">
-                            Show answers
-                        </a>
-                        <a class="btn " id="hideAnswers" style="display:none;">
-                            Hide answers
-                        </a>
 
-                         <a class="btn btn-success pull-right disabled" id="checkMyWorkBtn" style="display:none;" >
-                            Check my work
-                        </a>
-                        <a class="btn" id="showMyAnalysisBtn" style="display:none;">
-                            Show my analysis
-                        </a>
-                        <a class="btn" id="hideMyAnalysisBtn" style="display:none;">
-                            Hide my analysis
-                        </a>
-                    </div>
+                <div class="canvas" id="feedbackCanvas"></div>
+                <div class="grid-info-buttons">
+                    <a class="btn btn-success pull-right" id="nextFeedbackStep">
+                        Next slide
+                    </a>
+                    <a class="btn btn-success pull-right" id="finishFeedback" style="display:none;">
+                        Next
+                    </a>
+                    <a class="btn " id="showAnswers" style="display:none;">
+                        Show answers
+                    </a>
+                    <a class="btn " id="hideAnswers" style="display:none;">
+                        Hide answers
+                    </a>
+
+                    <a class="btn btn-success pull-right disabled" id="checkMyWorkBtn" style="display:none;">
+                        Check my work
+                    </a>
+                    <a class="btn" id="showMyAnalysisBtn" style="display:none;">
+                        Show my analysis
+                    </a>
+                    <a class="btn" id="hideMyAnalysisBtn" style="display:none;">
+                        Hide my analysis
+                    </a>
+                </div>
             </div>
         </div>
 
     </div>
-
 
 </main>
 
@@ -1914,6 +1922,7 @@ function FeedbackGrid() {
     this.canvas;
     this.feedbackStep = step;
     this.tickCross = [];
+    this.clicks = 0;
 
     this.feedbackObj = {
         tickCross: [],
@@ -1982,10 +1991,63 @@ FeedbackGrid.prototype.createGrid = function(canvasElement) {
 };
 
 
-/*
+
+
+
+    /*
         Initalise and listen for the click on on the little zoom lens and then
         use Raphaeljs functions to find the closest square.
+
+         var clicks = 0;
+        var timer = null;
+        var _this = this;
+
+        $("body").on("click touchstart", ".zoomLens", function (evt) {
+
+            evt.preventDefault();
+            clicks++; //count clicks
+
+            // Find the cloest grid square to click on the zoomLens
+
+            var activeSquare = _this.findClosestSquare();
+            var activeSquareNode = activeSquare.node;
+
+            // Not able to use jQuery .click or .dblclick for some reason i can't remember
+            // If we can then should use jQuery...might be quicker and easier
+
+            if (clicks === 1) {
+                timer = setTimeout(function () {
+                    // Adds and removes classes to grid squares making them red or green
+                    if (activeSquareNode.className.animVal != "grid-item grid-item-success") {
+                        activeSquareNode.setAttribute("class", "grid-item grid-item-success");
+                        activeSquare.has_cancer = true;
+                    } else {
+                        activeSquareNode.setAttribute("class", "grid-item");
+                        activeSquare.has_cancer = null;
+                    } //after action performed, reset counter
+                    clicks = 0;
+                }, 250);
+            } else {
+                clearTimeout(timer); //prevent single-click action
+                activeSquareNode.setAttribute("class", "grid-item grid-item-error");
+                activeSquare.has_cancer = false;
+                clicks = 0;
+            }
+        });
+
+
+
+
+
     */
+
+
+
+
+
+
+
+
 
     FeedbackGrid.prototype.zoomLensClickEvent = function () {
 
@@ -2020,12 +2082,17 @@ FeedbackGrid.prototype.createGrid = function(canvasElement) {
 
                 activeSquareNode.setAttribute("class", "grid-item grid-item-error");
                 activeSquare.has_cancer = false;
+
                 _this.checkAnswer(false, activeSquare);
+
+
 
              } else {
 
                 activeSquareNode.setAttribute("class", "grid-item");
                 activeSquare.has_cancer = null;
+
+
 
                 _this.checkAnswer(null, activeSquare);
 
@@ -2100,7 +2167,6 @@ FeedbackGrid.prototype.checkAnswer = function(action, activeSquare) {
     var tick = "M " + (x + 15) + "," + (y + 35) + " L " + (x + 30) + "," + (y + 50) + " L " + (x + 60) + "," + (y + 20);
     var cross = "M " + (x + 20) + "," + (y + 20) + " L " + (x + 55) + "," + (y + 55) + "M " + (x + 20) + "," + (y + 55) + " L " + (x + 55) + "," + (y + 20);
 
-
     if (state === pathologistAnswer.answer) {
 
         var tick = this.canvas.path(tick).attr("stroke-width", "3px");
@@ -2111,14 +2177,26 @@ FeedbackGrid.prototype.checkAnswer = function(action, activeSquare) {
         this.tickCross.push(tick);
 
         $("#pathologistFeedback").removeClass("alert-info").addClass("alert-success");
-        $("#pathologistFeedback p").text("Well done! This is what our pathologist said");
-        $("#pathologistFeedback").show();
+
+        if (step > 0) {
+            $("#pathologistFeedback").hide();
+        } else {
+            $("#pathologistFeedback").show();
+            $("#pathologistFeedback p").text("Well done!");
+        }
+
+
+
 
     } else {
 
         /*
             Don't agree
         */
+
+        $(activeSquare.node).animate({
+            "fill-opacity": 1
+        },100);
 
         var cross = this.canvas.path(cross).attr("stroke-width", "3px");
         if (step > 0) cross.attr("opacity", 0);
@@ -2127,18 +2205,20 @@ FeedbackGrid.prototype.checkAnswer = function(action, activeSquare) {
         this.tickCross.push(cross);
 
         $("#pathologistFeedback").removeClass("alert-success").addClass("alert-info");
-        $("#pathologistFeedback p").text("Our pathologists didn’t agree with you on that one.  Try again, and remember to look at the reference images below for guidance");
-        $("#pathologistFeedback").show();
 
 
-        var parentId = activeSquare.id;
-            console.log(activeSquare.node);
-        if( activeSquare.has_cancer === false ){
-
+        if (step > 0) {
+            $("#pathologistFeedback").hide();
+        } else {
+            $("#pathologistFeedback").show();
+            $("#pathologistFeedback p").text("Our pathologists didn’t agree with you on that one.  Try again, and remember to look at the reference images below for guidance");
         }
 
-    }
 
+
+
+        this.hideWrongSquares(activeSquare, cross);
+    }
 
 
 
@@ -2155,16 +2235,46 @@ FeedbackGrid.prototype.checkAnswer = function(action, activeSquare) {
 
     var checkMyWork = document.getElementById("checkMyWorkBtn");
     checkMyWork.onclick = function() {
+
         if ($(this).hasClass("disabled")) return
+
         $(this).hide();
         $("#showMyAnalysisBtn").show();
         $("#hideMyAnalysisBtn").show();
         _this.showMyAnalysis();
-        //$("#nextFeedbackStep").show();
+        $("#nextFeedbackStep").show().addClass("disabled");
     };
 
 
 }
+
+
+
+
+FeedbackGrid.prototype.hideWrongSquares = function( activeSquare, cross) {
+
+    this.clicks++; //count clicks
+
+    if (this.clicks == 1) {
+        timer = setTimeout(function () {
+            console.log(activeSquare.node );
+
+            this.clicks = 0;
+        }, 250);
+
+    } else {
+        clearTimeout(timer); //prevent single-click action
+
+        console.log("double");
+
+        this.clicks = 0;
+    }
+
+
+
+};
+
+
 
 
 
@@ -2219,12 +2329,8 @@ FeedbackGrid.prototype.updateFeedbackProgress = function() {
 
 
 
-    var percentage = percentage(correctSquares);
 
-    $feedbackProgressBar.width( percentage + "%");
 
-    //$("#feedbackProgressText").text( "Well done! " + percentage + "%" + " of your chosen squares are correct. ");
-    $("#feedbackProgressText").text( "Well done! " +percentage + "%" + " of the total grid are correct");
 
 
 
@@ -2248,9 +2354,30 @@ FeedbackGrid.prototype.updateFeedbackProgress = function() {
 
     */
 
+
+    var percentage = percentage(correctSquares);
+
+    var feedbackText = $("#feedbackProgressText").html("<p><strong>Well done! " +percentage + "%" + " of the total grid are correct</strong></p>");
+
+    $(".progress").show();
+
     if( percentage >= 75 ) {
-        $("#nextFeedbackStep").show();
+        $("#nextFeedbackStep").removeClass("disabled");
+        feedbackText.append("<p>Click next slide to have another practise</p>");
     }
+    if( percentage <= 50 ) {
+        $("#nextFeedbackStep").addClass("disabled");
+         feedbackText.appendTo("<p>Have a look at what our experts said about this image and try again on the areas where they didn’t agree with you. And remember to look at the reference images below</p>");
+    }
+
+    $("#pathologistFeedback").show();
+    $("#pathologistFeedback p").text("Our pathologist said......");
+
+
+
+
+
+    $feedbackProgressBar.width( percentage + "%" );
 
     this.checkBlankSquares();
 
@@ -2930,10 +3057,13 @@ function showFeedbackStep(action) {
         $("#checkMyWorkBtn").show();
     }
 
+
     if (step > 0) {
+
+        $("#pathologistFeedback").hide();
         $("#checkMyWorkBtn").show().addClass("disabled");
-        $("#pathologistFeedback, #feedbackProgressText, .progress-success").show();
-        $("#showMyAnalysisBtn,#hideMyAnalysisBtn,#nextFeedbackStep").hide();
+        $("#feedbackProgressText, .progress-success").show();
+        $("#showMyAnalysisBtn,#hideMyAnalysisBtn,#nextFeedbackStep, .progress").hide();
     }
 
 
@@ -2987,6 +3117,7 @@ function showFeedbackStep(action) {
 var nextFeedbackBtn = document.getElementById("nextFeedbackStep");
 nextFeedbackBtn.onclick = function() {
 
+    if ($(this).hasClass("disabled")) return
 
     $("#feedbackProgress").width( "0%");
     $("#feedbackProgressText").text("");
