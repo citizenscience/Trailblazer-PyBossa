@@ -2367,7 +2367,7 @@ FeedbackGrid.prototype.updateFeedbackProgress = function() {
     }
     if( percentage <= 50 ) {
         $("#nextFeedbackStep").addClass("disabled");
-         feedbackText.appendTo("<p>Have a look at what our experts said about this image and try again on the areas where they didn’t agree with you. And remember to look at the reference images below</p>");
+         feedbackText.append("<p>Have a look at what our experts said about this image and try again on the areas where they didn’t agree with you. And remember to look at the reference images below</p>");
     }
 
     $("#pathologistFeedback").show();
