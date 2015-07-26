@@ -1997,48 +1997,6 @@ FeedbackGrid.prototype.createGrid = function(canvasElement) {
     /*
         Initalise and listen for the click on on the little zoom lens and then
         use Raphaeljs functions to find the closest square.
-
-         var clicks = 0;
-        var timer = null;
-        var _this = this;
-
-        $("body").on("click touchstart", ".zoomLens", function (evt) {
-
-            evt.preventDefault();
-            clicks++; //count clicks
-
-            // Find the cloest grid square to click on the zoomLens
-
-            var activeSquare = _this.findClosestSquare();
-            var activeSquareNode = activeSquare.node;
-
-            // Not able to use jQuery .click or .dblclick for some reason i can't remember
-            // If we can then should use jQuery...might be quicker and easier
-
-            if (clicks === 1) {
-                timer = setTimeout(function () {
-                    // Adds and removes classes to grid squares making them red or green
-                    if (activeSquareNode.className.animVal != "grid-item grid-item-success") {
-                        activeSquareNode.setAttribute("class", "grid-item grid-item-success");
-                        activeSquare.has_cancer = true;
-                    } else {
-                        activeSquareNode.setAttribute("class", "grid-item");
-                        activeSquare.has_cancer = null;
-                    } //after action performed, reset counter
-                    clicks = 0;
-                }, 250);
-            } else {
-                clearTimeout(timer); //prevent single-click action
-                activeSquareNode.setAttribute("class", "grid-item grid-item-error");
-                activeSquare.has_cancer = false;
-                clicks = 0;
-            }
-        });
-
-
-
-
-
     */
 
 
