@@ -2009,36 +2009,25 @@ FeedbackGrid.prototype.createGrid = function(canvasElement) {
             */
 
 
-
-
              if (activeSquareNode.className.animVal === "grid-item") {
 
                 activeSquareNode.setAttribute("class", "grid-item grid-item-success");
                 activeSquare.has_cancer = true;
 
-
-                    _this.checkAnswer(true, activeSquare);
-
-
+                _this.checkAnswer(true, activeSquare);
 
              } else if( activeSquareNode.className.animVal === "grid-item grid-item-success" ) {
 
                 activeSquareNode.setAttribute("class", "grid-item grid-item-error");
                 activeSquare.has_cancer = false;
-
-
-                    _this.checkAnswer(false, activeSquare);
-
-
+                _this.checkAnswer(false, activeSquare);
 
              } else {
 
                 activeSquareNode.setAttribute("class", "grid-item");
-                            activeSquare.has_cancer = null;
+                activeSquare.has_cancer = null;
 
-
-                    _this.checkAnswer(null, activeSquare);
-
+                _this.checkAnswer(null, activeSquare);
 
              } //after action performed, reset counter
 
@@ -2114,9 +2103,6 @@ FeedbackGrid.prototype.checkAnswer = function(action, activeSquare) {
 
     if (state === pathologistAnswer.answer) {
 
-        $("#pathologistFeedback").removeClass("alert-info").addClass("alert-success");
-        $("#pathologistFeedback p").text("Well done! This is what our pathologist said");
-
         var tick = this.canvas.path(tick).attr("stroke-width", "3px");
 
         if (step > 0) tick.attr("opacity", 0);
@@ -2124,7 +2110,9 @@ FeedbackGrid.prototype.checkAnswer = function(action, activeSquare) {
         tick["class"] = "tick";
         this.tickCross.push(tick);
 
-
+        $("#pathologistFeedback").removeClass("alert-info").addClass("alert-success");
+        $("#pathologistFeedback p").text("Well done! This is what our pathologist said");
+        $("#pathologistFeedback").show();
 
     } else {
 
@@ -2132,48 +2120,22 @@ FeedbackGrid.prototype.checkAnswer = function(action, activeSquare) {
             Don't agree
         */
 
-        if (pathologistAnswer.answer === true) {
-            $("#pathologistFeedback").removeClass("alert-success").addClass("alert-info");
-            $("#pathologistFeedback p").text("The pathologies said it contained cancer");
-            //activeSquare.node.setAttribute("class", "grid-item grid-item-success");
-            activeSquare.has_cancer = true;
-        }
-        if (pathologistAnswer.answer === false) {
-            $("#pathologistFeedback").removeClass("alert-success").addClass("alert-info");
-            $("#pathologistFeedback p").text("The pathologies said it did not contained cancer");
-            //activeSquare.node.setAttribute("class", "grid-item grid-item-error");
-            activeSquare.has_cancer = false;
-        }
-        if (pathologistAnswer.answer === null) {
-            $("#pathologistFeedback").removeClass("alert-success").addClass("alert-info");
-            $("#pathologistFeedback p").text("The pathologies said this square was clear");
-            //activeSquare.node.setAttribute("class", "grid-item");
-            activeSquare.has_cancer = null;
-        }
-
         var cross = this.canvas.path(cross).attr("stroke-width", "3px");
         if (step > 0) cross.attr("opacity", 0);
         cross["data-parent_id"] = parentId;
         cross["class"] = "cross";
+        this.tickCross.push(cross);
 
-
+        $("#pathologistFeedback").removeClass("alert-success").addClass("alert-info");
+        $("#pathologistFeedback p").text("Our pathologists didn’t agree with you on that one.  Try again, and remember to look at the reference images below for guidance");
+        $("#pathologistFeedback").show();
 
 
         var parentId = activeSquare.id;
-
-
-
             console.log(activeSquare.node);
         if( activeSquare.has_cancer === false ){
 
-
-
-
         }
-
-        this.tickCross.push(cross);
-
-
 
     }
 
@@ -2509,10 +2471,6 @@ Modal.prototype.nextSlideContent = function(carousel) {
         $($itemInners[id - 1]).addClass('active')
         var $modalId = $(this).parent().parent().parent().parent().attr("id");
         $('#myCarousel' + $modalId).carousel(id - 1);
-
-
-
-
     }
 
 }
