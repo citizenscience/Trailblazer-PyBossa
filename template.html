@@ -2415,15 +2415,17 @@ FeedbackGrid.prototype.checkAnswer = function(action, activeSquare) {
             $("#pathologistFeedback").hide();
             tick.attr("opacity", 0);
         } else {
-            this.updateFeedback( pathologistAnswer.answer );
+            this.updateFeedback( true );
         }
     } else {
+
         var cross = this.addCross( activeSquare );
+
         if (step > 0) {
             $("#pathologistFeedback").hide();
             cross.attr("opacity", 0);
         } else {
-            this.updateFeedback( pathologistAnswer.answer );
+            this.updateFeedback( false );
             cross.animate({
                 "stroke-opacity": 0.6
             });
@@ -2518,7 +2520,6 @@ FeedbackGrid.prototype.addCross = function( activeSquare ) {
 
 FeedbackGrid.prototype.updateFeedback = function( pathologistAnswer ) {
 
-    console.log( pathologistAnswer );
 
     if( pathologistAnswer === true ) {
         $("#pathologistFeedback").removeClass("alert-info").addClass("alert-success");
@@ -2547,6 +2548,7 @@ FeedbackGrid.prototype.updateFeedback = function( pathologistAnswer ) {
     }
 
     $("#pathologistFeedback").show();
+
 };
 
 
