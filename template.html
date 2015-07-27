@@ -2416,8 +2416,7 @@ FeedbackGrid.prototype.checkAnswer = function(action, activeSquare) {
             $("#pathologistFeedback").hide();
             tick.attr("opacity", 0);
         } else {
-            this.updateFeedback( true );
-
+            this.updateFeedback( pathologistAnswer, true );
         }
     } else {
 
@@ -2427,11 +2426,13 @@ FeedbackGrid.prototype.checkAnswer = function(action, activeSquare) {
             $("#pathologistFeedback").hide();
             cross.attr("opacity", 0);
         } else {
-            this.updateFeedback( false );
+
+            this.updateFeedback( pathologistAnswer, false );
 
             cross.animate({
                 "stroke-opacity": 0
             },1500);
+
              activeSquare.animate({
                 "fill-opacity": 0
              },1500);
@@ -2521,37 +2522,29 @@ FeedbackGrid.prototype.addCross = function( activeSquare ) {
 };
 
 
-FeedbackGrid.prototype.updateFeedback = function( pathologistAnswer ) {
-
-
-    if( pathologistAnswer === true ) {
+FeedbackGrid.prototype.updateFeedback = function( pathologistAnswer, state ) {
+    if( state ) {
         $("#pathologistFeedback").removeClass("alert-info").addClass("alert-success");
         $("#pathologistFeedback p").html("<strong>Well done!</strong> Our pathologists agreed with you on that one. Keep going and try and do the whole grid. ");
 
     } else {
-
         $("#pathologistFeedback").removeClass("alert-success").addClass("alert-info");
-
         var htmlString = 'Our pathologists didn’t agree with you on that one.';
             htmlString += ' <strong>';
-            if( pathologistAnswer === true ) {
+            if( pathologistAnswer.answer === true ) {
                 htmlString += 'They said this square contains cancer.';
             }
-            if( pathologistAnswer === false ) {
+            if( pathologistAnswer.answer === false ) {
                 htmlString += 'They said this square did not contain cancer.';
             }
-            if( pathologistAnswer === null ) {
-                htmlString += 'They said this square contains cancer.';
+            if( pathologistAnswer.answer === null ) {
+                htmlString += 'They said this square was blank';
             }
             htmlString += '</strong>';
             htmlString += ' Try again, and remember to look at the reference images below for guidance';
-
         $("#pathologistFeedback p").html( htmlString );
-
     }
-
     $("#pathologistFeedback").show();
-
 };
 
 
