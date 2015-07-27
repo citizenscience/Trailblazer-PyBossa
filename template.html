@@ -2,7 +2,7 @@
     .grid-info {
         margin-bottom: 20px;
         overflow: auto;
-        min-height: 250px;
+        min-height: 330px;
     }
     .zoomWindow {
         border: 0 !important;
@@ -17,6 +17,50 @@
     h2 {
         line-height: 1.4;
     }
+
+
+
+
+    .square {
+        width: 30px;
+        height: 30px;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .square-red {
+        background-color: rgba(231, 76, 60, .8);
+    }
+    .square-green {
+        background-color: rgba(0, 163, 136, .5);
+    }
+
+
+
+    .legend-items {
+        display: inline-block;
+        margin-right: 20px;
+        vertical-align: middle;
+    }
+
+    .legend-item {
+        display: inline-block;
+        margin-right: 20px;
+    }
+    .legend-item:last-of-type {
+        margin-right: 0;
+    }
+    .legend-item i{
+        font-size: 30px;
+        display: inline-block;
+    color: black;
+        vertical-align: middle;
+    }
+
+
+    .example-list {
+        margin-left: 0 !important;
+    }
+
 
 </style>
 
@@ -894,8 +938,14 @@
     <div class="mechanic-content" id="mechanic-content" style="display:none;">
 
         <div class="row clearfix">
-            <div class="span12">
+            <div class="span6">
                 <h1>Trailblazer</h1>
+            </div>
+            <div class="span6">
+                Click once for <strong>cancer</strong> cells in <span class="text-error">RED</span>
+                            <br/> Double click for <strong>non-cancer</strong> cells in
+                            <span class="text-success">GREEN</span>
+                            <br/> Leave blank for empty sections.
             </div>
             <!--Left hand side-->
             <div class="span6">
@@ -956,27 +1006,48 @@
 
     <div class="feedback-content" id="feedback-content">
 
-        <div class="row clearfix">
-            <!--Left hand side-->
+        <div class="row-fluid">
             <div class="span12">
-                <h1 id="question">Tutorial feedback</h1>
+
+                <div class="row-fluid">
+                    <div class="span6">
+                         <h1 id="question">Practise image <span id="practiseImageNumber">1</span></h1>
+                    </div>
+                    <div class="span6">
+                        <div class="row-fluid">
+                            <div class="span12 legend">
+                                <div class="legend-item">
+                                    <div class="square square-red"></div>
+                                    = Cancer
+                                </div>
+                                <div class="legend-item">
+                                    <div class="square square-green"></div>
+                                    = Non-cancer
+                                </div>
+                                <div class="legend-item">
+                                    <i class="icon-ok"></i> = Correct
+                                </div>
+                                <div class="legend-item">
+                                    <i class="icon-remove"></i> = Incorrect
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
+
+        <div class="row clearfix">
+
 
             <div class="span6">
                 <div id="feedback-grid-info" class="grid-info">
 
                     <div class="grid-info-instructions" id="feedbackStep0">
                         <h2>
-                            Click once for <strong>cancer</strong> cells in <span class="text-error">RED</span>
-                            <br/> Double click for <strong>non-cancer</strong> cells in
-                            <span class="text-success">GREEN</span>
-                            <br/> Leave blank for empty sections.
-                        </h2>
-
-                        <p>
                             This time we’ll give you immediate feedback on whether our
                             expert pathologists agreed with you.
-                        </p>
+                        </h2>
 
                         <p>
                             You can change your answer as often as you want.
@@ -989,60 +1060,62 @@
 
                     <div class="grid-info-instructions" id="feedbackStep1" style="display:none;">
                         <h2>
-                            Click once for <strong>cancer</strong> cells in <span class="text-error">RED</span>
-                            <br/> Double click for <strong>non-cancer</strong> cells in
-                            <span class="text-success">GREEN</span>
-                            <br/> Leave blank for empty sections.
-                        </h2>
-
-                        <p>
                             This time do your best and then click Check my work to see if our expert pathologists agreed with you.
-                        </p>
+                        </h2>
 
                         <p class="imgId"></p>
                     </div>
 
                     <div class="grid-info-instructions" id="feedbackStep2" style="display:none;">
                         <h2>
-                            Click once for <strong>cancer</strong> cells in <span class="text-error">RED</span>
-                            <br/> Double click for <strong>non-cancer</strong> cells in
-                            <span class="text-success">GREEN</span>
-                            <br/> Leave blank for empty sections.
-                        </h2>
-
-                        <p>
-                            We’ve compared your analysis with that made by our expert pathologists.
+                             We’ve compared your analysis with that made by our expert pathologists.
 
                             Mouse over the image to explore differences.
 
                             To reveal areas of cancer click Show cancer cells.
 
                             To hide the shading and ticks/crosses click Hide my analysis
-
-                        </p>
+                        </h2>
 
                         <p class="imgId"></p>
                     </div>
 
-
-
-
                     <p id="feedbackProgressText" style="display:none;"></p>
+
                     <div class="progress progress-success progress-striped" style="display:none;">
                         <div class="bar" id="feedbackProgress"></div>
                     </div>
 
+                    <div class="grid-info-buttons">
+                        <a class="btn btn-primary pull-right" id="nextFeedbackStep">
+                            Next slide
+                        </a>
+                        <a class="btn btn-success pull-right" id="finishFeedback" style="display:none;">
+                            Next
+                        </a>
+                        <a class="btn " id="showAnswers" style="display:none;">
+                            Show answers
+                        </a>
+                        <a class="btn " id="hideAnswers" style="display:none;">
+                            Hide answers
+                        </a>
 
+                        <a class="btn btn-success pull-right disabled" id="checkMyWorkBtn" style="display:none;">
+                            Check my work
+                        </a>
+                        <a class="btn btn-success" id="showMyAnalysisBtn" style="display:none;">
+                            Check my work
+                        </a>
+                        <!--<a class="btn" id="hideMyAnalysisBtn" style="display:none;">-->
+                            <!--Hide my analysis-->
+                        <!--</a>-->
+                    </div>
 
                 </div>
 
                 <div class="alert alert-info" id="pathologistFeedback" style="display:none;">
 
                     <div class="" id="pathologistsText">
-                        <h2>
-                            <strong>Our expert pathologists said:</strong>
-                        </h2>
-
                         <p></p>
                     </div>
 
@@ -1055,30 +1128,6 @@
                 <a id="feedback-photo-link"></a>
 
                 <div class="canvas" id="feedbackCanvas"></div>
-                <div class="grid-info-buttons">
-                    <a class="btn btn-success pull-right" id="nextFeedbackStep">
-                        Next slide
-                    </a>
-                    <a class="btn btn-success pull-right" id="finishFeedback" style="display:none;">
-                        Next
-                    </a>
-                    <a class="btn " id="showAnswers" style="display:none;">
-                        Show answers
-                    </a>
-                    <a class="btn " id="hideAnswers" style="display:none;">
-                        Hide answers
-                    </a>
-
-                    <a class="btn btn-success pull-right disabled" id="checkMyWorkBtn" style="display:none;">
-                        Check my work
-                    </a>
-                    <a class="btn" id="showMyAnalysisBtn" style="display:none;">
-                        Show my analysis
-                    </a>
-                    <a class="btn" id="hideMyAnalysisBtn" style="display:none;">
-                        Hide my analysis
-                    </a>
-                </div>
             </div>
         </div>
 
@@ -1086,73 +1135,82 @@
 
 </main>
 
+<div class="row-fluid">
+    <div class="span12">
+        <h2>Cell Examples</h2>
 
-<!--<h2>Cell Examples</h2>-->
-<!--<div class="row example-list clearfix">-->
+        <div class="row example-list clearfix">
 
-<!--<figure class="example-list-item">-->
-<!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-03/examples/cancer-examples/cancer-cells-example1.jpg" alt=""/>-->
-<!--<figcaption class="description cancer">Cancer Cells</figcaption>-->
-<!--</figure>-->
-<!--<figure class="example-list-item">-->
-<!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-03/examples/cancer-examples/cancer-cells-example2.jpg" alt=""/>-->
-<!--<figcaption class="description cancer">Cancer Cells</figcaption>-->
-<!--</figure>-->
-<!--<figure class="example-list-item">-->
-<!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-03/examples/cancer-examples/cancer-cells-example3.jpg" alt=""/>-->
-<!--<figcaption class="description cancer">Cancer Cells</figcaption>-->
-<!--</figure>-->
-<!--<figure class="example-list-item">-->
-<!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-03/examples/cancer-examples/cancer-cells-example4.jpg" alt=""/>-->
-<!--<figcaption class="description cancer">Cancer Cells</figcaption>-->
-<!--</figure>-->
-<!--<figure class="example-list-item">-->
-<!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-03/examples/cancer-examples/cancer-cells-example5.jpg" alt=""/>-->
-<!--<figcaption class="description cancer">Cancer Cells</figcaption>-->
-<!--</figure>-->
-<!--<figure class="example-list-item">-->
-<!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-03/examples/cancer-examples/cancer-cells-example6.jpg" alt=""/>-->
-<!--<figcaption class="description cancer">Cancer Cells</figcaption>-->
-<!--</figure>-->
-<!--<figure class="example-list-item">-->
-<!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-03/examples/cancer-examples/cancer-cells-example7.jpg" alt=""/>-->
-<!--<figcaption class="description cancer">Cancer Cells</figcaption>-->
-<!--</figure>-->
-<!--<figure class="example-list-item">-->
-<!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-03/examples/cancer-examples/cancer-cells-example8.jpg" alt=""/>-->
-<!--<figcaption class="description cancer">Cancer Cells</figcaption>-->
-<!--</figure>-->
-<!--<figure class="example-list-item">-->
-<!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-03/examples/cancer-examples/cancer-cells-example9.jpg" alt=""/>-->
-<!--<figcaption class="description cancer">Cancer Cells</figcaption>-->
-<!--</figure>-->
-<!--<figure class="example-list-item">-->
-<!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-03/examples/cancer-examples/cancer-cells-example10.jpg" alt=""/>-->
-<!--<figcaption class="description cancer">Cancer Cells</figcaption>-->
-<!--</figure>-->
+            <figure class="example-list-item">
+                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example1.jpg" alt=""/>
+                <figcaption class="description cancer">Cancer Cells</figcaption>
+            </figure>
+            <figure class="example-list-item">
+                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-healthy-cells/example-healthy-blood-cells.jpg" alt=""/>
+                <figcaption class="description non-cancer">Non-cancer Cells</figcaption>
+            </figure>
+            <figure class="example-list-item">
+                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example2.jpg" alt=""/>
+                <figcaption class="description cancer">Cancer Cells</figcaption>
+            </figure>
 
+            <figure class="example-list-item">
+                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-healthy-cells/example-healthy-lung-stromal-cartilage.jpg" alt=""/>
+                <figcaption class="description non-cancer">Non-cancer Cells</figcaption>
+            </figure>
 
-<!--<figure class="example-list-item">-->
-<!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-03/examples/cancer-healthy-cells/example-healthy-blood-cells.jpg" alt=""/>-->
-<!--<figcaption class="description non-cancer">Non-cancer Cells</figcaption>-->
-<!--</figure>-->
-<!--<figure class="example-list-item">-->
-<!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-03/examples/cancer-healthy-cells/example-healthy-lung-stromal-cartilage.jpg" alt=""/>-->
-<!--<figcaption class="description non-cancer">Non-cancer Cells</figcaption>-->
-<!--</figure>-->
-<!--<figure class="example-list-item">-->
-<!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-03/examples/cancer-healthy-cells/example-healthy-stromal-and-blood-cells.jpg" alt=""/>-->
-<!--<figcaption class="description non-cancer">Non-cancer Cells</figcaption>-->
-<!--</figure>-->
-<!--<figure class="example-list-item">-->
-<!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-03/examples/cancer-healthy-cells/example-healthy-stromal-and-blood-cells2.jpg" alt=""/>-->
-<!--<figcaption class="description non-cancer">Non-cancer Cells</figcaption>-->
-<!--</figure>-->
-<!--<figure class="example-list-item last">-->
-<!--<img src="//citscitools.cancerresearchuk.org/static/img/mvp-03/examples/cancer-healthy-cells/example-healthy-stromal-cells.jpg" alt=""/>-->
-<!--<figcaption class="description non-cancer">Non-cancer Cells</figcaption>-->
-<!--</figure>-->
-<!--</div>-->
+            <figure class="example-list-item">
+                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example3.jpg" alt=""/>
+                <figcaption class="description cancer">Cancer Cells</figcaption>
+            </figure>
+            <figure class="example-list-item">
+                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-healthy-cells/example-healthy-stromal-and-blood-cells.jpg" alt=""/>
+                <figcaption class="description non-cancer">Non-cancer Cells</figcaption>
+            </figure>
+            <figure class="example-list-item">
+                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example4.jpg" alt=""/>
+                <figcaption class="description cancer">Cancer Cells</figcaption>
+            </figure>
+            <figure class="example-list-item">
+                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example5.jpg" alt=""/>
+                <figcaption class="description cancer">Cancer Cells</figcaption>
+            </figure>
+
+            <figure class="example-list-item">
+                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-healthy-cells/example-healthy-stromal-and-blood-cells2.jpg" alt=""/>
+                <figcaption class="description non-cancer">Non-cancer Cells</figcaption>
+            </figure>
+            <figure class="example-list-item">
+                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example6.jpg" alt=""/>
+                <figcaption class="description cancer">Cancer Cells</figcaption>
+            </figure>
+
+            <figure class="example-list-item last">
+                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-healthy-cells/example-healthy-stromal-cells.jpg" alt=""/>
+                <figcaption class="description non-cancer">Non-cancer Cells</figcaption>
+            </figure>
+            <figure class="example-list-item">
+                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example7.jpg" alt=""/>
+                <figcaption class="description cancer">Cancer Cells</figcaption>
+            </figure>
+            <figure class="example-list-item">
+                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example8.jpg" alt=""/>
+                <figcaption class="description cancer">Cancer Cells</figcaption>
+            </figure>
+            <figure class="example-list-item">
+                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example9.jpg" alt=""/>
+                <figcaption class="description cancer">Cancer Cells</figcaption>
+            </figure>
+            <figure class="example-list-item">
+                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example10.jpg" alt=""/>
+                <figcaption class="description cancer">Cancer Cells</figcaption>
+            </figure>
+
+        </div>
+
+    </div>
+</div>
+
 
 
 <script type="text/javascript" async="async">
@@ -2313,11 +2371,13 @@ FeedbackGrid.prototype.createGrid = function(canvasElement) {
             timer = null,
             _this = this;
 
+
+
         $("body").on("click touchstart", ".zoomLens", function (evt) {
             evt.preventDefault();
             clicks++; //count clicks
 
-            if(  step == 1 ) _this.hideMyAnalysis();
+            //if(  step == 1 ) _this.hideMyAnalysis();
 
             var activeSquare = _this.findClosestSquare();
             var activeSquareNode = activeSquare.node;
@@ -2351,6 +2411,9 @@ FeedbackGrid.prototype.createGrid = function(canvasElement) {
              } //after action performed, reset counter
 
         });
+
+
+
     };
 
 
@@ -2414,9 +2477,11 @@ FeedbackGrid.prototype.checkAnswer = function(action, activeSquare) {
 
         if (step > 0) {
             $("#pathologistFeedback").hide();
-            tick.attr("opacity", 0);
+            //tick.attr("opacity", 0);
         } else {
             this.updateFeedback( pathologistAnswer, true );
+
+
         }
     } else {
 
@@ -2435,11 +2500,11 @@ FeedbackGrid.prototype.checkAnswer = function(action, activeSquare) {
                 "stroke-opacity": 0
             },1500);
 
+
             */
 
-             activeSquare.animate({
-                "fill-opacity": 0
-             },1500);
+
+
 
         }
     }
@@ -2463,8 +2528,12 @@ FeedbackGrid.prototype.checkAnswer = function(action, activeSquare) {
         $(this).hide();
         $("#showMyAnalysisBtn").show();
         $("#hideMyAnalysisBtn").show();
+
         _this.showMyAnalysis();
+
         $("#nextFeedbackStep").show().addClass("disabled");
+
+
     };
 
 
@@ -2491,7 +2560,7 @@ FeedbackGrid.prototype.addTick = function( activeSquare ) {
 
     activeSquare.animate({
         "fill-opacity": 1
-    },1000);
+    });
 
     var x = Math.floor(activeSquare.attr("x")),
         y = Math.floor(activeSquare.attr("y")),
@@ -2521,16 +2590,14 @@ FeedbackGrid.prototype.addCross = function( activeSquare ) {
         cross["data-parent_id"] = parentId;
         cross["class"] = "cross";
         this.tickCross.push(cross);
-
         return cross;
 };
 
 
-FeedbackGrid.prototype.updateFeedback = function( pathologistAnswer, state ) {
+FeedbackGrid.prototype.updateFeedback = function(pathologistAnswer, state ) {
     if( state ) {
         $("#pathologistFeedback").removeClass("alert-info").addClass("alert-success");
         $("#pathologistFeedback p").html("<strong>Well done!</strong> Our pathologists agreed with you on that one. Keep going and try and do the whole grid. ");
-
     } else {
         $("#pathologistFeedback").removeClass("alert-success").addClass("alert-info");
         var htmlString = 'Our pathologists didn’t agree with you on that one.';
@@ -2548,7 +2615,7 @@ FeedbackGrid.prototype.updateFeedback = function( pathologistAnswer, state ) {
             htmlString += ' Try again, and remember to look at the reference images below for guidance';
         $("#pathologistFeedback p").html( htmlString );
     }
-    $("#pathologistFeedback").show();
+    $("#pathologistFeedback").show().delay(3000).fadeOut(500);
 };
 
 
@@ -2562,10 +2629,56 @@ FeedbackGrid.prototype.updateFeedback = function( pathologistAnswer, state ) {
 */
 
 FeedbackGrid.prototype.showMyAnalysis = function() {
+
     this.updateFeedbackProgress();
+     var feedbackObjAnswer = this.feedbackObj.answer;
+
+    var crosses = [];
     $.each(this.tickCross, function(key, value) {
         value.attr("opacity", 1);
+        if( value.class === "cross" ){
+            findParentSquare(value, feedbackObjAnswer);
+        }
     });
+
+
+    function findParentSquare( cross, feedbackObjAnswer ) {
+        for (var i = 0; i < data[step].info.squares.length; i++) {
+            var gridSquare = feedbackObjAnswer.squares[i],
+                gridSquareNode = feedbackObjAnswer.squares[i].node,
+                pathologistAnswer = data[step].info.squares[i].answer;
+                if( gridSquare.id === cross["data-parent_id"]) {
+                    gridSquare.animate({
+                        "fill-opacity": 0
+                    },1500);
+                }
+        }
+
+    }
+
+/*
+
+    for (var i = 0; i < data[step].info.squares.length; i++) {
+
+        var gridSquare = this.feedbackObj.answer.squares[i],
+            gridSquareNode = this.feedbackObj.answer.squares[i].node,
+            pathologistAnswer = data[step].info.squares[i].answer;
+
+        if (data[step].info.squares[i].answer == true) {
+            //gridSquareNode.setAttribute("class", "grid-item grid-item-success");
+        }
+        if (data[step].info.squares[i].answer == false) {
+            //gridSquareNode.setAttribute("class", "grid-item grid-item-error");
+        }
+        if (data[step].info.squares[i].answer == null) {
+            gridSquareNode.setAttribute("class", "grid-item");
+        }
+
+    }
+
+
+*/
+
 };
 
 
@@ -2679,7 +2792,6 @@ FeedbackGrid.prototype.checkBlankSquares = function() {
             var tick = this.addTick( gridSquare );
            // this.tickCross.push(tick);
         }
-
     }
 
 
@@ -2938,7 +3050,7 @@ Zoom.prototype.addZoom = function(element) {
         zoomWindowPosition: zoomWindowPos,
         lensFadeIn: 500,
         lensFadeOut: 500,
-        zoomWindowHeight: 250,
+        zoomWindowHeight: 330,
         zoomWindowWidth: 460,
         cursor: "pointer"
     });
@@ -3153,17 +3265,9 @@ pybossa.presentTask(function(task, deferred) {
 
         loadUserProgress();
 
-        /* THESE AND ERROR PUMPING OUT WITH THIS !?!
 
-         $('.example-list').slick({
-            dots: true,
-            infinite: false,
-            speed: 300,
-            slidesToScroll: 5,
-            slidesToShow: 5
-         });
 
-         */
+
 
 
         var openModalCount = 0;
@@ -3333,6 +3437,17 @@ pybossa.presentTask(function(task, deferred) {
 
 
 
+/* THESE AND ERROR PUMPING OUT WITH THIS !?!
+ */
+         $('.example-list').slick({
+            dots: true,
+            infinite: false,
+            speed: 300,
+            slidesToScroll: 5,
+            slidesToShow: 5,
+
+         });
+
 /*
  *  Feedback function
  *  =======================
@@ -3402,14 +3517,18 @@ function showFeedbackStep(action) {
     showMyAnalysis.onclick = function() {
         feedbackGrid.showMyAnalysis();
     };
-    var hideMyAnalysis = document.getElementById("hideMyAnalysisBtn");
-    hideMyAnalysis.onclick = function() {
-        feedbackGrid.hideMyAnalysis();
-    };
+
+    //var hideMyAnalysis = document.getElementById("hideMyAnalysisBtn");
+    //hideMyAnalysis.onclick = function() {
+    //    feedbackGrid.hideMyAnalysis();
+    //};
 
 
 
     $("#feedbackStep" + step).show();
+    $("#practiseImageNumber").text(step + 1);
+    //<h1 id="question">Practise image <span id="practiseImageNumber">1</span></h1>
+
 }
 
 
