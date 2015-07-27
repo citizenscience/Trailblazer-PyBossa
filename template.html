@@ -2411,11 +2411,13 @@ FeedbackGrid.prototype.checkAnswer = function(action, activeSquare) {
     */
     if (state === pathologistAnswer.answer) {
         var tick = this.addTick( activeSquare );
+
         if (step > 0) {
             $("#pathologistFeedback").hide();
             tick.attr("opacity", 0);
         } else {
             this.updateFeedback( true );
+
         }
     } else {
 
@@ -2426,13 +2428,14 @@ FeedbackGrid.prototype.checkAnswer = function(action, activeSquare) {
             cross.attr("opacity", 0);
         } else {
             this.updateFeedback( false );
-            cross.animate({
-                "stroke-opacity": 0.6
-            });
 
-            activeSquare.animate({
-                "fill-opacity": .5
-            },1000);
+            cross.animate({
+                "stroke-opacity": 0
+            },1500);
+             activeSquare.animate({
+                "fill-opacity": 0
+             },1500);
+
         }
     }
 
