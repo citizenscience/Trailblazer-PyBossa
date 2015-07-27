@@ -1080,6 +1080,36 @@
                         <p class="imgId"></p>
                     </div>
 
+                    <div class="grid-info-instructions" id="feedbackStep3" style="display:none;">
+                        <h2>
+                            This time we’ll give you immediate feedback on whether our
+                            expert pathologists agreed with you.
+                        </h2>
+
+                        <p>
+                            You can change your answer as often as you want.
+
+                            When you’re done click Next Slide
+                        </p>
+
+                        <p class="imgId"></p>
+                    </div>
+
+                    <div class="grid-info-instructions" id="feedbackStep4" style="display:none;">
+                        <h2>
+                            This time we’ll give you immediate feedback on whether our
+                            expert pathologists agreed with you.
+                        </h2>
+
+                        <p>
+                            You can change your answer as often as you want.
+
+                            When you’re done click Next Slide
+                        </p>
+
+                        <p class="imgId"></p>
+                    </div>
+
                     <p id="feedbackProgressText" style="display:none;"></p>
 
                     <div class="progress progress-success progress-striped" style="display:none;">
@@ -2708,7 +2738,7 @@ FeedbackGrid.prototype.updateFeedbackProgress = function() {
         }
 
     });
-    g
+
 
     this.showPathologistAnswers();
 
@@ -2731,14 +2761,15 @@ FeedbackGrid.prototype.updateFeedbackProgress = function() {
 
     $(".progress").show();
 
-    if( percentage >= 75 ) {
-        $("#nextFeedbackStep").removeClass("disabled");
-        feedbackText.append("<p>Click next slide to have another practise</p>");
-    }
-    if( percentage <= 50 ) {
-        $("#nextFeedbackStep").addClass("disabled");
-         feedbackText.append("<p>Have a look at what our experts said about this image and try again on the areas where they didn’t agree with you. And remember to look at the reference images below</p>");
-    }
+$("#nextFeedbackStep").removeClass("disabled");
+    // if( percentage >= 75 ) {
+    //     $("#nextFeedbackStep").removeClass("disabled");
+    //     feedbackText.append("<p>Click next slide to have another practise</p>");
+    // }
+    // if( percentage <= 50 ) {
+    //     $("#nextFeedbackStep").addClass("disabled");
+    //      feedbackText.append("<p>Have a look at what our experts said about this image and try again on the areas where they didn’t agree with you. And remember to look at the reference images below</p>");
+    // }
 
     $("#pathologistFeedback").show();
     $("#pathologistFeedback p").text("Our pathologist said......");
