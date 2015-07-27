@@ -1011,7 +1011,7 @@
 
                 <div class="row-fluid">
                     <div class="span6">
-                         <h1 id="question">Practise image <span id="practiseImageNumber">1</span></h1>
+                         <h1 id="question">Practice image <span id="practiseImageNumber">1</span></h1>
                     </div>
                     <div class="span6">
                         <div class="row-fluid">
@@ -1086,7 +1086,34 @@
                         <div class="bar" id="feedbackProgress"></div>
                     </div>
 
-                    <div class="grid-info-buttons">
+
+
+                </div>
+
+                <div class="alert alert-info" id="pathologistFeedback" style="display:none;">
+
+                    <div class="" id="pathologistsText">
+                        <p></p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!--Right hand side-->
+            <div class="span6 right wrapper grid-wrapper" id="grid-wrapper">
+                <a id="feedback-photo-link"></a>
+
+                <div class="canvas" id="feedbackCanvas"></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="span6">
+
+            </div>
+            <div class="span6">
+                <div class="grid-info-buttons">
                         <a class="btn btn-primary pull-right" id="nextFeedbackStep">
                             Next slide
                         </a>
@@ -1109,28 +1136,9 @@
                         <!--<a class="btn" id="hideMyAnalysisBtn" style="display:none;">-->
                             <!--Hide my analysis-->
                         <!--</a>-->
-                    </div>
-
                 </div>
-
-                <div class="alert alert-info" id="pathologistFeedback" style="display:none;">
-
-                    <div class="" id="pathologistsText">
-                        <p></p>
-                    </div>
-
-                </div>
-
-            </div>
-
-            <!--Right hand side-->
-            <div class="span6 right wrapper grid-wrapper" id="grid-wrapper">
-                <a id="feedback-photo-link"></a>
-
-                <div class="canvas" id="feedbackCanvas"></div>
             </div>
         </div>
-
     </div>
 
 </main>
@@ -2316,9 +2324,7 @@ FeedbackGrid.prototype.createGrid = function(canvasElement) {
     var x, y, i = -1;
     for (y = 0; y < rows; y += 1) {
         for (x = 0; x < columns; x += 1) {
-
             i++;
-
             var offsetH = y,
                 offsetW = x,
                 moveDown = (y + gridHeight - offsetH) * y,
@@ -2358,24 +2364,13 @@ FeedbackGrid.prototype.createGrid = function(canvasElement) {
     */
 
 
-
-
-
-
-
-
-
     FeedbackGrid.prototype.zoomLensClickEvent = function () {
 
-        var clicks = 0,
-            timer = null,
-            _this = this;
+        var _this = this;
 
-
-
-        $("body").on("click touchstart", ".zoomLens", function (evt) {
+        $("body").on("click", ".zoomLens", function (evt) {
             evt.preventDefault();
-            clicks++; //count clicks
+
 
             //if(  step == 1 ) _this.hideMyAnalysis();
 
@@ -2468,6 +2463,11 @@ FeedbackGrid.prototype.checkAnswer = function(action, activeSquare) {
 
     this.removeTickOrCross( activeSquare );
 
+    activeSquare.stop();
+
+    activeSquare.animate({
+        "fill-opacity": 1
+    },100);
 
     /*
         If pathologist aggree with the answer given
@@ -2477,12 +2477,11 @@ FeedbackGrid.prototype.checkAnswer = function(action, activeSquare) {
 
         if (step > 0) {
             $("#pathologistFeedback").hide();
-            //tick.attr("opacity", 0);
+            tick.attr("opacity", 0);
         } else {
             this.updateFeedback( pathologistAnswer, true );
-
-
         }
+
     } else {
 
         var cross = this.addCross( activeSquare );
@@ -2492,19 +2491,13 @@ FeedbackGrid.prototype.checkAnswer = function(action, activeSquare) {
             cross.attr("opacity", 0);
         } else {
 
+
+
             this.updateFeedback( pathologistAnswer, false );
 
-            /*
-
-            cross.animate({
-                "stroke-opacity": 0
-            },1500);
-
-
-            */
-
-
-
+            activeSquare.animate({
+                "fill-opacity": 0
+            },2000);
 
         }
     }
@@ -2631,6 +2624,7 @@ FeedbackGrid.prototype.updateFeedback = function(pathologistAnswer, state ) {
 FeedbackGrid.prototype.showMyAnalysis = function() {
 
     this.updateFeedbackProgress();
+
      var feedbackObjAnswer = this.feedbackObj.answer;
 
     var crosses = [];
@@ -2697,29 +2691,25 @@ FeedbackGrid.prototype.hideMyAnalysis = function() {
 FeedbackGrid.prototype.updateFeedbackProgress = function() {
 
     var $feedbackProgressBar = $("#feedbackProgress"),
-        totalSquares = 36;
+        totalSquares = 36,
+        correctSquares = 0;
 
+    var blankSquares = this.checkBlankSquares();
+    var interactedBlankSquares = this.interactedBlanks();
 
-     this.checkBlankSquares();
-
-    var correctSquares = 0;
-
-
+    totalSquares -= blankSquares;
+    totalSquares += interactedBlankSquares;
 
     $.each(this.tickCross, function(key, value) {
         value.attr("opacity", 1);
+
         if( value["class"] === "tick" ) {
             correctSquares++;
         }
+
     });
 
-    console.log( correctSquares );
-
-
-
-
     this.showPathologistAnswers();
-
 
     //var totalMarkedSquares =  36 //this.checkBlankSquares();
 
@@ -2727,30 +2717,14 @@ FeedbackGrid.prototype.updateFeedbackProgress = function() {
         return x >= min && x <= max;
     }
     function percentage(x) {
-        return Math.floor(( x / 36) * 100);
+        return Math.floor(( x / totalSquares) * 100);
     }
 
-
-    /*
-
-
-        IDEAS:
-        ===========================
-
-
-        ADD THE BUTTON TO BECOMSE ACTIVE AND ADD A DISABLED CLASS BEFORE
-
-
-        SHOULD WE JUST SHOW ONE GRID SQUARE AT A TIME THATS ZOOMED IN LIKE THE
-        ORIGINAL PYBOSSA PROJECT? OR SPLIT THE SCREEN INTO FOUR? SIMPLER UX??? FEWER TICK STATES!!
-
-
-    */
 
 
     var percentage = percentage(correctSquares);
 
-    console.log( correctSquares );
+    //console.log( correctSquares );
 
     var feedbackText = $("#feedbackProgressText").html("<p><strong>Well done! " +percentage + "%" + " of the total grid are correct</strong></p>");
 
@@ -2779,32 +2753,54 @@ FeedbackGrid.prototype.updateFeedbackProgress = function() {
 
 FeedbackGrid.prototype.checkBlankSquares = function() {
 
-
-    /*
-    for (var i = 0; i < data[step].info.squares.length; i++) {
-
-        var gridSquare = this.feedbackObj.answer.squares[i],
-            gridSquareNode = this.feedbackObj.answer.squares[i].node,
-            pathologistAnswer = data[step].info.squares[i].answer;
-
-        if ( data[step].info.squares[i].answer == null) {
-            gridSquareNode.setAttribute("class", "grid-item");
-            var tick = this.addTick( gridSquare );
-           // this.tickCross.push(tick);
-        }
-    }
-
-
     var blankSquares = 0;
-    $.each(data[step]["info"]["squares"], function(key,value) {
+    $.each( data[step]["info"]["squares"], function(key,value) {
         if( value.answer === null ) {
             blankSquares++;
         }
     });
-    return 36 - blankSquares;
-    */
+    //console.log("Blank: " + blankSquares);
+    return blankSquares;
+
 };
 
+
+
+
+
+FeedbackGrid.prototype.interactedBlanks = function() {
+    var pathologists = data[step]["info"]["squares"];
+    var _this = this;
+    var result = 0;
+
+    this.feedbackObj.answer.squares.forEach(function(square, idx) {
+        var isBlank = (pathologists[idx].answer === null);
+
+        // Loop through all of the items in the grid and find the ones which
+        // have been interacted with
+        //
+        //
+        var isInteracted = _this.tickCross.filter(function(sq) {
+            return sq["data-parent_id"] === square.id;
+        })[0] !== undefined;
+
+        if(isBlank && isInteracted) {
+            result++;
+        }
+    });
+
+    return result;
+
+    // $.each( this.feedbackObj.answer.squares, function(key, value){
+
+    //     if( value["has_cancer"] === null ) {
+    //         if( value.id === _this.tickCross[key]["data-parent_id"] ) {
+    //             console.log(value);
+    //         }
+    //     }
+    // });
+
+};
 
 
 
