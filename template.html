@@ -2502,7 +2502,9 @@ FeedbackGrid.prototype.checkAnswer = function(action, activeSquare) {
     //
     //
     if ( action === pathologistAnswer.answer) {
+
         var tick = this.addTick( activeSquare );
+
         if (step > 1) {
             $("#pathologistFeedback").hide();
             tick.attr("opacity", 0);
@@ -2516,13 +2518,14 @@ FeedbackGrid.prototype.checkAnswer = function(action, activeSquare) {
         if (step > 1) {
             $("#pathologistFeedback").hide();
             cross.attr("opacity", 0);
-
         } else {
             this.updateFeedbackProgress();
             this.updateFeedback( pathologistAnswer, false );
             activeSquare.animate({
                 "fill-opacity": 0
-            },2000);
+            },2000, function(){
+                activeSquare.node.setAttribute("class", "grid-item");
+            });
         }
     }
 
