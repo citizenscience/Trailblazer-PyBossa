@@ -9,7 +9,7 @@
     .grid-info {
         margin-bottom: 20px;
         overflow: auto;
-        //min-height: 330px;
+        min-height: 300px;
     }
    /* .grid-info-footer {
         background-color: white;
@@ -56,7 +56,9 @@
         background-color: rgba(0, 163, 136, .5);
     }
 
-
+    #pathologistFeedback {
+        margin-bottom: 0 !important;
+    }
 
 
     .feedback-content {
@@ -1057,7 +1059,7 @@
 
                 <div class="row-fluid">
                     <div class="span12">
-                         <h1 id="question">Practice image <span id="practiseImageNumber">1</span></h1>
+                         <h1 id="question">Practice image <span id="practiseImageNumber">1</span> of 5</h1>
                     </div>
                 </div>
             </div>
@@ -1139,48 +1141,34 @@
                         <p class="imgId"></p>
                     </div>
 
-                    <p id="feedbackProgressText" style="display:none;"></p>
+                    <div id="feedbackProgressText" style="display:none;"></div>
                     <h2 id="feedbackProgressPercentage" style="display:none;">Percentage</h2>
                     <div class="progress progress-success progress-striped" style="display:none;">
                         <div class="bar" id="feedbackProgress"></div>
                     </div>
 
                 </div> <!-- grid-info -->
-                <div class="grid-info-footer">
-                    <div class="grid-info-buttons">
-                        <a class="btn btn-primary pull-right" id="nextFeedbackStep">
-                            Next slide
-                        </a>
-                        <a class="btn btn-primary pull-right" id="finishFeedback" style="display:none;">
-                            Next
-                        </a>
-                        <a class="btn " id="showAnswers" style="display:none;">
-                            Show answers
-                        </a>
-                        <a class="btn " id="hideAnswers" style="display:none;">
-                            Hide answers
-                        </a>
-
-                        <a class="btn btn-success pull-right disabled" id="checkMyWorkBtn" style="display:none;">
-                            Check my work
-                        </a>
-                        <a class="btn btn-success" id="showMyAnalysisBtn" style="display:none;">
-                            Check my work
-                        </a>
-                        <!--<a class="btn" id="hideMyAnalysisBtn" style="display:none;">-->
-                            <!--Hide my analysis-->
-                        <!--</a>-->
-                    </div>
-                </div> <!-- grid-info-footer -->
-
 
                 <div class="alert alert-info" id="pathologistFeedback" style="display:none;">
-
                     <div class="" id="pathologistsText">
                         <p></p>
                     </div>
 
                 </div>
+
+
+                    <div class="grid-info-buttons clearfix">
+
+                        <a class="btn btn-primary pull-right" id="finishFeedback" style="display:none; ">
+                            Next
+                        </a>
+                        <a class="btn btn-primary pull-right disabled" id="nextFeedbackStep" style="margin-left: 10px;">
+                            Next slide
+                        </a>
+                        <a class="btn btn-success pull-right disabled" id="checkMyWorkBtn" style="display:none;">
+                            Check my work
+                        </a>
+                    </div>
 
             </div>
 
@@ -2432,7 +2420,6 @@ FeedbackGrid.prototype.createGrid = function(canvasElement) {
                 activeSquare.has_cancer = null;
                 _this.checkAnswer(null, activeSquare);
              }
-
         });
 
     };
@@ -2516,20 +2503,22 @@ FeedbackGrid.prototype.checkAnswer = function(action, activeSquare) {
     //
     if ( action === pathologistAnswer.answer) {
         var tick = this.addTick( activeSquare );
-        if (step > 0) {
+        if (step > 1) {
             $("#pathologistFeedback").hide();
             tick.attr("opacity", 0);
         } else {
+            this.updateFeedbackProgress();
             this.updateFeedback( pathologistAnswer, true );
         }
 
     } else {
         var cross = this.addCross( activeSquare );
-        if (step > 0) {
+        if (step > 1) {
             $("#pathologistFeedback").hide();
             cross.attr("opacity", 0);
 
         } else {
+            this.updateFeedbackProgress();
             this.updateFeedback( pathologistAnswer, false );
             activeSquare.animate({
                 "fill-opacity": 0
@@ -2540,9 +2529,12 @@ FeedbackGrid.prototype.checkAnswer = function(action, activeSquare) {
     // Check if the grid has been clicked, enable the "Check my work" button
     //
     //
-    if (step > 0 && this.tickCross.length > 0) {
+    if (step > 1 && this.tickCross.length > 0) {
         $("#checkMyWorkBtn").removeClass("disabled");
     }
+
+
+
 
 
 
@@ -2609,10 +2601,10 @@ FeedbackGrid.prototype.updateFeedback = function(pathologistAnswer, state ) {
                 htmlString += 'They said this square was blank';
             }
             htmlString += '</strong>';
-            htmlString += ' Try again, and remember to look at the reference images below for guidance';
+            //htmlString += ' Try again, and remember to look at the reference images below for guidance';
         $("#pathologistFeedback p").html( htmlString );
     }
-    $("#pathologistFeedback").show().delay(3000).fadeOut(500);
+    $("#pathologistFeedback").show().delay(4000).fadeOut(500);
 };
 
 
@@ -2665,11 +2657,9 @@ FeedbackGrid.prototype.updateFeedbackProgress = function() {
 
     $.each(this.tickCross, function(key, value) {
         value.attr("opacity", 1);
-
         if( value["class"] === "tick" ) {
             correctSquares++;
         }
-
     });
 
     function between(x, min, max) {
@@ -2679,29 +2669,52 @@ FeedbackGrid.prototype.updateFeedbackProgress = function() {
         return Math.floor(( x / totalSquares) * 100);
     }
 
-    var percentage = percentage(correctSquares);
-
-
-    var feedbackText = $("#feedbackProgressText").html("<h2>Well done! <strong>" +percentage + "%" + "</strong> of the total grid are correct</h2>");
+    var pct = percentage(correctSquares);
 
     $(".progress").show();
+    $("#feedbackProgressText").show();
 
-    if( percentage >= 75 ) {
+
+
+
+
+    if( pct >= 75 ){
         $("#nextFeedbackStep").removeClass("disabled");
-        feedbackText.append("<p>Click next slide to have another practice</p>");
-    }
-    if( percentage <= 50 ) {
+    } else {
         $("#nextFeedbackStep").addClass("disabled");
-         feedbackText.append("<p>Have a look at what our experts said about this image and try again on the areas where they didn’t agree with you. And remember to look at the reference images below</p>");
     }
 
-    $("#pathologistFeedback").show();
-    $("#pathologistFeedback p").text("Our pathologist said......");
-    $("#feedbackProgressPercentage").text( percentage + "%" + " completed!");
+    this.percentageFeedbackText( pct );
 
-    $feedbackProgressBar.width( percentage + "%" );
+    //$("#pathologistFeedback").show();
+    //$("#pathologistFeedback p").text("Our pathologist said......");
+    $("#feedbackProgressPercentage").text( pct + "%" + " completed!");
 
+    $feedbackProgressBar.width( pct + "%" );
 };
+
+FeedbackGrid.prototype.percentageFeedbackText = function( pct ) {
+     var $feedbackText = $("#feedbackProgressText");
+
+    var htmlString = '<h2>';
+        if( pct >= 75 ) {
+            htmlString += 'Well done! ';
+        } else {
+            htmlString += 'You\'ve got ';
+        }
+
+        htmlString += pct + '%</strong> of the total grid are correct</h2>';
+
+        if( pct < 75 ) {
+            htmlString += '<h3>Get 75% to go onto the next slide.</h3>';
+            htmlString += '<p>Remember to look at the reference images below for help</p>';
+        }
+
+
+
+        $feedbackText.html( htmlString );
+
+}
 
 
 FeedbackGrid.prototype.checkBlankSquares = function() {
@@ -3006,7 +3019,7 @@ Zoom.prototype.addZoom = function(element) {
         zoomWindowPosition: zoomWindowPos,
         lensFadeIn: 500,
         lensFadeOut: 500,
-        zoomWindowHeight: 330,
+        zoomWindowHeight: 300,
         zoomWindowWidth: 460,
         cursor: "pointer"
     });
@@ -3420,21 +3433,23 @@ function showFeedbackStep(action) {
 
     if (action == 'next') {
         step += 1;
+
+        $("#nextFeedbackStep, #checkMyWorkBtn").addClass("disabled");
+
     }
 
-    if (step == 1) {
-        $("#nextFeedbackStep").hide();
-        $("#checkMyWorkBtn").show();
-    }
-
-
-    if (step > 0) {
-
-        $("#pathologistFeedback").hide();
+    if (step >= 2) {
+        $("#nextFeedbackStep").addClass("disabled");
         $("#checkMyWorkBtn").show().addClass("disabled");
-        $("#feedbackProgressText, .progress-success").show();
-        $("#showMyAnalysisBtn,#hideMyAnalysisBtn,#nextFeedbackStep, .progress").hide();
     }
+
+
+    // if (step > 1) {
+    //     $("#pathologistFeedback").hide();
+    //     $("#checkMyWorkBtn").show().addClass("disabled");
+    //     $("#feedbackProgressText, .progress-success").show();
+    //     //$("#nextFeedbackStep, .progress").hide();
+    // }
 
 
 
@@ -3461,34 +3476,36 @@ function showFeedbackStep(action) {
     var zoom = new Zoom();
     zoom.addZoom($(".feedback-img-polaroid"));
 
-    var showAnswers = document.getElementById("showAnswers");
-    showAnswers.onclick = function() {
-        feedbackGrid.showPathologistAnswers();
-    };
 
-    var hideAnswers = document.getElementById("hideAnswers");
-    hideAnswers.onclick = function() {
-        feedbackGrid.hidePathologistAnswers();
-    };
 
-    var showMyAnalysis = document.getElementById("showMyAnalysisBtn");
-    showMyAnalysis.onclick = function() {
-        feedbackGrid.showMyAnalysis();
-    };
+
+
+    // var showMyAnalysis = document.getElementById("showMyAnalysisBtn");
+    // showMyAnalysis.onclick = function() {
+    //     feedbackGrid.showMyAnalysis();
+    // };
 
     //var hideMyAnalysis = document.getElementById("hideMyAnalysisBtn");
     //hideMyAnalysis.onclick = function() {
     //    feedbackGrid.hideMyAnalysis();
     //};
     //
+    //
+    // var showAnswers = document.getElementById("showAnswers");
+    // showAnswers.onclick = function() {
+    //     feedbackGrid.showPathologistAnswers();
+    // };
+    //
+    //var hideAnswers = document.getElementById("hideAnswers");
+    //hideAnswers.onclick = function() {
+    //    feedbackGrid.hidePathologistAnswers();
+    //};
+    //
+
     var checkMyWork = document.getElementById("checkMyWorkBtn");
     checkMyWork.onclick = function() {
-        if ($(this).hasClass("disabled")) return
-        $(this).hide();
-        $("#showMyAnalysisBtn").show();
-        $("#hideMyAnalysisBtn").show();
+        if ($(this).hasClass("disabled")) return;
         feedbackGrid.showMyAnalysis();
-        $("#nextFeedbackStep").show().addClass("disabled");
     };
 
 
@@ -3513,7 +3530,7 @@ nextFeedbackBtn.onclick = function() {
     var lastFeedbackStep = ($(".grid-info-instructions").length - 1) - 1;
 
     if (step === lastFeedbackStep) {
-        $("#nextFeedbackStep").hide();
+        $("#nextFeedbackStep, #checkMyWorkBtn").hide();
         $("#finishFeedback").show();
         return
     } else {
