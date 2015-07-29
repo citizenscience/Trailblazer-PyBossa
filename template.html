@@ -1053,73 +1053,83 @@
                 <div id="feedback-grid-info" class="grid-info">
 
                     <div class="grid-info-instructions" id="feedbackStep0">
-                        <h2>
-                            Click once for <strong>cancer</strong> cells in <span class="text-error">RED</span>
-                            <br/> Double click for <strong>non-cancer</strong> cells in
-                            <span class="text-success">GREEN</span>
-                            <br/> Leave blank for empty sections.
+                        <div class="task-content">
+                            <h2 id="taskTitle"></h2>
 
-                        </h2>
+                            <h3 id="taskSubTitle"></h3>
 
-                        <h3>
-                            This time we’ll give you immediate feedback on whether our
-                            expert pathologists agreed with you.
-                        </h3>
+                            <p id="taskParagraph"></p>
 
-                        <p>
-                            You can change your answer as often as you want.
+                            <p id="taskFeedback"></p>
+                        </div>
 
-                            When you’re done click Next Slide
-                        </p>
+                        <!--<h2>-->
+                        <!--Click once for <strong>cancer</strong> cells in <span class="text-error">RED</span>-->
+                        <!--<br/> Double click for <strong>non-cancer</strong> cells in-->
+                        <!--<span class="text-success">GREEN</span>-->
+                        <!--<br/> Leave blank for empty sections.-->
+
+                        <!--</h2>-->
+
+                        <!--<h3>-->
+                        <!--This time we’ll give you immediate feedback on whether our-->
+                        <!--expert pathologists agreed with you.-->
+                        <!--</h3>-->
+
+                        <!--<p>-->
+                        <!--You can change your answer as often as you want.-->
+
+                        <!--When you’re done click Next Slide-->
+                        <!--</p>-->
 
                         <p class="imgId"></p>
                     </div>
                     <div class="grid-info-instructions" id="feedbackStep1" style="display:none;">
-                        <h2>
-                            This time do your best and then click Check my work to see if our expert pathologists agreed with you.
-                        </h2>
+                        <div class="task-content">
+                            <h2 id="taskTitle"></h2>
 
+                            <h3 id="taskSubTitle"></h3>
+
+                            <p id="taskParagraph"></p>
+
+                            <p id="taskFeedback"></p>
+                        </div>
                         <p class="imgId"></p>
                     </div>
                     <div class="grid-info-instructions" id="feedbackStep2" style="display:none;">
-                        <h2>
-                            We’ve compared your analysis with that made by our expert pathologists.
+                        <div class="task-content">
+                            <h2 id="taskTitle"></h2>
 
-                            Mouse over the image to explore differences.
+                            <h3 id="taskSubTitle"></h3>
 
-                            To reveal areas of cancer click Show cancer cells.
+                            <p id="taskParagraph"></p>
 
-                            To hide the shading and ticks/crosses click Hide my analysis
-                        </h2>
-
+                            <p id="taskFeedback"></p>
+                        </div>
                         <p class="imgId"></p>
                     </div>
                     <div class="grid-info-instructions" id="feedbackStep3" style="display:none;">
-                        <h2>
-                            This time we’ll give you immediate feedback on whether our
-                            expert pathologists agreed with you.
-                        </h2>
+                        <div class="task-content">
+                            <h2 id="taskTitle"></h2>
 
-                        <p>
-                            You can change your answer as often as you want.
+                            <h3 id="taskSubTitle"></h3>
 
-                            When you’re done click Next Slide
-                        </p>
+                            <p id="taskParagraph"></p>
 
+                            <p id="taskFeedback"></p>
+                        </div>
                         <p class="imgId"></p>
                     </div>
                     <div class="grid-info-instructions" id="feedbackStep4" style="display:none;">
-                        <h2>
-                            This time we’ll give you immediate feedback on whether our
-                            expert pathologists agreed with you.
-                        </h2>
+                        <div class="task-content">
+                            <h2 id="taskTitle"></h2>
 
-                        <p>
-                            You can change your answer as often as you want.
+                            <h3 id="taskSubTitle"></h3>
 
-                            When you’re done click Next Slide
-                        </p>
+                            <p id="taskParagraph"></p>
 
+                            <p id="taskFeedback"></p>
+                        </div>
                         <p class="imgId"></p>
                     </div>
 
@@ -1263,9 +1273,10 @@
     var data = [{
         "info": {
             "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung-all-min/1.jpg",
-            "timeTaken": "0:0:16.15",
-            "openModalCount": 0,
-            "device": "Desktop",
+            "taskTitle": "Etiam porta sem malesuada",
+            "taskSubTitle": "Etiam porta sem malesuada sem malesuada",
+            "taskParagraph": "Etiam porta sem malesuada magna mollis euismod. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere consectetur est at lobortis.",
+            "taskFeedback": "Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.",
             "squares": [{
                 "column": 0,
                 "answer": null,
@@ -1411,23 +1422,14 @@
                 "answer": null,
                 "row": 5
             }],
-            "browser": "Chrome V.44"
         },
-        "user_id": 3,
-        "task_id": 2154,
-        "created": "2015-07-27T13:17:20.583677",
-        "finish_time": "2015-07-27T13:17:20.583692",
-        "calibration": null,
-        "user_ip": null,
-        "timeout": null,
-        "project_id": 28,
-        "id": 1833
     }, {
         "info": {
             "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung-all-min/26.jpg",
-            "timeTaken": "0:4:1.19",
-            "openModalCount": 0,
-            "device": "Desktop",
+            "taskTitle": "Etiam porta sem malesuada",
+            "taskSubTitle": "Etiam porta sem malesuada sem malesuada",
+            "taskParagraph": "Etiam porta sem malesuada magna mollis euismod. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere consectetur est at lobortis.",
+            "taskFeedback": "Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.",
             "squares": [{
                 "column": 0,
                 "answer": null,
@@ -1573,23 +1575,14 @@
                 "answer": true,
                 "row": 5
             }],
-            "browser": "Chrome V.44"
         },
-        "user_id": 3,
-        "task_id": 2156,
-        "created": "2015-07-27T13:21:41.423936",
-        "finish_time": "2015-07-27T13:21:41.423947",
-        "calibration": null,
-        "user_ip": null,
-        "timeout": null,
-        "project_id": 28,
-        "id": 1835
     }, {
         "info": {
             "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung-all-min/41.jpg",
-            "timeTaken": "0:0:26.98",
-            "openModalCount": 0,
-            "device": "Desktop",
+            "taskTitle": "Etiam porta sem malesuada",
+            "taskSubTitle": "Etiam porta sem malesuada sem malesuada",
+            "taskParagraph": "Etiam porta sem malesuada magna mollis euismod. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere consectetur est at lobortis.",
+            "taskFeedback": "Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.",
             "squares": [{
                 "column": 0,
                 "answer": null,
@@ -1735,23 +1728,14 @@
                 "answer": true,
                 "row": 5
             }],
-            "browser": "Chrome V.44"
         },
-        "user_id": 3,
-        "task_id": 2157,
-        "created": "2015-07-27T13:22:08.534402",
-        "finish_time": "2015-07-27T13:22:08.534414",
-        "calibration": null,
-        "user_ip": null,
-        "timeout": null,
-        "project_id": 28,
-        "id": 1836
     }, {
         "info": {
             "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung-all-min/42.jpg",
-            "timeTaken": "0:1:9.61",
-            "openModalCount": 0,
-            "device": "Desktop",
+            "taskTitle": "Etiam porta sem malesuada",
+            "taskSubTitle": "Etiam porta sem malesuada sem malesuada",
+            "taskParagraph": "Etiam porta sem malesuada magna mollis euismod. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere consectetur est at lobortis.",
+            "taskFeedback": "Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.",
             "squares": [{
                 "column": 0,
                 "answer": null,
@@ -1897,23 +1881,14 @@
                 "answer": true,
                 "row": 5
             }],
-            "browser": "Chrome V.44"
         },
-        "user_id": 3,
-        "task_id": 2158,
-        "created": "2015-07-27T13:23:18.262680",
-        "finish_time": "2015-07-27T13:23:18.262692",
-        "calibration": null,
-        "user_ip": null,
-        "timeout": null,
-        "project_id": 28,
-        "id": 1837
     }, {
         "info": {
             "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung-all-min/11.jpg",
-            "timeTaken": "0:0:19.42",
-            "openModalCount": 0,
-            "device": "Desktop",
+            "taskTitle": "Etiam porta sem malesuada",
+            "taskSubTitle": "Etiam porta sem malesuada sem malesuada",
+            "taskParagraph": "Etiam porta sem malesuada magna mollis euismod. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere consectetur est at lobortis.",
+            "taskFeedback": "Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.",
             "squares": [{
                 "column": 0,
                 "answer": null,
@@ -2059,17 +2034,7 @@
                 "answer": null,
                 "row": 5
             }],
-            "browser": "Chrome V.44"
         },
-        "user_id": 3,
-        "task_id": 2155,
-        "created": "2015-07-27T13:17:40.117969",
-        "finish_time": "2015-07-27T13:17:40.117981",
-        "calibration": null,
-        "user_ip": null,
-        "timeout": null,
-        "project_id": 28,
-        "id": 1834
     }];
 
 
@@ -2608,7 +2573,10 @@
                 if (gridSquare.id === cross["data-parent_id"]) {
                     gridSquare.animate({
                         "fill-opacity": 0
-                    }, 1500);
+                    }, 3000, function () {
+                        gridSquare.node.setAttribute("class", "grid-item");
+                    });
+
                 }
             }
         }
@@ -2649,7 +2617,7 @@
         $("#feedbackProgressText").show();
 
 
-        if (pct >= 75) {
+        if (pct >= 25) {
             $("#nextFeedbackStep").removeClass("disabled");
         } else {
             $("#nextFeedbackStep").addClass("disabled");
@@ -2668,7 +2636,7 @@
         var $feedbackText = $("#feedbackProgressText");
 
         var htmlString = '<h2>';
-        if (pct >= 75) {
+        if (pct >= 25) {
             htmlString += 'Well done! ';
         } else {
             htmlString += 'You\'ve got ';
@@ -2676,8 +2644,8 @@
 
         htmlString += pct + '%</strong> of the total grid are correct</h2>';
 
-        if (pct < 75) {
-            htmlString += '<h3>Get 75% to go onto the next slide.</h3>';
+        if (pct < 25) {
+            htmlString += '<h3>Get 25% to go onto the next slide.</h3>';
             htmlString += '<p>Remember to look at the reference images below for help</p>';
         }
 
@@ -3403,6 +3371,10 @@
 
         var data_obj = data[step].info;
         var imgUrl = data[step].info.imgNumber;
+        var taskTitle = data[step].info.taskTitle;
+        var taskSubTitle = data[step].info.taskSubTitle;
+        var taskParagraph = data[step].info.taskParagraph;
+        var taskFeedback = data[step].info.taskFeedback;
 
         var img = $('<img />');
         img.attr('src', imgUrl);
@@ -3410,6 +3382,10 @@
         img.addClass('feedback-img-polaroid');
 
         $('#feedback-photo-link').append(img);
+        $("#taskTitle").append(taskTitle);
+        $("#taskSubTitle").append(taskSubTitle);
+        $("#taskParagraph").append(taskParagraph);
+        $("#taskFeedback").append(taskFeedback);
 
 
         var feedbackGrid = new FeedbackGrid();
@@ -3446,7 +3422,6 @@
             if ($(this).hasClass("disabled")) return;
             feedbackGrid.showMyAnalysis();
         };
-
 
         $("#feedbackStep" + step).show();
         $("#practiseImageNumber").text(step + 1);
