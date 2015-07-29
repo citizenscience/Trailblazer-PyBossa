@@ -2457,7 +2457,6 @@
         //
         if (action === pathologistAnswer.answer) {
 
-
             var tick = this.addTick(activeSquare);
 
             if (step > 1) {
@@ -2469,18 +2468,24 @@
             }
 
         } else {
+
             var cross = this.addCross(activeSquare);
             if (step > 1) {
                 $("#pathologistFeedback").hide();
                 cross.attr("opacity", 0);
             } else {
+
+
                 this.updateFeedbackProgress();
                 this.updateFeedback(pathologistAnswer, false);
+
                 activeSquare.animate({
                     "fill-opacity": 0
-                }, 2000, function () {
+                }, 3000, function () {
                     activeSquare.node.setAttribute("class", "grid-item");
                 });
+
+
             }
         }
 
@@ -2506,14 +2511,20 @@
 
     FeedbackGrid.prototype.addTick = function (activeSquare) {
 
+
         var x = Math.floor(activeSquare.attr("x")),
             y = Math.floor(activeSquare.attr("y")),
             parentId = activeSquare.id,
             tickPath = "M " + (x + 15) + "," + (y + 35) + " L " + (x + 30) + "," + (y + 50) + " L " + (x + 60) + "," + (y + 20);
 
         var tick = this.canvas.path(tickPath).attr({
-            "stroke-width": "3px"
+            "stroke-width": "3px",
+            "stroke-opacity": 0
         });
+
+        var anim = Raphael.animation({"stroke-opacity": 1}, 250);
+        tick.animate(anim.delay(1000));
+
 
         tick["data-parent_id"] = parentId;
         tick["class"] = "tick";
@@ -2532,10 +2543,11 @@
 
         var cross = this.canvas.path(crossPath).attr({
             "stroke-width": "3px",
-            "opacity": 0
-        }).animate({
-            "opacity": 1
-        }, 1000);
+            "stroke-opacity": 0
+        });
+
+        var anim = Raphael.animation({"stroke-opacity": 1}, 250);
+        cross.animate(anim.delay(1000));
 
         cross["data-parent_id"] = parentId;
         cross["class"] = "cross";
