@@ -1,6 +1,6 @@
 {
-    "name": "CRUK Trailblazer gold standard (lung)",
+    "name": "CRUK Trailblazer - Prolific Academic test",
     "short_name": "mvp-pa-test-01",
-    "description": "For pathologists to supply gold standard data for lung TMAs",
+    "description": "To check that integration with prolific academic is working correctly",
     "question": "Do you see a real human face in this photo?"
 }
