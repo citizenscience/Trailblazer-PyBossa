@@ -1275,8 +1275,6 @@ if (project_short_name == "")
 
 var cookie_feedback_name = project_short_name + 'feedback';
 var cookie_tutorial_name = project_short_name + 'tutorial';
-
-
 /*
     This is the pathologist grid square data that we can check the user answers against
 */
@@ -2503,7 +2501,7 @@ FeedbackGrid.prototype.checkAnswer = function(action, activeSquare) {
     //
     if ( action === pathologistAnswer.answer) {
 
-        var tick = this.addTick( activeSquare );
+        var tick = this.addTick( activeSquare ) ;
 
         if (step > 1) {
             $("#pathologistFeedback").hide();
@@ -2561,7 +2559,16 @@ FeedbackGrid.prototype.addTick = function( activeSquare ) {
         parentId = activeSquare.id,
         tickPath = "M " + (x + 15) + "," + (y + 35) + " L " + (x + 30) + "," + (y + 50) + " L " + (x + 60) + "," + (y + 20);
 
-    var tick = this.canvas.path(tickPath).attr("stroke-width", "3px");
+        setTimout(function(){
+
+        },1000);
+
+    var tick = this.canvas.path(tickPath).attr({
+        "stroke-width": "3px",
+        "opacity": 0
+    }).animate({
+        "opacity": 1
+    },1000)
 
     tick["data-parent_id"] = parentId;
     tick["class"] = "tick";
@@ -2577,7 +2584,13 @@ FeedbackGrid.prototype.addCross = function( activeSquare ) {
     var y = Math.floor(activeSquare.attr("y"));
     var parentId = activeSquare.id;
     var crossPath = "M " + (x + 20) + "," + (y + 20) + " L " + (x + 55) + "," + (y + 55) + "M " + (x + 20) + "," + (y + 55) + " L " + (x + 55) + "," + (y + 20);
-    var cross = this.canvas.path(crossPath).attr("stroke-width", "3px");
+
+    var cross = this.canvas.path(crossPath).attr({
+        "stroke-width": "3px",
+        "opacity": 0
+    }).animate({
+        "opacity": 1
+    },1000);
 
     cross["data-parent_id"] = parentId;
     cross["class"] = "cross";
@@ -2607,7 +2620,8 @@ FeedbackGrid.prototype.updateFeedback = function(pathologistAnswer, state ) {
             //htmlString += ' Try again, and remember to look at the reference images below for guidance';
         $("#pathologistFeedback p").html( htmlString );
     }
-    $("#pathologistFeedback").show().delay(4000).fadeOut(500);
+    $("#pathologistFeedback").show()
+    //$("#pathologistFeedback p").delay(4000).fadeOut(500);
 };
 
 
