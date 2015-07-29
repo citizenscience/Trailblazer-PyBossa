@@ -1,6 +1,6 @@
 {
-    "name": "CRUK Trailblazer 2a",
-    "short_name": "mvp-02a",
-    "description": "Release 2a of Trailblazer incorporating an improved tutorial",
+    "name": "CRUK Trailblazer - Prolific Academic test",
+    "short_name": "mvp-pa-test-02",
+    "description": "Cut down version of Trailblazer built to test Prolific Academic integration",
     "question": "Do you see a real human face in this photo?"
 }

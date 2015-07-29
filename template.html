@@ -778,7 +778,7 @@
 
     // Loads user progress into Grid info
     function loadUserProgress() {
-        pybossa.userProgress('mvp-02a').done(function (data) {
+        pybossa.userProgress('mvp-pa-test-02').done(function (data) {
             var pct = Math.round((data.done * 100) / data.total);
             $("#progress").css("width", pct.toString() + "%");
             $("#progress").attr("title", pct.toString() + "% completed!");
@@ -1087,7 +1087,7 @@
      */
 
     $(function () {
-        pybossa.run('mvp-02a');
+        pybossa.run('mvp-pa-test-02');
     })
 
 
