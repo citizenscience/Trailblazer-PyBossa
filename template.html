@@ -168,14 +168,14 @@
 
                 <hr>
                 <!--<p>Please select an image difficulty level:</p>-->
-                <select id="difficulty">
-                    <option value="0" selected>Please select an image difficulty level:</option>
-                    <option value="1">1 - Very easy</option>
-                    <option value="2">2 - Easy</option>
-                    <option value="3">3 - Average</option>
-                    <option value="4">4 - Difficult</option>
-                    <option value="5">5 - Very difficult</option>
-                </select>
+                <!--<select id="difficulty">-->
+                    <!--<option value="0" selected>Please select an image difficulty level:</option>-->
+                    <!--<option value="1">1 - Very easy</option>-->
+                    <!--<option value="2">2 - Easy</option>-->
+                    <!--<option value="3">3 - Average</option>-->
+                    <!--<option value="4">4 - Difficult</option>-->
+                    <!--<option value="5">5 - Very difficult</option>-->
+                <!--</select>-->
 
                 <button class="btn" id="reset">Reset</button>
                 <button class="btn" id="select-all" value="all">Select All</button>
@@ -268,7 +268,7 @@
         var _this = this;
 
         $("#grid_size").on("change", $.proxy(this.change_grid, this));
-        $("#difficulty").on("change", $.proxy(this.image_difficulty, this));
+//        $("#difficulty").on("change", $.proxy(this.image_difficulty, this));
         $("#reset").on("click", $.proxy(this.change_grid, this));
 
         $("#select-all").on("click", function () {
@@ -458,7 +458,7 @@
 
 
     function loadUserProgress() {
-        pybossa.userProgress('mvp-01-gold-standard').done(function (data) {
+        pybossa.userProgress('mvp-pa-test-01').done(function (data) {
             var pct = Math.round((data.done * 100) / data.total);
             $("#progress").css("width", pct.toString() + "%");
             $("#progress").attr("title", pct.toString() + "% completed!");
@@ -578,7 +578,7 @@
 
 
     $(function () {
-        pybossa.run('mvp-01-gold-standard');
+        pybossa.run('mvp-pa-test-01');
     })
 
 </script>
