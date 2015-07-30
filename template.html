@@ -1246,7 +1246,7 @@
     var data = [{
         "info": {
             "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung-all-min/1.jpg",
-            "taskTitle": "<h2>Etiam porta sem malesuada 1</h2>",
+            "taskTitle": "<h2>Etiam porta sem malesuada 1<\/h2>",
             "taskSubTitle": "Etiam porta sem malesuada sem malesuada",
             "taskParagraph": "Etiam porta sem malesuada magna mollis euismod. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere consectetur est at lobortis.",
             "taskFeedback": "Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.",
@@ -3366,12 +3366,13 @@
 
         $(".grid-info-instructions").attr("id", feedbackStepNumber );
 
-        var $feedbackStep = $("#" + feedbackStepNumber + " .task-content");
+        var $feedbackStepContent = $("#" + feedbackStepNumber + " .task-content");
+        $feedbackStepContent.empty();
 
-        $feedbackStep.append(taskTitle);
-        $feedbackStep.append(taskSubTitle);
-        $feedbackStep.append(taskParagraph);
-        $feedbackStep.append(taskFeedback);
+        $feedbackStepContent.append(taskTitle);
+        $feedbackStepContent.append(taskSubTitle);
+        $feedbackStepContent.append(taskParagraph);
+        $feedbackStepContent.append(taskFeedback);
 
         var feedbackGrid = new FeedbackGrid();
         feedbackGrid.createGrid("feedbackCanvas");
