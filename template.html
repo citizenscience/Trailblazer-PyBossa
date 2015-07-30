@@ -9,7 +9,7 @@
     .grid-info {
         margin-bottom: 20px;
         overflow: auto;
-        min-height: 300px;
+        min-height: 360px;
     }
 
     /* .grid-info-footer {
@@ -1090,86 +1090,16 @@
             <div class="span6">
                 <div id="feedback-grid-info" class="grid-info">
 
-                    <div class="grid-info-instructions" id="feedbackStep0">
+                    <div class="grid-info-instructions">
                         <div class="task-content">
                             <h2 id="taskTitle"></h2>
-
                             <h3 id="taskSubTitle"></h3>
-
                             <p id="taskParagraph"></p>
-
-                            <p id="taskFeedback"></p>
-                        </div>
-
-                        <!--<h2>-->
-                        <!--Click once for <strong>cancer</strong> cells in <span class="text-error">RED</span>-->
-                        <!--<br/> Double click for <strong>non-cancer</strong> cells in-->
-                        <!--<span class="text-success">GREEN</span>-->
-                        <!--<br/> Leave blank for empty sections.-->
-
-                        <!--</h2>-->
-
-                        <!--<h3>-->
-                        <!--This time we’ll give you immediate feedback on whether our-->
-                        <!--expert pathologists agreed with you.-->
-                        <!--</h3>-->
-
-                        <!--<p>-->
-                        <!--You can change your answer as often as you want.-->
-
-                        <!--When you’re done click Next Slide-->
-                        <!--</p>-->
-
-                        <p class="imgId"></p>
-                    </div>
-                    <div class="grid-info-instructions" id="feedbackStep1" style="display:none;">
-                        <div class="task-content">
-                            <h2 id="taskTitle"></h2>
-
-                            <h3 id="taskSubTitle"></h3>
-
-                            <p id="taskParagraph"></p>
-
                             <p id="taskFeedback"></p>
                         </div>
                         <p class="imgId"></p>
                     </div>
-                    <div class="grid-info-instructions" id="feedbackStep2" style="display:none;">
-                        <div class="task-content">
-                            <h2 id="taskTitle"></h2>
 
-                            <h3 id="taskSubTitle"></h3>
-
-                            <p id="taskParagraph"></p>
-
-                            <p id="taskFeedback"></p>
-                        </div>
-                        <p class="imgId"></p>
-                    </div>
-                    <div class="grid-info-instructions" id="feedbackStep3" style="display:none;">
-                        <div class="task-content">
-                            <h2 id="taskTitle"></h2>
-
-                            <h3 id="taskSubTitle"></h3>
-
-                            <p id="taskParagraph"></p>
-
-                            <p id="taskFeedback"></p>
-                        </div>
-                        <p class="imgId"></p>
-                    </div>
-                    <div class="grid-info-instructions" id="feedbackStep4" style="display:none;">
-                        <div class="task-content">
-                            <h2 id="taskTitle"></h2>
-
-                            <h3 id="taskSubTitle"></h3>
-
-                            <p id="taskParagraph"></p>
-
-                            <p id="taskFeedback"></p>
-                        </div>
-                        <p class="imgId"></p>
-                    </div>
 
                     <div id="feedbackProgressText" style="display:none;"></div>
                     <h2 id="feedbackProgressPercentage" style="display:none;">Percentage</h2>
@@ -1190,7 +1120,7 @@
 
                 <div class="grid-info-buttons clearfix">
 
-                    <a class="btn btn-primary pull-right" id="finishFeedback" style="display:none; ">
+                    <a class="btn btn-primary pull-right disabled" id="finishFeedback" style="display:none; margin-left: 10px;">
                         Next
                     </a>
                     <a class="btn btn-primary pull-right disabled" id="nextFeedbackStep" style="margin-left: 10px;">
@@ -2656,9 +2586,9 @@
 
 
         if (pct >= 5) {
-            $("#nextFeedbackStep").removeClass("disabled");
+            $("#nextFeedbackStep, #finishFeedback").removeClass("disabled");
         } else {
-            $("#nextFeedbackStep").addClass("disabled");
+            $("#nextFeedbackStep, #finishFeedback").addClass("disabled");
         }
 
         this.percentageFeedbackText(pct);
@@ -2987,7 +2917,7 @@
             zoomWindowPosition: zoomWindowPos,
             lensFadeIn: 500,
             lensFadeOut: 500,
-            zoomWindowHeight: 300,
+            zoomWindowHeight: 365,
             zoomWindowWidth: 460,
             cursor: "pointer"
         });
@@ -3384,7 +3314,7 @@
         if (action == 'next') {
             step += 1;
 
-            $("#nextFeedbackStep, #checkMyWorkBtn").addClass("disabled");
+            $("#nextFeedbackStep, #checkMyWorkBtn #finishFeedback").addClass("disabled");
 
         }
 
@@ -3419,10 +3349,14 @@
 
         $('#feedback-photo-link').append(img);
 
-        $("#feedbackStep" + step + " #taskTitle").text(taskTitle);
-        $("#feedbackStep" + step + " #taskSubTitle").text(taskSubTitle);
-        $("#feedbackStep" + step + " #taskParagraph").text(taskParagraph);
-        $("#feedbackStep" + step + " #taskFeedback").text(taskFeedback);
+        $(".grid-info-instructions").removeAttr( "id" )
+        var feedbackStepNumber = "feedbackStep" + step;
+        $(".grid-info-instructions").attr("id", feedbackStepNumber );
+
+        $("#feedbackStep" + step + " #taskTitle").empty().text(taskTitle);
+        $("#feedbackStep" + step + " #taskSubTitle").empty().text(taskSubTitle);
+        $("#feedbackStep" + step + " #taskParagraph").empty().text(taskParagraph);
+        $("#feedbackStep" + step + " #taskFeedback").empty().text(taskFeedback);
 
 
         var feedbackGrid = new FeedbackGrid();
@@ -3460,6 +3394,14 @@
             feedbackGrid.showMyAnalysis();
         };
 
+        var lastFeedbackStep = data.length - 1;
+        if (step === lastFeedbackStep) {
+            $("#nextFeedbackStep").hide();
+            $("#finishFeedback").show().addClass("disabled");
+            return
+        }
+
+
         $("#feedbackStep" + step).show();
         $("#practiseImageNumber").text(step + 1);
         //<h1 id="question">Practise image <span id="practiseImageNumber">1</span></h1>
@@ -3469,22 +3411,12 @@
 
     var nextFeedbackBtn = document.getElementById("nextFeedbackStep");
     nextFeedbackBtn.onclick = function () {
-
-
         if ($(this).hasClass("disabled")) return
-
         $("#feedbackProgress").width("0%");
         $("#feedbackProgressText").text("");
-
-        var lastFeedbackStep = ($(".grid-info-instructions").length - 1) - 1;
-        if (step === lastFeedbackStep) {
-            $("#nextFeedbackStep, #checkMyWorkBtn").hide();
-            $("#finishFeedback").show();
-            return
-        } else {
-            showFeedbackStep('next');
+        if (step != data.length - 1 ) {
+           showFeedbackStep('next');
         }
-
     };
 
 
@@ -3555,6 +3487,7 @@
         });
 
         $("#finishFeedback").on("click", function () {
+            if ($(this).hasClass("disabled")) return
             $("svg, .feedback-img-polaroid, .zoomContainer, .zoomWindowContainer, .feedback-photo-link").remove();
             $.removeData(".feedback-photo-link", 'elevateZoom');
             var m = new Modal;
