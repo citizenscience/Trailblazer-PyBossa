@@ -1108,12 +1108,7 @@
                 <div id="feedback-grid-info" class="grid-info">
 
                     <div class="grid-info-instructions">
-                        <div class="task-content">
-                            <h2 id="taskTitle"></h2>
-                            <h3 id="taskSubTitle"></h3>
-                            <p id="taskParagraph"></p>
-                            <p id="taskFeedback"></p>
-                        </div>
+                        <div class="task-content"></div>
                         <p class="imgId"></p>
                     </div>
 
@@ -1251,7 +1246,7 @@
     var data = [{
         "info": {
             "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung-all-min/1.jpg",
-            "taskTitle": "Etiam porta sem malesuada 1",
+            "taskTitle": "<h2>Etiam porta sem malesuada 1</h2>",
             "taskSubTitle": "Etiam porta sem malesuada sem malesuada",
             "taskParagraph": "Etiam porta sem malesuada magna mollis euismod. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere consectetur est at lobortis.",
             "taskFeedback": "Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.",
@@ -3136,11 +3131,12 @@
     pybossa.presentTask(function (task, deferred) {
         if (!$.isEmptyObject(task)) {
 
+            console.log(task.state);
 
             if (task.state == 'completed') {
                 $("#loading").hide();
-            $("#finish").fadeIn(500);
-            $(".site-content").fadeTo("slow", 0.5);
+                $("#finish").fadeIn(500);
+                $(".site-content").fadeTo("slow", 0.5);
             }
 
 
@@ -3367,13 +3363,15 @@
 
         $(".grid-info-instructions").removeAttr( "id" )
         var feedbackStepNumber = "feedbackStep" + step;
+
         $(".grid-info-instructions").attr("id", feedbackStepNumber );
 
-        $("#feedbackStep" + step + " #taskTitle").empty().text(taskTitle);
-        $("#feedbackStep" + step + " #taskSubTitle").empty().text(taskSubTitle);
-        $("#feedbackStep" + step + " #taskParagraph").empty().text(taskParagraph);
-        $("#feedbackStep" + step + " #taskFeedback").empty().text(taskFeedback);
+        var $feedbackStep = $("#" + feedbackStepNumber + " .task-content");
 
+        $feedbackStep.append(taskTitle);
+        $feedbackStep.append(taskSubTitle);
+        $feedbackStep.append(taskParagraph);
+        $feedbackStep.append(taskFeedback);
 
         var feedbackGrid = new FeedbackGrid();
         feedbackGrid.createGrid("feedbackCanvas");
@@ -3411,8 +3409,7 @@
         };
 
         var lastFeedbackStep = data.length;
-        console.log(lastFeedbackStep);
-        console.log(step);
+
         if (step === lastFeedbackStep - 1) {
             $("#nextFeedbackStep").hide();
             $("#finishFeedback").show().addClass("disabled");
