@@ -96,7 +96,7 @@
 
 </style>
 
-<!--MODALS-->
+<!--MODAL-->
 <div class="row">
     <div class="span12">
 
@@ -1247,9 +1247,9 @@
         "info": {
             "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung-all-min/1.jpg",
             "taskTitle": "<h2>Etiam porta sem malesuada 1<\/h2>",
-            "taskSubTitle": "Etiam porta sem malesuada sem malesuada",
-            "taskParagraph": "Etiam porta sem malesuada magna mollis euismod. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere consectetur est at lobortis.",
-            "taskFeedback": "Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.",
+            "taskSubTitle": "<h2>Etiam porta sem malesuada sem malesuada<\/h2>",
+            "taskParagraph": "<p>Etiam porta sem malesuada magna mollis euismod. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere consectetur est at lobortis.<\/p>",
+            "taskFeedback": "<p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.<\/p>",
             "squares": [{
                 "column": 0,
                 "answer": null,
@@ -3136,7 +3136,7 @@
             if (task.state == 'completed') {
                 $("#loading").hide();
                 $("#finish").fadeIn(500);
-                $(".site-content").fadeTo("slow", 0.5);
+                $(".site-content").fadeTo("slow", 0.5).css("pointer-events", "none;")
             }
 
 
@@ -3282,7 +3282,7 @@
                  */
 
                 pybossa.saveTask(task.id, answer).done(function (data) {
-                    $("#success").fadeIn(500).delay(1000).fadeOut();
+                    $("#success").fadeIn(500).delay(1500).fadeOut();
                     $("svg, .zoomContainer,.zoomWindowContainer").remove();
                     deferred.resolve();
                 });
