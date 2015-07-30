@@ -3137,9 +3137,14 @@
         if (!$.isEmptyObject(task)) {
 
 
+            if (task.state == 'completed') {
+                $("#loading").hide();
+            $("#finish").fadeIn(500);
+            $(".site-content").fadeTo("slow", 0.5);
+            }
+
+
             loadUserProgress();
-
-
             var openModalCount = 0;
 
             /*
@@ -3292,7 +3297,7 @@
 
             $("#loading").hide();
             $("#finish").fadeIn(500);
-            $(".span6").fadeTo("slow", 0.5);
+            $(".site-content").fadeTo("slow", 0.5);
         }
     });
 
