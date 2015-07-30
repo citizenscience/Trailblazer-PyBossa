@@ -60,6 +60,7 @@
         margin-bottom: 0 !important;
     }
 
+    .mechanic-content,
     .feedback-content {
         position: relative;
     }
@@ -1053,8 +1054,8 @@
                     </div>
 
                     <div class="grid-info-buttons">
-                        <button class="btn" id="selectAllBtn" value="all">Select All</button>
-                        <button class="btn" id="deselectBtn">Deselect All</button>
+                        <!--<button class="btn" id="selectAllBtn" value="all">Select All</button>-->
+                        <!--<button class="btn" id="deselectBtn">Deselect All</button>-->
                         <button class="btn btn-primary" id="showTutorialModalBtn">Tutorial</button>
                         <button class="btn btn-answer btn-success nextSlideBtn" id="nextSlideBtn" value="next">Next slide</button>
                     </div>
@@ -1069,18 +1070,13 @@
                 <!--Right hand side-->
                 <div class="span6 right wrapper grid-wrapper" id="grid-wrapper">
                     <a id="photo-link"></a>
-
                     <div class="canvas" id="mechanicCanvas"></div>
-
                 </div>
             </div>
 
         </div>
 
     </div>
-
-
-
 
     <div class="feedback-content" id="feedback-content">
 
@@ -1115,12 +1111,7 @@
                 <div id="feedback-grid-info" class="grid-info">
 
                     <div class="grid-info-instructions">
-                        <div class="task-content">
-                            <h2 id="taskTitle"></h2>
-                            <h3 id="taskSubTitle"></h3>
-                            <p id="taskParagraph"></p>
-                            <p id="taskFeedback"></p>
-                        </div>
+                        <div class="task-content"></div>
                         <p class="imgId"></p>
                     </div>
 
@@ -1168,7 +1159,6 @@
     </div>
 
     <div class="row-fluid">
-    <div class="">
         <div class="example-list clearfix">
             <figure class="example-list-item">
                 <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example1.jpg" alt=""/>
@@ -1237,7 +1227,7 @@
 
         </div>
 
-    </div>
+
 </div>
 
 </main>
@@ -3144,10 +3134,16 @@
     pybossa.presentTask(function (task, deferred) {
         if (!$.isEmptyObject(task)) {
 
+            console.log(task.state);
+
+            if (task.state == 'completed') {
+                $("#loading").hide();
+                $("#finish").fadeIn(500);
+                $(".site-content").fadeTo("slow", 0.5);
+            }
+
 
             loadUserProgress();
-
-
             var openModalCount = 0;
 
             /*
@@ -3184,14 +3180,14 @@
              Event Listeners for various buttons
              */
 
-            var selectBtn = document.getElementById("selectAllBtn");
-            selectBtn.onclick = function () {
-                grid.selectAllSquares();
-            }
-            var deselectBtn = document.getElementById("deselectBtn");
-            deselectBtn.onclick = function () {
-                grid.deselectAllSquares();
-            }
+//            var selectBtn = document.getElementById("selectAllBtn");
+//            selectBtn.onclick = function () {
+//                grid.selectAllSquares();
+//            }
+//            var deselectBtn = document.getElementById("deselectBtn");
+//            deselectBtn.onclick = function () {
+//                grid.deselectAllSquares();
+//            }
 
 
             var showTutorialModalBtn = document.getElementById("showTutorialModalBtn");
@@ -3300,7 +3296,7 @@
 
             $("#loading").hide();
             $("#finish").fadeIn(500);
-            $(".span6").fadeTo("slow", 0.5);
+            $(".site-content").fadeTo("slow", 0.5);
         }
     });
 
@@ -3370,13 +3366,15 @@
 
         $(".grid-info-instructions").removeAttr( "id" )
         var feedbackStepNumber = "feedbackStep" + step;
+
         $(".grid-info-instructions").attr("id", feedbackStepNumber );
 
-        $("#feedbackStep" + step + " #taskTitle").empty().text(taskTitle);
-        $("#feedbackStep" + step + " #taskSubTitle").empty().text(taskSubTitle);
-        $("#feedbackStep" + step + " #taskParagraph").empty().text(taskParagraph);
-        $("#feedbackStep" + step + " #taskFeedback").empty().text(taskFeedback);
+        var $feedbackStep = $("#" + feedbackStepNumber + " .task-content");
 
+        $feedbackStep.append(taskTitle);
+        $feedbackStep.append(taskSubTitle);
+        $feedbackStep.append(taskParagraph);
+        $feedbackStep.append(taskFeedback);
 
         var feedbackGrid = new FeedbackGrid();
         feedbackGrid.createGrid("feedbackCanvas");
@@ -3414,8 +3412,7 @@
         };
 
         var lastFeedbackStep = data.length;
-        console.log(lastFeedbackStep);
-        console.log(step);
+
         if (step === lastFeedbackStep - 1) {
             $("#nextFeedbackStep").hide();
             $("#finishFeedback").show().addClass("disabled");
