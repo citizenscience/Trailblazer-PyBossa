@@ -996,10 +996,12 @@
             </div>
         </div>
         <div id="error" class="alert alert-error" style="display:none">
+
             <h2><strong>Error!</strong> Something went wrong, please contact the site administrators</h2>
         </div>
 
-         <div id="errorClick" class="alert alert-info" style="display:none">
+         <div id="errorClick" class="alert alert-info" style="display:none; position: relative;">
+             <i class="icon-remove" id="errorClickCross" style="position:absolute; right: 30px; cursor:pointer;"></i>
                         <h2>If you are having problems clicking the grid, please refresh the page by clicking
                             <b onclick="location.reload();" style="cursor:pointer;"><u>here</u></b></h2>
                     </div>
@@ -3236,6 +3238,11 @@
                 zoom.removeZoom($(".tutorialZoom"));
                 $("#errorClick").show();
                 zoom.addZoom($(".img-polaroid"));
+            };
+
+            var errorClickCrossBtn = document.getElementById("errorClickCross");
+            errorClickCrossBtn.onclick = function () {
+                $("#errorClick").hide();
             };
 
 
