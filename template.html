@@ -96,7 +96,7 @@
 
 </style>
 
-<!--MODALS-->
+<!--MODAL-->
 <div class="row">
     <div class="span12">
 
@@ -3139,7 +3139,7 @@
             if (task.state == 'completed') {
                 $("#loading").hide();
                 $("#finish").fadeIn(500);
-                $(".site-content").fadeTo("slow", 0.5);
+                $(".site-content").fadeTo("slow", 0.5).css("pointer-events", "none;")
             }
 
 
@@ -3285,7 +3285,7 @@
                  */
 
                 pybossa.saveTask(task.id, answer).done(function (data) {
-                    $("#success").fadeIn(500).delay(1000).fadeOut();
+                    $("#success").fadeIn(500).delay(1500).fadeOut();
                     $("svg, .zoomContainer,.zoomWindowContainer").remove();
                     deferred.resolve();
                 });
