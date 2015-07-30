@@ -160,7 +160,7 @@
 
                     <h2>
                         We need your help identifying cancer cells,
-                        <strong>distinguishing them</strong> from healthy cells in images like the one to the left.
+                        distinguishing them from healthy cells in images like the one to the left.
                     </h2>
                 </div>
 
@@ -288,18 +288,18 @@
                                     </h1>
 
                                     <h2>
-                                        The remaining cells are <b>healthy</b> and have been highlighted in
+                                        The remaining cells are <b>non-cancer</b> and have been highlighted in
                                         <b class="text-success">green</b>. They include:
                                     </h2>
                                     <ol>
-                                        <li>Blood cells.
+                                        <li><b>Blood cells</b>
                                             <ul>
-                                                <li>These are <b>small, dark blue and round</b>.</li>
+                                                <li>These are <b>small, dark blue and round</b></li>
                                                 <li>Sometimes they appear as <b>dark brown spots</b></li>
-                                                <li>They can appear loosely spread out or in very dense clusters.</li>
+                                                <li>They can appear loosely spread out or in very dense clusters</li>
                                             </ul>
                                         </li>
-                                        <li>Stromal cells.
+                                        <li><b>Stromal cells</b>
                                             <ul>
                                                 <li>These are often <b>light blue, wispy or stretched looking</b></li>
                                                 <li>They often look like they are flowing or being stretched in a particular direction</li>
@@ -384,17 +384,17 @@
 
                                     <h2>
                                         There are different types of
-                                        <strong>healthy cells</strong> in this image. The two most common types are:
+                                        <strong>non-cancer cells</strong> in this image. The two most common types are:
                                     </h2>
                                     <ol>
-                                        <li>Blood cells.
+                                        <li><b>Blood cells</b>
                                             <ul>
-                                                <li>These are <b>small, dark blue and round</b>.</li>
+                                                <li>These are <b>small, dark blue and round</b></li>
                                                 <li>Sometimes they appear as <b>dark brown spots</b></li>
-                                                <li>They can appear loosely spread out or in very dense clusters.</li>
+                                                <li>They can appear loosely spread out or in very dense clusters</li>
                                             </ul>
                                         </li>
-                                        <li>Stromal cells.
+                                        <li><b>Stromal cells</b>
                                             <ul>
                                                 <li>These are often <b>light blue, wispy or stretched looking</b></li>
                                                 <li>They often look like they are flowing or being stretched in a particular direction</li>
@@ -416,13 +416,11 @@
                                     <h2>
                                         We've highlighted clusters of blood cells in <b class="text-success">green</b>
                                     </h2>
-                                    <li>Blood cells.
-
-                                    <li>These are small, dark blue and round.</li>
-                                    <li>Sometimes appear as dark brown spots</li>
-                                    <li>They can appear loosely spread out or in very dense clusters.</li>
-
-                                    </li>
+                                    <ul>
+                                        <li>These are small, dark blue and round.</li>
+                                        <li>Sometimes appear as dark brown spots</li>
+                                        <li>They can appear loosely spread out or in very dense clusters.</li>
+                                    </ul>
                                 </div>
                             </div>
 
@@ -447,10 +445,10 @@
                         Let’s run through an example
                     </h1>
 
-                    <p>
+                    <h2>
                         We have split the images up into a 6x6 grid. Some of the grid sections contain cancer cells and some of them do not.
                         We’re going to show you what to do.
-                    </p>
+                    </h2>
                 </div>
 
             </div>
@@ -465,10 +463,12 @@
 
                     <h2>
                         You can zoom in to the image by moving the mouse over each section to get a closer look.
-                        There are also a number of reference images at the bottom of the screen
-
+                    </h2>
+                    <h2>
+                        There are a number of reference images at the bottom of the screen
                         showing examples of what cancer and healthy cells look like.
-
+                    </h2>
+                    <h2>
                         In a moment you’ll have a chance to try this for yourself.
                     </h2>
                 </div>
@@ -486,7 +486,7 @@
 
                     <h2>
                         Examine each section and if you think it contains cancer cells (even if you only see one or two cells)
-                        <b>click once to turn that section <strong class="text-error">red.</strong></b>.
+                        <b>click once to turn that section <strong class="text-error">red</strong></b>.
                     </h2>
                 </div>
 
@@ -505,8 +505,8 @@
                     </h1>
 
                     <h2>
-                        Examine each section and if you think it <b>only contains healthy cells</b>, you can
-                        <b>click</b> it again to turn that section <strong class="text-success">green</strong>.
+                        Examine each section and if you think it <b>only contains non-cancer cells</b>, you can
+                        <b>click</b> a second time to turn that section from red to <strong class="text-success">green</strong>.
                     </h2>
                 </div>
 
@@ -522,11 +522,12 @@
                         Empty sections can be left blank
                     </h1>
 
-                    <p>
-                        You can ignore any sections that are empty, normally corner and edge
-
-                        sections. You can then click on the Next button to move to the next image
-                    </p>
+                    <h2>
+                        You can ignore any sections that are empty, normally corner and edge sections.
+                    </h2>
+                    <h2>
+                        You can then click on the Next button to move to the next image
+                    </h2>
 
                 </div>
 
@@ -546,6 +547,8 @@
 
                     <h2>
                         We’ll let you know if our expert pathologists agreed with your analysis.
+                    </h2>
+                    <h2>
                         For the first two images we’ll give you immediate feedback on your work
                     </h2>
 
@@ -1256,7 +1259,7 @@
     var data = [{
         "info": {
             "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung-all-min/1.jpg",
-            "taskTitle": "Etiam porta sem malesuada 1",
+            "taskTitle": "<h2>Click once to mark cancer cells in RED<\/h2> <h2>Click again to mark non-cancer cells in GREEN<\/h2><h2>You can click a third time to mark a section as blank<h2\/><h2>Empty sections of the image can be ignored and left blank<\/h2>",
             "taskSubTitle": "Etiam porta sem malesuada sem malesuada",
             "taskParagraph": "Etiam porta sem malesuada magna mollis euismod. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere consectetur est at lobortis.",
             "taskFeedback": "Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.",
