@@ -991,20 +991,38 @@
     <div class="mechanic-content" id="mechanic-content" style="display:none;">
 
         <div class="row clearfix">
-            <div class="span6">
-                <h1>Trailblazer</h1>
+            <div class="legend">
+            <div class="legend-item">
+                <div class="square square-red"></div>
+                = Cancer
             </div>
-            <div class="span6">
-                Click once for <strong>cancer</strong> cells in <span class="text-error">RED</span>
-                <br/> Double click for <strong>non-cancer</strong> cells in
-                <span class="text-success">GREEN</span>
-                <br/> Leave blank for empty sections.
+            <div class="legend-item">
+                <div class="square square-green"></div>
+                = Non-cancer
             </div>
+            <div class="legend-item">
+                <i class="icon-ok"></i> = Correct
+            </div>
+            <div class="legend-item">
+                <i class="icon-remove"></i> = Incorrect
+            </div>
+        </div>
+
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="row-fluid">
+                    <div class="span12">
+                        <h1 id="question">Trailblazer!</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
             <!--Left hand side-->
             <div class="span6">
                 <div id="grid-info" class="grid-info">
 
-                    <div class="grid-info-instructions">
+                    <div>
                         <h1 id="question">Select which grid sections contain cancer cells</h1>
 
                         <p>
@@ -1030,6 +1048,15 @@
                     <div class="progress progress-striped">
                         <div id="progress" rel="tooltip" title="#" class="bar" style="width: 0%;"></div>
                     </div>
+
+
+                </div>
+
+                 <div class="grid-info-buttons">
+                    <button class="btn" id="selectAllBtn" value="all">Select All</button>
+                    <button class="btn" id="deselectBtn">Deselect All</button>
+                    <button class="btn btn-primary" id="showTutorialModalBtn">Tutorial</button>
+                    <button class="btn btn-answer btn-success nextSlideBtn" id="nextSlideBtn" value="next">Next slide</button>
                 </div>
                 <br/>
 
@@ -1044,12 +1071,7 @@
                 <a id="photo-link"></a>
 
                 <div class="canvas" id="mechanicCanvas"></div>
-                <div class="grid-info-buttons">
-                    <button class="btn" id="selectAllBtn" value="all">Select All</button>
-                    <button class="btn" id="deselectBtn">Deselect All</button>
-                    <button class="btn btn-primary" id="showTutorialModalBtn">Tutorial</button>
-                    <button class="btn btn-answer btn-success nextSlideBtn" id="nextSlideBtn" value="next">Next slide</button>
-                </div>
+
             </div>
         </div>
 
@@ -1076,7 +1098,6 @@
 
         <div class="row-fluid">
             <div class="span12">
-
                 <div class="row-fluid">
                     <div class="span12">
                         <h1 id="question">Practice image <span id="practiseImageNumber">1</span> of 5</h1>
@@ -1115,7 +1136,6 @@
                     <div class="" id="pathologistsText">
                         <p></p>
                     </div>
-
                 </div>
 
                 <div class="grid-info-buttons clearfix">
@@ -3394,11 +3414,12 @@
             feedbackGrid.showMyAnalysis();
         };
 
-        var lastFeedbackStep = data.length - 1;
-        if (step === lastFeedbackStep) {
+        var lastFeedbackStep = data.length;
+        console.log(lastFeedbackStep);
+        console.log(step);
+        if (step === lastFeedbackStep - 1) {
             $("#nextFeedbackStep").hide();
             $("#finishFeedback").show().addClass("disabled");
-            return
         }
 
 
@@ -3414,7 +3435,7 @@
         if ($(this).hasClass("disabled")) return
         $("#feedbackProgress").width("0%");
         $("#feedbackProgressText").text("");
-        if (step != data.length - 1 ) {
+        if (step != data.length - 1) {
            showFeedbackStep('next');
         }
     };
