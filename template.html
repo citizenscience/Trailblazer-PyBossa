@@ -4,12 +4,16 @@
 
     }*/
 
+    .modal-backdrop {
+    z-index: 1700 !important;
+}
+
     /*rgba(243,243,244);*/
 
     .grid-info {
         margin-bottom: 20px;
         overflow: auto;
-        min-height: 360px;
+        height: 460px;
     }
 
     /* .grid-info-footer {
@@ -28,9 +32,6 @@
         border: 0 !important;
     }
 
-    .grid-info-buttons {
-        margin-top: 20px;
-    }
 
     #photo-link {
         display: block;
@@ -61,25 +62,23 @@
     }
 
     .mechanic-content,
-    .feedback-content {
+    .feedback-content,
+    .grid-info{
         position: relative;
     }
 
     .legend {
         position: absolute;
-        right: -208px;
-        width: 200px;
-        top: 47px;
+    left: -198px;
+    width: 200px;
+    top: 47px;
+    text-align: right;
     }
 
     .legend-item {
         display: inline-block;
         margin-right: 20px;
         margin-bottom: 20px;
-    }
-
-    .legend-item:last-of-type {
-        margin-right: 0;
     }
 
     .legend-item i {
@@ -90,8 +89,15 @@
     }
 
     .example-list {
-        margin-top: 20px !important;
         margin-bottom: 0 !important;
+    }
+
+    .grid-info-buttons {
+        position: absolute;
+    bottom: 20px;
+    margin-top: 0;
+    right: 20px;
+           z-index: 1600;
     }
 
 </style>
@@ -465,10 +471,12 @@
                     <h2>
                         You can zoom in to the image by moving the mouse over each section to get a closer look.
                     </h2>
+
                     <h2>
                         There are a number of reference images at the bottom of the screen
                         showing examples of what cancer and healthy cells look like.
                     </h2>
+
                     <h2>
                         In a moment you’ll have a chance to try this for yourself.
                     </h2>
@@ -507,7 +515,8 @@
 
                     <h2>
                         Examine each section and if you think it <b>only contains non-cancer cells</b>, you can
-                        <b>click</b> a second time to turn that section from red to <strong class="text-success">green</strong>.
+                        <b>click</b> a second time to turn that section from red to
+                        <strong class="text-success">green</strong>.
                     </h2>
                 </div>
 
@@ -526,6 +535,7 @@
                     <h2>
                         You can ignore any sections that are empty, normally corner and edge sections.
                     </h2>
+
                     <h2>
                         You can then click on the Next button to move to the next image
                     </h2>
@@ -549,6 +559,7 @@
                     <h2>
                         We’ll let you know if our expert pathologists agreed with your analysis.
                     </h2>
+
                     <h2>
                         For the first two images we’ll give you immediate feedback on your work
                     </h2>
@@ -1020,6 +1031,13 @@
 
             <div class="row-fluid clearfix">
 
+                <!--Right hand side-->
+                <div class="span6 right wrapper grid-wrapper" id="grid-wrapper">
+                    <a id="photo-link"></a>
+
+                    <div class="canvas" id="mechanicCanvas"></div>
+                </div>
+
                 <!--Left hand side-->
                 <div class="span6">
                     <div id="grid-info" class="grid-info">
@@ -1067,11 +1085,7 @@
                     </div>
                 </div>
 
-                <!--Right hand side-->
-                <div class="span6 right wrapper grid-wrapper" id="grid-wrapper">
-                    <a id="photo-link"></a>
-                    <div class="canvas" id="mechanicCanvas"></div>
-                </div>
+
             </div>
 
         </div>
@@ -1080,41 +1094,50 @@
 
     <div class="feedback-content" id="feedback-content">
 
-
         <div class="legend">
             <div class="legend-item">
+                Cancer =
                 <div class="square square-red"></div>
-                = Cancer
+
             </div>
             <div class="legend-item">
+                Non-cancer =
                 <div class="square square-green"></div>
-                = Non-cancer
             </div>
             <div class="legend-item">
-                <i class="icon-ok"></i> = Correct
+                 Correct =
+                <i class="icon-ok"></i>
             </div>
             <div class="legend-item">
-                <i class="icon-remove"></i> = Incorrect
+                 Incorrect =
+                <i class="icon-remove"></i>
             </div>
         </div>
-
 
         <div class="row-fluid">
             <div class="span12">
-                 <h1 id="question">Practice image <span id="practiseImageNumber">1</span> of 5</h1>
+                <h1 id="question">Practice image <span id="practiseImageNumber">1</span> of 5</h1>
             </div>
         </div>
 
-         <div class="row-fluid clearfix">
+        <div class="row-fluid clearfix">
 
-                 <div class="span6">
+            <div class="span6">
+                <!--Right hand side-->
+                <div class=" right wrapper grid-wrapper" id="grid-wrapper">
+                    <a id="feedback-photo-link"></a>
+
+                    <div class="canvas" id="feedbackCanvas"></div>
+                </div>
+            </div>
+
+            <div class="span6">
                 <div id="feedback-grid-info" class="grid-info">
 
                     <div class="grid-info-instructions">
                         <div class="task-content"></div>
                         <p class="imgId"></p>
                     </div>
-
 
                     <div id="feedbackProgressText" style="display:none;"></div>
                     <h2 id="feedbackProgressPercentage" style="display:none;">Percentage</h2>
@@ -1123,16 +1146,7 @@
                         <div class="bar" id="feedbackProgress"></div>
                     </div>
 
-                </div>
-                <!-- grid-info -->
-
-                <div class="alert alert-info" id="pathologistFeedback" style="display:none;">
-                    <div class="" id="pathologistsText">
-                        <p></p>
-                    </div>
-                </div>
-
-                <div class="grid-info-buttons clearfix">
+                    <div class="grid-info-buttons clearfix">
 
                     <a class="btn btn-primary pull-right disabled" id="finishFeedback" style="display:none; margin-left: 10px;">
                         Next
@@ -1145,17 +1159,21 @@
                     </a>
                 </div>
 
+                </div>
+                <!-- grid-info -->
+
+                <!--<div class="alert alert-info" id="pathologistFeedback" style="display:none;">-->
+                    <!--<div class="" id="pathologistsText">-->
+                        <!--<p></p>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+
+
             </div>
 
-            <div class="span6">
-                <!--Right hand side-->
-            <div class=" right wrapper grid-wrapper" id="grid-wrapper">
-                <a id="feedback-photo-link"></a>
 
-                <div class="canvas" id="feedbackCanvas"></div>
-            </div>
-            </div>
-         </div>
+        </div>
     </div>
 
     <div class="row-fluid">
@@ -1164,28 +1182,20 @@
                 <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example1.jpg" alt=""/>
                 <figcaption class="description cancer">Cancer Cells</figcaption>
             </figure>
-            <figure class="example-list-item">
-                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-healthy-cells/example-healthy-blood-cells.jpg" alt=""/>
-                <figcaption class="description non-cancer">Non-cancer Cells</figcaption>
-            </figure>
+
             <figure class="example-list-item">
                 <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example2.jpg" alt=""/>
                 <figcaption class="description cancer">Cancer Cells</figcaption>
             </figure>
 
-            <figure class="example-list-item">
-                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-healthy-cells/example-healthy-lung-stromal-cartilage.jpg" alt=""/>
-                <figcaption class="description non-cancer">Non-cancer Cells</figcaption>
-            </figure>
+
 
             <figure class="example-list-item">
                 <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example3.jpg" alt=""/>
                 <figcaption class="description cancer">Cancer Cells</figcaption>
             </figure>
-            <figure class="example-list-item">
-                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-healthy-cells/example-healthy-stromal-and-blood-cells.jpg" alt=""/>
-                <figcaption class="description non-cancer">Non-cancer Cells</figcaption>
-            </figure>
+
+
             <figure class="example-list-item">
                 <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example4.jpg" alt=""/>
                 <figcaption class="description cancer">Cancer Cells</figcaption>
@@ -1195,19 +1205,13 @@
                 <figcaption class="description cancer">Cancer Cells</figcaption>
             </figure>
 
-            <figure class="example-list-item">
-                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-healthy-cells/example-healthy-stromal-and-blood-cells2.jpg" alt=""/>
-                <figcaption class="description non-cancer">Non-cancer Cells</figcaption>
-            </figure>
+
             <figure class="example-list-item">
                 <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example6.jpg" alt=""/>
                 <figcaption class="description cancer">Cancer Cells</figcaption>
             </figure>
 
-            <figure class="example-list-item last">
-                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-healthy-cells/example-healthy-stromal-cells.jpg" alt=""/>
-                <figcaption class="description non-cancer">Non-cancer Cells</figcaption>
-            </figure>
+
             <figure class="example-list-item">
                 <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example7.jpg" alt=""/>
                 <figcaption class="description cancer">Cancer Cells</figcaption>
@@ -1225,14 +1229,32 @@
                 <figcaption class="description cancer">Cancer Cells</figcaption>
             </figure>
 
+            <figure class="example-list-item last">
+                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-healthy-cells/example-healthy-stromal-cells.jpg" alt=""/>
+                <figcaption class="description non-cancer">Non-cancer Cells</figcaption>
+            </figure>
+            <figure class="example-list-item">
+                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-healthy-cells/example-healthy-blood-cells.jpg" alt=""/>
+                <figcaption class="description non-cancer">Non-cancer Cells</figcaption>
+            </figure>
+            <figure class="example-list-item">
+                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-healthy-cells/example-healthy-lung-stromal-cartilage.jpg" alt=""/>
+                <figcaption class="description non-cancer">Non-cancer Cells</figcaption>
+            </figure>
+            <figure class="example-list-item">
+                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-healthy-cells/example-healthy-stromal-and-blood-cells2.jpg" alt=""/>
+                <figcaption class="description non-cancer">Non-cancer Cells</figcaption>
+            </figure>
+            <figure class="example-list-item">
+                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-healthy-cells/example-healthy-stromal-and-blood-cells.jpg" alt=""/>
+                <figcaption class="description non-cancer">Non-cancer Cells</figcaption>
+            </figure>
+
         </div>
 
-
-</div>
+    </div>
 
 </main>
-
-
 
 <script type="text/javascript" async="async">
 
@@ -2169,8 +2191,8 @@
             };
 
         // Center the zoom cursor to middle of square
-        target_pos.x = target_pos.x + 34.85;
-        target_pos.y = target_pos.y + 34.85;
+        target_pos.x + 35.2;
+        target_pos.y + 35.2;
 
 
         // Find the closet grid item
@@ -2339,8 +2361,8 @@
             y: parseInt(target.css("top"))
         };
 
-        target_pos.x = target_pos.x + 34.85;
-        target_pos.y = target_pos.y + 15.85;
+        target_pos.x = target_pos.x + 35.2;
+        target_pos.y = target_pos.y + 35.2;
 
         // Find the closet grid square to the point of the click
         // We use a Raphaeljs method isPointInside to return the element
@@ -2926,7 +2948,7 @@
             zoomWindowPosition: zoomWindowPos,
             lensFadeIn: 500,
             lensFadeOut: 500,
-            zoomWindowHeight: 365,
+            zoomWindowHeight: 460,
             zoomWindowWidth: 460,
             cursor: "pointer"
         });
@@ -3364,17 +3386,18 @@
 
         $('#feedback-photo-link').append(img);
 
-        $(".grid-info-instructions").removeAttr( "id" )
+        $(".grid-info-instructions").removeAttr("id")
         var feedbackStepNumber = "feedbackStep" + step;
 
-        $(".grid-info-instructions").attr("id", feedbackStepNumber );
+        $(".grid-info-instructions").attr("id", feedbackStepNumber);
 
         var $feedbackStep = $("#" + feedbackStepNumber + " .task-content");
+        $feedbackStep.empty();
 
         $feedbackStep.append(taskTitle);
         $feedbackStep.append(taskSubTitle);
         $feedbackStep.append(taskParagraph);
-        $feedbackStep.append(taskFeedback);
+        //$feedbackStep.append(taskFeedback);
 
         var feedbackGrid = new FeedbackGrid();
         feedbackGrid.createGrid("feedbackCanvas");
@@ -3432,7 +3455,7 @@
         $("#feedbackProgress").width("0%");
         $("#feedbackProgressText").text("");
         if (step != data.length - 1) {
-           showFeedbackStep('next');
+            showFeedbackStep('next');
         }
     };
 
