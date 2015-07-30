@@ -953,7 +953,7 @@
                 <button type="button" class="btn closeBtnbtn-default pull-left closeBtn" id="closeBtn" data-dismiss="modal" aria-hidden="true" style="display:none;">Close</button>
                 <a id="prevBtn" href="#" class="btn">Previous</a>
                 <a id="nextBtn" href="#" class="btn btn-success">Next</a>
-                <a class="btn btn-primary closeBtn" id="startFeedbackBtn" data-dismiss="modal" aria-hidden="true" style="display:none;"><i class="icon-thumbs-up"></i> Practise</a>
+                <a class="btn btn-primary closeBtn" id="startFeedbackBtn" data-dismiss="modal" aria-hidden="true" style="display:none;"><i class="icon-thumbs-up"></i> Practice</a>
                 <button class="btn btn-primary closeBtn pull-right " id="goBackBtn" type="button" data-dismiss="modal" aria-hidden="true" style="display:none;">Back to task</button>
             </div>
         </div>
@@ -990,94 +990,97 @@
 
     <div class="mechanic-content" id="mechanic-content" style="display:none;">
 
-        <div class="row clearfix">
+        <div class="row-fluid clearfix">
             <div class="legend">
-            <div class="legend-item">
-                <div class="square square-red"></div>
-                = Cancer
+                <div class="legend-item">
+                    <div class="square square-red"></div>
+                    = Cancer
+                </div>
+                <div class="legend-item">
+                    <div class="square square-green"></div>
+                    = Non-cancer
+                </div>
+                <div class="legend-item">
+                    <i class="icon-ok"></i> = Correct
+                </div>
+                <div class="legend-item">
+                    <i class="icon-remove"></i> = Incorrect
+                </div>
             </div>
-            <div class="legend-item">
-                <div class="square square-green"></div>
-                = Non-cancer
-            </div>
-            <div class="legend-item">
-                <i class="icon-ok"></i> = Correct
-            </div>
-            <div class="legend-item">
-                <i class="icon-remove"></i> = Incorrect
-            </div>
-        </div>
 
-        <div class="row-fluid">
-            <div class="span12">
-                <div class="row-fluid">
-                    <div class="span12">
-                        <h1 id="question">Trailblazer!</h1>
+            <div class="row-fluid">
+                <div class="span12">
+                    <h1 id="question">Trailblazer!</h1>
+                </div>
+            </div>
+
+            <div class="row-fluid clearfix">
+
+                <!--Left hand side-->
+                <div class="span6">
+                    <div id="grid-info" class="grid-info">
+
+                        <div>
+                            <h1 id="question">Select which grid sections contain cancer cells</h1>
+
+                            <p>
+                                Click once for <strong>cancer</strong> cells in <span class="text-error">red</span>
+                                <br/> Double click for <strong>non-cancer</strong> cells in
+                                <span class="text-success">green</span>
+                                <br/> Leave blank for empty sections.
+
+                            </p>
+
+                            <p class="imgId"></p>
+                        </div>
+
+                        <!--<select class="grid-info-difficulty" id="difficulty">-->
+                        <!--<option value="0" selected>Please select an image difficulty level:</option>-->
+                        <!--<option value="1">1 - Very easy</option>-->
+                        <!--<option value="2">2 - Easy</option>-->
+                        <!--<option value="3">3 - Average</option>-->
+                        <!--<option value="4">4 - Difficult</option>-->
+                        <!--<option value="5">5 - Very difficult</option>-->
+                        <!--</select>-->
+
+                        <div class="progress progress-striped">
+                            <div id="progress" rel="tooltip" title="#" class="bar" style="width: 0%;"></div>
+                        </div>
+
+                    </div>
+
+                    <div class="grid-info-buttons">
+                        <button class="btn" id="selectAllBtn" value="all">Select All</button>
+                        <button class="btn" id="deselectBtn">Deselect All</button>
+                        <button class="btn btn-primary" id="showTutorialModalBtn">Tutorial</button>
+                        <button class="btn btn-answer btn-success nextSlideBtn" id="nextSlideBtn" value="next">Next slide</button>
+                    </div>
+                    <br/>
+
+                    <div id="errorClick" class="alert alert-info" style="display:none">
+                        <h2>If you are having problems clicking the grid, please refresh the page by clicking
+                            <b onclick="location.reload();" style="cursor:pointer;"><u>here</u></b></h2>
                     </div>
                 </div>
-            </div>
-        </div>
 
-            <!--Left hand side-->
-            <div class="span6">
-                <div id="grid-info" class="grid-info">
+                <!--Right hand side-->
+                <div class="span6 right wrapper grid-wrapper" id="grid-wrapper">
+                    <a id="photo-link"></a>
 
-                    <div>
-                        <h1 id="question">Select which grid sections contain cancer cells</h1>
+                    <div class="canvas" id="mechanicCanvas"></div>
 
-                        <p>
-                            Click once for <strong>cancer</strong> cells in <span class="text-error">red</span>
-                            <br/> Double click for <strong>non-cancer</strong> cells in
-                            <span class="text-success">green</span>
-                            <br/> Leave blank for empty sections.
-
-                        </p>
-
-                        <p class="imgId"></p>
-                    </div>
-
-                    <!--<select class="grid-info-difficulty" id="difficulty">-->
-                    <!--<option value="0" selected>Please select an image difficulty level:</option>-->
-                    <!--<option value="1">1 - Very easy</option>-->
-                    <!--<option value="2">2 - Easy</option>-->
-                    <!--<option value="3">3 - Average</option>-->
-                    <!--<option value="4">4 - Difficult</option>-->
-                    <!--<option value="5">5 - Very difficult</option>-->
-                    <!--</select>-->
-
-                    <div class="progress progress-striped">
-                        <div id="progress" rel="tooltip" title="#" class="bar" style="width: 0%;"></div>
-                    </div>
-
-
-                </div>
-
-                 <div class="grid-info-buttons">
-                    <button class="btn" id="selectAllBtn" value="all">Select All</button>
-                    <button class="btn" id="deselectBtn">Deselect All</button>
-                    <button class="btn btn-primary" id="showTutorialModalBtn">Tutorial</button>
-                    <button class="btn btn-answer btn-success nextSlideBtn" id="nextSlideBtn" value="next">Next slide</button>
-                </div>
-                <br/>
-
-                <div id="errorClick" class="alert alert-info" style="display:none">
-                    <h2>If you are having problems clicking the grid, please refresh the page by clicking
-                        <b onclick="location.reload();" style="cursor:pointer;"><u>here</u></b></h2>
                 </div>
             </div>
 
-            <!--Right hand side-->
-            <div class="span6 right wrapper grid-wrapper" id="grid-wrapper">
-                <a id="photo-link"></a>
-
-                <div class="canvas" id="mechanicCanvas"></div>
-
-            </div>
         </div>
 
     </div>
 
+
+
+
     <div class="feedback-content" id="feedback-content">
+
 
         <div class="legend">
             <div class="legend-item">
@@ -1096,19 +1099,16 @@
             </div>
         </div>
 
+
         <div class="row-fluid">
             <div class="span12">
-                <div class="row-fluid">
-                    <div class="span12">
-                        <h1 id="question">Practice image <span id="practiseImageNumber">1</span> of 5</h1>
-                    </div>
-                </div>
+                 <h1 id="question">Practice image <span id="practiseImageNumber">1</span> of 5</h1>
             </div>
         </div>
 
-        <div class="row clearfix">
+         <div class="row-fluid clearfix">
 
-            <div class="span6">
+                 <div class="span6">
                 <div id="feedback-grid-info" class="grid-info">
 
                     <div class="grid-info-instructions">
@@ -1153,29 +1153,20 @@
 
             </div>
 
-            <!--Right hand side-->
-            <div class="span6 right wrapper grid-wrapper" id="grid-wrapper">
+            <div class="span6">
+                <!--Right hand side-->
+            <div class=" right wrapper grid-wrapper" id="grid-wrapper">
                 <a id="feedback-photo-link"></a>
 
                 <div class="canvas" id="feedbackCanvas"></div>
             </div>
-        </div>
-
-        <div class="row">
-            <div class="span6">
-
             </div>
-            <div class="span6">
-
-            </div>
-        </div>
+         </div>
     </div>
 
-</main>
-
-<div class="row-fluid">
-    <div class="span12">
-        <div class="row example-list clearfix">
+    <div class="row-fluid">
+    <div class="">
+        <div class="example-list clearfix">
             <figure class="example-list-item">
                 <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example1.jpg" alt=""/>
                 <figcaption class="description cancer">Cancer Cells</figcaption>
@@ -1245,6 +1236,10 @@
 
     </div>
 </div>
+
+</main>
+
+
 
 <script type="text/javascript" async="async">
 
@@ -2794,6 +2789,7 @@
             }
             if (action == 'prev') {
                 this.step -= 1;
+
             }
         }
 
@@ -2869,7 +2865,7 @@
 
         } else {
             $("#nextBtn").show();
-
+            $("#startFeedbackBtn").hide();
         }
 
 
