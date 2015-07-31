@@ -565,7 +565,7 @@
 
 <header class="site-header clearfix">
     <div>
-        <div id="loadingTask" class="alert alert-info">
+        <div id="loadingTask" class="alert alert-info" style="display:none;">
             <strong>Loading task...</strong>
         </div>
         <div id="success" class="alert alert-success" style="display:none">
@@ -840,7 +840,7 @@
 <script type="text/javascript" async="async">
 
     var project_short_name = "{{ project.short_name }}";
-    if (project_short_name == "")
+    if (project_short_name === "")
         project_short_name = "mvp-03";
 
     var cookie_feedback_name = project_short_name + 'feedback';
@@ -1801,7 +1801,7 @@
             gridSquare.has_cancer = true;
             gridSquareNode.setAttribute("class", "grid-item grid-item-success");
         }
-    }
+    };
 
 
     /*
@@ -2041,7 +2041,7 @@
         }
 
 
-    }
+    };
 
     FeedbackGrid.prototype.removeTickOrCross = function (activeSquare) {
         var parentId = activeSquare.id;
@@ -2121,7 +2121,7 @@
             //htmlString += ' Try again, and remember to look at the reference images below for guidance';
             $("#pathologistFeedback p").html(htmlString);
         }
-        $("#pathologistFeedback").show()
+        $("#pathologistFeedback").show();
         //$("#pathologistFeedback p").delay(4000).fadeOut(500);
     };
 
@@ -2229,13 +2229,13 @@
         }
         $feedbackText.html(htmlString);
 
-    }
+    };
 
 
     FeedbackGrid.prototype.checkBlankSquares = function () {
 
         var blankSquares = 0;
-        $.each(data[step]["info"]["squares"], function (key, value) {
+        $.each(data[step].info.squares, function (key, value) {
             if (value.answer === null) {
                 blankSquares++;
             }
@@ -2247,8 +2247,8 @@
 
     FeedbackGrid.prototype.interactedBlanks = function () {
 
-        var pathologists = data[step]["info"]["squares"];
-        var feedbackSquares = this.feedbackObj.answer.squares
+        var pathologists = data[step].info.squares;
+        var feedbackSquares = this.feedbackObj.answer.squares;
         var _this = this;
         var result = 0;
 
@@ -2418,8 +2418,8 @@
 
                 $($items).each(function (idx) {
                     // Adding buttons
-                    var idx = idx + 1,
-                        $item = $(this),
+                  	idx++;
+                    var $item = $(this),
                         $li = '<div class="carousel-selector-' + idx + '" type="button">' + idx + '</div>';
 
                     $indicatorList.append($li);
@@ -2440,7 +2440,7 @@
         }
 
 
-        if (this.step == 0) {
+        if (this.step === 0) {
             $("#prevBtn").hide();
         } else {
             $("#prevBtn").show();
@@ -2488,12 +2488,12 @@
             id = parseInt(id);
             var $itemInners = carousel.find(".modal-info .item-inner");
             $itemInners.removeClass('active');
-            $($itemInners[id - 1]).addClass('active')
+            $($itemInners[id - 1]).addClass('active');
             var $modalId = $(this).parent().parent().parent().parent().attr("id");
             $('#myCarousel' + $modalId).carousel(id - 1);
-        }
+        };
 
-    }
+    };
 
 
     /*
@@ -2536,14 +2536,14 @@
         });
 
 
-    }
+    };
 
 
     Zoom.prototype.removeZoom = function (element) {
         $.removeData(element, 'elevateZoom');
         $('.zoomContainer').remove();
         $('.zoomWindowContainer').remove();
-    }
+    };
 
 
     /*
@@ -2718,7 +2718,7 @@
                 browser: "",
                 img: "",
                 openModalCount: 0
-            }
+            };
 
             img.load(function () {
 
@@ -2749,7 +2749,7 @@
             if (task.state == 'completed') {
                 $("#loading").hide();
                 $("#finish").fadeIn(500);
-                $(".site-content").fadeTo("slow", 0.5).css("pointer-events", "none;")
+                $(".site-content").fadeTo("slow", 0.5).css("pointer-events", "none;");
             }
 
 
@@ -2864,7 +2864,7 @@
                 var newTime = new Date(),
                     ms = newTime - oldTime,
                     x = ms / 1000,
-                    seconds = secondsToString(x)
+                    seconds = secondsToString(x);
 
                 // Pass image number into answer
                 var imgUrl = task.info.url_b;
@@ -2967,7 +2967,7 @@
 
         $('#feedback-photo-link').append(img);
 
-        $(".grid-info-instructions").removeAttr("id")
+        $(".grid-info-instructions").removeAttr("id");
         var feedbackStepNumber = "feedbackStep" + step;
 
         $(".grid-info-instructions").attr("id", feedbackStepNumber);
@@ -3041,7 +3041,7 @@
 
     var nextFeedbackBtn = document.getElementById("nextFeedbackStep");
     nextFeedbackBtn.onclick = function () {
-        if ($(this).hasClass("disabled")) return
+        if ($(this).hasClass("disabled")) return;
         $("#feedbackProgress").width("0%");
         $("#feedbackProgressText").text("");
         if (step != data.length - 1) {
@@ -3067,16 +3067,15 @@
 
         // Check if the page should be in show feedback state
         var cookie_feedback = $.cookie(cookie_feedback_name);
-        if (cookie_feedback != null)
+        if (cookie_feedback !== null)
             page_state = "feedback";
 
         // Check if the page should be in tutorial state
         var cookie_tutorial = $.cookie(cookie_tutorial_name);
-        if (cookie_tutorial == null || cookie_tutorial != "seen")
+        if (cookie_tutorial === null || cookie_tutorial != "seen")
             page_state = "tutorial";
 
         // Check if the page should be in show feedback state
-        var cookie_feedback = $.cookie(cookie_feedback_name);
         if (cookie_feedback == "false")
             page_state = "mechanic";
 
@@ -3101,7 +3100,7 @@
 
         } else if (page_state == "tutorial") {
 
-            var m = new Modal;
+            var m = new Modal();
             m.open("#tutorialModal");
 
             $("#feedback-content").hide();
@@ -3131,17 +3130,16 @@
 
 
         $("#startFeedbackBtn").on("click", function () {
-
             $.cookie(cookie_tutorial_name, "seen");
             $.cookie(cookie_feedback_name, true);
             UpdatePageState();
         });
 
         $("#finishFeedback").on("click", function () {
-            if ($(this).hasClass("disabled")) return
+            if ($(this).hasClass("disabled")) return;
             $("svg, .feedback-img-polaroid, .zoomContainer, .zoomWindowContainer, .feedback-photo-link").remove();
             $.removeData(".feedback-photo-link", 'elevateZoom');
-            var m = new Modal;
+            var m = new Modal();
             m.open("#summaryModal");
         });
 
