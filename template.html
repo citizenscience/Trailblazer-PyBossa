@@ -171,7 +171,7 @@
 
                     <h2>
                         We need your help identifying cancer cells,
-                        distinguishing them from healthy cells in images like the one to the left.
+                        distinguishing them from healthy cells in images like the one to the right.
                     </h2>
                 </div>
 
@@ -260,7 +260,7 @@
                                     </h1>
 
                                     <h2>
-                                        Move your mouse over the image on the left to zoom in and see more
+                                        Move your mouse over the image on the right to zoom in and see more
 
                                         detail.
                                     </h2>
@@ -354,7 +354,7 @@
 
                                     <h2>
 
-                                        Have a look at the image on the left and see if you can identify the areas of cancer. Then click on 2 to see the answer.
+                                        Have a look at the image on the right and see if you can identify the areas of cancer. Then click on 2 to see the answer.
 
                                     </h2>
 
@@ -1276,10 +1276,10 @@
     var data = [{
         "info": {
             "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung-all-min/1.jpg",
-            "taskTitle": "<h2>Click once to mark cancer cells in RED<\/h2> <h2>Click again to mark non-cancer cells in GREEN<\/h2><h2>You can click a third time to mark a section as blank<h2\/><h2>Empty sections of the image can be ignored and left blank<\/h2>",
+            "taskTitle": "<h2>Click once to mark cancer cells in <span class=\"text-error\">Red<\/span><\/h2> <h2>Click again to mark non-cancer cells in <span class=\"text-success\">Green<\/span><\/h2><h2>Empty sections of the image can be left blank<\/h2>",
             "taskSubTitle": "You can change your answer as often as you want. Just click on a section of the image to change your answer.",
-            "taskParagraph": "Etiam porta sem malesuada magna mollis euismod. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere consectetur est at lobortis.",
-            "taskFeedback": "Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.",
+            "taskParagraph": "",
+             "taskFeedback": "feedback",
             "squares": [{
                 "column": 0,
                 "answer": null,
@@ -1432,7 +1432,7 @@
             "taskTitle": "<h2>Click once to mark cancer cells in <span class=\"text-error\">Red<\/span><\/h2> <h2>Click again to mark non-cancer cells in <span class=\"text-success\">Green<\/span><\/h2><h2>Empty sections of the image can be left blank<\/h2>",
             "taskSubTitle": "<h3>You can change your answer as often as you want. Just click on a section of the image to change your answer.<\/h3><h3>Remember to look at the reference images below for help.<\/h3>",
             "taskParagraph": "",
-            "taskFeedback": "feedback",
+             "taskFeedback": "feedback",
             "squares": [{
                 "column": 0,
                 "answer": null,
@@ -2622,6 +2622,7 @@
 
         if (pct >= 5) {
             $("#nextFeedbackStep, #finishFeedback").removeClass("disabled");
+            $("#" + "feedbackStep" + step + " .taskFeedback").show();
         } else {
             $("#nextFeedbackStep, #finishFeedback").addClass("disabled");
         }
