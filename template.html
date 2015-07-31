@@ -5,8 +5,8 @@
     }*/
 
     .modal-backdrop {
-    z-index: 1700 !important;
-}
+        z-index: 1700 !important;
+    }
 
     /*rgba(243,243,244);*/
 
@@ -31,7 +31,6 @@
     .zoomWindow {
         border: 0 !important;
     }
-
 
     #photo-link {
         display: block;
@@ -63,16 +62,16 @@
 
     .mechanic-content,
     .feedback-content,
-    .grid-info{
+    .grid-info {
         position: relative;
     }
 
     .legend {
         position: absolute;
-    left: -198px;
-    width: 200px;
-    top: 47px;
-    text-align: right;
+        left: -198px;
+        width: 200px;
+        top: 47px;
+        text-align: right;
     }
 
     .legend-item {
@@ -89,16 +88,16 @@
     }
 
     .example-list {
-        display:none;
+        display: none;
         margin-bottom: 0 !important;
     }
 
     .grid-info-buttons {
         position: absolute;
-    bottom: 20px;
-    margin-top: 0;
-    right: 20px;
-           z-index: 1600;
+        bottom: 20px;
+        margin-top: 0;
+        right: 20px;
+        z-index: 1600;
     }
 
     .taskFeedback {
@@ -982,6 +981,9 @@
 
 <header class="site-header clearfix">
     <div>
+        <div id="loadingTask" class="alert alert-info">
+            <strong>Loading task...</strong>
+        </div>
         <div id="success" class="alert alert-success" style="display:none">
             <h2><strong>Well done!</strong> Your answer has been saved</h2>
         </div>
@@ -1005,11 +1007,12 @@
             <h2><strong>Error!</strong> Something went wrong, please contact the site administrators</h2>
         </div>
 
-         <div id="errorClick" class="alert alert-info" style="display:none; position: relative;">
-             <i class="icon-remove" id="errorClickCross" style="position:absolute; right: 30px; cursor:pointer;"></i>
-                        <h2>If you are having problems clicking the grid, please refresh the page by clicking
-                            <b onclick="location.reload();" style="cursor:pointer;"><u>here</u></b></h2>
-                    </div>
+        <div id="errorClick" class="alert alert-info" style="display:none; position: relative;">
+            <i class="icon-remove" id="errorClickCross" style="position:absolute; right: 30px; cursor:pointer;"></i>
+
+            <h2>If you are having problems clicking the grid, please refresh the page by clicking
+                <b onclick="location.reload();" style="cursor:pointer;"><u>here</u></b></h2>
+        </div>
     </div>
 </header>
 
@@ -1077,20 +1080,16 @@
                             <div id="progress" rel="tooltip" title="#" class="bar" style="width: 0%;"></div>
                         </div>
 
-                         <div class="grid-info-buttons">
-                        <!--<button class="btn" id="selectAllBtn" value="all">Select All</button>-->
-                        <!--<button class="btn" id="deselectBtn">Deselect All</button>-->
-                        <button class="btn btn-primary" id="showTutorialModalBtn">Tutorial</button>
-                        <button class="btn btn-answer btn-success nextSlideBtn" id="nextSlideBtn" value="next" style="margin-left:10px;">Next slide</button>
-                    </div>
+                        <div class="grid-info-buttons">
+                            <!--<button class="btn" id="selectAllBtn" value="all">Select All</button>-->
+                            <!--<button class="btn" id="deselectBtn">Deselect All</button>-->
+                            <button class="btn btn-primary" id="showTutorialModalBtn">Tutorial</button>
+                            <button class="btn btn-answer btn-success nextSlideBtn" id="nextSlideBtn" value="next" style="margin-left:10px;">Next slide</button>
+                        </div>
 
                     </div>
-
-
-
 
                 </div>
-
 
             </div>
 
@@ -1111,11 +1110,11 @@
                 <div class="square square-green"></div>
             </div>
             <div class="legend-item">
-                 Correct =
+                Correct =
                 <i class="icon-ok"></i>
             </div>
             <div class="legend-item">
-                 Incorrect =
+                Incorrect =
                 <i class="icon-remove"></i>
             </div>
         </div>
@@ -1154,30 +1153,27 @@
 
                     <div class="grid-info-buttons clearfix">
 
-                    <a class="btn btn-primary pull-right disabled" id="finishFeedback" style="display:none; margin-left: 10px;">
-                        Next
-                    </a>
-                    <a class="btn btn-primary pull-right disabled" id="nextFeedbackStep" style="margin-left: 10px;">
-                        Next slide
-                    </a>
-                    <a class="btn btn-success pull-right disabled" id="checkMyWorkBtn" style="display:none;">
-                        Check my work
-                    </a>
-                </div>
+                        <a class="btn btn-primary pull-right disabled" id="finishFeedback" style="display:none; margin-left: 10px;">
+                            Next
+                        </a>
+                        <a class="btn btn-primary pull-right disabled" id="nextFeedbackStep" style="margin-left: 10px;">
+                            Next slide
+                        </a>
+                        <a class="btn btn-success pull-right disabled" id="checkMyWorkBtn" style="display:none;">
+                            Check my work
+                        </a>
+                    </div>
 
                 </div>
                 <!-- grid-info -->
 
                 <!--<div class="alert alert-info" id="pathologistFeedback" style="display:none;">-->
-                    <!--<div class="" id="pathologistsText">-->
-                        <!--<p></p>-->
-                    <!--</div>-->
+                <!--<div class="" id="pathologistsText">-->
+                <!--<p></p>-->
+                <!--</div>-->
                 <!--</div>-->
 
-
-
             </div>
-
 
         </div>
     </div>
@@ -1194,13 +1190,10 @@
                 <figcaption class="description cancer">Cancer Cells</figcaption>
             </figure>
 
-
-
             <figure class="example-list-item">
                 <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example3.jpg" alt=""/>
                 <figcaption class="description cancer">Cancer Cells</figcaption>
             </figure>
-
 
             <figure class="example-list-item">
                 <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example4.jpg" alt=""/>
@@ -1211,12 +1204,10 @@
                 <figcaption class="description cancer">Cancer Cells</figcaption>
             </figure>
 
-
             <figure class="example-list-item">
                 <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example6.jpg" alt=""/>
                 <figcaption class="description cancer">Cancer Cells</figcaption>
             </figure>
-
 
             <figure class="example-list-item">
                 <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example7.jpg" alt=""/>
@@ -1280,7 +1271,7 @@
             "taskTitle": "<h2>Click once to mark cancer cells in <span class=\"text-error\">Red<\/span><\/h2> <h2>Click again to mark non-cancer cells in <span class=\"text-success\">Green<\/span><\/h2><h2>Empty sections of the image can be left blank<\/h2>",
             "taskSubTitle": "You can change your answer as often as you want. Just click on a section of the image to change your answer.",
             "taskParagraph": "",
-             "taskFeedback": "feedback",
+            "taskFeedback": "feedback",
             "squares": [{
                 "column": 0,
                 "answer": null,
@@ -1433,7 +1424,7 @@
             "taskTitle": "<h2>Click once to mark cancer cells in <span class=\"text-error\">Red<\/span><\/h2> <h2>Click again to mark non-cancer cells in <span class=\"text-success\">Green<\/span><\/h2><h2>Empty sections of the image can be left blank<\/h2>",
             "taskSubTitle": "<h3>You can change your answer as often as you want. Just click on a section of the image to change your answer.<\/h3><h3>Remember to look at the reference images below for help.<\/h3>",
             "taskParagraph": "",
-             "taskFeedback": "feedback",
+            "taskFeedback": "feedback",
             "squares": [{
                 "column": 0,
                 "answer": null,
@@ -3125,6 +3116,12 @@
         if (!$.isEmptyObject(task)) {
 
             var img = $('<img />');
+
+            img.load(function () {
+                $("#loadingTask").hide();
+                deferred.resolve(task);
+            });
+
             img.attr('src', task.info.url_b).css('height', 460);
             img.attr('data-zoom-image', task.info.url_b);
             img.addClass('img-polaroid');
@@ -3335,8 +3332,6 @@
     });
 
 
-
-
     /*
      *  Feedback function
      *  =======================
@@ -3397,17 +3392,17 @@
         var $feedbackStep = $("#" + feedbackStepNumber + " .task-content");
         $feedbackStep.empty();
 
-        if( taskTitle ) {
-            $feedbackStep.append('<div class="taskSubTitle">'+taskTitle+'</div>');
+        if (taskTitle) {
+            $feedbackStep.append('<div class="taskSubTitle">' + taskTitle + '</div>');
         }
-        if( taskSubTitle ) {
-            $feedbackStep.append('<div class="taskSubTitle">'+taskSubTitle+'</div>');
+        if (taskSubTitle) {
+            $feedbackStep.append('<div class="taskSubTitle">' + taskSubTitle + '</div>');
         }
-        if( taskParagraph ) {
-            $feedbackStep.append('<div class="taskParagraph">'+taskParagraph+'</div>');
+        if (taskParagraph) {
+            $feedbackStep.append('<div class="taskParagraph">' + taskParagraph + '</div>');
         }
-        if( taskFeedback ) {
-            $feedbackStep.append('<div class="taskFeedback">'+taskFeedback+'</div>');
+        if (taskFeedback) {
+            $feedbackStep.append('<div class="taskFeedback">' + taskFeedback + '</div>');
         }
 
 
@@ -3482,6 +3477,8 @@
 
     function UpdatePageState() {
 
+
+
         // State of the page to show to the user
         var page_state = "mechanic";
 
@@ -3501,7 +3498,7 @@
             page_state = "mechanic";
 
 
-        if( page_state == "feedback" || page_state == "mechanic") {
+        if (page_state == "feedback" || page_state == "mechanic") {
             $('.example-list').show();
             /* THESE AND ERROR PUMPING OUT WITH THIS !?!
              */
@@ -3544,9 +3541,11 @@
 
     }
 
+
     $(function () {
 
         UpdatePageState();
+
 
         $("#startFeedbackBtn").on("click", function () {
 
