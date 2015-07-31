@@ -94,15 +94,16 @@
         <div id="summaryModal" class="modal hide fade">
             <div class="modal-body">
                 <div class="modal-image">
-                    <img id="firstImg" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/38.png" alt=""/>
+                    <img id="firstImg" src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid-red-green.jpg" alt=""/>
                 </div>
                 <div class="modal-info">
                     <h1>
-                        You can now get started analysing cancer images
+                        You are now about to <strong>start</strong> analysing cancer images.
                     </h1>
+                    <h2>Here's what to remember:</h2>
                     <ul>
                         <li>
-                            To identify <b>cancer cells</b>, look for <b>blotchy cells</b> grouped together in
+                            To identify <b class="text-error">cancer cells</b>, look for <b>blotchy cells</b> grouped together in
                             <b>uneven clumps, loose rings</b> or <b>broken chains.</b>
                         </li>
                         <li>
@@ -110,10 +111,10 @@
                             <strong class="text-error">red</strong></b>
                         </li>
                         <li>
-                            Healthy cells include the dark blue or dark brown, small and round blood cells
+                            <strong class="text-success">Healthy cells</strong> include the dark blue or dark brown, small and round blood cells
                         </li>
                         <li>
-                            Other healthy cells includes the light blue stretched and wispy looking stromal cells
+                            Other <strong class="text-success">healthy cells</strong> includes the light blue stretched and wispy looking stromal cells
                         </li>
                         <li>
                             <b>Double click</b> to turn sections that only <b>contain healthy cells
@@ -2360,6 +2361,7 @@
         });
 
         $(".modal-body").hide();
+        $(".modal-body").first().show();
         this.showStep(0);
     };
 
@@ -2750,7 +2752,8 @@
             if (task.state == 'completed') {
                 $("#loading").hide();
                 $("#finish").fadeIn(500);
-                $(".site-content").fadeTo("slow", 0.5).css("pointer-events", "none;");
+                $(".site-content").fadeTo("slow", 0.5);
+                    $(".site-content").css("pointer-events", "none;");
             }
 
 
