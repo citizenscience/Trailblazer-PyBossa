@@ -1272,7 +1272,7 @@
     var data = [{
         "info": {
             "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung-all-min/1.jpg",
-            "taskTitle": "<h2>Click once to mark cancer cells in Red<\/h2> <h2>Click again to mark non-cancer cells in Green<\/h2><h2>You can click a third time to mark a section as blank<h2\/><h2>Empty sections of the image can be ignored and left blank<\/h2>",
+            "taskTitle": "<h2>Click once to mark cancer cells in Red<\/h2> <h2>Click again to mark non-cancer cells in Green<\/h2><h2>Empty sections of the image can be left blank<\/h2>",
             "taskSubTitle": "<h3>You can change your answer as often as you want. Just click on a section of the image to change your answer.<\/h3><h3>Remember to look at the reference images below for help.<\/h3>",
             "taskParagraph": "para",
             "taskFeedback": "feedback",
@@ -1425,7 +1425,7 @@
     }, {
         "info": {
             "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung-all-min/26.jpg",
-            "taskTitle": "<h2>Click once to mark cancer cells in Red<\/h2> <h2>Click again to mark non-cancer cells in Green<\/h2><h2>You can click a third time to mark a section as blank<h2\/><h2>Empty sections of the image can be ignored and left blank<\/h2>",
+            "taskTitle": "<h2>Click once to mark cancer cells in Red<\/h2> <h2>Click again to mark non-cancer cells in Green<h2\/><h2>Empty sections of the image can be left blank<\/h2>",
             "taskSubTitle": "<h3>You can change your answer as often as you want. Just click on a section of the image to change your answer.<\/h3><h3>Remember to look at the reference images below for help.<\/h3>",
             "taskParagraph": "",
             "taskFeedback": "",
@@ -2637,9 +2637,8 @@
         var htmlString = '<h2>';
         if (pct >= 5) {
             htmlString += 'Well done! ';
-        } else {
-            htmlString += 'You\'ve marked ';
         }
+        htmlString += 'You\'ve marked ';
 
         htmlString += pct + '%</strong> of the image sections correctly</h2>';
 
