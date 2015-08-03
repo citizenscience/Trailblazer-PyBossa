@@ -3,11 +3,13 @@
     .modal-backdrop {
         z-index: 1700 !important;
     }
+
     .grid-info {
         margin-bottom: 20px;
         overflow: auto;
         height: 460px;
     }
+
     .zoomWindow {
         border: 0 !important;
     }
@@ -84,32 +86,31 @@
         display: none;
     }
 
+    .slick-prev, .slick-next {
+        background-color: transparent;
+        display: block;
+        width: 40px !important;
+        height: 40px !important;
+        margin-top: -20px !important;
+    }
 
+    .slick-prev:before, .slick-next:before {
+        font-size: 40px;
+        color: black;
+        background-color: transparent;
+    }
 
-.slick-prev, .slick-next {
-  background-color: transparent;
-  display: block;
-  width: 40px !important;
-  height: 40px !important;
-  margin-top: -20px !important;
-}
+    .slick-prev {
+        left: -55px;
+        width: 40px !important;
+        height: 40px !important;
+    }
 
-.slick-prev:before, .slick-next:before {
-  font-size: 40px;
-  color: black;
-  background-color: transparent;
-}
-
-.slick-prev {
-  left: -55px;
-  width: 40px !important;
-  height: 40px !important;
-}
-.slick-next {
-  right: -55px;
-  width: 40px !important;
-  height: 40px !important;
-}
+    .slick-next {
+        right: -55px;
+        width: 40px !important;
+        height: 40px !important;
+    }
 
 </style>
 
@@ -127,10 +128,12 @@
                     <h1>
                         You are now about to <strong>start</strong> analysing cancer images.
                     </h1>
+
                     <h2>Here's what to remember:</h2>
                     <ul>
                         <li>
-                            To identify <b class="text-error">cancer cells</b>, look for <b>blotchy cells</b> grouped together in
+                            To identify <b class="text-error">cancer cells</b>, look for
+                            <b>blotchy cells</b> grouped together in
                             <b>uneven clumps, loose rings</b> or <b>broken chains.</b>
                         </li>
                         <li>
@@ -141,7 +144,8 @@
                             <strong class="text-success">Healthy cells</strong> include the dark blue or dark brown, small and round blood cells
                         </li>
                         <li>
-                            Other <strong class="text-success">healthy cells</strong> includes the light blue stretched and wispy looking stromal cells
+                            Other
+                            <strong class="text-success">healthy cells</strong> includes the light blue stretched and wispy looking stromal cells
                         </li>
                         <li>
                             <b>Click again</b> to turn sections that only <b>contain healthy cells
@@ -163,6 +167,28 @@
             </div>
         </div>
 
+
+         <!-- Summary Modal -->
+        <div id="practiseModal" class="modal hide fade">
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img id="firstImg" src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid-red-green.jpg" alt=""/>
+                </div>
+                <div class="modal-info">
+                    <h1>
+                        In the next set of practise images you need to mark the whole image and then we'll let you know what you experts thought.
+                    </h1>
+
+                    <h2>If you get something wrong look again in detail at the section and try and answer it again.</h2>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn closeBtnbtn-default pull-right closeBtn" id="closeBtn" data-dismiss="modal" aria-hidden="true">Close</button>
+            </div>
+        </div>
+
+
+
         <!-- Tutoiral Modal -->
         <div id="tutorialModal" class="modal hide fade">
 
@@ -178,7 +204,7 @@
 
                     <h2>
                         We need your help identifying cancer cells,
-                        distinguishing them from healthy cells in images like the one to the right.
+                        distinguishing them from healthy cells in images like the one to the left.
                     </h2>
                 </div>
 
@@ -217,7 +243,7 @@
                     </h1>
 
                     <h2>
-                        When cells become cancerous, they become less tightly controlled.
+                        When cells become cancerous, they become less controlled.
 
                         They replicate to make more cells whenever and however they can, with
 
@@ -267,7 +293,7 @@
                                     </h1>
 
                                     <h2>
-                                        Move your mouse over the image on the right to zoom in and see more
+                                        Move your mouse over the image on the left to zoom in and see more
 
                                         detail.
                                     </h2>
@@ -355,13 +381,13 @@
 
                                     <h2>
                                         Cancer cells can look very different from image to image.
-                                        This time they have formed irregular rings and chains and a few uneven clumps
+                                        This time they have formed irregular rings and chains and a few uneven clumps.
 
                                     </h2>
 
                                     <h2>
 
-                                        Have a look at the image on the right and see if you can identify the areas of cancer. Then click on 2 to see the answer.
+                                        Have a look at the image on the left and see if you can identify the areas of cancer. Then click on 2 to see the answer.
 
                                     </h2>
 
@@ -435,9 +461,9 @@
                                         We've highlighted clusters of blood cells in <b class="text-success">green</b>
                                     </h2>
                                     <ul>
-                                        <li>These are small, dark blue and round.</li>
+                                        <li>These are small, dark blue and round</li>
                                         <li>Sometimes appear as dark brown spots</li>
-                                        <li>They can appear loosely spread out or in very dense clusters.</li>
+                                        <li>They can appear loosely spread out or in very dense clusters</li>
                                     </ul>
                                 </div>
                             </div>
@@ -563,17 +589,52 @@
                     <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid.jpg" alt=""/>
                 </div>
                 <div class="modal-info">
-                    <h1>
-                        We’ll now show you a few images that you can practise on.
-                    </h1>
+                    <div class="tutorialSummary">
+                        <h1>
+                            We’ll now show you a few images that you can practise on.
+                        </h1>
 
-                    <h2>
-                        We’ll let you know if our expert pathologists agreed with your analysis.
-                    </h2>
+                        <h2>
+                            We’ll let you know if our expert pathologists agreed with your analysis.
+                        </h2>
 
-                    <h2>
-                        For the first two images we’ll give you immediate feedback on your work
-                    </h2>
+                        <h2>
+                            For the first two images we’ll give you immediate feedback on your work.
+                        </h2>
+                    </div>
+
+                    <div class="mechanicTutorialSummary" style="display:none;">
+                        <h1>
+                            You're now about to <strong>start</strong> analysing cancer images.
+                        </h1>
+
+                        <h2>Here's what to remember:</h2>
+                        <ul>
+                            <li>
+                                To identify <b class="text-error">cancer cells</b>, look for
+                                <b>blotchy cells</b> grouped together in
+                                <b>uneven clumps, loose rings</b> or <b>broken chains.</b>
+                            </li>
+                            <li>
+                                <b>Click once</b> to turn sections <b>containing cancer cells
+                                <strong class="text-error">red</strong></b>
+                            </li>
+                            <li>
+                                <strong class="text-success">Non-cancer cells</strong> include the dark blue or dark brown, small and round blood cells
+                            </li>
+                            <li>
+                                Other <strong class="text-success">non-cancer cells</strong>
+                                includes the light blue stretched and wispy looking stromal cells
+                            </li>
+                            <li>
+                                <b>Click again</b> to turn sections that only <b>contain non-cancer cells
+                                <strong class="text-success">green</strong></b>
+                            </li>
+                            <li>
+                                <b>Leave blank</b> sections that <b>do not contain any cells</b>
+                            </li>
+                        </ul>
+                    </div>
 
                 </div>
 
@@ -880,7 +941,7 @@
         "info": {
             "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung-all-min/1.jpg",
             "taskTitle": "<h2>Click once to mark cancer cells in <span class=\"text-error\">Red<\/span><\/h2> <h2>Click again to mark non-cancer cells in <span class=\"text-success\">Green<\/span><\/h2><h2>Empty sections of the image can be left blank<\/h2>",
-            "taskSubTitle": "You can change your answer as often as you want. Just click on a section of the image to change your answer.",
+            "taskSubTitle": "You can change your answer as often as you want. Just click on a section of the image to change your answer. Remember to look at the reference images below for help.",
             "taskParagraph": "",
             "taskFeedback": "feedback",
             "squares": [{
@@ -1339,7 +1400,7 @@
         "info": {
             "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung-all-min/42.jpg",
             "taskTitle": "<h2>Click once to mark cancer cells in <span class=\"text-error\">Red<\/span><\/h2> <h2>Click again to mark non-cancer cells in <span class=\"text-success\">Green<\/span><\/h2><h2>Empty sections of the image can be left blank<\/h2>",
-            "taskSubTitle": "<h3>You can change your answer as often as you want. Just click on a section of the image to change your answer.<\/h3><h3>Remember to look at the reference images below for help.<\/h3>",
+            "taskSubTitle": "<h3>Click Check My Work at any time to see if our experts agreed with you.<\/h3><h3>You can change your answer as often as you want. Just click on a section of the image to change your answer.<\/h3><h3>Remember to look at the reference images below for help.<\/h3>",
             "taskParagraph": "",
             "taskFeedback": "feedback",
             "squares": [{
@@ -2386,8 +2447,8 @@
             keyboard: false
         });
 
-        $(".modal-body").hide();
-        $(".modal-body").first().show();
+        //$(".modal-body").hide();
+        //$(".modal-body").first().show();
         this.showStep(0);
     };
 
@@ -2447,7 +2508,7 @@
 
                 $($items).each(function (idx) {
                     // Adding buttons
-                  	idx++;
+                    idx++;
                     var $item = $(this),
                         $li = '<div class="carousel-selector-' + idx + '" type="button">' + idx + '</div>';
 
@@ -2787,7 +2848,7 @@
                 $("#loading").hide();
                 $("#finish").fadeIn(500);
                 $(".site-content").fadeTo("slow", 0.5);
-                    $(".site-content").css("pointer-events", "none;");
+                $(".site-content").css("pointer-events", "none;");
             }
 
 
@@ -2839,6 +2900,8 @@
             var showTutorialModalBtn = document.getElementById("showTutorialModalBtn");
             showTutorialModalBtn.onclick = function () {
                 modal.open("#tutorialModal");
+                $("#tutorialSummary").hide();
+                 $("#mechanicTutorialSummary").show();
                 zoom.removeZoom($(".tutorialZoom"));
                 openModalCount++;
             };
@@ -2875,7 +2938,6 @@
             prevBtn.onclick = function () {
                 modal.showStep('prev');
             };
-
 
 
             /*
@@ -2963,6 +3025,9 @@
         }
 
         if (step >= 2) {
+            var modal = new Modal();
+            modal.open("#practiseModal");
+
             $("#nextFeedbackStep").addClass("disabled");
             $("#checkMyWorkBtn").show().addClass("disabled");
         }
