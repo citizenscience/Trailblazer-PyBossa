@@ -647,7 +647,7 @@
 
             <div class="row-fluid">
                 <div class="span12">
-                    <h1>Trailblazer - Task <span id="tasksCompleted"></span> of 10</h1>
+                    <h1>Trailblazer - Task <span id="tasksCompleted"></span></h1>
                 </div>
             </div>
 
@@ -2591,7 +2591,7 @@
     function loadUserProgress() {
         pybossa.userProgress('mvp-03').done(function (data) {
 
-
+            $("#tasksCompleted").text(data.done + " of " + data.total);
 
             var pct = Math.round((data.done * 100) / data.total);
             $("#progress").css("width", pct.toString() + "%");
@@ -2600,7 +2600,7 @@
                 'placement': 'bottom'
             });
 
-            $("#tasksCompleted").text(data.total);
+
             $("#total").text(data.total);
             $("#done").text(data.done);
         });
@@ -2778,7 +2778,9 @@
     pybossa.presentTask(function (task, deferred) {
         if (!$.isEmptyObject(task)) {
 
-            console.log(task.state);
+
+            loadUserProgress();
+
 
             if (task.state == 'completed') {
                 $("#loading").hide();
@@ -2788,7 +2790,6 @@
             }
 
 
-            loadUserProgress();
             var openModalCount = 0;
 
             /*
