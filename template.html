@@ -647,7 +647,8 @@
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn closeBtnbtn-default pull-left closeBtn" id="closeBtn" data-dismiss="modal" aria-hidden="true" style="display:none;">Close</button>
+                <button type="button" class="btn pull-left" id="closeMechanicTutorialBtn" data-dismiss="modal" aria-hidden="true" style="display:none;">Close</button>
+                <!--<button type="button" class="btn closeBtnbtn-default pull-left closeBtn" id="closeBtn" data-dismiss="modal" aria-hidden="true" style="display:none;">Close</button>-->
                 <a id="prevBtn" href="#" class="btn">Previous</a>
                 <a id="nextBtn" href="#" class="btn btn-success">Next</a>
                 <a class="btn btn-primary closeBtn" id="startFeedbackBtn" data-dismiss="modal" aria-hidden="true" style="display:none;"><i class="icon-thumbs-up"></i> Practice</a>
@@ -2570,7 +2571,7 @@
 
         if ($("#mechanic-content").is(':visible')) {
 
-            $(".closeBtnbtn-default").show();
+            $("#closeMechanicTutorialBtn").show();
             $("#tutorialSummary").hide();
             $("#mechanicTutorialSummary").show();
         }
@@ -2946,8 +2947,8 @@
             };
 
 
-            var closeBtn = document.getElementById("closeBtn");
-            closeBtn.onclick = function () {
+            var closeMechanicTutorialBtn = document.getElementById("closeMechanicTutorialBtn");
+            closeMechanicTutorialBtn.onclick = function () {
                 zoom.removeZoom($(".tutorialZoom"));
                 $("#errorClick").show();
                 zoom.addZoom($(".img-polaroid"));
