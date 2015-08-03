@@ -2284,8 +2284,11 @@
         $("#feedbackProgressText").show();
 
 
-        if (pct >= 5) {
+        if (pct >= 75) {
             $("#nextFeedbackStep, #finishFeedback").removeClass("disabled");
+
+            $(".taskSubTitle, .taskSubTitle, .taskParagraph").hide();
+
             $("#" + "feedbackStep" + step + " .taskFeedback").show();
         } else {
             $("#nextFeedbackStep, #finishFeedback").addClass("disabled");
@@ -2304,7 +2307,7 @@
         var $feedbackText = $("#feedbackProgressText");
 
         var htmlString = '<h2>';
-        if (pct >= 5) {
+        if (pct >= 75) {
             htmlString += 'Well done! ';
         } else {
             htmlString += 'You\'ve marked ';
@@ -2312,8 +2315,8 @@
 
         htmlString += pct + '%</strong> of the image sections correctly</h2>';
 
-        if (pct < 5) {
-            htmlString += '<h3>Get 5% correct to go onto the next slide.</h3>';
+        if (pct < 75) {
+            htmlString += '<h3>Get 75% correct to go onto the next slide.</h3>';
         }
         $feedbackText.html(htmlString);
 
