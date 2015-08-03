@@ -3039,11 +3039,13 @@
         }
 
         if (step >= 2) {
-            var modal = new Modal();
-            modal.open("#practiseModal");
-
             $("#nextFeedbackStep").addClass("disabled");
             $("#checkMyWorkBtn").show().addClass("disabled");
+        }
+
+        if( step === 2 ) {
+            var modal = new Modal();
+            modal.open("#practiseModal");
         }
 
 
