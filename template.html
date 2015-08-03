@@ -2572,7 +2572,11 @@
             $("#prevBtn").show();
         }
 
-        if ($("#mechanic-content").is(':visible')) $("#closeBtn").show();
+        if ($("#mechanic-content").is(':visible')) {
+            $("#closeBtn").show();
+             $("#tutorialSummary").hide();
+                $("#mechanicTutorialSummary").show();
+        }
 
         var $lastStep = $('#tutorialModal .modal-body').length - 1;
         if (this.step == $lastStep) {
@@ -2581,6 +2585,7 @@
             if ($("#mechanic-content").is(':visible')) {
                 $("#startFeedbackBtn").hide();
                 $("#goBackBtn").show();
+
             } else {
                 $("#startFeedbackBtn").show();
                 $("#goBackBtn").hide();
