@@ -100,30 +100,31 @@
         background-color: transparent;
     }
 
-.slick-prev, .slick-next {
-  background-color: transparent;
-  display: block;
-  width: 40px !important;
-  height: 40px !important;
-  margin-top: -20px !important;
-}
+    .slick-prev, .slick-next {
+        background-color: transparent;
+        display: block;
+        width: 40px !important;
+        height: 40px !important;
+        margin-top: -20px !important;
+    }
 
-.slick-prev:before, .slick-next:before {
-  font-size: 40px;
-  color: black;
-  background-color: transparent;
-}
+    .slick-prev:before, .slick-next:before {
+        font-size: 40px;
+        color: black;
+        background-color: transparent;
+    }
 
-.slick-prev {
-  left: -55px;
-  width: 40px !important;
-  height: 40px !important;
-}
-.slick-next {
-  right: -55px;
-  width: 40px !important;
-  height: 40px !important;
-}
+    .slick-prev {
+        left: -55px;
+        width: 40px !important;
+        height: 40px !important;
+    }
+
+    .slick-next {
+        right: -55px;
+        width: 40px !important;
+        height: 40px !important;
+    }
 
 </style>
 
@@ -141,6 +142,7 @@
                     <h1>
                         You are now about to <strong>start</strong> analysing cancer images.
                     </h1>
+
                     <h2>Here's what to remember:</h2>
                     <ul>
                         <li>
@@ -156,7 +158,8 @@
                             <strong class="text-success">Non-cancer cells</strong> include the dark blue or dark brown, small and round blood cells
                         </li>
                         <li>
-                            Other <strong class="text-success">non-cancer cells</strong> includes the light blue stretched and wispy looking stromal cells
+                            Other
+                            <strong class="text-success">non-cancer cells</strong> includes the light blue stretched and wispy looking stromal cells
                         </li>
                         <li>
                             <b>Click again</b> to turn sections that only <b>contain non-cancer cells
@@ -174,8 +177,7 @@
             </div>
         </div>
 
-
-         <!-- Summary Modal -->
+        <!-- Summary Modal -->
         <div id="practiseModal" class="modal hide fade">
             <div class="modal-body">
                 <div class="modal-image">
@@ -193,8 +195,6 @@
                 <button type="button" class="btn closeBtnbtn-default pull-right closeBtn" id="closeBtn" data-dismiss="modal" aria-hidden="true">Close</button>
             </div>
         </div>
-
-
 
         <!-- Tutoiral Modal -->
         <div id="tutorialModal" class="modal hide fade">
@@ -952,11 +952,11 @@
             "   <h3>Remember to look at the reference images below for help.<\/h3>",
             "taskParagraph": "",
             "taskFeedback": "<h3>Most of the cancer cells are quite large but their shapes and sizes are quite different from each other.<\/h3>" +
-                "<h3>They are darker than the surrounding cells<\/h3>" +
-                "<h3>They have formed uneven, lumpy rings and chains.<\/h3>" +
-                "<h3>The surrounding cells include<\/h3>" +
-                "<ul><li>The longer and thinner blue cells which are stromal cells. " +
-                "<li>The small blue round cells and the dark brown spots which are blood cells.<\/ul>",
+            "<h3>They are darker than the surrounding cells<\/h3>" +
+            "<h3>They have formed uneven, lumpy rings and chains.<\/h3>" +
+            "<h3>The surrounding cells include<\/h3>" +
+            "<ul><li>The longer and thinner blue cells which are stromal cells. " +
+            "<li>The small blue round cells and the dark brown spots which are blood cells.<\/ul>",
             "squares": [{
                 "column": 0,
                 "answer": null,
@@ -1107,14 +1107,14 @@
         "info": {
             "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung-all-min/26.jpg",
             "taskTitle": "<h2>Click once to mark cancer cells in <span class=\"text-error\">Red<\/span><\/h2>" +
-                "<h2>Click again to mark non-cancer cells in <span class=\"text-success\">Green<\/span><\/h2>" + "" +
-                "<h2>Empty sections of the image can be left blank<\/h2>",
+            "<h2>Click again to mark non-cancer cells in <span class=\"text-success\">Green<\/span><\/h2>" + "" +
+            "<h2>Empty sections of the image can be left blank<\/h2>",
             "taskSubTitle": "<h3>You can change your answer as often as you want. Just click on a section of the image to change your answer.<\/h3>" +
             "   <h3>Remember to look at the reference images below for help.<\/h3>",
             "taskParagraph": "",
             "taskFeedback": "<h3>The cancer cells in this image are large with strange, blotchy patterns. <\/h3>" +
-                "<h3>No two cancer cells look the same.<\/h3>" +
-                "<h3>The surrounding cells are a flood of small, dark and round blood cells mixed with light blue and wispy stromal cells.<\/h3>",
+            "<h3>No two cancer cells look the same.<\/h3>" +
+            "<h3>The surrounding cells are a flood of small, dark and round blood cells mixed with light blue and wispy stromal cells.<\/h3>",
             "squares": [{
                 "column": 0,
                 "answer": null,
@@ -1262,19 +1262,19 @@
             }]
         }
     }, {
-         "info": {
+        "info": {
             "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung-all-min/42.jpg",
             "taskTitle": "<h2>Click once to mark cancer cells in <span class=\"text-error\">Red<\/span><\/h2>" +
-                "<h2>Click again to mark non-cancer cells in <span class=\"text-success\">Green<\/span><\/h2>" + "" +
-                "<h2>Empty sections of the image can be left blank<\/h2>",
+            "<h2>Click again to mark non-cancer cells in <span class=\"text-success\">Green<\/span><\/h2>" + "" +
+            "<h2>Empty sections of the image can be left blank<\/h2>",
             "taskSubTitle": "<h3>You can change your answer as often as you want. Just click on a section of the image to change your answer.<\/h3>" +
             "   <h3>Remember to look at the reference images below for help.<\/h3>",
             "taskParagraph": "",
             "taskFeedback": "<h3>The cancer cells have formed rounded clumps. <\/h3>" +
-                "<h3>You can clearly see the outlines of these clumps of cancer cells.<\/h3>" +
-                "<h3>The clumps of cancer cells are surrounded by<\/h3>" +
-                "<ul><li>Small round dark blue or dark brown spots of the blood cells. " +
-                "<li>Plenty of stretched looking wispy stromal cells.<\/ul>",
+            "<h3>You can clearly see the outlines of these clumps of cancer cells.<\/h3>" +
+            "<h3>The clumps of cancer cells are surrounded by<\/h3>" +
+            "<ul><li>Small round dark blue or dark brown spots of the blood cells. " +
+            "<li>Plenty of stretched looking wispy stromal cells.<\/ul>",
             "squares": [{
                 "column": 0,
                 "answer": null,
@@ -1422,17 +1422,17 @@
             }]
         }
     }, {
-       "info": {
+        "info": {
             "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung-all-min/41.jpg",
             "taskTitle": "<h2>Click once to mark cancer cells in <span class=\"text-error\">Red<\/span><\/h2>" +
-                "<h2>Click again to mark non-cancer cells in <span class=\"text-success\">Green<\/span><\/h2>" + "" +
-                "<h2>Empty sections of the image can be left blank<\/h2>",
+            "<h2>Click again to mark non-cancer cells in <span class=\"text-success\">Green<\/span><\/h2>" + "" +
+            "<h2>Empty sections of the image can be left blank<\/h2>",
             "taskSubTitle": "<h3>You can change your answer as often as you want. Just click on a section of the image to change your answer.<\/h3>" +
             "   <h3>Remember to look at the reference images below for help.<\/h3>",
             "taskParagraph": "",
             "taskFeedback": "<h3>This image is pretty much all cancer cells!<\/h3>" +
-                "<h3>They form strange blotchy patterns with no two cells looking the same. <\/h3>" +
-                "<h3>There’s a complete lack of organisation or uniformity.<\/h3>",
+            "<h3>They form strange blotchy patterns with no two cells looking the same. <\/h3>" +
+            "<h3>There’s a complete lack of organisation or uniformity.<\/h3>",
             "squares": [{
                 "column": 0,
                 "answer": null,
@@ -1582,9 +1582,9 @@
     }, {
         "info": {
             "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung-all-min/11.jpg",
-             "taskTitle": "<h2>Click once to mark cancer cells in <span class=\"text-error\">Red<\/span><\/h2>" +
-                "<h2>Click again to mark non-cancer cells in <span class=\"text-success\">Green<\/span><\/h2>" + "" +
-                "<h2>Empty sections of the image can be left blank<\/h2>",
+            "taskTitle": "<h2>Click once to mark cancer cells in <span class=\"text-error\">Red<\/span><\/h2>" +
+            "<h2>Click again to mark non-cancer cells in <span class=\"text-success\">Green<\/span><\/h2>" + "" +
+            "<h2>Empty sections of the image can be left blank<\/h2>",
             "taskSubTitle": "<h3>You can change your answer as often as you want. Just click on a section of the image to change your answer.<\/h3>" +
             "   <h3>Remember to look at the reference images below for help.<\/h3>",
             "taskParagraph": "",
@@ -2483,8 +2483,6 @@
             keyboard: false
         });
 
-        //$(".modal-body").hide();
-        //$(".modal-body").first().show();
         this.showStep(0);
     };
 
@@ -2501,8 +2499,6 @@
         var $currentStep = this.getCurrentStep();
         if ($currentStep.is(":visible"))
             $currentStep.hide();
-
-
         if (typeof action == "number") {
             this.step = action;
         } else {
@@ -2531,7 +2527,6 @@
             $('.zoomContainer').remove();
             $('.zoomWindowContainer').remove();
             var tutorial = ".tutorialZoom" + this.step;
-
 
             $(tutorial).elevateZoom();
 
@@ -2573,9 +2568,10 @@
         }
 
         if ($("#mechanic-content").is(':visible')) {
+
             $("#closeBtn").show();
-             $("#tutorialSummary").hide();
-                $("#mechanicTutorialSummary").show();
+            $("#tutorialSummary").hide();
+            $("#mechanicTutorialSummary").show();
         }
 
         var $lastStep = $('#tutorialModal .modal-body').length - 1;
@@ -2942,7 +2938,7 @@
             showTutorialModalBtn.onclick = function () {
                 modal.open("#tutorialModal");
                 $("#tutorialSummary").hide();
-                 $("#mechanicTutorialSummary").show();
+                $("#mechanicTutorialSummary").show();
                 zoom.removeZoom($(".tutorialZoom"));
                 openModalCount++;
             };
@@ -2959,8 +2955,9 @@
             var goBackBtn = document.getElementById("goBackBtn");
             goBackBtn.onclick = function () {
                 zoom.removeZoom($(".tutorialZoom"));
-                $("#errorClick").show();
                 zoom.addZoom($(".img-polaroid"));
+                $(".modal-body").hide();
+                $("#errorClick").show();
             };
 
             var errorClickCrossBtn = document.getElementById("errorClickCross");
@@ -3070,7 +3067,7 @@
             $("#checkMyWorkBtn").show().addClass("disabled");
         }
 
-        if( step === 2 ) {
+        if (step === 2) {
             var modal = new Modal();
             modal.open("#practiseModal");
         }
