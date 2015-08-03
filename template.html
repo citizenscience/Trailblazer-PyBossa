@@ -100,17 +100,30 @@
         background-color: transparent;
     }
 
-    .slick-prev {
-        left: -55px;
-        width: 40px !important;
-        height: 40px !important;
-    }
+.slick-prev, .slick-next {
+  background-color: transparent;
+  display: block;
+  width: 40px !important;
+  height: 40px !important;
+  margin-top: -20px !important;
+}
 
-    .slick-next {
-        right: -55px;
-        width: 40px !important;
-        height: 40px !important;
-    }
+.slick-prev:before, .slick-next:before {
+  font-size: 40px;
+  color: black;
+  background-color: transparent;
+}
+
+.slick-prev {
+  left: -55px;
+  width: 40px !important;
+  height: 40px !important;
+}
+.slick-next {
+  right: -55px;
+  width: 40px !important;
+  height: 40px !important;
+}
 
 </style>
 
@@ -128,7 +141,6 @@
                     <h1>
                         You are now about to <strong>start</strong> analysing cancer images.
                     </h1>
-
                     <h2>Here's what to remember:</h2>
                     <ul>
                         <li>
@@ -144,8 +156,7 @@
                             <strong class="text-success">Healthy cells</strong> include the dark blue or dark brown, small and round blood cells
                         </li>
                         <li>
-                            Other
-                            <strong class="text-success">healthy cells</strong> includes the light blue stretched and wispy looking stromal cells
+                            Other <strong class="text-success">healthy cells</strong> includes the light blue stretched and wispy looking stromal cells
                         </li>
                         <li>
                             <b>Click again</b> to turn sections that only <b>contain healthy cells
