@@ -202,6 +202,12 @@
             </div>
         </div>
 
+
+
+
+
+
+
         <!-- Tutoiral Modal -->
         <div id="tutorialModal" class="modal hide fade">
 
@@ -230,7 +236,7 @@
                 </div>
                 <div class="modal-info">
                     <h1>
-                        non-cancer cells are strictly organised and controlled.
+                        Non-cancer cells are strictly organised and controlled.
                     </h1>
 
                     <h2>
@@ -1611,7 +1617,7 @@
                 "<h3>This image shows you some of the different cells we’ve talked about<\/h3>" +
                 "<ul>" +
                     "<li><b class=\"text-success\">Non-cancer<\/b> epithelial cells form uniform, thin layers around airways (the empty space). Above the epithelial cells is some cartilage. Cartilage is <b class=\"text-success\">non-cancer</b><\/li>" +
-                    "<li>Throughout the image you can see <b class=\"text-success\">non-cancer<\/b> stroma (long and thin) and <b>blood cells (small, dark and round)</b><\/li>" +
+                    "<li>Throughout the image you can see <b class=\"text-success\">non-cancer<\/b> stroma (long and thin) and blood cells (small, dark and round)<\/li>" +
                     "<li>There are clumps of <b class=\"text-error\">cancer cells</b> above and to the right of the cartilage and below and to the left of the airway<\/li>" +
                 "<\/ul>",
             "squares": [{
@@ -2342,7 +2348,7 @@
         $("#feedbackProgressText").show();
 
 
-        if (pct >= 5) {
+        if (pct >= 75) {
             $("#nextFeedbackStep, #finishFeedback").removeClass("disabled");
 
             $(".taskTitle, .taskSubTitle, .taskParagraph").hide();
@@ -2366,7 +2372,7 @@
         var $feedbackText = $("#feedbackProgressText");
 
         var htmlString = '<h2>';
-        if (pct >= 5) {
+        if (pct >= 75) {
             htmlString += 'Well done! ';
         }
 
@@ -2374,7 +2380,7 @@
 
         htmlString += pct + '%</strong> of the image sections correctly</h2>';
 
-        if (pct < 5) {
+        if (pct < 75) {
             htmlString += '<h3>Get 75% correct to go onto the next slide.</h3>';
         }
         $feedbackText.html(htmlString);
