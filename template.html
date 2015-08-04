@@ -108,22 +108,29 @@
         margin-top: -20px !important;
     }
 
-.slick-prev:before, .slick-next:before {
-  font-size: 40px;
-  color: black;
-  background-color: transparent;
-}
+    .slick-prev:before, .slick-next:before {
+        font-size: 40px;
+        color: black;
+        background-color: transparent;
+    }
 
-.slick-prev {
-  left: -55px;
-  width: 40px !important;
-  height: 40px !important;
-}
-.slick-next {
-  right: -55px;
-  width: 40px !important;
-  height: 40px !important;
-}
+    .slick-prev {
+        left: -55px;
+        width: 40px !important;
+        height: 40px !important;
+    }
+
+    .slick-next {
+        right: -55px;
+        width: 40px !important;
+        height: 40px !important;
+    }
+
+    .taskFeedback {
+        margin-bottom: 20px;
+        border-bottom: 1px solid #999;
+        padding-bottom: 20px;
+    }
 
 </style>
 
@@ -951,14 +958,15 @@
             "taskSubTitle": "<h3>You can change your answer as often as you want. Just click on a section of the image to change your answer.<\/h3>" +
             "   <h3>Remember to look at the reference images below for help.<\/h3>",
             "taskParagraph": "",
-            "taskFeedback": "<h3>Most cancer cells are in the bottom third of the image with some to the left of middle.<\/h3>" +
-                "<ul><li>They’re mostly large<\/li>" +
-                "<li>The shape and size of each cell is very different from the others<\/li>" +
-                "<li>They’re darker than surrounding cells<\/li>" +
-                "<li>They have formed uneven, lumpy rings and chains.<\/li><\/ul>" +
-                "<h3>The surrounding non-cancer cells include<\/h3>" +
-                "<ul><li>Longer and thinner blue stromal cells<\/li>" +
-                "<li>Small blue or dark brown round cells which are blood cells.<\/li><\/ul>",
+            "taskFeedback": "<h2>Image feedback:<\/h2>" +
+            "<h3>Most cancer cells are in the bottom third of the image with some to the left of middle.<\/h3>" +
+            "<ul><li>They’re mostly large<\/li>" +
+            "<li>The shape and size of each cell is very different from the others<\/li>" +
+            "<li>They’re darker than surrounding cells<\/li>" +
+            "<li>They have formed uneven, lumpy rings and chains.<\/li><\/ul>" +
+            "<h3>The surrounding non-cancer cells include<\/h3>" +
+            "<ul><li>Longer and thinner blue stromal cells<\/li>" +
+            "<li>Small blue or dark brown round cells which are blood cells.<\/li><\/ul>",
             "squares": [{
                 "column": 0,
                 "answer": null,
@@ -1114,16 +1122,10 @@
             "taskSubTitle": "<h3>You can change your answer as often as you want. Just click on a section of the image to change your answer.<\/h3>" +
             "   <h3>Remember to look at the reference images below for help.<\/h3>",
             "taskParagraph": "",
-            "taskFeedback": "<h3>The cancer cells are in the top right, bottom right and left of this image<\/h3>" +
-                "<ul>" +
-                    "<li>They are large, mottled and irregular<\/li>" +
-                    "<li>No two cancer cells look the same<\/li>" +
-                "<\/ul>" +
-                "<h3>They are surrounded by a flood of non-cancer cells:<\/h3>" +
-                "<ul>" +
-                    "<li><b>small, dark<\/b> and <b>round<\/b> blood cells<\/li>" +
-                    "<li>mixed with <b>light blue<\/b> and <b>wispy<\/b> stromal cells.<\/li>" +
-                "\/ul>",
+            "taskFeedback": "<h2>Image feedback:<\/h2>" +
+            "<h3>The cancer cells in this image are large with strange, blotchy patterns. <\/h3>" +
+            "<h3>No two cancer cells look the same.<\/h3>" +
+            "<h3>The surrounding cells are a flood of small, dark and round blood cells mixed with light blue and wispy stromal cells.<\/h3>",
             "squares": [{
                 "column": 0,
                 "answer": null,
@@ -1279,7 +1281,8 @@
             "taskSubTitle": "<h3>You can change your answer as often as you want. Just click on a section of the image to change your answer.<\/h3>" +
             "   <h3>Remember to look at the reference images below for help.<\/h3>",
             "taskParagraph": "",
-            "taskFeedback": "<h3>The cancer cells have formed rounded clumps. <\/h3>" +
+            "taskFeedback": "<h2>Image feedback:<\/h2>" +
+            "<h3>The cancer cells have formed rounded clumps. <\/h3>" +
             "<h3>You can clearly see the outlines of these clumps of cancer cells.<\/h3>" +
             "<h3>The clumps of cancer cells are surrounded by<\/h3>" +
             "<ul><li>Small round dark blue or dark brown spots of the blood cells. " +
@@ -1439,12 +1442,10 @@
             "taskSubTitle": "<h3>You can change your answer as often as you want. Just click on a section of the image to change your answer.<\/h3>" +
             "   <h3>Remember to look at the reference images below for help.<\/h3>",
             "taskParagraph": "",
-            "taskFeedback": "<h3>This image is pretty much all cancer cells!<\/h3>" +
-                "<ul>" +
-                    "<li>The cells are <b>large, mottled<\/b> and <b>irregular<\/b><\/li>" +
-                    "<li>No two cancer cells look the same <\/li>" +
-                    "<li>They’ve formed an <b>unorganised, sprawling mass<\/b><\/li>" +
-                "<\/ul>",
+            "taskFeedback": "<h2>Image feedback:<\/h2>" +
+            "<h3>This image is pretty much all cancer cells!<\/h3>" +
+            "<h3>They form strange blotchy patterns with no two cells looking the same. <\/h3>" +
+            "<h3>There’s a complete lack of organisation or uniformity.<\/h3>",
             "squares": [{
                 "column": 0,
                 "answer": null,
@@ -1600,13 +1601,7 @@
             "taskSubTitle": "<h3>You can change your answer as often as you want. Just click on a section of the image to change your answer.<\/h3>" +
             "   <h3>Remember to look at the reference images below for help.<\/h3>",
             "taskParagraph": "",
-            "taskFeedback": "feedback",
-                "<h3>This image shows you some of the different cells we’ve talked about<\/h3>" +
-                "<ul>" +
-                    "<li>Non-cancer epithelial cells form uniform, thin layers around airways (the empty space). Above the epithelial cells is some cartilage. Cartilage is non-cancer<\/li>" +
-                    "<li>Throughout the image you can see non-cancer stroma (long and thin) and blood cells (small, dark and round)<\/li>" +
-                    "<li>There are clumps of cancer cells above and to the right of the cartilage and below and to the left of the airway<\/li>" +
-                "\/ul>",
+            "taskFeedback": "<h2>Image feedback:<\/h2>",
             "squares": [{
                 "column": 0,
                 "answer": null,
@@ -2338,9 +2333,10 @@
         if (pct >= 75) {
             $("#nextFeedbackStep, #finishFeedback").removeClass("disabled");
 
-            $(".taskSubTitle, .taskSubTitle, .taskParagraph").hide();
-
+            $(".taskTitle, .taskSubTitle, .taskParagraph").hide();
             $("#" + "feedbackStep" + step + " .taskFeedback").show();
+
+
         } else {
             $("#nextFeedbackStep, #finishFeedback").addClass("disabled");
         }
@@ -3126,7 +3122,7 @@
         $feedbackStep.empty();
 
         if (taskTitle) {
-            $feedbackStep.append('<div class="taskSubTitle">' + taskTitle + '</div>');
+            $feedbackStep.append('<div class="taskTitle">' + taskTitle + '</div>');
         }
         if (taskSubTitle) {
             $feedbackStep.append('<div class="taskSubTitle">' + taskSubTitle + '</div>');
@@ -3171,6 +3167,10 @@
         var checkMyWork = document.getElementById("checkMyWorkBtn");
         checkMyWork.onclick = function () {
             if ($(this).hasClass("disabled")) return;
+
+            $(".taskTitle,.taskSubTitle, .taskParagraph ").hide();
+            $("#" + "feedbackStep" + step + " .taskFeedback").show();
+
             feedbackGrid.showMyAnalysis();
         };
 
