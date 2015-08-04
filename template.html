@@ -2348,7 +2348,7 @@
         $("#feedbackProgressText").show();
 
 
-        if (pct >= 75) {
+        if (pct >= 5) {
             $("#nextFeedbackStep, #finishFeedback").removeClass("disabled");
 
             $(".taskTitle, .taskSubTitle, .taskParagraph").hide();
@@ -2372,7 +2372,7 @@
         var $feedbackText = $("#feedbackProgressText");
 
         var htmlString = '<h2>';
-        if (pct >= 75) {
+        if (pct >= 5) {
             htmlString += 'Well done! ';
         }
 
@@ -2380,8 +2380,8 @@
 
         htmlString += pct + '%</strong> of the image sections correctly</h2>';
 
-        if (pct < 75) {
-            htmlString += '<h3>Get 75% correct to go onto the next slide.</h3>';
+        if (pct < 5) {
+            htmlString += '<h3>Get 5% correct to go onto the next slide.</h3>';
         }
         $feedbackText.html(htmlString);
 
@@ -2886,13 +2886,12 @@
                 openModalCount: 0
             };
 
+
             img.load(function () {
 
                 // continue as soon as the image is loaded
                 deferred.resolve(task);
-
             });
-
         } else {
 
             deferred.resolve(task);
@@ -2908,19 +2907,14 @@
      */
 
     pybossa.presentTask(function (task, deferred) {
-        if (!$.isEmptyObject(task)) {
 
+        if (!$.isEmptyObject(task)) {
 
             loadUserProgress();
 
-
             if (task.state == 'completed') {
                 $("#loading").hide();
-                $("#finish").fadeIn(500);
-                $(".site-content").fadeTo("slow", 0.5);
-                $(".site-content").css("pointer-events", "none;");
             }
-
 
             var openModalCount = 0;
 
@@ -3067,9 +3061,12 @@
             });
         } else {
 
+
             $("#loading").hide();
-            $("#finish").fadeIn(500);
-            $(".site-content").fadeTo("slow", 0.5);
+            $("#progress").css("width","100%");
+                $("#finish").fadeIn(500);
+                $(".site-content").fadeTo("slow", 0.5);
+                $(".site-content").css("pointer-events", "none;");
         }
     });
 
