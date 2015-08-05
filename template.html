@@ -1786,7 +1786,6 @@
 
         this.canvas;
 
-        this.task = task;
 
 
         /*
@@ -2887,8 +2886,8 @@
             };
 
 
-            img.load(function () {
 
+            img.load(function () {
                 // continue as soon as the image is loaded
                 deferred.resolve(task);
             });
@@ -3312,6 +3311,7 @@
             $.cookie(cookie_feedback_name, false);
             UpdatePageState();
         });
+
 
     });
 
