@@ -1,88 +1,196 @@
 <style>
 
-    #feedback-photo-link:before,
-    #photo-link:before {
-        content: "Loading image...";
-        display: block;
-        text-align: center;
-        margin-top: 250px;
-        font-size: 18px;
-        color: black;
-    }
+    /*
+       .canvas grid 10 and #photo-link image is at z-index of 5
+    */
 
-    .loader {
+    .sk-fading-circle {
+        width: 40px;
+        height: 40px;
         position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-
-        margin-top: 120px;
-        margin-left: auto;
-        margin-right: auto;
-        font-size: 10px;
-        text-indent: -9999em;
-        width: 11em;
-        height: 11em;
-        border-radius: 50%;
-        background: #000;
-        background: -moz-linear-gradient(left, #ffffff 10%, rgba(0, 0, 0, 0) 42%);
-        background: -webkit-linear-gradient(left, #ffffff 10%, rgba(0, 0, 0, 0) 42%);
-        background: -o-linear-gradient(left, #ffffff 10%, rgba(0, 0, 0, 0) 42%);
-        background: -ms-linear-gradient(left, #ffffff 10%, rgba(0, 0, 0, 0) 42%);
-        background: linear-gradient(to right, #ffffff 10%, rgba(0, 0, 0, 0) 42%);
-
-        -webkit-animation: load3 1.4s infinite linear;
-        animation: load3 1.4s infinite linear;
-        -webkit-transform: translateZ(0);
-        -ms-transform: translateZ(0);
-        transform: translateZ(0);
-    }
-
-    .loader:before {
-        width: 50%;
-        height: 50%;
-        background: #000;
-        border-radius: 100% 0 0 0;
-        position: absolute;
-        top: 0;
-        left: 0;
-        content: '';
-    }
-
-    .loader:after {
-        background: #FFF;
-        width: 75%;
-        height: 75%;
-        border-radius: 50%;
-        content: '';
+        z-index: 1;
         margin: auto;
+        left: 0;
+        right: 0;
+        top: 190px
+    }
+
+    .sk-fading-circle span {
+        position: absolute;
+        bottom: -40px;
+        width: 130px;
+        margin-left: -40px;
+    }
+
+    .sk-fading-circle .sk-circle {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    .sk-fading-circle .sk-circle:before {
+        content: '';
+        display: block;
+        margin: 0 auto;
+        width: 15%;
+        height: 15%;
+        background-color: #333;
+        border-radius: 100%;
+        -webkit-animation: sk-circleFadeDelay 1.2s infinite ease-in-out both;
+        animation: sk-circleFadeDelay 1.2s infinite ease-in-out both;
+    }
+
+    .sk-fading-circle .sk-circle2 {
+        -webkit-transform: rotate(30deg);
+        -ms-transform: rotate(30deg);
+        transform: rotate(30deg);
+    }
+
+    .sk-fading-circle .sk-circle3 {
+        -webkit-transform: rotate(60deg);
+        -ms-transform: rotate(60deg);
+        transform: rotate(60deg);
+    }
+
+    .sk-fading-circle .sk-circle4 {
+        -webkit-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        transform: rotate(90deg);
+    }
+
+    .sk-fading-circle .sk-circle5 {
+        -webkit-transform: rotate(120deg);
+        -ms-transform: rotate(120deg);
+        transform: rotate(120deg);
+    }
+
+    .sk-fading-circle .sk-circle6 {
+        -webkit-transform: rotate(150deg);
+        -ms-transform: rotate(150deg);
+        transform: rotate(150deg);
+    }
+
+    .sk-fading-circle .sk-circle7 {
+        -webkit-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+        transform: rotate(180deg);
+    }
+
+    .sk-fading-circle .sk-circle8 {
+        -webkit-transform: rotate(210deg);
+        -ms-transform: rotate(210deg);
+        transform: rotate(210deg);
+    }
+
+    .sk-fading-circle .sk-circle9 {
+        -webkit-transform: rotate(240deg);
+        -ms-transform: rotate(240deg);
+        transform: rotate(240deg);
+    }
+
+    .sk-fading-circle .sk-circle10 {
+        -webkit-transform: rotate(270deg);
+        -ms-transform: rotate(270deg);
+        transform: rotate(270deg);
+    }
+
+    .sk-fading-circle .sk-circle11 {
+        -webkit-transform: rotate(300deg);
+        -ms-transform: rotate(300deg);
+        transform: rotate(300deg);
+    }
+
+    .sk-fading-circle .sk-circle12 {
+        -webkit-transform: rotate(330deg);
+        -ms-transform: rotate(330deg);
+        transform: rotate(330deg);
+    }
+
+    .sk-fading-circle .sk-circle2:before {
+        -webkit-animation-delay: -1.1s;
+        animation-delay: -1.1s;
+    }
+
+    .sk-fading-circle .sk-circle3:before {
+        -webkit-animation-delay: -1s;
+        animation-delay: -1s;
+    }
+
+    .sk-fading-circle .sk-circle4:before {
+        -webkit-animation-delay: -0.9s;
+        animation-delay: -0.9s;
+    }
+
+    .sk-fading-circle .sk-circle5:before {
+        -webkit-animation-delay: -0.8s;
+        animation-delay: -0.8s;
+    }
+
+    .sk-fading-circle .sk-circle6:before {
+        -webkit-animation-delay: -0.7s;
+        animation-delay: -0.7s;
+    }
+
+    .sk-fading-circle .sk-circle7:before {
+        -webkit-animation-delay: -0.6s;
+        animation-delay: -0.6s;
+    }
+
+    .sk-fading-circle .sk-circle8:before {
+        -webkit-animation-delay: -0.5s;
+        animation-delay: -0.5s;
+    }
+
+    .sk-fading-circle .sk-circle9:before {
+        -webkit-animation-delay: -0.4s;
+        animation-delay: -0.4s;
+    }
+
+    .sk-fading-circle .sk-circle10:before {
+        -webkit-animation-delay: -0.3s;
+        animation-delay: -0.3s;
+    }
+
+    .sk-fading-circle .sk-circle11:before {
+        -webkit-animation-delay: -0.2s;
+        animation-delay: -0.2s;
+    }
+
+    .sk-fading-circle .sk-circle12:before {
+        -webkit-animation-delay: -0.1s;
+        animation-delay: -0.1s;
+    }
+
+    @-webkit-keyframes sk-circleFadeDelay {
+        0%, 39%, 100% {
+            opacity: 0;
+        }
+        40% {
+            opacity: 1;
+        }
+    }
+
+    @keyframes sk-circleFadeDelay {
+        0%, 39%, 100% {
+            opacity: 0;
+        }
+        40% {
+            opacity: 1;
+        }
+    }
+
+    /*.canvas is at z-index of 10*/
+    #feedback-photo-link,
+    #photo-link {
         position: absolute;
         top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-    }
-
-    @-webkit-keyframes load3 {
-        0% {
-            -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-        }
-        100% {
-            -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-        }
-    }
-
-    @keyframes load3 {
-        0% {
-            -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-        }
-        100% {
-            -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-        }
+        width: 100%;
+        height: 100%;
+        z-index: 5;
+        display: block;
+        min-height: 460px;
     }
 
     .modal-backdrop {
@@ -97,11 +205,6 @@
 
     .zoomWindow {
         border: 0 !important;
-    }
-
-    #photo-link {
-        display: block;
-        min-height: 460px;
     }
 
     h2 {
@@ -815,7 +918,23 @@
 
                 <!--Right hand side-->
                 <div class="span6 right wrapper grid-wrapper">
-                    <div class="loader">Loading...</div>
+
+                    <div class="sk-fading-circle">
+                        <div class="sk-circle1 sk-circle"></div>
+                        <div class="sk-circle2 sk-circle"></div>
+                        <div class="sk-circle3 sk-circle"></div>
+                        <div class="sk-circle4 sk-circle"></div>
+                        <div class="sk-circle5 sk-circle"></div>
+                        <div class="sk-circle6 sk-circle"></div>
+                        <div class="sk-circle7 sk-circle"></div>
+                        <div class="sk-circle8 sk-circle"></div>
+                        <div class="sk-circle9 sk-circle"></div>
+                        <div class="sk-circle10 sk-circle"></div>
+                        <div class="sk-circle11 sk-circle"></div>
+                        <div class="sk-circle12 sk-circle"></div>
+                        <span>Loading task image...</span>
+                    </div>
+
                     <a id="photo-link"></a>
 
                     <div class="canvas" id="mechanicCanvas"></div>
@@ -902,7 +1021,21 @@
             <div class="span6">
                 <!--Right hand side-->
                 <div class=" right wrapper grid-wrapper" id="grid-wrapper">
-                    <div class="loader">Loading...</div>
+                    <div class="sk-fading-circle">
+                        <div class="sk-circle1 sk-circle"></div>
+                        <div class="sk-circle2 sk-circle"></div>
+                        <div class="sk-circle3 sk-circle"></div>
+                        <div class="sk-circle4 sk-circle"></div>
+                        <div class="sk-circle5 sk-circle"></div>
+                        <div class="sk-circle6 sk-circle"></div>
+                        <div class="sk-circle7 sk-circle"></div>
+                        <div class="sk-circle8 sk-circle"></div>
+                        <div class="sk-circle9 sk-circle"></div>
+                        <div class="sk-circle10 sk-circle"></div>
+                        <div class="sk-circle11 sk-circle"></div>
+                        <div class="sk-circle12 sk-circle"></div>
+                        <span>Loading task image...</span>
+                    </div>
                     <a id="feedback-photo-link"></a>
 
                     <div class="canvas" id="feedbackCanvas"></div>
@@ -2973,10 +3106,6 @@
             };
 
 
-
-
-
-
             img.load(function () {
                 // continue as soon as the image is loaded
                 deferred.resolve(task);
@@ -3000,7 +3129,6 @@
         if (!$.isEmptyObject(task)) {
 
 
-
             if (task.state == 'completed') {
                 $("#loading").hide();
             }
@@ -3021,7 +3149,7 @@
             var imgUrl = task.info.url_b;
 
             var lastSlashIdx = imgUrl.lastIndexOf("/");
-            var newStr = imgUrl.substr( lastSlashIdx + 1, 10);
+            var newStr = imgUrl.substr(lastSlashIdx + 1, 10);
             $(".imgId").html("Image ID: " + "<strong>" + newStr + "</strong>");
 
 
