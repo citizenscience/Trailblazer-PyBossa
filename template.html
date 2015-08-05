@@ -2537,8 +2537,7 @@
 
         var $feedbackProgressBar = $("#feedbackProgress"),
             totalSquares = 36,
-            correctSquares = 0,
-            toCompletePercentage = 75;
+            correctSquares = 0;
 
         var blankSquares = this.checkBlankSquares();
         var interactedBlankSquares = this.interactedBlanks();
@@ -2567,7 +2566,7 @@
         $("#feedbackProgressText").show();
 
 
-        if (pct >= toCompletePercentage) {
+        if (pct >= 75) {
             $("#nextFeedbackStep, #finishFeedback").removeClass("disabled");
 
             $(".taskTitle, .taskSubTitle, .taskParagraph").hide();
@@ -2591,7 +2590,7 @@
         var $feedbackText = $("#feedbackProgressText");
 
         var htmlString = '<h2>';
-        if (pct >= toCompletePercentage) {
+        if (pct >= 75) {
             htmlString += 'Well done! ';
         }
 
@@ -2599,7 +2598,7 @@
 
         htmlString += pct + '%</strong> of the image sections correctly</h2>';
 
-        if (pct < toCompletePercentage) {
+        if (pct < 75) {
             htmlString += '<h3>Get 75% correct to go onto the next slide.</h3>';
         }
         $feedbackText.html(htmlString);
