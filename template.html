@@ -2941,6 +2941,9 @@
     function loadUserProgress() {
         pybossa.userProgress('mvp-03').done(function (data) {
 
+            var currentTask = data.done + 1;
+            $("#tasksCompleted").text(currentTask + " of " + data.total);
+
             var pct = Math.round((data.done * 100) / data.total);
             $("#progress").css("width", pct.toString() + "%");
             $("#progress").attr("title", pct.toString() + "% completed!");
@@ -3085,6 +3088,7 @@
 
             img.load(function () {
                 $("#loadingTask").hide();
+                loadUserProgress();
                 deferred.resolve(task);
             });
 
@@ -3125,8 +3129,6 @@
 
         if (!$.isEmptyObject(task)) {
 
-            var currentTask = data.done + 1;
-            $("#tasksCompleted").text(currentTask + " of " + data.total);
 
             if (task.state == 'completed') {
                 $("#loading").hide();
