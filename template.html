@@ -1,5 +1,6 @@
 <style>
 
+    #feedback-photo-link:before,
     #photo-link:before {
         content: "Loading image...";
         display: block;
@@ -814,9 +815,6 @@
 
                 <!--Right hand side-->
                 <div class="span6 right wrapper grid-wrapper">
-                    <div class="loader-wrapper">
-
-                    </div>
                     <div class="loader">Loading...</div>
                     <a id="photo-link"></a>
 
@@ -904,6 +902,7 @@
             <div class="span6">
                 <!--Right hand side-->
                 <div class=" right wrapper grid-wrapper" id="grid-wrapper">
+                    <div class="loader">Loading...</div>
                     <a id="feedback-photo-link"></a>
 
                     <div class="canvas" id="feedbackCanvas"></div>
@@ -2974,6 +2973,10 @@
             };
 
 
+
+
+
+
             img.load(function () {
                 // continue as soon as the image is loaded
                 deferred.resolve(task);
@@ -2996,7 +2999,7 @@
 
         if (!$.isEmptyObject(task)) {
 
-            loadUserProgress();
+
 
             if (task.state == 'completed') {
                 $("#loading").hide();
@@ -3016,8 +3019,10 @@
             $('#photo-link').html('').append(task.info.image);
             $('#task-id').html(task.id);
             var imgUrl = task.info.url_b;
-            var result = imgUrl.replace("//citscitools.cancerresearchuk.org/static/mvp-images/lung-all-min/", "");
-            $(".imgId").html("Image ID: " + "<strong>" + result + "</strong>");
+
+            var lastSlashIdx = imgUrl.lastIndexOf("/");
+            var newStr = imgUrl.substr( lastSlashIdx + 1, 10);
+            $(".imgId").html("Image ID: " + "<strong>" + newStr + "</strong>");
 
 
             /*
@@ -3139,6 +3144,7 @@
 
                 pybossa.saveTask(task.id, answer).done(function (data) {
                     $("#success").fadeIn(500).delay(1500).fadeOut();
+                    loadUserProgress();
                     $("svg, .zoomContainer,.zoomWindowContainer").remove();
                     deferred.resolve();
                 });
