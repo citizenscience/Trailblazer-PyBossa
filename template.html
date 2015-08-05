@@ -1,5 +1,89 @@
 <style>
 
+    #photo-link:before {
+        content: "Loading image...";
+        display: block;
+        text-align: center;
+        margin-top: 250px;
+        font-size: 18px;
+        color: black;
+    }
+
+    .loader {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+
+        margin-top: 120px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 10px;
+        text-indent: -9999em;
+        width: 11em;
+        height: 11em;
+        border-radius: 50%;
+        background: #000;
+        background: -moz-linear-gradient(left, #ffffff 10%, rgba(0, 0, 0, 0) 42%);
+        background: -webkit-linear-gradient(left, #ffffff 10%, rgba(0, 0, 0, 0) 42%);
+        background: -o-linear-gradient(left, #ffffff 10%, rgba(0, 0, 0, 0) 42%);
+        background: -ms-linear-gradient(left, #ffffff 10%, rgba(0, 0, 0, 0) 42%);
+        background: linear-gradient(to right, #ffffff 10%, rgba(0, 0, 0, 0) 42%);
+
+        -webkit-animation: load3 1.4s infinite linear;
+        animation: load3 1.4s infinite linear;
+        -webkit-transform: translateZ(0);
+        -ms-transform: translateZ(0);
+        transform: translateZ(0);
+    }
+
+    .loader:before {
+        width: 50%;
+        height: 50%;
+        background: #000;
+        border-radius: 100% 0 0 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        content: '';
+    }
+
+    .loader:after {
+        background: #FFF;
+        width: 75%;
+        height: 75%;
+        border-radius: 50%;
+        content: '';
+        margin: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+    }
+
+    @-webkit-keyframes load3 {
+        0% {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        100% {
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+
+    @keyframes load3 {
+        0% {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        100% {
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+
     .modal-backdrop {
         z-index: 1700 !important;
     }
@@ -201,12 +285,6 @@
                 <button type="button" class="btn closeBtnbtn-default pull-right closeBtn" id="closeBtn" data-dismiss="modal" aria-hidden="true">Next</button>
             </div>
         </div>
-
-
-
-
-
-
 
         <!-- Tutoiral Modal -->
         <div id="tutorialModal" class="modal hide fade">
@@ -736,6 +814,10 @@
 
                 <!--Right hand side-->
                 <div class="span6 right wrapper grid-wrapper">
+                    <div class="loader-wrapper">
+
+                    </div>
+                    <div class="loader">Loading...</div>
                     <a id="photo-link"></a>
 
                     <div class="canvas" id="mechanicCanvas"></div>
@@ -747,9 +829,15 @@
 
                         <div>
                             <h1>Select the grid sections that contain cancer cells</h1>
-                            <h3>Click once to mark <strong>cancer</strong> cells in <span class="text-error">Red</span></h3>
-                            <h3>Click again to mark <strong>non-cancer</strong> cells in <span class="text-success">Green</span></h3>
+
+                            <h3>Click once to mark <strong>cancer</strong> cells in <span class="text-error">Red</span>
+                            </h3>
+
+                            <h3>Click again to mark <strong>non-cancer</strong> cells in
+                                <span class="text-success">Green</span></h3>
+
                             <h3>Empty sections of the image can be left blank</h3>
+
                             <p class="imgId"></p>
                         </div>
 
@@ -959,14 +1047,14 @@
             "   <h3>Remember to look at the reference images below for help.<\/h3>",
             "taskParagraph": "",
             "taskFeedback": "<h2>Image feedback<\/h2>" +
-                "<h3>Most <b class=\"text-error\">cancer cells</b> are in the bottom third of the image with some to the left of middle.<\/h3>" +
-                "<ul><li>They’re mostly <b>large<\/b><\/li>" +
-                "<li>The shape and size of each cell is very different from the others<\/li>" +
-                "<li>They’re <b>darker<\/b> than surrounding cells<\/li>" +
-                "<li>They have formed uneven, <b>lumpy rings<\/b> and <b>chains</b>.<\/li><\/ul>" +
-                "<h3>The surrounding <b class=\"text-success\">non-cancer cells</b> include<\/h3>" +
-                "<ul><li>Longer and thinner blue stromal cells<\/li>" +
-                "<li><b>Small blue<\/b> or <b>dark brown round cells<\/b> which are <b class=\"text-success\">blood cells</b>.<\/li><\/ul>",
+            "<h3>Most <b class=\"text-error\">cancer cells</b> are in the bottom third of the image with some to the left of middle.<\/h3>" +
+            "<ul><li>They’re mostly <b>large<\/b><\/li>" +
+            "<li>The shape and size of each cell is very different from the others<\/li>" +
+            "<li>They’re <b>darker<\/b> than surrounding cells<\/li>" +
+            "<li>They have formed uneven, <b>lumpy rings<\/b> and <b>chains</b>.<\/li><\/ul>" +
+            "<h3>The surrounding <b class=\"text-success\">non-cancer cells</b> include<\/h3>" +
+            "<ul><li>Longer and thinner blue stromal cells<\/li>" +
+            "<li><b>Small blue<\/b> or <b>dark brown round cells<\/b> which are <b class=\"text-success\">blood cells</b>.<\/li><\/ul>",
             "squares": [{
                 "column": 0,
                 "answer": null,
@@ -1123,16 +1211,16 @@
             "   <h3>Remember to look at the reference images below for help.<\/h3>",
             "taskParagraph": "",
             "taskFeedback": "<h2>Image feedback<\/h2>" +
-                "<h3>The <b class=\"text-error\">cancer cells<\/b> are in the top right, bottom right and left of this image<\/h3>" +
-                "<ul>" +
-                    "<li>They are large, mottled and irregular<\/li>" +
-                    "<li>No two <b class=\"text-error\">cancer cells<\/b> look the same<\/li>" +
-                "<\/ul>" +
-                "<h3>They are surrounded by a flood of <b class=\"text-success\">non-cancer cells</b>:<\/h3>" +
-                "<ul>" +
-                    "<li><b>small, dark<\/b> and <b>round<\/b> blood cells<\/li>" +
-                    "<li>mixed with <b>light blue<\/b> and <b>wispy<\/b> stromal cells.<\/li>" +
-                "<\/ul>",
+            "<h3>The <b class=\"text-error\">cancer cells<\/b> are in the top right, bottom right and left of this image<\/h3>" +
+            "<ul>" +
+            "<li>They are large, mottled and irregular<\/li>" +
+            "<li>No two <b class=\"text-error\">cancer cells<\/b> look the same<\/li>" +
+            "<\/ul>" +
+            "<h3>They are surrounded by a flood of <b class=\"text-success\">non-cancer cells</b>:<\/h3>" +
+            "<ul>" +
+            "<li><b>small, dark<\/b> and <b>round<\/b> blood cells<\/li>" +
+            "<li>mixed with <b>light blue<\/b> and <b>wispy<\/b> stromal cells.<\/li>" +
+            "<\/ul>",
             "squares": [{
                 "column": 0,
                 "answer": null,
@@ -1289,13 +1377,13 @@
             "   <h3>Remember to look at the reference images below for help.<\/h3>",
             "taskParagraph": "",
             "taskFeedback": "<h2>Image feedback<\/h2>" +
-                "<h3>The <b class=\"text-error\">cancer cells<\/b> have formed rounded clumps. <\/h3>" +
-                "<h3>You can clearly see the outlines of these clumps of <b class=\"text-error\">cancer cells<\/b>.<\/h3>" +
-                "<h3>The clumps of <b class=\"text-error\">cancer cells<\/b> are surrounded by<\/h3>" +
-                "<ul>" +
-                    "<li><b>Small round dark blue<\/b> or <b>dark brown spots<\/b> of the <b class=\"text-success\">blood cells<\/b><\/li>" +
-                    "<li>Plenty of stretched looking wispy <b class=\"text-success\">stromal cells<\/b><\/li>" +
-                "<\/ul>",
+            "<h3>The <b class=\"text-error\">cancer cells<\/b> have formed rounded clumps. <\/h3>" +
+            "<h3>You can clearly see the outlines of these clumps of <b class=\"text-error\">cancer cells<\/b>.<\/h3>" +
+            "<h3>The clumps of <b class=\"text-error\">cancer cells<\/b> are surrounded by<\/h3>" +
+            "<ul>" +
+            "<li><b>Small round dark blue<\/b> or <b>dark brown spots<\/b> of the <b class=\"text-success\">blood cells<\/b><\/li>" +
+            "<li>Plenty of stretched looking wispy <b class=\"text-success\">stromal cells<\/b><\/li>" +
+            "<\/ul>",
             "squares": [{
                 "column": 0,
                 "answer": null,
@@ -1452,12 +1540,12 @@
             "   <h3>Remember to look at the reference images below for help.<\/h3>",
             "taskParagraph": "",
             "taskFeedback": "<h2>Image feedback<\/h2>" +
-                "<h3>This image is pretty much all <b class=\"text-error\">cancer cells!<\/b><\/h3>" +
-                "<ul>" +
-                    "<li>The cells are <b>large, mottled<\/b> and <b>irregular<\/b><\/li>" +
-                    "<li>No two <b class=\"text-error\">cancer cells<\/b> look the same <\/li>" +
-                    "<li>They’ve formed an <b>unorganised, sprawling mass<\/b><\/li>" +
-                "<\/ul>",
+            "<h3>This image is pretty much all <b class=\"text-error\">cancer cells!<\/b><\/h3>" +
+            "<ul>" +
+            "<li>The cells are <b>large, mottled<\/b> and <b>irregular<\/b><\/li>" +
+            "<li>No two <b class=\"text-error\">cancer cells<\/b> look the same <\/li>" +
+            "<li>They’ve formed an <b>unorganised, sprawling mass<\/b><\/li>" +
+            "<\/ul>",
             "squares": [{
                 "column": 0,
                 "answer": null,
@@ -1614,12 +1702,12 @@
             "   <h3>Remember to look at the reference images below for help.<\/h3>",
             "taskParagraph": "",
             "taskFeedback": "<h2>Image feedback<\/h2>" +
-                "<h3>This image shows you some of the different cells we’ve talked about<\/h3>" +
-                "<ul>" +
-                    "<li><b class=\"text-success\">Non-cancer<\/b> epithelial cells form uniform, thin layers around airways (the empty space). Above the epithelial cells is some cartilage. Cartilage is <b class=\"text-success\">non-cancer</b><\/li>" +
-                    "<li>Throughout the image you can see <b class=\"text-success\">non-cancer<\/b> stroma (long and thin) and blood cells (small, dark and round)<\/li>" +
-                    "<li>There are clumps of <b class=\"text-error\">cancer cells</b> above and to the right of the cartilage and below and to the left of the airway<\/li>" +
-                "<\/ul>",
+            "<h3>This image shows you some of the different cells we’ve talked about<\/h3>" +
+            "<ul>" +
+            "<li><b class=\"text-success\">Non-cancer<\/b> epithelial cells form uniform, thin layers around airways (the empty space). Above the epithelial cells is some cartilage. Cartilage is <b class=\"text-success\">non-cancer</b><\/li>" +
+            "<li>Throughout the image you can see <b class=\"text-success\">non-cancer<\/b> stroma (long and thin) and blood cells (small, dark and round)<\/li>" +
+            "<li>There are clumps of <b class=\"text-error\">cancer cells</b> above and to the right of the cartilage and below and to the left of the airway<\/li>" +
+            "<\/ul>",
             "squares": [{
                 "column": 0,
                 "answer": null,
@@ -1785,7 +1873,6 @@
     function Grid(task) {
 
         this.canvas;
-
 
 
         /*
@@ -2887,7 +2974,6 @@
             };
 
 
-
             img.load(function () {
                 // continue as soon as the image is loaded
                 deferred.resolve(task);
@@ -3063,10 +3149,10 @@
 
 
             $("#loading").hide();
-            $("#progress").css("width","100%");
-                $("#finish").fadeIn(500);
-                $(".site-content").fadeTo("slow", 0.5);
-                $(".site-content").css("pointer-events", "none;");
+            $("#progress").css("width", "100%");
+            $("#finish").fadeIn(500);
+            $(".site-content").fadeTo("slow", 0.5);
+            $(".site-content").css("pointer-events", "none;");
         }
     });
 
