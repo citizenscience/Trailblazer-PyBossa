@@ -2885,6 +2885,8 @@
     function loadUserProgress() {
         pybossa.userProgress('mvp-04').done(function (data) {
 
+            console.log(data);
+
             var currentTask = data.done + 1;
             $("#tasksCompleted").text(currentTask + " of " + data.total);
 
