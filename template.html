@@ -1141,7 +1141,7 @@
      This is the pathologist grid square data that we can check the user answers against
      */
 
-    var data = [{
+    var feedbackData = [{
         "info": {
             "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung-all-min/1.jpg",
             "taskTitle": "<h2>Click once to mark cancer cells in <span class=\"text-error\">Red<\/span><\/h2> <h2>Click again to mark non-cancer cells in <span class=\"text-success\">Green<\/span><\/h2><h2>Empty sections of the image can be left blank<\/h2>",
@@ -2318,7 +2318,7 @@
         var pathologistAnswer;
 
 
-        $.each(data[step].info, function (idx, patholgistSquare) {
+        $.each(feedbackData[step].info, function (idx, patholgistSquare) {
             if (typeof(patholgistSquare[activeSquare.id]) == 'object') {
                 // Find the pathologist answer for that square
                 //
@@ -2493,10 +2493,10 @@
         });
 
         function findParentSquare(cross, feedbackObjAnswer) {
-            for (var i = 0; i < data[step].info.squares.length; i++) {
+            for (var i = 0; i < feedbackData[step].info.squares.length; i++) {
                 var gridSquare = feedbackObjAnswer.squares[i],
                     gridSquareNode = feedbackObjAnswer.squares[i].node,
-                    pathologistAnswer = data[step].info.squares[i].answer;
+                    pathologistAnswer = feedbackData[step].info.squares[i].answer;
                 if (gridSquare.id === cross["data-parent_id"]) {
 
                     gridSquare.node.setAttribute("class", "grid-item");
@@ -2587,7 +2587,7 @@
     FeedbackGrid.prototype.checkBlankSquares = function () {
 
         var blankSquares = 0;
-        $.each(data[step].info.squares, function (key, value) {
+        $.each(feedbackData[step].info.squares, function (key, value) {
             if (value.answer === null) {
                 blankSquares++;
             }
@@ -2599,7 +2599,7 @@
 
     FeedbackGrid.prototype.interactedBlanks = function () {
 
-        var pathologists = data[step].info.squares;
+        var pathologists = feedbackData[step].info.squares;
         var feedbackSquares = this.feedbackObj.answer.squares;
         var _this = this;
         var result = 0;
@@ -2707,7 +2707,7 @@
 
             $(tutorial).elevateZoom();
 
-            if (!$carousel.data("carousel")) {
+            if (!$carousel.feedbackData("carousel")) {
 
                 $carousel.carousel({
                     interval: false
@@ -3284,12 +3284,12 @@
         $("svg, .feedback-img-polaroid, .zoomContainer, .zoomWindowContainer, .feedback-photo-link").remove();
         $.removeData(".feedback-photo-link", 'elevateZoom');
 
-        var data_obj = data[step].info;
-        var imgUrl = data[step].info.imgNumber;
-        var taskTitle = data[step].info.taskTitle;
-        var taskSubTitle = data[step].info.taskSubTitle;
-        var taskParagraph = data[step].info.taskParagraph;
-        var taskFeedback = data[step].info.taskFeedback;
+        var data_obj = feedbackData[step].info;
+        var imgUrl = feedbackData[step].info.imgNumber;
+        var taskTitle = feedbackData[step].info.taskTitle;
+        var taskSubTitle = feedbackData[step].info.taskSubTitle;
+        var taskParagraph = feedbackData[step].info.taskParagraph;
+        var taskFeedback = feedbackData[step].info.taskFeedback;
 
         var img = $('<img />');
         img.attr('src', imgUrl);
@@ -3355,7 +3355,7 @@
         if ($(this).hasClass("disabled")) return;
         $("#feedbackProgress").width("0%");
         $("#feedbackProgressText").text("");
-        if (step != data.length - 1) {
+        if (step != feedbackData.length - 1) {
             showFeedbackStep('next');
         }
     };
