@@ -1,6 +1,6 @@
 {
     "name": "CRUK Trailblazer 2b",
     "short_name": "mvp-02b",
-    "description": "This is the project for pathologist to supply gold standard data",
+    "description": "Release 2b of Trailblazer incorporating an improved tutorial",
     "question": "Do you see a real human face in this photo?"
 }
