@@ -873,7 +873,7 @@
             <h2>The final step is to provide some feedback on using the system.</h2>
 
             <div class="alert-actions">
-                <a class="btn small" href="http://citscitools.cancerresearchuk.org/community/mvp-03-feedback/">Give feedback</a>
+                <a class="btn small" href="http://citscitools.cancerresearchuk.org/community/mvp-04-feedback/">Give feedback</a>
             </div>
         </div>
         <div id="error" class="alert alert-error" style="display:none">
@@ -1163,7 +1163,7 @@
 
     var project_short_name = "{{ project.short_name }}";
     if (project_short_name === "")
-        project_short_name = "mvp-03";
+        project_short_name = "mvp-04";
 
     var cookie_feedback_name = project_short_name + 'feedback';
     var cookie_tutorial_name = project_short_name + 'tutorial';
@@ -2938,7 +2938,7 @@
      */
 
     function loadUserProgress() {
-        pybossa.userProgress('mvp-03').done(function (data) {
+        pybossa.userProgress('mvp-04').done(function (data) {
 
             var currentTask = data.done + 1;
             $("#tasksCompleted").text(currentTask + " of " + data.total);
@@ -3503,7 +3503,7 @@
         } else {
             $("#feedback-content").hide();
             $("#mechanic-content").show();
-            pybossa.run("mvp-03");
+            pybossa.run("mvp-04");
         }
 
     }
