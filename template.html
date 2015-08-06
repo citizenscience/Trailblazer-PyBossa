@@ -325,7 +325,12 @@
     }
 
 
-    .mechanic-active .feedback-active{
+
+    .feedback-active .mechanic-active{
+        display: none;
+    }
+
+    .mechanic-active .feedback-show{
         display: none;
     }
 
@@ -890,7 +895,6 @@
             </div>
         </div>
         <div id="error" class="alert alert-error" style="display:none">
-
             <h2><strong>Error!</strong> Something went wrong, please contact the site administrators</h2>
         </div>
 
@@ -916,11 +920,11 @@
             Non-cancer =
             <div class="square square-green"></div>
         </div>
-        <div class="legend-item feedback-active">
+        <div class="legend-item feedback-show">
             Correct =
             <i class="icon-ok"></i>
         </div>
-        <div class="legend-item feedback-active">
+        <div class="legend-item feedback-show">
             Incorrect =
             <i class="icon-remove"></i>
         </div>
@@ -3212,13 +3216,12 @@
                  */
 
                 pybossa.saveTask(task.id, answer).done(function (data) {
-                    $("#success").fadeIn(500).delay(1500).fadeOut();
                     loadUserProgress();
+                    $("#success").fadeIn(500).delay(1500).fadeOut();
                     $("svg, .zoomContainer,.zoomWindowContainer").remove();
                     deferred.resolve();
                 });
 
-                //$("#loading").fadeIn(500).delay(500).fadeOut();
             });
         } else {
 
