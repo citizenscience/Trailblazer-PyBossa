@@ -2707,7 +2707,9 @@
 
             $(tutorial).elevateZoom();
 
-            if (!$carousel.feedbackData("carousel")) {
+            console.log($carousel.data("carousel"));
+
+            if (!$carousel.data("carousel")) {
 
                 $carousel.carousel({
                     interval: false
