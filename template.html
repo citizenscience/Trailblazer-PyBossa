@@ -333,6 +333,539 @@
 
 </style>
 
+
+<!--MODAL-->
+<div class="row">
+    <div class="span12">
+
+        <!-- Summary Modal -->
+        <div id="summaryModal" class="modal hide fade">
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img id="firstImg" src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid-red-green.jpg" alt=""/>
+                </div>
+                <div class="modal-info">
+                    <h1>
+                        You are now about to <strong>start</strong> analysing cancer images.
+                    </h1>
+
+                    <h2>Here's what to remember:</h2>
+                    <ul>
+                        <li>
+                            To identify <b class="text-error">cancer cells</b>, look for
+                            <b>blotchy cells</b> grouped together in
+                            <b>uneven clumps, loose rings</b> or <b>broken chains.</b>
+                        </li>
+                        <li>
+                            <b>Click once</b> to turn sections <b>containing cancer cells
+                            <strong class="text-error">red</strong></b>
+                        </li>
+                        <li>
+                            <strong class="text-success">Non-cancer cells</strong> include the dark blue or dark brown, small and round blood cells
+                        </li>
+                        <li>
+                            Other
+                            <strong class="text-success">non-cancer cells</strong> includes the light blue stretched and wispy looking stromal cells
+                        </li>
+                        <li>
+                            <b>Click again</b> to turn sections that only <b>contain non-cancer cells
+                            <strong class="text-success">green</strong></b>
+                        </li>
+                        <li>
+                            <b>Leave blank</b> sections that <b>do not contain any cells</b>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="startMechanicBtn" data-dismiss="modal" aria-hidden="true">
+                    <i class="icon-thumbs-up"></i> Start
+                </button>
+            </div>
+        </div>
+
+        <!-- Summary Modal -->
+        <div id="practiseModal" class="modal hide fade">
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img id="firstImg" src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid-red-green.jpg" alt=""/>
+                </div>
+                <div class="modal-info">
+                    <h1>
+                        In the next set of practice images mark the whole image and then we'll let you know if our experts agreed.
+                    </h1>
+
+                    <h2>If you get something wrong look at the section again in detail and try and answer it again.</h2>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn closeBtnbtn-default pull-right closeBtn" id="closeBtn" data-dismiss="modal" aria-hidden="true">Next</button>
+            </div>
+        </div>
+
+        <!-- Tutoiral Modal -->
+        <div id="tutorialModal" class="modal hide fade">
+
+            <div id="0" class="modal-body" style="display:none">
+
+                <div class="modal-image">
+                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/38.png" alt=""/>
+                </div>
+                <div class="modal-info">
+                    <h1>
+                        Welcome to Trailblazer!
+                    </h1>
+
+                    <h2>
+                        We need your help identifying cancer cells,
+                        distinguishing them from non-cancer cells in images like the one to the left.
+                    </h2>
+                </div>
+
+            </div>
+
+            <div id="1" class="modal-body" style="display:none">
+
+                <div class="modal-image">
+                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/village.png" alt=""/>
+                </div>
+                <div class="modal-info">
+                    <h1>
+                        Non-cancer cells are strictly organised and controlled.
+                    </h1>
+
+                    <h2>
+                        This is similar to the houses in this town. They’ve been carefully planned
+
+                        and built to strict guidelines, taking other houses in the area into
+
+                        consideration. Permission is needed to make any changes to this highly
+
+                        regulated town.
+                    </h2>
+                </div>
+            </div>
+
+            <div id="2" class="modal-body" style="display:none">
+
+                <div class="modal-image">
+                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/towns.png" alt=""/>
+                </div>
+                <div class="modal-info">
+                    <h1>
+                        But, in cancer, cells become less tightly controlled.
+                    </h1>
+
+                    <h2>
+                        When cells become cancerous, they become less controlled.
+
+                        They replicate to make more cells whenever and however they can, with
+
+                        little consideration to rules and regulations.
+
+                        Our town is rapidly expanding, with buildings of all shapes and sizes
+
+                        sprouting up wherever they find space.
+                    </h2>
+                </div>
+            </div>
+
+            <div id="3" class="modal-body" style="display:none">
+
+                <div class="modal-image">
+                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/city.png" alt=""/>
+                </div>
+                <div class="modal-info">
+                    <h1>
+                        In serious cases, cancer becomes a sprawling mass of disorganised cells, of
+                        <strong>all</strong> shapes and sizes.
+                    </h1>
+
+                    <h2>
+                        Our town has grown into a crowded and varied city.
+
+                        With continued growth and lack of control, it starts to spread and take
+
+                        over neighbouring areas.
+                    </h2>
+                </div>
+            </div>
+
+            <!--WITH CAROUSEL-->
+            <div id="4" class="modal-body" style="display:none">
+                <div class="modal-image">
+                    <div class="carousel slide" id="myCarousel4">
+                        <!-- Carousel items -->
+                        <div class="carousel-inner">
+                            <div class="active item">
+                                <img class="tutorialZoom4" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/38.png"
+                                     data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/38@2x-min.png" alt=""/>
+
+                                <div class="item-inner">
+                                    <h1>
+                                        Sample image 1
+                                    </h1>
+
+                                    <h2>
+                                        Move your mouse over the image on the left to zoom in and see more
+
+                                        detail.
+                                    </h2>
+
+                                    <h2>
+                                        To identify <b>cancer cells</b>, look for
+                                        <b>blotchy cells</b> grouped together in <b>uneven clumps</b>,
+                                        <b>loose rings</b> or
+                                        <b>broken chains</b>.
+                                    </h2>
+
+                                </div>
+                            </div>
+                            <div class="item">
+                                <img class="tutorialZoom4" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/38-cancer.png"
+                                     data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/38-cancer-outline@2x-min.png" alt=""/>
+
+                                <div class="item-inner">
+                                    <h1>
+                                        Sample image 1
+                                    </h1>
+
+                                    <h2>
+                                        We’ve highlighted the <b>cancer cells</b> in
+                                        <b class="text-error">red</b> in this image.
+                                    </h2>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <img class="tutorialZoom4" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/38-non-cancer.png"
+                                     data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/38-non-cancer-outline@2x-min.png" alt=""/>
+
+                                <div class="item-inner">
+                                    <h1>
+                                        Sample image 1
+                                    </h1>
+
+                                    <h2>
+                                        The remaining cells are <b>non-cancer</b> and have been highlighted in
+                                        <b class="text-success">green</b>. They include:
+                                    </h2>
+                                    <ol>
+                                        <li><b>Blood cells</b>
+                                            <ul>
+                                                <li>These are <b>small, dark blue and round</b></li>
+                                                <li>Sometimes they appear as <b>dark brown spots</b></li>
+                                                <li>They can appear loosely spread out or in very dense clusters</li>
+                                            </ul>
+                                        </li>
+                                        <li><b>Stromal cells</b>
+                                            <ul>
+                                                <li>These are often <b>light blue, wispy or stretched looking</b></li>
+                                                <li>They often look like they are flowing or being stretched in a particular direction</li>
+                                            </ul>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="carousel-indicators-custom" id="carouselIndicatorsList4"></div>
+                        <!-- Carousel nav -->
+                        <!--<a class="carousel-control left">&lsaquo;</a>-->
+                        <!--<a class="carousel-control right">&rsaquo;</a>-->
+                    </div>
+                </div>
+                <div class="modal-info"></div>
+
+            </div>
+
+            <!--WITH CAROUSEL-->
+            <div id="5" class="modal-body" style="display:none">
+                <div class="modal-image">
+                    <div class="carousel slide" id="myCarousel5">
+                        <!-- Carousel items -->
+                        <div class="carousel-inner">
+                            <div class="active item">
+                                <img class="tutorialZoom5" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/13.png"
+                                     data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/13@2x-min.png" alt=""/>
+
+                                <div class="item-inner">
+                                    <h1>
+                                        Sample image 2
+                                    </h1>
+
+                                    <h2>
+                                        Cancer cells can look very different from image to image.
+                                        This time they have formed irregular rings and chains and a few uneven clumps.
+
+                                    </h2>
+
+                                    <h2>
+
+                                        Have a look at the image on the left and see if you can identify the areas of cancer. Then click on 2 to see the answer.
+
+                                    </h2>
+
+                                    <h3>
+                                        Move your mouse over the image to zoom in and see more detail.
+                                    </h3>
+
+                                </div>
+                            </div>
+                            <div class="item">
+                                <img class="tutorialZoom5" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/13-cancer.png"
+                                     data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/13-cancer-outline@2x-min.png" alt=""/>
+
+                                <div class="item-inner">
+                                    <h1>
+                                        Sample image 2
+                                    </h1>
+
+                                    <h2>
+
+                                        We’ve highlighted the cancer cells in
+                                        <b class="text-error">red</b> for this image.
+                                    </h2>
+
+                                    <h3>
+                                        Move your mouse over the image to zoom in and see more detail.
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <img class="tutorialZoom5" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/13-non-cancer.png"
+                                     data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/13-non-cancer-outline@2x-min.png" alt=""/>
+
+                                <div class="item-inner">
+                                    <h1>
+                                        Sample image 2
+                                    </h1>
+
+                                    <h2>
+                                        There are different types of
+                                        <strong>non-cancer cells</strong> in this image. The two most common types are:
+                                    </h2>
+                                    <ol>
+                                        <li><b>Blood cells</b>
+                                            <ul>
+                                                <li>These are <b>small, dark blue and round</b></li>
+                                                <li>Sometimes they appear as <b>dark brown spots</b></li>
+                                                <li>They can appear loosely spread out or in very dense clusters</li>
+                                            </ul>
+                                        </li>
+                                        <li><b>Stromal cells</b>
+                                            <ul>
+                                                <li>These are often <b>light blue, wispy or stretched looking</b></li>
+                                                <li>They often look like they are flowing or being stretched in a particular direction</li>
+                                            </ul>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <img class="tutorialZoom5" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/13-white-blood-cells.png"
+                                     data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/13-white-blood-cells-outline@2x-min.png" alt=""/>
+
+                                <div class="item-inner">
+                                    <h1>
+                                        Sample image 2
+                                    </h1>
+
+                                    <h2>
+                                        We've highlighted clusters of blood cells in <b class="text-success">green</b>
+                                    </h2>
+                                    <ul>
+                                        <li>These are small, dark blue and round</li>
+                                        <li>Sometimes appear as dark brown spots</li>
+                                        <li>They can appear loosely spread out or in very dense clusters</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="carousel-indicators-custom" id="carouselIndicatorsList5"></div>
+                        <!-- Carousel nav -->
+                        <!--<a class="carousel-control left">&lsaquo;</a>-->
+                        <!--<a class="carousel-control right">&rsaquo;</a>-->
+                    </div>
+                </div>
+                <div class="modal-info"></div>
+
+            </div>
+
+            <div id="6" class="modal-body" style="display:none">
+
+                <div class="modal-image">
+                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid.jpg" alt=""/>
+                </div>
+                <div class="modal-info">
+                    <h1>
+                        Let’s run through an example
+                    </h1>
+
+                    <h2>
+                        We have split the images up into a 6x6 grid. Some of the grid sections contain cancer cells and some of them do not.
+                        We’re going to show you what to do.
+                    </h2>
+                </div>
+
+            </div>
+
+            <div id="7" class="modal-body" style="display:none">
+
+                <div class="modal-image">
+                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/hover-over.png   " alt=""/>
+                </div>
+                <div class="modal-info">
+                    <h1>Look closely at the cells in each section</h1>
+
+                    <h2>
+                        You can zoom in to the image by moving the mouse over each section to get a closer look.
+                    </h2>
+
+                    <h2>
+                        There are a number of reference images at the bottom of the screen
+                        showing examples of what cancer and non-cancer cells look like.
+                    </h2>
+
+                    <h2>
+                        In a moment you’ll have a chance to try this for yourself.
+                    </h2>
+                </div>
+            </div>
+
+            <div id="8" class="modal-body" style="display:none">
+
+                <div class="modal-image">
+                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid-red.jpg" alt=""/>
+                </div>
+                <div class="modal-info">
+                    <h1>
+                        We’d like you to mark in <b class="text-error">red</b> any sections that contain cancer cells
+                    </h1>
+
+                    <h2>
+                        Examine each section and if you think it contains cancer cells (even if you only see one or two cells)
+                        <b>click once to turn that section <strong class="text-error">red</strong></b>.
+                    </h2>
+                </div>
+
+            </div>
+
+            <div id="9" class="modal-body" style="display:none">
+
+                <div class="modal-image">
+                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid-red-green.jpg" alt=""/>
+                </div>
+                <div class="modal-info">
+                    <h1>
+                        We’d like you to mark in <b class="text-success">green</b> any sections that do not
+
+                        contain cancer cells
+                    </h1>
+
+                    <h2>
+                        Examine each section and if you think it <b>only contains non-cancer cells</b>, you can
+                        <b>click</b> a second time to turn that section from red to
+                        <strong class="text-success">green</strong>.
+                    </h2>
+                </div>
+
+            </div>
+
+            <div id="10" class="modal-body" style="display:none">
+
+                <div class="modal-image">
+                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid-red-green.jpg" alt=""/>
+                </div>
+                <div class="modal-info">
+                    <h1>
+                        Empty sections can be left blank
+                    </h1>
+
+                    <h2>
+                        You can ignore any sections that are empty, normally corner and edge sections.
+                    </h2>
+
+                    <h2>
+                        You can then click on the Next button to move to the next image
+                    </h2>
+
+                </div>
+
+            </div>
+
+            <!--PRACTICE SECTION GOES HERE-->
+
+            <div id="11" class="modal-body" style="display:none;">
+
+                <div class="modal-image">
+                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid.jpg" alt=""/>
+                </div>
+                <div class="modal-info">
+                    <div id="tutorialSummary">
+                        <h1>
+                            We’ll now show you a few images that you can practise on.
+                        </h1>
+
+                        <h2>
+                            We’ll let you know if our expert pathologists agreed with your analysis.
+                        </h2>
+
+                        <h2>
+                            For the first two images we’ll give you immediate feedback on your work.
+                        </h2>
+                    </div>
+
+                    <div id="mechanicTutorialSummary" style="display:none;">
+                        <h1>
+                            You're now about to <strong>start</strong> analysing cancer images.
+                        </h1>
+
+                        <h2>Here's what to remember:</h2>
+                        <ul>
+                            <li>
+                                To identify <b class="text-error">cancer cells</b>, look for
+                                <b>blotchy cells</b> grouped together in
+                                <b>uneven clumps, loose rings</b> or <b>broken chains.</b>
+                            </li>
+                            <li>
+                                <b>Click once</b> to turn sections <b>containing cancer cells
+                                <strong class="text-error">red</strong></b>
+                            </li>
+                            <li>
+                                <strong class="text-success">Non-cancer cells</strong> include the dark blue or dark brown, small and round blood cells
+                            </li>
+                            <li>
+                                Other <strong class="text-success">non-cancer cells</strong>
+                                includes the light blue stretched and wispy looking stromal cells
+                            </li>
+                            <li>
+                                <b>Click again</b> to turn sections that only <b>contain non-cancer cells
+                                <strong class="text-success">green</strong></b>
+                            </li>
+                            <li>
+                                <b>Leave blank</b> sections that <b>do not contain any cells</b>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn pull-left" id="closeMechanicTutorialBtn" data-dismiss="modal" aria-hidden="true" style="display:none;">Close</button>
+                <!--<button type="button" class="btn closeBtnbtn-default pull-left closeBtn" id="closeBtn" data-dismiss="modal" aria-hidden="true" style="display:none;">Close</button>-->
+                <a id="prevBtn" href="#" class="btn">Previous</a>
+                <a id="nextBtn" href="#" class="btn btn-success">Next</a>
+                <a class="btn btn-primary closeBtn" id="startFeedbackBtn" data-dismiss="modal" aria-hidden="true" style="display:none;"><i class="icon-thumbs-up"></i> Practice</a>
+                <button class="btn btn-primary closeBtn pull-right " id="goBackBtn" type="button" data-dismiss="modal" aria-hidden="true" style="display:none;">Back to task</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <header class="site-header clearfix">
     <div>
         <div id="loadingTask" class="alert alert-info" style="display:none;">
