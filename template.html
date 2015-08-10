@@ -182,7 +182,7 @@
     }
 
     /*.canvas is at z-index of 10*/
-    #feedback-photo-link,
+    #feedbackPhotoWrapper,
     #photo-link {
         position: absolute;
         top: 0;
@@ -324,32 +324,96 @@
         padding-bottom: 10px;
     }
 
-
-
-    .feedback-active .mechanic-active{
+    .feedback-active .mechanic-active {
         display: none;
     }
 
-    .mechanic-active .feedback-show{
+    .mechanic-active .feedback-show {
         display: none;
     }
 
-
+    .zoomWindow {
+        z-index: 3000 !important;
+    }
 
 </style>
-
 
 <!--MODAL-->
 <div class="row">
     <div class="span12">
 
+        <!--&lt;!&ndash; Summary Modal &ndash;&gt;-->
+        <!--<div id="summaryModal" class="modal hide fade">-->
+        <!-- -->
+        <!--</div>-->
+
         <!-- Summary Modal -->
-        <div id="summaryModal" class="modal hide fade">
-            <div class="modal-body">
+        <div id="practiseModal" class="modal hide fade">
+
+            <div id="0" class="modal-body" style="display:none">
                 <div class="modal-image">
-                    <img id="firstImg" src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid-red-green.jpg" alt=""/>
+                    <img class="annotatedImage" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/38.png"
+                         data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/38@2x-min.png" alt=""/>
                 </div>
-                <div class="modal-info">
+                <div id="annotatedImageZoomArea0" class="modal-info">
+                    <h1>MODAL 1</h1>
+                </div>
+            </div>
+
+            <div id="1" class="modal-body" style="display:none">
+                <div class="modal-image">
+                    <img class="annotatedImage" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/38.png"
+                         data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/38@2x-min.png" alt=""/>
+                </div>
+                <div id="annotatedImageZoomArea1" class="modal-info">
+                    <h1>MODAL 2</h1>
+                </div>
+            </div>
+
+            <div id="2" class="modal-body" style="display:none">
+                <div class="modal-image">
+                    <img class="annotatedImage" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/38.png"
+                         data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/38@2x-min.png" alt=""/>
+                </div>
+                <div id="annotatedImageZoomArea2" class="modal-info">
+                    <h1>MODAL 3</h1>
+                </div>
+            </div>
+
+            <div id="3" class="modal-body" style="display:none">
+                <div class="modal-image">
+                    <img class="annotatedImage" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/38.png"
+                         data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/38@2x-min.png" alt=""/>
+                </div>
+                <div id="annotatedImageZoomArea3" class="modal-info">
+                    <h1>MODAL 4</h1>
+                </div>
+            </div>
+
+            <!-- FEEDBACK INFO -->
+
+            <div id="4" class="modal-body" style="display:none">
+                <div class="modal-image">
+                    <img class="annotatedImage" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/38.png"
+                         data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/38@2x-min.png" alt=""/>
+                </div>
+                <div id="annotatedImageZoomArea4" class="modal-info">
+                    <h1>
+                        In the next set of practice images mark the whole image and then we'll let you know if our experts agreed.
+                    </h1>
+
+                    <h2>If you get something wrong look at the section again in detail and try and answer it again.</h2>
+                </div>
+            </div>
+
+            <!-- SUMMARY -->
+
+            <div id="5" class="modal-body">
+                <div class="modal-image">
+                    <img class="annotatedImage" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/38.png"
+                         data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/38@2x-min.png" alt=""/>
+                </div>
+                <div id="annotatedImageZoomArea5" class="modal-info">
                     <h1>
                         You are now about to <strong>start</strong> analysing cancer images.
                     </h1>
@@ -381,29 +445,12 @@
                     </ul>
                 </div>
             </div>
+
             <div class="modal-footer">
-                <button class="btn btn-primary" id="startMechanicBtn" data-dismiss="modal" aria-hidden="true">
+                <button type="button" class="btn btn-default pull-right" id="backToPractiseBtn" data-dismiss="modal" aria-hidden="true">Back to practise</button>
+                <button class="btn btn-primary" id="startMechanicBtn" data-dismiss="modal" aria-hidden="true" style="display: none;">
                     <i class="icon-thumbs-up"></i> Start
                 </button>
-            </div>
-        </div>
-
-        <!-- Summary Modal -->
-        <div id="practiseModal" class="modal hide fade">
-            <div class="modal-body">
-                <div class="modal-image">
-                    <img id="firstImg" src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid-red-green.jpg" alt=""/>
-                </div>
-                <div class="modal-info">
-                    <h1>
-                        In the next set of practice images mark the whole image and then we'll let you know if our experts agreed.
-                    </h1>
-
-                    <h2>If you get something wrong look at the section again in detail and try and answer it again.</h2>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn closeBtnbtn-default pull-right closeBtn" id="closeBtn" data-dismiss="modal" aria-hidden="true">Next</button>
             </div>
         </div>
 
@@ -870,7 +917,6 @@
     </div>
 </div>
 
-
 <header class="site-header clearfix">
     <div>
         <div id="loadingTask" class="alert alert-info" style="display:none;">
@@ -907,7 +953,6 @@
     </div>
 </header>
 
-
 <main class="site-content clearfix">
 
     <!--LEGEND-->
@@ -931,7 +976,7 @@
     </div>
 
     <!--MECHANIC-->
-    <div class="content mechanic-content" id="mechanic-content" style="display:none;">
+    <div class="content mechanic-content" id="mechanicContent" style="display:none;">
 
         <div class="row-fluid">
             <div class="span12">
@@ -943,7 +988,6 @@
 
             <!--Right hand side-->
             <div class="span6 right wrapper grid-wrapper task-image-wrapper">
-
                 <div class="loader">
                     <div class="loader-circle1 loader-circle"></div>
                     <div class="loader-circle2 loader-circle"></div>
@@ -959,29 +1003,25 @@
                     <div class="loader-circle12 loader-circle"></div>
                     <span>Loading task image...</span>
                 </div>
-
                 <a class="task-image-wrapper" id="photo-link"></a>
 
                 <div class="canvas" id="mechanicCanvas"></div>
             </div>
 
             <!--Left hand side-->
-            <div class="span6">
-                <div id="grid-info" class="grid-info">
+            <div class="span6 grid-info" id="mechanicZoomWindowLocation">
+                <div class="grid-info-content">
+                    <h1>Select the grid sections that contain cancer cells</h1>
 
-                    <div>
-                        <h1>Select the grid sections that contain cancer cells</h1>
+                    <h3>Click once to mark <strong>cancer</strong> cells in <span class="text-error">Red</span>
+                    </h3>
 
-                        <h3>Click once to mark <strong>cancer</strong> cells in <span class="text-error">Red</span>
-                        </h3>
+                    <h3>Click again to mark <strong>non-cancer</strong> cells in
+                        <span class="text-success">Green</span></h3>
 
-                        <h3>Click again to mark <strong>non-cancer</strong> cells in
-                            <span class="text-success">Green</span></h3>
+                    <h3>Empty sections of the image can be left blank</h3>
 
-                        <h3>Empty sections of the image can be left blank</h3>
-
-                        <p class="imgId"></p>
-                    </div>
+                    <p class="imgId"></p>
 
                     <div class="progress progress-striped">
                         <div id="progress" rel="tooltip" title="#" class="bar" style="width: 0%;"></div>
@@ -991,7 +1031,6 @@
                         <button class="btn btn-primary" id="showTutorialModalBtn">Tutorial</button>
                         <button class="btn btn-answer btn-success nextSlideBtn" id="nextSlideBtn" value="next" style="margin-left:10px;">Next slide</button>
                     </div>
-
                 </div>
 
             </div>
@@ -1000,7 +1039,7 @@
     </div>
 
     <!-- FEEDBACK -->
-    <div class="feedback-content" id="feedback-content">
+    <div class="feedback-content" id="feedbackContent">
 
         <div class="row-fluid">
             <div class="span12">
@@ -1010,45 +1049,48 @@
 
         <div class="row-fluid clearfix">
             <div class="span6 grid-wrapper">
-                    <div class="loader">
-                        <div class="loader-circle1 loader-circle"></div>
-                        <div class="loader-circle2 loader-circle"></div>
-                        <div class="loader-circle3 loader-circle"></div>
-                        <div class="loader-circle4 loader-circle"></div>
-                        <div class="loader-circle5 loader-circle"></div>
-                        <div class="loader-circle6 loader-circle"></div>
-                        <div class="loader-circle7 loader-circle"></div>
-                        <div class="loader-circle8 loader-circle"></div>
-                        <div class="loader-circle9 loader-circle"></div>
-                        <div class="loader-circle10 loader-circle"></div>
-                        <div class="loader-circle11 loader-circle"></div>
-                        <div class="loader-circle12 loader-circle"></div>
-                        <span>Loading task image...</span>
-                    </div>
-                    <a id="feedback-photo-link"></a>
-                    <div class="canvas" id="feedbackCanvas"></div>
+                <div class="loader">
+                    <div class="loader-circle1 loader-circle"></div>
+                    <div class="loader-circle2 loader-circle"></div>
+                    <div class="loader-circle3 loader-circle"></div>
+                    <div class="loader-circle4 loader-circle"></div>
+                    <div class="loader-circle5 loader-circle"></div>
+                    <div class="loader-circle6 loader-circle"></div>
+                    <div class="loader-circle7 loader-circle"></div>
+                    <div class="loader-circle8 loader-circle"></div>
+                    <div class="loader-circle9 loader-circle"></div>
+                    <div class="loader-circle10 loader-circle"></div>
+                    <div class="loader-circle11 loader-circle"></div>
+                    <div class="loader-circle12 loader-circle"></div>
+                    <span>Loading task image...</span>
+                </div>
+                <a id="feedbackPhotoWrapper"></a>
+
+                <div class="canvas" id="feedbackCanvas"></div>
             </div>
 
-            <div class="span6 grid-info" id="zoomWindowLocation">
+            <div class="span6 grid-info" id="feedbackZoomWindowLocation">
 
-                    <div class="grid-info-content">
-                        <div class="grid-info-content-inner"></div>
-                        <div id="feedbackProgressText" style="display:none;"></div>
-                        <div class="progress progress-success progress-striped" style="display:none;"><div class="bar" id="feedbackProgress"></div>
-                        </div>
+                <div class="grid-info-content">
+                    <div class="grid-info-content-inner"></div>
+                    <div id="feedbackProgressText" style="display:none;"></div>
+                    <div class="progress progress-success progress-striped" style="display:none;">
+                        <div class="bar" id="feedbackProgress"></div>
                     </div>
+                </div>
 
-                    <div class="grid-info-buttons clearfix">
-                        <a class="btn btn-primary pull-right disabled" id="finishFeedback" style="display:none; margin-left: 10px;">
-                            Next
-                        </a>
-                        <a class="btn btn-primary pull-right disabled" id="nextFeedbackStep" style="margin-left: 10px;">
-                            Next slide
-                        </a>
-                        <a class="btn btn-success pull-right disabled" id="checkMyWorkBtn" style="display:none;">
-                            Check my work
-                        </a>
-                    </div>
+                <div class="grid-info-buttons clearfix">
+                    <button class="btn btn-answer" id="feedbackInfoBtn">Info</button>
+                    <a class="btn btn-primary pull-right disabled" id="nextFeedbackStep" style="margin-left: 10px;">
+                        Next slide
+                    </a>
+                    <a class="btn btn-primary pull-right disabled" id="finishFeedback" style="display:none; margin-left: 10px;">
+                        Next
+                    </a>
+                    <a class="btn btn-success pull-right disabled" id="checkMyWorkBtn" style="display:none; margin-left: 10px;">
+                        Check my work
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -1128,8 +1170,10 @@
 
 </main>
 
-
 <script type="text/javascript" async="async">
+
+    var hasSeenGuidenceInfo = false;
+    var totalGridPercentage = "";
 
     var project_short_name = "{{ project.short_name }}";
     if (project_short_name === "")
@@ -1962,7 +2006,7 @@
     "use strict";
 
 
-     /**
+    /**
      * Grid Constructor function
      * =======================
      * Its a bit of a miss match of vanilla JS and jQuery...sorry,
@@ -2157,15 +2201,6 @@
             gridSquareNode.setAttribute("class", "grid-item");
         }
     }
-
-
-
-
-
-
-
-
-
 
 
     /**
@@ -2498,7 +2533,6 @@
                     gridSquareNode = feedbackObjAnswer.squares[i].node,
                     pathologistAnswer = feedbackData[step].info.squares[i].answer;
                 if (gridSquare.id === cross["data-parent_id"]) {
-
                     gridSquare.node.setAttribute("class", "grid-item");
                     gridSquare.animate({
                         "fill-opacity": 0
@@ -2544,12 +2578,14 @@
         $("#feedbackProgressText").show();
 
 
-        if (pct >= 5) {
+        totalGridPercentage = pct;
+
+
+        if (pct >= 5 && hasSeenGuidenceInfo === true) {
             $("#nextFeedbackStep, #finishFeedback").removeClass("disabled");
 
             $(".taskTitle, .taskSubTitle, .taskParagraph").hide();
             $("#" + "feedbackStep" + step + " .taskFeedback").show();
-
 
         } else {
             $("#nextFeedbackStep, #finishFeedback").addClass("disabled");
@@ -2557,15 +2593,12 @@
 
         this.percentageFeedbackText(pct);
 
-        //$("#pathologistFeedback").show();
-        //$("#pathologistFeedback p").text("Our pathologist said......");
-        $("#feedbackProgressPercentage").text(pct + "%" + " completed!");
-
         $feedbackProgressBar.width(pct + "%");
     };
 
     FeedbackGrid.prototype.percentageFeedbackText = function (pct) {
         var $feedbackText = $("#feedbackProgressText");
+
 
         var htmlString = '<h2>';
         if (pct >= 5) {
@@ -2579,6 +2612,8 @@
         if (pct < 5) {
             htmlString += '<h3>Get 5% correct to go onto the next slide.</h3>';
         }
+
+
         $feedbackText.html(htmlString);
 
     };
@@ -2625,15 +2660,6 @@
     };
 
 
-
-
-
-
-
-
-
-
-
     /*
      *
      * Modal
@@ -2654,13 +2680,17 @@
      the backdrop also we stop the slides from automatically sliding to next.
      */
 
-    Modal.prototype.open = function (modal) {
+    Modal.prototype.open = function (modal, goToStep) {
+
+        //console.log( modal, goToStep );
+
         $(modal).modal({
             backdrop: 'static',
             keyboard: false
         });
 
-        this.showStep(0);
+        this.showStep(goToStep);
+
     };
 
 
@@ -2673,19 +2703,19 @@
 
         var z = new Zoom();
 
+
         var $currentStep = this.getCurrentStep();
-        if ($currentStep.is(":visible"))
-            $currentStep.hide();
+        if ($currentStep.is(":visible")) $currentStep.hide();
+        //else $currentStep.hide();
+
         if (typeof action == "number") {
             this.step = action;
         } else {
-
             if (action == 'next') {
                 this.step += 1;
             }
             if (action == 'prev') {
                 this.step -= 1;
-
             }
         }
 
@@ -2707,7 +2737,6 @@
 
             $(tutorial).elevateZoom();
 
-            console.log($carousel.data("carousel"));
 
             if (!$carousel.data("carousel")) {
 
@@ -2746,7 +2775,7 @@
             $("#prevBtn").show();
         }
 
-        if ($("#mechanic-content").is(':visible')) {
+        if ($("#mechanicContent").is(':visible')) {
 
             $("#closeMechanicTutorialBtn").show();
             $("#tutorialSummary").hide();
@@ -2757,7 +2786,7 @@
         if (this.step == $lastStep) {
             $("#nextBtn").hide();
 
-            if ($("#mechanic-content").is(':visible')) {
+            if ($("#mechanicContent").is(':visible')) {
                 $("#startFeedbackBtn").hide();
                 $("#goBackBtn").show();
 
@@ -2803,16 +2832,6 @@
     };
 
 
-
-
-
-
-
-
-
-
-
-
     /*
      *
      * Elevate Zoom
@@ -2833,9 +2852,9 @@
             zoomWindowPos;
 
         if (cookie === "true")
-            zoomWindowPos = "zoomWindowLocation";
+            zoomWindowPos = "feedbackZoomWindowLocation";
         else
-            zoomWindowPos = "grid-info";
+            zoomWindowPos = "mechanicZoomWindowLocation";
 
 
         var zoomWindowPosHeight = $("#" + zoomWindowPos).innerHeight(),
@@ -2861,14 +2880,6 @@
         $('.zoomContainer').remove();
         $('.zoomWindowContainer').remove();
     };
-
-
-
-
-
-
-
-
 
 
     /*
@@ -3235,21 +3246,6 @@
     });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     /*
      *  Feedback function
      *  =======================
@@ -3258,32 +3254,7 @@
      *
      */
 
-    var step = -1;
-
-    function showFeedbackStep(action) {
-
-        $("#feedbackStep" + step).hide();
-
-        if (action == 'next') {
-            step += 1;
-
-            $("#nextFeedbackStep, #checkMyWorkBtn #finishFeedback").addClass("disabled");
-
-        }
-
-        if (step >= 2) {
-            $("#nextFeedbackStep").addClass("disabled");
-            $("#checkMyWorkBtn").show().addClass("disabled");
-        }
-
-        if (step === 2) {
-            var modal = new Modal();
-            modal.open("#practiseModal");
-        }
-
-        $("svg, .feedback-img-polaroid, .zoomContainer, .zoomWindowContainer, .feedback-photo-link").remove();
-        $.removeData(".feedback-photo-link", 'elevateZoom');
-
+    function showFeedbackContent() {
         var data_obj = feedbackData[step].info;
         var imgUrl = feedbackData[step].info.imgNumber;
         var taskTitle = feedbackData[step].info.taskTitle;
@@ -3296,7 +3267,7 @@
         img.attr('data-zoom-image', imgUrl);
         img.addClass('feedback-img-polaroid');
 
-        $('#feedback-photo-link').append(img);
+        $('#feedbackPhotoWrapper').append(img);
 
         $(".grid-info-content").removeAttr("id");
         var feedbackStepNumber = "feedbackStep" + step;
@@ -3318,6 +3289,42 @@
         if (taskFeedback) {
             $feedbackStep.append('<div class="taskFeedback">' + taskFeedback + '</div>');
         }
+    }
+    ;
+
+    var step = -1;
+    function showFeedbackStep(action) {
+
+        hasSeenGuidenceInfo = false;
+        totalGridPercentage = 0;
+
+        $("#feedbackStep" + step).hide();
+
+        if (action == 'next') {
+            step += 1;
+            $("#nextFeedbackStep, #checkMyWorkBtn #finishFeedback").addClass("disabled");
+        }
+
+        if (step >= 2) {
+            $("#nextFeedbackStep").addClass("disabled");
+            $("#checkMyWorkBtn").show().addClass("disabled");
+        }
+
+
+//        var modal = new Modal();
+//        modal.open("#practiseModal", 2);
+
+
+        if (step === 2) { // if is step 3
+            $("#practiseModal .modal-body").hide();
+            var modal = new Modal();
+            modal.open("#practiseModal", 4);
+        }
+
+        $("svg, .feedback-img-polaroid, .zoomContainer, .zoomWindowContainer").remove();
+
+
+        showFeedbackContent();
 
 
         var feedbackGrid = new FeedbackGrid();
@@ -3329,20 +3336,16 @@
         var checkMyWork = document.getElementById("checkMyWorkBtn");
         checkMyWork.onclick = function () {
             if ($(this).hasClass("disabled")) return;
-
             $(".taskTitle,.taskSubTitle, .taskParagraph ").hide();
             $("#" + "feedbackStep" + step + " .taskFeedback").show();
-
             feedbackGrid.showMyAnalysis();
         };
 
         var lastFeedbackStep = feedbackData.length;
-
         if (step === lastFeedbackStep - 1) {
             $("#nextFeedbackStep").hide();
             $("#finishFeedback").show().addClass("disabled");
         }
-
 
         $("#feedbackStep" + step).show();
         $("#feedbackImageNumber").text(step + 1);
@@ -3361,11 +3364,77 @@
     };
 
 
+    var feedbackInfoBtn = document.getElementById("feedbackInfoBtn");
+    feedbackInfoBtn.onclick = function () {
+
+        $("#practiseModal .modal-body").hide();
+
+        var annotatedImage = "#practiseModal" + " #" + step + " .annotatedImage";
+        var modal = new Modal();
+        modal.open("#practiseModal", step);
+        var zoom = new Zoom();
+        zoom.removeZoom($(".feedback-img-polaroid"));
+
+        $('.zoomContainer').remove();
+        $('.zoomWindowContainer').remove();
+
+        var practiseGridInfo = "annotatedImageZoomArea" + step;
+        $(annotatedImage).elevateZoom({
+            zoomWindowPosition: practiseGridInfo,
+            lensFadeIn: 500,
+            lensFadeOut: 500,
+            zoomWindowHeight: 460,
+            zoomWindowWidth: 460,
+            cursor: "pointer"
+        });
+
+        // zoom.addZoom( $(annotatedImage) );
+
+    };
+
+    var backToPractiseBtn = document.getElementById("backToPractiseBtn");
+    backToPractiseBtn.onclick = function () {
+        if (totalGridPercentage > 5) {
+            $("#nextFeedbackStep").removeClass("disabled");
+        }
+        if (step !== 2) {
+            hasSeenGuidenceInfo = true;
+        } else {
+            hasSeenGuidenceInfo = false;
+        }
+
+        var zoom = new Zoom();
+        zoom.removeZoom($("#practiseModal" + " #" + step + " .annotatedImage"));
+        zoom.addZoom($(".feedback-img-polaroid"));
+    };
+
+
+    /*
+
+     var showTutorialModalBtn = document.getElementById("showTutorialModalBtn");
+     showTutorialModalBtn.onclick = function () {
+     modal.open("#tutorialModal");
+     $("#tutorialSummary").hide();
+     $("#mechanicTutorialSummary").show();
+     zoom.removeZoom($(".tutorialZoom"));
+     openModalCount++;
+     };
+
+
+     var closeMechanicTutorialBtn = document.getElementById("closeMechanicTutorialBtn");
+     closeMechanicTutorialBtn.onclick = function () {
+     zoom.removeZoom($(".tutorialZoom"));
+     $("#errorClick").show();
+     zoom.addZoom($(".img-polaroid"));
+     };
+
+     */
 
 
 
 
-/*
+
+    /*
      * UpdatePageState
      * =======================
      * We use this check the state of cookies to show the relevate sections
@@ -3411,10 +3480,10 @@
         }
 
         if (page_state == "tutorial") {
-            $("body").addClass("tutorial-active")
+            $("body").addClass("tutorial-active");
             var m = new Modal();
             m.open("#tutorialModal");
-            $("#feedback-content").hide();
+            $("#feedbackContent").hide();
             var nextBtn = document.getElementById("nextBtn");
             nextBtn.onclick = function () {
                 m.showStep('next');
@@ -3424,22 +3493,19 @@
                 m.showStep('prev');
             };
         } else if (page_state == "feedback") {
-             showFeedbackStep('next');
-            $("#feedback-content").show();
+            showFeedbackStep('next');
+            $("#feedbackContent").show();
             $("body").addClass("feedback-active");
             $("body").removeClass("tutorial-active");
         } else {
-            $("#feedback-content").hide();
-            $("body").addClass("mechanic-active")
+            $("#feedbackContent").hide();
+            $("body").addClass("mechanic-active");
             $("body").removeClass("feedback-active");
-            $("#mechanic-content").show();
+            $("#mechanicContent").show();
             pybossa.run("mvp-04");
         }
 
     }
-
-
-
 
 
     $(function () {
@@ -3455,10 +3521,15 @@
 
         $("#finishFeedback").on("click", function () {
             if ($(this).hasClass("disabled")) return;
-            $("svg, .feedback-img-polaroid, .zoomContainer, .zoomWindowContainer, .feedback-photo-link").remove();
-            $.removeData(".feedback-photo-link", 'elevateZoom');
+            $("svg, .feedback-img-polaroid, .zoomContainer, .zoomWindowContainer").remove();
+            //$.removeData(".feedback-photo-link", 'elevateZoom');
+            $("#backToPractiseBtn").hide();
+            $("#startMechanicBtn").show();
+
+            $("#practiseModal .modal-body").hide();
+
             var m = new Modal();
-            m.open("#summaryModal");
+            m.open("#practiseModal", 5);
         });
 
         $("#startMechanicBtn").on("click", function () {
