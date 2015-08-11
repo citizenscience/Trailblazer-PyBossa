@@ -458,7 +458,6 @@
         <div id="tutorialModal" class="modal hide fade">
 
             <div id="0" class="modal-body" style="display:none">
-
                 <div class="modal-image">
                     <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/38.png" alt=""/>
                 </div>
@@ -472,7 +471,6 @@
                         distinguishing them from non-cancer cells in images like the one to the left.
                     </h2>
                 </div>
-
             </div>
 
             <div id="1" class="modal-body" style="display:none">
@@ -2672,6 +2670,7 @@
 
     function Modal() {
         this.step = -1;
+
     }
 
 
@@ -2682,31 +2681,28 @@
 
     Modal.prototype.open = function (modal, goToStep) {
 
-        //console.log( modal, goToStep );
+        this.modal = modal;
+        this.tutorialStep = $(this.modal + " #" + this.step);
 
-        $(modal).modal({
+        $( this.modal ).modal({
             backdrop: 'static',
             keyboard: false
         });
 
         this.showStep(goToStep);
 
+
     };
 
 
     Modal.prototype.getCurrentStep = function () {
-        return $("#" + this.step);
+        return $(this.modal + " #" + this.step);
     };
 
 
     Modal.prototype.showStep = function (action) {
 
-        var z = new Zoom();
-
-
-        var $currentStep = this.getCurrentStep();
-        if ($currentStep.is(":visible")) $currentStep.hide();
-        //else $currentStep.hide();
+        $(this.modal + " #" + this.step).hide();
 
         if (typeof action == "number") {
             this.step = action;
@@ -2719,6 +2715,9 @@
             }
         }
 
+        var z = new Zoom();
+
+
         if (this.step == 14) {
             $('.zoomContainer').remove();
             $('.zoomWindowContainer').remove();
@@ -2726,9 +2725,9 @@
         }
 
         var $currentStep = this.getCurrentStep(),
-            $carousel = $("#" + this.step + " .carousel"),
-            $modalInfo = $("#" + this.step + " .modal-info"),
-            $items = $("#" + this.step + " .item");
+            $carousel = $(this.modal + " #" + this.step + " .carousel"),
+            $modalInfo = $(this.modal + " #" + this.step + " .modal-info"),
+            $items = $(this.modal + " #" + this.step + " .item");
 
         if ($carousel.length > 0) {
             $('.zoomContainer').remove();
@@ -2802,6 +2801,7 @@
         }
 
 
+        console.log($currentStep);
         $currentStep.show();
 
     };
@@ -2897,16 +2897,10 @@
 
     function loadUserProgress() {
         pybossa.userProgress('mvp-04').done(function (data) {
-
-            console.log(data);
-
             var currentTask = data.done + 1;
             $("#tasksCompleted").text(currentTask + " of " + data.total);
-
             var pct = Math.round((data.done * 100) / data.total);
             $("#progress").css("width", pct.toString() + "%");
-
-
             $("#total").text(data.total);
             $("#done").text(data.done);
         });
@@ -3158,7 +3152,7 @@
             goBackBtn.onclick = function () {
                 zoom.removeZoom($(".tutorialZoom"));
                 zoom.addZoom($(".img-polaroid"));
-                $(".modal-body").hide();
+                //$(".modal-body").hide();
                 $("#errorClick").show();
             };
 
@@ -3481,17 +3475,22 @@
 
         if (page_state == "tutorial") {
             $("body").addClass("tutorial-active");
+
             var m = new Modal();
-            m.open("#tutorialModal");
+                m.open("#tutorialModal", "next");
+
             $("#feedbackContent").hide();
+
             var nextBtn = document.getElementById("nextBtn");
             nextBtn.onclick = function () {
                 m.showStep('next');
             };
+
             var prevBtn = document.getElementById("prevBtn");
             prevBtn.onclick = function () {
                 m.showStep('prev');
             };
+
         } else if (page_state == "feedback") {
             showFeedbackStep('next');
             $("#feedbackContent").show();
