@@ -1,8 +1,7 @@
 <style>
-
     /*
-       .canvas grid 10 and #photo-link image is at z-index of 5
-    */
+           .canvas grid 10 and #photo-link image is at z-index of 5
+        */
 
     .loader {
         width: 40px;
@@ -164,7 +163,9 @@
     }
 
     @-webkit-keyframes loader-circleFadeDelay {
-        0%, 39%, 100% {
+        0%,
+        39%,
+        100% {
             opacity: 0;
         }
         40% {
@@ -173,7 +174,9 @@
     }
 
     @keyframes loader-circleFadeDelay {
-        0%, 39%, 100% {
+        0%,
+        39%,
+        100% {
             opacity: 0;
         }
         40% {
@@ -181,7 +184,9 @@
         }
     }
 
+
     /*.canvas is at z-index of 10*/
+
     #feedbackPhotoWrapper,
     #photo-link {
         position: absolute;
@@ -278,7 +283,8 @@
         display: none;
     }
 
-    .slick-prev, .slick-next {
+    .slick-prev,
+    .slick-next {
         background-color: transparent;
         display: block;
         width: 40px !important;
@@ -286,13 +292,15 @@
         margin-top: -20px !important;
     }
 
-    .slick-prev:before, .slick-next:before {
+    .slick-prev:before,
+    .slick-next:before {
         font-size: 40px;
         color: black;
         background-color: transparent;
     }
 
-    .slick-prev, .slick-next {
+    .slick-prev,
+    .slick-next {
         background-color: transparent;
         display: block;
         width: 40px !important;
@@ -300,7 +308,8 @@
         margin-top: -20px !important;
     }
 
-    .slick-prev:before, .slick-next:before {
+    .slick-prev:before,
+    .slick-next:before {
         font-size: 40px;
         color: black;
         background-color: transparent;
@@ -335,89 +344,69 @@
     .zoomWindow {
         z-index: 3000 !important;
     }
-
 </style>
-
 <!--MODAL-->
 <div class="modals row">
     <div class="span12">
-
         <!--&lt;!&ndash; Summary Modal &ndash;&gt;-->
         <!--<div id="summaryModal" class="modal hide fade">-->
         <!-- -->
         <!--</div>-->
-
         <!-- Summary Modal -->
         <div id="practiseModal" class="modal hide fade">
-
             <div id="0" class="modal-body" style="display:none">
                 <div class="modal-image">
-                    <img class="annotatedImage" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/38.png"
-                         data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/38@2x-min.png" alt=""/>
+                    <img class="annotatedImage" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/38.png" data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/38@2x-min.png" alt="" />
                 </div>
                 <div id="annotatedImageZoomArea0" class="modal-info">
                     <h1>MODAL 1</h1>
                 </div>
             </div>
-
             <div id="1" class="modal-body" style="display:none">
                 <div class="modal-image">
-                    <img class="annotatedImage" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/38.png"
-                         data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/38@2x-min.png" alt=""/>
+                    <img class="annotatedImage" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/38.png" data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/38@2x-min.png" alt="" />
                 </div>
                 <div id="annotatedImageZoomArea1" class="modal-info">
                     <h1>MODAL 2</h1>
                 </div>
             </div>
-
             <div id="2" class="modal-body" style="display:none">
                 <div class="modal-image">
-                    <img class="annotatedImage" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/38.png"
-                         data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/38@2x-min.png" alt=""/>
+                    <img class="annotatedImage" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/38.png" data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/38@2x-min.png" alt="" />
                 </div>
                 <div id="annotatedImageZoomArea2" class="modal-info">
                     <h1>MODAL 3</h1>
                 </div>
             </div>
-
             <div id="3" class="modal-body" style="display:none">
                 <div class="modal-image">
-                    <img class="annotatedImage" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/38.png"
-                         data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/38@2x-min.png" alt=""/>
+                    <img class="annotatedImage" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/38.png" data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/38@2x-min.png" alt="" />
                 </div>
                 <div id="annotatedImageZoomArea3" class="modal-info">
                     <h1>MODAL 4</h1>
                 </div>
             </div>
-
             <!-- FEEDBACK INFO -->
-
             <div id="4" class="modal-body" style="display:none">
                 <div class="modal-image">
-                    <img class="annotatedImage" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/38.png"
-                         data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/38@2x-min.png" alt=""/>
+                    <img class="annotatedImage" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/38.png" data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/38@2x-min.png" alt="" />
                 </div>
                 <div id="annotatedImageZoomArea4" class="modal-info">
                     <h1>
                         In the next set of practice images mark the whole image and then we'll let you know if our experts agreed.
                     </h1>
-
                     <h2>If you get something wrong look at the section again in detail and try and answer it again.</h2>
                 </div>
             </div>
-
             <!-- SUMMARY -->
-
             <div id="5" class="modal-body">
                 <div class="modal-image">
-                    <img class="annotatedImage" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/38.png"
-                         data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/38@2x-min.png" alt=""/>
+                    <img class="annotatedImage" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/38.png" data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/38@2x-min.png" alt="" />
                 </div>
                 <div id="annotatedImageZoomArea5" class="modal-info">
                     <h1>
                         You are now about to <strong>start</strong> analysing cancer images.
                     </h1>
-
                     <h2>Here's what to remember:</h2>
                     <ul>
                         <li>
@@ -445,7 +434,6 @@
                     </ul>
                 </div>
             </div>
-
             <div class="modal-footer">
                 <button type="button" class="btn btn-default pull-right" id="backToPractiseBtn" data-dismiss="modal" aria-hidden="true">Back to practise</button>
                 <button class="btn btn-primary" id="startMechanicBtn" data-dismiss="modal" aria-hidden="true" style="display: none;">
@@ -453,36 +441,30 @@
                 </button>
             </div>
         </div>
-
         <!-- Tutoiral Modal -->
         <div id="tutorialModal" class="modal hide fade">
-
             <div id="0" class="modal-body" style="display:none">
                 <div class="modal-image">
-                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/38.png" alt=""/>
+                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/38.png" alt="" />
                 </div>
                 <div class="modal-info">
                     <h1>
                         Welcome to Trailblazer!
                     </h1>
-
                     <h2>
                         We need your help identifying cancer cells,
                         distinguishing them from non-cancer cells in images like the one to the left.
                     </h2>
                 </div>
             </div>
-
             <div id="1" class="modal-body" style="display:none">
-
                 <div class="modal-image">
-                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/village.png" alt=""/>
+                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/village.png" alt="" />
                 </div>
                 <div class="modal-info">
                     <h1>
                         Non-cancer cells are strictly organised and controlled.
                     </h1>
-
                     <h2>
                         This is similar to the houses in this town. They’ve been carefully planned
 
@@ -494,17 +476,14 @@
                     </h2>
                 </div>
             </div>
-
             <div id="2" class="modal-body" style="display:none">
-
                 <div class="modal-image">
-                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/towns.png" alt=""/>
+                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/towns.png" alt="" />
                 </div>
                 <div class="modal-info">
                     <h1>
                         But, in cancer, cells become less tightly controlled.
                     </h1>
-
                     <h2>
                         When cells become cancerous, they become less controlled.
 
@@ -518,18 +497,15 @@
                     </h2>
                 </div>
             </div>
-
             <div id="3" class="modal-body" style="display:none">
-
                 <div class="modal-image">
-                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/city.png" alt=""/>
+                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/city.png" alt="" />
                 </div>
                 <div class="modal-info">
                     <h1>
                         In serious cases, cancer becomes a sprawling mass of disorganised cells, of
                         <strong>all</strong> shapes and sizes.
                     </h1>
-
                     <h2>
                         Our town has grown into a crowded and varied city.
 
@@ -539,7 +515,6 @@
                     </h2>
                 </div>
             </div>
-
             <!--WITH CAROUSEL-->
             <div id="4" class="modal-body" style="display:none">
                 <div class="modal-image">
@@ -547,38 +522,30 @@
                         <!-- Carousel items -->
                         <div class="carousel-inner">
                             <div class="active item">
-                                <img class="tutorialZoom4" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/38.png"
-                                     data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/38@2x-min.png" alt=""/>
-
+                                <img class="tutorialZoom4" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/38.png" data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/38@2x-min.png" alt="" />
                                 <div class="item-inner">
                                     <h1>
                                         Sample image 1
                                     </h1>
-
                                     <h2>
                                         Move your mouse over the image on the left to zoom in and see more
 
                                         detail.
                                     </h2>
-
                                     <h2>
                                         To identify <b>cancer cells</b>, look for
                                         <b>blotchy cells</b> grouped together in <b>uneven clumps</b>,
                                         <b>loose rings</b> or
                                         <b>broken chains</b>.
                                     </h2>
-
                                 </div>
                             </div>
                             <div class="item">
-                                <img class="tutorialZoom4" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/38-cancer.png"
-                                     data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/38-cancer-outline@2x-min.png" alt=""/>
-
+                                <img class="tutorialZoom4" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/38-cancer.png" data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/38-cancer-outline@2x-min.png" alt="" />
                                 <div class="item-inner">
                                     <h1>
                                         Sample image 1
                                     </h1>
-
                                     <h2>
                                         We’ve highlighted the <b>cancer cells</b> in
                                         <b class="text-error">red</b> in this image.
@@ -586,14 +553,11 @@
                                 </div>
                             </div>
                             <div class="item">
-                                <img class="tutorialZoom4" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/38-non-cancer.png"
-                                     data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/38-non-cancer-outline@2x-min.png" alt=""/>
-
+                                <img class="tutorialZoom4" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/38-non-cancer.png" data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/38-non-cancer-outline@2x-min.png" alt="" />
                                 <div class="item-inner">
                                     <h1>
                                         Sample image 1
                                     </h1>
-
                                     <h2>
                                         The remaining cells are <b>non-cancer</b> and have been highlighted in
                                         <b class="text-success">green</b>. They include:
@@ -615,7 +579,6 @@
                                     </ol>
                                 </div>
                             </div>
-
                         </div>
                         <div class="carousel-indicators-custom" id="carouselIndicatorsList4"></div>
                         <!-- Carousel nav -->
@@ -624,9 +587,7 @@
                     </div>
                 </div>
                 <div class="modal-info"></div>
-
             </div>
-
             <!--WITH CAROUSEL-->
             <div id="5" class="modal-body" style="display:none">
                 <div class="modal-image">
@@ -634,61 +595,48 @@
                         <!-- Carousel items -->
                         <div class="carousel-inner">
                             <div class="active item">
-                                <img class="tutorialZoom5" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/13.png"
-                                     data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/13@2x-min.png" alt=""/>
-
+                                <img class="tutorialZoom5" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/13.png" data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/13@2x-min.png" alt="" />
                                 <div class="item-inner">
                                     <h1>
                                         Sample image 2
                                     </h1>
-
                                     <h2>
                                         Cancer cells can look very different from image to image.
                                         This time they have formed irregular rings and chains and a few uneven clumps.
 
                                     </h2>
-
                                     <h2>
 
                                         Have a look at the image on the left and see if you can identify the areas of cancer. Then click on 2 to see the answer.
 
                                     </h2>
-
                                     <h3>
                                         Move your mouse over the image to zoom in and see more detail.
                                     </h3>
-
                                 </div>
                             </div>
                             <div class="item">
-                                <img class="tutorialZoom5" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/13-cancer.png"
-                                     data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/13-cancer-outline@2x-min.png" alt=""/>
-
+                                <img class="tutorialZoom5" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/13-cancer.png" data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/13-cancer-outline@2x-min.png" alt="" />
                                 <div class="item-inner">
                                     <h1>
                                         Sample image 2
                                     </h1>
-
                                     <h2>
 
                                         We’ve highlighted the cancer cells in
                                         <b class="text-error">red</b> for this image.
                                     </h2>
-
                                     <h3>
                                         Move your mouse over the image to zoom in and see more detail.
                                     </h3>
                                 </div>
                             </div>
                             <div class="item">
-                                <img class="tutorialZoom5" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/13-non-cancer.png"
-                                     data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/13-non-cancer-outline@2x-min.png" alt=""/>
-
+                                <img class="tutorialZoom5" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/13-non-cancer.png" data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/13-non-cancer-outline@2x-min.png" alt="" />
                                 <div class="item-inner">
                                     <h1>
                                         Sample image 2
                                     </h1>
-
                                     <h2>
                                         There are different types of
                                         <strong>non-cancer cells</strong> in this image. The two most common types are:
@@ -710,16 +658,12 @@
                                     </ol>
                                 </div>
                             </div>
-
                             <div class="item">
-                                <img class="tutorialZoom5" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/13-white-blood-cells.png"
-                                     data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/13-white-blood-cells-outline@2x-min.png" alt=""/>
-
+                                <img class="tutorialZoom5" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/13-white-blood-cells.png" data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/13-white-blood-cells-outline@2x-min.png" alt="" />
                                 <div class="item-inner">
                                     <h1>
                                         Sample image 2
                                     </h1>
-
                                     <h2>
                                         We've highlighted clusters of blood cells in <b class="text-success">green</b>
                                     </h2>
@@ -730,7 +674,6 @@
                                     </ul>
                                 </div>
                             </div>
-
                         </div>
                         <div class="carousel-indicators-custom" id="carouselIndicatorsList5"></div>
                         <!-- Carousel nav -->
@@ -739,72 +682,56 @@
                     </div>
                 </div>
                 <div class="modal-info"></div>
-
             </div>
-
             <div id="6" class="modal-body" style="display:none">
-
                 <div class="modal-image">
-                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid.jpg" alt=""/>
+                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid.jpg" alt="" />
                 </div>
                 <div class="modal-info">
                     <h1>
                         Let’s run through an example
                     </h1>
-
                     <h2>
                         We have split the images up into a 6x6 grid. Some of the grid sections contain cancer cells and some of them do not.
                         We’re going to show you what to do.
                     </h2>
                 </div>
-
             </div>
-
             <div id="7" class="modal-body" style="display:none">
-
                 <div class="modal-image">
-                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/hover-over.png   " alt=""/>
+                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/hover-over.png   " alt="" />
                 </div>
                 <div class="modal-info">
                     <h1>Look closely at the cells in each section</h1>
-
                     <h2>
                         You can zoom in to the image by moving the mouse over each section to get a closer look.
                     </h2>
-
                     <h2>
                         There are a number of reference images at the bottom of the screen
                         showing examples of what cancer and non-cancer cells look like.
                     </h2>
-
                     <h2>
                         In a moment you’ll have a chance to try this for yourself.
                     </h2>
                 </div>
             </div>
-
             <div id="8" class="modal-body" style="display:none">
-
                 <div class="modal-image">
-                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid-red.jpg" alt=""/>
+                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid-red.jpg" alt="" />
                 </div>
                 <div class="modal-info">
                     <h1>
                         We’d like you to mark in <b class="text-error">red</b> any sections that contain cancer cells
                     </h1>
-
                     <h2>
                         Examine each section and if you think it contains cancer cells (even if you only see one or two cells)
                         <b>click once to turn that section <strong class="text-error">red</strong></b>.
                     </h2>
                 </div>
-
             </div>
-
             <div id="9" class="modal-body" style="display:none">
-
                 <div class="modal-image">
-                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid-red-green.jpg" alt=""/>
+                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid-red-green.jpg" alt="" />
                 </div>
                 <div class="modal-info">
                     <h1>
@@ -812,65 +739,50 @@
 
                         contain cancer cells
                     </h1>
-
                     <h2>
                         Examine each section and if you think it <b>only contains non-cancer cells</b>, you can
                         <b>click</b> a second time to turn that section from red to
                         <strong class="text-success">green</strong>.
                     </h2>
                 </div>
-
             </div>
-
             <div id="10" class="modal-body" style="display:none">
-
                 <div class="modal-image">
-                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid-red-green.jpg" alt=""/>
+                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid-red-green.jpg" alt="" />
                 </div>
                 <div class="modal-info">
                     <h1>
                         Empty sections can be left blank
                     </h1>
-
                     <h2>
                         You can ignore any sections that are empty, normally corner and edge sections.
                     </h2>
-
                     <h2>
                         You can then click on the Next button to move to the next image
                     </h2>
-
                 </div>
-
             </div>
-
             <!--PRACTICE SECTION GOES HERE-->
-
             <div id="11" class="modal-body" style="display:none;">
-
                 <div class="modal-image">
-                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid.jpg" alt=""/>
+                    <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid.jpg" alt="" />
                 </div>
                 <div class="modal-info">
                     <div id="tutorialSummary">
                         <h1>
                             We’ll now show you a few images that you can practise on.
                         </h1>
-
                         <h2>
                             We’ll let you know if our expert pathologists agreed with your analysis.
                         </h2>
-
                         <h2>
                             For the first two images we’ll give you immediate feedback on your work.
                         </h2>
                     </div>
-
                     <div id="mechanicTutorialSummary" style="display:none;">
                         <h1>
                             You're now about to <strong>start</strong> analysing cancer images.
                         </h1>
-
                         <h2>Here's what to remember:</h2>
                         <ul>
                             <li>
@@ -886,8 +798,7 @@
                                 <strong class="text-success">Non-cancer cells</strong> include the dark blue or dark brown, small and round blood cells
                             </li>
                             <li>
-                                Other <strong class="text-success">non-cancer cells</strong>
-                                includes the light blue stretched and wispy looking stromal cells
+                                Other <strong class="text-success">non-cancer cells</strong> includes the light blue stretched and wispy looking stromal cells
                             </li>
                             <li>
                                 <b>Click again</b> to turn sections that only <b>contain non-cancer cells
@@ -898,11 +809,8 @@
                             </li>
                         </ul>
                     </div>
-
                 </div>
-
             </div>
-
             <div class="modal-footer">
                 <button type="button" class="btn pull-left" id="closeMechanicTutorialBtn" data-dismiss="modal" aria-hidden="true" style="display:none;">Close</button>
                 <!--<button type="button" class="btn closeBtnbtn-default pull-left closeBtn" id="closeBtn" data-dismiss="modal" aria-hidden="true" style="display:none;">Close</button>-->
@@ -914,7 +822,6 @@
         </div>
     </div>
 </div>
-
 <header class="site-header clearfix">
     <div>
         <div id="loadingTask" class="alert alert-info" style="display:none;">
@@ -931,9 +838,7 @@
         </div>
         <div id="finish" class="alert alert-success" style="display:none">
             <h2><strong>Thank you</strong> for completing the analysis part of Trailblazer!</h2>
-
             <h2>The final step is to provide some feedback on using the system.</h2>
-
             <div class="alert-actions">
                 <a class="btn small" href="http://citscitools.cancerresearchuk.org/community/mvp-04-feedback/">Give feedback</a>
             </div>
@@ -941,18 +846,14 @@
         <div id="error" class="alert alert-error" style="display:none">
             <h2><strong>Error!</strong> Something went wrong, please contact the site administrators</h2>
         </div>
-
         <div id="errorClick" class="alert alert-info" style="display:none; position: relative;">
             <i class="icon-remove" id="errorClickCross" style="position:absolute; right: 30px; cursor:pointer;"></i>
-
             <h2>If you are having problems clicking the grid, please refresh the page by clicking
                 <b onclick="location.reload();" style="cursor:pointer;"><u>here</u></b></h2>
         </div>
     </div>
 </header>
-
 <main class="site-content clearfix">
-
     <!--LEGEND-->
     <div class="legend">
         <div class="legend-item">
@@ -972,18 +873,14 @@
             <i class="icon-remove"></i>
         </div>
     </div>
-
     <!--MECHANIC-->
     <div class="content mechanic-content" id="mechanicContent" style="display:none;">
-
         <div class="row-fluid">
             <div class="span12">
                 <h1>Trailblazer - Task <span id="tasksCompleted"></span></h1>
             </div>
         </div>
-
         <div class="row-fluid clearfix">
-
             <!--Right hand side-->
             <div class="span6 right wrapper grid-wrapper task-image-wrapper">
                 <div class="loader">
@@ -1002,49 +899,36 @@
                     <span>Loading task image...</span>
                 </div>
                 <a class="task-image-wrapper" id="photo-link"></a>
-
                 <div class="canvas" id="mechanicCanvas"></div>
             </div>
-
             <!--Left hand side-->
             <div class="span6 grid-info" id="mechanicZoomWindowLocation">
                 <div class="grid-info-content">
                     <h1>Select the grid sections that contain cancer cells</h1>
-
                     <h3>Click once to mark <strong>cancer</strong> cells in <span class="text-error">Red</span>
                     </h3>
-
                     <h3>Click again to mark <strong>non-cancer</strong> cells in
                         <span class="text-success">Green</span></h3>
-
                     <h3>Empty sections of the image can be left blank</h3>
-
                     <p class="imgId"></p>
-
                     <div class="progress progress-striped">
                         <div id="progress" rel="tooltip" title="#" class="bar" style="width: 0%;"></div>
                     </div>
-
                     <div class="grid-info-buttons">
                         <button class="btn btn-primary" id="showTutorialModalBtn">Tutorial</button>
                         <button class="btn btn-answer btn-success nextSlideBtn" id="nextSlideBtn" value="next" style="margin-left:10px;">Next slide</button>
                     </div>
                 </div>
-
             </div>
-
         </div>
     </div>
-
     <!-- FEEDBACK -->
     <div class="feedback-content" id="feedbackContent">
-
         <div class="row-fluid">
             <div class="span12">
                 <h1>Practice image <span id="feedbackImageNumber">1</span> of 5</h1>
             </div>
         </div>
-
         <div class="row-fluid clearfix">
             <div class="span6 grid-wrapper">
                 <div class="loader">
@@ -1063,12 +947,9 @@
                     <span>Loading task image...</span>
                 </div>
                 <a id="feedbackPhotoWrapper"></a>
-
                 <div class="canvas" id="feedbackCanvas"></div>
             </div>
-
             <div class="span6 grid-info" id="feedbackZoomWindowLocation">
-
                 <div class="grid-info-content">
                     <div class="grid-info-content-inner"></div>
                     <div id="feedbackProgressText" style="display:none;"></div>
@@ -1076,14 +957,12 @@
                         <div class="bar" id="feedbackProgress"></div>
                     </div>
                 </div>
-
                 <div class="grid-info-buttons clearfix">
-
                     <a class="btn btn-primary pull-right disabled" id="nextFeedbackStep" style="margin-left: 10px;">
                         Next slide
                     </a>
                     <button class="btn btn-answer pull-right" id="feedbackInfoBtn" style="margin-left: 10px;">What's in this image</button>
-                    <a class="btn btn-primary disabled" id="finishFeedback" style="display:none; margin-left: 10px;">
+                    <a class="btn btn-primary disabled pull-right" id="finishFeedback" style="display:none; margin-left: 10px;">
                         Next
                     </a>
                     <a class="btn btn-success pull-right disabled" id="checkMyWorkBtn" style="display:none;">
@@ -1093,105 +972,93 @@
             </div>
         </div>
     </div>
-
     <div class="row-fluid">
         <div class="example-list clearfix">
             <figure class="example-list-item">
-                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example1.jpg" alt=""/>
-                <figcaption class="description cancer">Cancer Cells</figcaption>
-            </figure>
-
-            <figure class="example-list-item">
-                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example2.jpg" alt=""/>
-                <figcaption class="description cancer">Cancer Cells</figcaption>
-            </figure>
-
-            <figure class="example-list-item">
-                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example3.jpg" alt=""/>
-                <figcaption class="description cancer">Cancer Cells</figcaption>
-            </figure>
-
-            <figure class="example-list-item">
-                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example4.jpg" alt=""/>
+                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example1.jpg" alt="" />
                 <figcaption class="description cancer">Cancer Cells</figcaption>
             </figure>
             <figure class="example-list-item">
-                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example5.jpg" alt=""/>
-                <figcaption class="description cancer">Cancer Cells</figcaption>
-            </figure>
-
-            <figure class="example-list-item">
-                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example6.jpg" alt=""/>
-                <figcaption class="description cancer">Cancer Cells</figcaption>
-            </figure>
-
-            <figure class="example-list-item">
-                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example7.jpg" alt=""/>
+                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example2.jpg" alt="" />
                 <figcaption class="description cancer">Cancer Cells</figcaption>
             </figure>
             <figure class="example-list-item">
-                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example8.jpg" alt=""/>
+                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example3.jpg" alt="" />
                 <figcaption class="description cancer">Cancer Cells</figcaption>
             </figure>
             <figure class="example-list-item">
-                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example9.jpg" alt=""/>
+                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example4.jpg" alt="" />
                 <figcaption class="description cancer">Cancer Cells</figcaption>
             </figure>
             <figure class="example-list-item">
-                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example10.jpg" alt=""/>
+                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example5.jpg" alt="" />
                 <figcaption class="description cancer">Cancer Cells</figcaption>
             </figure>
-
+            <figure class="example-list-item">
+                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example6.jpg" alt="" />
+                <figcaption class="description cancer">Cancer Cells</figcaption>
+            </figure>
+            <figure class="example-list-item">
+                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example7.jpg" alt="" />
+                <figcaption class="description cancer">Cancer Cells</figcaption>
+            </figure>
+            <figure class="example-list-item">
+                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example8.jpg" alt="" />
+                <figcaption class="description cancer">Cancer Cells</figcaption>
+            </figure>
+            <figure class="example-list-item">
+                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example9.jpg" alt="" />
+                <figcaption class="description cancer">Cancer Cells</figcaption>
+            </figure>
+            <figure class="example-list-item">
+                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-examples/cancer-cells-example10.jpg" alt="" />
+                <figcaption class="description cancer">Cancer Cells</figcaption>
+            </figure>
             <figure class="example-list-item last">
-                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-healthy-cells/example-healthy-stromal-cells.jpg" alt=""/>
+                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-healthy-cells/example-healthy-stromal-cells.jpg" alt="" />
                 <figcaption class="description non-cancer">Non-cancer Cells</figcaption>
             </figure>
             <figure class="example-list-item">
-                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-healthy-cells/example-healthy-blood-cells.jpg" alt=""/>
+                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-healthy-cells/example-healthy-blood-cells.jpg" alt="" />
                 <figcaption class="description non-cancer">Non-cancer Cells</figcaption>
             </figure>
             <figure class="example-list-item">
-                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-healthy-cells/example-healthy-lung-stromal-cartilage.jpg" alt=""/>
+                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-healthy-cells/example-healthy-lung-stromal-cartilage.jpg" alt="" />
                 <figcaption class="description non-cancer">Non-cancer Cells</figcaption>
             </figure>
             <figure class="example-list-item">
-                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-healthy-cells/example-healthy-stromal-and-blood-cells2.jpg" alt=""/>
+                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-healthy-cells/example-healthy-stromal-and-blood-cells2.jpg" alt="" />
                 <figcaption class="description non-cancer">Non-cancer Cells</figcaption>
             </figure>
             <figure class="example-list-item">
-                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-healthy-cells/example-healthy-stromal-and-blood-cells.jpg" alt=""/>
+                <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/examples/cancer-healthy-cells/example-healthy-stromal-and-blood-cells.jpg" alt="" />
                 <figcaption class="description non-cancer">Non-cancer Cells</figcaption>
             </figure>
-
         </div>
-
     </div>
-
 </main>
-
 <script type="text/javascript" async="async">
+var hasSeenGuidenceInfo = false;
+var totalGridPercentage = "";
 
-    var hasSeenGuidenceInfo = false;
-    var totalGridPercentage = "";
+var project_short_name = "{{ project.short_name }}";
+if (project_short_name === "")
+    project_short_name = "mvp-04";
 
-    var project_short_name = "{{ project.short_name }}";
-    if (project_short_name === "")
-        project_short_name = "mvp-04";
+var cookie_feedback_name = project_short_name + 'feedback';
+var cookie_tutorial_name = project_short_name + 'tutorial';
+/*
+ This is the pathologist grid square data that we can check the user answers against
+ */
 
-    var cookie_feedback_name = project_short_name + 'feedback';
-    var cookie_tutorial_name = project_short_name + 'tutorial';
-    /*
-     This is the pathologist grid square data that we can check the user answers against
-     */
-
-    var feedbackData = [{
-        "info": {
-            "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung-all-min/1.jpg",
-            "taskTitle": "<h2>Click once to mark cancer cells in <span class=\"text-error\">Red<\/span><\/h2> <h2>Click again to mark non-cancer cells in <span class=\"text-success\">Green<\/span><\/h2><h2>Empty sections of the image can be left blank<\/h2>",
-            "taskSubTitle": "<h3>You can change your answer as often as you want. Just click on a section of the image to change your answer.<\/h3>" +
+var feedbackData = [{
+    "info": {
+        "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung-all-min/1.jpg",
+        "taskTitle": "<h2>Click once to mark cancer cells in <span class=\"text-error\">Red<\/span><\/h2> <h2>Click again to mark non-cancer cells in <span class=\"text-success\">Green<\/span><\/h2><h2>Empty sections of the image can be left blank<\/h2>",
+        "taskSubTitle": "<h3>You can change your answer as often as you want. Just click on a section of the image to change your answer.<\/h3>" +
             "   <h3>Remember to look at the reference images below for help.<\/h3>",
-            "taskParagraph": "",
-            "taskFeedback": "<h2>Image feedback<\/h2>" +
+        "taskParagraph": "",
+        "taskFeedback": "<h2>Image feedback<\/h2>" +
             "<h3>Most <b class=\"text-error\">cancer cells</b> are in the bottom third of the image with some to the left of middle.<\/h3>" +
             "<ul><li>They’re mostly <b>large<\/b><\/li>" +
             "<li>The shape and size of each cell is very different from the others<\/li>" +
@@ -1200,162 +1067,162 @@
             "<h3>The surrounding <b class=\"text-success\">non-cancer cells</b> include<\/h3>" +
             "<ul><li>Longer and thinner blue stromal cells<\/li>" +
             "<li><b>Small blue<\/b> or <b>dark brown round cells<\/b> which are <b class=\"text-success\">blood cells</b>.<\/li><\/ul>",
-            "squares": [{
-                "column": 0,
-                "answer": null,
-                "row": 0
-            }, {
-                "column": 1,
-                "answer": null,
-                "row": 0
-            }, {
-                "column": 2,
-                "answer": false,
-                "row": 0
-            }, {
-                "column": 3,
-                "answer": false,
-                "row": 0
-            }, {
-                "column": 4,
-                "answer": false,
-                "row": 0
-            }, {
-                "column": 5,
-                "answer": null,
-                "row": 0
-            }, {
-                "column": 0,
-                "answer": null,
-                "row": 1
-            }, {
-                "column": 1,
-                "answer": false,
-                "row": 1
-            }, {
-                "column": 2,
-                "answer": false,
-                "row": 1
-            }, {
-                "column": 3,
-                "answer": true,
-                "row": 1
-            }, {
-                "column": 4,
-                "answer": true,
-                "row": 1
-            }, {
-                "column": 5,
-                "answer": true,
-                "row": 1
-            }, {
-                "column": 0,
-                "answer": false,
-                "row": 2
-            }, {
-                "column": 1,
-                "answer": true,
-                "row": 2
-            }, {
-                "column": 2,
-                "answer": true,
-                "row": 2
-            }, {
-                "column": 3,
-                "answer": true,
-                "row": 2
-            }, {
-                "column": 4,
-                "answer": true,
-                "row": 2
-            }, {
-                "column": 5,
-                "answer": true,
-                "row": 2
-            }, {
-                "column": 0,
-                "answer": false,
-                "row": 3
-            }, {
-                "column": 1,
-                "answer": true,
-                "row": 3
-            }, {
-                "column": 2,
-                "answer": true,
-                "row": 3
-            }, {
-                "column": 3,
-                "answer": true,
-                "row": 3
-            }, {
-                "column": 4,
-                "answer": true,
-                "row": 3
-            }, {
-                "column": 5,
-                "answer": true,
-                "row": 3
-            }, {
-                "column": 0,
-                "answer": null,
-                "row": 4
-            }, {
-                "column": 1,
-                "answer": true,
-                "row": 4
-            }, {
-                "column": 2,
-                "answer": true,
-                "row": 4
-            }, {
-                "column": 3,
-                "answer": true,
-                "row": 4
-            }, {
-                "column": 4,
-                "answer": true,
-                "row": 4
-            }, {
-                "column": 5,
-                "answer": true,
-                "row": 4
-            }, {
-                "column": 0,
-                "answer": null,
-                "row": 5
-            }, {
-                "column": 1,
-                "answer": true,
-                "row": 5
-            }, {
-                "column": 2,
-                "answer": true,
-                "row": 5
-            }, {
-                "column": 3,
-                "answer": true,
-                "row": 5
-            }, {
-                "column": 4,
-                "answer": true,
-                "row": 5
-            }, {
-                "column": 5,
-                "answer": null,
-                "row": 5
-            }]
-        }
-    }, {
-        "info": {
-            "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung-all-min/26.jpg",
-            "taskTitle": "<h2>Click once to mark cancer cells in <span class=\"text-error\">Red<\/span><\/h2>" +
+        "squares": [{
+            "column": 0,
+            "answer": null,
+            "row": 0
+        }, {
+            "column": 1,
+            "answer": null,
+            "row": 0
+        }, {
+            "column": 2,
+            "answer": false,
+            "row": 0
+        }, {
+            "column": 3,
+            "answer": false,
+            "row": 0
+        }, {
+            "column": 4,
+            "answer": false,
+            "row": 0
+        }, {
+            "column": 5,
+            "answer": null,
+            "row": 0
+        }, {
+            "column": 0,
+            "answer": null,
+            "row": 1
+        }, {
+            "column": 1,
+            "answer": false,
+            "row": 1
+        }, {
+            "column": 2,
+            "answer": false,
+            "row": 1
+        }, {
+            "column": 3,
+            "answer": true,
+            "row": 1
+        }, {
+            "column": 4,
+            "answer": true,
+            "row": 1
+        }, {
+            "column": 5,
+            "answer": true,
+            "row": 1
+        }, {
+            "column": 0,
+            "answer": false,
+            "row": 2
+        }, {
+            "column": 1,
+            "answer": true,
+            "row": 2
+        }, {
+            "column": 2,
+            "answer": true,
+            "row": 2
+        }, {
+            "column": 3,
+            "answer": true,
+            "row": 2
+        }, {
+            "column": 4,
+            "answer": true,
+            "row": 2
+        }, {
+            "column": 5,
+            "answer": true,
+            "row": 2
+        }, {
+            "column": 0,
+            "answer": false,
+            "row": 3
+        }, {
+            "column": 1,
+            "answer": true,
+            "row": 3
+        }, {
+            "column": 2,
+            "answer": true,
+            "row": 3
+        }, {
+            "column": 3,
+            "answer": true,
+            "row": 3
+        }, {
+            "column": 4,
+            "answer": true,
+            "row": 3
+        }, {
+            "column": 5,
+            "answer": true,
+            "row": 3
+        }, {
+            "column": 0,
+            "answer": null,
+            "row": 4
+        }, {
+            "column": 1,
+            "answer": true,
+            "row": 4
+        }, {
+            "column": 2,
+            "answer": true,
+            "row": 4
+        }, {
+            "column": 3,
+            "answer": true,
+            "row": 4
+        }, {
+            "column": 4,
+            "answer": true,
+            "row": 4
+        }, {
+            "column": 5,
+            "answer": true,
+            "row": 4
+        }, {
+            "column": 0,
+            "answer": null,
+            "row": 5
+        }, {
+            "column": 1,
+            "answer": true,
+            "row": 5
+        }, {
+            "column": 2,
+            "answer": true,
+            "row": 5
+        }, {
+            "column": 3,
+            "answer": true,
+            "row": 5
+        }, {
+            "column": 4,
+            "answer": true,
+            "row": 5
+        }, {
+            "column": 5,
+            "answer": null,
+            "row": 5
+        }]
+    }
+}, {
+    "info": {
+        "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung-all-min/26.jpg",
+        "taskTitle": "<h2>Click once to mark cancer cells in <span class=\"text-error\">Red<\/span><\/h2>" +
             "<h2>Click again to mark non-cancer cells in <span class=\"text-success\">Green<\/span><\/h2>" + "" +
             "<h2>Empty sections of the image can be left blank<\/h2>",
-            "taskSubTitle": "<h3>You can change your answer as often as you want. Just click on a section of the image to change your answer.<\/h3>" +
+        "taskSubTitle": "<h3>You can change your answer as often as you want. Just click on a section of the image to change your answer.<\/h3>" +
             "   <h3>Remember to look at the reference images below for help.<\/h3>",
-            "taskParagraph": "",
-            "taskFeedback": "<h2>Image feedback<\/h2>" +
+        "taskParagraph": "",
+        "taskFeedback": "<h2>Image feedback<\/h2>" +
             "<h3>The <b class=\"text-error\">cancer cells<\/b> are in the top right, bottom right and left of this image<\/h3>" +
             "<ul>" +
             "<li>They are large, mottled and irregular<\/li>" +
@@ -1366,162 +1233,162 @@
             "<li><b>small, dark<\/b> and <b>round<\/b> blood cells<\/li>" +
             "<li>mixed with <b>light blue<\/b> and <b>wispy<\/b> stromal cells.<\/li>" +
             "<\/ul>",
-            "squares": [{
-                "column": 0,
-                "answer": null,
-                "row": 0
-            }, {
-                "column": 1,
-                "answer": null,
-                "row": 0
-            }, {
-                "column": 2,
-                "answer": false,
-                "row": 0
-            }, {
-                "column": 3,
-                "answer": false,
-                "row": 0
-            }, {
-                "column": 4,
-                "answer": true,
-                "row": 0
-            }, {
-                "column": 5,
-                "answer": null,
-                "row": 0
-            }, {
-                "column": 0,
-                "answer": null,
-                "row": 1
-            }, {
-                "column": 1,
-                "answer": true,
-                "row": 1
-            }, {
-                "column": 2,
-                "answer": false,
-                "row": 1
-            }, {
-                "column": 3,
-                "answer": true,
-                "row": 1
-            }, {
-                "column": 4,
-                "answer": true,
-                "row": 1
-            }, {
-                "column": 5,
-                "answer": true,
-                "row": 1
-            }, {
-                "column": 0,
-                "answer": true,
-                "row": 2
-            }, {
-                "column": 1,
-                "answer": true,
-                "row": 2
-            }, {
-                "column": 2,
-                "answer": true,
-                "row": 2
-            }, {
-                "column": 3,
-                "answer": true,
-                "row": 2
-            }, {
-                "column": 4,
-                "answer": true,
-                "row": 2
-            }, {
-                "column": 5,
-                "answer": true,
-                "row": 2
-            }, {
-                "column": 0,
-                "answer": true,
-                "row": 3
-            }, {
-                "column": 1,
-                "answer": true,
-                "row": 3
-            }, {
-                "column": 2,
-                "answer": true,
-                "row": 3
-            }, {
-                "column": 3,
-                "answer": true,
-                "row": 3
-            }, {
-                "column": 4,
-                "answer": true,
-                "row": 3
-            }, {
-                "column": 5,
-                "answer": true,
-                "row": 3
-            }, {
-                "column": 0,
-                "answer": true,
-                "row": 4
-            }, {
-                "column": 1,
-                "answer": true,
-                "row": 4
-            }, {
-                "column": 2,
-                "answer": true,
-                "row": 4
-            }, {
-                "column": 3,
-                "answer": true,
-                "row": 4
-            }, {
-                "column": 4,
-                "answer": true,
-                "row": 4
-            }, {
-                "column": 5,
-                "answer": true,
-                "row": 4
-            }, {
-                "column": 0,
-                "answer": null,
-                "row": 5
-            }, {
-                "column": 1,
-                "answer": true,
-                "row": 5
-            }, {
-                "column": 2,
-                "answer": true,
-                "row": 5
-            }, {
-                "column": 3,
-                "answer": true,
-                "row": 5
-            }, {
-                "column": 4,
-                "answer": false,
-                "row": 5
-            }, {
-                "column": 5,
-                "answer": true,
-                "row": 5
-            }]
-        }
-    }, {
-        "info": {
-            "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung-all-min/42.jpg",
-            "taskTitle": "<h2>Click once to mark cancer cells in <span class=\"text-error\">Red<\/span><\/h2>" +
+        "squares": [{
+            "column": 0,
+            "answer": null,
+            "row": 0
+        }, {
+            "column": 1,
+            "answer": null,
+            "row": 0
+        }, {
+            "column": 2,
+            "answer": false,
+            "row": 0
+        }, {
+            "column": 3,
+            "answer": false,
+            "row": 0
+        }, {
+            "column": 4,
+            "answer": true,
+            "row": 0
+        }, {
+            "column": 5,
+            "answer": null,
+            "row": 0
+        }, {
+            "column": 0,
+            "answer": null,
+            "row": 1
+        }, {
+            "column": 1,
+            "answer": true,
+            "row": 1
+        }, {
+            "column": 2,
+            "answer": false,
+            "row": 1
+        }, {
+            "column": 3,
+            "answer": true,
+            "row": 1
+        }, {
+            "column": 4,
+            "answer": true,
+            "row": 1
+        }, {
+            "column": 5,
+            "answer": true,
+            "row": 1
+        }, {
+            "column": 0,
+            "answer": true,
+            "row": 2
+        }, {
+            "column": 1,
+            "answer": true,
+            "row": 2
+        }, {
+            "column": 2,
+            "answer": true,
+            "row": 2
+        }, {
+            "column": 3,
+            "answer": true,
+            "row": 2
+        }, {
+            "column": 4,
+            "answer": true,
+            "row": 2
+        }, {
+            "column": 5,
+            "answer": true,
+            "row": 2
+        }, {
+            "column": 0,
+            "answer": true,
+            "row": 3
+        }, {
+            "column": 1,
+            "answer": true,
+            "row": 3
+        }, {
+            "column": 2,
+            "answer": true,
+            "row": 3
+        }, {
+            "column": 3,
+            "answer": true,
+            "row": 3
+        }, {
+            "column": 4,
+            "answer": true,
+            "row": 3
+        }, {
+            "column": 5,
+            "answer": true,
+            "row": 3
+        }, {
+            "column": 0,
+            "answer": true,
+            "row": 4
+        }, {
+            "column": 1,
+            "answer": true,
+            "row": 4
+        }, {
+            "column": 2,
+            "answer": true,
+            "row": 4
+        }, {
+            "column": 3,
+            "answer": true,
+            "row": 4
+        }, {
+            "column": 4,
+            "answer": true,
+            "row": 4
+        }, {
+            "column": 5,
+            "answer": true,
+            "row": 4
+        }, {
+            "column": 0,
+            "answer": null,
+            "row": 5
+        }, {
+            "column": 1,
+            "answer": true,
+            "row": 5
+        }, {
+            "column": 2,
+            "answer": true,
+            "row": 5
+        }, {
+            "column": 3,
+            "answer": true,
+            "row": 5
+        }, {
+            "column": 4,
+            "answer": false,
+            "row": 5
+        }, {
+            "column": 5,
+            "answer": true,
+            "row": 5
+        }]
+    }
+}, {
+    "info": {
+        "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung-all-min/42.jpg",
+        "taskTitle": "<h2>Click once to mark cancer cells in <span class=\"text-error\">Red<\/span><\/h2>" +
             "<h2>Click again to mark non-cancer cells in <span class=\"text-success\">Green<\/span><\/h2>" + "" +
             "<h2>Empty sections of the image can be left blank<\/h2>",
-            "taskSubTitle": "<h3>You can change your answer as often as you want. Just click on a section of the image to change your answer.<\/h3>" +
+        "taskSubTitle": "<h3>You can change your answer as often as you want. Just click on a section of the image to change your answer.<\/h3>" +
             "   <h3>Remember to look at the reference images below for help.<\/h3>",
-            "taskParagraph": "",
-            "taskFeedback": "<h2>Image feedback<\/h2>" +
+        "taskParagraph": "",
+        "taskFeedback": "<h2>Image feedback<\/h2>" +
             "<h3>The <b class=\"text-error\">cancer cells<\/b> have formed rounded clumps. <\/h3>" +
             "<h3>You can clearly see the outlines of these clumps of <b class=\"text-error\">cancer cells<\/b>.<\/h3>" +
             "<h3>The clumps of <b class=\"text-error\">cancer cells<\/b> are surrounded by<\/h3>" +
@@ -1529,2005 +1396,2012 @@
             "<li><b>Small round dark blue<\/b> or <b>dark brown spots<\/b> of the <b class=\"text-success\">blood cells<\/b><\/li>" +
             "<li>Plenty of stretched looking wispy <b class=\"text-success\">stromal cells<\/b><\/li>" +
             "<\/ul>",
-            "squares": [{
-                "column": 0,
-                "answer": null,
-                "row": 0
-            }, {
-                "column": 1,
-                "answer": false,
-                "row": 0
-            }, {
-                "column": 2,
-                "answer": true,
-                "row": 0
-            }, {
-                "column": 3,
-                "answer": true,
-                "row": 0
-            }, {
-                "column": 4,
-                "answer": true,
-                "row": 0
-            }, {
-                "column": 5,
-                "answer": null,
-                "row": 0
-            }, {
-                "column": 0,
-                "answer": true,
-                "row": 1
-            }, {
-                "column": 1,
-                "answer": true,
-                "row": 1
-            }, {
-                "column": 2,
-                "answer": true,
-                "row": 1
-            }, {
-                "column": 3,
-                "answer": true,
-                "row": 1
-            }, {
-                "column": 4,
-                "answer": true,
-                "row": 1
-            }, {
-                "column": 5,
-                "answer": true,
-                "row": 1
-            }, {
-                "column": 0,
-                "answer": false,
-                "row": 2
-            }, {
-                "column": 1,
-                "answer": true,
-                "row": 2
-            }, {
-                "column": 2,
-                "answer": true,
-                "row": 2
-            }, {
-                "column": 3,
-                "answer": true,
-                "row": 2
-            }, {
-                "column": 4,
-                "answer": true,
-                "row": 2
-            }, {
-                "column": 5,
-                "answer": true,
-                "row": 2
-            }, {
-                "column": 0,
-                "answer": false,
-                "row": 3
-            }, {
-                "column": 1,
-                "answer": true,
-                "row": 3
-            }, {
-                "column": 2,
-                "answer": true,
-                "row": 3
-            }, {
-                "column": 3,
-                "answer": true,
-                "row": 3
-            }, {
-                "column": 4,
-                "answer": true,
-                "row": 3
-            }, {
-                "column": 5,
-                "answer": true,
-                "row": 3
-            }, {
-                "column": 0,
-                "answer": false,
-                "row": 4
-            }, {
-                "column": 1,
-                "answer": true,
-                "row": 4
-            }, {
-                "column": 2,
-                "answer": true,
-                "row": 4
-            }, {
-                "column": 3,
-                "answer": true,
-                "row": 4
-            }, {
-                "column": 4,
-                "answer": true,
-                "row": 4
-            }, {
-                "column": 5,
-                "answer": true,
-                "row": 4
-            }, {
-                "column": 0,
-                "answer": false,
-                "row": 5
-            }, {
-                "column": 1,
-                "answer": false,
-                "row": 5
-            }, {
-                "column": 2,
-                "answer": true,
-                "row": 5
-            }, {
-                "column": 3,
-                "answer": true,
-                "row": 5
-            }, {
-                "column": 4,
-                "answer": true,
-                "row": 5
-            }, {
-                "column": 5,
-                "answer": true,
-                "row": 5
-            }]
-        }
-    }, {
-        "info": {
-            "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung-all-min/41.jpg",
-            "taskTitle": "<h2>Click once to mark cancer cells in <span class=\"text-error\">Red<\/span><\/h2>" +
+        "squares": [{
+            "column": 0,
+            "answer": null,
+            "row": 0
+        }, {
+            "column": 1,
+            "answer": false,
+            "row": 0
+        }, {
+            "column": 2,
+            "answer": true,
+            "row": 0
+        }, {
+            "column": 3,
+            "answer": true,
+            "row": 0
+        }, {
+            "column": 4,
+            "answer": true,
+            "row": 0
+        }, {
+            "column": 5,
+            "answer": null,
+            "row": 0
+        }, {
+            "column": 0,
+            "answer": true,
+            "row": 1
+        }, {
+            "column": 1,
+            "answer": true,
+            "row": 1
+        }, {
+            "column": 2,
+            "answer": true,
+            "row": 1
+        }, {
+            "column": 3,
+            "answer": true,
+            "row": 1
+        }, {
+            "column": 4,
+            "answer": true,
+            "row": 1
+        }, {
+            "column": 5,
+            "answer": true,
+            "row": 1
+        }, {
+            "column": 0,
+            "answer": false,
+            "row": 2
+        }, {
+            "column": 1,
+            "answer": true,
+            "row": 2
+        }, {
+            "column": 2,
+            "answer": true,
+            "row": 2
+        }, {
+            "column": 3,
+            "answer": true,
+            "row": 2
+        }, {
+            "column": 4,
+            "answer": true,
+            "row": 2
+        }, {
+            "column": 5,
+            "answer": true,
+            "row": 2
+        }, {
+            "column": 0,
+            "answer": false,
+            "row": 3
+        }, {
+            "column": 1,
+            "answer": true,
+            "row": 3
+        }, {
+            "column": 2,
+            "answer": true,
+            "row": 3
+        }, {
+            "column": 3,
+            "answer": true,
+            "row": 3
+        }, {
+            "column": 4,
+            "answer": true,
+            "row": 3
+        }, {
+            "column": 5,
+            "answer": true,
+            "row": 3
+        }, {
+            "column": 0,
+            "answer": false,
+            "row": 4
+        }, {
+            "column": 1,
+            "answer": true,
+            "row": 4
+        }, {
+            "column": 2,
+            "answer": true,
+            "row": 4
+        }, {
+            "column": 3,
+            "answer": true,
+            "row": 4
+        }, {
+            "column": 4,
+            "answer": true,
+            "row": 4
+        }, {
+            "column": 5,
+            "answer": true,
+            "row": 4
+        }, {
+            "column": 0,
+            "answer": false,
+            "row": 5
+        }, {
+            "column": 1,
+            "answer": false,
+            "row": 5
+        }, {
+            "column": 2,
+            "answer": true,
+            "row": 5
+        }, {
+            "column": 3,
+            "answer": true,
+            "row": 5
+        }, {
+            "column": 4,
+            "answer": true,
+            "row": 5
+        }, {
+            "column": 5,
+            "answer": true,
+            "row": 5
+        }]
+    }
+}, {
+    "info": {
+        "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung-all-min/41.jpg",
+        "taskTitle": "<h2>Click once to mark cancer cells in <span class=\"text-error\">Red<\/span><\/h2>" +
             "<h2>Click again to mark non-cancer cells in <span class=\"text-success\">Green<\/span><\/h2>" + "" +
             "<h2>Empty sections of the image can be left blank<\/h2>",
-            "taskSubTitle": "<h3>You can change your answer as often as you want. Just click on a section of the image to change your answer.<\/h3>" +
+        "taskSubTitle": "<h3>You can change your answer as often as you want. Just click on a section of the image to change your answer.<\/h3>" +
             "   <h3>Remember to look at the reference images below for help.<\/h3>",
-            "taskParagraph": "",
-            "taskFeedback": "<h2>Image feedback<\/h2>" +
+        "taskParagraph": "",
+        "taskFeedback": "<h2>Image feedback<\/h2>" +
             "<h3>This image is pretty much all <b class=\"text-error\">cancer cells!<\/b><\/h3>" +
             "<ul>" +
             "<li>The cells are <b>large, mottled<\/b> and <b>irregular<\/b><\/li>" +
             "<li>No two <b class=\"text-error\">cancer cells<\/b> look the same <\/li>" +
             "<li>They’ve formed an <b>unorganised, sprawling mass<\/b><\/li>" +
             "<\/ul>",
-            "squares": [{
-                "column": 0,
-                "answer": null,
-                "row": 0
-            }, {
-                "column": 1,
-                "answer": null,
-                "row": 0
-            }, {
-                "column": 2,
-                "answer": true,
-                "row": 0
-            }, {
-                "column": 3,
-                "answer": true,
-                "row": 0
-            }, {
-                "column": 4,
-                "answer": true,
-                "row": 0
-            }, {
-                "column": 5,
-                "answer": null,
-                "row": 0
-            }, {
-                "column": 0,
-                "answer": null,
-                "row": 1
-            }, {
-                "column": 1,
-                "answer": true,
-                "row": 1
-            }, {
-                "column": 2,
-                "answer": true,
-                "row": 1
-            }, {
-                "column": 3,
-                "answer": true,
-                "row": 1
-            }, {
-                "column": 4,
-                "answer": true,
-                "row": 1
-            }, {
-                "column": 5,
-                "answer": true,
-                "row": 1
-            }, {
-                "column": 0,
-                "answer": true,
-                "row": 2
-            }, {
-                "column": 1,
-                "answer": true,
-                "row": 2
-            }, {
-                "column": 2,
-                "answer": true,
-                "row": 2
-            }, {
-                "column": 3,
-                "answer": true,
-                "row": 2
-            }, {
-                "column": 4,
-                "answer": true,
-                "row": 2
-            }, {
-                "column": 5,
-                "answer": true,
-                "row": 2
-            }, {
-                "column": 0,
-                "answer": true,
-                "row": 3
-            }, {
-                "column": 1,
-                "answer": true,
-                "row": 3
-            }, {
-                "column": 2,
-                "answer": true,
-                "row": 3
-            }, {
-                "column": 3,
-                "answer": true,
-                "row": 3
-            }, {
-                "column": 4,
-                "answer": true,
-                "row": 3
-            }, {
-                "column": 5,
-                "answer": true,
-                "row": 3
-            }, {
-                "column": 0,
-                "answer": true,
-                "row": 4
-            }, {
-                "column": 1,
-                "answer": true,
-                "row": 4
-            }, {
-                "column": 2,
-                "answer": true,
-                "row": 4
-            }, {
-                "column": 3,
-                "answer": true,
-                "row": 4
-            }, {
-                "column": 4,
-                "answer": true,
-                "row": 4
-            }, {
-                "column": 5,
-                "answer": true,
-                "row": 4
-            }, {
-                "column": 0,
-                "answer": null,
-                "row": 5
-            }, {
-                "column": 1,
-                "answer": true,
-                "row": 5
-            }, {
-                "column": 2,
-                "answer": true,
-                "row": 5
-            }, {
-                "column": 3,
-                "answer": true,
-                "row": 5
-            }, {
-                "column": 4,
-                "answer": true,
-                "row": 5
-            }, {
-                "column": 5,
-                "answer": true,
-                "row": 5
-            }]
-        }
-    }, {
-        "info": {
-            "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung-all-min/11.jpg",
-            "taskTitle": "<h2>Click once to mark cancer cells in <span class=\"text-error\">Red<\/span><\/h2>" +
+        "squares": [{
+            "column": 0,
+            "answer": null,
+            "row": 0
+        }, {
+            "column": 1,
+            "answer": null,
+            "row": 0
+        }, {
+            "column": 2,
+            "answer": true,
+            "row": 0
+        }, {
+            "column": 3,
+            "answer": true,
+            "row": 0
+        }, {
+            "column": 4,
+            "answer": true,
+            "row": 0
+        }, {
+            "column": 5,
+            "answer": null,
+            "row": 0
+        }, {
+            "column": 0,
+            "answer": null,
+            "row": 1
+        }, {
+            "column": 1,
+            "answer": true,
+            "row": 1
+        }, {
+            "column": 2,
+            "answer": true,
+            "row": 1
+        }, {
+            "column": 3,
+            "answer": true,
+            "row": 1
+        }, {
+            "column": 4,
+            "answer": true,
+            "row": 1
+        }, {
+            "column": 5,
+            "answer": true,
+            "row": 1
+        }, {
+            "column": 0,
+            "answer": true,
+            "row": 2
+        }, {
+            "column": 1,
+            "answer": true,
+            "row": 2
+        }, {
+            "column": 2,
+            "answer": true,
+            "row": 2
+        }, {
+            "column": 3,
+            "answer": true,
+            "row": 2
+        }, {
+            "column": 4,
+            "answer": true,
+            "row": 2
+        }, {
+            "column": 5,
+            "answer": true,
+            "row": 2
+        }, {
+            "column": 0,
+            "answer": true,
+            "row": 3
+        }, {
+            "column": 1,
+            "answer": true,
+            "row": 3
+        }, {
+            "column": 2,
+            "answer": true,
+            "row": 3
+        }, {
+            "column": 3,
+            "answer": true,
+            "row": 3
+        }, {
+            "column": 4,
+            "answer": true,
+            "row": 3
+        }, {
+            "column": 5,
+            "answer": true,
+            "row": 3
+        }, {
+            "column": 0,
+            "answer": true,
+            "row": 4
+        }, {
+            "column": 1,
+            "answer": true,
+            "row": 4
+        }, {
+            "column": 2,
+            "answer": true,
+            "row": 4
+        }, {
+            "column": 3,
+            "answer": true,
+            "row": 4
+        }, {
+            "column": 4,
+            "answer": true,
+            "row": 4
+        }, {
+            "column": 5,
+            "answer": true,
+            "row": 4
+        }, {
+            "column": 0,
+            "answer": null,
+            "row": 5
+        }, {
+            "column": 1,
+            "answer": true,
+            "row": 5
+        }, {
+            "column": 2,
+            "answer": true,
+            "row": 5
+        }, {
+            "column": 3,
+            "answer": true,
+            "row": 5
+        }, {
+            "column": 4,
+            "answer": true,
+            "row": 5
+        }, {
+            "column": 5,
+            "answer": true,
+            "row": 5
+        }]
+    }
+}, {
+    "info": {
+        "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung-all-min/11.jpg",
+        "taskTitle": "<h2>Click once to mark cancer cells in <span class=\"text-error\">Red<\/span><\/h2>" +
             "<h2>Click again to mark non-cancer cells in <span class=\"text-success\">Green<\/span><\/h2>" + "" +
             "<h2>Empty sections of the image can be left blank<\/h2>",
-            "taskSubTitle": "<h3>You can change your answer as often as you want. Just click on a section of the image to change your answer.<\/h3>" +
+        "taskSubTitle": "<h3>You can change your answer as often as you want. Just click on a section of the image to change your answer.<\/h3>" +
             "   <h3>Remember to look at the reference images below for help.<\/h3>",
-            "taskParagraph": "",
-            "taskFeedback": "<h2>Image feedback<\/h2>" +
+        "taskParagraph": "",
+        "taskFeedback": "<h2>Image feedback<\/h2>" +
             "<h3>This image shows you some of the different cells we’ve talked about<\/h3>" +
             "<ul>" +
             "<li><b class=\"text-success\">Non-cancer<\/b> epithelial cells form uniform, thin layers around airways (the empty space). Above the epithelial cells is some cartilage. Cartilage is <b class=\"text-success\">non-cancer</b><\/li>" +
             "<li>Throughout the image you can see <b class=\"text-success\">non-cancer<\/b> stroma (long and thin) and blood cells (small, dark and round)<\/li>" +
             "<li>There are clumps of <b class=\"text-error\">cancer cells</b> above and to the right of the cartilage and below and to the left of the airway<\/li>" +
             "<\/ul>",
-            "squares": [{
-                "column": 0,
-                "answer": null,
-                "row": 0
-            }, {
-                "column": 1,
-                "answer": null,
-                "row": 0
-            }, {
-                "column": 2,
-                "answer": false,
-                "row": 0
-            }, {
-                "column": 3,
-                "answer": false,
-                "row": 0
-            }, {
-                "column": 4,
-                "answer": null,
-                "row": 0
-            }, {
-                "column": 5,
-                "answer": null,
-                "row": 0
-            }, {
-                "column": 0,
-                "answer": null,
-                "row": 1
-            }, {
-                "column": 1,
-                "answer": false,
-                "row": 1
-            }, {
-                "column": 2,
-                "answer": true,
-                "row": 1
-            }, {
-                "column": 3,
-                "answer": true,
-                "row": 1
-            }, {
-                "column": 4,
-                "answer": true,
-                "row": 1
-            }, {
-                "column": 5,
-                "answer": null,
-                "row": 1
-            }, {
-                "column": 0,
-                "answer": false,
-                "row": 2
-            }, {
-                "column": 1,
-                "answer": false,
-                "row": 2
-            }, {
-                "column": 2,
-                "answer": true,
-                "row": 2
-            }, {
-                "column": 3,
-                "answer": true,
-                "row": 2
-            }, {
-                "column": 4,
-                "answer": true,
-                "row": 2
-            }, {
-                "column": 5,
-                "answer": true,
-                "row": 2
-            }, {
-                "column": 0,
-                "answer": true,
-                "row": 3
-            }, {
-                "column": 1,
-                "answer": true,
-                "row": 3
-            }, {
-                "column": 2,
-                "answer": false,
-                "row": 3
-            }, {
-                "column": 3,
-                "answer": true,
-                "row": 3
-            }, {
-                "column": 4,
-                "answer": true,
-                "row": 3
-            }, {
-                "column": 5,
-                "answer": true,
-                "row": 3
-            }, {
-                "column": 0,
-                "answer": true,
-                "row": 4
-            }, {
-                "column": 1,
-                "answer": true,
-                "row": 4
-            }, {
-                "column": 2,
-                "answer": false,
-                "row": 4
-            }, {
-                "column": 3,
-                "answer": true,
-                "row": 4
-            }, {
-                "column": 4,
-                "answer": true,
-                "row": 4
-            }, {
-                "column": 5,
-                "answer": true,
-                "row": 4
-            }, {
-                "column": 0,
-                "answer": null,
-                "row": 5
-            }, {
-                "column": 1,
-                "answer": true,
-                "row": 5
-            }, {
-                "column": 2,
-                "answer": false,
-                "row": 5
-            }, {
-                "column": 3,
-                "answer": false,
-                "row": 5
-            }, {
-                "column": 4,
-                "answer": false,
-                "row": 5
-            }, {
-                "column": 5,
-                "answer": null,
-                "row": 5
-            }]
-        }
-    }];
-
-
-    "use strict";
-
-
-    /**
-     * Grid Constructor function
-     * =======================
-     * Its a bit of a miss match of vanilla JS and jQuery...sorry,
-     * wanted to do everything in JS but for speed i did jQuery
-     * =======================
-     *
-     *
-     */
-
-    function Grid(task) {
-
-        this.canvas;
-
-
-        /*
-         If we are on the main mechanic the pass in the task object from Pybossa.
-         Else we are on the feedback section task is returned as undefined
-         so we create a temporary object to "store" some data in about the users
-         feedback.
-         */
-
-
-        this.task = task;
-        this.zoomLensClickEvent();
-
+        "squares": [{
+            "column": 0,
+            "answer": null,
+            "row": 0
+        }, {
+            "column": 1,
+            "answer": null,
+            "row": 0
+        }, {
+            "column": 2,
+            "answer": false,
+            "row": 0
+        }, {
+            "column": 3,
+            "answer": false,
+            "row": 0
+        }, {
+            "column": 4,
+            "answer": null,
+            "row": 0
+        }, {
+            "column": 5,
+            "answer": null,
+            "row": 0
+        }, {
+            "column": 0,
+            "answer": null,
+            "row": 1
+        }, {
+            "column": 1,
+            "answer": false,
+            "row": 1
+        }, {
+            "column": 2,
+            "answer": true,
+            "row": 1
+        }, {
+            "column": 3,
+            "answer": true,
+            "row": 1
+        }, {
+            "column": 4,
+            "answer": true,
+            "row": 1
+        }, {
+            "column": 5,
+            "answer": null,
+            "row": 1
+        }, {
+            "column": 0,
+            "answer": false,
+            "row": 2
+        }, {
+            "column": 1,
+            "answer": false,
+            "row": 2
+        }, {
+            "column": 2,
+            "answer": true,
+            "row": 2
+        }, {
+            "column": 3,
+            "answer": true,
+            "row": 2
+        }, {
+            "column": 4,
+            "answer": true,
+            "row": 2
+        }, {
+            "column": 5,
+            "answer": true,
+            "row": 2
+        }, {
+            "column": 0,
+            "answer": true,
+            "row": 3
+        }, {
+            "column": 1,
+            "answer": true,
+            "row": 3
+        }, {
+            "column": 2,
+            "answer": false,
+            "row": 3
+        }, {
+            "column": 3,
+            "answer": true,
+            "row": 3
+        }, {
+            "column": 4,
+            "answer": true,
+            "row": 3
+        }, {
+            "column": 5,
+            "answer": true,
+            "row": 3
+        }, {
+            "column": 0,
+            "answer": true,
+            "row": 4
+        }, {
+            "column": 1,
+            "answer": true,
+            "row": 4
+        }, {
+            "column": 2,
+            "answer": false,
+            "row": 4
+        }, {
+            "column": 3,
+            "answer": true,
+            "row": 4
+        }, {
+            "column": 4,
+            "answer": true,
+            "row": 4
+        }, {
+            "column": 5,
+            "answer": true,
+            "row": 4
+        }, {
+            "column": 0,
+            "answer": null,
+            "row": 5
+        }, {
+            "column": 1,
+            "answer": true,
+            "row": 5
+        }, {
+            "column": 2,
+            "answer": false,
+            "row": 5
+        }, {
+            "column": 3,
+            "answer": false,
+            "row": 5
+        }, {
+            "column": 4,
+            "answer": false,
+            "row": 5
+        }, {
+            "column": 5,
+            "answer": null,
+            "row": 5
+        }]
     }
+}];
+
+
+"use strict";
+
+
+/**
+ * Grid Constructor function
+ * =======================
+ * Its a bit of a miss match of vanilla JS and jQuery...sorry,
+ * wanted to do everything in JS but for speed i did jQuery
+ * =======================
+ *
+ *
+ */
+
+function Grid(task) {
+
+    this.canvas;
 
 
     /*
-     For creating a grid overlayed over the image
+     If we are on the main mechanic the pass in the task object from Pybossa.
+     Else we are on the feedback section task is returned as undefined
+     so we create a temporary object to "store" some data in about the users
+     feedback.
      */
 
-    Grid.prototype.createGrid = function (canvasElement) {
+
+    this.task = task;
+    this.zoomLensClickEvent();
+
+}
 
 
-        var rows = 6,
-            columns = 6,
-            gridHeight = 460 / columns,
-            gridWidth = 460 / rows;
+/*
+ For creating a grid overlayed over the image
+ */
 
-        this.canvas = Raphael(canvasElement, 460, 460);
-
-
-        /*
-         creates 36 grid squares in raphael
-         */
-
-        var x, y, i = -1;
-        for (y = 0; y < rows; y += 1) {
-            for (x = 0; x < columns; x += 1) {
-
-                i++;
-
-                var offsetH = y,
-                    offsetW = x,
-                    moveDown = (y + gridHeight - offsetH) * y,
-                    moveRight = (x + gridWidth - offsetW) * x,
-                    gridSquare = this.canvas.rect(moveRight, moveDown, gridWidth, gridHeight).attr({
-                        "stroke": "#fff"
-                    });
-                gridSquare.node.setAttribute("class", "grid-item");
+Grid.prototype.createGrid = function(canvasElement) {
 
 
-                /*
-                 Make sure grid squares start from id 0
-                 */
+    var rows = 6,
+        columns = 6,
+        gridHeight = 460 / columns,
+        gridWidth = 460 / rows;
 
-                gridSquare.id = i;
-
-                gridSquare.column = x;
-                gridSquare.row = y;
-                gridSquare.has_cancer = null;
-
-                /*
-                 Save all grid squares in array within main task object
-                 We can then grab this when saving the info at the end
-                 */
-
-
-                this.task.answer.squares.push(gridSquare);
-
-
-            }
-        }
-
-    };
+    this.canvas = Raphael(canvasElement, 460, 460);
 
 
     /*
-     Initalise and listen for the click on on the little zoom lens and then
-     use Raphaeljs functions to find the closest square.
+     creates 36 grid squares in raphael
      */
 
-    Grid.prototype.zoomLensClickEvent = function () {
+    var x, y, i = -1;
+    for (y = 0; y < rows; y += 1) {
+        for (x = 0; x < columns; x += 1) {
 
-        var clicks = 0,
-            timer = null,
-            _this = this;
+            i++;
 
-        $("body").on("click touchstart", ".zoomLens", function (evt) {
-            evt.preventDefault();
-            clicks++; //count clicks
-
-            var activeSquare = _this.findClosestSquare();
-            var activeSquareNode = activeSquare.node;
+            var offsetH = y,
+                offsetW = x,
+                moveDown = (y + gridHeight - offsetH) * y,
+                moveRight = (x + gridWidth - offsetW) * x,
+                gridSquare = this.canvas.rect(moveRight, moveDown, gridWidth, gridHeight).attr({
+                    "stroke": "#fff"
+                });
+            gridSquare.node.setAttribute("class", "grid-item");
 
 
             /*
-             Not able to use jQuery .click or .dblclick for some reason i can't remember
-             If we can then should use jQuery...might be quicker and easier
+             Make sure grid squares start from id 0
              */
 
-            if (activeSquareNode.className.animVal === "grid-item") {
+            gridSquare.id = i;
 
-                activeSquareNode.setAttribute("class", "grid-item grid-item-success");
-                activeSquare.has_cancer = true;
-
-            } else if (activeSquareNode.className.animVal === "grid-item grid-item-success") {
-
-                activeSquareNode.setAttribute("class", "grid-item grid-item-error");
-                activeSquare.has_cancer = false;
-
-            } else {
-
-                activeSquareNode.setAttribute("class", "grid-item");
-                activeSquare.has_cancer = null;
-
-            }
-
-
-        });
-    };
-
-
-    /*
-     Loop through the grid items and find the closest matching grid that have the clicked coordinates
-     */
-
-    Grid.prototype.findClosestSquare = function () {
-
-        var _this = this,
-            activeSquare,
-            target = $(".zoomLens"),
-            target_pos = {
-                x: parseInt(target.css("left")),
-                y: parseInt(target.css("top"))
-            };
-
-        // Center the zoom cursor to middle of square
-        target_pos.x = target_pos.x + 35.2;
-        target_pos.y = target_pos.y + 35.2;
-
-
-        // Find the closet grid item
-
-
-        $.each(_this.task.answer.squares, function (key, value) {
-            if (value.isPointInside(target_pos.x, target_pos.y)) {
-                activeSquare = value;
-            }
-        });
-
-        return activeSquare;
-    };
-
-
-    /*
-     Selects all of the grid squares turning them red and changing the defalut
-     square answer to "true" is does have cancer
-     */
-
-    Grid.prototype.selectAllSquares = function () {
-        for (var i = 0; i < this.task.answer.squares.length; i++) {
-            var gridSquare = this.task.answer.squares[i],
-                gridSquareNode = this.task.answer.squares[i].node;
-            gridSquare.has_cancer = true;
-            gridSquareNode.setAttribute("class", "grid-item grid-item-success");
-        }
-    };
-
-
-    /*
-     Deselects all of the grid squares turning them to have no fill color.
-     This also changes the cancer value to "null"
-     */
-
-    Grid.prototype.deselectAllSquares = function () {
-        for (var i = 0; i < this.task.answer.squares.length; i++) {
-            var gridSquare = this.task.answer.squares[i],
-                gridSquareNode = this.task.answer.squares[i].node;
+            gridSquare.column = x;
+            gridSquare.row = y;
             gridSquare.has_cancer = null;
-            gridSquareNode.setAttribute("class", "grid-item");
+
+            /*
+             Save all grid squares in array within main task object
+             We can then grab this when saving the info at the end
+             */
+
+
+            this.task.answer.squares.push(gridSquare);
+
+
         }
     }
 
+};
 
 
+/*
+ Initalise and listen for the click on on the little zoom lens and then
+ use Raphaeljs functions to find the closest square.
+ */
+
+Grid.prototype.zoomLensClickEvent = function() {
+
+    var clicks = 0,
+        timer = null,
+        _this = this;
+
+    $("body").on("click touchstart", ".zoomLens", function(evt) {
+        evt.preventDefault();
+        clicks++; //count clicks
+
+        var activeSquare = _this.findClosestSquare();
+        var activeSquareNode = activeSquare.node;
 
 
+        /*
+         Not able to use jQuery .click or .dblclick for some reason i can't remember
+         If we can then should use jQuery...might be quicker and easier
+         */
 
+        if (activeSquareNode.className.animVal === "grid-item") {
 
+            activeSquareNode.setAttribute("class", "grid-item grid-item-success");
+            activeSquare.has_cancer = true;
 
-    /**
-     * FeedbackGrid Constructor function
-     * =======================
-     * Its a bit of a miss match of vanilla JS and jQuery...sorry,
-     * wanted to do everything in JS but for speed i did jQuery
-     * =======================
-     *
-     *
-     */
+        } else if (activeSquareNode.className.animVal === "grid-item grid-item-success") {
 
-    function FeedbackGrid() {
-        this.canvas;
-        this.tickCross = [];
-        this.feedbackObj = {answer: {squares: []}};
-        this.gridSquares = this.feedbackObj.answer.squares;
-        this.zoomLensClickEvent();
-    }
+            activeSquareNode.setAttribute("class", "grid-item grid-item-error");
+            activeSquare.has_cancer = false;
 
-    /*
-     For creating a grid overlayed over the image
-     */
+        } else {
 
-    FeedbackGrid.prototype.createGrid = function (canvasElement) {
-        var rows = 6;
-        var columns = 6;
-        var gridHeight = 460 / columns;
-        var gridWidth = 460 / rows;
-        this.canvas = Raphael(canvasElement, 460, 460);
+            activeSquareNode.setAttribute("class", "grid-item");
+            activeSquare.has_cancer = null;
 
-        // Create a 6x6 grid using Raphaeljs elements so we can interact with them
-        //
-        //
-        var x, y, i = -1;
-        for (y = 0; y < rows; y += 1) {
-            for (x = 0; x < columns; x += 1) {
-                i++;
-                var offsetH = y;
-                var offsetW = x;
-                var moveDown = (y + gridHeight - offsetH) * y;
-                var moveRight = (x + gridWidth - offsetW) * x;
-                var gridSquare = this.canvas.rect(moveRight, moveDown, gridWidth, gridHeight).attr({
-                    "stroke": "#fff"
-                });
-
-                // Make sure grid squares start from id 0
-                //
-                gridSquare.id = i;
-                gridSquare.column = x;
-                gridSquare.row = y;
-                gridSquare.has_cancer = null;
-
-                gridSquare.node.setAttribute("class", "grid-item");
-
-                this.gridSquares.push(gridSquare);
-
-            }
         }
-    };
 
 
-    /*
-     Initalise and listen for the click on on the little zoom lens and then
-     use Raphaeljs functions to find the closest square.
-     */
+    });
+};
 
 
-    FeedbackGrid.prototype.zoomLensClickEvent = function () {
+/*
+ Loop through the grid items and find the closest matching grid that have the clicked coordinates
+ */
 
-        var _this = this;
+Grid.prototype.findClosestSquare = function() {
 
-        $("body").on("click", ".zoomLens", function (evt) {
-            evt.preventDefault();
-
-            //if(  step == 1 ) _this.hideMyAnalysis();
-
-            var activeSquare = _this.findClosestSquare();
-            var activeSquareNode = activeSquare.node;
-
-            // Check the status of the clicked on grid square and
-            // add a class to change its color. Also check if the pathologist
-            // agreed with the users answer.
-            //
-            //
-            if (activeSquareNode.className.animVal === "grid-item") {
-                activeSquareNode.setAttribute("class", "grid-item grid-item-success");
-                activeSquare.has_cancer = true;
-                _this.checkAnswer(true, activeSquare);
-
-            } else if (activeSquareNode.className.animVal === "grid-item grid-item-success") {
-                activeSquareNode.setAttribute("class", "grid-item grid-item-error");
-                activeSquare.has_cancer = false;
-                _this.checkAnswer(false, activeSquare);
-
-            } else {
-                activeSquareNode.setAttribute("class", "grid-item");
-                activeSquare.has_cancer = null;
-                _this.checkAnswer(null, activeSquare);
-            }
-        });
-
-    };
-
-
-    /*
-     Loop through the grid items and find the closest matching grid that have the clicked coordinates
-     */
-
-    FeedbackGrid.prototype.findClosestSquare = function () {
-
-        var _this = this;
-        var activeSquare;
-
-        // Find the position of the click on the zoomLens and then
-        // center the point to the middle of the square.
-        //
-        //
-        var target = $(".zoomLens");
-        var target_pos = {
+    var _this = this,
+        activeSquare,
+        target = $(".zoomLens"),
+        target_pos = {
             x: parseInt(target.css("left")),
             y: parseInt(target.css("top"))
         };
 
-        target_pos.x = target_pos.x + 35.2;
-        target_pos.y = target_pos.y + 35.2;
+    // Center the zoom cursor to middle of square
+    target_pos.x = target_pos.x + 35.2;
+    target_pos.y = target_pos.y + 35.2;
 
-        // Find the closet grid square to the point of the click
-        // We use a Raphaeljs method isPointInside to return the element
-        //
-        //
-        $.each(_this.gridSquares, function (idx, square) {
-            if (square.isPointInside(target_pos.x, target_pos.y)) {
-                activeSquare = square;
-            }
-        });
 
-        return activeSquare;
+    // Find the closet grid item
+
+
+    $.each(_this.task.answer.squares, function(key, value) {
+        if (value.isPointInside(target_pos.x, target_pos.y)) {
+            activeSquare = value;
+        }
+    });
+
+    return activeSquare;
+};
+
+
+/*
+ Selects all of the grid squares turning them red and changing the defalut
+ square answer to "true" is does have cancer
+ */
+
+Grid.prototype.selectAllSquares = function() {
+    for (var i = 0; i < this.task.answer.squares.length; i++) {
+        var gridSquare = this.task.answer.squares[i],
+            gridSquareNode = this.task.answer.squares[i].node;
+        gridSquare.has_cancer = true;
+        gridSquareNode.setAttribute("class", "grid-item grid-item-success");
+    }
+};
+
+
+/*
+ Deselects all of the grid squares turning them to have no fill color.
+ This also changes the cancer value to "null"
+ */
+
+Grid.prototype.deselectAllSquares = function() {
+    for (var i = 0; i < this.task.answer.squares.length; i++) {
+        var gridSquare = this.task.answer.squares[i],
+            gridSquareNode = this.task.answer.squares[i].node;
+        gridSquare.has_cancer = null;
+        gridSquareNode.setAttribute("class", "grid-item");
+    }
+};
+
+
+
+
+
+
+
+
+/**
+ * FeedbackGrid Constructor function
+ * =======================
+ * Its a bit of a miss match of vanilla JS and jQuery...sorry,
+ * wanted to do everything in JS but for speed i did jQuery
+ * =======================
+ *
+ *
+ */
+
+function FeedbackGrid() {
+    this.canvas;
+    this.tickCross = [];
+    this.feedbackObj = {
+        answer: {
+            squares: []
+        }
     };
+    this.gridSquares = this.feedbackObj.answer.squares;
+    this.zoomLensClickEvent();
+}
+
+/*
+ For creating a grid overlayed over the image
+ */
+
+FeedbackGrid.prototype.createGrid = function(canvasElement) {
+    var rows = 6;
+    var columns = 6;
+    var gridHeight = 460 / columns;
+    var gridWidth = 460 / rows;
+    this.canvas = Raphael(canvasElement, 460, 460);
+
+    // Create a 6x6 grid using Raphaeljs elements so we can interact with them
+    //
+    //
+    var x, y, i = -1;
+    for (y = 0; y < rows; y += 1) {
+        for (x = 0; x < columns; x += 1) {
+            i++;
+            var offsetH = y;
+            var offsetW = x;
+            var moveDown = (y + gridHeight - offsetH) * y;
+            var moveRight = (x + gridWidth - offsetW) * x;
+            var gridSquare = this.canvas.rect(moveRight, moveDown, gridWidth, gridHeight).attr({
+                "stroke": "#fff"
+            });
+
+            // Make sure grid squares start from id 0
+            //
+            gridSquare.id = i;
+            gridSquare.column = x;
+            gridSquare.row = y;
+            gridSquare.has_cancer = null;
+
+            gridSquare.node.setAttribute("class", "grid-item");
+
+            this.gridSquares.push(gridSquare);
+
+        }
+    }
+};
 
 
-    /*
-     After the grid square has been click we check that answer against what the
-     pathologist said about the same square.
-     */
-
-    FeedbackGrid.prototype.checkAnswer = function (action, activeSquare) {
-
-        var _this = this;
-        var pathologistAnswer;
+/*
+ Initalise and listen for the click on on the little zoom lens and then
+ use Raphaeljs functions to find the closest square.
+ */
 
 
-        $.each(feedbackData[step].info, function (idx, patholgistSquare) {
-            if (typeof(patholgistSquare[activeSquare.id]) == 'object') {
-                // Find the pathologist answer for that square
-                //
-                //
-                pathologistAnswer = patholgistSquare[activeSquare.id];
-            }
-        });
+FeedbackGrid.prototype.zoomLensClickEvent = function() {
 
-        // Check if that square already has a Tick or Cross marking,
-        // if it does remove it and add a new marking
+    var _this = this;
+
+    $("body").on("click", ".zoomLens", function(evt) {
+        evt.preventDefault();
+
+        //if(  step == 1 ) _this.hideMyAnalysis();
+
+        var activeSquare = _this.findClosestSquare();
+        var activeSquareNode = activeSquare.node;
+
+        // Check the status of the clicked on grid square and
+        // add a class to change its color. Also check if the pathologist
+        // agreed with the users answer.
         //
         //
-        this.removeTickOrCross(activeSquare);
+        if (activeSquareNode.className.animVal === "grid-item") {
+            activeSquareNode.setAttribute("class", "grid-item grid-item-success");
+            activeSquare.has_cancer = true;
+            _this.checkAnswer(true, activeSquare);
 
-        // When the incorrect grid square is fading out and the user
-        // clicks on that square, stop the animation untill they have stopped
-        // clicking.
-        //
-        //
-        activeSquare.stop();
-
-        activeSquare.animate({
-            "fill-opacity": 1
-        }, 100);
-
-        // If pathologist agree with the answer given
-        //
-        //
-        if (action === pathologistAnswer.answer) {
-
-            var tick = this.addTick(activeSquare);
-
-            if (step > 1) {
-                $("#pathologistFeedback").hide();
-                tick.attr("opacity", 0);
-            } else {
-                this.updateFeedbackProgress();
-                this.updateFeedback(pathologistAnswer, true);
-
-                // activeSquare.animate({
-                //     "fill-opacity": 0
-                // }, 2000, function () {
-                //     activeSquare.node.setAttribute("class", "grid-item");
-                // });
-            }
+        } else if (activeSquareNode.className.animVal === "grid-item grid-item-success") {
+            activeSquareNode.setAttribute("class", "grid-item grid-item-error");
+            activeSquare.has_cancer = false;
+            _this.checkAnswer(false, activeSquare);
 
         } else {
+            activeSquareNode.setAttribute("class", "grid-item");
+            activeSquare.has_cancer = null;
+            _this.checkAnswer(null, activeSquare);
+        }
+    });
 
-            var cross = this.addCross(activeSquare);
-            if (step > 1) {
-                $("#pathologistFeedback").hide();
-                cross.attr("opacity", 0);
-            } else {
+};
 
 
-                this.updateFeedbackProgress();
-                this.updateFeedback(pathologistAnswer, false);
+/*
+ Loop through the grid items and find the closest matching grid that have the clicked coordinates
+ */
 
-                activeSquare.animate({
+FeedbackGrid.prototype.findClosestSquare = function() {
+
+    var _this = this;
+    var activeSquare;
+
+    // Find the position of the click on the zoomLens and then
+    // center the point to the middle of the square.
+    //
+    //
+    var target = $(".zoomLens");
+    var target_pos = {
+        x: parseInt(target.css("left")),
+        y: parseInt(target.css("top"))
+    };
+
+    target_pos.x = target_pos.x + 35.2;
+    target_pos.y = target_pos.y + 35.2;
+
+    // Find the closet grid square to the point of the click
+    // We use a Raphaeljs method isPointInside to return the element
+    //
+    //
+    $.each(_this.gridSquares, function(idx, square) {
+        if (square.isPointInside(target_pos.x, target_pos.y)) {
+            activeSquare = square;
+        }
+    });
+
+    return activeSquare;
+};
+
+
+/*
+ After the grid square has been click we check that answer against what the
+ pathologist said about the same square.
+ */
+
+FeedbackGrid.prototype.checkAnswer = function(action, activeSquare) {
+
+    var _this = this;
+    var pathologistAnswer;
+
+
+    $.each(feedbackData[step].info, function(idx, patholgistSquare) {
+        if (typeof(patholgistSquare[activeSquare.id]) == 'object') {
+            // Find the pathologist answer for that square
+            //
+            //
+            pathologistAnswer = patholgistSquare[activeSquare.id];
+        }
+    });
+
+    // Check if that square already has a Tick or Cross marking,
+    // if it does remove it and add a new marking
+    //
+    //
+    this.removeTickOrCross(activeSquare);
+
+    // When the incorrect grid square is fading out and the user
+    // clicks on that square, stop the animation untill they have stopped
+    // clicking.
+    //
+    //
+    activeSquare.stop();
+
+    activeSquare.animate({
+        "fill-opacity": 1
+    }, 100);
+
+    // If pathologist agree with the answer given
+    //
+    //
+    if (action === pathologistAnswer.answer) {
+
+        var tick = this.addTick(activeSquare);
+
+        if (step > 1) {
+            $("#pathologistFeedback").hide();
+            tick.attr("opacity", 0);
+        } else {
+            this.updateFeedbackProgress();
+            this.updateFeedback(pathologistAnswer, true);
+
+            // activeSquare.animate({
+            //     "fill-opacity": 0
+            // }, 2000, function () {
+            //     activeSquare.node.setAttribute("class", "grid-item");
+            // });
+        }
+
+    } else {
+
+        var cross = this.addCross(activeSquare);
+        if (step > 1) {
+            $("#pathologistFeedback").hide();
+            cross.attr("opacity", 0);
+        } else {
+
+
+            this.updateFeedbackProgress();
+            this.updateFeedback(pathologistAnswer, false);
+
+            activeSquare.animate({
+                "fill-opacity": 0
+            }, 2000, function() {
+                activeSquare.node.setAttribute("class", "grid-item");
+            });
+
+
+        }
+    }
+
+    // Check if the grid has been clicked, enable the "Check my work" button
+    //
+    //
+    if (step > 1 && this.tickCross.length > 0) {
+        $("#checkMyWorkBtn").removeClass("disabled");
+    }
+
+
+};
+
+FeedbackGrid.prototype.removeTickOrCross = function(activeSquare) {
+    var parentId = activeSquare.id;
+    $.each(this.tickCross, function(idx, marking) {
+        if (parentId === marking["data-parent_id"]) {
+            marking.remove();
+        }
+    });
+};
+
+
+FeedbackGrid.prototype.addTick = function(activeSquare) {
+
+
+    var x = Math.floor(activeSquare.attr("x")),
+        y = Math.floor(activeSquare.attr("y")),
+        parentId = activeSquare.id,
+        tickPath = "M " + (x + 15) + "," + (y + 35) + " L " + (x + 30) + "," + (y + 50) + " L " + (x + 60) + "," + (y + 20);
+
+    var tick = this.canvas.path(tickPath).attr({
+        "stroke-width": "3px",
+        "stroke-opacity": 0
+    });
+
+    var anim = Raphael.animation({
+        "stroke-opacity": 1
+    }, 250);
+    tick.animate(anim.delay(1000));
+
+
+    tick["data-parent_id"] = parentId;
+    tick["class"] = "tick";
+    this.tickCross.push(tick);
+
+    return tick;
+};
+
+
+FeedbackGrid.prototype.addCross = function(activeSquare) {
+
+    var x = Math.floor(activeSquare.attr("x"));
+    var y = Math.floor(activeSquare.attr("y"));
+    var parentId = activeSquare.id;
+    var crossPath = "M " + (x + 20) + "," + (y + 20) + " L " + (x + 55) + "," + (y + 55) + "M " + (x + 20) + "," + (y + 55) + " L " + (x + 55) + "," + (y + 20);
+
+    var cross = this.canvas.path(crossPath).attr({
+        "stroke-width": "3px",
+        "stroke-opacity": 0
+    });
+
+    var anim = Raphael.animation({
+        "stroke-opacity": 1
+    }, 250);
+    cross.animate(anim.delay(1000));
+
+    cross["data-parent_id"] = parentId;
+    cross["class"] = "cross";
+    this.tickCross.push(cross);
+    return cross;
+};
+
+
+FeedbackGrid.prototype.updateFeedback = function(pathologistAnswer, state) {
+    if (state) {
+        $("#pathologistFeedback").removeClass("alert-info").addClass("alert-success");
+        $("#pathologistFeedback p").html("<strong>Well done!</strong> Our pathologists agreed with you on that one. Keep going and try and do the whole grid. ");
+    } else {
+        $("#pathologistFeedback").removeClass("alert-success").addClass("alert-info");
+        var htmlString = 'Our pathologists didn’t agree with you on that one.';
+        htmlString += ' <strong>';
+        if (pathologistAnswer.answer === true) {
+            htmlString += 'They said this square contains cancer.';
+        }
+        if (pathologistAnswer.answer === false) {
+            htmlString += 'They said this square did not contain cancer.';
+        }
+        if (pathologistAnswer.answer === null) {
+            htmlString += 'They said this square was blank';
+        }
+        htmlString += '</strong>';
+        //htmlString += ' Try again, and remember to look at the reference images below for guidance';
+        $("#pathologistFeedback p").html(htmlString);
+    }
+    $("#pathologistFeedback").show();
+    //$("#pathologistFeedback p").delay(4000).fadeOut(500);
+};
+
+
+/*
+ Displays the pathologist tick's and cross's by changing the opacity of the square
+ */
+
+FeedbackGrid.prototype.showMyAnalysis = function() {
+
+    this.updateFeedbackProgress();
+
+    var feedbackObjAnswer = this.feedbackObj.answer;
+
+    var crosses = [];
+    $.each(this.tickCross, function(key, value) {
+        value.attr("opacity", 1);
+        if (value.class === "cross") {
+            findParentSquare(value, feedbackObjAnswer);
+        }
+    });
+
+    function findParentSquare(cross, feedbackObjAnswer) {
+        for (var i = 0; i < feedbackData[step].info.squares.length; i++) {
+            var gridSquare = feedbackObjAnswer.squares[i],
+                gridSquareNode = feedbackObjAnswer.squares[i].node,
+                pathologistAnswer = feedbackData[step].info.squares[i].answer;
+            if (gridSquare.id === cross["data-parent_id"]) {
+                gridSquare.node.setAttribute("class", "grid-item");
+                gridSquare.animate({
                     "fill-opacity": 0
-                }, 2000, function () {
-                    activeSquare.node.setAttribute("class", "grid-item");
-                });
-
+                }, 2000);
 
             }
         }
+    }
 
-        // Check if the grid has been clicked, enable the "Check my work" button
-        //
-        //
-        if (step > 1 && this.tickCross.length > 0) {
-            $("#checkMyWorkBtn").removeClass("disabled");
+};
+
+
+FeedbackGrid.prototype.updateFeedbackProgress = function() {
+
+    var $feedbackProgressBar = $("#feedbackProgress"),
+        totalSquares = 36,
+        correctSquares = 0;
+
+    var blankSquares = this.checkBlankSquares();
+    var interactedBlankSquares = this.interactedBlanks();
+
+    totalSquares -= blankSquares;
+    totalSquares += interactedBlankSquares;
+
+    $.each(this.tickCross, function(key, value) {
+        value.attr("opacity", 1);
+        if (value["class"] === "tick") {
+            correctSquares++;
         }
+    });
 
+    function between(x, min, max) {
+        return x >= min && x <= max;
+    }
 
-    };
+    function percentage(x) {
+        return Math.floor((x / totalSquares) * 100);
+    }
 
-    FeedbackGrid.prototype.removeTickOrCross = function (activeSquare) {
-        var parentId = activeSquare.id;
-        $.each(this.tickCross, function (idx, marking) {
-            if (parentId === marking["data-parent_id"]) {
-                marking.remove();
-            }
-        });
-    };
-
-
-    FeedbackGrid.prototype.addTick = function (activeSquare) {
-
-
-        var x = Math.floor(activeSquare.attr("x")),
-            y = Math.floor(activeSquare.attr("y")),
-            parentId = activeSquare.id,
-            tickPath = "M " + (x + 15) + "," + (y + 35) + " L " + (x + 30) + "," + (y + 50) + " L " + (x + 60) + "," + (y + 20);
-
-        var tick = this.canvas.path(tickPath).attr({
-            "stroke-width": "3px",
-            "stroke-opacity": 0
-        });
+    var pct = percentage(correctSquares);
 
-        var anim = Raphael.animation({"stroke-opacity": 1}, 250);
-        tick.animate(anim.delay(1000));
+    $(".progress").show();
+    $("#feedbackProgressText").show();
 
 
-        tick["data-parent_id"] = parentId;
-        tick["class"] = "tick";
-        this.tickCross.push(tick);
+    totalGridPercentage = pct;
 
-        return tick;
-    };
 
+    if (pct >= 5 && hasSeenGuidenceInfo === true) {
+        $("#nextFeedbackStep, #finishFeedback").removeClass("disabled");
 
-    FeedbackGrid.prototype.addCross = function (activeSquare) {
+        $(".taskTitle, .taskSubTitle, .taskParagraph").hide();
+        $("#" + "feedbackStep" + step + " .taskFeedback").show();
 
-        var x = Math.floor(activeSquare.attr("x"));
-        var y = Math.floor(activeSquare.attr("y"));
-        var parentId = activeSquare.id;
-        var crossPath = "M " + (x + 20) + "," + (y + 20) + " L " + (x + 55) + "," + (y + 55) + "M " + (x + 20) + "," + (y + 55) + " L " + (x + 55) + "," + (y + 20);
-
-        var cross = this.canvas.path(crossPath).attr({
-            "stroke-width": "3px",
-            "stroke-opacity": 0
-        });
+    } else {
+        $("#nextFeedbackStep, #finishFeedback").addClass("disabled");
+    }
 
-        var anim = Raphael.animation({"stroke-opacity": 1}, 250);
-        cross.animate(anim.delay(1000));
+    this.percentageFeedbackText(pct);
 
-        cross["data-parent_id"] = parentId;
-        cross["class"] = "cross";
-        this.tickCross.push(cross);
-        return cross;
-    };
+    $feedbackProgressBar.width(pct + "%");
+};
 
+FeedbackGrid.prototype.percentageFeedbackText = function(pct) {
+    var $feedbackText = $("#feedbackProgressText");
 
-    FeedbackGrid.prototype.updateFeedback = function (pathologistAnswer, state) {
-        if (state) {
-            $("#pathologistFeedback").removeClass("alert-info").addClass("alert-success");
-            $("#pathologistFeedback p").html("<strong>Well done!</strong> Our pathologists agreed with you on that one. Keep going and try and do the whole grid. ");
-        } else {
-            $("#pathologistFeedback").removeClass("alert-success").addClass("alert-info");
-            var htmlString = 'Our pathologists didn’t agree with you on that one.';
-            htmlString += ' <strong>';
-            if (pathologistAnswer.answer === true) {
-                htmlString += 'They said this square contains cancer.';
-            }
-            if (pathologistAnswer.answer === false) {
-                htmlString += 'They said this square did not contain cancer.';
-            }
-            if (pathologistAnswer.answer === null) {
-                htmlString += 'They said this square was blank';
-            }
-            htmlString += '</strong>';
-            //htmlString += ' Try again, and remember to look at the reference images below for guidance';
-            $("#pathologistFeedback p").html(htmlString);
-        }
-        $("#pathologistFeedback").show();
-        //$("#pathologistFeedback p").delay(4000).fadeOut(500);
-    };
 
+    var htmlString = '<h2>';
+    if (pct >= 5) {
+        htmlString += 'Well done! ';
+    }
 
-    /*
-     Displays the pathologist tick's and cross's by changing the opacity of the square
-     */
+    htmlString += 'You\'ve marked ';
 
-    FeedbackGrid.prototype.showMyAnalysis = function () {
+    htmlString += pct + '%</strong> of the image sections correctly</h2>';
 
-        this.updateFeedbackProgress();
-
-        var feedbackObjAnswer = this.feedbackObj.answer;
-
-        var crosses = [];
-        $.each(this.tickCross, function (key, value) {
-            value.attr("opacity", 1);
-            if (value.class === "cross") {
-                findParentSquare(value, feedbackObjAnswer);
-            }
-        });
-
-        function findParentSquare(cross, feedbackObjAnswer) {
-            for (var i = 0; i < feedbackData[step].info.squares.length; i++) {
-                var gridSquare = feedbackObjAnswer.squares[i],
-                    gridSquareNode = feedbackObjAnswer.squares[i].node,
-                    pathologistAnswer = feedbackData[step].info.squares[i].answer;
-                if (gridSquare.id === cross["data-parent_id"]) {
-                    gridSquare.node.setAttribute("class", "grid-item");
-                    gridSquare.animate({
-                        "fill-opacity": 0
-                    }, 2000);
-
-                }
-            }
-        }
-
-    };
-
-
-    FeedbackGrid.prototype.updateFeedbackProgress = function () {
-
-        var $feedbackProgressBar = $("#feedbackProgress"),
-            totalSquares = 36,
-            correctSquares = 0;
-
-        var blankSquares = this.checkBlankSquares();
-        var interactedBlankSquares = this.interactedBlanks();
-
-        totalSquares -= blankSquares;
-        totalSquares += interactedBlankSquares;
-
-        $.each(this.tickCross, function (key, value) {
-            value.attr("opacity", 1);
-            if (value["class"] === "tick") {
-                correctSquares++;
-            }
-        });
-
-        function between(x, min, max) {
-            return x >= min && x <= max;
-        }
-
-        function percentage(x) {
-            return Math.floor(( x / totalSquares) * 100);
-        }
-
-        var pct = percentage(correctSquares);
-
-        $(".progress").show();
-        $("#feedbackProgressText").show();
-
-
-        totalGridPercentage = pct;
-
-
-        if (pct >= 5 && hasSeenGuidenceInfo === true) {
-            $("#nextFeedbackStep, #finishFeedback").removeClass("disabled");
-
-            $(".taskTitle, .taskSubTitle, .taskParagraph").hide();
-            $("#" + "feedbackStep" + step + " .taskFeedback").show();
-
-        } else {
-            $("#nextFeedbackStep, #finishFeedback").addClass("disabled");
-        }
-
-        this.percentageFeedbackText(pct);
-
-        $feedbackProgressBar.width(pct + "%");
-    };
-
-    FeedbackGrid.prototype.percentageFeedbackText = function (pct) {
-        var $feedbackText = $("#feedbackProgressText");
-
-
-        var htmlString = '<h2>';
-        if (pct >= 5) {
-            htmlString += 'Well done! ';
-        }
-
-        htmlString += 'You\'ve marked ';
-
-        htmlString += pct + '%</strong> of the image sections correctly</h2>';
-
-        if (pct < 5) {
-            htmlString += '<h3>Get 5% correct to go onto the next slide.</h3>';
-        }
-
-
-        $feedbackText.html(htmlString);
-
-    };
-
-
-    FeedbackGrid.prototype.checkBlankSquares = function () {
-
-        var blankSquares = 0;
-        $.each(feedbackData[step].info.squares, function (key, value) {
-            if (value.answer === null) {
-                blankSquares++;
-            }
-        });
-        return blankSquares;
-
-    };
-
-
-    FeedbackGrid.prototype.interactedBlanks = function () {
-
-        var pathologists = feedbackData[step].info.squares;
-        var feedbackSquares = this.feedbackObj.answer.squares;
-        var _this = this;
-        var result = 0;
-
-        feedbackSquares.forEach(function (square, idx) {
-            var isBlank = (pathologists[idx].answer === null);
-
-            // Loop through all of the items in the grid and find the ones which
-            // have been interacted with
-            //
-            //
-            var isInteracted = _this.tickCross.filter(function (sq) {
-                    return sq["data-parent_id"] === square.id;
-                })[0] !== undefined;
-
-            if (isBlank && isInteracted) {
-                result++;
-            }
-        });
-
-        return result;
-
-    };
-
-
-    /*
-     *
-     * Modal
-     * =======================
-     *
-     *
-     *
-     */
-
-
-    function Modal() {
-        this.step = -1;
-
+    if (pct < 5) {
+        htmlString += '<h3>Get 5% correct to go onto the next slide.</h3>';
     }
 
 
-    /*
-     Initialises the modal to open. We remove the functionaly to remove modal by clicking
-     the backdrop also we stop the slides from automatically sliding to next.
-     */
+    $feedbackText.html(htmlString);
 
-    Modal.prototype.open = function (modal, goToStep) {
-
-        this.modal = modal;
-        this.tutorialStep = $(this.modal + " #" + this.step);
-
-        $( this.modal ).modal({
-            backdrop: 'static',
-            keyboard: false
-        });
-
-        this.showStep(goToStep);
+};
 
 
-    };
+FeedbackGrid.prototype.checkBlankSquares = function() {
 
-
-    Modal.prototype.getCurrentStep = function () {
-        return $(this.modal + " #" + this.step);
-    };
-
-
-    Modal.prototype.showStep = function (action) {
-
-        $(this.modal + " #" + this.step).hide();
-
-        if (typeof action == "number") {
-            this.step = action;
-        } else {
-            if (action == 'next') {
-                this.step += 1;
-            }
-            if (action == 'prev') {
-                this.step -= 1;
-            }
+    var blankSquares = 0;
+    $.each(feedbackData[step].info.squares, function(key, value) {
+        if (value.answer === null) {
+            blankSquares++;
         }
+    });
+    return blankSquares;
 
-        var z = new Zoom();
+};
 
 
-        if (this.step == 14) {
-            $('.zoomContainer').remove();
-            $('.zoomWindowContainer').remove();
-            $(".tutorialZoom14").elevateZoom();
+FeedbackGrid.prototype.interactedBlanks = function() {
+
+    var pathologists = feedbackData[step].info.squares;
+    var feedbackSquares = this.feedbackObj.answer.squares;
+    var _this = this;
+    var result = 0;
+
+    feedbackSquares.forEach(function(square, idx) {
+        var isBlank = (pathologists[idx].answer === null);
+
+        // Loop through all of the items in the grid and find the ones which
+        // have been interacted with
+        //
+        //
+        var isInteracted = _this.tickCross.filter(function(sq) {
+            return sq["data-parent_id"] === square.id;
+        })[0] !== undefined;
+
+        if (isBlank && isInteracted) {
+            result++;
         }
+    });
 
-        var $currentStep = this.getCurrentStep(),
-            $carousel = $(this.modal + " #" + this.step + " .carousel"),
-            $modalInfo = $(this.modal + " #" + this.step + " .modal-info"),
-            $items = $(this.modal + " #" + this.step + " .item");
+    return result;
 
-        if ($carousel.length > 0) {
-            $('.zoomContainer').remove();
-            $('.zoomWindowContainer').remove();
-            var tutorial = ".tutorialZoom" + this.step;
-
-            $(tutorial).elevateZoom();
+};
 
 
-            if (!$carousel.data("carousel")) {
-
-                $carousel.carousel({
-                    interval: false
-                });
-                var $indicatorList = $("#carouselIndicatorsList" + this.step);
-
-                $($items).each(function (idx) {
-                    // Adding buttons
-                    idx++;
-                    var $item = $(this),
-                        $li = '<div class="carousel-selector-' + idx + '" type="button">' + idx + '</div>';
-
-                    $indicatorList.append($li);
-
-                    //Adding item-info to modal-info
-                    $(this).children(".item-inner");
-                    $modalInfo.append($item.children(".item-inner"));
-                });
-
-                $currentStep.find(".modal-info .item-inner").first().addClass("active");
-                $currentStep.find(".carousel-indicators-custom div").first().addClass("active");
+/*
+ *
+ * Modal
+ * =======================
+ *
+ *
+ *
+ */
 
 
-                // When you click on each selector
-                // Load new content
-                $('[class^=carousel-selector-]').on('click', this.nextSlideContent($currentStep));
-            }
+function Modal() {
+    this.step = -1;
+
+}
+
+
+/*
+ Initialises the modal to open. We remove the functionaly to remove modal by clicking
+ the backdrop also we stop the slides from automatically sliding to next.
+ */
+
+Modal.prototype.open = function(modal, goToStep) {
+
+    this.modal = modal;
+    this.tutorialStep = $(this.modal + " #" + this.step);
+
+    $(this.modal).modal({
+        backdrop: 'static',
+        keyboard: false
+    });
+
+    this.showStep(goToStep);
+
+
+};
+
+
+Modal.prototype.getCurrentStep = function() {
+    return $(this.modal + " #" + this.step);
+};
+
+
+Modal.prototype.showStep = function(action) {
+
+    $(this.modal + " #" + this.step).hide();
+
+    if (typeof action == "number") {
+        this.step = action;
+    } else {
+        if (action == 'next') {
+            this.step += 1;
         }
-
-
-        if (this.step === 0) {
-            $("#prevBtn").hide();
-        } else {
-            $("#prevBtn").show();
+        if (action == 'prev') {
+            this.step -= 1;
         }
-
-        if ($("#mechanicContent").is(':visible')) {
-
-            $("#closeMechanicTutorialBtn").show();
-            $("#tutorialSummary").hide();
-            $("#mechanicTutorialSummary").show();
-        }
-
-        var $lastStep = $('#tutorialModal .modal-body').length - 1;
-        if (this.step == $lastStep) {
-            $("#nextBtn").hide();
-
-            if ($("#mechanicContent").is(':visible')) {
-                $("#startFeedbackBtn").hide();
-                $("#goBackBtn").show();
-
-
-            } else {
-                $("#startFeedbackBtn").show();
-                $("#goBackBtn").hide();
-            }
-
-        } else {
-            $("#nextBtn").show();
-            $("#startFeedbackBtn").hide();
-        }
-
-
-        console.log($currentStep);
-        $currentStep.show();
-
-    };
-
-
-    /*
-     If a step in the carousel includes a carousel with multiple slides
-     find the content that relates to it and show it one by one.
-     */
-
-    Modal.prototype.nextSlideContent = function (carousel) {
-
-        return function () {
-            // Add and remove active class
-            $(this).parent().children().removeClass("active");
-            $(this).addClass("active");
-
-            var id_selector = $(this).attr("class");
-            var id = id_selector.substr(id_selector.length - 8);
-            id = parseInt(id);
-            var $itemInners = carousel.find(".modal-info .item-inner");
-            $itemInners.removeClass('active');
-            $($itemInners[id - 1]).addClass('active');
-            var $modalId = $(this).parent().parent().parent().parent().attr("id");
-            $('#myCarousel' + $modalId).carousel(id - 1);
-        };
-
-    };
-
-
-    /*
-     *
-     * Elevate Zoom
-     * =======================
-     *
-     *
-     */
-
-
-    function Zoom() {
-
     }
 
-
-    Zoom.prototype.addZoom = function (element) {
-        //alert("zoom");
-        var cookie = $.cookie(cookie_feedback_name),
-            zoomWindowPos;
-
-        if (cookie === "true")
-            zoomWindowPos = "feedbackZoomWindowLocation";
-        else
-            zoomWindowPos = "mechanicZoomWindowLocation";
+    var z = new Zoom();
 
 
-        var zoomWindowPosHeight = $("#" + zoomWindowPos).innerHeight(),
-            zoomWindowPosWidth = $("#" + zoomWindowPos).innerWidth();
-
-        //console.log(zoomWindowPosHeight,zoomWindowPosWidth);
-
-        element.elevateZoom({
-            zoomWindowPosition: zoomWindowPos,
-            lensFadeIn: 500,
-            lensFadeOut: 500,
-            zoomWindowHeight: 460,
-            zoomWindowWidth: 460,
-            cursor: "pointer"
-        });
-
-
-    };
-
-
-    Zoom.prototype.removeZoom = function (element) {
-        $.removeData(element, 'elevateZoom');
+    if (this.step == 14) {
         $('.zoomContainer').remove();
         $('.zoomWindowContainer').remove();
+        $(".tutorialZoom14").elevateZoom();
+    }
+
+    var $currentStep = this.getCurrentStep(),
+        $carousel = $(this.modal + " #" + this.step + " .carousel"),
+        $modalInfo = $(this.modal + " #" + this.step + " .modal-info"),
+        $items = $(this.modal + " #" + this.step + " .item");
+
+    if ($carousel.length > 0) {
+        $('.zoomContainer').remove();
+        $('.zoomWindowContainer').remove();
+        var tutorial = ".tutorialZoom" + this.step;
+
+        $(tutorial).elevateZoom();
+
+
+        if (!$carousel.data("carousel")) {
+
+            $carousel.carousel({
+                interval: false
+            });
+            var $indicatorList = $("#carouselIndicatorsList" + this.step);
+
+            $($items).each(function(idx) {
+                // Adding buttons
+                idx++;
+                var $item = $(this),
+                    $li = '<div class="carousel-selector-' + idx + '" type="button">' + idx + '</div>';
+
+                $indicatorList.append($li);
+
+                //Adding item-info to modal-info
+                $(this).children(".item-inner");
+                $modalInfo.append($item.children(".item-inner"));
+            });
+
+            $currentStep.find(".modal-info .item-inner").first().addClass("active");
+            $currentStep.find(".carousel-indicators-custom div").first().addClass("active");
+
+
+            // When you click on each selector
+            // Load new content
+            $('[class^=carousel-selector-]').on('click', this.nextSlideContent($currentStep));
+        }
+    }
+
+
+    if (this.step === 0) {
+        $("#prevBtn").hide();
+    } else {
+        $("#prevBtn").show();
+    }
+
+    if ($("#mechanicContent").is(':visible')) {
+
+        $("#closeMechanicTutorialBtn").show();
+        $("#tutorialSummary").hide();
+        $("#mechanicTutorialSummary").show();
+    }
+
+    var $lastStep = $('#tutorialModal .modal-body').length - 1;
+    if (this.step == $lastStep) {
+        $("#nextBtn").hide();
+
+        if ($("#mechanicContent").is(':visible')) {
+            $("#startFeedbackBtn").hide();
+            $("#goBackBtn").show();
+
+
+        } else {
+            $("#startFeedbackBtn").show();
+            $("#goBackBtn").hide();
+        }
+
+    } else {
+        $("#nextBtn").show();
+        $("#startFeedbackBtn").hide();
+    }
+
+
+    console.log($currentStep);
+    $currentStep.show();
+
+};
+
+
+/*
+ If a step in the carousel includes a carousel with multiple slides
+ find the content that relates to it and show it one by one.
+ */
+
+Modal.prototype.nextSlideContent = function(carousel) {
+
+    return function() {
+        // Add and remove active class
+        $(this).parent().children().removeClass("active");
+        $(this).addClass("active");
+
+        var id_selector = $(this).attr("class");
+        var id = id_selector.substr(id_selector.length - 8);
+        id = parseInt(id);
+        var $itemInners = carousel.find(".modal-info .item-inner");
+        $itemInners.removeClass('active');
+        $($itemInners[id - 1]).addClass('active');
+        var $modalId = $(this).parent().parent().parent().parent().attr("id");
+        $('#myCarousel' + $modalId).carousel(id - 1);
     };
 
-
-    /*
-     *
-     * Helpful functions
-     * =======================
-     *
-     *
-     */
+};
 
 
-    /*
-     Loads user progress into Grid info
-     */
+/*
+ *
+ * Elevate Zoom
+ * =======================
+ *
+ *
+ */
 
-    function loadUserProgress() {
-        pybossa.userProgress('mvp-04').done(function (data) {
-            var currentTask = data.done + 1;
-            $("#tasksCompleted").text(currentTask + " of " + data.total);
-            var pct = Math.round((data.done * 100) / data.total);
-            $("#progress").css("width", pct.toString() + "%");
-            $("#total").text(data.total);
-            $("#done").text(data.done);
+
+function Zoom() {
+
+}
+
+
+Zoom.prototype.addZoom = function(element) {
+    //alert("zoom");
+    var cookie = $.cookie(cookie_feedback_name),
+        zoomWindowPos;
+
+    if (cookie === "true")
+        zoomWindowPos = "feedbackZoomWindowLocation";
+    else
+        zoomWindowPos = "mechanicZoomWindowLocation";
+
+
+    var zoomWindowPosHeight = $("#" + zoomWindowPos).innerHeight(),
+        zoomWindowPosWidth = $("#" + zoomWindowPos).innerWidth();
+
+    //console.log(zoomWindowPosHeight,zoomWindowPosWidth);
+
+    element.elevateZoom({
+        zoomWindowPosition: zoomWindowPos,
+        lensFadeIn: 500,
+        lensFadeOut: 500,
+        zoomWindowHeight: 460,
+        zoomWindowWidth: 460,
+        cursor: "pointer"
+    });
+
+
+};
+
+
+Zoom.prototype.removeZoom = function(element) {
+    $.removeData(element, 'elevateZoom');
+    $('.zoomContainer').remove();
+    $('.zoomWindowContainer').remove();
+};
+
+
+/*
+ *
+ * Helpful functions
+ * =======================
+ *
+ *
+ */
+
+
+/*
+ Loads user progress into Grid info
+ */
+
+function loadUserProgress() {
+    pybossa.userProgress('mvp-04').done(function(data) {
+        var currentTask = data.done + 1;
+        $("#tasksCompleted").text(currentTask + " of " + data.total);
+        var pct = Math.round((data.done * 100) / data.total);
+        $("#progress").css("width", pct.toString() + "%");
+        $("#total").text(data.total);
+        $("#done").text(data.done);
+    });
+}
+
+
+/*
+ Uses device.js and works out what device we are using
+ */
+
+function whatDevice() {
+    var desktop = device.desktop(),
+        mobile = device.mobile(),
+        tablet = device.tablet(),
+        portrait = device.portrait(),
+        landscape = device.landscape(),
+        iphone = device.iphone(),
+        android = device.android(),
+        androidTablet = device.androidTablet(),
+        blackberryTablet = device.blackberryTablet();
+
+
+    if (desktop) return "Desktop";
+    if (mobile && portrait) return "Mobile portrait";
+    if (mobile && portrait) return "Mobile landscape";
+    if (tablet && portrait) return "Tablet portrait";
+    if (tablet && landscape) return "Tablet landscape";
+}
+
+
+/*
+ Finds out how long the user has spent on the particular task.
+ We then return this value back into the task.answer object which we get back in pybossa
+ */
+
+function secondsToString(seconds) {
+    var numhours = Math.floor(((seconds % 31536000) % 86400) / 3600);
+    var numminutes = Math.floor((((seconds % 31536000) % 86400) % 3600) / 60);
+    var numseconds = (((seconds % 31536000) % 86400) % 3600) % 60;
+    return numhours + ":" + numminutes + ":" + numseconds.toFixed(2);
+}
+
+
+/*
+ We use modenizr to find out with browser we are on and what version.
+ Then it returns this value back into the task.answer object which we get back in pybossa
+ */
+
+var BrowserDetect = {
+    init: function() {
+        this.browser = this.searchString(this.dataBrowser) || "Other";
+        this.version = this.searchVersion(navigator.userAgent) || this.searchVersion(navigator.appVersion) || "Unknown";
+    },
+    searchString: function(data) {
+        for (var i = 0; i < data.length; i++) {
+            var dataString = data[i].string;
+            this.versionSearchString = data[i].subString;
+
+            if (dataString.indexOf(data[i].subString) !== -1) {
+                return data[i].identity;
+            }
+        }
+    },
+    searchVersion: function(dataString) {
+        var index = dataString.indexOf(this.versionSearchString);
+        if (index === -1) {
+            return;
+        }
+
+        var rv = dataString.indexOf("rv:");
+        if (this.versionSearchString === "Trident" && rv !== -1) {
+            return parseFloat(dataString.substring(rv + 3));
+        } else {
+            return parseFloat(dataString.substring(index + this.versionSearchString.length + 1));
+        }
+    },
+
+    dataBrowser: [{
+        string: navigator.userAgent,
+        subString: "Chrome",
+        identity: "Chrome"
+    }, {
+        string: navigator.userAgent,
+        subString: "MSIE",
+        identity: "Explorer"
+    }, {
+        string: navigator.userAgent,
+        subString: "Trident",
+        identity: "Explorer"
+    }, {
+        string: navigator.userAgent,
+        subString: "Firefox",
+        identity: "Firefox"
+    }, {
+        string: navigator.userAgent,
+        subString: "Safari",
+        identity: "Safari"
+    }, {
+        string: navigator.userAgent,
+        subString: "Opera",
+        identity: "Opera"
+    }]
+
+};
+
+BrowserDetect.init();
+
+/*
+ For displaying a message on IE
+
+ if (BrowserDetect.browser == 'Explorer') {
+ //$(".wrappy").addClass("active");
+ }
+ */
+
+
+
+
+/*
+ * PyBossa functions
+ * =======================
+ * taskLoaded is the first pybossa method that is called
+ * =======================
+ *
+ *
+ */
+
+
+pybossa.taskLoaded(function(task, deferred) {
+
+    if (!$.isEmptyObject(task)) {
+
+        var img = $('<img />');
+
+        img.load(function() {
+            $("#loadingTask").hide();
+            loadUserProgress();
+            deferred.resolve(task);
+        });
+
+        img.attr('src', task.info.url_b).css('height', 460);
+        img.attr('data-zoom-image', task.info.url_b);
+        img.addClass('img-polaroid');
+        task.info.image = img;
+
+        task.answer = {
+            squares: [],
+            timeTaken: "",
+            device: "",
+            browser: "",
+            img: "",
+            openModalCount: 0
+        };
+
+
+        img.load(function() {
+            // continue as soon as the image is loaded
+            deferred.resolve(task);
+        });
+    } else {
+
+        deferred.resolve(task);
+    }
+
+});
+
+
+/*
+ This grabs the task via an API call using pybossa.js. We retreive all of the task infomation
+ in an object called task that we pass into the presentTask method. We first check if there is a task
+ If there is then we initalize the Grid constructor and other methods.
+ */
+
+pybossa.presentTask(function(task, deferred) {
+
+    if (!$.isEmptyObject(task)) {
+
+
+        if (task.state == 'completed') {
+            $("#loading").hide();
+        }
+
+        var openModalCount = 0;
+
+        /*
+         Take a time stamp of the time the page loads
+         */
+        var oldTime = new Date();
+
+
+        /*
+         Load the task image into the page
+         */
+        $('#photo-link').html('').append(task.info.image);
+        $('#task-id').html(task.id);
+        var imgUrl = task.info.url_b;
+
+        var lastSlashIdx = imgUrl.lastIndexOf("/");
+        var newStr = imgUrl.substr(lastSlashIdx + 1, 10);
+        $(".imgId").html("Image ID: " + "<strong>" + newStr + "</strong>");
+
+
+        /*
+         Initalise main mechanic, zoom and modal
+         */
+
+        var grid = new Grid(task);
+        grid.createGrid("mechanicCanvas");
+
+        var zoom = new Zoom();
+        zoom.addZoom($(".img-polaroid"));
+
+        var modal = new Modal();
+
+
+        /*
+         Event Listeners for various buttons
+         */
+
+        //            var selectBtn = document.getElementById("selectAllBtn");
+        //            selectBtn.onclick = function () {
+        //                grid.selectAllSquares();
+        //            }
+        //            var deselectBtn = document.getElementById("deselectBtn");
+        //            deselectBtn.onclick = function () {
+        //                grid.deselectAllSquares();
+        //            }
+
+
+        var showTutorialModalBtn = document.getElementById("showTutorialModalBtn");
+        showTutorialModalBtn.onclick = function() {
+            modal.open("#tutorialModal", 0);
+            $("#tutorialSummary").hide();
+            $("#mechanicTutorialSummary").show();
+            zoom.removeZoom($(".tutorialZoom"));
+            openModalCount++;
+        };
+
+
+        var closeMechanicTutorialBtn = document.getElementById("closeMechanicTutorialBtn");
+        closeMechanicTutorialBtn.onclick = function() {
+            zoom.removeZoom($(".tutorialZoom"));
+            $("#errorClick").show();
+            zoom.addZoom($(".img-polaroid"));
+        };
+
+
+        var goBackBtn = document.getElementById("goBackBtn");
+        goBackBtn.onclick = function() {
+            zoom.removeZoom($(".tutorialZoom"));
+            zoom.addZoom($(".img-polaroid"));
+            //$(".modal-body").hide();
+            $("#errorClick").show();
+        };
+
+        var errorClickCrossBtn = document.getElementById("errorClickCross");
+        errorClickCrossBtn.onclick = function() {
+            $("#errorClick").hide();
+        };
+
+
+        var nextBtn = document.getElementById("nextBtn");
+        nextBtn.onclick = function() {
+            modal.showStep('next');
+        };
+
+
+        var prevBtn = document.getElementById("prevBtn");
+        prevBtn.onclick = function() {
+            modal.showStep('prev');
+        };
+
+
+        /*
+         "Next Slide" Button
+         */
+
+        $('.btn-answer').off('click').on('click', function() {
+
+            // Grab a new timestamp and find out the difference
+            // This is how long the user has been on the task for
+            // Then pass it into the answer
+            var newTime = new Date(),
+                ms = newTime - oldTime,
+                x = ms / 1000,
+                seconds = secondsToString(x);
+
+            // Pass image number into answer
+            var imgUrl = task.info.url_b;
+            var result = imgUrl.replace("//citscitools.cancerresearchuk.org/static/img/mvp-01/", "");
+
+
+            // Create the answer object
+            var answer = {
+                squares: [],
+                timeTaken: seconds,
+                device: whatDevice(),
+                browser: BrowserDetect.browser + " V." + BrowserDetect.version,
+                imgNumber: result,
+                openModalCount: openModalCount
+            };
+
+
+            // Change the square object to have clearer values
+            $.each(grid.task.answer.squares, function(key, value) {
+                var obj = {
+                    column: value.column,
+                    row: value.row,
+                    answer: value.has_cancer
+                };
+                answer.squares.push(obj);
+            });
+
+            console.log(answer);
+
+            /*
+             * Save the task information and send to PyBossa
+             */
+
+            pybossa.saveTask(task.id, answer).done(function(data) {
+                loadUserProgress();
+                $("#success").fadeIn(500).delay(1500).fadeOut();
+                $("svg, .zoomContainer,.zoomWindowContainer").remove();
+                deferred.resolve();
+            });
+
+        });
+    } else {
+
+
+        $("#loading").hide();
+        $("#progress").css("width", "100%");
+        $("#finish").fadeIn(500);
+        $(".site-content").fadeTo("slow", 0.5);
+        $(".site-content").css("pointer-events", "none;");
+    }
+});
+
+
+/*
+ *  Feedback function
+ *  =======================
+ *  This has multiple steps that include and init a new grid
+ *  we use this funciton to keep the progress through the steps
+ *
+ */
+
+function showFeedbackContent() {
+    var data_obj = feedbackData[step].info;
+    var imgUrl = feedbackData[step].info.imgNumber;
+    var taskTitle = feedbackData[step].info.taskTitle;
+    var taskSubTitle = feedbackData[step].info.taskSubTitle;
+    var taskParagraph = feedbackData[step].info.taskParagraph;
+    var taskFeedback = feedbackData[step].info.taskFeedback;
+
+    var img = $('<img />');
+    img.attr('src', imgUrl);
+    img.attr('data-zoom-image', imgUrl);
+    img.addClass('feedback-img-polaroid');
+
+    $('#feedbackPhotoWrapper').append(img);
+
+    $(".grid-info-content").removeAttr("id");
+    var feedbackStepNumber = "feedbackStep" + step;
+
+    $(".grid-info-content").attr("id", feedbackStepNumber);
+
+    var $feedbackStep = $("#" + feedbackStepNumber + " .grid-info-content-inner");
+    $feedbackStep.empty();
+
+    if (taskTitle) {
+        $feedbackStep.append('<div class="taskTitle">' + taskTitle + '</div>');
+    }
+    if (taskSubTitle) {
+        $feedbackStep.append('<div class="taskSubTitle">' + taskSubTitle + '</div>');
+    }
+    if (taskParagraph) {
+        $feedbackStep.append('<div class="taskParagraph">' + taskParagraph + '</div>');
+    }
+    if (taskFeedback) {
+        $feedbackStep.append('<div class="taskFeedback">' + taskFeedback + '</div>');
+    }
+}
+
+var step = -1;
+
+function showFeedbackStep(action) {
+
+    hasSeenGuidenceInfo = false;
+    totalGridPercentage = 0;
+
+    $("#feedbackStep" + step).hide();
+
+    if (action == 'next') {
+        step += 1;
+        $("#nextFeedbackStep, #checkMyWorkBtn #finishFeedback").addClass("disabled");
+    }
+
+    if (step >= 2) {
+        $("#nextFeedbackStep").addClass("disabled");
+        $("#checkMyWorkBtn").show().addClass("disabled");
+    }
+
+
+    //        var modal = new Modal();
+    //        modal.open("#practiseModal", 2);
+
+
+    if (step === 2) { // if is step 3
+        $("#practiseModal .modal-body").hide();
+        var modal = new Modal();
+        modal.open("#practiseModal", 4);
+    }
+
+    $("svg, .feedback-img-polaroid, .zoomContainer, .zoomWindowContainer").remove();
+
+
+    showFeedbackContent();
+
+
+    var feedbackGrid = new FeedbackGrid();
+    feedbackGrid.createGrid("feedbackCanvas");
+
+    var zoom = new Zoom();
+    zoom.addZoom($(".feedback-img-polaroid"));
+
+    var checkMyWork = document.getElementById("checkMyWorkBtn");
+    checkMyWork.onclick = function() {
+        if ($(this).hasClass("disabled")) return;
+        //$(".taskTitle,.taskSubTitle, .taskParagraph ").hide();
+        //$("#" + "feedbackStep" + step + " .taskFeedback").show();
+        feedbackGrid.showMyAnalysis();
+    };
+
+    var lastFeedbackStep = feedbackData.length;
+    if (step === lastFeedbackStep - 1) {
+        $("#nextFeedbackStep").hide();
+        $("#finishFeedback").show().addClass("disabled");
+    }
+
+    $("#feedbackStep" + step).show();
+    $("#feedbackImageNumber").text(step + 1);
+
+}
+
+
+var nextFeedbackBtn = document.getElementById("nextFeedbackStep");
+nextFeedbackBtn.onclick = function() {
+    if ($(this).hasClass("disabled")) return;
+    $("#feedbackProgress").width("0%");
+    $("#feedbackProgressText").text("");
+    if (step != feedbackData.length - 1) {
+        showFeedbackStep('next');
+    }
+};
+
+
+var feedbackInfoBtn = document.getElementById("feedbackInfoBtn");
+feedbackInfoBtn.onclick = function() {
+
+    $("#practiseModal .modal-body").hide();
+
+    var annotatedImage = "#practiseModal" + " #" + step + " .annotatedImage";
+    var modal = new Modal();
+    modal.open("#practiseModal", step);
+    var zoom = new Zoom();
+    zoom.removeZoom($(".feedback-img-polaroid"));
+
+    $('.zoomContainer').remove();
+    $('.zoomWindowContainer').remove();
+
+    var practiseGridInfo = "annotatedImageZoomArea" + step;
+    $(annotatedImage).elevateZoom({
+        zoomWindowPosition: practiseGridInfo,
+        lensFadeIn: 500,
+        lensFadeOut: 500,
+        zoomWindowHeight: 460,
+        zoomWindowWidth: 460,
+        cursor: "pointer"
+    });
+
+    // zoom.addZoom( $(annotatedImage) );
+
+};
+
+var backToPractiseBtn = document.getElementById("backToPractiseBtn");
+backToPractiseBtn.onclick = function() {
+    if (totalGridPercentage > 5) {
+        $("#nextFeedbackStep").removeClass("disabled");
+    }
+    if (step !== 2) {
+        hasSeenGuidenceInfo = true;
+    } else {
+        hasSeenGuidenceInfo = false;
+    }
+
+    var zoom = new Zoom();
+    zoom.removeZoom($("#practiseModal" + " #" + step + " .annotatedImage"));
+    zoom.addZoom($(".feedback-img-polaroid"));
+};
+
+
+
+
+
+/*
+ * UpdatePageState
+ * =======================
+ * We use this check the state of cookies to show the relevate sections
+ * the three sections are "tutorial", "feedback" and "mechanic"
+ *
+ */
+
+function UpdatePageState() {
+
+    // State of the page to show to the user
+    var page_state = "mechanic";
+
+    // Check if the page should be in show feedback state
+    var cookie_feedback = $.cookie(cookie_feedback_name);
+    if (cookie_feedback !== null)
+        page_state = "feedback";
+
+    // Check if the page should be in tutorial state
+    var cookie_tutorial = $.cookie(cookie_tutorial_name);
+    if (cookie_tutorial === null || cookie_tutorial != "seen")
+        page_state = "tutorial";
+
+    // Check if the page should be in show feedback state
+    if (cookie_feedback == "false")
+        page_state = "mechanic";
+
+
+    // If the feedback or mechanic is showing
+    // Init the example images in slick corousel
+    //
+    //
+    if (page_state == "feedback" || page_state == "mechanic") {
+        $('.example-list').show();
+        /* THESE AND ERROR PUMPING OUT WITH THIS !?!
+         */
+        $('.example-list').slick({
+            dots: false,
+            infinite: false,
+            speed: 300,
+            slidesToScroll: 5,
+            slidesToShow: 5,
         });
     }
 
+    if (page_state == "tutorial") {
+        $("body").addClass("tutorial-active");
 
-    /*
-     Uses device.js and works out what device we are using
-     */
+        var m = new Modal();
+        m.open("#tutorialModal", "next");
 
-    function whatDevice() {
-        var desktop = device.desktop(),
-            mobile = device.mobile(),
-            tablet = device.tablet(),
-            portrait = device.portrait(),
-            landscape = device.landscape(),
-            iphone = device.iphone(),
-            android = device.android(),
-            androidTablet = device.androidTablet(),
-            blackberryTablet = device.blackberryTablet();
+        $("#feedbackContent").hide();
 
-
-        if (desktop) return "Desktop";
-        if (mobile && portrait) return "Mobile portrait";
-        if (mobile && portrait) return "Mobile landscape";
-        if (tablet && portrait) return "Tablet portrait";
-        if (tablet && landscape) return "Tablet landscape";
-    }
-
-
-    /*
-     Finds out how long the user has spent on the particular task.
-     We then return this value back into the task.answer object which we get back in pybossa
-     */
-
-    function secondsToString(seconds) {
-        var numhours = Math.floor(((seconds % 31536000) % 86400) / 3600);
-        var numminutes = Math.floor((((seconds % 31536000) % 86400) % 3600) / 60);
-        var numseconds = (((seconds % 31536000) % 86400) % 3600) % 60;
-        return numhours + ":" + numminutes + ":" + numseconds.toFixed(2);
-    }
-
-
-    /*
-     We use modenizr to find out with browser we are on and what version.
-     Then it returns this value back into the task.answer object which we get back in pybossa
-     */
-
-    var BrowserDetect = {
-        init: function () {
-            this.browser = this.searchString(this.dataBrowser) || "Other";
-            this.version = this.searchVersion(navigator.userAgent) || this.searchVersion(navigator.appVersion) || "Unknown";
-        },
-        searchString: function (data) {
-            for (var i = 0; i < data.length; i++) {
-                var dataString = data[i].string;
-                this.versionSearchString = data[i].subString;
-
-                if (dataString.indexOf(data[i].subString) !== -1) {
-                    return data[i].identity;
-                }
-            }
-        },
-        searchVersion: function (dataString) {
-            var index = dataString.indexOf(this.versionSearchString);
-            if (index === -1) {
-                return;
-            }
-
-            var rv = dataString.indexOf("rv:");
-            if (this.versionSearchString === "Trident" && rv !== -1) {
-                return parseFloat(dataString.substring(rv + 3));
-            } else {
-                return parseFloat(dataString.substring(index + this.versionSearchString.length + 1));
-            }
-        },
-
-        dataBrowser: [{
-            string: navigator.userAgent,
-            subString: "Chrome",
-            identity: "Chrome"
-        }, {
-            string: navigator.userAgent,
-            subString: "MSIE",
-            identity: "Explorer"
-        }, {
-            string: navigator.userAgent,
-            subString: "Trident",
-            identity: "Explorer"
-        }, {
-            string: navigator.userAgent,
-            subString: "Firefox",
-            identity: "Firefox"
-        }, {
-            string: navigator.userAgent,
-            subString: "Safari",
-            identity: "Safari"
-        }, {
-            string: navigator.userAgent,
-            subString: "Opera",
-            identity: "Opera"
-        }]
-
-    };
-
-    BrowserDetect.init();
-
-    /*
-     For displaying a message on IE
-
-     if (BrowserDetect.browser == 'Explorer') {
-     //$(".wrappy").addClass("active");
-     }
-     */
-
-
-
-
-    /*
-     * PyBossa functions
-     * =======================
-     * taskLoaded is the first pybossa method that is called
-     * =======================
-     *
-     *
-     */
-
-
-    pybossa.taskLoaded(function (task, deferred) {
-
-        if (!$.isEmptyObject(task)) {
-
-            var img = $('<img />');
-
-            img.load(function () {
-                $("#loadingTask").hide();
-                loadUserProgress();
-                deferred.resolve(task);
-            });
-
-            img.attr('src', task.info.url_b).css('height', 460);
-            img.attr('data-zoom-image', task.info.url_b);
-            img.addClass('img-polaroid');
-            task.info.image = img;
-
-            task.answer = {
-                squares: [],
-                timeTaken: "",
-                device: "",
-                browser: "",
-                img: "",
-                openModalCount: 0
-            };
-
-
-            img.load(function () {
-                // continue as soon as the image is loaded
-                deferred.resolve(task);
-            });
-        } else {
-
-            deferred.resolve(task);
-        }
-
-    });
-
-
-    /*
-     This grabs the task via an API call using pybossa.js. We retreive all of the task infomation
-     in an object called task that we pass into the presentTask method. We first check if there is a task
-     If there is then we initalize the Grid constructor and other methods.
-     */
-
-    pybossa.presentTask(function (task, deferred) {
-
-        if (!$.isEmptyObject(task)) {
-
-
-            if (task.state == 'completed') {
-                $("#loading").hide();
-            }
-
-            var openModalCount = 0;
-
-            /*
-             Take a time stamp of the time the page loads
-             */
-            var oldTime = new Date();
-
-
-            /*
-             Load the task image into the page
-             */
-            $('#photo-link').html('').append(task.info.image);
-            $('#task-id').html(task.id);
-            var imgUrl = task.info.url_b;
-
-            var lastSlashIdx = imgUrl.lastIndexOf("/");
-            var newStr = imgUrl.substr(lastSlashIdx + 1, 10);
-            $(".imgId").html("Image ID: " + "<strong>" + newStr + "</strong>");
-
-
-            /*
-             Initalise main mechanic, zoom and modal
-             */
-
-            var grid = new Grid(task);
-            grid.createGrid("mechanicCanvas");
-
-            var zoom = new Zoom();
-            zoom.addZoom($(".img-polaroid"));
-
-            var modal = new Modal();
-
-
-            /*
-             Event Listeners for various buttons
-             */
-
-//            var selectBtn = document.getElementById("selectAllBtn");
-//            selectBtn.onclick = function () {
-//                grid.selectAllSquares();
-//            }
-//            var deselectBtn = document.getElementById("deselectBtn");
-//            deselectBtn.onclick = function () {
-//                grid.deselectAllSquares();
-//            }
-
-
-            var showTutorialModalBtn = document.getElementById("showTutorialModalBtn");
-            showTutorialModalBtn.onclick = function () {
-                modal.open("#tutorialModal", 0);
-                $("#tutorialSummary").hide();
-                $("#mechanicTutorialSummary").show();
-                zoom.removeZoom($(".tutorialZoom"));
-                openModalCount++;
-            };
-
-
-            var closeMechanicTutorialBtn = document.getElementById("closeMechanicTutorialBtn");
-            closeMechanicTutorialBtn.onclick = function () {
-                zoom.removeZoom($(".tutorialZoom"));
-                $("#errorClick").show();
-                zoom.addZoom($(".img-polaroid"));
-            };
-
-
-            var goBackBtn = document.getElementById("goBackBtn");
-            goBackBtn.onclick = function () {
-                zoom.removeZoom($(".tutorialZoom"));
-                zoom.addZoom($(".img-polaroid"));
-                //$(".modal-body").hide();
-                $("#errorClick").show();
-            };
-
-            var errorClickCrossBtn = document.getElementById("errorClickCross");
-            errorClickCrossBtn.onclick = function () {
-                $("#errorClick").hide();
-            };
-
-
-            var nextBtn = document.getElementById("nextBtn");
-            nextBtn.onclick = function () {
-                modal.showStep('next');
-            };
-
-
-            var prevBtn = document.getElementById("prevBtn");
-            prevBtn.onclick = function () {
-                modal.showStep('prev');
-            };
-
-
-            /*
-             "Next Slide" Button
-             */
-
-            $('.btn-answer').off('click').on('click', function () {
-
-                // Grab a new timestamp and find out the difference
-                // This is how long the user has been on the task for
-                // Then pass it into the answer
-                var newTime = new Date(),
-                    ms = newTime - oldTime,
-                    x = ms / 1000,
-                    seconds = secondsToString(x);
-
-                // Pass image number into answer
-                var imgUrl = task.info.url_b;
-                var result = imgUrl.replace("//citscitools.cancerresearchuk.org/static/img/mvp-01/", "");
-
-
-                // Create the answer object
-                var answer = {
-                    squares: [],
-                    timeTaken: seconds,
-                    device: whatDevice(),
-                    browser: BrowserDetect.browser + " V." + BrowserDetect.version,
-                    imgNumber: result,
-                    openModalCount: openModalCount
-                };
-
-
-                // Change the square object to have clearer values
-                $.each(grid.task.answer.squares, function (key, value) {
-                    var obj = {
-                        column: value.column,
-                        row: value.row,
-                        answer: value.has_cancer
-                    };
-                    answer.squares.push(obj);
-                });
-
-                console.log(answer);
-
-                /*
-                 * Save the task information and send to PyBossa
-                 */
-
-                pybossa.saveTask(task.id, answer).done(function (data) {
-                    loadUserProgress();
-                    $("#success").fadeIn(500).delay(1500).fadeOut();
-                    $("svg, .zoomContainer,.zoomWindowContainer").remove();
-                    deferred.resolve();
-                });
-
-            });
-        } else {
-
-
-            $("#loading").hide();
-            $("#progress").css("width", "100%");
-            $("#finish").fadeIn(500);
-            $(".site-content").fadeTo("slow", 0.5);
-            $(".site-content").css("pointer-events", "none;");
-        }
-    });
-
-
-    /*
-     *  Feedback function
-     *  =======================
-     *  This has multiple steps that include and init a new grid
-     *  we use this funciton to keep the progress through the steps
-     *
-     */
-
-    function showFeedbackContent() {
-        var data_obj = feedbackData[step].info;
-        var imgUrl = feedbackData[step].info.imgNumber;
-        var taskTitle = feedbackData[step].info.taskTitle;
-        var taskSubTitle = feedbackData[step].info.taskSubTitle;
-        var taskParagraph = feedbackData[step].info.taskParagraph;
-        var taskFeedback = feedbackData[step].info.taskFeedback;
-
-        var img = $('<img />');
-        img.attr('src', imgUrl);
-        img.attr('data-zoom-image', imgUrl);
-        img.addClass('feedback-img-polaroid');
-
-        $('#feedbackPhotoWrapper').append(img);
-
-        $(".grid-info-content").removeAttr("id");
-        var feedbackStepNumber = "feedbackStep" + step;
-
-        $(".grid-info-content").attr("id", feedbackStepNumber);
-
-        var $feedbackStep = $("#" + feedbackStepNumber + " .grid-info-content-inner");
-        $feedbackStep.empty();
-
-        if (taskTitle) {
-            $feedbackStep.append('<div class="taskTitle">' + taskTitle + '</div>');
-        }
-        if (taskSubTitle) {
-            $feedbackStep.append('<div class="taskSubTitle">' + taskSubTitle + '</div>');
-        }
-        if (taskParagraph) {
-            $feedbackStep.append('<div class="taskParagraph">' + taskParagraph + '</div>');
-        }
-        if (taskFeedback) {
-            $feedbackStep.append('<div class="taskFeedback">' + taskFeedback + '</div>');
-        }
-    }
-    ;
-
-    var step = -1;
-    function showFeedbackStep(action) {
-
-        hasSeenGuidenceInfo = false;
-        totalGridPercentage = 0;
-
-        $("#feedbackStep" + step).hide();
-
-        if (action == 'next') {
-            step += 1;
-            $("#nextFeedbackStep, #checkMyWorkBtn #finishFeedback").addClass("disabled");
-        }
-
-        if (step >= 2) {
-            $("#nextFeedbackStep").addClass("disabled");
-            $("#checkMyWorkBtn").show().addClass("disabled");
-        }
-
-
-//        var modal = new Modal();
-//        modal.open("#practiseModal", 2);
-
-
-        if (step === 2) { // if is step 3
-            $("#practiseModal .modal-body").hide();
-            var modal = new Modal();
-            modal.open("#practiseModal", 4);
-        }
-
-        $("svg, .feedback-img-polaroid, .zoomContainer, .zoomWindowContainer").remove();
-
-
-        showFeedbackContent();
-
-
-        var feedbackGrid = new FeedbackGrid();
-        feedbackGrid.createGrid("feedbackCanvas");
-
-        var zoom = new Zoom();
-        zoom.addZoom($(".feedback-img-polaroid"));
-
-        var checkMyWork = document.getElementById("checkMyWorkBtn");
-        checkMyWork.onclick = function () {
-            if ($(this).hasClass("disabled")) return;
-            //$(".taskTitle,.taskSubTitle, .taskParagraph ").hide();
-            //$("#" + "feedbackStep" + step + " .taskFeedback").show();
-            feedbackGrid.showMyAnalysis();
+        var nextBtn = document.getElementById("nextBtn");
+        nextBtn.onclick = function() {
+            m.showStep('next');
         };
 
-        var lastFeedbackStep = feedbackData.length;
-        if (step === lastFeedbackStep - 1) {
-            $("#nextFeedbackStep").hide();
-            $("#finishFeedback").show().addClass("disabled");
-        }
+        var prevBtn = document.getElementById("prevBtn");
+        prevBtn.onclick = function() {
+            m.showStep('prev');
+        };
 
-        $("#feedbackStep" + step).show();
-        $("#feedbackImageNumber").text(step + 1);
-
+    } else if (page_state == "feedback") {
+        showFeedbackStep('next');
+        $("#feedbackContent").show();
+        $("body").addClass("feedback-active");
+        $("body").removeClass("tutorial-active");
+    } else {
+        $("#feedbackContent").hide();
+        $("body").addClass("mechanic-active");
+        $("body").removeClass("feedback-active");
+        $("#mechanicContent").show();
+        pybossa.run("mvp-04");
     }
 
+}
 
-    var nextFeedbackBtn = document.getElementById("nextFeedbackStep");
-    nextFeedbackBtn.onclick = function () {
+
+$(function() {
+
+    UpdatePageState();
+
+
+    $("#startFeedbackBtn").on("click", function() {
+        $.cookie(cookie_tutorial_name, "seen");
+        $.cookie(cookie_feedback_name, true);
+        UpdatePageState();
+    });
+
+    $("#finishFeedback").on("click", function() {
         if ($(this).hasClass("disabled")) return;
-        $("#feedbackProgress").width("0%");
-        $("#feedbackProgressText").text("");
-        if (step != feedbackData.length - 1) {
-            showFeedbackStep('next');
-        }
-    };
-
-
-    var feedbackInfoBtn = document.getElementById("feedbackInfoBtn");
-    feedbackInfoBtn.onclick = function () {
+        $("svg, .feedback-img-polaroid, .zoomContainer, .zoomWindowContainer").remove();
+        //$.removeData(".feedback-photo-link", 'elevateZoom');
+        $("#backToPractiseBtn").hide();
+        $("#startMechanicBtn").show();
 
         $("#practiseModal .modal-body").hide();
 
-        var annotatedImage = "#practiseModal" + " #" + step + " .annotatedImage";
-        var modal = new Modal();
-        modal.open("#practiseModal", step);
-        var zoom = new Zoom();
-        zoom.removeZoom($(".feedback-img-polaroid"));
-
-        $('.zoomContainer').remove();
-        $('.zoomWindowContainer').remove();
-
-        var practiseGridInfo = "annotatedImageZoomArea" + step;
-        $(annotatedImage).elevateZoom({
-            zoomWindowPosition: practiseGridInfo,
-            lensFadeIn: 500,
-            lensFadeOut: 500,
-            zoomWindowHeight: 460,
-            zoomWindowWidth: 460,
-            cursor: "pointer"
-        });
-
-        // zoom.addZoom( $(annotatedImage) );
-
-    };
-
-    var backToPractiseBtn = document.getElementById("backToPractiseBtn");
-    backToPractiseBtn.onclick = function () {
-        if (totalGridPercentage > 5) {
-            $("#nextFeedbackStep").removeClass("disabled");
-        }
-        if (step !== 2) {
-            hasSeenGuidenceInfo = true;
-        } else {
-            hasSeenGuidenceInfo = false;
-        }
-
-        var zoom = new Zoom();
-        zoom.removeZoom($("#practiseModal" + " #" + step + " .annotatedImage"));
-        zoom.addZoom($(".feedback-img-polaroid"));
-    };
-
-
-
-
-
-    /*
-     * UpdatePageState
-     * =======================
-     * We use this check the state of cookies to show the relevate sections
-     * the three sections are "tutorial", "feedback" and "mechanic"
-     *
-     */
-
-    function UpdatePageState() {
-
-        // State of the page to show to the user
-        var page_state = "mechanic";
-
-        // Check if the page should be in show feedback state
-        var cookie_feedback = $.cookie(cookie_feedback_name);
-        if (cookie_feedback !== null)
-            page_state = "feedback";
-
-        // Check if the page should be in tutorial state
-        var cookie_tutorial = $.cookie(cookie_tutorial_name);
-        if (cookie_tutorial === null || cookie_tutorial != "seen")
-            page_state = "tutorial";
-
-        // Check if the page should be in show feedback state
-        if (cookie_feedback == "false")
-            page_state = "mechanic";
-
-
-        // If the feedback or mechanic is showing
-        // Init the example images in slick corousel
-        //
-        //
-        if (page_state == "feedback" || page_state == "mechanic") {
-            $('.example-list').show();
-            /* THESE AND ERROR PUMPING OUT WITH THIS !?!
-             */
-            $('.example-list').slick({
-                dots: false,
-                infinite: false,
-                speed: 300,
-                slidesToScroll: 5,
-                slidesToShow: 5,
-            });
-        }
-
-        if (page_state == "tutorial") {
-            $("body").addClass("tutorial-active");
-
-            var m = new Modal();
-                m.open("#tutorialModal", "next");
-
-            $("#feedbackContent").hide();
-
-            var nextBtn = document.getElementById("nextBtn");
-            nextBtn.onclick = function () {
-                m.showStep('next');
-            };
-
-            var prevBtn = document.getElementById("prevBtn");
-            prevBtn.onclick = function () {
-                m.showStep('prev');
-            };
-
-        } else if (page_state == "feedback") {
-            showFeedbackStep('next');
-            $("#feedbackContent").show();
-            $("body").addClass("feedback-active");
-            $("body").removeClass("tutorial-active");
-        } else {
-            $("#feedbackContent").hide();
-            $("body").addClass("mechanic-active");
-            $("body").removeClass("feedback-active");
-            $("#mechanicContent").show();
-            pybossa.run("mvp-04");
-        }
-
-    }
-
-
-    $(function () {
-
-        UpdatePageState();
-
-
-        $("#startFeedbackBtn").on("click", function () {
-            $.cookie(cookie_tutorial_name, "seen");
-            $.cookie(cookie_feedback_name, true);
-            UpdatePageState();
-        });
-
-        $("#finishFeedback").on("click", function () {
-            if ($(this).hasClass("disabled")) return;
-            $("svg, .feedback-img-polaroid, .zoomContainer, .zoomWindowContainer").remove();
-            //$.removeData(".feedback-photo-link", 'elevateZoom');
-            $("#backToPractiseBtn").hide();
-            $("#startMechanicBtn").show();
-
-            $("#practiseModal .modal-body").hide();
-
-            var m = new Modal();
-            m.open("#practiseModal", 5);
-        });
-
-        $("#startMechanicBtn").on("click", function () {
-            $.cookie(cookie_feedback_name, false);
-            UpdatePageState();
-        });
-
-
+        var m = new Modal();
+        m.open("#practiseModal", 5);
     });
 
+    $("#startMechanicBtn").on("click", function() {
+        $.cookie(cookie_feedback_name, false);
+        UpdatePageState();
+    });
+
+
+});
 </script>
