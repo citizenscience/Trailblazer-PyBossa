@@ -1,6 +1,6 @@
 {
-    "name": "CRUK Trailblazer gold standard (lung egfr)",
+    "name": "CRUK Trailblazer gold standard (oesophageal)",
     "short_name": "mvp-gold-std-oesophageal",
-    "description": "For pathologists to supply gold standard data for lung(egfr) TMAs",
+    "description": "For pathologists to supply gold standard data for oesophageal TMAs",
     "question": "Do you see a human in this photo?"
 }
