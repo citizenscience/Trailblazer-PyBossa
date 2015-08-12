@@ -339,7 +339,7 @@
 </style>
 
 <!--MODAL-->
-<div class="row">
+<div class="modals row">
     <div class="span12">
 
         <!--&lt;!&ndash; Summary Modal &ndash;&gt;-->
@@ -1078,14 +1078,15 @@
                 </div>
 
                 <div class="grid-info-buttons clearfix">
-                    <button class="btn btn-answer" id="feedbackInfoBtn">Info</button>
+
                     <a class="btn btn-primary pull-right disabled" id="nextFeedbackStep" style="margin-left: 10px;">
                         Next slide
                     </a>
-                    <a class="btn btn-primary pull-right disabled" id="finishFeedback" style="display:none; margin-left: 10px;">
+                    <button class="btn btn-answer pull-right" id="feedbackInfoBtn" style="margin-left: 10px;">What's in this image</button>
+                    <a class="btn btn-primary disabled" id="finishFeedback" style="display:none; margin-left: 10px;">
                         Next
                     </a>
-                    <a class="btn btn-success pull-right disabled" id="checkMyWorkBtn" style="display:none; margin-left: 10px;">
+                    <a class="btn btn-success pull-right disabled" id="checkMyWorkBtn" style="display:none;">
                         Check my work
                     </a>
                 </div>
@@ -2201,6 +2202,12 @@
     }
 
 
+
+
+
+
+
+
     /**
      * FeedbackGrid Constructor function
      * =======================
@@ -2390,6 +2397,12 @@
             } else {
                 this.updateFeedbackProgress();
                 this.updateFeedback(pathologistAnswer, true);
+
+                // activeSquare.animate({
+                //     "fill-opacity": 0
+                // }, 2000, function () {
+                //     activeSquare.node.setAttribute("class", "grid-item");
+                // });
             }
 
         } else {
@@ -3132,7 +3145,7 @@
 
             var showTutorialModalBtn = document.getElementById("showTutorialModalBtn");
             showTutorialModalBtn.onclick = function () {
-                modal.open("#tutorialModal");
+                modal.open("#tutorialModal", 0);
                 $("#tutorialSummary").hide();
                 $("#mechanicTutorialSummary").show();
                 zoom.removeZoom($(".tutorialZoom"));
@@ -3330,8 +3343,8 @@
         var checkMyWork = document.getElementById("checkMyWorkBtn");
         checkMyWork.onclick = function () {
             if ($(this).hasClass("disabled")) return;
-            $(".taskTitle,.taskSubTitle, .taskParagraph ").hide();
-            $("#" + "feedbackStep" + step + " .taskFeedback").show();
+            //$(".taskTitle,.taskSubTitle, .taskParagraph ").hide();
+            //$("#" + "feedbackStep" + step + " .taskFeedback").show();
             feedbackGrid.showMyAnalysis();
         };
 
@@ -3401,28 +3414,6 @@
         zoom.removeZoom($("#practiseModal" + " #" + step + " .annotatedImage"));
         zoom.addZoom($(".feedback-img-polaroid"));
     };
-
-
-    /*
-
-     var showTutorialModalBtn = document.getElementById("showTutorialModalBtn");
-     showTutorialModalBtn.onclick = function () {
-     modal.open("#tutorialModal");
-     $("#tutorialSummary").hide();
-     $("#mechanicTutorialSummary").show();
-     zoom.removeZoom($(".tutorialZoom"));
-     openModalCount++;
-     };
-
-
-     var closeMechanicTutorialBtn = document.getElementById("closeMechanicTutorialBtn");
-     closeMechanicTutorialBtn.onclick = function () {
-     zoom.removeZoom($(".tutorialZoom"));
-     $("#errorClick").show();
-     zoom.addZoom($(".img-polaroid"));
-     };
-
-     */
 
 
 
