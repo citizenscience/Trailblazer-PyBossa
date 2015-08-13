@@ -2576,7 +2576,6 @@ Modal.prototype.open = function(modall, goToStep) {
         keyboard: false
     });
 
-    console.log( goToStep);
 
     this.showStep(goToStep);
 
@@ -2589,6 +2588,9 @@ Modal.prototype.getCurrentStep = function() {
 
 
 Modal.prototype.showStep = function(action) {
+
+
+    console.log( action );
 
     $(this.modal + " #" + this.step).hide();
 
@@ -2998,10 +3000,11 @@ pybossa.presentTask(function(task, deferred) {
         zoom.addZoom($(".img-polaroid"));
 
 
+        var modal = new Modal();
+
         var showTutorialModalBtn = document.getElementById("showTutorialModalBtn");
         showTutorialModalBtn.onclick = function() {
-            var modal = new Modal();
-                modal.open("#tutorialModal", 0);
+            modal.open("#tutorialModal", 0);
             $("#tutorialSummary").hide();
             $("#mechanicTutorialSummary").show();
             zoom.removeZoom($(".tutorialZoom"));
@@ -3031,13 +3034,13 @@ pybossa.presentTask(function(task, deferred) {
 
         var nextBtn = document.getElementById("nextBtn");
         nextBtn.onclick = function( ) {
-            var modal = new Modal();
+
             modal.showStep('next');
         };
 
         var prevBtn = document.getElementById("prevBtn");
         prevBtn.onclick = function() {
-            var modal = new Modal();
+
             modal.showStep('prev');
         };
 
