@@ -1036,7 +1036,7 @@
                 </div>
                 <hr>
                 <div id="feedbackProgressText"></div>
-                <h3><b>Click "what's in this image" button</b>, to see what our experts said before practising on another slide</h3>
+                <h3><b>Click 'What's in this image' button</b>, to see what our experts said before practising on another slide</h3>
                 <div class="progress progress-success progress-striped" style="display:none;">
                     <div class="bar" id="feedbackProgress"></div>
                 </div>
@@ -3143,38 +3143,30 @@ pybossa.presentTask(function(task, deferred) {
 
 var step = -1;
 
-function showFeedbackStep(action) {
+function showFeedbackStep( action ) {
 
-    hasSeenGuidenceInfo = false;
-    totalGridPercentage = 0;
-
-
-    $("#feedbackStep" + step).hide();
-
-    if (action == 'next') {
-        step += 1;
 
         $("svg").remove();
         $(".feedback-img-polaroid").remove();
         $(".zoomContainer").remove();
         $(".zoomWindowContainer").remove();
 
+        if (action == 'next') {
+        step += 1;
+
         $("#nextFeedbackStep, #checkMyWorkBtn #finishFeedback").addClass("disabled");
     }
 
-    if (step >= 2) {
-        $("#nextFeedbackStep").addClass("disabled");
-        $("#checkMyWorkBtn").show().addClass("disabled");
-    }
 
-    if (step === 2) { // if is step 3
-        $("#practiseModal .modal-body").hide();
-        var modal = new Modal();
-        modal.open("#practiseModal", 5);
-    }
+    var feedbackGrid = new FeedbackGrid();
+    var modal = new Modal();
+    var zoom = new Zoom();
+
+    hasSeenGuidenceInfo = false;
+    totalGridPercentage = 0;
 
 
-
+    $("#feedbackStep" + step).hide();
 
     var data_obj = feedbackData[step].info;
     var imgUrl = feedbackData[step].info.imgNumber;
@@ -3186,15 +3178,29 @@ function showFeedbackStep(action) {
 
     $('#feedbackPhotoWrapper').append(img);
 
-    // Init grid after the images loads
-    //
-    //
-    //$(img).load(function(){
-    var feedbackGrid = new FeedbackGrid();
-    feedbackGrid.createGrid("feedbackCanvas");
-    var zoom = new Zoom();
-    zoom.addZoom($(".feedback-img-polaroid"));
-    //});
+
+    $(img).load(function(){
+        feedbackGrid.createGrid("feedbackCanvas");
+        zoom.addZoom($(".feedback-img-polaroid"));
+    });
+
+
+
+
+    if (step >= 2) {
+        $("#nextFeedbackStep").addClass("disabled");
+        $("#checkMyWorkBtn").show().addClass("disabled");
+    }
+
+    if (step === 2) { // if is step 3
+        $("#practiseModal .modal-body").hide();
+            modal.open("#practiseModal", 5);
+    }
+
+
+
+
+
 
     var checkMyWork = document.getElementById("checkMyWorkBtn");
     checkMyWork.onclick = function() {
