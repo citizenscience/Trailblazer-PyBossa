@@ -17,7 +17,7 @@
 var lt = []; // List of Task array: circular buffer with an index:
 var index = 0; // index for the buffer, it will show the next task
 var url = "http://crowdcrafting.org/api/" // URL to query the PyBossa API
-var xhr = $.getJSON(url + "app?short_name=mvp-04"); // In this case Flickr Person
+var xhr = $.getJSON(url + "app?short_name=mvp-04c"); // In this case Flickr Person
 var app_id;
 
 // Get the application ID for loading the submitted tasks and results
