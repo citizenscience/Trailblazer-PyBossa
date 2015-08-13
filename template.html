@@ -1,7 +1,7 @@
 <style>
     /*
-               .canvas grid 10 and #photo-link image is at z-index of 5
-            */
+                   .canvas grid 10 and #photo-link image is at z-index of 5
+                */
 
     .loader {
         width: 40px;
@@ -207,10 +207,12 @@
         overflow: auto;
         height: 460px;
     }
-    .grid-info ol{
+
+    .grid-info ol {
         margin-top: 20px;
     }
-    .grid-info ol li{
+
+    .grid-info ol li {
         margin-bottom: 10px;
     }
 
@@ -347,20 +349,18 @@
         display: none;
     }
 
-    .mechanic-active .modal #0{
+    .mechanic-active .modal #0 {
         display: none;
     }
 
     .zoomWindow {
         z-index: 2000 !important;
     }
-
-
-
 </style>
 <!--MODAL-->
 <div class="modals row">
     <div class="span12">
+
         <!-- Practice/Feedback Modal -->
         <div id="practiseModal" class="modal hide">
             <div id="0" class="modal-body" style="display:none">
@@ -370,8 +370,7 @@
                 <div id="annotatedImageZoomArea0" class="modal-info">
                     <h2>
                         Most <strong class="text-error">cancer cells</strong> are in the bottom third of the image with some to the left of middle.
-                    </h2>
-                    We’ve outlined them in <strong class="text-error">red</strong>.
+                    </h2> We’ve outlined them in <strong class="text-error">red</strong>.
                     <ul>
                         <li>They’re mostly <b>large</b> </li>
                         <li>The shape and size of each cell is very <b>different</b> from the others</li>
@@ -392,8 +391,6 @@
                     </p>
                 </div>
             </div>
-
-
             <div id="1" class="modal-body" style="display:none">
                 <div class="modal-image">
                     <img class="annotatedImage" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/26-cancer.png" data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/26-cancer-outline@2x-min.png" alt="" />
@@ -401,14 +398,12 @@
                 <div id="annotatedImageZoomArea1" class="modal-info">
                     <h1>
                         The <strong class="text-error">cancer cells</strong> are in the top right, bottom right and left of this image.
-                    </h1>
-                    We’ve outlined them in <strong class="text-error">red</strong>.
+                    </h1> We’ve outlined them in <strong class="text-error">red</strong>.
                     <ul>
                         <li>They are <b>large, mottled</b> and <b>irregular</b></li>
                         <li>No two <strong class="text-error">cancer cells</strong> look the same</li>
                     </ul>
-                    <hr>
-                    They are surrounded by a flood of <strong class="text-success">non-cancer cells</strong>, which include:
+                    <hr> They are surrounded by a flood of <strong class="text-success">non-cancer cells</strong>, which include:
                     <ul>
                         <li>
                             <b>Small, dark</b> and <b>round</b> blood cells
@@ -418,10 +413,8 @@
                         </li>
                     </ul>
                     <h3>Hover your mouse over the image to take a closer look.</h3>
-
                 </div>
             </div>
-
             <div id="2" class="modal-body" style="display:none">
                 <div class="modal-image">
                     <img class="annotatedImage" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/42-cancer.png" data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/42-cancer-outline@2x-min.png" alt="" />
@@ -430,8 +423,7 @@
                     <h1>
                         Here, the <strong class="text-error">cancer cells</strong> have formed <b>rounded clumps</b> which have distinct outlines. We’ve marked them in <strong class="text-error">red</strong>.
                     </h1>
-                    <h2>The clumps are surrounded by <strong class="text-success">non-cancer cells.</strong></h2>
-                    They include:
+                    <h2>The clumps are surrounded by <strong class="text-success">non-cancer cells.</strong></h2> They include:
                     <ul>
                         <li><b>Long</b> and <b>thin</b> blue stromal cells</li>
                         <li><b>Small, dark and round</b> blood cells</li>
@@ -439,13 +431,9 @@
                     <h3>Hover your mouse over the image to take a closer look.</h3>
                 </div>
             </div>
-
             <div id="3" class="modal-body" style="display:none">
                 <div class="modal-image">
-                    <img    class="annotatedImage"
-                            src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/41.png"
-                            data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/41@2x-min.png"
-                            alt="" />
+                    <img class="annotatedImage" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/41.png" data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/41@2x-min.png" alt="" />
                 </div>
                 <div id="annotatedImageZoomArea3" class="modal-info">
                     <h1>This image is pretty much <b>all cancer cells!</b></h1>
@@ -457,13 +445,9 @@
                     <h3>Hover your mouse over the image to take a closer look.</h3>
                 </div>
             </div>
-
             <div id="4" class="modal-body" style="display:none">
                 <div class="modal-image">
-                    <img    class="annotatedImage"
-                            src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/11-cartilage.png"
-                            data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/11-cartilage-outline@2x-min.png"
-                            alt="" />
+                    <img class="annotatedImage" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/11-cartilage.png" data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/11-cartilage-outline@2x-min.png" alt="" />
                 </div>
                 <div id="annotatedImageZoomArea4" class="modal-info">
                     <h1>This image shows you some of the different cells we’ve talked about.</h1>
@@ -484,7 +468,6 @@
                     </h3>
                 </div>
             </div>
-
             <!-- FEEDBACK INFO -->
             <div id="5" class="modal-body" style="display:none">
                 <div class="modal-image">
@@ -535,6 +518,7 @@
                 </button>
             </div>
         </div>
+
         <!-- Tutoiral Modal -->
         <div id="tutorialModal" class="modal hide ">
             <div id="0" class="modal-body" style="display:none">
@@ -976,8 +960,6 @@
                     <h3>Click again to mark <strong>non-cancer</strong> cells in
                         <span class="text-success">Green</span></h3>
                     <h3>Empty sections of the image can be left blank</h3>
-
-
                     <p class="imgId"></p>
                     <div class="progress progress-striped">
                         <div id="progress" rel="tooltip" title="#" class="bar" style="width: 0%;"></div>
@@ -1040,15 +1022,11 @@
                 <div class="progress progress-success progress-striped" style="display:none;">
                     <div class="bar" id="feedbackProgress"></div>
                 </div>
-
                 <div class="grid-info-buttons clearfix">
-
-
                     <a class="btn btn-success disabled" id="checkMyWorkBtn" style="display:none;">
                         Check my work
                     </a>
                     <button class="btn btn-answer" id="feedbackInfoBtn" style="margin-left: 10px;">What's in this image</button>
-
                     <a class="btn btn-primary disabled" id="nextFeedbackStep" style="margin-left: 10px;">
                         Next slide
                     </a>
@@ -2585,12 +2563,12 @@ function Modal() {
  the backdrop also we stop the slides from automatically sliding to next.
  */
 
-Modal.prototype.open = function(modal, goToStep) {
+Modal.prototype.open = function(modall, goToStep) {
 
     $(".grid-info-buttons").css("z-index", 1000);
 
 
-    this.modal = modal;
+    this.modal = modall;
     this.tutorialStep = $(this.modal + " #" + this.step);
 
     $(this.modal).modal({
@@ -2598,8 +2576,9 @@ Modal.prototype.open = function(modal, goToStep) {
         keyboard: false
     });
 
-    this.showStep(goToStep);
+    console.log( goToStep);
 
+    this.showStep(goToStep);
 
 };
 
@@ -2683,12 +2662,11 @@ Modal.prototype.showStep = function(action) {
         $("#prevBtn").show();
     }
 
-    if ($("#mechanicContent").is(':visible')) {
-
-        $("#closeMechanicTutorialBtn").show();
-        $("#tutorialSummary").hide();
-        $("#mechanicTutorialSummary").show();
-    }
+    // if ($("#mechanicContent").is(':visible')) {
+    //     $("#closeMechanicTutorialBtn").show();
+    //     $("#tutorialSummary").hide();
+    //     $("#mechanicTutorialSummary").show();
+    // }
 
     var $lastStep = $('#tutorialModal .modal-body').length - 1;
     if (this.step == $lastStep) {
@@ -2697,8 +2675,6 @@ Modal.prototype.showStep = function(action) {
         if ($("#mechanicContent").is(':visible')) {
             $("#startFeedbackBtn").hide();
             $("#goBackBtn").show();
-
-
         } else {
             $("#startFeedbackBtn").show();
             $("#goBackBtn").hide();
@@ -3143,15 +3119,15 @@ pybossa.presentTask(function(task, deferred) {
 
 var step = -1;
 
-function showFeedbackStep( action ) {
+function showFeedbackStep(action) {
 
 
-        $("svg").remove();
-        $(".feedback-img-polaroid").remove();
-        $(".zoomContainer").remove();
-        $(".zoomWindowContainer").remove();
+    $("svg").remove();
+    $(".feedback-img-polaroid").remove();
+    $(".zoomContainer").remove();
+    $(".zoomWindowContainer").remove();
 
-        if (action == 'next') {
+    if (action == 'next') {
         step += 1;
 
         $("#nextFeedbackStep, #checkMyWorkBtn #finishFeedback").addClass("disabled");
@@ -3179,7 +3155,7 @@ function showFeedbackStep( action ) {
     $('#feedbackPhotoWrapper').append(img);
 
 
-    $(img).load(function(){
+    $(img).load(function() {
         feedbackGrid.createGrid("feedbackCanvas");
         zoom.addZoom($(".feedback-img-polaroid"));
     });
@@ -3194,7 +3170,7 @@ function showFeedbackStep( action ) {
 
     if (step === 2) { // if is step 3
         $("#practiseModal .modal-body").hide();
-            modal.open("#practiseModal", 5);
+        modal.open("#practiseModal", 5);
     }
 
 
@@ -3331,6 +3307,7 @@ $(function() {
 
     var startFeedbackBtn = document.getElementById("startFeedbackBtn");
     startFeedbackBtn.onclick = function() {
+        $("#tutorialModal .modal-body").hide();
         $.cookie(cookie_tutorial_name, "seen");
         $.cookie(cookie_feedback_name, true);
         UpdatePageState();
@@ -3392,9 +3369,9 @@ $(function() {
 
         var annotatedImage = "#practiseModal" + " #" + step + " .annotatedImage";
         var modal = new Modal();
-            modal.open("#practiseModal", step);
+        modal.open("#practiseModal", step);
         var zoom = new Zoom();
-            zoom.removeZoom($(".feedback-img-polaroid"));
+        zoom.removeZoom($(".feedback-img-polaroid"));
 
         $('.zoomContainer').remove();
         $('.zoomWindowContainer').remove();
@@ -3427,7 +3404,7 @@ $(function() {
         }
 
         var zoom = new Zoom();
-            zoom.removeZoom($("#practiseModal" + " #" + step + " .annotatedImage"));
+        zoom.removeZoom($("#practiseModal" + " #" + step + " .annotatedImage"));
 
         $('.zoomContainer').remove();
         $('.zoomWindowContainer').remove();
