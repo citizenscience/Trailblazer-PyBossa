@@ -347,6 +347,10 @@
         display: none;
     }
 
+    .mechanic-active .modal #0{
+        display: none;
+    }
+
     .zoomWindow {
         z-index: 2000 !important;
     }
@@ -890,7 +894,7 @@
             <strong>Loading task...</strong>
         </div>
         <div id="success" class="alert alert-success" style="display:none">
-            <h2><strong>Well done!</strong> Your answer has been saved</h2>
+            <h2><strong>Thanks!</strong> Your answer has been saved</h2>
         </div>
         <div id="loading" class="alert alert-info" style="display:none">
             <h2> Loading next task...</h2>
@@ -2705,8 +2709,6 @@ Modal.prototype.showStep = function(action) {
         $("#startFeedbackBtn").hide();
     }
 
-
-    console.log($currentStep);
     $currentStep.show();
 
 };
@@ -3146,10 +3148,17 @@ function showFeedbackStep(action) {
     hasSeenGuidenceInfo = false;
     totalGridPercentage = 0;
 
+
     $("#feedbackStep" + step).hide();
 
     if (action == 'next') {
         step += 1;
+
+        $("svg").remove();
+        $(".feedback-img-polaroid").remove();
+        $(".zoomContainer").remove();
+        $(".zoomWindowContainer").remove();
+
         $("#nextFeedbackStep, #checkMyWorkBtn #finishFeedback").addClass("disabled");
     }
 
@@ -3164,7 +3173,6 @@ function showFeedbackStep(action) {
         modal.open("#practiseModal", 5);
     }
 
-    $("svg, .feedback-img-polaroid, .zoomContainer, .zoomWindowContainer").remove();
 
 
 
@@ -3374,16 +3382,13 @@ $(function() {
     var feedbackInfoBtn = document.getElementById("feedbackInfoBtn");
     feedbackInfoBtn.onclick = function() {
 
-
-
-
         $("#practiseModal .modal-body").hide();
 
         var annotatedImage = "#practiseModal" + " #" + step + " .annotatedImage";
         var modal = new Modal();
-        modal.open("#practiseModal", step);
+            modal.open("#practiseModal", step);
         var zoom = new Zoom();
-        zoom.removeZoom($(".feedback-img-polaroid"));
+            zoom.removeZoom($(".feedback-img-polaroid"));
 
         $('.zoomContainer').remove();
         $('.zoomWindowContainer').remove();
@@ -3410,15 +3415,36 @@ $(function() {
         if (totalGridPercentage > 5) {
             $("#nextFeedbackStep").removeClass("disabled");
         }
+
         if (step !== 2) {
             hasSeenGuidenceInfo = true;
         } else {
             hasSeenGuidenceInfo = false;
         }
 
+
         var zoom = new Zoom();
-        zoom.removeZoom($("#practiseModal" + " #" + step + " .annotatedImage"));
-        zoom.addZoom($(".feedback-img-polaroid"));
+
+            zoom.removeZoom($("#practiseModal" + " #" + step + " .annotatedImage"));
+            //zoom.removeZoom($(".feedback-img-polaroid"));
+
+
+
+        $('.zoomContainer').remove();
+        $('.zoomWindowContainer').remove();
+
+        $(".feedback-img-polaroid").elevateZoom({
+            zoomWindowPosition: "feedbackZoomWindowLocation",
+            lensFadeIn: 500,
+            lensFadeOut: 500,
+            zoomWindowHeight: 460,
+            zoomWindowWidth: 460,
+            cursor: "pointer"
+        });
+
+
+        //zoom.addZoom($(".feedback-img-polaroid"));
+
     };
 
 
