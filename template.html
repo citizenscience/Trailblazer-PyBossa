@@ -3021,11 +3021,11 @@ pybossa.presentTask(function(task, deferred) {
         var zoom = new Zoom();
         zoom.addZoom($(".img-polaroid"));
 
-        var modal = new Modal();
 
         var showTutorialModalBtn = document.getElementById("showTutorialModalBtn");
         showTutorialModalBtn.onclick = function() {
-            modal.open("#tutorialModal", 0);
+            var modal = new Modal();
+                modal.open("#tutorialModal", 0);
             $("#tutorialSummary").hide();
             $("#mechanicTutorialSummary").show();
             zoom.removeZoom($(".tutorialZoom"));
@@ -3402,9 +3402,6 @@ $(function() {
             zoomWindowWidth: 460,
             cursor: "pointer"
         });
-
-        // zoom.addZoom( $(annotatedImage) );
-
     };
 
     var backToPractiseBtn = document.getElementById("backToPractiseBtn");
@@ -3423,13 +3420,8 @@ $(function() {
             hasSeenGuidenceInfo = false;
         }
 
-
         var zoom = new Zoom();
-
             zoom.removeZoom($("#practiseModal" + " #" + step + " .annotatedImage"));
-            //zoom.removeZoom($(".feedback-img-polaroid"));
-
-
 
         $('.zoomContainer').remove();
         $('.zoomWindowContainer').remove();
@@ -3442,9 +3434,6 @@ $(function() {
             zoomWindowWidth: 460,
             cursor: "pointer"
         });
-
-
-        //zoom.addZoom($(".feedback-img-polaroid"));
 
     };
 
