@@ -2662,11 +2662,11 @@ Modal.prototype.showStep = function(action) {
         $("#prevBtn").show();
     }
 
-    // if ($("#mechanicContent").is(':visible')) {
-    //     $("#closeMechanicTutorialBtn").show();
-    //     $("#tutorialSummary").hide();
-    //     $("#mechanicTutorialSummary").show();
-    // }
+    if ($("#mechanicContent").is(':visible')) {
+        $("#closeMechanicTutorialBtn").show();
+        $("#tutorialSummary").hide();
+        $("#mechanicTutorialSummary").show();
+    }
 
     var $lastStep = $('#tutorialModal .modal-body').length - 1;
     if (this.step == $lastStep) {
