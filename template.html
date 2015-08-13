@@ -2483,7 +2483,7 @@ FeedbackGrid.prototype.percentageFeedbackText = function(pct) {
 
     htmlString += pct + '%</strong> of the image sections correctly</h2>';
 
-    if (pct < 5) {
+    if (pct < 75) {
         htmlString += '<h3>Get 75% correct to go onto the next slide.</h3>';
     }
 
@@ -3391,7 +3391,7 @@ $(function() {
 
         $(".grid-info-buttons").css("z-index", 2500);
 
-        if (totalGridPercentage > 5) {
+        if (totalGridPercentage > 75) {
             $("#nextFeedbackStep").removeClass("disabled");
             $("#finishFeedback").removeClass("disabled");
         }
