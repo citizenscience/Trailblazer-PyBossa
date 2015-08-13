@@ -832,33 +832,25 @@
                     </div>
                     <div id="mechanicTutorialSummary" style="display:none;">
                         <h1>
-                            You're now about to <strong>start</strong> analysing cancer images.
-                        </h1>
-                        <h2>Here's what to remember:</h2>
-                        <ul>
-                            <li>
-                                To identify <b class="text-error">cancer cells</b>, look for
-                                <b>blotchy cells</b> grouped together in
-                                <b>uneven clumps, loose rings</b> or <b>broken chains.</b>
-                            </li>
-                            <li>
-                                <b>Click once</b> to turn sections <b>containing cancer cells
-                                <strong class="text-error">red</strong></b>
-                            </li>
-                            <li>
-                                <strong class="text-success">Non-cancer cells</strong> include the dark blue or dark brown, small and round blood cells
-                            </li>
-                            <li>
-                                Other <strong class="text-success">non-cancer cells</strong> includes the light blue stretched and wispy looking stromal cells
-                            </li>
-                            <li>
-                                <b>Click again</b> to turn sections that only <b>contain non-cancer cells
-                                <strong class="text-success">green</strong></b>
-                            </li>
-                            <li>
-                                <b>Leave blank</b> sections that <b>do not contain any cells</b>
-                            </li>
-                        </ul>
+                        You are now about to <strong>start</strong> analysing cancer images.
+                    </h1>
+                    <ul>
+                        <li>
+                            You will be shown 10 images to analyse
+                        </li>
+                        <li>
+                            You can stop and resume later if you want to
+                        </li>
+                        <li>
+                            You can return to the tutorial at any time
+                        </li>
+                        <li>
+                            The reference images at the bottom of the screen scroll to show examples of <strong class="text-error">cancer</strong> and <strong class="text-success">non-cancer cells</strong>
+                        </li>
+                        <li>
+                            Don't worry if you're not sure, just give your best guess
+                        </li>
+                    </ul>
                     </div>
                 </div>
             </div>
@@ -2463,7 +2455,7 @@ FeedbackGrid.prototype.updateFeedbackProgress = function() {
     totalGridPercentage = pct;
 
 
-    if (pct >= 5 && hasSeenGuidenceInfo === true) {
+    if (pct >= 75 && hasSeenGuidenceInfo === true) {
         $("#nextFeedbackStep, #finishFeedback").removeClass("disabled");
 
         $(".taskTitle, .taskSubTitle, .taskParagraph").hide();
@@ -2483,7 +2475,7 @@ FeedbackGrid.prototype.percentageFeedbackText = function(pct) {
 
 
     var htmlString = '<h2>';
-    if (pct >= 5) {
+    if (pct >= 75) {
         htmlString += 'Well done! ';
     }
 
@@ -2492,7 +2484,7 @@ FeedbackGrid.prototype.percentageFeedbackText = function(pct) {
     htmlString += pct + '%</strong> of the image sections correctly</h2>';
 
     if (pct < 5) {
-        htmlString += '<h3>Get 5% correct to go onto the next slide.</h3>';
+        htmlString += '<h3>Get 75% correct to go onto the next slide.</h3>';
     }
 
 
@@ -2565,7 +2557,7 @@ function Modal() {
 
 Modal.prototype.open = function(modall, goToStep) {
 
-    $(".grid-info-buttons").css("z-index", 1000);
+
 
 
     this.modal = modall;
@@ -3005,6 +2997,7 @@ pybossa.presentTask(function(task, deferred) {
         var showTutorialModalBtn = document.getElementById("showTutorialModalBtn");
         showTutorialModalBtn.onclick = function() {
             modal.open("#tutorialModal", 0);
+            $(".grid-info-buttons").css("z-index", 1000);
             $("#tutorialSummary").hide();
             $("#mechanicTutorialSummary").show();
             zoom.removeZoom($(".tutorialZoom"));
@@ -3013,6 +3006,7 @@ pybossa.presentTask(function(task, deferred) {
 
         var closeMechanicTutorialBtn = document.getElementById("closeMechanicTutorialBtn");
         closeMechanicTutorialBtn.onclick = function() {
+            $(".grid-info-buttons").css("z-index", 2500);
             zoom.removeZoom($(".tutorialZoom"));
             $("#errorClick").show();
             zoom.addZoom($(".img-polaroid"));
@@ -3368,6 +3362,7 @@ $(function() {
 
     var feedbackInfoBtn = document.getElementById("feedbackInfoBtn");
     feedbackInfoBtn.onclick = function() {
+        $(".grid-info-buttons").css("z-index", 1000);
 
         $("#practiseModal .modal-body").hide();
 
