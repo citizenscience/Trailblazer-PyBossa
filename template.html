@@ -2257,12 +2257,6 @@ FeedbackGrid.prototype.checkAnswer = function(action, activeSquare) {
         } else {
             this.updateFeedbackProgress();
             this.updateFeedback(pathologistAnswer, true);
-
-            // activeSquare.animate({
-            //     "fill-opacity": 0
-            // }, 2000, function () {
-            //     activeSquare.node.setAttribute("class", "grid-item");
-            // });
         }
 
     } else {
@@ -2277,10 +2271,12 @@ FeedbackGrid.prototype.checkAnswer = function(action, activeSquare) {
             this.updateFeedback(pathologistAnswer, false);
 
             activeSquare.animate({
-                "fill-opacity": 0
+                "fill-opacity": 1
             }, 2000, function() {
+                activeSquare.attr("fill-opacity", 1)
                 activeSquare.node.setAttribute("class", "grid-item");
             });
+
 
 
         }
@@ -2307,7 +2303,6 @@ FeedbackGrid.prototype.removeTickOrCross = function(activeSquare) {
 
 
 FeedbackGrid.prototype.addTick = function(activeSquare) {
-
 
     var x = Math.floor(activeSquare.attr("x")),
         y = Math.floor(activeSquare.attr("y")),
@@ -2353,6 +2348,7 @@ FeedbackGrid.prototype.addCross = function(activeSquare) {
     cross["data-parent_id"] = parentId;
     cross["class"] = "cross";
     this.tickCross.push(cross);
+
     return cross;
 };
 
@@ -2402,6 +2398,7 @@ FeedbackGrid.prototype.showMyAnalysis = function() {
     });
 
     function findParentSquare(cross, feedbackObjAnswer) {
+
         for (var i = 0; i < feedbackData[step].info.squares.length; i++) {
             var gridSquare = feedbackObjAnswer.squares[i],
                 gridSquareNode = feedbackObjAnswer.squares[i].node,
@@ -3328,12 +3325,14 @@ $(function() {
 
         var m = new Modal();
         m.open("#practiseModal", 6);
+        $(".grid-info-buttons").css("z-index", 1000);
     }
 
 
 
     var startMechanicBtn = document.getElementById("startMechanicBtn");
     startMechanicBtn.onclick = function() {
+        $(".grid-info-buttons").css("z-index", 2500);
         $.cookie(cookie_feedback_name, false);
         UpdatePageState();
     }
