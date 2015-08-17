@@ -841,13 +841,14 @@
                     <h1>Look closely at the cells in each section</h1>
                     <h2>
                         You can zoom in to the image by moving the mouse over each section to get a closer look.
+                        In a moment you’ll have a chance to try this for yourself.
                     </h2>
                     <h2>
                         There are a number of reference images at the bottom of the screen
                         showing examples of what <strong class="text-error">cancer</strong> and <strong class="text-success">non-cancer</strong> cells look like.
                     </h2>
                     <h2>
-                        In a moment you’ll have a chance to try this for yourself.
+
                     </h2>
                 </div>
             </div>
@@ -1094,10 +1095,10 @@
                         Check my work
                     </a>
                     <button class="btn btn-answer" id="feedbackInfoBtn" style="margin-left: 10px;">What's in this image</button>
-                    <a class="btn btn-primary disabled" id="nextFeedbackStep" style="margin-left: 10px;">
+                    <a class="btn disabled" id="nextFeedbackStep" style="margin-left: 10px;">
                         Next slide
                     </a>
-                    <a class="btn btn-primary disabled" id="finishFeedback" style="display:none; margin-left: 10px;">
+                    <a class="btn disabled" id="finishFeedback" style="display:none; margin-left: 10px;">
                         Next
                     </a>
                 </div>
@@ -2332,12 +2333,6 @@ FeedbackGrid.prototype.checkAnswer = function(action, activeSquare) {
         } else {
             this.updateFeedbackProgress();
             this.updateFeedback(pathologistAnswer, true);
-
-            // activeSquare.animate({
-            //     "fill-opacity": 0
-            // }, 2000, function () {
-            //     activeSquare.node.setAttribute("class", "grid-item");
-            // });
         }
 
     } else {
@@ -2348,15 +2343,16 @@ FeedbackGrid.prototype.checkAnswer = function(action, activeSquare) {
             cross.attr("opacity", 0);
         } else {
 
-
             this.updateFeedbackProgress();
             this.updateFeedback(pathologistAnswer, false);
 
             activeSquare.animate({
-                "fill-opacity": 0
+                "fill-opacity": 1
             }, 2000, function() {
+                activeSquare.attr("fill-opacity", 1)
                 activeSquare.node.setAttribute("class", "grid-item");
             });
+
 
 
         }
@@ -2383,7 +2379,6 @@ FeedbackGrid.prototype.removeTickOrCross = function(activeSquare) {
 
 
 FeedbackGrid.prototype.addTick = function(activeSquare) {
-
 
     var x = Math.floor(activeSquare.attr("x")),
         y = Math.floor(activeSquare.attr("y")),
@@ -2429,6 +2424,7 @@ FeedbackGrid.prototype.addCross = function(activeSquare) {
     cross["data-parent_id"] = parentId;
     cross["class"] = "cross";
     this.tickCross.push(cross);
+
     return cross;
 };
 
@@ -2478,6 +2474,7 @@ FeedbackGrid.prototype.showMyAnalysis = function() {
     });
 
     function findParentSquare(cross, feedbackObjAnswer) {
+
         for (var i = 0; i < feedbackData[step].info.squares.length; i++) {
             var gridSquare = feedbackObjAnswer.squares[i],
                 gridSquareNode = feedbackObjAnswer.squares[i].node,
@@ -2532,6 +2529,7 @@ FeedbackGrid.prototype.updateFeedbackProgress = function() {
 
     if (pct >= 75 && hasSeenGuidenceInfo === true) {
         $("#nextFeedbackStep, #finishFeedback").removeClass("disabled");
+        $("#nextFeedbackStep, #finishFeedback").addClass("btn-primary");
 
         $(".taskTitle, .taskSubTitle, .taskParagraph").hide();
         $("#" + "feedbackStep" + step + " .taskFeedback").show();
@@ -3204,6 +3202,7 @@ function showFeedbackStep(action) {
     if (action == 'next') {
         step += 1;
         $("#nextFeedbackStep, #checkMyWorkBtn #finishFeedback").addClass("disabled");
+        $("#nextFeedbackStep, #finishFeedback").removeClass("btn-primary");
     }
 
 
@@ -3244,6 +3243,7 @@ function showFeedbackStep(action) {
     if (step === 2) { // if is step 3
         $("#practiseModal .modal-body").hide();
         modal.open("#practiseModal", 5);
+        $(".grid-info-buttons").css("z-index", 1000);
     }
 
 
@@ -3403,12 +3403,14 @@ $(function() {
 
         var m = new Modal();
         m.open("#practiseModal", 6);
+        $(".grid-info-buttons").css("z-index", 1000);
     }
 
 
 
     var startMechanicBtn = document.getElementById("startMechanicBtn");
     startMechanicBtn.onclick = function() {
+        $(".grid-info-buttons").css("z-index", 2500);
         $.cookie(cookie_feedback_name, false);
         UpdatePageState();
     }
@@ -3469,6 +3471,7 @@ $(function() {
         if (totalGridPercentage > 75) {
             $("#nextFeedbackStep").removeClass("disabled");
             $("#finishFeedback").removeClass("disabled");
+            $("#nextFeedbackStep, #finishFeedback").addClass("btn-primary");
         }
 
         if (step !== 2) {
