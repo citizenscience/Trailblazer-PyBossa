@@ -1113,19 +1113,6 @@ var cookie_tutorial_name = project_short_name + 'tutorial';
 var feedbackData = [{
     "info": {
         "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung-all-min/1.jpg",
-        "taskTitle": "<h2>Click once to mark cancer cells in <span class=\"text-error\">Red<\/span><\/h2> <h2>Click again to mark non-cancer cells in <span class=\"text-success\">Green<\/span><\/h2><h2>Empty sections of the image can be left blank<\/h2>",
-        "taskSubTitle": "<h3>You can change your answer as often as you want. Just click on a section of the image to change your answer.<\/h3>" +
-            "   <h3>Remember to look at the reference images below for help.<\/h3>",
-        "taskParagraph": "",
-        "taskFeedback": "<h2>Image feedback<\/h2>" +
-            "<h3>Most <b class=\"text-error\">cancer cells</b> are in the bottom third of the image with some to the left of middle.<\/h3>" +
-            "<ul><li>They’re mostly <b>large<\/b><\/li>" +
-            "<li>The shape and size of each cell is very different from the others<\/li>" +
-            "<li>They’re <b>darker<\/b> than surrounding cells<\/li>" +
-            "<li>They have formed uneven, <b>lumpy rings<\/b> and <b>chains</b>.<\/li><\/ul>" +
-            "<h3>The surrounding <b class=\"text-success\">non-cancer cells</b> include<\/h3>" +
-            "<ul><li>Longer and thinner blue stromal cells<\/li>" +
-            "<li><b>Small blue<\/b> or <b>dark brown round cells<\/b> which are <b class=\"text-success\">blood cells</b>.<\/li><\/ul>",
         "squares": [{
             "column": 0,
             "answer": null,
@@ -2452,7 +2439,7 @@ FeedbackGrid.prototype.updateFeedbackProgress = function() {
     totalGridPercentage = pct;
 
 
-    if (pct >= 75 && hasSeenGuidenceInfo === true) {
+    if (pct > 13 && hasSeenGuidenceInfo === true) {
         $("#nextFeedbackStep, #finishFeedback").removeClass("disabled");
         $("#nextFeedbackStep, #finishFeedback").addClass("btn-primary");
 
@@ -2473,7 +2460,7 @@ FeedbackGrid.prototype.percentageFeedbackText = function(pct) {
 
 
     var htmlString = '<h2>';
-    if (pct >= 75) {
+    if (pct > 13) {
         htmlString += 'Well done! ';
     }
 
@@ -2481,8 +2468,8 @@ FeedbackGrid.prototype.percentageFeedbackText = function(pct) {
 
     htmlString += pct + '%</strong> of the image sections correctly</h2>';
 
-    if (pct < 75) {
-        htmlString += '<h3>Get 75% correct to go onto the next slide.</h3>';
+    if (pct < 13) {
+        htmlString += '<h3>Get 13% correct to go onto the next slide.</h3>';
     }
 
 
@@ -3179,6 +3166,14 @@ function showFeedbackStep(action) {
     var checkMyWork = document.getElementById("checkMyWorkBtn");
     checkMyWork.onclick = function() {
         if ($(this).hasClass("disabled")) return;
+
+        if (totalGridPercentage > 13) {
+            $("#nextFeedbackStep").removeClass("disabled");
+            $("#finishFeedback").removeClass("disabled");
+            $("#nextFeedbackStep, #finishFeedback").addClass("btn-primary");
+        }
+
+
         //$(".taskTitle,.taskSubTitle, .taskParagraph ").hide();
         //$("#" + "feedbackStep" + step + " .taskFeedback").show();
         feedbackGrid.showMyAnalysis();
@@ -3386,6 +3381,7 @@ $(function() {
             zoomWindowWidth: 460,
             cursor: "pointer"
         });
+
     };
 
     var backToPractiseBtn = document.getElementById("backToPractiseBtn");
@@ -3393,7 +3389,7 @@ $(function() {
 
         $(".grid-info-buttons").css("z-index", 2500);
 
-        if (totalGridPercentage > 75) {
+        if (totalGridPercentage > 13) {
             $("#nextFeedbackStep").removeClass("disabled");
             $("#finishFeedback").removeClass("disabled");
             $("#nextFeedbackStep, #finishFeedback").addClass("btn-primary");
