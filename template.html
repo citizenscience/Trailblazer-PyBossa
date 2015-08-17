@@ -1020,10 +1020,10 @@
                         Check my work
                     </a>
                     <button class="btn btn-answer" id="feedbackInfoBtn" style="margin-left: 10px;">What's in this image</button>
-                    <a class="btn btn-primary disabled" id="nextFeedbackStep" style="margin-left: 10px;">
+                    <a class="btn disabled" id="nextFeedbackStep" style="margin-left: 10px;">
                         Next slide
                     </a>
-                    <a class="btn btn-primary disabled" id="finishFeedback" style="display:none; margin-left: 10px;">
+                    <a class="btn disabled" id="finishFeedback" style="display:none; margin-left: 10px;">
                         Next
                     </a>
                 </div>
@@ -2454,6 +2454,7 @@ FeedbackGrid.prototype.updateFeedbackProgress = function() {
 
     if (pct >= 75 && hasSeenGuidenceInfo === true) {
         $("#nextFeedbackStep, #finishFeedback").removeClass("disabled");
+        $("#nextFeedbackStep, #finishFeedback").addClass("btn-primary");
 
         $(".taskTitle, .taskSubTitle, .taskParagraph").hide();
         $("#" + "feedbackStep" + step + " .taskFeedback").show();
@@ -3126,6 +3127,7 @@ function showFeedbackStep(action) {
     if (action == 'next') {
         step += 1;
         $("#nextFeedbackStep, #checkMyWorkBtn #finishFeedback").addClass("disabled");
+        $("#nextFeedbackStep, #finishFeedback").removeClass("btn-primary");
     }
 
 
@@ -3394,6 +3396,7 @@ $(function() {
         if (totalGridPercentage > 75) {
             $("#nextFeedbackStep").removeClass("disabled");
             $("#finishFeedback").removeClass("disabled");
+            $("#nextFeedbackStep, #finishFeedback").addClass("btn-primary");
         }
 
         if (step !== 2) {
