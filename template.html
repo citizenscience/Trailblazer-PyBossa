@@ -2434,7 +2434,7 @@ FeedbackGrid.prototype.updateFeedbackProgress = function() {
     totalGridPercentage = pct;
 
 
-    if (pct > 13 && hasSeenGuidenceInfo === true) {
+    if (pct > 75 && hasSeenGuidenceInfo === true) {
         $("#nextFeedbackStep, #finishFeedback").removeClass("disabled");
         $("#nextFeedbackStep, #finishFeedback").addClass("btn-primary");
 
@@ -3427,7 +3427,7 @@ $(function() {
 
         $(".grid-info-buttons").css("z-index", 2500);
 
-        if (totalGridPercentage > 13) {
+        if (totalGridPercentage > 75) {
             $("#nextFeedbackStep").removeClass("disabled");
             $("#finishFeedback").removeClass("disabled");
             $("#nextFeedbackStep, #finishFeedback").addClass("btn-primary");
