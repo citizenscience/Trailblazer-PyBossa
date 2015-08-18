@@ -2453,13 +2453,13 @@ FeedbackGrid.prototype.updateFeedbackProgress = function() {
 FeedbackGrid.prototype.percentageFeedbackText = function(pct) {
     var $feedbackText = $("#feedbackProgressText");
     var htmlString = '<h2>';
-    if (pct > 13) {
+    if (pct > 75) {
         htmlString += 'Well done! ';
     }
     htmlString += 'You\'ve marked ';
     htmlString += pct + '%</strong> of the image sections correctly</h2>';
-    if (pct < 13) {
-        htmlString += '<h3>Get 13% correct to go onto the next slide.</h3>';
+    if (pct < 75) {
+        htmlString += '<h3>Get 75% correct to go onto the next slide.</h3>';
     }
     $feedbackText.html(htmlString);
 };
@@ -3205,7 +3205,7 @@ function showFeedbackStep(action) {
     checkMyWork.onclick = function() {
         if ($(this).hasClass("disabled")) return;
 
-        if (totalGridPercentage > 13) {
+        if (totalGridPercentage > 75) {
             $("#nextFeedbackStep").removeClass("disabled");
             $("#finishFeedback").removeClass("disabled");
             $("#nextFeedbackStep, #finishFeedback").addClass("btn-primary");
