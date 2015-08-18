@@ -2575,45 +2575,50 @@ Modal.prototype.showStep = function(action) {
         $(".tutorialZoom14").elevateZoom();
     }
 
-    var $currentStep = this.getCurrentStep(),
-        $carousel = $(this.modal + " #" + this.step + " .carousel"),
-        $modalInfo = $(this.modal + " #" + this.step + " .modal-info"),
-        $items = $(this.modal + " #" + this.step + " .item");
+    var $currentStep               = this.getCurrentStep(),
+        currentModalStep           = this.modal + " #" + this.step,
+        currentModalCarousel       = currentModalStep + " .carousel",
+        currentModalInfo           = currentModalStep + " .modal-info",
+        currentModalCarouselSlides = currentModalStep + " .item";
+
+        // $carousel = $(this.modal + " #" + this.step + " .carousel"),
+        // $modalInfo = $(this.modal + " #" + this.step + " .modal-info"),
+        // $items = $(this.modal + " #" + this.step + " .item");
+
 
 
     // If modal step has a carousel
         //
         //
-    if ($carousel.length > 0) {
-
-
+    if ($(currentModalCarousel).length > 0) {
 
         $('.zoomContainer').remove();
         $('.zoomWindowContainer').remove();
 
-        var $firstImgItem = $(".carousel-inner .active img").first()
-        $firstImgItem.elevateZoom({
-                zoomWindowPosition: "",
-                lensFadeIn: 500,
-                lensFadeOut: 500,
-                zoomWindowHeight: 460,
-                zoomWindowWidth: 460,
-                cursor: "pointer"
-            });
+        var $activeImgItem = $(this.modal + " #" + this.step + " .carousel-inner .item.active img");
+
+        $activeImgItem.elevateZoom({
+            zoomWindowPosition: "",
+            lensFadeIn: 500,
+            lensFadeOut: 500,
+            zoomWindowHeight: 460,
+            zoomWindowWidth: 460,
+            cursor: "pointer"
+        });
 
 
         // If the carousel has not been opened before
         //
         //
-        if (!$carousel.data("carousel")) {
+        if (!$(currentModalCarousel).data("carousel")) {
 
-            $carousel.carousel({
+            $(currentModalCarousel).carousel({
                 interval: false
             });
 
             var $indicatorList = $("#carouselIndicatorsList" + this.step);
 
-            $($items).each(function(idx) {
+            $(currentModalCarouselSlides).each(function(idx) {
                 // Adding buttons
                 idx++;
                 var $item = $(this),
@@ -2621,7 +2626,7 @@ Modal.prototype.showStep = function(action) {
                 $indicatorList.append($li);
                 //Adding item-info to modal-info
                 $(this).children(".item-inner");
-                $modalInfo.append($item.children(".item-inner"));
+                $(currentModalInfo).append($item.children(".item-inner"));
             });
 
 
@@ -2671,12 +2676,10 @@ Modal.prototype.showStep = function(action) {
 
 
 Modal.prototype.addZoomToSlide = function( evt ) {
-
     // console.log( evt );
     // var $currentStep = this.getCurrentStep(),
     //     $activeSlide = $currentStep.find(".carousel-inner .active"),
     //     $activeInfo = $currentStep.find(".modal-info .active");
-
 }
 
 /*
@@ -2711,7 +2714,7 @@ Modal.prototype.nextSlideContent = function(carousel) {
         var $zoomArea = nextSlideInfo.parent();
         var $currentSlideImg = $(".tutorialZoom" + $modalId)[id - 1];
 
-        $($currentSlideImg).elevateZoom({
+        $( $currentSlideImg ).elevateZoom({
             zoomWindowPosition: "",
             lensFadeIn: 500,
             lensFadeOut: 500,
