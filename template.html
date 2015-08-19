@@ -2434,7 +2434,7 @@ FeedbackGrid.prototype.updateFeedbackProgress = function() {
     totalGridPercentage = pct;
 
 
-    if (pct > 75 && hasSeenGuidenceInfo === true) {
+    if (pct >= 75 && hasSeenGuidenceInfo === true) {
         $("#nextFeedbackStep, #finishFeedback").removeClass("disabled");
         $("#nextFeedbackStep, #finishFeedback").addClass("btn-primary");
 
@@ -2453,7 +2453,7 @@ FeedbackGrid.prototype.updateFeedbackProgress = function() {
 FeedbackGrid.prototype.percentageFeedbackText = function(pct) {
     var $feedbackText = $("#feedbackProgressText");
     var htmlString = '<h2>';
-    if (pct > 75) {
+    if (pct >= 75) {
         htmlString += 'Well done! ';
     }
     htmlString += 'You\'ve marked ';
@@ -3205,7 +3205,7 @@ function showFeedbackStep(action) {
     checkMyWork.onclick = function() {
         if ($(this).hasClass("disabled")) return;
 
-        if (totalGridPercentage > 75) {
+        if (totalGridPercentage >= 75) {
             $("#nextFeedbackStep").removeClass("disabled");
             $("#finishFeedback").removeClass("disabled");
             $("#nextFeedbackStep, #finishFeedback").addClass("btn-primary");
@@ -3427,7 +3427,7 @@ $(function() {
 
         $(".grid-info-buttons").css("z-index", 2500);
 
-        if (totalGridPercentage > 75) {
+        if (totalGridPercentage >= 75) {
             $("#nextFeedbackStep").removeClass("disabled");
             $("#finishFeedback").removeClass("disabled");
             $("#nextFeedbackStep, #finishFeedback").addClass("btn-primary");
