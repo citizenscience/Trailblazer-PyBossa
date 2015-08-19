@@ -431,8 +431,8 @@ main {
             </div>
             <div id="3" class="modal-body" style="display:none">
                 <div class="modal-image">
-                    <img class="annotatedImage" src="////citscitools.cancerresearchuk.org/static/mvp-images/bladder_ki67/Ki67-09.jpg"
-                         data-zoom-image="////citscitools.cancerresearchuk.org/static/mvp-images/bladder_ki67/Ki67-09.jpg" alt="" />
+                    <img class="annotatedImage" src="//citscitools.cancerresearchuk.org/static/mvp-images/bladder_ki67/ki67-09.jpg"
+                         data-zoom-image="//citscitools.cancerresearchuk.org/static/mvp-images/bladder_ki67/Ki67-09.jpg" alt="" />
                 </div>
                 <div id="annotatedImageZoomArea3" class="modal-info">
                     <h1>This image is pretty much <b>all cancer cells!</b></h1>
@@ -3317,7 +3317,7 @@ function showFeedbackStep(action) {
 
     if (step === 2) { // if is step 3
         $(".zoomContainer").remove();
-    $(".zoomWindowContainer").remove();
+        $(".zoomWindowContainer").remove();
 
         $("#practiseModal .modal-body").hide();
         modal.open("#practiseModal", 5);
@@ -3533,6 +3533,7 @@ $(function() {
         var modal = new Modal();
         modal.open("#practiseModal", step);
         var zoom = new Zoom();
+
         zoom.removeZoom($(".feedback-img-polaroid"));
 
         $('.zoomContainer').remove();
