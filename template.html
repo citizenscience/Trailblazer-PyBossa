@@ -407,7 +407,7 @@ main {
             </div>
             <div id="2" class="modal-body" style="display:none">
                 <div class="modal-image">
-                    <img class="annotatedImage" src="//citscitools.cancerresearchuk.org/static/mvp-images/bladder_ki67/annotated/Ki67-07-annotate-cancer-area.jpg"
+                    <img class="annotatedImage" src="//citscitools.cancerresearchuk.org/static/mvp-images/bladder_ki67/annotated/Ki67-07-annotated-cancer-and-non.jpg"
                          data-zoom-image="//citscitools.cancerresearchuk.org/static/mvp-images/bladder_ki67/annotated/Ki67-07-annotated-cancer-and-non-outline.jpg" alt="" />
                 </div>
                 <div id="annotatedImageZoomArea2" class="modal-info">
@@ -2579,7 +2579,7 @@ FeedbackGrid.prototype.updateFeedbackProgress = function() {
 FeedbackGrid.prototype.percentageFeedbackText = function(pct) {
     var $feedbackText = $("#feedbackProgressText");
     var htmlString = '<h2>';
-    if (pct > 75) {
+    if (pct >= 75) {
         htmlString += 'Well done! ';
     }
     htmlString += 'You\'ve marked ';
@@ -3332,7 +3332,7 @@ function showFeedbackStep(action) {
     checkMyWork.onclick = function() {
         if ($(this).hasClass("disabled")) return;
 
-        if (totalGridPercentage > 75) {
+        if (totalGridPercentage >= 75) {
             $("#nextFeedbackStep").removeClass("disabled");
             $("#finishFeedback").removeClass("disabled");
             $("#nextFeedbackStep, #finishFeedback").addClass("btn-primary");
@@ -3554,7 +3554,7 @@ $(function() {
 
         $(".grid-info-buttons").css("z-index", 2500);
 
-        if (totalGridPercentage > 75) {
+        if (totalGridPercentage >= 75) {
             $("#nextFeedbackStep").removeClass("disabled");
             $("#finishFeedback").removeClass("disabled");
             $("#nextFeedbackStep, #finishFeedback").addClass("btn-primary");
