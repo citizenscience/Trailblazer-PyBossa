@@ -431,7 +431,7 @@ main {
             </div>
             <div id="3" class="modal-body" style="display:none">
                 <div class="modal-image">
-                    <img class="annotatedImage" src="//citscitools.cancerresearchuk.org/static/mvp-images/bladder_ki67/ki67-09.jpg"
+                    <img class="annotatedImage" src="//citscitools.cancerresearchuk.org/static/mvp-images/bladder_ki67/Ki67-09.jpg"
                          data-zoom-image="//citscitools.cancerresearchuk.org/static/mvp-images/bladder_ki67/Ki67-09.jpg" alt="" />
                 </div>
                 <div id="annotatedImageZoomArea3" class="modal-info">
@@ -2558,7 +2558,7 @@ FeedbackGrid.prototype.updateFeedbackProgress = function() {
     totalGridPercentage = pct;
 
 
-    if (pct >= 5 && hasSeenGuidenceInfo === true) {
+    if (pct >= 75 && hasSeenGuidenceInfo === true) {
         $("#nextFeedbackStep, #finishFeedback").removeClass("disabled");
         $("#nextFeedbackStep, #finishFeedback").addClass("btn-primary");
 
@@ -2577,13 +2577,13 @@ FeedbackGrid.prototype.updateFeedbackProgress = function() {
 FeedbackGrid.prototype.percentageFeedbackText = function(pct) {
     var $feedbackText = $("#feedbackProgressText");
     var htmlString = '<h2>';
-    if (pct >= 5) {
+    if (pct >= 75) {
         htmlString += 'Well done! ';
     }
     htmlString += 'You\'ve marked ';
     htmlString += pct + '%</strong> of the image sections correctly</h2>';
-    if (pct < 5) {
-        htmlString += '<h3>Get 5% correct to go onto the next slide.</h3>';
+    if (pct < 75) {
+        htmlString += '<h3>Get 75% correct to go onto the next slide.</h3>';
     }
     $feedbackText.html(htmlString);
 
