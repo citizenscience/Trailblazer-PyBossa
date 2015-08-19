@@ -362,7 +362,7 @@ main {
     <div class="span12">
 
         <!-- Practice/Feedback Modal -->
-        <div id="practiseModal" class="modal hide">
+        <div id="practiseModal" class="modal hide practise-modal">
             <div id="0" class="modal-body" style="display:none">
                 <div class="modal-image">
                     <img class="annotatedImage" src="//citscitools.cancerresearchuk.org/static/mvp-images/bladder_ki67/annotated/Ki67-16-annotated-cancer-area.jpg"
@@ -513,7 +513,7 @@ main {
         </div>
 
         <!-- Tutoiral Modal -->
-        <div id="tutorialModal" class="modal hide ">
+        <div id="tutorialModal" class="modal hide tutorial-modal">
             <div id="0" class="modal-body" style="display:none">
                 <div class="modal-image">
                     <img src="//citscitools.cancerresearchuk.org/static/mvp-images/bladder_ki67/Ki67-05.jpg" alt="" />
@@ -3466,7 +3466,7 @@ $(function() {
 
     var startFeedbackBtn = document.getElementById("startFeedbackBtn");
     startFeedbackBtn.onclick = function() {
-        $("#tutorialModal .modal-body").hide();
+        $(".tutorial-modal .modal-body").hide();
         $.cookie(cookie_tutorial_name, "seen");
         $.cookie(cookie_feedback_name, true);
         UpdatePageState();
@@ -3485,7 +3485,7 @@ $(function() {
         $("#backToPractiseBtn").hide();
         $("#startMechanicBtn").show();
 
-        $("#practiseModal .modal-body").hide();
+        $(".practise-modal .modal-body").hide();
 
         var m = new Modal();
         m.open("#practiseModal", 6);
