@@ -1,361 +1,361 @@
 <style>
-/*
-                   .canvas grid 10 and #photo-link image is at z-index of 5
-                */
+    /*
+                       .canvas grid 10 and #photo-link image is at z-index of 5
+                    */
 
-.loader {
-    width: 40px;
-    height: 40px;
-    position: absolute;
-    z-index: 1;
-    margin: auto;
-    left: 0;
-    right: 0;
-    top: 190px
-}
-
-.loader span {
-    position: absolute;
-    bottom: -40px;
-    width: 130px;
-    margin-left: -40px;
-}
-
-.loader .loader-circle {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
-}
-
-.loader .loader-circle:before {
-    content: '';
-    display: block;
-    margin: 0 auto;
-    width: 15%;
-    height: 15%;
-    background-color: #333;
-    border-radius: 100%;
-    -webkit-animation: loader-circleFadeDelay 1.2s infinite ease-in-out both;
-    animation: loader-circleFadeDelay 1.2s infinite ease-in-out both;
-}
-
-.loader .loader-circle2 {
-    -webkit-transform: rotate(30deg);
-    -ms-transform: rotate(30deg);
-    transform: rotate(30deg);
-}
-
-.loader .loader-circle3 {
-    -webkit-transform: rotate(60deg);
-    -ms-transform: rotate(60deg);
-    transform: rotate(60deg);
-}
-
-.loader .loader-circle4 {
-    -webkit-transform: rotate(90deg);
-    -ms-transform: rotate(90deg);
-    transform: rotate(90deg);
-}
-
-.loader .loader-circle5 {
-    -webkit-transform: rotate(120deg);
-    -ms-transform: rotate(120deg);
-    transform: rotate(120deg);
-}
-
-.loader .loader-circle6 {
-    -webkit-transform: rotate(150deg);
-    -ms-transform: rotate(150deg);
-    transform: rotate(150deg);
-}
-
-.loader .loader-circle7 {
-    -webkit-transform: rotate(180deg);
-    -ms-transform: rotate(180deg);
-    transform: rotate(180deg);
-}
-
-.loader .loader-circle8 {
-    -webkit-transform: rotate(210deg);
-    -ms-transform: rotate(210deg);
-    transform: rotate(210deg);
-}
-
-.loader .loader-circle9 {
-    -webkit-transform: rotate(240deg);
-    -ms-transform: rotate(240deg);
-    transform: rotate(240deg);
-}
-
-.loader .loader-circle10 {
-    -webkit-transform: rotate(270deg);
-    -ms-transform: rotate(270deg);
-    transform: rotate(270deg);
-}
-
-.loader .loader-circle11 {
-    -webkit-transform: rotate(300deg);
-    -ms-transform: rotate(300deg);
-    transform: rotate(300deg);
-}
-
-.loader .loader-circle12 {
-    -webkit-transform: rotate(330deg);
-    -ms-transform: rotate(330deg);
-    transform: rotate(330deg);
-}
-
-.loader .loader-circle2:before {
-    -webkit-animation-delay: -1.1s;
-    animation-delay: -1.1s;
-}
-
-.loader .loader-circle3:before {
-    -webkit-animation-delay: -1s;
-    animation-delay: -1s;
-}
-
-.loader .loader-circle4:before {
-    -webkit-animation-delay: -0.9s;
-    animation-delay: -0.9s;
-}
-
-.loader .loader-circle5:before {
-    -webkit-animation-delay: -0.8s;
-    animation-delay: -0.8s;
-}
-
-.loader .loader-circle6:before {
-    -webkit-animation-delay: -0.7s;
-    animation-delay: -0.7s;
-}
-
-.loader .loader-circle7:before {
-    -webkit-animation-delay: -0.6s;
-    animation-delay: -0.6s;
-}
-
-.loader .loader-circle8:before {
-    -webkit-animation-delay: -0.5s;
-    animation-delay: -0.5s;
-}
-
-.loader .loader-circle9:before {
-    -webkit-animation-delay: -0.4s;
-    animation-delay: -0.4s;
-}
-
-.loader .loader-circle10:before {
-    -webkit-animation-delay: -0.3s;
-    animation-delay: -0.3s;
-}
-
-.loader .loader-circle11:before {
-    -webkit-animation-delay: -0.2s;
-    animation-delay: -0.2s;
-}
-
-.loader .loader-circle12:before {
-    -webkit-animation-delay: -0.1s;
-    animation-delay: -0.1s;
-}
-
-@-webkit-keyframes loader-circleFadeDelay {
-    0%,
-    39%,
-    100% {
-        opacity: 0;
+    .loader {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        z-index: 1;
+        margin: auto;
+        left: 0;
+        right: 0;
+        top: 190px
     }
-    40% {
-        opacity: 1;
+
+    .loader span {
+        position: absolute;
+        bottom: -40px;
+        width: 130px;
+        margin-left: -40px;
     }
-}
 
-@keyframes loader-circleFadeDelay {
-    0%,
-    39%,
-    100% {
-        opacity: 0;
+    .loader .loader-circle {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
     }
-    40% {
-        opacity: 1;
+
+    .loader .loader-circle:before {
+        content: '';
+        display: block;
+        margin: 0 auto;
+        width: 15%;
+        height: 15%;
+        background-color: #333;
+        border-radius: 100%;
+        -webkit-animation: loader-circleFadeDelay 1.2s infinite ease-in-out both;
+        animation: loader-circleFadeDelay 1.2s infinite ease-in-out both;
     }
-}
+
+    .loader .loader-circle2 {
+        -webkit-transform: rotate(30deg);
+        -ms-transform: rotate(30deg);
+        transform: rotate(30deg);
+    }
+
+    .loader .loader-circle3 {
+        -webkit-transform: rotate(60deg);
+        -ms-transform: rotate(60deg);
+        transform: rotate(60deg);
+    }
+
+    .loader .loader-circle4 {
+        -webkit-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        transform: rotate(90deg);
+    }
+
+    .loader .loader-circle5 {
+        -webkit-transform: rotate(120deg);
+        -ms-transform: rotate(120deg);
+        transform: rotate(120deg);
+    }
+
+    .loader .loader-circle6 {
+        -webkit-transform: rotate(150deg);
+        -ms-transform: rotate(150deg);
+        transform: rotate(150deg);
+    }
+
+    .loader .loader-circle7 {
+        -webkit-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+        transform: rotate(180deg);
+    }
+
+    .loader .loader-circle8 {
+        -webkit-transform: rotate(210deg);
+        -ms-transform: rotate(210deg);
+        transform: rotate(210deg);
+    }
+
+    .loader .loader-circle9 {
+        -webkit-transform: rotate(240deg);
+        -ms-transform: rotate(240deg);
+        transform: rotate(240deg);
+    }
+
+    .loader .loader-circle10 {
+        -webkit-transform: rotate(270deg);
+        -ms-transform: rotate(270deg);
+        transform: rotate(270deg);
+    }
+
+    .loader .loader-circle11 {
+        -webkit-transform: rotate(300deg);
+        -ms-transform: rotate(300deg);
+        transform: rotate(300deg);
+    }
+
+    .loader .loader-circle12 {
+        -webkit-transform: rotate(330deg);
+        -ms-transform: rotate(330deg);
+        transform: rotate(330deg);
+    }
+
+    .loader .loader-circle2:before {
+        -webkit-animation-delay: -1.1s;
+        animation-delay: -1.1s;
+    }
+
+    .loader .loader-circle3:before {
+        -webkit-animation-delay: -1s;
+        animation-delay: -1s;
+    }
+
+    .loader .loader-circle4:before {
+        -webkit-animation-delay: -0.9s;
+        animation-delay: -0.9s;
+    }
+
+    .loader .loader-circle5:before {
+        -webkit-animation-delay: -0.8s;
+        animation-delay: -0.8s;
+    }
+
+    .loader .loader-circle6:before {
+        -webkit-animation-delay: -0.7s;
+        animation-delay: -0.7s;
+    }
+
+    .loader .loader-circle7:before {
+        -webkit-animation-delay: -0.6s;
+        animation-delay: -0.6s;
+    }
+
+    .loader .loader-circle8:before {
+        -webkit-animation-delay: -0.5s;
+        animation-delay: -0.5s;
+    }
+
+    .loader .loader-circle9:before {
+        -webkit-animation-delay: -0.4s;
+        animation-delay: -0.4s;
+    }
+
+    .loader .loader-circle10:before {
+        -webkit-animation-delay: -0.3s;
+        animation-delay: -0.3s;
+    }
+
+    .loader .loader-circle11:before {
+        -webkit-animation-delay: -0.2s;
+        animation-delay: -0.2s;
+    }
+
+    .loader .loader-circle12:before {
+        -webkit-animation-delay: -0.1s;
+        animation-delay: -0.1s;
+    }
+
+    @-webkit-keyframes loader-circleFadeDelay {
+        0%,
+        39%,
+        100% {
+            opacity: 0;
+        }
+        40% {
+            opacity: 1;
+        }
+    }
+
+    @keyframes loader-circleFadeDelay {
+        0%,
+        39%,
+        100% {
+            opacity: 0;
+        }
+        40% {
+            opacity: 1;
+        }
+    }
 
 
-/*.canvas is at z-index of 10*/
+    /*.canvas is at z-index of 10*/
 
-#feedbackPhotoWrapper,
-#photo-link {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 5;
-    display: block;
-    min-height: 460px;
-}
+    #feedbackPhotoWrapper,
+    #photo-link {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 5;
+        display: block;
+        min-height: 460px;
+    }
 
-.modal-backdrop {
-    z-index: 1700 !important;
-}
+    .modal-backdrop {
+        z-index: 1700 !important;
+    }
 
-.grid-info {
-    margin-bottom: 20px;
-    overflow: auto;
-    height: 460px;
-}
+    .grid-info {
+        margin-bottom: 20px;
+        overflow: auto;
+        height: 460px;
+    }
 
-.grid-info ol {
-    margin-top: 20px;
-}
+    .grid-info ol {
+        margin-top: 20px;
+    }
 
-.grid-info ol li {
-    margin-bottom: 10px;
-}
+    .grid-info ol li {
+        margin-bottom: 10px;
+    }
 
-.zoomWindow {
-    border: 0 !important;
-}
+    .zoomWindow {
+        border: 0 !important;
+    }
 
-h2 {
-    line-height: 1.4;
-}
+    h2 {
+        line-height: 1.4;
+    }
 
-.square {
-    width: 30px;
-    height: 30px;
-    display: inline-block;
-    vertical-align: middle;
-}
+    .square {
+        width: 30px;
+        height: 30px;
+        display: inline-block;
+        vertical-align: middle;
+    }
 
-.square-red {
-    background-color: rgba(231, 76, 60, .8);
-}
+    .square-red {
+        background-color: rgba(231, 76, 60, .8);
+    }
 
-.square-green {
-    background-color: rgba(0, 163, 136, .5);
-}
+    .square-green {
+        background-color: rgba(0, 163, 136, .5);
+    }
 
-#pathologistFeedback {
-    margin-bottom: 0 !important;
-}
+    #pathologistFeedback {
+        margin-bottom: 0 !important;
+    }
 
-main {
-    position: relative;
-}
+    main {
+        position: relative;
+    }
 
-.mechanic-content,
-.feedback-content,
-.grid-info {
-    position: relative;
-}
+    .mechanic-content,
+    .feedback-content,
+    .grid-info {
+        position: relative;
+    }
 
-.legend {
-    position: absolute;
-    left: -198px;
-    width: 200px;
-    top: 47px;
-    text-align: right;
-}
+    .legend {
+        position: absolute;
+        left: -198px;
+        width: 200px;
+        top: 47px;
+        text-align: right;
+    }
 
-.legend-item {
-    display: inline-block;
-    margin-right: 20px;
-    margin-bottom: 20px;
-}
+    .legend-item {
+        display: inline-block;
+        margin-right: 20px;
+        margin-bottom: 20px;
+    }
 
-.legend-item i {
-    font-size: 30px;
-    display: inline-block;
-    color: black;
-    vertical-align: middle;
-}
+    .legend-item i {
+        font-size: 30px;
+        display: inline-block;
+        color: black;
+        vertical-align: middle;
+    }
 
-.example-list {
-    display: none;
-    margin-bottom: 0 !important;
-}
+    .example-list {
+        display: none;
+        margin-bottom: 0 !important;
+    }
 
-.grid-info-buttons {
-    position: absolute;
-    bottom: 20px;
-    margin-top: 0;
-    right: 20px;
-    z-index: 2500;
-}
+    .grid-info-buttons {
+        position: absolute;
+        bottom: 20px;
+        margin-top: 0;
+        right: 20px;
+        z-index: 2500;
+    }
 
-.taskFeedback {
-    display: none;
-}
+    .taskFeedback {
+        display: none;
+    }
 
-.slick-prev,
-.slick-next {
-    background-color: transparent;
-    display: block;
-    width: 40px !important;
-    height: 40px !important;
-    margin-top: -20px !important;
-}
+    .slick-prev,
+    .slick-next {
+        background-color: transparent;
+        display: block;
+        width: 40px !important;
+        height: 40px !important;
+        margin-top: -20px !important;
+    }
 
-.slick-prev:before,
-.slick-next:before {
-    font-size: 40px;
-    color: black;
-    background-color: transparent;
-}
+    .slick-prev:before,
+    .slick-next:before {
+        font-size: 40px;
+        color: black;
+        background-color: transparent;
+    }
 
-.slick-prev,
-.slick-next {
-    background-color: transparent;
-    display: block;
-    width: 40px !important;
-    height: 40px !important;
-    margin-top: -20px !important;
-}
+    .slick-prev,
+    .slick-next {
+        background-color: transparent;
+        display: block;
+        width: 40px !important;
+        height: 40px !important;
+        margin-top: -20px !important;
+    }
 
-.slick-prev:before,
-.slick-next:before {
-    font-size: 40px;
-    color: black;
-    background-color: transparent;
-}
+    .slick-prev:before,
+    .slick-next:before {
+        font-size: 40px;
+        color: black;
+        background-color: transparent;
+    }
 
-.slick-prev {
-    left: -55px;
-    width: 40px !important;
-    height: 40px !important;
-}
+    .slick-prev {
+        left: -55px;
+        width: 40px !important;
+        height: 40px !important;
+    }
 
-.slick-next {
-    right: -55px;
-    width: 40px !important;
-    height: 40px !important;
-}
+    .slick-next {
+        right: -55px;
+        width: 40px !important;
+        height: 40px !important;
+    }
 
-.grid-info-content-inner {
-    margin-bottom: 20px;
-    border-bottom: 1px solid #999;
-    padding-bottom: 10px;
-}
+    .grid-info-content-inner {
+        margin-bottom: 20px;
+        border-bottom: 1px solid #999;
+        padding-bottom: 10px;
+    }
 
-.feedback-active .mechanic-active {
-    display: none;
-}
+    .feedback-active .mechanic-active {
+        display: none;
+    }
 
-.mechanic-active .feedback-show {
-    display: none;
-}
+    .mechanic-active .feedback-show {
+        display: none;
+    }
 
-.mechanic-active .modal #0 {
-    display: none;
-}
+    .mechanic-active .modal #0 {
+        display: none;
+    }
 
-.zoomWindow {
-    z-index: 2000 !important;
-}
+    .zoomWindow {
+        z-index: 2000 !important;
+    }
 </style>
 <!--MODAL-->
 <div class="modals row">
@@ -364,16 +364,16 @@ main {
         <div id="practiseModal" class="modal hide">
             <div id="0" class="modal-body" style="display:none">
                 <div class="modal-image">
-                    <img class="annotatedImage" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/1-cancer.png" data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/1-cancer-outline@2x-min.png" alt="" />
+                    <img class="annotatedImage" src="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/annotated/51-cancer-area.jpg" data-zoom-image="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/annotated/51-cancer-outline.jpg" alt="" />
                 </div>
                 <div id="annotatedImageZoomArea0" class="modal-info">
                     <h2>
-                        Most <strong class="text-error">cancer cells</strong> are in the bottom third of the image with some to the left of middle.
-                    </h2> We’ve outlined them in <strong class="text-error">red</strong>.
+                        Most <strong class="text-error">cancer cells</strong> are around the air spaces.
+                    </h2>
+                    We’ve outlined them in <strong class="text-error">red</strong>.
                     <ul>
                         <li>They’re mostly <b>large</b> </li>
                         <li>The shape and size of each cell is very <b>different</b> from the others</li>
-                        <li>They’re <b>darker</b> than surrounding cells</li>
                         <li>They’ve formed <b>uneven, lumpy rings</b> and <b>chains</b></li>
                     </ul>
                     <hr>
@@ -390,19 +390,29 @@ main {
                     </p>
                 </div>
             </div>
+
             <div id="1" class="modal-body" style="display:none">
                 <div class="modal-image">
-                    <img class="annotatedImage" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/26-cancer.png" data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/26-cancer-outline@2x-min.png" alt="" />
+                    <img class="annotatedImage" src="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/annotated/52-cancer-area.jpg" data-zoom-image="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/annotated/52-cancer-outline.jpg" alt="" />
                 </div>
                 <div id="annotatedImageZoomArea1" class="modal-info">
                     <h1>
-                        The <strong class="text-error">cancer cells</strong> are in the top right, bottom right and left of this image.
-                    </h1> We’ve outlined them in <strong class="text-error">red</strong>.
+                        The <strong class="text-error">cancer cells</strong> are in small groups throughout this image.
+                    </h1>
+                    We’ve outlined them in <strong class="text-error">red</strong>.
                     <ul>
-                        <li>They are <b>large, mottled</b> and <b>irregular</b></li>
-                        <li>No two <strong class="text-error">cancer cells</strong> look the same</li>
+                        <li>
+                            They are <b>large, mottled</b> and <b>irregular</b>
+                        </li>
+                        <li>
+                            There is a complete lack of organisation
+                        </li>
+                        <li>
+                            No two <strong class="text-error">cancer cells</strong> look the same
+                        </li>
                     </ul>
-                    <hr> They are surrounded by a flood of <strong class="text-success">non-cancer cells</strong>, which include:
+                    <hr>
+                    They are surrounded by <strong class="text-success">non-cancer cells</strong>, which include:
                     <ul>
                         <li>
                             <b>Small, dark</b> and <b>round</b> blood cells
@@ -411,77 +421,106 @@ main {
                             Mixed with <b>light blue</b> and <b>wispy</b> stromal cells
                         </li>
                     </ul>
-                    <h3>Hover your mouse over the image to take a closer look.</h3>
-                </div>
-            </div>
-            <div id="2" class="modal-body" style="display:none">
-                <div class="modal-image">
-                    <img class="annotatedImage" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/42-cancer.png" data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/42-cancer-outline@2x-min.png" alt="" />
-                </div>
-                <div id="annotatedImageZoomArea2" class="modal-info">
-                    <h1>
-                        Here, the <strong class="text-error">cancer cells</strong> have formed <b>rounded clumps</b> which have distinct outlines. We’ve marked them in <strong class="text-error">red</strong>.
-                    </h1>
-                    <h2>The clumps are surrounded by <strong class="text-success">non-cancer cells.</strong></h2> They include:
-                    <ul>
-                        <li><b>Long</b> and <b>thin</b> blue stromal cells</li>
-                        <li><b>Small, dark and round</b> blood cells</li>
-                    </ul>
-                    <h3>Hover your mouse over the image to take a closer look.</h3>
-                </div>
-            </div>
-            <div id="3" class="modal-body" style="display:none">
-                <div class="modal-image">
-                    <img class="annotatedImage" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/41.png" data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/41@2x-min.png" alt="" />
-                </div>
-                <div id="annotatedImageZoomArea3" class="modal-info">
-                    <h1>This image is pretty much <b>all cancer cells!</b></h1>
-                    <ul>
-                        <li>The cells are <b>large, mottled</b> and <b>irregular</b></li>
-                        <li>No two cancer cells look the same</li>
-                        <li>They’ve formed an <b>unorganised, sprawling mass</b></li>
-                    </ul>
-                    <h3>Hover your mouse over the image to take a closer look.</h3>
-                </div>
-            </div>
-            <div id="4" class="modal-body" style="display:none">
-                <div class="modal-image">
-                    <img class="annotatedImage" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/11-cartilage.png" data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/11-cartilage-outline@2x-min.png" alt="" />
-                </div>
-                <div id="annotatedImageZoomArea4" class="modal-info">
-                    <h1>This image shows you some of the different cells we’ve talked about.</h1>
-                    <p>
-                        <strong class="text-success">Non-cancer</strong> epithelial cells form uniform, thin layers around airways (the empty space). They are organised and tightly arranged.
-                    </p>
-                    <p>
-                        Above the epithelial cells is some cartilage, outlined in <strong class="text-success">green</strong>. Cartilage will look grey, with bubble-like structures in it. It's <strong class="text-success">non-cancer</strong>.
-                    </p>
-                    <p>
-                        Throughout the image you can see <strong class="text-success">non-cancer</strong> stroma (long and thin) and blood cells (small, dark and round). They are much more uniform than the cancer cells.
-                    </p>
-                    <p>
-                        There are clumps of cancer cells outlined in <strong class="text-srror">red</strong>. Their shapes are odd and some are very large.
-                    </p>
                     <h3>
                         Hover your mouse over the image to take a closer look.
                     </h3>
                 </div>
             </div>
-            <!-- FEEDBACK INFO -->
+
+            <div id="2" class="modal-body" style="display:none">
+                <div class="modal-image">
+                    <img class="annotatedImage" src="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/annotated/611-cancer-area.jpg" data-zoom-image="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/annotated/611-cancer-outline.jpg" alt="" />
+                </div>
+                <div id="annotatedImageZoomArea2" class="modal-info">
+                    <h1>
+                        The <strong class="text-error">cancer cells</strong>  have been outlined in <strong class="text-error">red</strong>. They form clumps and chains along the edges of airways.
+                    </h1>
+                    <h2>
+                        They are <b>large</b>, <b>mottled</b> and <b>irregular</b>.
+                    </h2>
+                    <h2>
+                        The clumps are surrounded by <strong class="text-success">non-cancer cells.</strong>
+                    </h2>
+                    They include:
+                    <ul>
+                        <li><b>Long</b> and <b>thin</b> blue stromal cells</li>
+                        <li><b>Small, dark and round</b> blood cells</li>
+                    </ul>
+                    <h3>
+                        Hover your mouse over the image to take a closer look.
+                    </h3>
+                </div>
+            </div>
+
+            <div id="3" class="modal-body" style="display:none">
+                <div class="modal-image">
+                    <img class="annotatedImage" src="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/annotated/58-cancer-area.jpg" data-zoom-image="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/annotated/58-cancer-outline.jpg" alt="" />
+                </div>
+                <div id="annotatedImageZoomArea3" class="modal-info">
+                    <h1>
+                        Most of the cancer cells are in the right half of this image.
+                    </h1>
+                    <ul>
+                        <li>The cells are <b>large, mottled</b> and <b>irregular</b></li>
+                        <li>No two cancer cells look the same</li>
+                        <li>They’ve formed an <b>unorganised, sprawling mass</b></li>
+                        <li>in this case they are strongly marked in brown</li>
+                    </ul>
+                    <h2>
+                        The pale regions in the top left are <strong class="text-success">non-cancer</strong>; look for the stroma and blood cells.
+                    </h2>
+                    <h3>
+                        Hover your mouse over the image to take a closer look.
+                    </h3>
+                </div>
+            </div>
+
+            <div id="4" class="modal-body" style="display:none">
+                <div class="modal-image">
+                    <img class="annotatedImage" src="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/EGFR-27.jpg" data-zoom-image="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/EGFR-27.jpg" alt="" />
+                </div>
+                <div id="annotatedImageZoomArea4" class="modal-info">
+                    <h1>
+                        There are lots of different cell types in this image.
+                    </h1>
+                    <h2>
+                        …but none of them are cancer.
+                    </h2>
+                    <h2>
+                        The most common non-cancer cells in this image are:
+                    </h2>
+                    <ul>
+                        <li>
+                            <b>Longer</b> and <b>thinner</b> blue stromal cells
+                        </li>
+                        <li>
+                            <b>Small</b>, <b>dark blue</b>, <b>round cells</b>, which are blood cells
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+
+
+
+            <!-- STEP 3 INFO -->
             <div id="5" class="modal-body" style="display:none">
                 <div class="modal-image">
                     <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid.jpg" />
                 </div>
-                <div id="annotatedImageZoomArea5" class="modal-info">
+                <div class="modal-info">
                     <h1>
                         In the next set of practice images you need to mark the whole image and then we’ll let you know what our experts thought.
-
                     </h1>
                     <h2>
                         If you get something wrong look again in detail at that section and try to answer it again.
                     </h2>
                 </div>
             </div>
+
+
+
             <!-- SUMMARY -->
             <div id="6" class="modal-body">
                 <div class="modal-image">
@@ -508,6 +547,7 @@ main {
                             Don't worry if you're not sure, just give your best guess
                         </li>
                     </ul>
+                    <h2>Press Start to begin analysing!</h2>
                 </div>
             </div>
             <div class="modal-footer">
@@ -517,6 +557,9 @@ main {
                 </button>
             </div>
         </div>
+
+
+
         <!-- Tutoiral Modal -->
         <div id="tutorialModal" class="modal hide ">
             <div id="0" class="modal-body" style="display:none">
@@ -1104,13 +1147,16 @@ if (project_short_name === "")
 
 var cookie_feedback_name = project_short_name + 'feedback';
 var cookie_tutorial_name = project_short_name + 'tutorial';
+
+
 /*
- This is the pathologist grid square data that we can check the user answers against
+    SARAH'S CODE BELOW :D
+    This is the pathologist grid square data that we can check the user answers against
  */
 
 var feedbackData = [{
     "info": {
-        "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung-all-min/1.jpg",
+        "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/EGFR-18.jpg",
         "squares": [{
             "column": 0,
             "answer": null,
@@ -1121,31 +1167,33 @@ var feedbackData = [{
             "row": 0
         }, {
             "column": 2,
-            "answer": false,
+            "answer": null,
             "row": 0
         }, {
             "column": 3,
-            "answer": false,
+            "answer": true,
             "row": 0
         }, {
             "column": 4,
-            "answer": false,
+            "answer": null,
             "row": 0
         }, {
             "column": 5,
             "answer": null,
             "row": 0
-        }, {
+        },
+
+         {
             "column": 0,
             "answer": null,
             "row": 1
         }, {
             "column": 1,
-            "answer": false,
+            "answer": true,
             "row": 1
         }, {
             "column": 2,
-            "answer": false,
+            "answer": true,
             "row": 1
         }, {
             "column": 3,
@@ -1157,11 +1205,13 @@ var feedbackData = [{
             "row": 1
         }, {
             "column": 5,
-            "answer": true,
+            "answer": null,
             "row": 1
-        }, {
+        },
+
+        {
             "column": 0,
-            "answer": false,
+            "answer": true,
             "row": 2
         }, {
             "column": 1,
@@ -1183,9 +1233,11 @@ var feedbackData = [{
             "column": 5,
             "answer": true,
             "row": 2
-        }, {
+        },
+
+        {
             "column": 0,
-            "answer": false,
+            "answer": true,
             "row": 3
         }, {
             "column": 1,
@@ -1207,9 +1259,329 @@ var feedbackData = [{
             "column": 5,
             "answer": true,
             "row": 3
+        },
+
+        {
+            "column": 0,
+            "answer": true,
+            "row": 4
         }, {
+            "column": 1,
+            "answer": true,
+            "row": 4
+        }, {
+            "column": 2,
+            "answer": true,
+            "row": 4
+        }, {
+            "column": 3,
+            "answer": true,
+            "row": 4
+        }, {
+            "column": 4,
+            "answer": true,
+            "row": 4
+        }, {
+            "column": 5,
+            "answer": true,
+            "row": 4
+        },
+
+        {
             "column": 0,
             "answer": null,
+            "row": 5
+        }, {
+            "column": 1,
+            "answer": false,
+            "row": 5
+        }, {
+            "column": 2,
+            "answer": true,
+            "row": 5
+        }, {
+            "column": 3,
+            "answer": true,
+            "row": 5
+        }, {
+            "column": 4,
+            "answer": true,
+            "row": 5
+        }, {
+            "column": 5,
+            "answer": null,
+            "row": 5
+        }]
+    }
+}, {
+    "info": {
+        "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/EGFR-19.jpg",
+        "squares": [{
+            "column": 0,
+            "answer": null,
+            "row": 0
+        }, {
+            "column": 1,
+            "answer": null,
+            "row": 0
+        }, {
+            "column": 2,
+            "answer": null,
+            "row": 0
+        }, {
+            "column": 3,
+            "answer": null,
+            "row": 0
+        }, {
+            "column": 4,
+            "answer": null,
+            "row": 0
+        }, {
+            "column": 5,
+            "answer": null,
+            "row": 0
+        },
+
+        {
+            "column": 0,
+            "answer": false,
+            "row": 1
+        }, {
+            "column": 1,
+            "answer": true,
+            "row": 1
+        }, {
+            "column": 2,
+            "answer": true,
+            "row": 1
+        }, {
+            "column": 3,
+            "answer": true,
+            "row": 1
+        }, {
+            "column": 4,
+            "answer": true,
+            "row": 1
+        }, {
+            "column": 5,
+            "answer": null,
+            "row": 1
+        },
+
+        {
+            "column": 0,
+            "answer": false,
+            "row": 2
+        }, {
+            "column": 1,
+            "answer": true,
+            "row": 2
+        }, {
+            "column": 2,
+            "answer": true,
+            "row": 2
+        }, {
+            "column": 3,
+            "answer": true,
+            "row": 2
+        }, {
+            "column": 4,
+            "answer": true,
+            "row": 2
+        }, {
+            "column": 5,
+            "answer": true,
+            "row": 2
+        },
+
+        {
+            "column": 0,
+            "answer": false,
+            "row": 3
+        }, {
+            "column": 1,
+            "answer": true,
+            "row": 3
+        }, {
+            "column": 2,
+            "answer": true,
+            "row": 3
+        }, {
+            "column": 3,
+            "answer": true,
+            "row": 3
+        }, {
+            "column": 4,
+            "answer": true,
+            "row": 3
+        }, {
+            "column": 5,
+            "answer": true,
+            "row": 3
+        },
+
+        {
+            "column": 0,
+            "answer": false,
+            "row": 4
+        }, {
+            "column": 1,
+            "answer": true,
+            "row": 4
+        }, {
+            "column": 2,
+            "answer": true,
+            "row": 4
+        }, {
+            "column": 3,
+            "answer": true,
+            "row": 4
+        }, {
+            "column": 4,
+            "answer": true,
+            "row": 4
+        }, {
+            "column": 5,
+            "answer": null,
+            "row": 4
+        },
+
+        {
+            "column": 0,
+            "answer": null,
+            "row": 5
+        }, {
+            "column": 1,
+            "answer": false,
+            "row": 5
+        }, {
+            "column": 2,
+            "answer": true,
+            "row": 5
+        }, {
+            "column": 3,
+            "answer": true,
+            "row": 5
+        }, {
+            "column": 4,
+            "answer": null,
+            "row": 5
+        }, {
+            "column": 5,
+            "answer": null,
+            "row": 5
+        }]
+    }
+}, {
+    "info": {
+        "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/EGFR-24.jpg",
+        "squares": [{
+            "column": 0,
+            "answer": null,
+            "row": 0
+        }, {
+            "column": 1,
+            "answer": false,
+            "row": 0
+        }, {
+            "column": 2,
+            "answer": true,
+            "row": 0
+        }, {
+            "column": 3,
+            "answer": true,
+            "row": 0
+        }, {
+            "column": 4,
+            "answer": null,
+            "row": 0
+        }, {
+            "column": 5,
+            "answer": null,
+            "row": 0
+        },
+
+        {
+            "column": 0,
+            "answer": false,
+            "row": 1
+        }, {
+            "column": 1,
+            "answer": false,
+            "row": 1
+        }, {
+            "column": 2,
+            "answer": true,
+            "row": 1
+        }, {
+            "column": 3,
+            "answer": true,
+            "row": 1
+        }, {
+            "column": 4,
+            "answer": true,
+            "row": 1
+        }, {
+            "column": 5,
+            "answer": true,
+            "row": 1
+        },
+
+        {
+            "column": 0,
+            "answer": false,
+            "row": 2
+        }, {
+            "column": 1,
+            "answer": false,
+            "row": 2
+        }, {
+            "column": 2,
+            "answer": true,
+            "row": 2
+        }, {
+            "column": 3,
+            "answer": true,
+            "row": 2
+        }, {
+            "column": 4,
+            "answer": true,
+            "row": 2
+        }, {
+            "column": 5,
+            "answer": true,
+            "row": 2
+        },
+
+        {
+            "column": 0,
+            "answer": false,
+            "row": 3
+        }, {
+            "column": 1,
+            "answer": true,
+            "row": 3
+        }, {
+            "column": 2,
+            "answer": true,
+            "row": 3
+        }, {
+            "column": 3,
+            "answer": true,
+            "row": 3
+        }, {
+            "column": 4,
+            "answer": true,
+            "row": 3
+        }, {
+            "column": 5,
+            "answer": true,
+            "row": 3
+        },
+
+        {
+            "column": 0,
+            "answer": false,
             "row": 4
         }, {
             "column": 1,
@@ -1231,7 +1603,9 @@ var feedbackData = [{
             "column": 5,
             "answer": true,
             "row": 4
-        }, {
+        },
+
+        {
             "column": 0,
             "answer": null,
             "row": 5
@@ -1259,7 +1633,7 @@ var feedbackData = [{
     }
 }, {
     "info": {
-        "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung-all-min/26.jpg",
+        "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/EGFR-22.jpg",
         "squares": [{
             "column": 0,
             "answer": null,
@@ -1270,21 +1644,23 @@ var feedbackData = [{
             "row": 0
         }, {
             "column": 2,
-            "answer": false,
+            "answer": true,
             "row": 0
         }, {
             "column": 3,
-            "answer": false,
+            "answer": true,
             "row": 0
         }, {
             "column": 4,
-            "answer": true,
+            "answer": null,
             "row": 0
         }, {
             "column": 5,
             "answer": null,
             "row": 0
-        }, {
+        },
+
+        {
             "column": 0,
             "answer": null,
             "row": 1
@@ -1294,7 +1670,7 @@ var feedbackData = [{
             "row": 1
         }, {
             "column": 2,
-            "answer": false,
+            "answer": true,
             "row": 1
         }, {
             "column": 3,
@@ -1308,7 +1684,9 @@ var feedbackData = [{
             "column": 5,
             "answer": true,
             "row": 1
-        }, {
+        },
+
+        {
             "column": 0,
             "answer": true,
             "row": 2
@@ -1332,7 +1710,9 @@ var feedbackData = [{
             "column": 5,
             "answer": true,
             "row": 2
-        }, {
+        },
+
+        {
             "column": 0,
             "answer": true,
             "row": 3
@@ -1356,9 +1736,11 @@ var feedbackData = [{
             "column": 5,
             "answer": true,
             "row": 3
-        }, {
+        },
+
+        {
             "column": 0,
-            "answer": true,
+            "answer": null,
             "row": 4
         }, {
             "column": 1,
@@ -1380,13 +1762,16 @@ var feedbackData = [{
             "column": 5,
             "answer": true,
             "row": 4
-        }, {
+        },
+
+
+        {
             "column": 0,
             "answer": null,
             "row": 5
         }, {
             "column": 1,
-            "answer": true,
+            "answer": false,
             "row": 5
         }, {
             "column": 2,
@@ -1398,315 +1783,17 @@ var feedbackData = [{
             "row": 5
         }, {
             "column": 4,
-            "answer": false,
+            "answer": true,
             "row": 5
         }, {
             "column": 5,
-            "answer": true,
+            "answer": null,
             "row": 5
         }]
     }
 }, {
     "info": {
-        "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung-all-min/42.jpg",
-        "squares": [{
-            "column": 0,
-            "answer": null,
-            "row": 0
-        }, {
-            "column": 1,
-            "answer": false,
-            "row": 0
-        }, {
-            "column": 2,
-            "answer": true,
-            "row": 0
-        }, {
-            "column": 3,
-            "answer": true,
-            "row": 0
-        }, {
-            "column": 4,
-            "answer": true,
-            "row": 0
-        }, {
-            "column": 5,
-            "answer": null,
-            "row": 0
-        }, {
-            "column": 0,
-            "answer": true,
-            "row": 1
-        }, {
-            "column": 1,
-            "answer": true,
-            "row": 1
-        }, {
-            "column": 2,
-            "answer": true,
-            "row": 1
-        }, {
-            "column": 3,
-            "answer": true,
-            "row": 1
-        }, {
-            "column": 4,
-            "answer": true,
-            "row": 1
-        }, {
-            "column": 5,
-            "answer": true,
-            "row": 1
-        }, {
-            "column": 0,
-            "answer": false,
-            "row": 2
-        }, {
-            "column": 1,
-            "answer": true,
-            "row": 2
-        }, {
-            "column": 2,
-            "answer": true,
-            "row": 2
-        }, {
-            "column": 3,
-            "answer": true,
-            "row": 2
-        }, {
-            "column": 4,
-            "answer": true,
-            "row": 2
-        }, {
-            "column": 5,
-            "answer": true,
-            "row": 2
-        }, {
-            "column": 0,
-            "answer": false,
-            "row": 3
-        }, {
-            "column": 1,
-            "answer": true,
-            "row": 3
-        }, {
-            "column": 2,
-            "answer": true,
-            "row": 3
-        }, {
-            "column": 3,
-            "answer": true,
-            "row": 3
-        }, {
-            "column": 4,
-            "answer": true,
-            "row": 3
-        }, {
-            "column": 5,
-            "answer": true,
-            "row": 3
-        }, {
-            "column": 0,
-            "answer": false,
-            "row": 4
-        }, {
-            "column": 1,
-            "answer": true,
-            "row": 4
-        }, {
-            "column": 2,
-            "answer": true,
-            "row": 4
-        }, {
-            "column": 3,
-            "answer": true,
-            "row": 4
-        }, {
-            "column": 4,
-            "answer": true,
-            "row": 4
-        }, {
-            "column": 5,
-            "answer": true,
-            "row": 4
-        }, {
-            "column": 0,
-            "answer": false,
-            "row": 5
-        }, {
-            "column": 1,
-            "answer": false,
-            "row": 5
-        }, {
-            "column": 2,
-            "answer": true,
-            "row": 5
-        }, {
-            "column": 3,
-            "answer": true,
-            "row": 5
-        }, {
-            "column": 4,
-            "answer": true,
-            "row": 5
-        }, {
-            "column": 5,
-            "answer": true,
-            "row": 5
-        }]
-    }
-}, {
-    "info": {
-        "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung-all-min/41.jpg",
-        "squares": [{
-            "column": 0,
-            "answer": null,
-            "row": 0
-        }, {
-            "column": 1,
-            "answer": null,
-            "row": 0
-        }, {
-            "column": 2,
-            "answer": true,
-            "row": 0
-        }, {
-            "column": 3,
-            "answer": true,
-            "row": 0
-        }, {
-            "column": 4,
-            "answer": true,
-            "row": 0
-        }, {
-            "column": 5,
-            "answer": null,
-            "row": 0
-        }, {
-            "column": 0,
-            "answer": null,
-            "row": 1
-        }, {
-            "column": 1,
-            "answer": true,
-            "row": 1
-        }, {
-            "column": 2,
-            "answer": true,
-            "row": 1
-        }, {
-            "column": 3,
-            "answer": true,
-            "row": 1
-        }, {
-            "column": 4,
-            "answer": true,
-            "row": 1
-        }, {
-            "column": 5,
-            "answer": true,
-            "row": 1
-        }, {
-            "column": 0,
-            "answer": true,
-            "row": 2
-        }, {
-            "column": 1,
-            "answer": true,
-            "row": 2
-        }, {
-            "column": 2,
-            "answer": true,
-            "row": 2
-        }, {
-            "column": 3,
-            "answer": true,
-            "row": 2
-        }, {
-            "column": 4,
-            "answer": true,
-            "row": 2
-        }, {
-            "column": 5,
-            "answer": true,
-            "row": 2
-        }, {
-            "column": 0,
-            "answer": true,
-            "row": 3
-        }, {
-            "column": 1,
-            "answer": true,
-            "row": 3
-        }, {
-            "column": 2,
-            "answer": true,
-            "row": 3
-        }, {
-            "column": 3,
-            "answer": true,
-            "row": 3
-        }, {
-            "column": 4,
-            "answer": true,
-            "row": 3
-        }, {
-            "column": 5,
-            "answer": true,
-            "row": 3
-        }, {
-            "column": 0,
-            "answer": true,
-            "row": 4
-        }, {
-            "column": 1,
-            "answer": true,
-            "row": 4
-        }, {
-            "column": 2,
-            "answer": true,
-            "row": 4
-        }, {
-            "column": 3,
-            "answer": true,
-            "row": 4
-        }, {
-            "column": 4,
-            "answer": true,
-            "row": 4
-        }, {
-            "column": 5,
-            "answer": true,
-            "row": 4
-        }, {
-            "column": 0,
-            "answer": null,
-            "row": 5
-        }, {
-            "column": 1,
-            "answer": true,
-            "row": 5
-        }, {
-            "column": 2,
-            "answer": true,
-            "row": 5
-        }, {
-            "column": 3,
-            "answer": true,
-            "row": 5
-        }, {
-            "column": 4,
-            "answer": true,
-            "row": 5
-        }, {
-            "column": 5,
-            "answer": true,
-            "row": 5
-        }]
-    }
-}, {
-    "info": {
-        "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung-all-min/11.jpg",
+        "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/EGFR-06.jpg",
         "squares": [{
             "column": 0,
             "answer": null,
@@ -1721,115 +1808,125 @@ var feedbackData = [{
             "row": 0
         }, {
             "column": 3,
-            "answer": false,
+            "answer": true,
             "row": 0
         }, {
             "column": 4,
-            "answer": null,
+            "answer": true,
             "row": 0
         }, {
             "column": 5,
             "answer": null,
             "row": 0
+        },
+
+        {
+            "column": 0,
+            "answer": false,
+            "row": 1
         }, {
+            "column": 1,
+            "answer": true,
+            "row": 1
+        }, {
+            "column": 2,
+            "answer": true,
+            "row": 1
+        }, {
+            "column": 3,
+            "answer": true,
+            "row": 1
+        }, {
+            "column": 4,
+            "answer": true,
+            "row": 1
+        }, {
+            "column": 5,
+            "answer": true,
+            "row": 1
+        },
+
+        {
+            "column": 0,
+            "answer": true,
+            "row": 2
+        }, {
+            "column": 1,
+            "answer": true,
+            "row": 2
+        }, {
+            "column": 2,
+            "answer": true,
+            "row": 2
+        }, {
+            "column": 3,
+            "answer": true,
+            "row": 2
+        }, {
+            "column": 4,
+            "answer": true,
+            "row": 2
+        }, {
+            "column": 5,
+            "answer": true,
+            "row": 2
+        },
+
+        {
+            "column": 0,
+            "answer": true,
+            "row": 3
+        }, {
+            "column": 1,
+            "answer": true,
+            "row": 3
+        }, {
+            "column": 2,
+            "answer": true,
+            "row": 3
+        }, {
+            "column": 3,
+            "answer": true,
+            "row": 3
+        }, {
+            "column": 4,
+            "answer": true,
+            "row": 3
+        }, {
+            "column": 5,
+            "answer": true,
+            "row": 3
+        },
+
+        {
+            "column": 0,
+            "answer": false,
+            "row": 4
+        }, {
+            "column": 1,
+            "answer": true,
+            "row": 4
+        }, {
+            "column": 2,
+            "answer": true,
+            "row": 4
+        }, {
+            "column": 3,
+            "answer": true,
+            "row": 4
+        }, {
+            "column": 4,
+            "answer": true,
+            "row": 4
+        }, {
+            "column": 5,
+            "answer": true,
+            "row": 4
+        },
+
+        {
             "column": 0,
             "answer": null,
-            "row": 1
-        }, {
-            "column": 1,
-            "answer": false,
-            "row": 1
-        }, {
-            "column": 2,
-            "answer": true,
-            "row": 1
-        }, {
-            "column": 3,
-            "answer": true,
-            "row": 1
-        }, {
-            "column": 4,
-            "answer": true,
-            "row": 1
-        }, {
-            "column": 5,
-            "answer": null,
-            "row": 1
-        }, {
-            "column": 0,
-            "answer": false,
-            "row": 2
-        }, {
-            "column": 1,
-            "answer": false,
-            "row": 2
-        }, {
-            "column": 2,
-            "answer": true,
-            "row": 2
-        }, {
-            "column": 3,
-            "answer": true,
-            "row": 2
-        }, {
-            "column": 4,
-            "answer": true,
-            "row": 2
-        }, {
-            "column": 5,
-            "answer": true,
-            "row": 2
-        }, {
-            "column": 0,
-            "answer": true,
-            "row": 3
-        }, {
-            "column": 1,
-            "answer": true,
-            "row": 3
-        }, {
-            "column": 2,
-            "answer": false,
-            "row": 3
-        }, {
-            "column": 3,
-            "answer": true,
-            "row": 3
-        }, {
-            "column": 4,
-            "answer": true,
-            "row": 3
-        }, {
-            "column": 5,
-            "answer": true,
-            "row": 3
-        }, {
-            "column": 0,
-            "answer": true,
-            "row": 4
-        }, {
-            "column": 1,
-            "answer": true,
-            "row": 4
-        }, {
-            "column": 2,
-            "answer": false,
-            "row": 4
-        }, {
-            "column": 3,
-            "answer": true,
-            "row": 4
-        }, {
-            "column": 4,
-            "answer": true,
-            "row": 4
-        }, {
-            "column": 5,
-            "answer": true,
-            "row": 4
-        }, {
-            "column": 0,
-            "answer": null,
             "row": 5
         }, {
             "column": 1,
@@ -1837,15 +1934,15 @@ var feedbackData = [{
             "row": 5
         }, {
             "column": 2,
-            "answer": false,
+            "answer": true,
             "row": 5
         }, {
             "column": 3,
-            "answer": false,
+            "answer": true,
             "row": 5
         }, {
             "column": 4,
-            "answer": false,
+            "answer": true,
             "row": 5
         }, {
             "column": 5,
@@ -2434,7 +2531,7 @@ FeedbackGrid.prototype.updateFeedbackProgress = function() {
     totalGridPercentage = pct;
 
 
-    if (pct >= 75 && hasSeenGuidenceInfo === true) {
+    if (pct >= 02  && hasSeenGuidenceInfo === true) {
         $("#nextFeedbackStep, #finishFeedback").removeClass("disabled");
         $("#nextFeedbackStep, #finishFeedback").addClass("btn-primary");
 
@@ -2453,13 +2550,13 @@ FeedbackGrid.prototype.updateFeedbackProgress = function() {
 FeedbackGrid.prototype.percentageFeedbackText = function(pct) {
     var $feedbackText = $("#feedbackProgressText");
     var htmlString = '<h2>';
-    if (pct >= 75) {
+    if (pct >= 02 ) {
         htmlString += 'Well done! ';
     }
     htmlString += 'You\'ve marked ';
     htmlString += pct + '%</strong> of the image sections correctly</h2>';
-    if (pct < 75) {
-        htmlString += '<h3>Get 75% correct to go onto the next slide.</h3>';
+    if (pct < 02 ) {
+        htmlString += '<h3>Get 02 % correct to go onto the next slide.</h3>';
     }
     $feedbackText.html(htmlString);
 };
@@ -3205,7 +3302,7 @@ function showFeedbackStep(action) {
     checkMyWork.onclick = function() {
         if ($(this).hasClass("disabled")) return;
 
-        if (totalGridPercentage >= 75) {
+        if (totalGridPercentage >= 02 ) {
             $("#nextFeedbackStep").removeClass("disabled");
             $("#finishFeedback").removeClass("disabled");
             $("#nextFeedbackStep, #finishFeedback").addClass("btn-primary");
@@ -3427,7 +3524,7 @@ $(function() {
 
         $(".grid-info-buttons").css("z-index", 2500);
 
-        if (totalGridPercentage >= 75) {
+        if (totalGridPercentage >= 02 ) {
             $("#nextFeedbackStep").removeClass("disabled");
             $("#finishFeedback").removeClass("disabled");
             $("#nextFeedbackStep, #finishFeedback").addClass("btn-primary");
