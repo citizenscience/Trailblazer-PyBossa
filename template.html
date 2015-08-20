@@ -1,366 +1,365 @@
 <style>
-    /*
+/*
                    .canvas grid 10 and #photo-link image is at z-index of 5
                 */
 
-    .loader {
-        width: 40px;
-        height: 40px;
-        position: absolute;
-        z-index: 1;
-        margin: auto;
-        left: 0;
-        right: 0;
-        top: 190px
+.loader {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    z-index: 1;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 190px
+}
+
+.loader span {
+    position: absolute;
+    bottom: -40px;
+    width: 130px;
+    margin-left: -40px;
+}
+
+.loader .loader-circle {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.loader .loader-circle:before {
+    content: '';
+    display: block;
+    margin: 0 auto;
+    width: 15%;
+    height: 15%;
+    background-color: #333;
+    border-radius: 100%;
+    -webkit-animation: loader-circleFadeDelay 1.2s infinite ease-in-out both;
+    animation: loader-circleFadeDelay 1.2s infinite ease-in-out both;
+}
+
+.loader .loader-circle2 {
+    -webkit-transform: rotate(30deg);
+    -ms-transform: rotate(30deg);
+    transform: rotate(30deg);
+}
+
+.loader .loader-circle3 {
+    -webkit-transform: rotate(60deg);
+    -ms-transform: rotate(60deg);
+    transform: rotate(60deg);
+}
+
+.loader .loader-circle4 {
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.loader .loader-circle5 {
+    -webkit-transform: rotate(120deg);
+    -ms-transform: rotate(120deg);
+    transform: rotate(120deg);
+}
+
+.loader .loader-circle6 {
+    -webkit-transform: rotate(150deg);
+    -ms-transform: rotate(150deg);
+    transform: rotate(150deg);
+}
+
+.loader .loader-circle7 {
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+.loader .loader-circle8 {
+    -webkit-transform: rotate(210deg);
+    -ms-transform: rotate(210deg);
+    transform: rotate(210deg);
+}
+
+.loader .loader-circle9 {
+    -webkit-transform: rotate(240deg);
+    -ms-transform: rotate(240deg);
+    transform: rotate(240deg);
+}
+
+.loader .loader-circle10 {
+    -webkit-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    transform: rotate(270deg);
+}
+
+.loader .loader-circle11 {
+    -webkit-transform: rotate(300deg);
+    -ms-transform: rotate(300deg);
+    transform: rotate(300deg);
+}
+
+.loader .loader-circle12 {
+    -webkit-transform: rotate(330deg);
+    -ms-transform: rotate(330deg);
+    transform: rotate(330deg);
+}
+
+.loader .loader-circle2:before {
+    -webkit-animation-delay: -1.1s;
+    animation-delay: -1.1s;
+}
+
+.loader .loader-circle3:before {
+    -webkit-animation-delay: -1s;
+    animation-delay: -1s;
+}
+
+.loader .loader-circle4:before {
+    -webkit-animation-delay: -0.9s;
+    animation-delay: -0.9s;
+}
+
+.loader .loader-circle5:before {
+    -webkit-animation-delay: -0.8s;
+    animation-delay: -0.8s;
+}
+
+.loader .loader-circle6:before {
+    -webkit-animation-delay: -0.7s;
+    animation-delay: -0.7s;
+}
+
+.loader .loader-circle7:before {
+    -webkit-animation-delay: -0.6s;
+    animation-delay: -0.6s;
+}
+
+.loader .loader-circle8:before {
+    -webkit-animation-delay: -0.5s;
+    animation-delay: -0.5s;
+}
+
+.loader .loader-circle9:before {
+    -webkit-animation-delay: -0.4s;
+    animation-delay: -0.4s;
+}
+
+.loader .loader-circle10:before {
+    -webkit-animation-delay: -0.3s;
+    animation-delay: -0.3s;
+}
+
+.loader .loader-circle11:before {
+    -webkit-animation-delay: -0.2s;
+    animation-delay: -0.2s;
+}
+
+.loader .loader-circle12:before {
+    -webkit-animation-delay: -0.1s;
+    animation-delay: -0.1s;
+}
+
+@-webkit-keyframes loader-circleFadeDelay {
+    0%,
+    39%,
+    100% {
+        opacity: 0;
     }
-
-    .loader span {
-        position: absolute;
-        bottom: -40px;
-        width: 130px;
-        margin-left: -40px;
+    40% {
+        opacity: 1;
     }
+}
 
-    .loader .loader-circle {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        left: 0;
-        top: 0;
+@keyframes loader-circleFadeDelay {
+    0%,
+    39%,
+    100% {
+        opacity: 0;
     }
-
-    .loader .loader-circle:before {
-        content: '';
-        display: block;
-        margin: 0 auto;
-        width: 15%;
-        height: 15%;
-        background-color: #333;
-        border-radius: 100%;
-        -webkit-animation: loader-circleFadeDelay 1.2s infinite ease-in-out both;
-        animation: loader-circleFadeDelay 1.2s infinite ease-in-out both;
+    40% {
+        opacity: 1;
     }
-
-    .loader .loader-circle2 {
-        -webkit-transform: rotate(30deg);
-        -ms-transform: rotate(30deg);
-        transform: rotate(30deg);
-    }
-
-    .loader .loader-circle3 {
-        -webkit-transform: rotate(60deg);
-        -ms-transform: rotate(60deg);
-        transform: rotate(60deg);
-    }
-
-    .loader .loader-circle4 {
-        -webkit-transform: rotate(90deg);
-        -ms-transform: rotate(90deg);
-        transform: rotate(90deg);
-    }
-
-    .loader .loader-circle5 {
-        -webkit-transform: rotate(120deg);
-        -ms-transform: rotate(120deg);
-        transform: rotate(120deg);
-    }
-
-    .loader .loader-circle6 {
-        -webkit-transform: rotate(150deg);
-        -ms-transform: rotate(150deg);
-        transform: rotate(150deg);
-    }
-
-    .loader .loader-circle7 {
-        -webkit-transform: rotate(180deg);
-        -ms-transform: rotate(180deg);
-        transform: rotate(180deg);
-    }
-
-    .loader .loader-circle8 {
-        -webkit-transform: rotate(210deg);
-        -ms-transform: rotate(210deg);
-        transform: rotate(210deg);
-    }
-
-    .loader .loader-circle9 {
-        -webkit-transform: rotate(240deg);
-        -ms-transform: rotate(240deg);
-        transform: rotate(240deg);
-    }
-
-    .loader .loader-circle10 {
-        -webkit-transform: rotate(270deg);
-        -ms-transform: rotate(270deg);
-        transform: rotate(270deg);
-    }
-
-    .loader .loader-circle11 {
-        -webkit-transform: rotate(300deg);
-        -ms-transform: rotate(300deg);
-        transform: rotate(300deg);
-    }
-
-    .loader .loader-circle12 {
-        -webkit-transform: rotate(330deg);
-        -ms-transform: rotate(330deg);
-        transform: rotate(330deg);
-    }
-
-    .loader .loader-circle2:before {
-        -webkit-animation-delay: -1.1s;
-        animation-delay: -1.1s;
-    }
-
-    .loader .loader-circle3:before {
-        -webkit-animation-delay: -1s;
-        animation-delay: -1s;
-    }
-
-    .loader .loader-circle4:before {
-        -webkit-animation-delay: -0.9s;
-        animation-delay: -0.9s;
-    }
-
-    .loader .loader-circle5:before {
-        -webkit-animation-delay: -0.8s;
-        animation-delay: -0.8s;
-    }
-
-    .loader .loader-circle6:before {
-        -webkit-animation-delay: -0.7s;
-        animation-delay: -0.7s;
-    }
-
-    .loader .loader-circle7:before {
-        -webkit-animation-delay: -0.6s;
-        animation-delay: -0.6s;
-    }
-
-    .loader .loader-circle8:before {
-        -webkit-animation-delay: -0.5s;
-        animation-delay: -0.5s;
-    }
-
-    .loader .loader-circle9:before {
-        -webkit-animation-delay: -0.4s;
-        animation-delay: -0.4s;
-    }
-
-    .loader .loader-circle10:before {
-        -webkit-animation-delay: -0.3s;
-        animation-delay: -0.3s;
-    }
-
-    .loader .loader-circle11:before {
-        -webkit-animation-delay: -0.2s;
-        animation-delay: -0.2s;
-    }
-
-    .loader .loader-circle12:before {
-        -webkit-animation-delay: -0.1s;
-        animation-delay: -0.1s;
-    }
-
-    @-webkit-keyframes loader-circleFadeDelay {
-        0%,
-        39%,
-        100% {
-            opacity: 0;
-        }
-        40% {
-            opacity: 1;
-        }
-    }
-
-    @keyframes loader-circleFadeDelay {
-        0%,
-        39%,
-        100% {
-            opacity: 0;
-        }
-        40% {
-            opacity: 1;
-        }
-    }
+}
 
 
-    /*.canvas is at z-index of 10*/
+/*.canvas is at z-index of 10*/
 
-    #feedbackPhotoWrapper,
-    #photo-link {
-        position: absolute;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 5;
-        display: block;
-        min-height: 460px;
-    }
+#feedbackPhotoWrapper,
+#photo-link {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    display: block;
+    min-height: 460px;
+}
 
-    .modal-backdrop {
-        z-index: 1700 !important;
-    }
+.modal-backdrop {
+    z-index: 1700 !important;
+}
 
-    .grid-info {
-        margin-bottom: 20px;
-        overflow: auto;
-        height: 460px;
-    }
+.grid-info {
+    margin-bottom: 20px;
+    overflow: auto;
+    height: 460px;
+}
 
-    .grid-info ol {
-        margin-top: 20px;
-    }
+.grid-info ol {
+    margin-top: 20px;
+}
 
-    .grid-info ol li {
-        margin-bottom: 10px;
-    }
+.grid-info ol li {
+    margin-bottom: 10px;
+}
 
-    .zoomWindow {
-        border: 0 !important;
-    }
+.zoomWindow {
+    border: 0 !important;
+}
 
-    h2 {
-        line-height: 1.4;
-    }
+h2 {
+    line-height: 1.4;
+}
 
-    .square {
-        width: 30px;
-        height: 30px;
-        display: inline-block;
-        vertical-align: middle;
-    }
+.square {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    vertical-align: middle;
+}
 
-    .square-red {
-        background-color: rgba(231, 76, 60, .8);
-    }
+.square-red {
+    background-color: rgba(231, 76, 60, .8);
+}
 
-    .square-green {
-        background-color: rgba(0, 163, 136, .5);
-    }
+.square-green {
+    background-color: rgba(0, 163, 136, .5);
+}
 
-    #pathologistFeedback {
-        margin-bottom: 0 !important;
-    }
+#pathologistFeedback {
+    margin-bottom: 0 !important;
+}
 
-    main {
-        position: relative;
-    }
+main {
+    position: relative;
+}
 
-    .mechanic-content,
-    .feedback-content,
-    .grid-info {
-        position: relative;
-    }
+.mechanic-content,
+.feedback-content,
+.grid-info {
+    position: relative;
+}
 
-    .legend {
-        position: absolute;
-        left: -198px;
-        width: 200px;
-        top: 47px;
-        text-align: right;
-    }
+.legend {
+    position: absolute;
+    left: -198px;
+    width: 200px;
+    top: 47px;
+    text-align: right;
+}
 
-    .legend-item {
-        display: inline-block;
-        margin-right: 20px;
-        margin-bottom: 20px;
-    }
+.legend-item {
+    display: inline-block;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
 
-    .legend-item i {
-        font-size: 30px;
-        display: inline-block;
-        color: black;
-        vertical-align: middle;
-    }
+.legend-item i {
+    font-size: 30px;
+    display: inline-block;
+    color: black;
+    vertical-align: middle;
+}
 
-    .example-list {
-        display: none;
-        margin-bottom: 0 !important;
-    }
+.example-list {
+    display: none;
+    margin-bottom: 0 !important;
+}
 
-    .grid-info-buttons {
-        position: absolute;
-        bottom: 20px;
-        margin-top: 0;
-        right: 20px;
-        z-index: 2500;
-    }
+.grid-info-buttons {
+    position: absolute;
+    bottom: 20px;
+    margin-top: 0;
+    right: 20px;
+    z-index: 2500;
+}
 
-    .taskFeedback {
-        display: none;
-    }
+.taskFeedback {
+    display: none;
+}
 
-    .slick-prev,
-    .slick-next {
-        background-color: transparent;
-        display: block;
-        width: 40px !important;
-        height: 40px !important;
-        margin-top: -20px !important;
-    }
+.slick-prev,
+.slick-next {
+    background-color: transparent;
+    display: block;
+    width: 40px !important;
+    height: 40px !important;
+    margin-top: -20px !important;
+}
 
-    .slick-prev:before,
-    .slick-next:before {
-        font-size: 40px;
-        color: black;
-        background-color: transparent;
-    }
+.slick-prev:before,
+.slick-next:before {
+    font-size: 40px;
+    color: black;
+    background-color: transparent;
+}
 
-    .slick-prev,
-    .slick-next {
-        background-color: transparent;
-        display: block;
-        width: 40px !important;
-        height: 40px !important;
-        margin-top: -20px !important;
-    }
+.slick-prev,
+.slick-next {
+    background-color: transparent;
+    display: block;
+    width: 40px !important;
+    height: 40px !important;
+    margin-top: -20px !important;
+}
 
-    .slick-prev:before,
-    .slick-next:before {
-        font-size: 40px;
-        color: black;
-        background-color: transparent;
-    }
+.slick-prev:before,
+.slick-next:before {
+    font-size: 40px;
+    color: black;
+    background-color: transparent;
+}
 
-    .slick-prev {
-        left: -55px;
-        width: 40px !important;
-        height: 40px !important;
-    }
+.slick-prev {
+    left: -55px;
+    width: 40px !important;
+    height: 40px !important;
+}
 
-    .slick-next {
-        right: -55px;
-        width: 40px !important;
-        height: 40px !important;
-    }
+.slick-next {
+    right: -55px;
+    width: 40px !important;
+    height: 40px !important;
+}
 
-    .grid-info-content-inner {
-        margin-bottom: 20px;
-        border-bottom: 1px solid #999;
-        padding-bottom: 10px;
-    }
+.grid-info-content-inner {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #999;
+    padding-bottom: 10px;
+}
 
-    .feedback-active .mechanic-active {
-        display: none;
-    }
+.feedback-active .mechanic-active {
+    display: none;
+}
 
-    .mechanic-active .feedback-show {
-        display: none;
-    }
+.mechanic-active .feedback-show {
+    display: none;
+}
 
-    .mechanic-active .modal #0 {
-        display: none;
-    }
+.mechanic-active .modal #0 {
+    display: none;
+}
 
-    .zoomWindow {
-        z-index: 2000 !important;
-    }
+.zoomWindow {
+    z-index: 2000 !important;
+}
 </style>
 <!--MODAL-->
 <div class="modals row">
     <div class="span12">
-
         <!-- Practice/Feedback Modal -->
         <div id="practiseModal" class="modal hide">
             <div id="0" class="modal-body" style="display:none">
@@ -518,7 +517,6 @@
                 </button>
             </div>
         </div>
-
         <!-- Tutoiral Modal -->
         <div id="tutorialModal" class="modal hide ">
             <div id="0" class="modal-body" style="display:none">
@@ -579,7 +577,7 @@
                     <div class="carousel slide" id="myCarousel4">
                         <!-- Carousel items -->
                         <div class="carousel-inner">
-                            <div class="active item">
+                            <div class="item active">
                                 <img class="tutorialZoom4" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/38.png" data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/38@2x-min.png" alt="" />
                                 <div class="item-inner">
                                     <h1>
@@ -761,13 +759,14 @@
                     <h1>Look closely at the cells in each section</h1>
                     <h2>
                         You can zoom in to the image by moving the mouse over each section to get a closer look.
+                        In a moment you’ll have a chance to try this for yourself.
                     </h2>
                     <h2>
                         There are a number of reference images at the bottom of the screen
                         showing examples of what <strong class="text-error">cancer</strong> and <strong class="text-success">non-cancer cells</strong> look like.
                     </h2>
                     <h2>
-                        In a moment you’ll have a chance to try this for yourself.
+
                     </h2>
                 </div>
             </div>
@@ -834,23 +833,23 @@
                         <h1>
                         You are now about to <strong>start</strong> analysing cancer images.
                     </h1>
-                    <ul>
-                        <li>
-                            You will be shown 10 images to analyse
-                        </li>
-                        <li>
-                            You can stop and resume later if you want to
-                        </li>
-                        <li>
-                            You can return to the tutorial at any time
-                        </li>
-                        <li>
-                            The reference images at the bottom of the screen scroll to show examples of <strong class="text-error">cancer</strong> and <strong class="text-success">non-cancer cells</strong>
-                        </li>
-                        <li>
-                            Don't worry if you're not sure, just give your best guess
-                        </li>
-                    </ul>
+                        <ul>
+                            <li>
+                                You will be shown 10 images to analyse
+                            </li>
+                            <li>
+                                You can stop and resume later if you want to
+                            </li>
+                            <li>
+                                You can return to the tutorial at any time
+                            </li>
+                            <li>
+                                The reference images at the bottom of the screen scroll to show examples of <strong class="text-error">cancer</strong> and <strong class="text-success">non-cancer cells</strong>
+                            </li>
+                            <li>
+                                Don't worry if you're not sure, just give your best guess
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -882,7 +881,7 @@
             <h2><strong>Thank you</strong> for completing the analysis part of Trailblazer!</h2>
             <h2>The final step is to provide some feedback on using the system.</h2>
             <div class="alert-actions">
-                <a class="btn small" href="http://citscitools.cancerresearchuk.org/community/mvp-04c-feedback/">Give feedback</a>
+                <a class="btn small" href="http://citscitools.cancerresearchuk.org/community/mvp-04a-feedback/">Give feedback</a>
             </div>
         </div>
         <div id="error" class="alert alert-error" style="display:none">
@@ -1019,10 +1018,10 @@
                         Check my work
                     </a>
                     <button class="btn btn-answer" id="feedbackInfoBtn" style="margin-left: 10px;">What's in this image</button>
-                    <a class="btn btn-primary disabled" id="nextFeedbackStep" style="margin-left: 10px;">
+                    <a class="btn disabled" id="nextFeedbackStep" style="margin-left: 10px;">
                         Next slide
                     </a>
-                    <a class="btn btn-primary disabled" id="finishFeedback" style="display:none; margin-left: 10px;">
+                    <a class="btn disabled" id="finishFeedback" style="display:none; margin-left: 10px;">
                         Next
                     </a>
                 </div>
@@ -1101,7 +1100,7 @@ var totalGridPercentage = "";
 
 var project_short_name = "{{ project.short_name }}";
 if (project_short_name === "")
-    project_short_name = "mvp-04c";
+    project_short_name = "mvp-04a";
 
 var cookie_feedback_name = project_short_name + 'feedback';
 var cookie_tutorial_name = project_short_name + 'tutorial';
@@ -1112,19 +1111,6 @@ var cookie_tutorial_name = project_short_name + 'tutorial';
 var feedbackData = [{
     "info": {
         "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung-all-min/1.jpg",
-        "taskTitle": "<h2>Click once to mark cancer cells in <span class=\"text-error\">Red<\/span><\/h2> <h2>Click again to mark non-cancer cells in <span class=\"text-success\">Green<\/span><\/h2><h2>Empty sections of the image can be left blank<\/h2>",
-        "taskSubTitle": "<h3>You can change your answer as often as you want. Just click on a section of the image to change your answer.<\/h3>" +
-            "   <h3>Remember to look at the reference images below for help.<\/h3>",
-        "taskParagraph": "",
-        "taskFeedback": "<h2>Image feedback<\/h2>" +
-            "<h3>Most <b class=\"text-error\">cancer cells</b> are in the bottom third of the image with some to the left of middle.<\/h3>" +
-            "<ul><li>They’re mostly <b>large<\/b><\/li>" +
-            "<li>The shape and size of each cell is very different from the others<\/li>" +
-            "<li>They’re <b>darker<\/b> than surrounding cells<\/li>" +
-            "<li>They have formed uneven, <b>lumpy rings<\/b> and <b>chains</b>.<\/li><\/ul>" +
-            "<h3>The surrounding <b class=\"text-success\">non-cancer cells</b> include<\/h3>" +
-            "<ul><li>Longer and thinner blue stromal cells<\/li>" +
-            "<li><b>Small blue<\/b> or <b>dark brown round cells<\/b> which are <b class=\"text-success\">blood cells</b>.<\/li><\/ul>",
         "squares": [{
             "column": 0,
             "answer": null,
@@ -2257,12 +2243,6 @@ FeedbackGrid.prototype.checkAnswer = function(action, activeSquare) {
         } else {
             this.updateFeedbackProgress();
             this.updateFeedback(pathologistAnswer, true);
-
-            // activeSquare.animate({
-            //     "fill-opacity": 0
-            // }, 2000, function () {
-            //     activeSquare.node.setAttribute("class", "grid-item");
-            // });
         }
 
     } else {
@@ -2273,17 +2253,15 @@ FeedbackGrid.prototype.checkAnswer = function(action, activeSquare) {
             cross.attr("opacity", 0);
         } else {
 
-
             this.updateFeedbackProgress();
             this.updateFeedback(pathologistAnswer, false);
 
             activeSquare.animate({
-                "fill-opacity": 0
+                "fill-opacity": 1
             }, 2000, function() {
+                activeSquare.attr("fill-opacity", 1)
                 activeSquare.node.setAttribute("class", "grid-item");
             });
-
-
         }
     }
 
@@ -2308,7 +2286,6 @@ FeedbackGrid.prototype.removeTickOrCross = function(activeSquare) {
 
 
 FeedbackGrid.prototype.addTick = function(activeSquare) {
-
 
     var x = Math.floor(activeSquare.attr("x")),
         y = Math.floor(activeSquare.attr("y")),
@@ -2354,6 +2331,7 @@ FeedbackGrid.prototype.addCross = function(activeSquare) {
     cross["data-parent_id"] = parentId;
     cross["class"] = "cross";
     this.tickCross.push(cross);
+
     return cross;
 };
 
@@ -2403,6 +2381,7 @@ FeedbackGrid.prototype.showMyAnalysis = function() {
     });
 
     function findParentSquare(cross, feedbackObjAnswer) {
+
         for (var i = 0; i < feedbackData[step].info.squares.length; i++) {
             var gridSquare = feedbackObjAnswer.squares[i],
                 gridSquareNode = feedbackObjAnswer.squares[i].node,
@@ -2457,6 +2436,7 @@ FeedbackGrid.prototype.updateFeedbackProgress = function() {
 
     if (pct >= 75 && hasSeenGuidenceInfo === true) {
         $("#nextFeedbackStep, #finishFeedback").removeClass("disabled");
+        $("#nextFeedbackStep, #finishFeedback").addClass("btn-primary");
 
         $(".taskTitle, .taskSubTitle, .taskParagraph").hide();
         $("#" + "feedbackStep" + step + " .taskFeedback").show();
@@ -2472,24 +2452,16 @@ FeedbackGrid.prototype.updateFeedbackProgress = function() {
 
 FeedbackGrid.prototype.percentageFeedbackText = function(pct) {
     var $feedbackText = $("#feedbackProgressText");
-
-
     var htmlString = '<h2>';
     if (pct >= 75) {
         htmlString += 'Well done! ';
     }
-
     htmlString += 'You\'ve marked ';
-
     htmlString += pct + '%</strong> of the image sections correctly</h2>';
-
     if (pct < 75) {
         htmlString += '<h3>Get 75% correct to go onto the next slide.</h3>';
     }
-
-
     $feedbackText.html(htmlString);
-
 };
 
 
@@ -2581,9 +2553,6 @@ Modal.prototype.getCurrentStep = function() {
 
 Modal.prototype.showStep = function(action) {
 
-
-    console.log( action );
-
     $(this.modal + " #" + this.step).hide();
 
     if (typeof action == "number") {
@@ -2606,45 +2575,67 @@ Modal.prototype.showStep = function(action) {
         $(".tutorialZoom14").elevateZoom();
     }
 
-    var $currentStep = this.getCurrentStep(),
-        $carousel = $(this.modal + " #" + this.step + " .carousel"),
-        $modalInfo = $(this.modal + " #" + this.step + " .modal-info"),
-        $items = $(this.modal + " #" + this.step + " .item");
+    var $currentStep               = this.getCurrentStep(),
+        currentModalStep           = this.modal + " #" + this.step,
+        currentModalCarousel       = currentModalStep + " .carousel",
+        currentModalInfo           = currentModalStep + " .modal-info",
+        currentModalCarouselSlides = currentModalStep + " .item";
 
-    if ($carousel.length > 0) {
+        // $carousel = $(this.modal + " #" + this.step + " .carousel"),
+        // $modalInfo = $(this.modal + " #" + this.step + " .modal-info"),
+        // $items = $(this.modal + " #" + this.step + " .item");
+
+
+
+    // If modal step has a carousel
+        //
+        //
+    if ($(currentModalCarousel).length > 0) {
+
         $('.zoomContainer').remove();
         $('.zoomWindowContainer').remove();
-        var tutorial = ".tutorialZoom" + this.step;
 
-        $(tutorial).elevateZoom();
+        var $activeImgItem = $(this.modal + " #" + this.step + " .carousel-inner .item.active img");
+
+        $activeImgItem.elevateZoom({
+            zoomWindowPosition: "",
+            lensFadeIn: 500,
+            lensFadeOut: 500,
+            zoomWindowHeight: 460,
+            zoomWindowWidth: 460,
+            cursor: "pointer"
+        });
 
 
-        if (!$carousel.data("carousel")) {
+        // If the carousel has not been opened before
+        //
+        //
+        if (!$(currentModalCarousel).data("carousel")) {
 
-            $carousel.carousel({
+            $(currentModalCarousel).carousel({
                 interval: false
             });
+
             var $indicatorList = $("#carouselIndicatorsList" + this.step);
 
-            $($items).each(function(idx) {
+            $(currentModalCarouselSlides).each(function(idx) {
                 // Adding buttons
                 idx++;
                 var $item = $(this),
                     $li = '<div class="carousel-selector-' + idx + '" type="button">' + idx + '</div>';
-
                 $indicatorList.append($li);
-
                 //Adding item-info to modal-info
                 $(this).children(".item-inner");
-                $modalInfo.append($item.children(".item-inner"));
+                $(currentModalInfo).append($item.children(".item-inner"));
             });
+
 
             $currentStep.find(".modal-info .item-inner").first().addClass("active");
             $currentStep.find(".carousel-indicators-custom div").first().addClass("active");
 
-
             // When you click on each selector
             // Load new content
+
             $('[class^=carousel-selector-]').on('click', this.nextSlideContent($currentStep));
         }
     }
@@ -2684,26 +2675,58 @@ Modal.prototype.showStep = function(action) {
 };
 
 
+Modal.prototype.addZoomToSlide = function( evt ) {
+    // console.log( evt );
+    // var $currentStep = this.getCurrentStep(),
+    //     $activeSlide = $currentStep.find(".carousel-inner .active"),
+    //     $activeInfo = $currentStep.find(".modal-info .active");
+}
+
 /*
  If a step in the carousel includes a carousel with multiple slides
  find the content that relates to it and show it one by one.
  */
 
 Modal.prototype.nextSlideContent = function(carousel) {
-
+    var _this = this;
     return function() {
-        // Add and remove active class
-        $(this).parent().children().removeClass("active");
-        $(this).addClass("active");
 
-        var id_selector = $(this).attr("class");
-        var id = id_selector.substr(id_selector.length - 8);
-        id = parseInt(id);
-        var $itemInners = carousel.find(".modal-info .item-inner");
-        $itemInners.removeClass('active');
-        $($itemInners[id - 1]).addClass('active');
-        var $modalId = $(this).parent().parent().parent().parent().attr("id");
-        $('#myCarousel' + $modalId).carousel(id - 1);
+
+        $('.zoomContainer').remove();
+        $('.zoomWindowContainer').remove();
+
+        var $carouselSelector = $(this),
+            $carouselSlide = carousel.find(".modal-info .item-inner"),
+            $modalId = _this.getCurrentStep().attr("id");
+
+            $carouselSelector.parent().children().removeClass("active");
+            $carouselSelector.addClass("active");
+
+        var id_selector = $carouselSelector.attr("class");
+        var id = parseInt(id_selector.substr(id_selector.length - 8));
+
+        $carouselSlide.removeClass('active');
+
+        var nextSlideInfo = $($carouselSlide[id - 1]);
+            nextSlideInfo.addClass('active');
+
+
+        var $zoomArea = nextSlideInfo.parent();
+        var $currentSlideImg = $(".tutorialZoom" + $modalId)[id - 1];
+
+        $( $currentSlideImg ).elevateZoom({
+            zoomWindowPosition: "",
+            lensFadeIn: 500,
+            lensFadeOut: 500,
+            zoomWindowHeight: 460,
+            zoomWindowWidth: 460,
+            cursor: "pointer"
+        });
+
+
+        $('#myCarousel' + $modalId ).carousel(id - 1);
+
+        //_this.addZoomToSlide();
     };
 
 };
@@ -2773,7 +2796,7 @@ Zoom.prototype.removeZoom = function(element) {
  */
 
 function loadUserProgress() {
-    pybossa.userProgress('mvp-04c').done(function(data) {
+    pybossa.userProgress('mvp-04a').done(function(data) {
         var currentTask = data.done + 1;
         $("#tasksCompleted").text(currentTask + " of " + data.total);
         var pct = Math.round((data.done * 100) / data.total);
@@ -3027,7 +3050,7 @@ pybossa.presentTask(function(task, deferred) {
         };
 
         var nextBtn = document.getElementById("nextBtn");
-        nextBtn.onclick = function( ) {
+        nextBtn.onclick = function() {
 
             modal.showStep('next');
         };
@@ -3129,6 +3152,7 @@ function showFeedbackStep(action) {
     if (action == 'next') {
         step += 1;
         $("#nextFeedbackStep, #checkMyWorkBtn #finishFeedback").addClass("disabled");
+        $("#nextFeedbackStep, #finishFeedback").removeClass("btn-primary");
     }
 
 
@@ -3169,6 +3193,7 @@ function showFeedbackStep(action) {
     if (step === 2) { // if is step 3
         $("#practiseModal .modal-body").hide();
         modal.open("#practiseModal", 5);
+        $(".grid-info-buttons").css("z-index", 1000);
     }
 
 
@@ -3179,6 +3204,14 @@ function showFeedbackStep(action) {
     var checkMyWork = document.getElementById("checkMyWorkBtn");
     checkMyWork.onclick = function() {
         if ($(this).hasClass("disabled")) return;
+
+        if (totalGridPercentage >= 75) {
+            $("#nextFeedbackStep").removeClass("disabled");
+            $("#finishFeedback").removeClass("disabled");
+            $("#nextFeedbackStep, #finishFeedback").addClass("btn-primary");
+        }
+
+
         //$(".taskTitle,.taskSubTitle, .taskParagraph ").hide();
         //$("#" + "feedbackStep" + step + " .taskFeedback").show();
         feedbackGrid.showMyAnalysis();
@@ -3274,7 +3307,7 @@ function UpdatePageState() {
         $("body").addClass("mechanic-active");
         $("body").removeClass("feedback-active");
         $("#mechanicContent").show();
-        pybossa.run("mvp-04c");
+        pybossa.run("mvp-04a");
     }
 
 }
@@ -3328,12 +3361,14 @@ $(function() {
 
         var m = new Modal();
         m.open("#practiseModal", 6);
+        $(".grid-info-buttons").css("z-index", 1000);
     }
 
 
 
     var startMechanicBtn = document.getElementById("startMechanicBtn");
     startMechanicBtn.onclick = function() {
+        $(".grid-info-buttons").css("z-index", 2500);
         $.cookie(cookie_feedback_name, false);
         UpdatePageState();
     }
@@ -3384,6 +3419,7 @@ $(function() {
             zoomWindowWidth: 460,
             cursor: "pointer"
         });
+
     };
 
     var backToPractiseBtn = document.getElementById("backToPractiseBtn");
@@ -3391,9 +3427,10 @@ $(function() {
 
         $(".grid-info-buttons").css("z-index", 2500);
 
-        if (totalGridPercentage > 75) {
+        if (totalGridPercentage >= 75) {
             $("#nextFeedbackStep").removeClass("disabled");
             $("#finishFeedback").removeClass("disabled");
+            $("#nextFeedbackStep, #finishFeedback").addClass("btn-primary");
         }
 
         if (step !== 2) {
