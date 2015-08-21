@@ -2901,16 +2901,17 @@ Modal.prototype.nextSlideContent = function(carousel) {
             $carouselSelector.addClass("active");
 
         var id_selector = $carouselSelector.attr("class");
-        var id = parseInt(id_selector.substr(id_selector.length - 8));
+        var $carouselSelectorValue = parseInt( $(this).text() );
+        //var id = parseInt(id_selector.substr(id_selector.length - 8));
 
         $carouselSlide.removeClass('active');
 
-        var nextSlideInfo = $($carouselSlide[id - 1]);
+        var nextSlideInfo = $($carouselSlide[$carouselSelectorValue - 1]);
             nextSlideInfo.addClass('active');
 
 
         var $zoomArea = nextSlideInfo.parent();
-        var $currentSlideImg = $(".tutorialZoom" + $modalId)[id - 1];
+        var $currentSlideImg = $(".tutorialZoom" + $modalId)[$carouselSelectorValue - 1];
 
         $( $currentSlideImg ).elevateZoom({
             zoomWindowPosition: "",
@@ -2922,7 +2923,7 @@ Modal.prototype.nextSlideContent = function(carousel) {
         });
 
 
-        $('#myCarousel' + $modalId ).carousel(id - 1);
+        $('#myCarousel' + $modalId ).carousel($carouselSelectorValue - 1);
 
         //_this.addZoomToSlide();
     };
@@ -3567,6 +3568,7 @@ $(function() {
         $(".grid-info-buttons").css("z-index", 2500);
         $.cookie(cookie_feedback_name, false);
         UpdatePageState();
+        location.reload();
     }
 
 
