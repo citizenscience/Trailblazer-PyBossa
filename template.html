@@ -3225,8 +3225,7 @@ pybossa.presentTask(function(task, deferred) {
 
         var showTutorialModalBtn = document.getElementById("showTutorialModalBtn");
         showTutorialModalBtn.onclick = function() {
-            var m = new Modal();
-            m.open("#tutorialModal", 0);
+            modal.open("#tutorialModal", 0);
             $(".grid-info-buttons").css("z-index", 1000);
             $("#tutorialSummary").hide();
             $("#mechanicTutorialSummary").show();
@@ -3545,7 +3544,6 @@ $(function() {
 
     var startFeedbackBtn = document.getElementById("startFeedbackBtn");
     startFeedbackBtn.onclick = function() {
-
         $("#tutorialModal .modal-body").hide();
         $.cookie(cookie_tutorial_name, "seen");
         $.cookie(cookie_feedback_name, true);
@@ -3560,7 +3558,6 @@ $(function() {
     finishFeedback.onclick = function() {
         if ($(this).hasClass("disabled")) return;
         $("svg, .feedback-img-polaroid, .zoomContainer, .zoomWindowContainer").remove();
-        //$.removeData(".feedback-photo-link", 'elevateZoom');
         $("#backToPractiseBtn").hide();
         $("#startMechanicBtn").show();
 
@@ -3575,9 +3572,6 @@ $(function() {
 
     var startMechanicBtn = document.getElementById("startMechanicBtn");
     startMechanicBtn.onclick = function() {
-        $("#tutorialModal").modal('hide');
-        $("#tutorialModal").removeData('bs.modal');
-
         $(".grid-info-buttons").css("z-index", 2500);
         $.cookie(cookie_feedback_name, false);
         UpdatePageState();
