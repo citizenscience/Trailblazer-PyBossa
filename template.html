@@ -1025,6 +1025,7 @@
         </div>
     </div>
 </header>
+
 <main class="site-content clearfix">
     <!--LEGEND-->
     <div class="legend">
@@ -3535,11 +3536,11 @@ $(function() {
 
     var startFeedbackBtn = document.getElementById("startFeedbackBtn");
     startFeedbackBtn.onclick = function() {
+
         $("#tutorialModal .modal-body").hide();
         $.cookie(cookie_tutorial_name, "seen");
         $.cookie(cookie_feedback_name, true);
         UpdatePageState();
-
     };
 
     // End of feedback/practice round
@@ -3565,6 +3566,9 @@ $(function() {
 
     var startMechanicBtn = document.getElementById("startMechanicBtn");
     startMechanicBtn.onclick = function() {
+        $("#tutorialModal").modal('hide');
+        $("#tutorialModal").removeData('bs.modal');
+
         $(".grid-info-buttons").css("z-index", 2500);
         $.cookie(cookie_feedback_name, false);
         UpdatePageState();
