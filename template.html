@@ -2727,9 +2727,6 @@ function Modal() {
 
 Modal.prototype.open = function(modall, goToStep) {
 
-    alert("MODAL");
-
-
     this.modal = modall;
     this.tutorialStep = $(this.modal + " #" + this.step);
 
@@ -2737,11 +2734,6 @@ Modal.prototype.open = function(modall, goToStep) {
         backdrop: 'static',
         keyboard: false
     });
-
-
-        var currentModalStep           = this.modal + " #" + this.step;
-        var currentModalCarousel       = currentModalStep + " .carousel";
-        $(currentModalCarousel).removeData();
 
     this.showStep(goToStep);
 
