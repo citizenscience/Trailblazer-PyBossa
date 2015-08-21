@@ -3558,6 +3558,7 @@ $(function() {
         $(".carousel-indicators-custom").empty();
         $(".item-inner").removeClass("active");
         $(".carousel-inner .item").removeClass("active");
+        $(".carousel-inner .item").first().addClass("active");
         $("#myCarousel4, #myCarousel5, #myCarousel6").removeData("carousel");
         //location.reload();
     }
