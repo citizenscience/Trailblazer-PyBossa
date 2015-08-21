@@ -2906,12 +2906,12 @@ Modal.prototype.nextSlideContent = function(carousel) {
 
         $carouselSlide.removeClass('active');
 
-        var nextSlideInfo = $($carouselSlide[$carouselSelectorValue - 1]);
+        var nextSlideInfo = $($carouselSlide[$carouselSelectorValue]);
             nextSlideInfo.addClass('active');
 
 
         var $zoomArea = nextSlideInfo.parent();
-        var $currentSlideImg = $(".tutorialZoom" + $modalId)[$carouselSelectorValue - 1];
+        var $currentSlideImg = $(".tutorialZoom" + $modalId)[$carouselSelectorValue];
 
         $( $currentSlideImg ).elevateZoom({
             zoomWindowPosition: "",
@@ -2924,7 +2924,7 @@ Modal.prototype.nextSlideContent = function(carousel) {
 
         console.log( $carouselSelectorValue );
 
-        $('#myCarousel' + $modalId ).carousel($carouselSelectorValue - 1);
+        $('#myCarousel' + $modalId ).carousel($carouselSelectorValue);
 
         //_this.addZoomToSlide();
     };
