@@ -3555,10 +3555,19 @@ $(function() {
         UpdatePageState();
 
 
+        //  When opening the tutorial in the main mechanic
+        //  the slides dont go to next carousel item
+        //
+        //
+        // SORRY THE UGLIEST THING EVER
+        //
+        //  Couldnt think of a quick fix to do this in the modal
+        //  funtcions.
+        //
         $(".carousel-indicators-custom").empty();
         $(".item-inner").removeClass("active");
         $(".carousel-inner .item").removeClass("active");
-        $(".carousel-inner .item").first().addClass("active");
+        $(".carousel-inner .item:first-child").addClass("active");
         $("#myCarousel4, #myCarousel5, #myCarousel6").removeData("carousel");
         //location.reload();
     }
