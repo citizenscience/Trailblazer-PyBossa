@@ -2786,7 +2786,7 @@ Modal.prototype.showStep = function(action) {
         //
     if ($(currentModalCarousel).length > 0) {
 
-        alert("HAS CAROUSEL");
+        console.log("HAS CAROUSEL");
 
         $('.zoomContainer').remove();
         $('.zoomWindowContainer').remove();
@@ -2808,7 +2808,7 @@ Modal.prototype.showStep = function(action) {
         //
         if (!$(currentModalCarousel).data("carousel")) {
 
-            alert("HASNT BEEN OPENED BEFORE");
+            console.log("HASNT BEEN OPENED BEFORE");
 
             $(currentModalCarousel).carousel({
                 interval: false
