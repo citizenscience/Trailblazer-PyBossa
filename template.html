@@ -2739,6 +2739,10 @@ Modal.prototype.open = function(modall, goToStep) {
     });
 
 
+        var currentModalStep           = this.modal + " #" + this.step,
+        var currentModalCarousel       = currentModalStep + " .carousel";
+        $(currentModalCarousel).removeData();
+
     this.showStep(goToStep);
 
 };
@@ -3217,7 +3221,8 @@ pybossa.presentTask(function(task, deferred) {
 
         var showTutorialModalBtn = document.getElementById("showTutorialModalBtn");
         showTutorialModalBtn.onclick = function() {
-            modal.open("#tutorialModal", 0);
+            var m = new Modal();
+            m.open("#tutorialModal", 0);
             $(".grid-info-buttons").css("z-index", 1000);
             $("#tutorialSummary").hide();
             $("#mechanicTutorialSummary").show();
