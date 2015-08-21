@@ -2762,7 +2762,6 @@ Modal.prototype.showStep = function(action) {
 
     var z = new Zoom();
 
-
     if (this.step == 14) {
         $('.zoomContainer').remove();
         $('.zoomWindowContainer').remove();
@@ -2774,12 +2773,6 @@ Modal.prototype.showStep = function(action) {
         currentModalCarousel       = currentModalStep + " .carousel",
         currentModalInfo           = currentModalStep + " .modal-info",
         currentModalCarouselSlides = currentModalStep + " .item";
-
-        // $carousel = $(this.modal + " #" + this.step + " .carousel"),
-        // $modalInfo = $(this.modal + " #" + this.step + " .modal-info"),
-        // $items = $(this.modal + " #" + this.step + " .item");
-
-
 
     // If modal step has a carousel
         //
@@ -2872,14 +2865,6 @@ Modal.prototype.showStep = function(action) {
 
 };
 
-
-Modal.prototype.addZoomToSlide = function( evt ) {
-    // console.log( evt );
-    // var $currentStep = this.getCurrentStep(),
-    //     $activeSlide = $currentStep.find(".carousel-inner .active"),
-    //     $activeInfo = $currentStep.find(".modal-info .active");
-}
-
 /*
  If a step in the carousel includes a carousel with multiple slides
  find the content that relates to it and show it one by one.
@@ -2926,7 +2911,6 @@ Modal.prototype.nextSlideContent = function(carousel) {
 
         $('#myCarousel' + $modalId ).carousel($carouselSelectorValue);
 
-        //_this.addZoomToSlide();
     };
 
 };
@@ -3571,6 +3555,8 @@ $(function() {
         UpdatePageState();
 
 
+        $(".carousel-indicators-custom").remove();
+        $("#myCarousel4, #myCarousel5, #myCarousel6").removeData("carousel");
         //location.reload();
     }
 
