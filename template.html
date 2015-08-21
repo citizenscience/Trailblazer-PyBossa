@@ -2901,7 +2901,7 @@ Modal.prototype.nextSlideContent = function(carousel) {
             $carouselSelector.addClass("active");
 
         var id_selector = $carouselSelector.attr("class");
-        var $carouselSelectorValue = parseInt( $(this).text() );
+        var $carouselSelectorValue = parseInt( $(this).text() - 1 );
         //var id = parseInt(id_selector.substr(id_selector.length - 8));
 
         $carouselSlide.removeClass('active');
@@ -2922,6 +2922,7 @@ Modal.prototype.nextSlideContent = function(carousel) {
             cursor: "pointer"
         });
 
+        console.log( $carouselSelectorValue );
 
         $('#myCarousel' + $modalId ).carousel($carouselSelectorValue - 1);
 
@@ -3568,7 +3569,9 @@ $(function() {
         $(".grid-info-buttons").css("z-index", 2500);
         $.cookie(cookie_feedback_name, false);
         UpdatePageState();
-        location.reload();
+
+
+        //location.reload();
     }
 
 
