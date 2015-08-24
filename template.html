@@ -1,7 +1,7 @@
 <style>
 /*
-                   .canvas grid 10 and #photo-link image is at z-index of 5
-                */
+   .canvas grid 10 and #photo-link image is at z-index of 5
+*/
 
 .loader {
     width: 40px;
@@ -2675,13 +2675,6 @@ Modal.prototype.showStep = function(action) {
 };
 
 
-Modal.prototype.addZoomToSlide = function( evt ) {
-    // console.log( evt );
-    // var $currentStep = this.getCurrentStep(),
-    //     $activeSlide = $currentStep.find(".carousel-inner .active"),
-    //     $activeInfo = $currentStep.find(".modal-info .active");
-}
-
 /*
  If a step in the carousel includes a carousel with multiple slides
  find the content that relates to it and show it one by one.
@@ -2730,6 +2723,23 @@ Modal.prototype.nextSlideContent = function(carousel) {
     };
 
 };
+
+Modal.prototype.addZoomToSlide = function( ) {
+}
+
+Modal.prototype.removeModalData = function( ) {
+
+    console.log( $('#tutorialModal').data( "modal" ) );
+    $("#tutorialModal").removeData('modal');
+
+    $(".carousel-indicators-custom").empty();
+    $(".item-inner, .carousel-inner .item").removeClass("active");
+    $(".carousel-inner .item:first-child").addClass("active");
+    $("#myCarousel4, #myCarousel5, #myCarousel6").removeData("carousel");
+
+}
+
+
 
 
 /*
@@ -3305,6 +3315,10 @@ function UpdatePageState() {
         $("#feedbackContent").show();
         $("body").addClass("feedback-active");
         $("body").removeClass("tutorial-active");
+
+        var m = new Modal();
+        m.removeModalData();
+
     } else {
         $("#feedbackContent").hide();
         $("body").addClass("mechanic-active");
@@ -3347,6 +3361,8 @@ $(function() {
         $.cookie(cookie_tutorial_name, "seen");
         $.cookie(cookie_feedback_name, true);
         UpdatePageState();
+
+
 
     };
 
