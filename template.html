@@ -2127,8 +2127,6 @@ FeedbackGrid.prototype.zoomLensClickEvent = function() {
     $("body").on("click", ".zoomLens", function(evt) {
         evt.preventDefault();
 
-        //if(  step == 1 ) _this.hideMyAnalysis();
-
         var activeSquare = _this.findClosestSquare();
         var activeSquareNode = activeSquare.node;
 
@@ -2206,6 +2204,7 @@ FeedbackGrid.prototype.checkAnswer = function(action, activeSquare) {
 
     $.each(feedbackData[step].info, function(idx, patholgistSquare) {
         if (typeof(patholgistSquare[activeSquare.id]) == 'object') {
+
             // Find the pathologist answer for that square
             //
             //
@@ -2237,6 +2236,8 @@ FeedbackGrid.prototype.checkAnswer = function(action, activeSquare) {
 
         var tick = this.addTick(activeSquare);
 
+        // For the first two steps give immediate feedback
+        //
         if (step > 1) {
             $("#pathologistFeedback").hide();
             tick.attr("opacity", 0);
@@ -2246,13 +2247,14 @@ FeedbackGrid.prototype.checkAnswer = function(action, activeSquare) {
         }
 
     } else {
-
         var cross = this.addCross(activeSquare);
+
+        // For the first two steps give immediate feedback
+        //
         if (step > 1) {
             $("#pathologistFeedback").hide();
             cross.attr("opacity", 0);
         } else {
-
             this.updateFeedbackProgress();
             this.updateFeedback(pathologistAnswer, false);
 
@@ -2433,8 +2435,7 @@ FeedbackGrid.prototype.updateFeedbackProgress = function() {
 
     totalGridPercentage = pct;
 
-
-    if (pct > 13 && hasSeenGuidenceInfo === true) {
+    if (pct > 01  && hasSeenGuidenceInfo === true) {
         $("#nextFeedbackStep, #finishFeedback").removeClass("disabled");
         $("#nextFeedbackStep, #finishFeedback").addClass("btn-primary");
 
@@ -2453,13 +2454,13 @@ FeedbackGrid.prototype.updateFeedbackProgress = function() {
 FeedbackGrid.prototype.percentageFeedbackText = function(pct) {
     var $feedbackText = $("#feedbackProgressText");
     var htmlString = '<h2>';
-    if (pct > 13) {
+    if (pct > 01 ) {
         htmlString += 'Well done! ';
     }
     htmlString += 'You\'ve marked ';
     htmlString += pct + '%</strong> of the image sections correctly</h2>';
-    if (pct < 13) {
-        htmlString += '<h3>Get 13% correct to go onto the next slide.</h3>';
+    if (pct < 01 ) {
+        htmlString += '<h3>Get 01 % correct to go onto the next slide.</h3>';
     }
     $feedbackText.html(htmlString);
 };
@@ -2480,7 +2481,7 @@ FeedbackGrid.prototype.checkBlankSquares = function() {
 
 FeedbackGrid.prototype.interactedBlanks = function() {
 
-    var pathologists = feedbackData[step].info.squares;
+    var pathologists =  feedbackData[step].info.squares;
     var feedbackSquares = this.feedbackObj.answer.squares;
     var _this = this;
     var result = 0;
@@ -2514,6 +2515,20 @@ FeedbackGrid.prototype.interactedBlanks = function() {
  *
  *
  */
+
+
+/*
+    Clears modal
+ */
+
+$('body').on('hidden.bs.modal', '.modal', function () {
+    //alert("SDF");
+    $(this).removeData('bs.modal');
+});
+
+
+
+
 
 
 function Modal() {
@@ -2580,12 +2595,6 @@ Modal.prototype.showStep = function(action) {
         currentModalCarousel       = currentModalStep + " .carousel",
         currentModalInfo           = currentModalStep + " .modal-info",
         currentModalCarouselSlides = currentModalStep + " .item";
-
-        // $carousel = $(this.modal + " #" + this.step + " .carousel"),
-        // $modalInfo = $(this.modal + " #" + this.step + " .modal-info"),
-        // $items = $(this.modal + " #" + this.step + " .item");
-
-
 
     // If modal step has a carousel
         //
@@ -2724,12 +2733,9 @@ Modal.prototype.nextSlideContent = function(carousel) {
 
 };
 
-Modal.prototype.addZoomToSlide = function( ) {
-}
 
 Modal.prototype.removeModalData = function( ) {
 
-    console.log( $('#tutorialModal').data( "modal" ) );
     $("#tutorialModal").removeData('modal');
 
     $(".carousel-indicators-custom").empty();
@@ -3145,10 +3151,7 @@ pybossa.presentTask(function(task, deferred) {
  *  we use this funciton to keep the progress through the steps
  *
  */
-$('body').on('hidden.bs.modal', '.modal', function () {
-            alert("SDF");
-            $(this).removeData('bs.modal');
-        });
+
 
 
 
@@ -3218,7 +3221,7 @@ function showFeedbackStep(action) {
     checkMyWork.onclick = function() {
         if ($(this).hasClass("disabled")) return;
 
-        if (totalGridPercentage > 13) {
+        if (totalGridPercentage > 01 ) {
             $("#nextFeedbackStep").removeClass("disabled");
             $("#finishFeedback").removeClass("disabled");
             $("#nextFeedbackStep, #finishFeedback").addClass("btn-primary");
@@ -3449,7 +3452,7 @@ $(function() {
 
         $(".grid-info-buttons").css("z-index", 2500);
 
-        if (totalGridPercentage > 13) {
+        if (totalGridPercentage > 01 ) {
             $("#nextFeedbackStep").removeClass("disabled");
             $("#finishFeedback").removeClass("disabled");
             $("#nextFeedbackStep, #finishFeedback").addClass("btn-primary");
