@@ -2618,7 +2618,7 @@ FeedbackGrid.prototype.percentageFeedbackText = function(pct) {
     htmlString += 'You\'ve marked ';
     htmlString += pct + '%</strong> of the image sections correctly</h2>';
     if (pct < 75 ) {
-        htmlString += '<h3>Get 00 % correct to go onto the next slide.</h3>';
+        htmlString += '<h3>Get 75% correct to go onto the next slide.</h3>';
     }
     $feedbackText.html(htmlString);
 };
