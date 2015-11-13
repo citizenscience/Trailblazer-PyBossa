@@ -112,5 +112,40 @@
 
     <div id='PYBOSSA_USER_LOCALE' hidden>en</div>
 </div>
+<div id="cookies_warning" style="display: none;">
+    <p>Cookies help us deliver our services. By using our services, you agree to our use of cookies.</p>
+        <div class="cookies_warning-buttons">
+            <button class="btn btn-mini btn-success" onclick="accept_cookies.acceptCookies()">
+                <i class="icon-thumbs-up"></i> OK</button>
+            <a class="btn btn-mini" href="http://www.cancerresearchuk.org/terms-and-conditions/cookies-policy">
+                <i class="icon-info-sign"></i>
+                More info
+            </a>
+        </div>
+</div>
+<script type="text/javascript" language="javascript">
+     // Cookie notice.
+
+     var accept_cookies = {
+         // Get cookie
+         cookiesAcceptedAlready: $.cookie('cookiesAccepted'),
+         // Target cookie notice div
+         $cookieNotice: $('#cookies_warning'),
+         init: function() {
+             if (this.cookiesAcceptedAlready) {
+                 return;
+             } else {
+                 this.$cookieNotice.show();
+             }
+         },
+         acceptCookies: function() {
+             // Create cookie
+             $.cookie('cookiesAccepted', 'true');
+             accept_cookies.$cookieNotice.hide();
+         }
+     }
+
+     accept_cookies.init();
+</script>
 </body>
 </html>
