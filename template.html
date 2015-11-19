@@ -283,8 +283,11 @@
         position: absolute;
         bottom: 20px;
         margin-top: 0;
-        right: 20px;
+        left: 0;
         z-index: 1998;
+        display: block;
+        padding-left: 20px;
+        width: 91%;
     }
 
     .taskFeedback {
@@ -360,23 +363,82 @@
     .zoomWindow {
         z-index: 2000 !important;
     }
+
+    .skipReason {
+        padding-top: 15px;
+    }
+
+    .skipReason .skipReason-choice {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .skipReason .skipReason-choice input {
+        margin-top: 0;
+    }
+
+    .skipReason .skipReason-choice span {
+        padding-top: 2px;
+        position: relative;
+        display: inline-block;
+        max-width: 70%;
+        vertical-align: top;
+        margin-left: 3%;
+    }
 </style>
 <!--MODAL-->
 <div class="modals row">
     <div class="span12">
-        <!-- Skip Slide Modal -->
-        <div id="skipSlideModal" class="modal hide" style="min-height: 500px">
-             <div id="0" class="modal-body" style="min-height: 500px">
-                <form>
-                    <input type="checkbox" name="skipReason" value="Too hard for me"> Too hard for me
-                    <input type="checkbox" name="skipReason" value="Too hard for me"> Too long
-                    <input type="checkbox" name="skipReason" value="Too hard for me"> Too annoying
-                </form>
+         Skip Slide Modal
+        <div id="skipSlideModal" class="modal hide">
+             <div class="modal-body skipModalFirst">
+                 <div class="modal-image">
+                    <img class="skipSlideImage"/>
+                 </div>
+                 <div class="modal-info">
+                     <h1>
+                         Please tell us why you would like to skip this image
+                     </h1>
+                    <form class="skipReason">
+                        <div class="skipReason-choice">
+                            <input class="reasonButton" type="radio" name="skipReason" value="There is nothing in this image"> <span>There is nothing in this image</span>
+                        </div>
+                        <div class="skipReason-choice">
+                            <input class="reasonButton" type="radio" name="skipReason" value="There is something wrong with the image (e.g. poor quality)"> <span>There is something wrong with the image (e.g. poor quality)</span>
+                        </div>
+                        <div class="skipReason-choice">
+                            <input class="needsNextButton reasonButton" type="radio" name="skipReason" value="This image is too difficult to analyse"> <span>This image is too difficult to analyse</span>
+                        </div>
+                    </form>
+
+                 </div>
+            </div>
+            <div class="modal-body skipModalLast" style="display: none;">
+                 <div class="modal-image">
+                    <img class="skipSlideImage"/>
+                 </div>
+                 <div class="modal-info">
+                     <h1>
+                         Even experts find this difficult sometimes
+                     </h1>
+                     <h2>
+                         But we combine your response with many others’ so small mistakes can get cancelled out.
+                     </h2>
+                     <h2>
+                         Your best guess is often good enough for us.
+                     </h2>
+                     <h2>
+                         Only analysing the sections you are more certain about is still incredibly useful.
+                     </h2>
+                     <h2>
+                         Why not give it another try?
+                     </h2>
+                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn pull-left">Cancel</button>
-                <a id="nextBtn" href="#" class="btn btn-success">Skip</a>
-
+                <button id="changeMind" type="button" class="btn btn-primary" data-dismiss="modal">Back to image</button>
+                <a id="iWantToSkip-first" href="#" class="btn btn-success iWantToSkip" data-dismiss="modal">I want to skip</a>
+                <a id="iWantToSkip-last" href="#" class="btn btn-success" style="display: none;">next</a>
             </div>
         </div>
         <!-- Practice/Feedback Modal -->
@@ -1107,9 +1169,10 @@
                         <div id="progress" rel="tooltip" title="#" class="bar" style="width: 0%;"></div>
                     </div>
                     <div class="grid-info-buttons">
-                        <button class="btn btn-primary" id="showTutorialModalBtn">Tutorial</button>
-                        <button class="btn btn-primary" id="skipSlideBtn">Skip</button>
+                        <button class="btn btn-warning pull-left" id="skipSlideBtn">Skip</button>
                         <button class="btn btn-answer btn-success nextSlideBtn" id="nextSlideBtn" value="next" style="margin-left:10px;">Next slide</button>
+                        <button class="btn btn-primary pull-right" id="showTutorialModalBtn">Tutorial</button>
+
                     </div>
                 </div>
             </div>
@@ -2076,7 +2139,6 @@ var feedbackData = [{
 
 
 "use strict";
-
 
 /**
  * Grid Constructor function
@@ -3173,6 +3235,7 @@ pybossa.presentTask(function(task, deferred) {
         }
 
         var openModalCount = 0;
+        var skipChangeOfMind = false;
 
         /*
          Take a time stamp of the time the page loads
@@ -3185,6 +3248,8 @@ pybossa.presentTask(function(task, deferred) {
          */
 
         $('#photo-link').html('').append(task.info.image);
+        var skipImageUrl = $(task.info.image).attr('src');
+        $('.skipSlideImage').attr('src', skipImageUrl);
         $('#task-id').html(task.id);
         var imgUrl = task.info.url_b;
 
@@ -3251,12 +3316,115 @@ pybossa.presentTask(function(task, deferred) {
         };
 
         /*
+         Show skip modal
+        */
+
+        var showSkipModalBtn = document.getElementById("skipSlideBtn");
+        showSkipModalBtn.onclick = function() {
+            modal.open('#skipSlideModal');
+        }
+
+        // Variables for skip data
+
+        var changeMind = false;
+        var reason = null;
+
+        var changeMindBtn = document.getElementById('changeMind');
+        changeMindBtn.onclick = function() {
+            changeMind = true;
+        }
+
+        $(".skipReason input:radio").off('click').on('click', function () {
+            var value = $(this).val();
+            console.log(value);
+            if (value == "This image is too difficult to analyse") {
+                $('#iWantToSkip-first').hide();
+                $('#iWantToSkip-last').show();
+            } else {
+                $('#iWantToSkip-first').show();
+                $('#iWantToSkip-last').hide();
+            }
+        });
+
+        $('#changeMind').off('click').on('click', function() {
+            $('.skipModalFirst').show();
+            $('.skipModalLast').hide();
+
+            $('#iWantToSkip-first').hide();
+            $('#iWantToSkip-last').show();
+        });
+
+        $('#iWantToSkip-last').off('click').on('click', function() {
+            $('.skipModalFirst').hide();
+            $('.skipModalLast').show();
+
+            $('#iWantToSkip-first').show();
+            $('#iWantToSkip-last').hide();
+        });
+
+        /*
          Skip Slide Button
         */
 
-        $('#skipSlideBtn').off('click').on('click', function() {
+        $('.iWantToSkip').off('click').on('click', function() {
+            $('#skipSlideModal').hide();
+            $('.skipModalFirst').show();
+            $('.skipModalLast').hide();
+
+            var reason = $('.skipReason').find('input:checked').val();
+
+            var slideSkippedData = {
+                skipped: true,
+                reason: reason,
+                changeOfMind: changeMind
+            }
+
+            // Grab a new timestamp and find out the difference
+            // This is how long the user has been on the task for
+            // Then pass it into the answer
+            var newTime = new Date(),
+                ms = newTime - oldTime,
+                x = ms / 1000,
+                seconds = secondsToString(x);
+
+            // Pass image number into answer
             var imgUrl = task.info.url_b;
-            alert(imgUrl);
+            var result = imgUrl.replace("//citscitools.cancerresearchuk.org/static/img/mvp-01/", "");
+
+            // Create the answer object
+            var answer = {
+                squares: [],
+                timeTaken: seconds,
+                device: whatDevice(),
+                browser: BrowserDetect.browser + " V." + BrowserDetect.version,
+                imgNumber: result,
+                skipSlide: slideSkippedData,
+                openModalCount: openModalCount
+            };
+
+
+            // Change the square object to have clearer values
+            $.each(grid.task.answer.squares, function(key, value) {
+                var obj = {
+                    column: value.column,
+                    row: value.row,
+                    answer: value.has_cancer
+                };
+                answer.squares.push(obj);
+            });
+
+            console.log(answer);
+
+            /*
+             * Save the task information and send to PyBossa
+             */
+
+            pybossa.saveTask(task.id, answer).done(function(data) {
+                loadUserProgress();
+                $("#success").fadeIn(500).delay(1500).fadeOut();
+                $("svg, .zoomContainer,.zoomWindowContainer").remove();
+                deferred.resolve();
+            });
         });
 
         /*
@@ -3277,10 +3445,10 @@ pybossa.presentTask(function(task, deferred) {
             var imgUrl = task.info.url_b;
             var result = imgUrl.replace("//citscitools.cancerresearchuk.org/static/img/mvp-01/", "");
 
-            var skipSlide = {
-                skipped: true,
-                reason: 'Too hard',
-                changeMind: 'false'
+            var slideSkippedData = {
+                skipped: false,
+                reason: reason,
+                changeOfMind: changeMind
             }
 
 
@@ -3291,7 +3459,7 @@ pybossa.presentTask(function(task, deferred) {
                 device: whatDevice(),
                 browser: BrowserDetect.browser + " V." + BrowserDetect.version,
                 imgNumber: result,
-                skipSlide: skipSlide,
+                skipSlide: slideSkippedData,
                 openModalCount: openModalCount
             };
 
@@ -3571,6 +3739,10 @@ $(function() {
             FOR FEEDBACK/PRACTISE SECTION
 
      */
+
+    $('.modal-footer').on('click', function() {
+        alert('hi');
+    });
 
     var nextFeedbackBtn = document.getElementById("nextFeedbackStep");
     nextFeedbackBtn.onclick = function() {
