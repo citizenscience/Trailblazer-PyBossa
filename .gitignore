@@ -3,6 +3,7 @@ env/
 *.un~
 .*.swp
 *.pyc
+pybossa.js
 *.db
 settings_local.py
 doc/_build
