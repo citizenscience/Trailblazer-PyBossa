@@ -284,7 +284,7 @@
         bottom: 20px;
         margin-top: 0;
         right: 20px;
-        z-index: 2500;
+        z-index: 1998;
     }
 
     .taskFeedback {
@@ -353,6 +353,10 @@
         display: none;
     }
 
+    #skipSlideModal.modal {
+        z-index: 2500 !important;
+    }
+
     .zoomWindow {
         z-index: 2000 !important;
     }
@@ -360,6 +364,21 @@
 <!--MODAL-->
 <div class="modals row">
     <div class="span12">
+        <!-- Skip Slide Modal -->
+        <div id="skipSlideModal" class="modal hide" style="min-height: 500px">
+             <div id="0" class="modal-body" style="min-height: 500px">
+                <form>
+                    <input type="checkbox" name="skipReason" value="Too hard for me"> Too hard for me
+                    <input type="checkbox" name="skipReason" value="Too hard for me"> Too long
+                    <input type="checkbox" name="skipReason" value="Too hard for me"> Too annoying
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn pull-left">Cancel</button>
+                <a id="nextBtn" href="#" class="btn btn-success">Skip</a>
+
+            </div>
+        </div>
         <!-- Practice/Feedback Modal -->
         <div id="practiseModal" class="modal hide">
             <div id="0" class="modal-body" style="display:none">
@@ -1089,6 +1108,7 @@
                     </div>
                     <div class="grid-info-buttons">
                         <button class="btn btn-primary" id="showTutorialModalBtn">Tutorial</button>
+                        <button class="btn btn-primary" id="skipSlideBtn">Skip</button>
                         <button class="btn btn-answer btn-success nextSlideBtn" id="nextSlideBtn" value="next" style="margin-left:10px;">Next slide</button>
                     </div>
                 </div>
@@ -3118,6 +3138,7 @@ pybossa.taskLoaded(function(task, deferred) {
             squares: [],
             timeTaken: "",
             device: "",
+            skipSlide: "",
             browser: "",
             img: "",
             openModalCount: 0
@@ -3229,6 +3250,14 @@ pybossa.presentTask(function(task, deferred) {
             modal.showStep('prev');
         };
 
+        /*
+         Skip Slide Button
+        */
+
+        $('#skipSlideBtn').off('click').on('click', function() {
+            var imgUrl = task.info.url_b;
+            alert(imgUrl);
+        });
 
         /*
          "Next Slide" Button
@@ -3248,6 +3277,12 @@ pybossa.presentTask(function(task, deferred) {
             var imgUrl = task.info.url_b;
             var result = imgUrl.replace("//citscitools.cancerresearchuk.org/static/img/mvp-01/", "");
 
+            var skipSlide = {
+                skipped: true,
+                reason: 'Too hard',
+                changeMind: 'false'
+            }
+
 
             // Create the answer object
             var answer = {
@@ -3256,6 +3291,7 @@ pybossa.presentTask(function(task, deferred) {
                 device: whatDevice(),
                 browser: BrowserDetect.browser + " V." + BrowserDetect.version,
                 imgNumber: result,
+                skipSlide: skipSlide,
                 openModalCount: openModalCount
             };
 
