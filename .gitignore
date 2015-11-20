@@ -1,5 +1,6 @@
 *.egg-info
 env/
+pybossa.js
 *.un~
 .*.swp
 *.pyc
