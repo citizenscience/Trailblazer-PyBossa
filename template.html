@@ -844,7 +844,7 @@
 
             <div id="6" class="modal-body" style="display:none">
                 <div class="modal-image">
-                    <img class="tutorialZoom5" src="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/annotated-min/17-non-cancer-area-min.jpg" data-zoom-image="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/annotated/17-non-cancer-outline.jpg" alt="" />
+                    <img class="tutorialZoom6" src="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/annotated-min/17-non-cancer-area-min.jpg" data-zoom-image="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/annotated/17-non-cancer-outline.jpg" alt="" />
                 </div>
                 <div class="modal-info">
                     <h1>
@@ -883,7 +883,7 @@
                         <!-- Carousel items -->
                         <div class="carousel-inner">
                             <div class="active item">
-                                <img class="tutorialZoom6" src="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/min/EGFR-25-min.jpg" data-zoom-image="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/EGFR-25.jpg" alt="" />
+                                <img class="tutorialZoom7" src="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/min/EGFR-25-min.jpg" data-zoom-image="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/EGFR-25.jpg" alt="" />
                                 <div class="item-inner">
                                     <h1>
                                         Sample image 4
@@ -901,7 +901,7 @@
                                 </div>
                             </div>
                             <div class="item">
-                                <img class="tutorialZoom6" src="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/annotated-min/61-cancer-area-min.jpg" data-zoom-image="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/annotated/61-cancer-outline.jpg" alt="" />
+                                <img class="tutorialZoom7" src="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/annotated-min/61-cancer-area-min.jpg" data-zoom-image="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/annotated/61-cancer-outline.jpg" alt="" />
                                 <div class="item-inner">
                                     <h1>
                                         Sample image 4
@@ -921,25 +921,19 @@
                                 </div>
                             </div>
                             <div class="item">
-                                <img class="tutorialZoom6" src="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/annotated-min/61-non-cancer-area-min.jpg" data-zoom-image="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/annotated/61-non-cancer-outline.jpg" alt="" />
+                                <img class="tutorialZoom7" src="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/annotated-min/61-non-cancer-area-min.jpg" data-zoom-image="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/annotated/61-non-cancer-outline.jpg" alt="" />
                                 <div class="item-inner">
                                     <h1>
                                         Sample image 4
                                     </h1>
                                     <h2>
-                                        Sometimes, the <b>brown stain</b> surrounds <b class="text-success">non-cancer</b> cells; we’ve outlined <b>two examples</b> in green.
-                                    </h2>
-                                    <h2>
-                                        These <b class="text-success">healthy</b> lung cells are <b>tightly organised</b> in a single layer around an airway (white space).
-                                    </h2>
-                                    <h2>
-                                        There are other types of <b class="text-success">non-cancer</b> cells in this image. The two most common types are:
+                                        The remaining cells are <b class="text-success">non-cancer</b> and have been highlighted in <b class="text-success">green</b>. They include:
                                     </h2>
                                     <ol>
                                         <li><b>Blood cells</b>
                                             <ul>
                                                 <li>These are <b>small, dark blue and round</b></li>
-                                                <li>There are plenty at the bottom of this image</li>
+                                                <li>They can appear loosely spread out or in very dense clusters</li>
                                             </ul>
                                         </li>
                                         <li><b>Stromal cells</b>
@@ -3307,7 +3301,7 @@ pybossa.presentTask(function(task, deferred) {
 
         var closeMechanicTutorialBtn = document.getElementById("closeMechanicTutorialBtn");
         closeMechanicTutorialBtn.onclick = function() {
-            $(".grid-info-buttons").css("z-index", 2501);
+            $(".grid-info-buttons").css("z-index", 2601);
             zoom.removeZoom($(".tutorialZoom"));
             $("#errorClick").show();
             zoom.addZoom($(".img-polaroid"));
