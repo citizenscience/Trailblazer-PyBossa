@@ -288,7 +288,7 @@
         bottom: 20px;
         margin-top: 0;
         left: 0;
-        z-index: 2001;
+        z-index: 2501;
         display: block;
         padding-left: 20px;
         width: 91%;
@@ -390,7 +390,7 @@
         margin-left: 3%;
     }
 
-    .zoomContainer {
+    .zoomContainer, .zoomWindow {
         z-index: 2500 !important;
     }
 </style>
@@ -3307,7 +3307,7 @@ pybossa.presentTask(function(task, deferred) {
 
         var closeMechanicTutorialBtn = document.getElementById("closeMechanicTutorialBtn");
         closeMechanicTutorialBtn.onclick = function() {
-            $(".grid-info-buttons").css("z-index", 2500);
+            $(".grid-info-buttons").css("z-index", 2501);
             zoom.removeZoom($(".tutorialZoom"));
             $("#errorClick").show();
             zoom.addZoom($(".img-polaroid"));
@@ -3736,7 +3736,7 @@ $(function() {
 
     var startMechanicBtn = document.getElementById("startMechanicBtn");
     startMechanicBtn.onclick = function() {
-        $(".grid-info-buttons").css("z-index", 2500);
+        $(".grid-info-buttons").css("z-index", 2501);
         $.cookie(cookie_feedback_name, false);
         UpdatePageState();
 
@@ -3804,7 +3804,7 @@ $(function() {
     var backToPractiseBtn = document.getElementById("backToPractiseBtn");
     backToPractiseBtn.onclick = function() {
 
-        $(".grid-info-buttons").css("z-index", 2500);
+        $(".grid-info-buttons").css("z-index", 2501);
 
         if (totalGridPercentage >= progressBarTargetValue ) {
             $("#nextFeedbackStep").removeClass("disabled");
