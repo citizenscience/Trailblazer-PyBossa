@@ -198,8 +198,12 @@
         min-height: 460px;
     }
 
+    .modal {
+        z-index: 2500 !important;
+    }
+
     .modal-backdrop {
-        z-index: 1700 !important;
+        z-index: 2400 !important;
     }
 
     .grid-info {
@@ -284,7 +288,7 @@
         bottom: 20px;
         margin-top: 0;
         left: 0;
-        z-index: 1998;
+        z-index: 2001;
         display: block;
         padding-left: 20px;
         width: 91%;
@@ -422,7 +426,7 @@
                          Even experts find this difficult sometimes
                      </h1>
                      <h2>
-                         But we combine your response with many others’ so small mistakes can get cancelled out.
+                         We combine your response with many others’ so small mistakes can get cancelled out.
                      </h2>
                      <h2>
                          Your best guess is often good enough for us.
@@ -438,7 +442,7 @@
             <div class="modal-footer">
                 <button id="changeMind" type="button" class="btn btn-primary" data-dismiss="modal">I'll try again</button>
                 <a id="iWantToSkip-first" href="#" class="btn btn-success iWantToSkip" data-dismiss="modal">I want to skip</a>
-                <a id="iWantToSkip-last" href="#" class="btn btn-success" style="display: none;">next</a>
+                <a id="iWantToSkip-last" href="#" class="btn btn-success" style="display: none;">I want to skip</a>
             </div>
         </div>
         <!-- Practice/Feedback Modal -->
@@ -827,36 +831,6 @@
                                     </h3>
                                 </div>
                             </div>
-                            <div class="item">
-                                <img class="tutorialZoom5" src="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/annotated-min/17-non-cancer-area-min.jpg" data-zoom-image="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/annotated/17-non-cancer-outline.jpg" alt="" />
-                                <div class="item-inner">
-                                    <h1>
-                                        Sample image 2
-                                    </h1>
-                                    <h2>
-                                        Here, the brown staining is surrounding <strong class="text-success">non-cancer cells</strong>; we’ve outlined two examples in <strong class="text-success">green</strong>.
-                                    </h2>
-                                    <h2>
-                                        The <strong class="text-success">non-cancer cells</strong> around the airways (white spaces) are <b>tightly organised</b> and they aren’t overcrowded or spreading uncontrollably, like you saw in the last image.
-                                    </h2>
-                                    There are different types of <strong class="text-success">non-cancer cells</strong> in this image. The two most common types are:
-                                    <ol>
-                                        <li><b>Blood cells</b>
-                                            <ul>
-                                                <li>These are <b>small, dark blue and round</b></li>
-                                                <li>They can appear loosely spread out or in very dense clusters</li>
-                                            </ul>
-                                        </li>
-                                        <li><b>Stromal cells</b>
-                                            <ul>
-                                                <li>These are often <b>light blue, wispy or stretched looking</b></li>
-                                                <li>They often look like they are flowing or being stretched in a particular direction</li>
-                                            </ul>
-                                        </li>
-                                    </ol>
-                                </div>
-                            </div>
-
                         </div>
                         <div class="carousel-indicators-custom" id="carouselIndicatorsList5"></div>
                     </div>
@@ -864,19 +838,51 @@
                 <div class="modal-info"></div>
             </div>
 
-
-
-             <!-- WITH CAROUSEL-->
             <div id="6" class="modal-body" style="display:none">
                 <div class="modal-image">
-                    <div class="carousel slide" id="myCarousel6">
+                    <img class="tutorialZoom5" src="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/annotated-min/17-non-cancer-area-min.jpg" data-zoom-image="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/annotated/17-non-cancer-outline.jpg" alt="" />
+                </div>
+                <div class="modal-info">
+                    <h1>
+                        Sample image 3
+                    </h1>
+                    <h2>
+                        Sometimes, the <b>brown stain</b> surrounds <b class="text-success">non-cancer</b> cells; we’ve outlined <b>two examples</b> in green.
+                    </h2>
+                    <h2>
+                        These <b class="text-success">healthy lung</b> cells  are tightly organised in a single layer around an airway (white space).
+                    </h2>
+                    <h3>
+                        There are other types of <strong class="text-success">non-cancer</strong> cells in this image. The two most common types are:
+                    </h3>
+                    <ol>
+                        <li><b>Blood cells</b>
+                            <ul>
+                                <li>These are <b>small, dark blue and round</b></li>
+                                <li>There are plenty at the bottom of this image</li>
+                            </ul>
+                        </li>
+                        <li><b>Stromal cells</b>
+                            <ul>
+                                <li>These are often <b>light blue, wispy or stretched looking</b></li>
+                                <li>They often look like they are flowing or being stretched in a particular direction</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+
+             <!-- WITH CAROUSEL-->
+            <div id="7" class="modal-body" style="display:none">
+                <div class="modal-image">
+                    <div class="carousel slide" id="myCarousel7">
                         <!-- Carousel items -->
                         <div class="carousel-inner">
                             <div class="active item">
                                 <img class="tutorialZoom6" src="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/min/EGFR-25-min.jpg" data-zoom-image="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/EGFR-25.jpg" alt="" />
                                 <div class="item-inner">
                                     <h1>
-                                        Sample image 3
+                                        Sample image 4
                                     </h1>
                                     <h2>
                                         <strong class="text-error">Cancer cells</strong> can look very different from image to image.
@@ -894,7 +900,7 @@
                                 <img class="tutorialZoom6" src="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/annotated-min/61-cancer-area-min.jpg" data-zoom-image="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/annotated/61-cancer-outline.jpg" alt="" />
                                 <div class="item-inner">
                                     <h1>
-                                        Sample image 3
+                                        Sample image 4
                                     </h1>
                                     <h2>
 
@@ -943,7 +949,7 @@
                             </div>
 
                         </div>
-                        <div class="carousel-indicators-custom" id="carouselIndicatorsList6"></div>
+                        <div class="carousel-indicators-custom" id="carouselIndicatorsList7"></div>
                     </div>
                 </div>
                 <div class="modal-info"></div>
@@ -954,7 +960,7 @@
 
 
 
-            <div id="7" class="modal-body" style="display:none">
+            <div id="8" class="modal-body" style="display:none">
                 <div class="modal-image">
                     <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid.jpg" alt="" />
                 </div>
@@ -974,7 +980,7 @@
                 </div>
             </div>
 
-            <div id="8" class="modal-body" style="display:none">
+            <div id="9" class="modal-body" style="display:none">
                 <div class="modal-image">
                     <img src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/hover-over.png   " alt="" />
                 </div>
@@ -993,7 +999,7 @@
                     </h2>
                 </div>
             </div>
-            <div id="9" class="modal-body" style="display:none">
+            <div id="10" class="modal-body" style="display:none">
                 <div class="modal-image">
                     <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid-red.jpg" alt="" />
                 </div>
@@ -1007,7 +1013,7 @@
                     </h2>
                 </div>
             </div>
-            <div id="10" class="modal-body" style="display:none">
+            <div id="11" class="modal-body" style="display:none">
                 <div class="modal-image">
                     <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid-red-green.jpg" alt="" />
                 </div>
@@ -1020,7 +1026,7 @@
                     </h2>
                 </div>
             </div>
-            <div id="11" class="modal-body" style="display:none">
+            <div id="12" class="modal-body" style="display:none">
                 <div class="modal-image">
                     <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid-red-green.jpg" alt="" />
                 </div>
@@ -1039,7 +1045,7 @@
                     </h2>
                 </div>
             </div>
-            <div id="12" class="modal-body" style="display:none;">
+            <div id="13" class="modal-body" style="display:none;">
                 <div class="modal-image">
                     <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid.jpg" alt="" />
                 </div>
@@ -3362,6 +3368,7 @@ pybossa.presentTask(function(task, deferred) {
         $('#changeMind').off('click').on('click', function() {
             $('.skipModalFirst').show();
             $('.skipModalLast').hide();
+            $(".skipReason input:radio").prop('checked', false);
 
             $('#iWantToSkip-first').hide();
             $('#iWantToSkip-last').show();
