@@ -288,7 +288,7 @@
         bottom: 20px;
         margin-top: 0;
         left: 0;
-        z-index: 2501;
+        z-index: 2599;
         display: block;
         padding-left: 20px;
         width: 91%;
@@ -364,10 +364,6 @@
         z-index: 2600 !important;
     }
 
-    .zoomWindow {
-        z-index: 2000 !important;
-    }
-
     .skipReason {
         padding-top: 15px;
     }
@@ -391,7 +387,7 @@
     }
 
     .zoomContainer, .zoomWindow {
-        z-index: 2600 !important;
+        z-index: 2601;
     }
 </style>
 <!--MODAL-->
@@ -2856,6 +2852,9 @@ function Modal() {
 
 Modal.prototype.open = function(modall, goToStep) {
 
+    $('.zoomContainer').hide();
+    console.log($('.zoomContainer'));
+
     this.modal = modall;
     this.tutorialStep = $(this.modal + " #" + this.step);
 
@@ -3339,12 +3338,13 @@ pybossa.presentTask(function(task, deferred) {
             $("#mechanicTutorialSummary").show();
             zoom.removeZoom($(".tutorialZoom"));
             openModalCount++;
+            console.log("oisehfoidhfd");
         };
 
         var closeMechanicTutorialBtn = document.getElementById("closeMechanicTutorialBtn");
         closeMechanicTutorialBtn.onclick = function() {
-            $(".grid-info-buttons").css("z-index", 2601);
             zoom.removeZoom($(".tutorialZoom"));
+            $(".grid-info-buttons").css("z-index", 3000);
             $("#errorClick").show();
             zoom.addZoom($(".img-polaroid"));
         };
@@ -3382,6 +3382,7 @@ pybossa.presentTask(function(task, deferred) {
         var showSkipModalBtn = document.getElementById("skipSlideBtn");
         showSkipModalBtn.onclick = function() {
             modal.open('#skipSlideModal');
+            $('.grid-info-buttons').css('z-index', 1000);
         }
 
         // Variables for skip data
@@ -3392,6 +3393,8 @@ pybossa.presentTask(function(task, deferred) {
         var changeMindBtn = document.getElementById('changeMind');
         changeMindBtn.onclick = function() {
             changeMind = true;
+            zoom.removeZoom($(".tutorialZoom"));
+            zoom.addZoom($(".img-polaroid"));
         }
 
         $(".skipReason input:radio").off('click').on('click', function () {
