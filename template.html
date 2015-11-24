@@ -842,38 +842,80 @@
                 <div class="modal-info"></div>
             </div>
 
-            <div id="6" class="modal-body" style="display:none">
+            <!--<div id="6" class="modal-body" style="display:none">-->
+                <!--<div class="modal-image">-->
+                    <!--<img class="tutorialZoom6" src="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/annotated-min/17-non-cancer-area-min.jpg" data-zoom-image="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/annotated/17-non-cancer-outline.jpg" alt="" />-->
+                <!--</div>-->
+                <!--<div class="modal-info">-->
+                    <!--<h1>-->
+                        <!--Sample image 3-->
+                    <!--</h1>-->
+                    <!--<h2>-->
+                        <!--Sometimes, the <b>brown stain</b> surrounds <b class="text-success">non-cancer</b> cells; we’ve outlined <b>two examples</b> in green.-->
+                    <!--</h2>-->
+                    <!--<h2>-->
+                        <!--These <b class="text-success">healthy lung</b> cells  are tightly organised in a single layer around an airway (white space).-->
+                    <!--</h2>-->
+                    <!--<h3>-->
+                        <!--There are other types of <strong class="text-success">non-cancer</strong> cells in this image. The two most common types are:-->
+                    <!--</h3>-->
+                    <!--<ol>-->
+                        <!--<li><b>Blood cells</b>-->
+                            <!--<ul>-->
+                                <!--<li>These are <b>small, dark blue and round</b></li>-->
+                                <!--<li>There are plenty at the bottom of this image</li>-->
+                            <!--</ul>-->
+                        <!--</li>-->
+                        <!--<li><b>Stromal cells</b>-->
+                            <!--<ul>-->
+                                <!--<li>These are often <b>light blue, wispy or stretched looking</b></li>-->
+                                <!--<li>They often look like they are flowing or being stretched in a particular direction</li>-->
+                            <!--</ul>-->
+                        <!--</li>-->
+                    <!--</ol>-->
+                <!--</div>-->
+            <!--</div>-->
+
+             <div id="6" class="modal-body" style="display:none">
                 <div class="modal-image">
-                    <img class="tutorialZoom6" src="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/annotated-min/17-non-cancer-area-min.jpg" data-zoom-image="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/annotated/17-non-cancer-outline.jpg" alt="" />
+                    <div class="carousel slide" id="myCarousel6">
+                        <!-- Carousel items -->
+                        <div class="carousel-inner">
+                            <div class="active item">
+                                <img class="tutorialZoom6" src="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/annotated-min/17-non-cancer-area-min.jpg" data-zoom-image="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/annotated/17-non-cancer-outline.jpg" alt="" />
+                                <div class="item-inner" style="display: block;">
+                                    <h1>
+                                        Sample image 3
+                                    </h1>
+                                    <h2>
+                                        Sometimes, the <b>brown stain</b> surrounds <b class="text-success">non-cancer</b> cells; we’ve outlined <b>two examples</b> in green.
+                                    </h2>
+                                    <h2>
+                                        These <b class="text-success">healthy lung</b> cells  are tightly organised in a single layer around an airway (white space).
+                                    </h2>
+                                    <h3>
+                                        There are other types of <strong class="text-success">non-cancer</strong> cells in this image. The two most common types are:
+                                    </h3>
+                                    <ol>
+                                        <li><b>Blood cells</b>
+                                            <ul>
+                                                <li>These are <b>small, dark blue and round</b></li>
+                                                <li>There are plenty at the bottom of this image</li>
+                                            </ul>
+                                        </li>
+                                        <li><b>Stromal cells</b>
+                                            <ul>
+                                                <li>These are often <b>light blue, wispy or stretched looking</b></li>
+                                                <li>They often look like they are flowing or being stretched in a particular direction</li>
+                                            </ul>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="modal-info">
-                    <h1>
-                        Sample image 3
-                    </h1>
-                    <h2>
-                        Sometimes, the <b>brown stain</b> surrounds <b class="text-success">non-cancer</b> cells; we’ve outlined <b>two examples</b> in green.
-                    </h2>
-                    <h2>
-                        These <b class="text-success">healthy lung</b> cells  are tightly organised in a single layer around an airway (white space).
-                    </h2>
-                    <h3>
-                        There are other types of <strong class="text-success">non-cancer</strong> cells in this image. The two most common types are:
-                    </h3>
-                    <ol>
-                        <li><b>Blood cells</b>
-                            <ul>
-                                <li>These are <b>small, dark blue and round</b></li>
-                                <li>There are plenty at the bottom of this image</li>
-                            </ul>
-                        </li>
-                        <li><b>Stromal cells</b>
-                            <ul>
-                                <li>These are often <b>light blue, wispy or stretched looking</b></li>
-                                <li>They often look like they are flowing or being stretched in a particular direction</li>
-                            </ul>
-                        </li>
-                    </ol>
-                </div>
+                <div class="modal-info"></div>
             </div>
 
              <!-- WITH CAROUSEL-->
@@ -1342,7 +1384,7 @@
 <script type="text/javascript" async="async">
 var hasSeenGuidenceInfo = false;
 var totalGridPercentage = "";
-var progressBarTargetValue = 5;
+var progressBarTargetValue = 0;
 
 var project_short_name = "{{ project.short_name }}";
 if (project_short_name === "")
