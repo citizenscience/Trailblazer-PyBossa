@@ -2771,6 +2771,7 @@ FeedbackGrid.prototype.updateFeedbackProgress = function() {
 
     this.percentageFeedbackText(pct);
     $feedbackProgressBar.width(pct + "%");
+
 };
 
 FeedbackGrid.prototype.percentageFeedbackText = function(pct) {
@@ -3395,6 +3396,7 @@ pybossa.presentTask(function(task, deferred) {
             changeMind = true;
             zoom.removeZoom($(".tutorialZoom"));
             zoom.addZoom($(".img-polaroid"));
+            $('.skipReason').find('input:checked').prop('checked', false);
         }
 
         $(".skipReason input:radio").off('click').on('click', function () {
@@ -3433,6 +3435,14 @@ pybossa.presentTask(function(task, deferred) {
             $('#skipSlideModal').hide();
             $('.skipModalFirst').show();
             $('.skipModalLast').hide();
+
+
+            var skipRadioButtons = $('.skipReason');
+
+             if (skipRadioButtons) {
+                skipRadioButtons.find('input:checked').prop('checked', false);
+                console.log("Radio buttons have been changed");
+            }
 
             var reason = $('.skipReason').find('input:checked').val();
 
@@ -3504,6 +3514,7 @@ pybossa.presentTask(function(task, deferred) {
                 x = ms / 1000,
                 seconds = secondsToString(x);
 
+
             // Pass image number into answer
             var imgUrl = task.info.url_b;
             var result = imgUrl.replace("//citscitools.cancerresearchuk.org/static/img/mvp-01/", "");
@@ -3513,7 +3524,6 @@ pybossa.presentTask(function(task, deferred) {
                 reason: reason,
                 changeOfMind: changeMind
             }
-
 
             // Create the answer object
             var answer = {
@@ -3537,8 +3547,6 @@ pybossa.presentTask(function(task, deferred) {
                 answer.squares.push(obj);
             });
 
-            console.log(answer);
-
             /*
              * Save the task information and send to PyBossa
              */
@@ -3552,8 +3560,6 @@ pybossa.presentTask(function(task, deferred) {
 
         });
     } else {
-
-
         $("#loading").hide();
         $("#progress").css("width", "100%");
         $("#finish").fadeIn(500);
@@ -3680,7 +3686,6 @@ function UpdatePageState() {
     // Check if the page should be in show feedback state
     if (cookie_feedback == "false")
         page_state = "mechanic";
-
 
     // If the feedback or mechanic is showing
     // Init the example images in slick corousel
