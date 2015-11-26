@@ -193,17 +193,21 @@
         top: 0;
         width: 100%;
         height: 100%;
-        z-index: 5;
+        z-index: 1;
         display: block;
         min-height: 460px;
     }
 
     .modal {
-        z-index: 2600 !important;
+        z-index: 3 !important;
     }
 
     .modal-backdrop {
-        z-index: 2599 !important;
+        z-index: 2 !important;
+    }
+
+    .site-content #canvas, .site-content #feedbackCanvas, .site-content #mechanicCanvas {
+        z-index: 1 !important;
     }
 
     .grid-info {
@@ -288,7 +292,7 @@
         bottom: 20px;
         margin-top: 0;
         left: 0;
-        z-index: 2599;
+        z-index: 5;
         display: block;
         padding-left: 20px;
         width: 91%;
@@ -361,7 +365,7 @@
     }
 
     #skipSlideModal.modal {
-        z-index: 2600 !important;
+        z-index: 3 !important;
     }
 
     .skipReason {
@@ -387,7 +391,7 @@
     }
 
     .zoomContainer, .zoomWindow {
-        z-index: 2601;
+        z-index: 4 !important;
     }
 </style>
 <!--MODAL-->
@@ -658,7 +662,7 @@
                         Welcome to Trailblazer!
                     </h1>
                     <h2>
-                        We need your help identifying <strong class="text-error">cancer cells</strong>, distinguishing them from <strong class="text-success">non-cancer cells</strong> in images like the one to the left.
+                        We need your help identifying <strong class="text-error">lung cancer</strong> cells, distinguishing them from <strong class="text-success">non-cancer cells</strong> in images like the one to the left.
                     </h2>
                 </div>
             </div>
@@ -725,7 +729,7 @@
                                     <h2>
                                         To identify <b>cancer cells</b>, look for
                                         <b>blotchy cells</b> grouped together in <b>uneven clumps</b>,
-                                        <b>loose rings</b> or
+                                        <b>rings</b> or
                                         <b>broken chains</b>.
                                     </h2>
                                     <h2>
@@ -740,10 +744,10 @@
                                         Sample image 1
                                     </h1>
                                     <h2>
-                                        We’ve highlighted the <b>cancer cells</b> in <b class="text-error">red</b> in this image.  Here they have formed rings with dead cells in the middle
+                                        We’ve highlighted the <b class="text-error">lung cancer</b> cells in <b class="text-error">red</b> in this image.  Here they have formed rings with dead cells in the middle
                                     </h2>
                                     <h2>
-                                        They are <b>mottled</b> and <b>overcrowded</b>.
+                                        <b class="text-success">Healthy lung</b> cells would have formed a thin ring around an airway (white space)
                                     </h2>
                                 </div>
                             </div>
@@ -950,7 +954,7 @@
                                         <b class="text-error">red</b> for this image.
                                     </h2>
                                     <h2>
-                                        This time they are in <b>small clumps</b> with only some light brown staining. They are darker than stromal cells and more mottled and larger than blood cells.
+                                        This time they are in <b>small clumps</b> with only some light brown staining. They are <b>darker than stromal cells</b> and more <b>mottled and bigger than blood cells</b>.
 
                                     </h2>
                                     <h3>
@@ -1002,7 +1006,7 @@
                 </div>
                 <div class="modal-info">
                     <h1>
-                        Let’s run through an example
+                        This is what you'll need to do.
                     </h1>
                     <h2>
                         We have split the images up into a 6x6 grid.
@@ -1031,7 +1035,10 @@
                         showing examples of what <strong class="text-error">cancer</strong> and <strong class="text-success">non-cancer cells</strong> look like.
                     </h2>
                     <h2>
-
+                        Use the arrows to scroll through these.
+                    </h2>
+                    <h2>
+                        In a moment you’ll have a chance to try this for yourself.
                     </h2>
                 </div>
             </div>
@@ -1076,12 +1083,33 @@
                     <h2>
                         You can then click on the Next button to move to the next image
                     </h2>
-                    <h2>
-                        If you are unable to provide any answers, click on the ‘Skip image’ button
-                    </h2>
                 </div>
             </div>
-            <div id="13" class="modal-body" style="display:none;">
+            <div id="13" class="modal-body" style="display:none">
+                <div class="modal-image">
+                    <img src="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/tutorial/mechanic-skip-popup.png " alt="" />
+                </div>
+                <div class="modal-info">
+                    <h1>
+                        What if you can't analyse an image?
+                    </h1>
+                    <h2>
+                        We have included a <b>“Skip”</b> button in the analysis. Use this and tell us why. It could be because:
+                    </h2>
+                    <ul>
+                        <li>
+                            It is completely blank
+                        </li>
+                        <li>
+                            It is a poor quality image
+                        </li>
+                        <li>
+                            It is too difficult to tell the difference between cancer cells and non-cancer cells
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="14" class="modal-body" style="display:none;">
                 <div class="modal-image">
                     <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid.jpg" alt="" />
                 </div>
@@ -2831,6 +2859,7 @@ FeedbackGrid.prototype.updateFeedbackProgress = function() {
 
     this.percentageFeedbackText(pct);
     $feedbackProgressBar.width(pct + "%");
+
 };
 
 FeedbackGrid.prototype.percentageFeedbackText = function(pct) {
@@ -3337,6 +3366,24 @@ pybossa.taskLoaded(function(task, deferred) {
 
 });
 
+/*
+ Object function to increase or decrease target's z-index
+ Use values between 0-6
+*/
+
+var zIndexChange = {
+    buttons: $('.grid-info-buttons'),
+    nav: $('.navbar-fixed-top'),
+    reduce: function() {
+        this.buttons.css('z-index', 1);
+        this.nav.css('z-index', 2);
+    },
+    increase: function() {
+        this.buttons.css('z-index', 5);
+        this.nav.css('z-index', 6);
+    },
+}
+
 
 /*
  This grabs the task via an API call using pybossa.js. We retreive all of the task infomation
@@ -3393,7 +3440,7 @@ pybossa.presentTask(function(task, deferred) {
         var showTutorialModalBtn = document.getElementById("showTutorialModalBtn");
         showTutorialModalBtn.onclick = function() {
             modal.open("#tutorialModal", 0);
-            $(".grid-info-buttons").css("z-index", 1000);
+            zIndexChange.reduce();
             $("#tutorialSummary").hide();
             $("#mechanicTutorialSummary").show();
             zoom.removeZoom($(".tutorialZoom"));
@@ -3404,7 +3451,7 @@ pybossa.presentTask(function(task, deferred) {
         var closeMechanicTutorialBtn = document.getElementById("closeMechanicTutorialBtn");
         closeMechanicTutorialBtn.onclick = function() {
             zoom.removeZoom($(".tutorialZoom"));
-            $(".grid-info-buttons").css("z-index", 3000);
+            zIndexChange.increase();
             $("#errorClick").show();
             zoom.addZoom($(".img-polaroid"));
         };
@@ -3416,6 +3463,7 @@ pybossa.presentTask(function(task, deferred) {
             zoom.addZoom($(".img-polaroid"));
             //$(".modal-body").hide();
             $("#errorClick").show();
+            zIndexChange.increase();
         };
 
         var errorClickCrossBtn = document.getElementById("errorClickCross");
@@ -3442,7 +3490,7 @@ pybossa.presentTask(function(task, deferred) {
         var showSkipModalBtn = document.getElementById("skipSlideBtn");
         showSkipModalBtn.onclick = function() {
             modal.open('#skipSlideModal');
-            $('.grid-info-buttons').css('z-index', 1000);
+            zIndexChange.reduce();
         }
 
         // Variables for skip data
@@ -3455,6 +3503,8 @@ pybossa.presentTask(function(task, deferred) {
             changeMind = true;
             zoom.removeZoom($(".tutorialZoom"));
             zoom.addZoom($(".img-polaroid"));
+            $('.skipReason').find('input:checked').prop('checked', false);
+            zIndexChange.increase();
         }
 
         $(".skipReason input:radio").off('click').on('click', function () {
@@ -3493,6 +3543,14 @@ pybossa.presentTask(function(task, deferred) {
             $('#skipSlideModal').hide();
             $('.skipModalFirst').show();
             $('.skipModalLast').hide();
+
+
+            var skipRadioButtons = $('.skipReason');
+
+             if (skipRadioButtons) {
+                skipRadioButtons.find('input:checked').prop('checked', false);
+                console.log("Radio buttons have been changed");
+            }
 
             var reason = $('.skipReason').find('input:checked').val();
 
@@ -3564,6 +3622,7 @@ pybossa.presentTask(function(task, deferred) {
                 x = ms / 1000,
                 seconds = secondsToString(x);
 
+
             // Pass image number into answer
             var imgUrl = task.info.url_b;
             var result = imgUrl.replace("//citscitools.cancerresearchuk.org/static/img/mvp-01/", "");
@@ -3573,7 +3632,6 @@ pybossa.presentTask(function(task, deferred) {
                 reason: reason,
                 changeOfMind: changeMind
             }
-
 
             // Create the answer object
             var answer = {
@@ -3597,23 +3655,26 @@ pybossa.presentTask(function(task, deferred) {
                 answer.squares.push(obj);
             });
 
-            console.log(answer);
-
             /*
              * Save the task information and send to PyBossa
              */
 
-            pybossa.saveTask(task.id, answer).done(function(data) {
-                loadUserProgress();
-                $("#success").fadeIn(500).delay(1500).fadeOut();
-                $("svg, .zoomContainer,.zoomWindowContainer").remove();
-                deferred.resolve();
-            });
+            var checkSquaresForNoProgress = $('.grid-item-success').length === 0 && $('.grid-item-error').length === 0;
+
+            if (checkSquaresForNoProgress) {
+                modal.open('#skipSlideModal');
+                zIndexChange.reduce();
+            } else {
+                pybossa.saveTask(task.id, answer).done(function(data) {
+                    loadUserProgress();
+                    $("#success").fadeIn(500).delay(1500).fadeOut();
+                    $("svg, .zoomContainer,.zoomWindowContainer").remove();
+                    deferred.resolve();
+                });
+            }
 
         });
     } else {
-
-
         $("#loading").hide();
         $("#progress").css("width", "100%");
         $("#finish").fadeIn(500);
@@ -3683,7 +3744,7 @@ function showFeedbackStep(action) {
     if (step === 2) { // if is step 3
         $("#practiseModal .modal-body").hide();
         modal.open("#practiseModal", 5);
-        $(".grid-info-buttons").css("z-index", 1000);
+        zIndexChange.reduce();
     }
 
     var checkMyWork = document.getElementById("checkMyWorkBtn");
@@ -3740,7 +3801,6 @@ function UpdatePageState() {
     // Check if the page should be in show feedback state
     if (cookie_feedback == "false")
         page_state = "mechanic";
-
 
     // If the feedback or mechanic is showing
     // Init the example images in slick corousel
@@ -3830,12 +3890,12 @@ $(function() {
 
         var m = new Modal();
         m.open("#practiseModal", 6);
-        $(".grid-info-buttons").css("z-index", 1000);
+        zIndexChange.reduce();
     }
 
     var startMechanicBtn = document.getElementById("startMechanicBtn");
     startMechanicBtn.onclick = function() {
-        $(".grid-info-buttons").css("z-index", 2501);
+        zIndexChange.increase();
         $.cookie(cookie_feedback_name, false);
         UpdatePageState();
 
@@ -3875,7 +3935,7 @@ $(function() {
 
     var feedbackInfoBtn = document.getElementById("feedbackInfoBtn");
     feedbackInfoBtn.onclick = function() {
-        $(".grid-info-buttons").css("z-index", 1000);
+        zIndexChange.reduce();
 
         $("#practiseModal .modal-body").hide();
 
@@ -3898,12 +3958,14 @@ $(function() {
             cursor: "pointer"
         });
 
+        $('.zoomWindow').css('z-index', '2601');
+
     };
 
     var backToPractiseBtn = document.getElementById("backToPractiseBtn");
     backToPractiseBtn.onclick = function() {
 
-        $(".grid-info-buttons").css("z-index", 2501);
+        zIndexChange.increase();
 
         if (totalGridPercentage >= progressBarTargetValue ) {
             $("#nextFeedbackStep").removeClass("disabled");
