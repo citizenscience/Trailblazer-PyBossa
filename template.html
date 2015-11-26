@@ -3307,16 +3307,20 @@ pybossa.taskLoaded(function(task, deferred) {
 });
 
 /*
- Object function to increase or decrease target [buttons] z-index
+ Object function to increase or decrease target's z-index
+ Use values between 0-6
 */
 
-var buttonZindex = {
+var zIndexChange = {
     buttons: $('.grid-info-buttons'),
+    nav: $('.navbar-fixed-top'),
     reduce: function() {
         this.buttons.css('z-index', 1);
+        this.nav.css('z-index', 2);
     },
     increase: function() {
         this.buttons.css('z-index', 5);
+        this.nav.css('z-index', 6);
     },
 }
 
@@ -3376,7 +3380,7 @@ pybossa.presentTask(function(task, deferred) {
         var showTutorialModalBtn = document.getElementById("showTutorialModalBtn");
         showTutorialModalBtn.onclick = function() {
             modal.open("#tutorialModal", 0);
-            buttonZindex.reduce();
+            zIndexChange.reduce();
             $("#tutorialSummary").hide();
             $("#mechanicTutorialSummary").show();
             zoom.removeZoom($(".tutorialZoom"));
@@ -3387,7 +3391,7 @@ pybossa.presentTask(function(task, deferred) {
         var closeMechanicTutorialBtn = document.getElementById("closeMechanicTutorialBtn");
         closeMechanicTutorialBtn.onclick = function() {
             zoom.removeZoom($(".tutorialZoom"));
-            buttonZindex.increase();
+            zIndexChange.increase();
             $("#errorClick").show();
             zoom.addZoom($(".img-polaroid"));
         };
@@ -3399,7 +3403,7 @@ pybossa.presentTask(function(task, deferred) {
             zoom.addZoom($(".img-polaroid"));
             //$(".modal-body").hide();
             $("#errorClick").show();
-            buttonZindex.increase();
+            zIndexChange.increase();
         };
 
         var errorClickCrossBtn = document.getElementById("errorClickCross");
@@ -3426,7 +3430,7 @@ pybossa.presentTask(function(task, deferred) {
         var showSkipModalBtn = document.getElementById("skipSlideBtn");
         showSkipModalBtn.onclick = function() {
             modal.open('#skipSlideModal');
-            buttonZindex.reduce();
+            zIndexChange.reduce();
         }
 
         // Variables for skip data
@@ -3440,7 +3444,7 @@ pybossa.presentTask(function(task, deferred) {
             zoom.removeZoom($(".tutorialZoom"));
             zoom.addZoom($(".img-polaroid"));
             $('.skipReason').find('input:checked').prop('checked', false);
-            buttonZindex.increase();
+            zIndexChange.increase();
         }
 
         $(".skipReason input:radio").off('click').on('click', function () {
@@ -3599,7 +3603,7 @@ pybossa.presentTask(function(task, deferred) {
 
             if (checkSquaresForNoProgress) {
                 modal.open('#skipSlideModal');
-                buttonZindex.reduce();
+                zIndexChange.reduce();
             } else {
                 pybossa.saveTask(task.id, answer).done(function(data) {
                     loadUserProgress();
@@ -3680,7 +3684,7 @@ function showFeedbackStep(action) {
     if (step === 2) { // if is step 3
         $("#practiseModal .modal-body").hide();
         modal.open("#practiseModal", 5);
-        buttonZindex.reduce();
+        zIndexChange.reduce();
     }
 
     var checkMyWork = document.getElementById("checkMyWorkBtn");
@@ -3826,12 +3830,12 @@ $(function() {
 
         var m = new Modal();
         m.open("#practiseModal", 6);
-        buttonZindex.reduce();
+        zIndexChange.reduce();
     }
 
     var startMechanicBtn = document.getElementById("startMechanicBtn");
     startMechanicBtn.onclick = function() {
-        buttonZindex.increase();
+        zIndexChange.increase();
         $.cookie(cookie_feedback_name, false);
         UpdatePageState();
 
@@ -3871,7 +3875,7 @@ $(function() {
 
     var feedbackInfoBtn = document.getElementById("feedbackInfoBtn");
     feedbackInfoBtn.onclick = function() {
-        buttonZindex.reduce();
+        zIndexChange.reduce();
 
         $("#practiseModal .modal-body").hide();
 
@@ -3901,7 +3905,7 @@ $(function() {
     var backToPractiseBtn = document.getElementById("backToPractiseBtn");
     backToPractiseBtn.onclick = function() {
 
-        buttonZindex.increase();
+        zIndexChange.increase();
 
         if (totalGridPercentage >= progressBarTargetValue ) {
             $("#nextFeedbackStep").removeClass("disabled");
