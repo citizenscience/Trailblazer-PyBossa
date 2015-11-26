@@ -1227,11 +1227,15 @@
                     <div class="progress progress-striped">
                         <div id="progress" rel="tooltip" title="#" class="bar" style="width: 0%;"></div>
                     </div>
+                    <br />
+                    <div id="proportion-slider">
+
+                    </div>
+                    <span id="proportion-slider-value">0</span>
                     <div class="grid-info-buttons">
                         <button class="btn btn-warning pull-left" id="skipSlideBtn">Skip</button>
                         <button class="btn btn-answer btn-success nextSlideBtn" id="nextSlideBtn" value="next" style="margin-left:10px;">Next slide</button>
                         <button class="btn btn-primary pull-right" id="showTutorialModalBtn">Tutorial</button>
-
                     </div>
                 </div>
             </div>
@@ -2208,6 +2212,59 @@ var feedbackData = [{
  *
  *
  */
+
+var valueSliders = {
+    proportionSlider: document.getElementById('proportion-slider'),
+    proportionSliderValue: document.getElementById('proportion-slider-value'),
+
+    init: function() {
+      this.proportion();
+    },
+    proportion: function() {
+        noUiSlider.create(this.proportionSlider, {
+            start: [ 0 ],
+            range: {
+                min: 0,
+                max: 100
+            }
+        });
+    },
+    intensity: function() {
+        noUiSlider.create(this.proportionSlider, {
+            start: [ 0 ],
+            range: {
+                min: 0,
+                max: 100
+            }
+        });
+    },
+}
+
+    proportionSlider.noUiSlider.on('update', function(values, handle) {
+        proportionSliderValue.innerHtml = values[handle];
+        alert('Yes');
+    });
+
+
+$(document).ready(function() {
+//    var proportionSlider = document.getElementById('proportion-slider');
+//    var proportionSliderValue = document.getElementById('proportion-slider-value');
+//
+//    noUiSlider.create(proportionSlider, {
+//        start: [ 0 ],
+//        range: {
+//            min: 0,
+//            max: 100
+//        }
+//    });
+//
+//    proportionSlider.noUiSlider.on('update', function(values, handle) {
+//        proportionSliderValue.innerHtml = values[handle];
+//        alert('Yes');
+//    });
+
+    valueSliders.init();
+});
 
 function Grid(task) {
     this.canvas;
