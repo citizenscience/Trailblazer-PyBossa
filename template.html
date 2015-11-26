@@ -3571,12 +3571,19 @@ pybossa.presentTask(function(task, deferred) {
              * Save the task information and send to PyBossa
              */
 
-            pybossa.saveTask(task.id, answer).done(function(data) {
-                loadUserProgress();
-                $("#success").fadeIn(500).delay(1500).fadeOut();
-                $("svg, .zoomContainer,.zoomWindowContainer").remove();
-                deferred.resolve();
-            });
+            var checkSquaresForNoProgress = $('.grid-item-success').length === 0 && $('.grid-item-error').length === 0;
+
+            if (checkSquaresForNoProgress) {
+                modal.open('#skipSlideModal');
+                buttonZindex.reduce();
+            } else {
+                pybossa.saveTask(task.id, answer).done(function(data) {
+                    loadUserProgress();
+                    $("#success").fadeIn(500).delay(1500).fadeOut();
+                    $("svg, .zoomContainer,.zoomWindowContainer").remove();
+                    deferred.resolve();
+                });
+            }
 
         });
     } else {
