@@ -2246,7 +2246,15 @@ var valueSliders = {
     proportionSliderValue: document.getElementById('proportion-slider-value'),
 
     init: function() {
-      this.proportion();
+        if (this.proportionSlider && this.proportionSliderValue) {
+            this.proportion();
+            this.attach();
+        }
+    },
+    attach: function() {
+        this.proportionSlider.noUiSlider.on('update', function(values, handle) {
+            $('#proportion-slider-value').text(values[handle]);
+        });
     },
     proportion: function() {
         noUiSlider.create(this.proportionSlider, {
@@ -2268,29 +2276,7 @@ var valueSliders = {
     },
 }
 
-    proportionSlider.noUiSlider.on('update', function(values, handle) {
-        proportionSliderValue.innerHtml = values[handle];
-        alert('Yes');
-    });
-
-
 $(document).ready(function() {
-//    var proportionSlider = document.getElementById('proportion-slider');
-//    var proportionSliderValue = document.getElementById('proportion-slider-value');
-//
-//    noUiSlider.create(proportionSlider, {
-//        start: [ 0 ],
-//        range: {
-//            min: 0,
-//            max: 100
-//        }
-//    });
-//
-//    proportionSlider.noUiSlider.on('update', function(values, handle) {
-//        proportionSliderValue.innerHtml = values[handle];
-//        alert('Yes');
-//    });
-
     valueSliders.init();
 });
 
