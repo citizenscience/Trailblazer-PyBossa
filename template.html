@@ -409,13 +409,13 @@
                      </h1>
                     <form class="skipReason">
                         <div class="skipReason-choice">
-                            <input class="reasonButton" type="radio" name="skipReason" value="There is nothing in this image"> <span>There is nothing in this image</span>
+                            <input class="reasonButton" type="radio" name="skipReason" value="blank-image"> <span>There is nothing in this image</span>
                         </div>
                         <div class="skipReason-choice">
-                            <input class="reasonButton" type="radio" name="skipReason" value="There is something wrong with the image (e.g. poor quality)"> <span>There is something wrong with the image (e.g. poor quality)</span>
+                            <input class="reasonButton" type="radio" name="skipReason" value="poor-quality-image"> <span>There is something wrong with the image (e.g. poor quality)</span>
                         </div>
                         <div class="skipReason-choice">
-                            <input class="needsNextButton reasonButton" type="radio" name="skipReason" value="This image is too difficult to analyse"> <span>This image is too difficult to analyse</span>
+                            <input class="needsNextButton reasonButton" type="radio" name="skipReason" value="image-too-difficult"> <span>This image is too difficult to analyse</span>
                         </div>
                     </form>
 
@@ -3449,7 +3449,7 @@ pybossa.presentTask(function(task, deferred) {
 
         $(".skipReason input:radio").off('click').on('click', function () {
             var value = $(this).val();
-            if (value == "This image is too difficult to analyse") {
+            if (value == "image-too-difficult") {
                 $('#iWantToSkip-first').hide();
                 $('#iWantToSkip-last').show();
             } else {
@@ -3486,13 +3486,7 @@ pybossa.presentTask(function(task, deferred) {
 
 
             var skipRadioButtons = $('.skipReason');
-
-             if (skipRadioButtons) {
-                skipRadioButtons.find('input:checked').prop('checked', false);
-                console.log("Radio buttons have been changed");
-            }
-
-            var reason = $('.skipReason').find('input:checked').val();
+            var reason = skipRadioButtons.find('input:checked').val();
 
             var slideSkippedData = {
                 skipped: true,
@@ -3540,6 +3534,11 @@ pybossa.presentTask(function(task, deferred) {
              * Save the task information and send to PyBossa
              */
 
+            if (skipRadioButtons) {
+                skipRadioButtons.find('input:checked').prop('checked', false);
+                console.log("Radio buttons have been changed");
+            }
+
             pybossa.saveTask(task.id, answer).done(function(data) {
                 loadUserProgress();
                 $("#success").fadeIn(500).delay(1500).fadeOut();
@@ -3569,7 +3568,7 @@ pybossa.presentTask(function(task, deferred) {
 
             var slideSkippedData = {
                 skipped: false,
-                reason: reason,
+                reason: null,
                 changeOfMind: changeMind
             }
 
@@ -3584,6 +3583,7 @@ pybossa.presentTask(function(task, deferred) {
                 openModalCount: openModalCount
             };
 
+            console.log(answer);
 
             // Change the square object to have clearer values
             $.each(grid.task.answer.squares, function(key, value) {
@@ -3612,7 +3612,6 @@ pybossa.presentTask(function(task, deferred) {
                     deferred.resolve();
                 });
             }
-
         });
     } else {
         $("#loading").hide();
