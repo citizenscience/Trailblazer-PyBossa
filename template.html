@@ -427,10 +427,26 @@
         margin-bottom: 10px;
     }
 
+    .proportion-slider__valueContainer {
+        margin-top: 58px;
+    }
+
+    .proportion-slider__valueContainer > div {
+        display: inline;
+    }
+
+    .proportion-slider__value {
+        color: #333333;
+        font-weight: bold;
+    }
+
     .sliderPipActive {
         color: #333333 !important;
     }
 
+    .imgId {
+        padding-top: 20px;
+    }
 </style>
 <!--MODAL-->
 <div class="modals row">
@@ -1289,16 +1305,20 @@
                     <div class="proportion-slider__container" style="display: none">
                         <h2>Select proportion of cancer cells that are stained.</h2>
                         <div id="proportion-slider"></div>
+                        <div class="proportion-slider__valueContainer">
+                            <div class="proportion-slider__valueText">Your value: </div> <div class="proportion-slider__value"></div>
+                        </div>
                     </div>
-                    <p class="imgId"></p>
                     <div class="progress progress-striped">
                         <div id="progress" rel="tooltip" title="#" class="bar" style="width: 0%;"></div>
                     </div>
+                    <p class="imgId"></p>
                     <!--<span id="proportion-slider-value">0</span>-->
                     <div class="grid-info-buttons">
-                        <button class="btn btn-warning pull-left" id="skipSlideBtn">Skip</button>
+                        <button class="btn btn-warning pull-left" id="skipSlideBtn" style="display: none;">Skip</button>
                         <button class="btn btn-success nextSliderBtn" id="nextSliderBtn" style="margin-left:10px; float: right;">Next</button>
                         <button class="btn btn-answer btn-success nextSlideBtn" id="nextSlideBtn" value="next" style="margin-left:10px; display: none;">Next slide</button>
+                        <button class="btn prevSliderBtn" id="prevSliderBtn" style="margin-left:10px; float: right; display: none;">Back</button>
                         <button class="btn btn-primary pull-right" id="showTutorialModalBtn">Tutorial</button>
                     </div>
                 </div>
@@ -2271,6 +2291,7 @@ var valueSliders = {
     proportionSlider: document.getElementById('proportion-slider'),
     intensitySlider: document.getElementById('intensity-slider'),
     nextSliderButton: document.getElementById('nextSliderBtn'),
+    prevSliderButton: document.getElementById('prevSliderBtn'),
 
     init: function() {
         if (this.proportionSlider) {
@@ -2280,11 +2301,24 @@ var valueSliders = {
         }
     },
     attach: function() {
+        var intensitySlider = $('.intensity-slider__container');
+        var proportionSlider = $('.proportion-slider__container');
+        var nextImageButton = $('.nextSlideBtn');
+
         $(this.nextSliderButton).on('click', function() {
-            $('.intensity-slider__container').hide();
-            $('.proportion-slider__container').show();
+            intensitySlider.hide();
+            proportionSlider.show();
             $(this).hide();
-            $('.nextSlideBtn').show();
+            nextImageButton.show();
+            $(valueSliders.prevSliderButton).show();
+        });
+
+        $(this.prevSliderButton).on('click', function() {
+           $(this).hide();
+            proportionSlider.hide();
+            intensitySlider.show();
+            nextImageButton.hide();
+            $(valueSliders.nextSliderButton).show();
         });
 
         this.intensitySlider.noUiSlider.on('update', function(values, handle) {
@@ -2301,6 +2335,7 @@ var valueSliders = {
         });
 
         this.proportionSlider.noUiSlider.on('update', function(values, handle) {
+            $('.proportion-slider__value').text(values[handle]);
             if(values[handle] == 0.00) {
                 valueSliders.removeActive();
                 valueSliders.addActive();
@@ -2335,8 +2370,9 @@ var valueSliders = {
     },
     intensity: function() {
         noUiSlider.create(this.intensitySlider, {
-            start: [ 0 ],
+            start: [ 50 ],
             snap: true,
+            connect: "lower",
             range: {
                 min: 0,
                 '50%': 50,
@@ -2346,22 +2382,29 @@ var valueSliders = {
     },
     proportion: function() {
         noUiSlider.create(this.proportionSlider, {
-            start: [ 0 ],
+            start: [ 50 ],
             snap: true,
+            connect: "lower",
             range: {
                 min: 0,
+                '10%': 10,
                 '20%': 20,
+                '30%': 30,
                 '40%': 40,
+                '50%': 50,
                 '60%': 60,
+                '70%': 70,
                 '80%': 80,
+                '90%': 90,
                 max: 100
             },
             pips: {
-                mode: 'range',
+                mode: 'positions',
+                values: [0, 20, 40, 60, 80, 100],
                 density: 3
 	        }
         });
-    },
+    }
 }
 
 /*
@@ -3439,6 +3482,8 @@ pybossa.taskLoaded(function(task, deferred) {
             skipSlide: "",
             browser: "",
             img: "",
+            intensity: "",
+            proportion: "",
             openModalCount: 0
         };
 
@@ -3495,7 +3540,6 @@ pybossa.presentTask(function(task, deferred) {
          Take a time stamp of the time the page loads
          */
         var oldTime = new Date();
-
 
         /*
          Load the task image into the page
@@ -3709,6 +3753,20 @@ pybossa.presentTask(function(task, deferred) {
                 x = ms / 1000,
                 seconds = secondsToString(x);
 
+            // Get all value slider values
+
+            var intensityValue = valueSliders.intensitySlider.noUiSlider.get();
+            var proportionValue = valueSliders.proportionSlider.noUiSlider.get();
+
+            // Switch intensity value to string
+
+            if (intensityValue == 0) {
+                intensityValue = "Weak";
+            } else if (intensityValue == 50) {
+                intensityValue = "Moderate";
+            } else if (intensityValue == 100) {
+                intensityValue = "Strong";
+            }
 
             // Pass image number into answer
             var imgUrl = task.info.url_b;
@@ -3728,6 +3786,8 @@ pybossa.presentTask(function(task, deferred) {
                 browser: BrowserDetect.browser + " V." + BrowserDetect.version,
                 imgNumber: result,
                 skipSlide: slideSkippedData,
+                intensity: intensityValue,
+                proportion: proportionValue,
                 openModalCount: openModalCount
             };
 
@@ -3743,23 +3803,35 @@ pybossa.presentTask(function(task, deferred) {
                 answer.squares.push(obj);
             });
 
+            // Reset value sliders to set value
+
+            valueSliders.intensitySlider.noUiSlider.set(50);
+            valueSliders.proportionSlider.noUiSlider.set(50);
+
             /*
              * Save the task information and send to PyBossa
              */
 
             var checkSquaresForNoProgress = $('.grid-item-success').length === 0 && $('.grid-item-error').length === 0;
 
-            if (checkSquaresForNoProgress) {
-                modal.open('#skipSlideModal');
-                zIndexChange.reduce();
-            } else {
-                pybossa.saveTask(task.id, answer).done(function(data) {
+//            if (checkSquaresForNoProgress) {
+//                modal.open('#skipSlideModal');
+//                zIndexChange.reduce();
+//            } else {
+//                pybossa.saveTask(task.id, answer).done(function(data) {
+//                    loadUserProgress();
+//                    $("#success").fadeIn(500).delay(1500).fadeOut();
+//                    $("svg, .zoomContainer,.zoomWindowContainer").remove();
+//                    deferred.resolve();
+//                });
+//            }
+
+            pybossa.saveTask(task.id, answer).done(function(data) {
                     loadUserProgress();
                     $("#success").fadeIn(500).delay(1500).fadeOut();
                     $("svg, .zoomContainer,.zoomWindowContainer").remove();
                     deferred.resolve();
-                });
-            }
+            });
         });
     } else {
         $("#loading").hide();
