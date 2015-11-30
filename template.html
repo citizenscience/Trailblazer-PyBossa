@@ -232,6 +232,10 @@
         line-height: 1.4;
     }
 
+    .clearfix {
+        clear: both;
+    }
+
     .square {
         width: 30px;
         height: 30px;
@@ -393,6 +397,40 @@
     .zoomContainer, .zoomWindow {
         z-index: 4 !important;
     }
+
+    #intensity-slider-pips {
+        margin-top: 10px;
+        position: relative;
+        height: 40px;
+    }
+
+    #intensity-slider-pips > span {
+        position: absolute;
+        font-size: 14px;
+        color: rgb(153, 153, 153);
+    }
+
+    .intensity-slider-pips__weak {
+        left: 0;
+    }
+
+    .intensity-slider-pips__moderate {
+        left: 42%;
+    }
+
+    .intensity-slider-pips__strong {
+        right: 0;
+    }
+
+    .proportion-slider__container {
+        min-height: 110px;
+        margin-bottom: 10px;
+    }
+
+    .sliderPipActive {
+        color: #333333 !important;
+    }
+
 </style>
 <!--MODAL-->
 <div class="modals row">
@@ -591,10 +629,6 @@
                 </div>
             </div>
 
-
-
-
-
             <!-- STEP 3 INFO -->
             <div id="5" class="modal-body" style="display:none">
                 <div class="modal-image">
@@ -609,8 +643,6 @@
                     </h2>
                 </div>
             </div>
-
-
 
             <!-- SUMMARY -->
             <div id="6" class="modal-body">
@@ -1245,24 +1277,28 @@
             <!-- RIGHT HAND SIDE -->
             <div class="span6 grid-info" id="mechanicZoomWindowLocation">
                 <div class="grid-info-content">
-                    <h1>Select the grid sections that contain cancer cells</h1>
-                    <h3>Click once to mark <strong>cancer</strong> cells in <span class="text-error">Red</span>
-                    </h3>
-                    <h3>Click again to mark <strong>non-cancer</strong> cells in
-                        <span class="text-success">Green</span></h3>
-                    <h3>Empty sections of the image can be left blank</h3>
+                     <div class="intensity-slider__container">
+                        <h2>How intense is the staining of cancer cells?</h2>
+                        <div id="intensity-slider"></div>
+                        <div id="intensity-slider-pips">
+                            <span class="intensity-slider-pips__weak">Weak</span>
+                            <span class="intensity-slider-pips__moderate">Moderate</span>
+                            <span class="intensity-slider-pips__strong">Strong</span>
+                        </div>
+                    </div>
+                    <div class="proportion-slider__container" style="display: none">
+                        <h2>Select proportion of cancer cells that are stained.</h2>
+                        <div id="proportion-slider"></div>
+                    </div>
                     <p class="imgId"></p>
                     <div class="progress progress-striped">
                         <div id="progress" rel="tooltip" title="#" class="bar" style="width: 0%;"></div>
                     </div>
-                    <br />
-                    <div id="proportion-slider">
-
-                    </div>
-                    <span id="proportion-slider-value">0</span>
+                    <!--<span id="proportion-slider-value">0</span>-->
                     <div class="grid-info-buttons">
                         <button class="btn btn-warning pull-left" id="skipSlideBtn">Skip</button>
-                        <button class="btn btn-answer btn-success nextSlideBtn" id="nextSlideBtn" value="next" style="margin-left:10px;">Next slide</button>
+                        <button class="btn btn-success nextSliderBtn" id="nextSliderBtn" style="margin-left:10px; float: right;">Next</button>
+                        <button class="btn btn-answer btn-success nextSlideBtn" id="nextSlideBtn" value="next" style="margin-left:10px; display: none;">Next slide</button>
                         <button class="btn btn-primary pull-right" id="showTutorialModalBtn">Tutorial</button>
                     </div>
                 </div>
@@ -2231,6 +2267,111 @@ var feedbackData = [{
 
 "use strict";
 
+var valueSliders = {
+    proportionSlider: document.getElementById('proportion-slider'),
+    intensitySlider: document.getElementById('intensity-slider'),
+    nextSliderButton: document.getElementById('nextSliderBtn'),
+
+    init: function() {
+        if (this.proportionSlider) {
+            this.proportion();
+            this.intensity();
+            this.attach();
+        }
+    },
+    attach: function() {
+        $(this.nextSliderButton).on('click', function() {
+            $('.intensity-slider__container').hide();
+            $('.proportion-slider__container').show();
+            $(this).hide();
+            $('.nextSlideBtn').show();
+        });
+
+        this.intensitySlider.noUiSlider.on('update', function(values, handle) {
+            if(values[handle] == 0.00) {
+                valueSliders.removeActive();
+                valueSliders.addActive('.intensity-slider-pips__weak', 'word');
+            } else if(values[handle] == 50.00) {
+                valueSliders.removeActive();
+                valueSliders.addActive('.intensity-slider-pips__moderate', 'word');
+            } else {
+                valueSliders.removeActive();
+                valueSliders.addActive('.intensity-slider-pips__strong', 'word');
+            }
+        });
+
+        this.proportionSlider.noUiSlider.on('update', function(values, handle) {
+            if(values[handle] == 0.00) {
+                valueSliders.removeActive();
+                valueSliders.addActive();
+            } else if(values[handle] == 20.00) {
+                valueSliders.removeActive();
+                valueSliders.addActive();
+            } else if(values[handle] == 40.00) {
+                valueSliders.removeActive();
+                valueSliders.addActive();
+            } else if(values[handle] == 60.00) {
+                valueSliders.removeActive();
+                valueSliders.addActive();
+            } else if(values[handle] == 80.00) {
+                valueSliders.removeActive();
+                valueSliders.addActive();
+            } else if(values[handle] == 100.00) {
+                valueSliders.removeActive();
+                valueSliders.addActive();
+            }
+        });
+    },
+    removeActive: function() {
+        var activePip = 'sliderPipActive';
+        $('.' + activePip).removeClass(activePip);
+    },
+    addActive: function(target, type) {
+        if(type == "number") {
+
+        } else if(type == "word") {
+            $(target).addClass('sliderPipActive');
+        }
+    },
+    intensity: function() {
+        noUiSlider.create(this.intensitySlider, {
+            start: [ 0 ],
+            snap: true,
+            range: {
+                min: 0,
+                '50%': 50,
+                max: 100
+            }
+        });
+    },
+    proportion: function() {
+        noUiSlider.create(this.proportionSlider, {
+            start: [ 0 ],
+            snap: true,
+            range: {
+                min: 0,
+                '20%': 20,
+                '40%': 40,
+                '60%': 60,
+                '80%': 80,
+                max: 100
+            },
+            pips: {
+                mode: 'range',
+                density: 3
+	        }
+        });
+    },
+}
+
+/*
+ Move into init.js file
+*/
+
+$(document).ready(function() {
+    valueSliders.init();
+});
+
 /**
  * Grid Constructor function
  * =======================
@@ -2240,45 +2381,6 @@ var feedbackData = [{
  *
  *
  */
-
-var valueSliders = {
-    proportionSlider: document.getElementById('proportion-slider'),
-    proportionSliderValue: document.getElementById('proportion-slider-value'),
-
-    init: function() {
-        if (this.proportionSlider && this.proportionSliderValue) {
-            this.proportion();
-            this.attach();
-        }
-    },
-    attach: function() {
-        this.proportionSlider.noUiSlider.on('update', function(values, handle) {
-            $('#proportion-slider-value').text(values[handle]);
-        });
-    },
-    proportion: function() {
-        noUiSlider.create(this.proportionSlider, {
-            start: [ 0 ],
-            range: {
-                min: 0,
-                max: 100
-            }
-        });
-    },
-    intensity: function() {
-        noUiSlider.create(this.proportionSlider, {
-            start: [ 0 ],
-            range: {
-                min: 0,
-                max: 100
-            }
-        });
-    },
-}
-
-$(document).ready(function() {
-    valueSliders.init();
-});
 
 function Grid(task) {
     this.canvas;
