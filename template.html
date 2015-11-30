@@ -1451,7 +1451,7 @@
 <script type="text/javascript" async="async">
 var hasSeenGuidenceInfo = false;
 var totalGridPercentage = "";
-var progressBarTargetValue = 0;
+var progressBarTargetValue = 75;
 
 var project_short_name = "{{ project.short_name }}";
 if (project_short_name === "")
@@ -1523,7 +1523,7 @@ var feedbackData = [{
 
         {
             "column": 0,
-            "answer": true,
+            "answer": false,
             "row": 2
         }, {
             "column": 1,
@@ -1549,7 +1549,7 @@ var feedbackData = [{
 
         {
             "column": 0,
-            "answer": true,
+            "answer": false,
             "row": 3
         }, {
             "column": 1,
@@ -1575,7 +1575,7 @@ var feedbackData = [{
 
         {
             "column": 0,
-            "answer": true,
+            "answer": false,
             "row": 4
         }, {
             "column": 1,
@@ -3597,7 +3597,7 @@ pybossa.presentTask(function(task, deferred) {
 
         $(".skipReason input:radio").off('click').on('click', function () {
             var value = $(this).val();
-            if (value == "This image is too difficult to analyse") {
+            if (value == "image-too-difficult") {
                 $('#iWantToSkip-first').hide();
                 $('#iWantToSkip-last').show();
             } else {
@@ -3634,13 +3634,7 @@ pybossa.presentTask(function(task, deferred) {
 
 
             var skipRadioButtons = $('.skipReason');
-
-             if (skipRadioButtons) {
-                skipRadioButtons.find('input:checked').prop('checked', false);
-                console.log("Radio buttons have been changed");
-            }
-
-            var reason = $('.skipReason').find('input:checked').val();
+            var reason = skipRadioButtons.find('input:checked').val();
 
             var slideSkippedData = {
                 skipped: true,
@@ -3688,6 +3682,11 @@ pybossa.presentTask(function(task, deferred) {
              * Save the task information and send to PyBossa
              */
 
+            if (skipRadioButtons) {
+                skipRadioButtons.find('input:checked').prop('checked', false);
+                console.log("Radio buttons have been changed");
+            }
+
             pybossa.saveTask(task.id, answer).done(function(data) {
                 loadUserProgress();
                 $("#success").fadeIn(500).delay(1500).fadeOut();
@@ -3717,7 +3716,7 @@ pybossa.presentTask(function(task, deferred) {
 
             var slideSkippedData = {
                 skipped: false,
-                reason: reason,
+                reason: null,
                 changeOfMind: changeMind
             }
 
@@ -3732,6 +3731,7 @@ pybossa.presentTask(function(task, deferred) {
                 openModalCount: openModalCount
             };
 
+            console.log(answer);
 
             // Change the square object to have clearer values
             $.each(grid.task.answer.squares, function(key, value) {
@@ -3760,7 +3760,6 @@ pybossa.presentTask(function(task, deferred) {
                     deferred.resolve();
                 });
             }
-
         });
     } else {
         $("#loading").hide();
