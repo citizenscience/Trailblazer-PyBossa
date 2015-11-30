@@ -1,8 +1,6 @@
 *.egg-info
 env/
 pybossa.js
-nouislider.css
-nouislider.min.js
 *.un~
 .*.swp
 *.pyc
