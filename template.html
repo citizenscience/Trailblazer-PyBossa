@@ -3826,6 +3826,13 @@ pybossa.presentTask(function(task, deferred) {
 //                });
 //            }
 
+            // Resets the value sliders for next slide
+            $('.prevSliderBtn').hide();
+            $('.proportion-slider__container').hide();
+            $('.intensity-slider__container').show();
+            $('.nextSlideBtn').hide();
+            $(valueSliders.nextSliderButton).show();
+
             pybossa.saveTask(task.id, answer).done(function(data) {
                     loadUserProgress();
                     $("#success").fadeIn(500).delay(1500).fadeOut();
