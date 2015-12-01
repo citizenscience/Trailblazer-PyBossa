@@ -451,7 +451,6 @@
 <!--MODAL-->
 <div class="modals row">
     <div class="span12">
-         Skip Slide Modal
         <div id="skipSlideModal" class="modal hide">
              <div class="modal-body skipModalFirst">
                  <div class="modal-image">
@@ -1293,7 +1292,7 @@
             <!-- RIGHT HAND SIDE -->
             <div class="span6 grid-info" id="mechanicZoomWindowLocation">
                 <div class="grid-info-content">
-                     <div class="intensity-slider__container">
+                     <div class="intensity-slider__container" style="display: none">
                         <h2>How intense is the staining of cancer cells?</h2>
                         <div id="intensity-slider"></div>
                         <div id="intensity-slider-pips">
@@ -1302,7 +1301,7 @@
                             <span class="intensity-slider-pips__strong">3+</span>
                         </div>
                     </div>
-                    <div class="proportion-slider__container" style="display: none">
+                    <div class="proportion-slider__container">
                         <h2>Select proportion of cancer cells that are stained.</h2>
                         <div id="proportion-slider"></div>
                         <div class="proportion-slider__valueContainer">
@@ -2306,17 +2305,19 @@ var valueSliders = {
         var nextImageButton = $('.nextSlideBtn');
 
         $(this.nextSliderButton).on('click', function() {
-            intensitySlider.hide();
-            proportionSlider.show();
-            $(this).hide();
-            nextImageButton.show();
-            $(valueSliders.prevSliderButton).show();
+            if (valueSliders.proportionSlider.noUiSlider.get() > 0.00) {
+                intensitySlider.show();
+                proportionSlider.hide();
+                $(this).hide();
+                nextImageButton.show();
+                $(valueSliders.prevSliderButton).show();
+            } else return;
         });
 
         $(this.prevSliderButton).on('click', function() {
            $(this).hide();
-            proportionSlider.hide();
-            intensitySlider.show();
+            proportionSlider.show();
+            intensitySlider.hide();
             nextImageButton.hide();
             $(valueSliders.nextSliderButton).show();
         });
@@ -2337,23 +2338,11 @@ var valueSliders = {
         this.proportionSlider.noUiSlider.on('update', function(values, handle) {
             $('.proportion-slider__value').text(values[handle]);
             if(values[handle] == 0.00) {
-                valueSliders.removeActive();
-                valueSliders.addActive();
-            } else if(values[handle] == 20.00) {
-                valueSliders.removeActive();
-                valueSliders.addActive();
-            } else if(values[handle] == 40.00) {
-                valueSliders.removeActive();
-                valueSliders.addActive();
-            } else if(values[handle] == 60.00) {
-                valueSliders.removeActive();
-                valueSliders.addActive();
-            } else if(values[handle] == 80.00) {
-                valueSliders.removeActive();
-                valueSliders.addActive();
-            } else if(values[handle] == 100.00) {
-                valueSliders.removeActive();
-                valueSliders.addActive();
+                $(valueSliders.nextSliderButton).hide();
+                nextImageButton.show();
+            } else {
+                $(valueSliders.nextSliderButton).show();
+                nextImageButton.hide();
             }
         });
     },
@@ -2370,7 +2359,7 @@ var valueSliders = {
     },
     intensity: function() {
         noUiSlider.create(this.intensitySlider, {
-            start: [ 50 ],
+            start: [ 0 ],
             snap: true,
             connect: "lower",
             range: {
@@ -2382,7 +2371,7 @@ var valueSliders = {
     },
     proportion: function() {
         noUiSlider.create(this.proportionSlider, {
-            start: [ 50 ],
+            start: [ 0 ],
             snap: true,
             connect: "lower",
             range: {
@@ -3805,8 +3794,8 @@ pybossa.presentTask(function(task, deferred) {
 
             // Reset value sliders to set value
 
-            valueSliders.intensitySlider.noUiSlider.set(50);
-            valueSliders.proportionSlider.noUiSlider.set(50);
+            valueSliders.intensitySlider.noUiSlider.set(0);
+            valueSliders.proportionSlider.noUiSlider.set(0);
 
             /*
              * Save the task information and send to PyBossa
@@ -3828,10 +3817,10 @@ pybossa.presentTask(function(task, deferred) {
 
             // Resets the value sliders for next slide
             $('.prevSliderBtn').hide();
-            $('.proportion-slider__container').hide();
-            $('.intensity-slider__container').show();
-            $('.nextSlideBtn').hide();
-            $(valueSliders.nextSliderButton).show();
+            $('.proportion-slider__container').show();
+            $('.intensity-slider__container').hide();
+            $('.nextSlideBtn').show();
+            $(valueSliders.nextSliderButton).hide();
 
             pybossa.saveTask(task.id, answer).done(function(data) {
                     loadUserProgress();
