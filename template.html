@@ -415,7 +415,7 @@
     }
 
     .intensity-slider-pips__moderate {
-        left: 42%;
+        left: 48%;
     }
 
     .intensity-slider-pips__strong {
@@ -1297,9 +1297,9 @@
                         <h2>How intense is the staining of cancer cells?</h2>
                         <div id="intensity-slider"></div>
                         <div id="intensity-slider-pips">
-                            <span class="intensity-slider-pips__weak">Weak</span>
-                            <span class="intensity-slider-pips__moderate">Moderate</span>
-                            <span class="intensity-slider-pips__strong">Strong</span>
+                            <span class="intensity-slider-pips__weak">1+</span>
+                            <span class="intensity-slider-pips__moderate">2+</span>
+                            <span class="intensity-slider-pips__strong">3+</span>
                         </div>
                     </div>
                     <div class="proportion-slider__container" style="display: none">
@@ -3761,11 +3761,11 @@ pybossa.presentTask(function(task, deferred) {
             // Switch intensity value to string
 
             if (intensityValue == 0) {
-                intensityValue = "Weak";
+                intensityValue = "1+";
             } else if (intensityValue == 50) {
-                intensityValue = "Moderate";
+                intensityValue = "2+";
             } else if (intensityValue == 100) {
-                intensityValue = "Strong";
+                intensityValue = "3+";
             }
 
             // Pass image number into answer
