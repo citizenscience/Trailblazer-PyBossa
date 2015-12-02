@@ -1292,7 +1292,7 @@
             <!-- RIGHT HAND SIDE -->
             <div class="span6 grid-info" id="mechanicZoomWindowLocation">
                 <div class="grid-info-content">
-                     <div class="intensity-slider__container" style="display: none">
+                    <div class="intensity-slider__container" style="display: none">
                         <h2>How intense is the staining of cancer cells?</h2>
                         <div id="intensity-slider"></div>
                         <div id="intensity-slider-pips">
@@ -1306,6 +1306,15 @@
                         <div id="proportion-slider"></div>
                         <div class="proportion-slider__valueContainer">
                             <div class="proportion-slider__valueText">Your value: </div> <div class="proportion-slider__value"></div>
+                        </div>
+                    </div>
+                     <div class="intensity-slider__container" style="display: none">
+                        <h2>How intense is the staining of cancer cells?</h2>
+                        <div id="intensity-slider"></div>
+                        <div id="intensity-slider-pips">
+                            <span class="intensity-slider-pips__weak">1+</span>
+                            <span class="intensity-slider-pips__moderate">2+</span>
+                            <span class="intensity-slider-pips__strong">3+</span>
                         </div>
                     </div>
                     <div class="progress progress-striped">
@@ -2311,7 +2320,9 @@ var valueSliders = {
                 $(this).hide();
                 nextImageButton.show();
                 $(valueSliders.prevSliderButton).show();
-            } else return;
+            } else {
+                return;
+            }
         });
 
         $(this.prevSliderButton).on('click', function() {
