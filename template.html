@@ -3957,14 +3957,19 @@ function UpdatePageState() {
     if (cookie_feedback == "false")
         page_state = "mechanic";
 
+    // Temporary for gold standard below -- Steven
+
+    page_state = "mechanic";
+
+    // Remove above section after gold standard.
+
     // If the feedback or mechanic is showing
     // Init the example images in slick corousel
     //
     //
     if (page_state == "feedback" || page_state == "mechanic") {
         $('.example-list').show();
-        /* THESE AND ERROR PUMPING OUT WITH THIS !?!
-         */
+
         $('.example-list').slick({
             dots: false,
             infinite: false,
