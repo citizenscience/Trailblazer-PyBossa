@@ -2376,15 +2376,25 @@ var valueSliders = {
             connect: "lower",
             range: {
                 min: 0,
+                '5%': 5,
                 '10%': 10,
+                '15%': 15,
                 '20%': 20,
+                '25%': 25,
                 '30%': 30,
+                '35%': 35,
                 '40%': 40,
+                '45%': 45,
                 '50%': 50,
+                '55%': 55,
                 '60%': 60,
+                '65%': 65,
                 '70%': 70,
+                '75%': 75,
                 '80%': 80,
+                '85%': 85,
                 '90%': 90,
+                '95%': 95,
                 max: 100
             },
             pips: {
@@ -3945,23 +3955,25 @@ function UpdatePageState() {
 
     // Check if the page should be in show feedback state
     var cookie_feedback = $.cookie(cookie_feedback_name);
-    if (cookie_feedback !== null)
+    if (cookie_feedback !== null) {
         page_state = "feedback";
+    }
+
 
     // Check if the page should be in tutorial state
     var cookie_tutorial = $.cookie(cookie_tutorial_name);
-    if (cookie_tutorial === null || cookie_tutorial != "seen")
+    if (cookie_tutorial === null || cookie_tutorial != "seen") {
         page_state = "tutorial";
+    }
 
     // Check if the page should be in show feedback state
-    if (cookie_feedback == "false")
+    if (cookie_feedback == "false") {
         page_state = "mechanic";
+    }
 
-    // Temporary for gold standard below -- Steven
-
+    // Temporary for gold standard below. Forces page to show mechanic. -- Steven
     page_state = "mechanic";
-
-    // Remove above section after gold standard.
+    // Remove above after gold standard. -- Steven
 
     // If the feedback or mechanic is showing
     // Init the example images in slick corousel
