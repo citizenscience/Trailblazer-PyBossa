@@ -447,6 +447,16 @@
     .imgId {
         padding-top: 20px;
     }
+
+    .unFocus {
+        fill: #ffffff;
+        opacity: 0.8;
+    }
+
+    .unRed {
+        fill: transparent;
+    }
+
 </style>
 <!--MODAL-->
 <div class="modals row">
@@ -1292,16 +1302,17 @@
             <!-- RIGHT HAND SIDE -->
             <div class="span6 grid-info" id="mechanicZoomWindowLocation">
                 <div class="grid-info-content">
-                    <div class="intensity-slider__container" style="display: none">
-                        <h2>How intense is the staining of cancer cells?</h2>
-                        <div id="intensity-slider"></div>
-                        <div id="intensity-slider-pips">
-                            <span class="intensity-slider-pips__weak">1+</span>
-                            <span class="intensity-slider-pips__moderate">2+</span>
-                            <span class="intensity-slider-pips__strong">3+</span>
-                        </div>
+                    <div class="grid-selection__container">
+                        <h1>Select the grid sections that contain cancer cells</h1>
+                        <h3>
+                            Click once to mark <strong>cancer</strong> cells in <span class="text-error">Red</span>
+                        </h3>
+                        <h3>Click again to mark <strong>non-cancer</strong> cells in
+                            <span class="text-success">Green</span>
+                        </h3>
+                        <h3>Empty sections of the image can be left blank</h3>
                     </div>
-                    <div class="proportion-slider__container">
+                    <div class="proportion-slider__container" style="display: none;">
                         <h2>Select proportion of cancer cells that are stained.</h2>
                         <div id="proportion-slider"></div>
                         <div class="proportion-slider__valueContainer">
@@ -2295,72 +2306,149 @@ var feedbackData = [{
 
 "use strict";
 
-var valueSliders = {
+/**
+ * Main mechanic questions  - Grid, proportion & intensity.
+ * Initialises custom sliders and attaches event handlers.
+ *
+ */
+
+var questions = {
     proportionSlider: document.getElementById('proportion-slider'),
     intensitySlider: document.getElementById('intensity-slider'),
     nextSliderButton: document.getElementById('nextSliderBtn'),
     prevSliderButton: document.getElementById('prevSliderBtn'),
-
+    // Initialise functions
     init: function() {
-        if (this.proportionSlider) {
             this.proportion();
             this.intensity();
             this.attach();
-        }
     },
+    // Attach event handlers & sliders
     attach: function() {
-        var intensitySlider = $('.intensity-slider__container');
-        var proportionSlider = $('.proportion-slider__container');
-        var nextImageButton = $('.nextSlideBtn');
+        var $intensitySlider = $('.intensity-slider__container');
+        var $proportionSlider = $('.proportion-slider__container');
+        var $gridSelection = $('.grid-selection__container');
+        var $nextImageButton = $('.nextSlideBtn');
 
         $(this.nextSliderButton).on('click', function() {
-            if (valueSliders.proportionSlider.noUiSlider.get() > 0.00) {
-                intensitySlider.show();
-                proportionSlider.hide();
-                $(this).hide();
-                nextImageButton.show();
-                $(valueSliders.prevSliderButton).show();
+            var checkProportionValue = questions.proportionSlider.noUiSlider.get();
+
+            if ($gridSelection.is(':visible')) {
+                $gridSelection.hide();
+                $proportionSlider.show();
+                $(questions.nextSliderButton).hide();
+                $(questions.prevSliderButton).show();
+                questions.unFocus('grid-item');
+                if (checkProportionValue == 0) {
+                    $nextImageButton.show();
+                } else {
+                    $(questions.nextSliderButton).show();
+                }
             } else {
-                return;
+                if (checkProportionValue > 0.00) {
+                    $intensitySlider.show();
+                    $proportionSlider.hide();
+                    $(this).hide();
+                    $nextImageButton.show();
+                    $(questions.prevSliderButton).show();
+                } else {
+                    return;
+                }
             }
         });
 
         $(this.prevSliderButton).on('click', function() {
-           $(this).hide();
-            proportionSlider.show();
-            intensitySlider.hide();
-            nextImageButton.hide();
-            $(valueSliders.nextSliderButton).show();
+            if ($proportionSlider.is(':visible')) {
+                $proportionSlider.hide();
+                $gridSelection.show();
+                $(this).hide(); /* This refers to button clicked */
+                $nextImageButton.hide();
+                questions.reFocus("grid-item");
+                $(questions.nextSliderButton).show();
+            } else {
+                $proportionSlider.show();
+                $intensitySlider.hide();
+                $nextImageButton.hide();
+                $(questions.nextSliderButton).show();
+            }
         });
 
         this.intensitySlider.noUiSlider.on('update', function(values, handle) {
             if(values[handle] == 0.00) {
-                valueSliders.removeActive();
-                valueSliders.addActive('.intensity-slider-pips__weak', 'word');
+                questions.removeActive();
+                questions.addActive('.intensity-slider-pips__weak', 'word');
             } else if(values[handle] == 50.00) {
-                valueSliders.removeActive();
-                valueSliders.addActive('.intensity-slider-pips__moderate', 'word');
+                questions.removeActive();
+                questions.addActive('.intensity-slider-pips__moderate', 'word');
             } else {
-                valueSliders.removeActive();
-                valueSliders.addActive('.intensity-slider-pips__strong', 'word');
+                questions.removeActive();
+                questions.addActivquestionse('.intensity-slider-pips__strong', 'word');
             }
         });
 
         this.proportionSlider.noUiSlider.on('update', function(values, handle) {
             $('.proportion-slider__value').text(values[handle]);
-            if(values[handle] == 0.00) {
-                $(valueSliders.nextSliderButton).hide();
-                nextImageButton.show();
+            if(values[handle] == 0.00 && $proportionSlider.is(':visible')) {
+                $(questions.nextSliderButton).hide();
+                $nextImageButton.show();
             } else {
-                $(valueSliders.nextSliderButton).show();
-                nextImageButton.hide();
+                $(questions.nextSliderButton).show();
+                $nextImageButton.hide();
             }
         });
     },
+    unFocus: function(target) {
+        target = "." + target;
+        var classesToCheck = ["grid-item-success", "grid-item-error"];
+        var checkForSuccess,
+            checkForError;
+
+        $(target).each(function(){
+            checkForSuccess = $(this).attr('class').indexOf(classesToCheck[0]) > -1;
+            checkForError = $(this).attr('class').indexOf(classesToCheck[1]) > -1;
+
+            if (!checkForSuccess) {
+                if (checkForError) {
+                    $(this).attr('class', 'grid-item unFocus isGreen');
+                } else {
+                    $(this).attr('class', 'grid-item unFocus');
+                }
+            }
+
+            if (checkForSuccess) {
+               $(this).attr('class', 'grid-item unRed');
+            }
+        });
+    },
+    reFocus: function(target) {
+        target = "." + target;
+        var classesToCheck = ["unFocus", "unRed", "isGreen"];
+        var checkForUnFocus,
+            checkForUnRed,
+            checkForGreen;
+
+        $(target).each(function(){
+            checkForUnFocus = $(this).attr('class').indexOf(classesToCheck[0]) > -1;
+            checkForUnRed = $(this).attr('class').indexOf(classesToCheck[1]) > -1;
+            checkForGreen = $(this).attr('class').indexOf(classesToCheck[2]) > -1;
+
+            if (checkForUnFocus) {
+                if (checkForGreen) {
+                    $(this).attr('class', 'grid-item grid-item-error');
+                } else {
+                    $(this).attr('class', 'grid-item');
+                }
+            } else if (checkForUnRed) {
+                $(this).attr('class', 'grid-item grid-item-success');
+            }
+        });
+    },
+    // Removes class - can be further adapted
     removeActive: function() {
         var activePip = 'sliderPipActive';
         $('.' + activePip).removeClass(activePip);
     },
+    // Adds class
     addActive: function(target, type) {
         if(type == "number") {
 
@@ -2368,6 +2456,7 @@ var valueSliders = {
             $(target).addClass('sliderPipActive');
         }
     },
+    // Creates intensity slider
     intensity: function() {
         noUiSlider.create(this.intensitySlider, {
             start: [ 0 ],
@@ -2380,6 +2469,7 @@ var valueSliders = {
             }
         });
     },
+    // Creates proportion slider
     proportion: function() {
         noUiSlider.create(this.proportionSlider, {
             start: [ 0 ],
@@ -2415,24 +2505,19 @@ var valueSliders = {
 	        }
         });
     }
-}
+};
 
-/*
+/**
  Move into init.js file
-*/
+ */
 
 $(document).ready(function() {
-    valueSliders.init();
+    questions.init();
 });
 
 /**
- * Grid Constructor function
- * =======================
- * Its a bit of a miss match of vanilla JS and jQuery...sorry,
- * wanted to do everything in JS but for speed i did jQuery
- * =======================
  *
- *
+ Grid Constructor function
  */
 
 function Grid(task) {
@@ -2509,7 +2594,8 @@ Grid.prototype.zoomLensClickEvent = function() {
 
     var clicks = 0,
         timer = null,
-        _this = this;
+        _this = this,
+        elementToCheck = $('.grid-selection__container');
 
     $("body").on("click touchstart", ".zoomLens", function(evt) {
         evt.preventDefault();
@@ -2518,30 +2604,20 @@ Grid.prototype.zoomLensClickEvent = function() {
         var activeSquare = _this.findClosestSquare();
         var activeSquareNode = activeSquare.node;
 
-
-        /*
-         Not able to use jQuery .click or .dblclick for some reason i can't remember
-         If we can then should use jQuery...might be quicker and easier
-         */
-
-        if (activeSquareNode.className.animVal === "grid-item") {
-
+        if (elementToCheck.is(':visible')) {
+            if (activeSquareNode.className.animVal === "grid-item") {
             activeSquareNode.setAttribute("class", "grid-item grid-item-success");
             activeSquare.has_cancer = true;
-
-        } else if (activeSquareNode.className.animVal === "grid-item grid-item-success") {
-
-            activeSquareNode.setAttribute("class", "grid-item grid-item-error");
-            activeSquare.has_cancer = false;
-
+            } else if (activeSquareNode.className.animVal === "grid-item grid-item-success") {
+                activeSquareNode.setAttribute("class", "grid-item grid-item-error");
+                activeSquare.has_cancer = false;
+            } else {
+                activeSquareNode.setAttribute("class", "grid-item");
+                activeSquare.has_cancer = null;
+            }
         } else {
-
-            activeSquareNode.setAttribute("class", "grid-item");
-            activeSquare.has_cancer = null;
-
+            return;
         }
-
-
     });
 };
 
@@ -3765,8 +3841,8 @@ pybossa.presentTask(function(task, deferred) {
 
             // Get all value slider values
 
-            var intensityValue = valueSliders.intensitySlider.noUiSlider.get();
-            var proportionValue = valueSliders.proportionSlider.noUiSlider.get();
+            var intensityValue = questions.intensitySlider.noUiSlider.get();
+            var proportionValue = questions.proportionSlider.noUiSlider.get();
 
             // Switch intensity value to string
 
@@ -3814,9 +3890,8 @@ pybossa.presentTask(function(task, deferred) {
             });
 
             // Reset value sliders to set value
-
-            valueSliders.intensitySlider.noUiSlider.set(0);
-            valueSliders.proportionSlider.noUiSlider.set(0);
+            questions.intensitySlider.noUiSlider.set(0);
+            questions.proportionSlider.noUiSlider.set(0);
 
             /*
              * Save the task information and send to PyBossa
@@ -3838,10 +3913,11 @@ pybossa.presentTask(function(task, deferred) {
 
             // Resets the value sliders for next slide
             $('.prevSliderBtn').hide();
-            $('.proportion-slider__container').show();
+            $('.grid-selection__container').show();
             $('.intensity-slider__container').hide();
-            $('.nextSlideBtn').show();
-            $(valueSliders.nextSliderButton).hide();
+            $('.proportion-slider__container').hide();
+            $('.nextSlideBtn').hide();
+            $(questions.nextSliderButton).show();
 
             pybossa.saveTask(task.id, answer).done(function(data) {
                     loadUserProgress();
@@ -3981,10 +4057,6 @@ function UpdatePageState() {
     if (cookie_feedback == "false") {
         page_state = "mechanic";
     }
-
-    // Temporary for gold standard below. Forces page to show mechanic. -- Steven
-    page_state = "mechanic";
-    // Remove above after gold standard. -- Steven
 
     // If the feedback or mechanic is showing
     // Init the example images in slick corousel
