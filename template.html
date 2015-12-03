@@ -3911,7 +3911,7 @@ pybossa.presentTask(function(task, deferred) {
 //                });
 //            }
 
-            // Resets the value sliders for next slide
+            // Resets questions for next slide
             $('.prevSliderBtn').hide();
             $('.grid-selection__container').show();
             $('.intensity-slider__container').hide();
@@ -3923,7 +3923,7 @@ pybossa.presentTask(function(task, deferred) {
                     loadUserProgress();
                     $("#success").fadeIn(500).delay(1500).fadeOut();
                     $("svg, .zoomContainer,.zoomWindowContainer").remove();
-                    deferred.resolve();
+//                    deferred.resolve();
             });
         });
     } else {
