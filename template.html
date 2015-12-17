@@ -1504,803 +1504,951 @@
    This is the pathologist grid square data that we can check the user answers against
    */
 
-  var feedbackData = [{
-    "info": {
-      "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/EGFR-18.jpg",
-      "squares": [{
-        "column": 0,
-        "answer": null,
-        "row": 0
-      }, {
-        "column": 1,
-        "answer": null,
-        "row": 0
-      }, {
-        "column": 2,
-        "answer": null,
-        "row": 0
-      }, {
-        "column": 3,
-        "answer": true,
-        "row": 0
-      }, {
-        "column": 4,
-        "answer": null,
-        "row": 0
-      }, {
-        "column": 5,
-        "answer": null,
-        "row": 0
-      },
-
-        {
-          "column": 0,
-          "answer": null,
-          "row": 1
-        }, {
-          "column": 1,
-          "answer": true,
-          "row": 1
-        }, {
-          "column": 2,
-          "answer": true,
-          "row": 1
-        }, {
-          "column": 3,
-          "answer": true,
-          "row": 1
-        }, {
-          "column": 4,
-          "answer": true,
-          "row": 1
-        }, {
-          "column": 5,
-          "answer": null,
-          "row": 1
-        },
-
-        {
-          "column": 0,
-          "answer": false,
-          "row": 2
-        }, {
-          "column": 1,
-          "answer": true,
-          "row": 2
-        }, {
-          "column": 2,
-          "answer": true,
-          "row": 2
-        }, {
-          "column": 3,
-          "answer": true,
-          "row": 2
-        }, {
-          "column": 4,
-          "answer": true,
-          "row": 2
-        }, {
-          "column": 5,
-          "answer": true,
-          "row": 2
-        },
-
-        {
-          "column": 0,
-          "answer": false,
-          "row": 3
-        }, {
-          "column": 1,
-          "answer": true,
-          "row": 3
-        }, {
-          "column": 2,
-          "answer": true,
-          "row": 3
-        }, {
-          "column": 3,
-          "answer": true,
-          "row": 3
-        }, {
-          "column": 4,
-          "answer": true,
-          "row": 3
-        }, {
-          "column": 5,
-          "answer": true,
-          "row": 3
-        },
-
-        {
-          "column": 0,
-          "answer": false,
-          "row": 4
-        }, {
-          "column": 1,
-          "answer": true,
-          "row": 4
-        }, {
-          "column": 2,
-          "answer": true,
-          "row": 4
-        }, {
-          "column": 3,
-          "answer": true,
-          "row": 4
-        }, {
-          "column": 4,
-          "answer": true,
-          "row": 4
-        }, {
-          "column": 5,
-          "answer": true,
-          "row": 4
-        },
-
-        {
-          "column": 0,
-          "answer": null,
-          "row": 5
-        }, {
-          "column": 1,
-          "answer": false,
-          "row": 5
-        }, {
-          "column": 2,
-          "answer": true,
-          "row": 5
-        }, {
-          "column": 3,
-          "answer": true,
-          "row": 5
-        }, {
-          "column": 4,
-          "answer": true,
-          "row": 5
-        }, {
-          "column": 5,
-          "answer": null,
-          "row": 5
-        }]
-    }
-  }, {
-    "info": {
-      "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/EGFR-19.jpg",
-      "squares": [{
-        "column": 0,
-        "answer": null,
-        "row": 0
-      }, {
-        "column": 1,
-        "answer": null,
-        "row": 0
-      }, {
-        "column": 2,
-        "answer": null,
-        "row": 0
-      }, {
-        "column": 3,
-        "answer": null,
-        "row": 0
-      }, {
-        "column": 4,
-        "answer": null,
-        "row": 0
-      }, {
-        "column": 5,
-        "answer": null,
-        "row": 0
-      },
-
-        {
-          "column": 0,
-          "answer": false,
-          "row": 1
-        }, {
-          "column": 1,
-          "answer": true,
-          "row": 1
-        }, {
-          "column": 2,
-          "answer": true,
-          "row": 1
-        }, {
-          "column": 3,
-          "answer": true,
-          "row": 1
-        }, {
-          "column": 4,
-          "answer": true,
-          "row": 1
-        }, {
-          "column": 5,
-          "answer": null,
-          "row": 1
-        },
-
-        {
-          "column": 0,
-          "answer": false,
-          "row": 2
-        }, {
-          "column": 1,
-          "answer": true,
-          "row": 2
-        }, {
-          "column": 2,
-          "answer": true,
-          "row": 2
-        }, {
-          "column": 3,
-          "answer": true,
-          "row": 2
-        }, {
-          "column": 4,
-          "answer": true,
-          "row": 2
-        }, {
-          "column": 5,
-          "answer": true,
-          "row": 2
-        },
-
-        {
-          "column": 0,
-          "answer": false,
-          "row": 3
-        }, {
-          "column": 1,
-          "answer": true,
-          "row": 3
-        }, {
-          "column": 2,
-          "answer": true,
-          "row": 3
-        }, {
-          "column": 3,
-          "answer": true,
-          "row": 3
-        }, {
-          "column": 4,
-          "answer": true,
-          "row": 3
-        }, {
-          "column": 5,
-          "answer": true,
-          "row": 3
-        },
-
-        {
-          "column": 0,
-          "answer": false,
-          "row": 4
-        }, {
-          "column": 1,
-          "answer": true,
-          "row": 4
-        }, {
-          "column": 2,
-          "answer": true,
-          "row": 4
-        }, {
-          "column": 3,
-          "answer": true,
-          "row": 4
-        }, {
-          "column": 4,
-          "answer": true,
-          "row": 4
-        }, {
-          "column": 5,
-          "answer": null,
-          "row": 4
-        },
-
-        {
-          "column": 0,
-          "answer": null,
-          "row": 5
-        }, {
-          "column": 1,
-          "answer": false,
-          "row": 5
-        }, {
-          "column": 2,
-          "answer": true,
-          "row": 5
-        }, {
-          "column": 3,
-          "answer": true,
-          "row": 5
-        }, {
-          "column": 4,
-          "answer": null,
-          "row": 5
-        }, {
-          "column": 5,
-          "answer": null,
-          "row": 5
-        }]
-    }
-  }, {
-    "info": {
-      "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/EGFR-24.jpg",
-      "squares": [{
-        "column": 0,
-        "answer": null,
-        "row": 0
-      }, {
-        "column": 1,
-        "answer": false,
-        "row": 0
-      }, {
-        "column": 2,
-        "answer": true,
-        "row": 0
-      }, {
-        "column": 3,
-        "answer": true,
-        "row": 0
-      }, {
-        "column": 4,
-        "answer": null,
-        "row": 0
-      }, {
-        "column": 5,
-        "answer": null,
-        "row": 0
-      },
-
-        {
-          "column": 0,
-          "answer": false,
-          "row": 1
-        }, {
-          "column": 1,
-          "answer": false,
-          "row": 1
-        }, {
-          "column": 2,
-          "answer": true,
-          "row": 1
-        }, {
-          "column": 3,
-          "answer": true,
-          "row": 1
-        }, {
-          "column": 4,
-          "answer": true,
-          "row": 1
-        }, {
-          "column": 5,
-          "answer": true,
-          "row": 1
-        },
-
-        {
-          "column": 0,
-          "answer": false,
-          "row": 2
-        }, {
-          "column": 1,
-          "answer": false,
-          "row": 2
-        }, {
-          "column": 2,
-          "answer": true,
-          "row": 2
-        }, {
-          "column": 3,
-          "answer": true,
-          "row": 2
-        }, {
-          "column": 4,
-          "answer": true,
-          "row": 2
-        }, {
-          "column": 5,
-          "answer": true,
-          "row": 2
-        },
-
-        {
-          "column": 0,
-          "answer": false,
-          "row": 3
-        }, {
-          "column": 1,
-          "answer": true,
-          "row": 3
-        }, {
-          "column": 2,
-          "answer": true,
-          "row": 3
-        }, {
-          "column": 3,
-          "answer": true,
-          "row": 3
-        }, {
-          "column": 4,
-          "answer": true,
-          "row": 3
-        }, {
-          "column": 5,
-          "answer": true,
-          "row": 3
-        },
-
-        {
-          "column": 0,
-          "answer": false,
-          "row": 4
-        }, {
-          "column": 1,
-          "answer": true,
-          "row": 4
-        }, {
-          "column": 2,
-          "answer": true,
-          "row": 4
-        }, {
-          "column": 3,
-          "answer": true,
-          "row": 4
-        }, {
-          "column": 4,
-          "answer": true,
-          "row": 4
-        }, {
-          "column": 5,
-          "answer": true,
-          "row": 4
-        },
-
-        {
-          "column": 0,
-          "answer": null,
-          "row": 5
-        }, {
-          "column": 1,
-          "answer": true,
-          "row": 5
-        }, {
-          "column": 2,
-          "answer": true,
-          "row": 5
-        }, {
-          "column": 3,
-          "answer": true,
-          "row": 5
-        }, {
-          "column": 4,
-          "answer": true,
-          "row": 5
-        }, {
-          "column": 5,
-          "answer": null,
-          "row": 5
-        }]
-    }
-  }, {
-    "info": {
-      "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/EGFR-22.jpg",
-      "squares": [{
-        "column": 0,
-        "answer": null,
-        "row": 0
-      }, {
-        "column": 1,
-        "answer": null,
-        "row": 0
-      }, {
-        "column": 2,
-        "answer": true,
-        "row": 0
-      }, {
-        "column": 3,
-        "answer": true,
-        "row": 0
-      }, {
-        "column": 4,
-        "answer": null,
-        "row": 0
-      }, {
-        "column": 5,
-        "answer": null,
-        "row": 0
-      },
-
-        {
-          "column": 0,
-          "answer": null,
-          "row": 1
-        }, {
-          "column": 1,
-          "answer": true,
-          "row": 1
-        }, {
-          "column": 2,
-          "answer": true,
-          "row": 1
-        }, {
-          "column": 3,
-          "answer": true,
-          "row": 1
-        }, {
-          "column": 4,
-          "answer": true,
-          "row": 1
-        }, {
-          "column": 5,
-          "answer": true,
-          "row": 1
-        },
-
-        {
-          "column": 0,
-          "answer": true,
-          "row": 2
-        }, {
-          "column": 1,
-          "answer": true,
-          "row": 2
-        }, {
-          "column": 2,
-          "answer": true,
-          "row": 2
-        }, {
-          "column": 3,
-          "answer": true,
-          "row": 2
-        }, {
-          "column": 4,
-          "answer": true,
-          "row": 2
-        }, {
-          "column": 5,
-          "answer": true,
-          "row": 2
-        },
-
-        {
-          "column": 0,
-          "answer": true,
-          "row": 3
-        }, {
-          "column": 1,
-          "answer": true,
-          "row": 3
-        }, {
-          "column": 2,
-          "answer": true,
-          "row": 3
-        }, {
-          "column": 3,
-          "answer": true,
-          "row": 3
-        }, {
-          "column": 4,
-          "answer": true,
-          "row": 3
-        }, {
-          "column": 5,
-          "answer": true,
-          "row": 3
-        },
-
-        {
-          "column": 0,
-          "answer": null,
-          "row": 4
-        }, {
-          "column": 1,
-          "answer": true,
-          "row": 4
-        }, {
-          "column": 2,
-          "answer": true,
-          "row": 4
-        }, {
-          "column": 3,
-          "answer": true,
-          "row": 4
-        }, {
-          "column": 4,
-          "answer": true,
-          "row": 4
-        }, {
-          "column": 5,
-          "answer": true,
-          "row": 4
-        },
-
-
-        {
-          "column": 0,
-          "answer": null,
-          "row": 5
-        }, {
-          "column": 1,
-          "answer": false,
-          "row": 5
-        }, {
-          "column": 2,
-          "answer": true,
-          "row": 5
-        }, {
-          "column": 3,
-          "answer": true,
-          "row": 5
-        }, {
-          "column": 4,
-          "answer": true,
-          "row": 5
-        }, {
-          "column": 5,
-          "answer": null,
-          "row": 5
-        }]
-    }
-  }, {
-    "info": {
-      "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/EGFR-03.jpg",
-      "squares": [{
-        "column": 0,
-        "answer": null,
-        "row": 0
-      }, {
-        "column": 1,
-        "answer": null,
-        "row": 0
-      }, {
-        "column": 2,
-        "answer": false,
-        "row": 0
-      }, {
-        "column": 3,
-        "answer": false,
-        "row": 0
-      }, {
-        "column": 4,
-        "answer": null,
-        "row": 0
-      }, {
-        "column": 5,
-        "answer": null,
-        "row": 0
-      },
-
-        {
-          "column": 0,
-          "answer": null,
-          "row": 1
-        }, {
-          "column": 1,
-          "answer": false,
-          "row": 1
-        }, {
-          "column": 2,
-          "answer": false,
-          "row": 1
-        }, {
-          "column": 3,
-          "answer": false,
-          "row": 1
-        }, {
-          "column": 4,
-          "answer": false,
-          "row": 1
-        }, {
-          "column": 5,
-          "answer": null,
-          "row": 1
-        },
-
-        {
-          "column": 0,
-          "answer": false,
-          "row": 2
-        }, {
-          "column": 1,
-          "answer": false,
-          "row": 2
-        }, {
-          "column": 2,
-          "answer": false,
-          "row": 2
-        }, {
-          "column": 3,
-          "answer": false,
-          "row": 2
-        }, {
-          "column": 4,
-          "answer": false,
-          "row": 2
-        }, {
-          "column": 5,
-          "answer": false,
-          "row": 2
-        },
-
-        {
-          "column": 0,
-          "answer": false,
-          "row": 3
-        }, {
-          "column": 1,
-          "answer": false,
-          "row": 3
-        }, {
-          "column": 2,
-          "answer": false,
-          "row": 3
-        }, {
-          "column": 3,
-          "answer": false,
-          "row": 3
-        }, {
-          "column": 4,
-          "answer": false,
-          "row": 3
-        }, {
-          "column": 5,
-          "answer": false,
-          "row": 3
-        },
-
-        {
-          "column": 0,
-          "answer": null,
-          "row": 4
-        }, {
-          "column": 1,
-          "answer": false,
-          "row": 4
-        }, {
-          "column": 2,
-          "answer": false,
-          "row": 4
-        }, {
-          "column": 3,
-          "answer": false,
-          "row": 4
-        }, {
-          "column": 4,
-          "answer": false,
-          "row": 4
-        }, {
-          "column": 5,
-          "answer": null,
-          "row": 4
-        },
-
-        {
-          "column": 0,
-          "answer": null,
-          "row": 5
-        }, {
-          "column": 1,
-          "answer": null,
-          "row": 5
-        }, {
-          "column": 2,
-          "answer": false,
-          "row": 5
-        }, {
-          "column": 3,
-          "answer": false,
-          "row": 5
-        }, {
-          "column": 4,
-          "answer": null,
-          "row": 5
-        }, {
-          "column": 5,
-          "answer": null,
-          "row": 5
-        }]
-    }
-  }];
+   var feedbackData = [{
+             "info": {
+                 "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/EGFR-18.jpg",
+                 "proportion": "100",
+                 "intensity": "3+",
+                 "squares": [
+                     {"column": 0, "answer": null, "row": 0},
+                     {"column": 1, "answer": null, "row": 0},
+                     {"column": 2, "answer": null, "row": 0},
+                     {"column": 3, "answer": true, "row": 0},
+                     {"column": 4, "answer": null, "row": 0},
+                     {"column": 5, "answer": null, "row": 0},
+                     {"column": 0, "answer": null, "row": 1},
+                     {"column": 1, "answer": true, "row": 1},
+                     {"column": 2, "answer": true, "row": 1},
+                     {"column": 3, "answer": true, "row": 1},
+                     {"column": 4, "answer": true, "row": 1},
+                     {"column": 5, "answer": null, "row": 1},
+                     {"column": 0, "answer": false, "row": 2},
+                     {"column": 1, "answer": true, "row": 2},
+                     {"column": 2, "answer": true, "row": 2},
+                     {"column": 3, "answer": true, "row": 2},
+                     {"column": 4, "answer": true, "row": 2},
+                     {"column": 5, "answer": true, "row": 2},
+                     {"column": 0, "answer": false, "row": 3},
+                     {"column": 1, "answer": true, "row": 3},
+                     {"column": 2, "answer": true, "row": 3},
+                     {"column": 3, "answer": true, "row": 3},
+                     {"column": 4, "answer": true, "row": 3},
+                     {"column": 5, "answer": true, "row": 3},
+                     {"column": 0, "answer": false, "row": 4},
+                     {"column": 1, "answer": true, "row": 4},
+                     {"column": 2, "answer": true, "row": 4},
+                     {"column": 3, "answer": true, "row": 4},
+                     {"column": 4, "answer": true, "row": 4},
+                     {"column": 5, "answer": true, "row": 4},
+                     {"column": 0, "answer": null, "row": 5},
+                     {"column": 1, "answer": false, "row": 5},
+                     {"column": 2, "answer": true, "row": 5},
+                     {"column": 3, "answer": true, "row": 5},
+                     {"column": 4, "answer": true, "row": 5},
+                     {"column": 5, "answer": null, "row": 5}
+                 ]
+             }
+       },
+       {
+             "info": {
+                 "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/EGFR-19.jpg",
+                 "proportion": "100",
+                 "intensity": "2+",
+              "squares": [
+                  {
+                 "column": 0,
+                 "answer": null,
+                 "row": 0
+               }, {
+                 "column": 1,
+                 "answer": null,
+                 "row": 0
+               }, {
+                 "column": 2,
+                 "answer": null,
+                 "row": 0
+               }, {
+                 "column": 3,
+                 "answer": null,
+                 "row": 0
+               }, {
+                 "column": 4,
+                 "answer": null,
+                 "row": 0
+               }, {
+                 "column": 5,
+                 "answer": null,
+                 "row": 0
+               },
+                 {
+                   "column": 0,
+                   "answer": false,
+                   "row": 1
+                 }, {
+                   "column": 1,
+                   "answer": true,
+                   "row": 1
+                 }, {
+                   "column": 2,
+                   "answer": true,
+                   "row": 1
+                 }, {
+                   "column": 3,
+                   "answer": true,
+                   "row": 1
+                 }, {
+                   "column": 4,
+                   "answer": true,
+                   "row": 1
+                 }, {
+                   "column": 5,
+                   "answer": null,
+                   "row": 1
+                 },
+                 {
+                   "column": 0,
+                   "answer": false,
+                   "row": 2
+                 }, {
+                   "column": 1,
+                   "answer": true,
+                   "row": 2
+                 }, {
+                   "column": 2,
+                   "answer": true,
+                   "row": 2
+                 }, {
+                   "column": 3,
+                   "answer": true,
+                   "row": 2
+                 }, {
+                   "column": 4,
+                   "answer": true,
+                   "row": 2
+                 }, {
+                   "column": 5,
+                   "answer": true,
+                   "row": 2
+                 },
+                 {
+                   "column": 0,
+                   "answer": false,
+                   "row": 3
+                 }, {
+                   "column": 1,
+                   "answer": true,
+                   "row": 3
+                 }, {
+                   "column": 2,
+                   "answer": true,
+                   "row": 3
+                 }, {
+                   "column": 3,
+                   "answer": true,
+                   "row": 3
+                 }, {
+                   "column": 4,
+                   "answer": true,
+                   "row": 3
+                 }, {
+                   "column": 5,
+                   "answer": true,
+                   "row": 3
+                 },
+                 {
+                   "column": 0,
+                   "answer": false,
+                   "row": 4
+                 }, {
+                   "column": 1,
+                   "answer": true,
+                   "row": 4
+                 }, {
+                   "column": 2,
+                   "answer": true,
+                   "row": 4
+                 }, {
+                   "column": 3,
+                   "answer": true,
+                   "row": 4
+                 }, {
+                   "column": 4,
+                   "answer": true,
+                   "row": 4
+                 }, {
+                   "column": 5,
+                   "answer": null,
+                   "row": 4
+                 },
+                 {
+                   "column": 0,
+                   "answer": null,
+                   "row": 5
+                 }, {
+                   "column": 1,
+                   "answer": false,
+                   "row": 5
+                 }, {
+                   "column": 2,
+                   "answer": true,
+                   "row": 5
+                 }, {
+                   "column": 3,
+                   "answer": true,
+                   "row": 5
+                 }, {
+                   "column": 4,
+                   "answer": null,
+                   "row": 5
+                 }, {
+                   "column": 5,
+                   "answer": null,
+                   "row": 5
+                 }]
+             }
+       },
+       {
+             "info": {
+                 "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/EGFR-24.jpg",
+                 "proportion": "0",
+                 "intensity": null,
+              "squares": [{
+                 "column": 0,
+                 "answer": null,
+                 "row": 0
+               }, {
+                 "column": 1,
+                 "answer": false,
+                 "row": 0
+               }, {
+                 "column": 2,
+                 "answer": true,
+                 "row": 0
+               }, {
+                 "column": 3,
+                 "answer": true,
+                 "row": 0
+               }, {
+                 "column": 4,
+                 "answer": null,
+                 "row": 0
+               }, {
+                 "column": 5,
+                 "answer": null,
+                 "row": 0
+               },
+                 {
+                   "column": 0,
+                   "answer": false,
+                   "row": 1
+                 }, {
+                   "column": 1,
+                   "answer": false,
+                   "row": 1
+                 }, {
+                   "column": 2,
+                   "answer": true,
+                   "row": 1
+                 }, {
+                   "column": 3,
+                   "answer": true,
+                   "row": 1
+                 }, {
+                   "column": 4,
+                   "answer": true,
+                   "row": 1
+                 }, {
+                   "column": 5,
+                   "answer": true,
+                   "row": 1
+                 },
+                 {
+                   "column": 0,
+                   "answer": false,
+                   "row": 2
+                 }, {
+                   "column": 1,
+                   "answer": false,
+                   "row": 2
+                 }, {
+                   "column": 2,
+                   "answer": true,
+                   "row": 2
+                 }, {
+                   "column": 3,
+                   "answer": true,
+                   "row": 2
+                 }, {
+                   "column": 4,
+                   "answer": true,
+                   "row": 2
+                 }, {
+                   "column": 5,
+                   "answer": true,
+                   "row": 2
+                 },
+                 {
+                   "column": 0,
+                   "answer": false,
+                   "row": 3
+                 }, {
+                   "column": 1,
+                   "answer": true,
+                   "row": 3
+                 }, {
+                   "column": 2,
+                   "answer": true,
+                   "row": 3
+                 }, {
+                   "column": 3,
+                   "answer": true,
+                   "row": 3
+                 }, {
+                   "column": 4,
+                   "answer": true,
+                   "row": 3
+                 }, {
+                   "column": 5,
+                   "answer": true,
+                   "row": 3
+                 },
+                 {
+                   "column": 0,
+                   "answer": false,
+                   "row": 4
+                 }, {
+                   "column": 1,
+                   "answer": true,
+                   "row": 4
+                 }, {
+                   "column": 2,
+                   "answer": true,
+                   "row": 4
+                 }, {
+                   "column": 3,
+                   "answer": true,
+                   "row": 4
+                 }, {
+                   "column": 4,
+                   "answer": true,
+                   "row": 4
+                 }, {
+                   "column": 5,
+                   "answer": true,
+                   "row": 4
+                 },
+                 {
+                   "column": 0,
+                   "answer": null,
+                   "row": 5
+                 }, {
+                   "column": 1,
+                   "answer": true,
+                   "row": 5
+                 }, {
+                   "column": 2,
+                   "answer": true,
+                   "row": 5
+                 }, {
+                   "column": 3,
+                   "answer": true,
+                   "row": 5
+                 }, {
+                   "column": 4,
+                   "answer": true,
+                   "row": 5
+                 }, {
+                   "column": 5,
+                   "answer": null,
+                   "row": 5
+                 }]
+             }
+       },
+       {
+             "info": {
+                 "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/EGFR-22.jpg",
+                 "proportion": "100",
+                 "intensity": "3+",
+                 "squares": [{
+                     "column": 0,
+                     "answer": null,
+                     "row": 0
+                     }, {
+                 "column": 1,
+                 "answer": null,
+                 "row": 0
+               }, {
+                 "column": 2,
+                 "answer": true,
+                 "row": 0
+               }, {
+                 "column": 3,
+                 "answer": true,
+                 "row": 0
+               }, {
+                 "column": 4,
+                 "answer": null,
+                 "row": 0
+               }, {
+                 "column": 5,
+                 "answer": null,
+                 "row": 0
+               },
+                 {
+                   "column": 0,
+                   "answer": null,
+                   "row": 1
+                 }, {
+                   "column": 1,
+                   "answer": true,
+                   "row": 1
+                 }, {
+                   "column": 2,
+                   "answer": true,
+                   "row": 1
+                 }, {
+                   "column": 3,
+                   "answer": true,
+                   "row": 1
+                 }, {
+                   "column": 4,
+                   "answer": true,
+                   "row": 1
+                 }, {
+                   "column": 5,
+                   "answer": true,
+                   "row": 1
+                 },
+                 {
+                   "column": 0,
+                   "answer": true,
+                   "row": 2
+                 }, {
+                   "column": 1,
+                   "answer": true,
+                   "row": 2
+                 }, {
+                   "column": 2,
+                   "answer": true,
+                   "row": 2
+                 }, {
+                   "column": 3,
+                   "answer": true,
+                   "row": 2
+                 }, {
+                   "column": 4,
+                   "answer": true,
+                   "row": 2
+                 }, {
+                   "column": 5,
+                   "answer": true,
+                   "row": 2
+                 },
+                 {
+                   "column": 0,
+                   "answer": true,
+                   "row": 3
+                 }, {
+                   "column": 1,
+                   "answer": true,
+                   "row": 3
+                 }, {
+                   "column": 2,
+                   "answer": true,
+                   "row": 3
+                 }, {
+                   "column": 3,
+                   "answer": true,
+                   "row": 3
+                 }, {
+                   "column": 4,
+                   "answer": true,
+                   "row": 3
+                 }, {
+                   "column": 5,
+                   "answer": true,
+                   "row": 3
+                 },
+                 {
+                   "column": 0,
+                   "answer": null,
+                   "row": 4
+                 }, {
+                   "column": 1,
+                   "answer": true,
+                   "row": 4
+                 }, {
+                   "column": 2,
+                   "answer": true,
+                   "row": 4
+                 }, {
+                   "column": 3,
+                   "answer": true,
+                   "row": 4
+                 }, {
+                   "column": 4,
+                   "answer": true,
+                   "row": 4
+                 }, {
+                   "column": 5,
+                   "answer": true,
+                   "row": 4
+                 },
+                 {
+                   "column": 0,
+                   "answer": null,
+                   "row": 5
+                 }, {
+                   "column": 1,
+                   "answer": false,
+                   "row": 5
+                 }, {
+                   "column": 2,
+                   "answer": true,
+                   "row": 5
+                 }, {
+                   "column": 3,
+                   "answer": true,
+                   "row": 5
+                 }, {
+                   "column": 4,
+                   "answer": true,
+                   "row": 5
+                 }, {
+                   "column": 5,
+                   "answer": null,
+                   "row": 5
+                 }]
+             }
+       },
+       {
+             "info": {
+                 "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/EGFR-03.jpg",
+                 "proportion": "0",
+                 "intensity": null,
+               "squares": [{
+                 "column": 0,
+                 "answer": null,
+                 "row": 0
+               }, {
+                 "column": 1,
+                 "answer": null,
+                 "row": 0
+               }, {
+                 "column": 2,
+                 "answer": false,
+                 "row": 0
+               }, {
+                 "column": 3,
+                 "answer": false,
+                 "row": 0
+               }, {
+                 "column": 4,
+                 "answer": null,
+                 "row": 0
+               }, {
+                 "column": 5,
+                 "answer": null,
+                 "row": 0
+               },
+                 {
+                   "column": 0,
+                   "answer": null,
+                   "row": 1
+                 }, {
+                   "column": 1,
+                   "answer": false,
+                   "row": 1
+                 }, {
+                   "column": 2,
+                   "answer": false,
+                   "row": 1
+                 }, {
+                   "column": 3,
+                   "answer": false,
+                   "row": 1
+                 }, {
+                   "column": 4,
+                   "answer": false,
+                   "row": 1
+                 }, {
+                   "column": 5,
+                   "answer": null,
+                   "row": 1
+                 },
+                 {
+                   "column": 0,
+                   "answer": false,
+                   "row": 2
+                 }, {
+                   "column": 1,
+                   "answer": false,
+                   "row": 2
+                 }, {
+                   "column": 2,
+                   "answer": false,
+                   "row": 2
+                 }, {
+                   "column": 3,
+                   "answer": false,
+                   "row": 2
+                 }, {
+                   "column": 4,
+                   "answer": false,
+                   "row": 2
+                 }, {
+                   "column": 5,
+                   "answer": false,
+                   "row": 2
+                 },
+                 {
+                   "column": 0,
+                   "answer": false,
+                   "row": 3
+                 }, {
+                   "column": 1,
+                   "answer": false,
+                   "row": 3
+                 }, {
+                   "column": 2,
+                   "answer": false,
+                   "row": 3
+                 }, {
+                   "column": 3,
+                   "answer": false,
+                   "row": 3
+                 }, {
+                   "column": 4,
+                   "answer": false,
+                   "row": 3
+                 }, {
+                   "column": 5,
+                   "answer": false,
+                   "row": 3
+                 },
+                 {
+                   "column": 0,
+                   "answer": null,
+                   "row": 4
+                 }, {
+                   "column": 1,
+                   "answer": false,
+                   "row": 4
+                 }, {
+                   "column": 2,
+                   "answer": false,
+                   "row": 4
+                 }, {
+                   "column": 3,
+                   "answer": false,
+                   "row": 4
+                 }, {
+                   "column": 4,
+                   "answer": false,
+                   "row": 4
+                 }, {
+                   "column": 5,
+                   "answer": null,
+                   "row": 4
+                 },
+                 {
+                   "column": 0,
+                   "answer": null,
+                   "row": 5
+                 }, {
+                   "column": 1,
+                   "answer": null,
+                   "row": 5
+                 }, {
+                   "column": 2,
+                   "answer": false,
+                   "row": 5
+                 }, {
+                   "column": 3,
+                   "answer": false,
+                   "row": 5
+                 }, {
+                   "column": 4,
+                   "answer": null,
+                   "row": 5
+                 }, {
+                   "column": 5,
+                   "answer": null,
+                   "row": 5
+                 }]
+             }
+       },
+       {
+             "info": {
+                 "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/EGFR-11.jpg",
+                 "proportion": "100",
+                 "intensity": "3+",
+                 "squares": [
+                     {"column": 0, "answer": null, "row": 0},
+                     {"column": 1, "answer": null, "row": 0},
+                     {"column": 2, "answer": true, "row": 0},
+                     {"column": 3, "answer": true, "row": 0},
+                     {"column": 4, "answer": true, "row": 0},
+                     {"column": 5, "answer": null, "row": 0},
+                     {"column": 0, "answer": null, "row": 1},
+                     {"column": 1, "answer": true, "row": 1},
+                     {"column": 2, "answer": true, "row": 1},
+                     {"column": 3, "answer": true, "row": 1},
+                     {"column": 4, "answer": true, "row": 1},
+                     {"column": 5, "answer": true, "row": 1},
+                     {"column": 0, "answer": true, "row": 2},
+                     {"column": 1, "answer": true, "row": 2},
+                     {"column": 2, "answer": true, "row": 2},
+                     {"column": 3, "answer": true, "row": 2},
+                     {"column": 4, "answer": true, "row": 2},
+                     {"column": 5, "answer": true, "row": 2},
+                     {"column": 0, "answer": true, "row": 3},
+                     {"column": 1, "answer": true, "row": 3},
+                     {"column": 2, "answer": true, "row": 3},
+                     {"column": 3, "answer": true, "row": 3},
+                     {"column": 4, "answer": true, "row": 3},
+                     {"column": 5, "answer": true, "row": 3},
+                     {"column": 0, "answer": true, "row": 4},
+                     {"column": 1, "answer": true, "row": 4},
+                     {"column": 2, "answer": true, "row": 4},
+                     {"column": 3, "answer": true, "row": 4},
+                     {"column": 4, "answer": true, "row": 4},
+                     {"column": 5, "answer": true, "row": 4},
+                     {"column": 0, "answer": null, "row": 5},
+                     {"column": 1, "answer": true, "row": 5},
+                     {"column": 2, "answer": true, "row": 5},
+                     {"column": 3, "answer": true, "row": 5},
+                     {"column": 4, "answer": true, "row": 5},
+                     {"column": 5, "answer": null, "row": 5}
+                 ]
+             }
+       },
+      {
+             "info": {
+                 "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/EGFR-25.jpg",
+                 "proportion": "35",
+                 "intensity": "1+",
+                 "squares": [
+                     {"column": 0, "answer": null, "row": 0},
+                     {"column": 1, "answer": null, "row": 0},
+                     {"column": 2, "answer": null, "row": 0},
+                     {"column": 3, "answer": null, "row": 0},
+                     {"column": 4, "answer": null, "row": 0},
+                     {"column": 5, "answer": null, "row": 0},
+                     {"column": 0, "answer": null, "row": 1},
+                     {"column": 1, "answer": false, "row": 1},
+                     {"column": 2, "answer": true, "row": 1},
+                     {"column": 3, "answer": true, "row": 1},
+                     {"column": 4, "answer": true, "row": 1},
+                     {"column": 5, "answer": null, "row": 1},
+                     {"column": 0, "answer": null, "row": 2},
+                     {"column": 1, "answer": true, "row": 2},
+                     {"column": 2, "answer": true, "row": 2},
+                     {"column": 3, "answer": true, "row": 2},
+                     {"column": 4, "answer": true, "row": 2},
+                     {"column": 5, "answer": false, "row": 2},
+                     {"column": 0, "answer": true, "row": 3},
+                     {"column": 1, "answer": true, "row": 3},
+                     {"column": 2, "answer": true, "row": 3},
+                     {"column": 3, "answer": true, "row": 3},
+                     {"column": 4, "answer": false, "row": 3},
+                     {"column": 5, "answer": false, "row": 3},
+                     {"column": 0, "answer": null, "row": 4},
+                     {"column": 1, "answer": true, "row": 4},
+                     {"column": 2, "answer": true, "row": 4},
+                     {"column": 3, "answer": false, "row": 4},
+                     {"column": 4, "answer": false, "row": 4},
+                     {"column": 5, "answer": false, "row": 4},
+                     {"column": 0, "answer": null, "row": 5},
+                     {"column": 1, "answer": false, "row": 5},
+                     {"column": 2, "answer": false, "row": 5},
+                     {"column": 3, "answer": false, "row": 5},
+                     {"column": 4, "answer": false, "row": 5},
+                     {"column": 5, "answer": null, "row": 5}
+                 ]
+            }
+       },
+      {
+             "info": {
+                 "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/EGFR-26.jpg",
+                 "proportion": "75",
+                 "intensity": "2+",
+                  "squares": [
+                     {"column": 0, "answer": null, "row": 0},
+                     {"column": 1, "answer": null, "row": 0},
+                     {"column": 2, "answer": null, "row": 0},
+                     {"column": 3, "answer": null, "row": 0},
+                     {"column": 4, "answer": null, "row": 0},
+                     {"column": 5, "answer": null, "row": 0},
+                     {"column": 0, "answer": null, "row": 1},
+                     {"column": 1, "answer": false, "row": 1},
+                     {"column": 2, "answer": true, "row": 1},
+                     {"column": 3, "answer": true, "row": 1},
+                     {"column": 4, "answer": false, "row": 1},
+                     {"column": 5, "answer": null, "row": 1},
+                     {"column": 0, "answer": null, "row": 2},
+                     {"column": 1, "answer": true, "row": 2},
+                     {"column": 2, "answer": true, "row": 2},
+                     {"column": 3, "answer": true, "row": 2},
+                     {"column": 4, "answer": true, "row": 2},
+                     {"column": 5, "answer": false, "row": 2},
+                     {"column": 0, "answer": null, "row": 3},
+                     {"column": 1, "answer": true, "row": 3},
+                     {"column": 2, "answer": true, "row": 3},
+                     {"column": 3, "answer": false, "row": 3},
+                     {"column": 4, "answer": true, "row": 3},
+                     {"column": 5, "answer": true, "row": 3},
+                     {"column": 0, "answer": null, "row": 4},
+                     {"column": 1, "answer": true, "row": 4},
+                     {"column": 2, "answer": true, "row": 4},
+                     {"column": 3, "answer": false, "row": 4},
+                     {"column": 4, "answer": false, "row": 4},
+                     {"column": 5, "answer": false, "row": 4},
+                     {"column": 0, "answer": null, "row": 5},
+                     {"column": 1, "answer": null, "row": 5},
+                     {"column": 2, "answer": true, "row": 5},
+                     {"column": 3, "answer": true, "row": 5},
+                     {"column": 4, "answer": false, "row": 5},
+                     {"column": 5, "answer": null, "row": 5}
+                 ]
+            }
+       },
+      {
+             "info": {
+                 "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/EGFR-15.jpg",
+                 "proportion": "50",
+                 "intensity": "1+",
+                 "squares": [
+                     {"column": 0, "answer": null, "row": 0},
+                     {"column": 1, "answer": null, "row": 0},
+                     {"column": 2, "answer": null, "row": 0},
+                     {"column": 3, "answer": true, "row": 0},
+                     {"column": 4, "answer": null, "row": 0},
+                     {"column": 5, "answer": null, "row": 0},
+                     {"column": 0, "answer": null, "row": 1},
+                     {"column": 1, "answer": false, "row": 1},
+                     {"column": 2, "answer": true, "row": 1},
+                     {"column": 3, "answer": true, "row": 1},
+                     {"column": 4, "answer": true, "row": 1},
+                     {"column": 5, "answer": null, "row": 1},
+                     {"column": 0, "answer": false, "row": 2},
+                     {"column": 1, "answer": true, "row": 2},
+                     {"column": 2, "answer": true, "row": 2},
+                     {"column": 3, "answer": true, "row": 2},
+                     {"column": 4, "answer": true, "row": 2},
+                     {"column": 5, "answer": true, "row": 2},
+                     {"column": 0, "answer": false, "row": 3},
+                     {"column": 1, "answer": true, "row": 3},
+                     {"column": 2, "answer": true, "row": 3},
+                     {"column": 3, "answer": true, "row": 3},
+                     {"column": 4, "answer": true, "row": 3},
+                     {"column": 5, "answer": true, "row": 3},
+                     {"column": 0, "answer": null, "row": 4},
+                     {"column": 1, "answer": true, "row": 4},
+                     {"column": 2, "answer": true, "row": 4},
+                     {"column": 3, "answer": true, "row": 4},
+                     {"column": 4, "answer": true, "row": 4},
+                     {"column": 5, "answer": true, "row": 4},
+                     {"column": 0, "answer": null, "row": 5},
+                     {"column": 1, "answer": null, "row": 5},
+                     {"column": 2, "answer": true, "row": 5},
+                     {"column": 3, "answer": true, "row": 5},
+                     {"column": 4, "answer": true, "row": 5},
+                     {"column": 5, "answer": null, "row": 5}
+                 ]
+             }
+       },
+      {
+             "info": {
+                 "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/EGFR-27.jpg",
+                 "proportion": "15",
+                 "intensity": "2+",
+                 "squares": [
+                     {"column": 0, "answer": null, "row": 0},
+                     {"column": 1, "answer": false, "row": 0},
+                     {"column": 2, "answer": true, "row": 0},
+                     {"column": 3, "answer": true, "row": 0},
+                     {"column": 4, "answer": true, "row": 0},
+                     {"column": 5, "answer": null, "row": 0},
+                     {"column": 0, "answer": false, "row": 1},
+                     {"column": 1, "answer": true, "row": 1},
+                     {"column": 2, "answer": true, "row": 1},
+                     {"column": 3, "answer": true, "row": 1},
+                     {"column": 4, "answer": true, "row": 1},
+                     {"column": 5, "answer": false, "row": 1},
+                     {"column": 0, "answer": true, "row": 2},
+                     {"column": 1, "answer": true, "row": 2},
+                     {"column": 2, "answer": true, "row": 2},
+                     {"column": 3, "answer": true, "row": 2},
+                     {"column": 4, "answer": true, "row": 2},
+                     {"column": 5, "answer": true, "row": 2},
+                     {"column": 0, "answer": true, "row": 3},
+                     {"column": 1, "answer": true, "row": 3},
+                     {"column": 2, "answer": true, "row": 3},
+                     {"column": 3, "answer": true, "row": 3},
+                     {"column": 4, "answer": true, "row": 3},
+                     {"column": 5, "answer": false, "row": 3},
+                     {"column": 0, "answer": false, "row": 4},
+                     {"column": 1, "answer": true, "row": 4},
+                     {"column": 2, "answer": true, "row": 4},
+                     {"column": 3, "answer": true, "row": 4},
+                     {"column": 4, "answer": true, "row": 4},
+                     {"column": 5, "answer": true, "row": 4},
+                     {"column": 0, "answer": null, "row": 5},
+                     {"column": 1, "answer": true, "row": 5},
+                     {"column": 2, "answer": true, "row": 5},
+                     {"column": 3, "answer": true, "row": 5},
+                     {"column": 4, "answer": true, "row": 5},
+                     {"column": 5, "answer": null, "row": 5}
+                 ]
+             }
+       },
+      {
+             "info": {
+                 "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/EGFR-07.jpg",
+                 "proportion": "0",
+                 "intensity": null,
+                 "squares": [
+                     {"column": 0, "answer": null, "row": 0},
+                     {"column": 1, "answer": null, "row": 0},
+                     {"column": 2, "answer": null, "row": 0},
+                     {"column": 3, "answer": false, "row": 0},
+                     {"column": 4, "answer": null, "row": 0},
+                     {"column": 5, "answer": null, "row": 0},
+                     {"column": 0, "answer": null, "row": 1},
+                     {"column": 1, "answer": false, "row": 1},
+                     {"column": 2, "answer": false, "row": 1},
+                     {"column": 3, "answer": false, "row": 1},
+                     {"column": 4, "answer": false, "row": 1},
+                     {"column": 5, "answer": false, "row": 1},
+                     {"column": 0, "answer": false, "row": 2},
+                     {"column": 1, "answer": false, "row": 2},
+                     {"column": 2, "answer": false, "row": 2},
+                     {"column": 3, "answer": false, "row": 2},
+                     {"column": 4, "answer": false, "row": 2},
+                     {"column": 5, "answer": false, "row": 2},
+                     {"column": 0, "answer": false, "row": 3},
+                     {"column": 1, "answer": false, "row": 3},
+                     {"column": 2, "answer": false, "row": 3},
+                     {"column": 3, "answer": false, "row": 3},
+                     {"column": 4, "answer": false, "row": 3},
+                     {"column": 5, "answer": false, "row": 3},
+                     {"column": 0, "answer": false, "row": 4},
+                     {"column": 1, "answer": false, "row": 4},
+                     {"column": 2, "answer": false, "row": 4},
+                     {"column": 3, "answer": false, "row": 4},
+                     {"column": 4, "answer": false, "row": 4},
+                     {"column": 5, "answer": false, "row": 4},
+                     {"column": 0, "answer": null, "row": 5},
+                     {"column": 1, "answer": false, "row": 5},
+                     {"column": 2, "answer": false, "row": 5},
+                     {"column": 3, "answer": false, "row": 5},
+                     {"column": 4, "answer": false, "row": 5},
+                     {"column": 5, "answer": null, "row": 5}
+                 ]
+             }
+       }
+   ];
 
 
   "use strict";
