@@ -2363,7 +2363,7 @@
           $proportionSlider.hide();
           $gridSelection.show();
           $noCancerButton.show();
-          $(this).hide(); /* This refers to button clicked */
+          $(this).hide(); // This refers to button clicked.
           $nextImageButton.hide();
           questions.reFocus("grid-item");
           $(questions.nextSliderButton).show();
@@ -2384,7 +2384,7 @@
           questions.addActive('.intensity-slider-pips__moderate', 'word');
         } else {
           questions.removeActive();
-          questions.addActivquestionse('.intensity-slider-pips__strong', 'word');
+          questions.addActive('.intensity-slider-pips__strong', 'word');
         }
       });
 
@@ -2426,8 +2426,8 @@
       target = "." + target;
       var classesToCheck = ["unFocus", "unRed", "isGreen"];
       var checkForUnFocus,
-              checkForUnRed,
-              checkForGreen;
+          checkForUnRed,
+          checkForGreen;
 
       $(target).each(function(){
         checkForUnFocus = $(this).attr('class').indexOf(classesToCheck[0]) > -1;
@@ -3831,12 +3831,15 @@
           console.log("Radio buttons have been changed");
         }
 
-        pybossa.saveTask(task.id, answer).done(function(data) {
-          loadUserProgress();
-          $("#success").fadeIn(500).delay(1500).fadeOut();
-          $("svg, .zoomContainer,.zoomWindowContainer").remove();
-          deferred.resolve();
-        });
+        // Possibley change - Steven
+        $('.noCancerBtn').show();
+
+        // pybossa.saveTask(task.id, answer).done(function(data) {
+        //   loadUserProgress();
+        //   $("#success").fadeIn(500).delay(1500).fadeOut();
+        //   $("svg, .zoomContainer,.zoomWindowContainer").remove();
+        //   deferred.resolve();
+        // });
       });
 
       /*
