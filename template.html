@@ -1347,7 +1347,7 @@
   <div class="feedback-content" id="feedbackContent">
     <div class="row-fluid">
       <div class="span12">
-        <h1>Practice image <span id="feedbackImageNumber">1</span> of 5</h1>
+        <h1>Practice image <span id="feedbackImageNumber">1</span> of 11</h1>
       </div>
     </div>
     <div class="row-fluid clearfix">
@@ -1373,7 +1373,13 @@
       </div>
       <!-- RIGHT FEEDBACK INFO -->
       <div class="span6 grid-info" id="feedbackZoomWindowLocation">
-        <div>
+        <div class="feedback-proportion-container">
+          <!-- Insert content here -->
+        </div>
+        <div class="feedback-intensity-container">
+          <!-- Insert content here -->
+        </div>
+        <div class="feedback-grid-container">
           <h3>Click once to mark cancer cells in <b class="text-error">Red</b></h3>
           <h3>Click again to mark non-cancer cells in <b class="text-success">Green</b></h3>
           <h3>Empty sections of the image can be left <b>blank</b></h3>
@@ -1400,6 +1406,9 @@
           <button class="btn btn-answer" id="feedbackInfoBtn" style="margin-left: 10px;">What's in this image</button>
           <a class="btn disabled" id="nextFeedbackStep" style="margin-left: 10px;">
             Next slide
+          </a>
+          <a class="btn disabled" id="feedbackNextQuestion" style="margin-left: 10px;">
+            Next Question
           </a>
           <a class="btn disabled" id="finishFeedback" style="display:none; margin-left: 10px;">
             Next
@@ -1489,7 +1498,7 @@
 <script type="text/javascript" async="async">
   var hasSeenGuidenceInfo = false;
   var totalGridPercentage = "";
-  var progressBarTargetValue = 0;  /* normally 75, 0 for testing */
+  var progressBarTargetValue = 0;  // Normally 75, 0 for testing
 
   var project_short_name = "{{ project.short_name }}";
   if (project_short_name === "")
@@ -1498,11 +1507,10 @@
   var cookie_feedback_name = project_short_name + 'feedback';
   var cookie_tutorial_name = project_short_name + 'tutorial';
 
-
-  /*
-   SARAH'S CODE BELOW :D
-   This is the pathologist grid square data that we can check the user answers against
-   */
+  /**
+    * This is the pathologist grid square data that we can check the user answers against
+    *
+    */
 
    var feedbackData = [{
              "info": {
@@ -2452,7 +2460,6 @@
 
 
   "use strict";
-
   /**
    * Main mechanic questions  - Grid, proportion & intensity.
    * Initialises custom sliders and attaches event handlers.
@@ -2625,6 +2632,7 @@
         start: [ 0 ],
         snap: true,
         connect: "lower",
+        // Set custom range.
         range: {
           min: 0,
           '5%': 5,
@@ -2658,7 +2666,8 @@
   };
 
   /**
-   Move into init.js file
+   *
+   * Move into init.js file
    */
 
   $(document).ready(function() {
@@ -2919,17 +2928,17 @@
       if (activeSquareNode.className.animVal === "grid-item") {
         activeSquareNode.setAttribute("class", "grid-item grid-item-success");
         activeSquare.has_cancer = true;
-        _this.checkAnswer(true, activeSquare);
+        _this.checkGridAnswer(true, activeSquare);
 
       } else if (activeSquareNode.className.animVal === "grid-item grid-item-success") {
         activeSquareNode.setAttribute("class", "grid-item grid-item-error");
         activeSquare.has_cancer = false;
-        _this.checkAnswer(false, activeSquare);
+        _this.checkGridAnswer(false, activeSquare);
 
       } else {
         activeSquareNode.setAttribute("class", "grid-item");
         activeSquare.has_cancer = null;
-        _this.checkAnswer(null, activeSquare);
+        _this.checkGridAnswer(null, activeSquare);
       }
     });
 
@@ -2945,10 +2954,12 @@
     var _this = this;
     var activeSquare;
 
-    // Find the position of the click on the zoomLens and then
-    // center the point to the middle of the square.
-    //
-    //
+    /**
+     * Find the position of the click on the zoomLens and then
+     * center the point to the middle of the square
+     *
+     */
+
     var target = $(".zoomLens");
     var target_pos = {
       x: parseInt(target.css("left")),
@@ -2958,10 +2969,12 @@
     target_pos.x = target_pos.x + 35.2;
     target_pos.y = target_pos.y + 35.2;
 
-    // Find the closet grid square to the point of the click
-    // We use a Raphaeljs method isPointInside to return the element
-    //
-    //
+    /**
+     * Find the closet grid square to the point of the click
+     * We use a Raphaeljs method isPointInside to return the element
+     *
+     */
+
     $.each(_this.gridSquares, function(idx, square) {
       if (square.isPointInside(target_pos.x, target_pos.y)) {
         activeSquare = square;
@@ -2971,51 +2984,36 @@
     return activeSquare;
   };
 
+  FeedbackGrid.prototype.checkIntensityAnswer = function() {
 
-  /*
-   After the grid square has been click we check that answer against what the
-   pathologist said about the same square.
+  };
+
+  /**
+   * After the grid square has been clicked we check that answer against what the
+   * pathologist said about the same square.
+   *
    */
 
-  FeedbackGrid.prototype.checkAnswer = function(action, activeSquare) {
-
+  FeedbackGrid.prototype.checkGridAnswer = function(action, activeSquare) {
     var _this = this;
     var pathologistAnswer;
+    var currentSquare = feedbackData[step].info.squares[activeSquare.id];
+    if (typeof(currentSquare) == 'object') {
 
+      // Set target for answer, which we will retreive later
+      pathologistAnswer = currentSquare;
+    }
 
-    $.each(feedbackData[step].info, function(idx, patholgistSquare) {
-      if (typeof(patholgistSquare[activeSquare.id]) == 'object') {
-        // Find the pathologist answer for that square
-        //
-        //
-        pathologistAnswer = patholgistSquare[activeSquare.id];
-      }
-    });
-
-    // Check if that square already has a Tick or Cross marking,
-    // if it does remove it and add a new marking
-    //
-    //
+    // Check if that square already has a Tick or Cross marking
     this.removeTickOrCross(activeSquare);
-
-    // When the incorrect grid square is fading out and the user
-    // clicks on that square, stop the animation untill they have stopped
-    // clicking.
-    //
-    //
     activeSquare.stop();
-
     activeSquare.animate({
       "fill-opacity": 1
     }, 100);
 
     // If pathologist agree with the answer given
-    //
-    //
     if (action === pathologistAnswer.answer) {
-
       var tick = this.addTick(activeSquare);
-
       if (step > 1) {
         $("#pathologistFeedback").hide();
         tick.attr("opacity", 0);
@@ -3023,18 +3021,14 @@
         this.updateFeedbackProgress();
         this.updateFeedback(pathologistAnswer, true);
       }
-
     } else {
-
       var cross = this.addCross(activeSquare);
       if (step > 1) {
         $("#pathologistFeedback").hide();
         cross.attr("opacity", 0);
       } else {
-
         this.updateFeedbackProgress();
         this.updateFeedback(pathologistAnswer, false);
-
         activeSquare.animate({
           "fill-opacity": 1
         }, 2000, function() {
@@ -3045,13 +3039,9 @@
     }
 
     // Check if the grid has been clicked, enable the "Check my work" button
-    //
-    //
     if (step > 1 && this.tickCross.length > 0) {
       $("#checkMyWorkBtn").removeClass("disabled");
     }
-
-
   };
 
   FeedbackGrid.prototype.removeTickOrCross = function(activeSquare) {
@@ -3063,9 +3053,7 @@
     });
   };
 
-
   FeedbackGrid.prototype.addTick = function(activeSquare) {
-
     var x = Math.floor(activeSquare.attr("x")),
             y = Math.floor(activeSquare.attr("y")),
             parentId = activeSquare.id,
@@ -3080,15 +3068,11 @@
       "stroke-opacity": 1
     }, 250);
     tick.animate(anim.delay(1000));
-
-
     tick["data-parent_id"] = parentId;
     tick["class"] = "tick";
     this.tickCross.push(tick);
-
     return tick;
   };
-
 
   FeedbackGrid.prototype.addCross = function(activeSquare) {
 
@@ -3113,7 +3097,6 @@
 
     return cross;
   };
-
 
   FeedbackGrid.prototype.updateFeedback = function(pathologistAnswer, state) {
     if (state) {
@@ -3140,10 +3123,7 @@
     //$("#pathologistFeedback p").delay(4000).fadeOut(500);
   };
 
-  /*
-   Displays the pathologist tick's and cross's by changing the opacity of the square
-   */
-
+  // Displays the pathologist tick's and cross's by changing the opacity of the square
   FeedbackGrid.prototype.showMyAnalysis = function() {
     this.updateFeedbackProgress();
 
@@ -3167,12 +3147,10 @@
           gridSquare.animate({
             "fill-opacity": 0
           }, 2000);
-
         }
       }
     }
   };
-
 
   FeedbackGrid.prototype.updateFeedbackProgress = function() {
     var $feedbackProgressBar = $("#feedbackProgress"),
@@ -3204,9 +3182,7 @@
 
     $(".progress").show();
 
-
     totalGridPercentage = pct;
-
 
     if (pct >= progressBarTargetValue  && hasSeenGuidenceInfo === true) {
       $("#nextFeedbackStep, #finishFeedback").removeClass("disabled");
@@ -3221,7 +3197,6 @@
 
     this.percentageFeedbackText(pct);
     $feedbackProgressBar.width(pct + "%");
-
   };
 
   FeedbackGrid.prototype.percentageFeedbackText = function(pct) {
@@ -3238,9 +3213,7 @@
     $feedbackText.html(htmlString);
   };
 
-
   FeedbackGrid.prototype.checkBlankSquares = function() {
-
     var blankSquares = 0;
     $.each(feedbackData[step].info.squares, function(key, value) {
       if (value.answer === null) {
@@ -3248,12 +3221,9 @@
       }
     });
     return blankSquares;
-
   };
 
-
   FeedbackGrid.prototype.interactedBlanks = function() {
-
     var pathologists = feedbackData[step].info.squares;
     var feedbackSquares = this.feedbackObj.answer.squares;
     var _this = this;
@@ -3262,43 +3232,28 @@
     feedbackSquares.forEach(function(square, idx) {
       var isBlank = (pathologists[idx].answer === null);
 
-      // Loop through all of the items in the grid and find the ones which
-      // have been interacted with
-      //
-      //
-      var isInteracted = _this.tickCross.filter(function(sq) {
-                return sq["data-parent_id"] === square.id;
-              })[0] !== undefined;
-
+      // Loop through all of the items in the grid and find the ones which have been interacted with
+      var isInteracted =
+        _this.tickCross.filter(
+          function(sq) {
+            return sq["data-parent_id"] === square.id;
+          })[0] !== undefined
+      ;
       if (isBlank && isInteracted) {
         result++;
       }
     });
-
     return result;
-
   };
 
-
-  /*
-   *
-   * Modal
-   * =======================
-   *
-   *
-   *
-   */
-
-
+  // Modal
   function Modal() {
     this.step = -1;
-
   }
 
-
-  /*
-   Initialises the modal to open. We remove the functionaly to remove modal by clicking
-   the backdrop also we stop the slides from automatically sliding to next.
+  /**
+   * Initialises the modal to open. We remove the functionaly to remove modal by clicking
+   * the backdrop also we stop the slides from automatically sliding to next.
    */
 
   Modal.prototype.open = function(modall, goToStep) {
@@ -3315,19 +3270,14 @@
     });
 
     this.showStep(goToStep);
-
   };
-
 
   Modal.prototype.getCurrentStep = function() {
     return $(this.modal + " #" + this.step);
   };
 
-
   Modal.prototype.showStep = function(action) {
-
     $(this.modal + " #" + this.step).hide();
-
     if (typeof action == "number") {
       this.step = action;
     } else {
@@ -3354,8 +3304,6 @@
         currentModalCarouselSlides = currentModalStep + " .item";
 
     // If modal step has a carousel
-    //
-    //
     if ($(currentModalCarousel).length > 0) {
 
       console.log("HAS CAROUSEL");
@@ -3833,13 +3781,11 @@
 
       var nextBtn = document.getElementById("nextBtn");
       nextBtn.onclick = function() {
-
         modal.showStep('next');
       };
 
       var prevBtn = document.getElementById("prevBtn");
       prevBtn.onclick = function() {
-
         modal.showStep('prev');
       };
 
@@ -3996,21 +3942,16 @@
 
       $('.btn-answer').off('click').on('click', function() {
 
-        // Grab a new timestamp and find out the difference
-        // This is how long the user has been on the task for
-        // Then pass it into the answer
         var newTime = new Date(),
                 ms = newTime - oldTime,
                 x = ms / 1000,
                 seconds = secondsToString(x);
 
         // Get all value slider values
-
         var intensityValue = questions.intensitySlider.noUiSlider.get();
         var proportionValue = questions.proportionSlider.noUiSlider.get();
 
         // Switch intensity value to string
-
         if (intensityValue == 0) {
           intensityValue = "1+";
         } else if (intensityValue == 50) {
@@ -4092,11 +4033,11 @@
           loadUserProgress();
           $("#success").fadeIn(500).delay(1500).fadeOut();
           $("svg, .zoomContainer,.zoomWindowContainer").remove();
-//                    deferred.resolve();
+          deferred.resolve();
         });
       });
-      $('.noCancerBtn').off('click').on('click', function() {
 
+      $('.noCancerBtn').off('click').on('click', function() {
         // Grab a new timestamp and find out the difference
         // This is how long the user has been on the task for
         // Then pass it into the answer
@@ -4194,11 +4135,10 @@
   });
 
 
-  /*
-   *  Feedback function
-   *  =======================
-   *  This has multiple steps that include and init a new grid
-   *  we use this funciton to keep the progress through the steps
+  /**
+   * Feedback function
+   * This has multiple steps that include and init a new grid
+   * we use this funciton to keep the progress through the steps
    *
    */
 
@@ -4416,12 +4356,8 @@
       location.reload();
     }
 
-    /*
-     CLICK EVENTS
-     FOR FEEDBACK/PRACTISE SECTION
 
-     */
-
+    // Click events for feedback mechanic
     var nextFeedbackBtn = document.getElementById("nextFeedbackStep");
     nextFeedbackBtn.onclick = function() {
       if ($(this).hasClass("disabled")) return;
