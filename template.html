@@ -3928,12 +3928,12 @@
         // Possibley change - Steven
         $('.noCancerBtn').show();
 
-        // pybossa.saveTask(task.id, answer).done(function(data) {
-        //   loadUserProgress();
-        //   $("#success").fadeIn(500).delay(1500).fadeOut();
-        //   $("svg, .zoomContainer,.zoomWindowContainer").remove();
-        //   deferred.resolve();
-        // });
+        pybossa.saveTask(task.id, answer).done(function(data) {
+          loadUserProgress();
+          $("#success").fadeIn(500).delay(1500).fadeOut();
+          $("svg, .zoomContainer,.zoomWindowContainer").remove();
+          deferred.resolve();
+        });
       });
 
       /*
@@ -4008,18 +4008,17 @@
          */
 
         var checkSquaresForNoProgress = $('.grid-item-success').length === 0 && $('.grid-item-error').length === 0;
-
-//            if (checkSquaresForNoProgress) {
-//                modal.open('#skipSlideModal');
-//                zIndexChange.reduce();
-//            } else {
-//                pybossa.saveTask(task.id, answer).done(function(data) {
-//                    loadUserProgress();
-//                    $("#success").fadeIn(500).delay(1500).fadeOut();
-//                    $("svg, .zoomContainer,.zoomWindowContainer").remove();
-//                    deferred.resolve();
-//                });
-//            }
+        if (checkSquaresForNoProgress) {
+             modal.open('#skipSlideModal');
+             zIndexChange.reduce();
+        } else {
+            pybossa.saveTask(task.id, answer).done(function(data) {
+              loadUserProgress();
+              $("#success").fadeIn(500).delay(1500).fadeOut();
+              $("svg, .zoomContainer,.zoomWindowContainer").remove();
+              deferred.resolve();
+            });
+        }
 
         // Resets questions for next slide
         $('.prevSliderBtn').hide();
@@ -4028,13 +4027,6 @@
         $('.proportion-slider__container').hide();
         $('.nextSlideBtn').hide();
         $(questions.nextSliderButton).show();
-
-        pybossa.saveTask(task.id, answer).done(function(data) {
-          loadUserProgress();
-          $("#success").fadeIn(500).delay(1500).fadeOut();
-          $("svg, .zoomContainer,.zoomWindowContainer").remove();
-          deferred.resolve();
-        });
       });
 
       $('.noCancerBtn').off('click').on('click', function() {
