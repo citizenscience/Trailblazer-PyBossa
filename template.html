@@ -398,16 +398,20 @@
     z-index: 4 !important;
   }
 
-  #intensity-slider-pips {
+  #intensity-slider-pips, #feedback-intensity-slider-pips {
     margin-top: 10px;
     position: relative;
     height: 40px;
   }
 
-  #intensity-slider-pips > span {
+  #intensity-slider-pips > span, #feedback-intensity-slider-pips > span {
     position: absolute;
     font-size: 14px;
     color: rgb(153, 153, 153);
+  }
+
+  #feedback-intensity-slider-pips .intensity-slider-pips__moderate {
+    left: 45%;
   }
 
   .intensity-slider-pips__weak {
@@ -516,6 +520,155 @@
       </div>
     </div>
     <!-- Practice/Feedback Modal -->
+    <div id="feedbackTutorialOne" class="modal hide">
+      <!-- New feedback content -->
+      <div id="0" class="modal-body feedTutOne" style="display:none">
+        <div class="modal-image">
+          <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid.jpg" />
+        </div>
+        <div class="modal-info">
+          <h1>
+            Well done, let’s move on
+          </h1>
+          <h2>
+            Some cancer cells have had their “membranes” stained dark brown.
+          </h2>
+          <h2>
+            You can see dark brown lines around the blue centre of the cell.
+          </h2>
+          <h2>
+            Other cancer cells have not taken on any brown staining.
+          </h2>
+          <h2>
+            Their “membranes” have remained invisible. All you can see is the blue centres of the cells.
+          </h2>
+        </div>
+      </div>
+
+      <div id="1" class="modal-body feedTutOne" style="display:none">
+        <div class="modal-image">
+          <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid.jpg" />
+        </div>
+        <div class="modal-info">
+          <h1>
+            We have two questions
+          </h1>
+          <h2>
+            Can you estimate the amount of CANCER cells that are stained?
+          </h2>
+          <h2>
+            For example if all the CANCER cells are stained, that’s 100%. If only half the cancer cells are stained, that’s 50%.
+          </h2>
+          <h2>
+            We also want to know how well stained MOST of the stained cancer cells are.
+          </h2>
+          <h2>
+            For example are the membranes fully stained, partially stained or only faintly stained (we’ll explain this later).
+          </h2>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" style="display: none; margin-left: 10px;" class="btn btn-success pull-right feedbackContinue" data-dismiss="modal" aria-hidden="true">Continue</button>
+        <a id="feedbackPrevBtn" href="#" class="btn" style="display: none;">Previous</a>
+        <a id="feedbackNextBtn" href="#" class="btn btn-success">Next</a>
+      </div>
+    </div>
+    <div id="feedbackTutorialTwo" class="modal hide">
+      <!-- New feedback content -->
+      <div id="0" class="modal-body feedTutTwo" style="display:none">
+        <div class="modal-image">
+          <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid.jpg" />
+        </div>
+        <div class="modal-info">
+          <h1>
+            This is what you’ll need to do to analyse the next samples.
+          </h1>
+          <h2>
+            This time, you only need to click on the sections that contain cancer.
+          </h2>
+          <h2>
+            Use the reference images at the bottom to help.
+          </h2>
+          <h2>
+            Press “Next” to move on to the next question.
+          </h2>
+        </div>
+      </div>
+
+      <div id="1" class="modal-body feedTutTwo" style="display:none">
+        <div class="modal-image">
+          <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid.jpg" />
+        </div>
+        <div class="modal-info">
+          <h1>
+            Take a close look at the cancer cells
+          </h1>
+          <h2>
+            Try and estimate how many of them have got stained “membranes”.
+          </h2>
+          <h2>
+            Use the reference images at the bottom to help.
+          </h2>
+          <h2>
+            Remember, you only need to get within 15% of our experts’ answers.
+          </h2>
+          <h2>
+            Use the slider to record your answer.
+          </h2>
+        </div>
+      </div>
+      <div id="2" class="modal-body feedTutTwo" style="display:none">
+        <div class="modal-image">
+          <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid.jpg" />
+        </div>
+        <div class="modal-info">
+          <h1>
+            Take a close look at the stained cancer cells
+          </h1>
+          <h2>
+            Do you think MOST of the stained cancer cells are FULLY, PARTIALLY or FAINTLY stained?
+          </h2>
+          <ul>
+            <li>
+              FULLY – Even without zooming in, you can see dark brown lines that go all the way around the cell. In clumps this can look like chicken wire.
+            </li>
+            <li>
+              PARTIALLY – You can see dark brown lines around the cancer cells but when zoomed in, you see they do not go all the way around the cells.
+            </li>
+            <li>
+              FAINTLY – You can see brown lines  around the cells but they are only clear when you are zoomed in.
+            </li>
+          </ul>
+          <h2>
+            Use the reference images at the bottom to help.
+          </h2>
+          <h2>
+            Use the slider to record your answer.
+          </h2>
+        </div>
+      </div>
+      <div id="3" class="modal-body feedTutTwo" style="display:none">
+        <div class="modal-image">
+          <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid.jpg" />
+        </div>
+        <div class="modal-info">
+          <h1>
+            What if there are no cancer cells
+          </h1>
+          <h2>
+            We’ve got a button for that!
+          </h2>
+          <h2>
+            Just click the “No Cancer” button and you’ll move on to the next image.
+          </h2>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" style="display: none; margin-left: 10px; display: none;" class="btn btn-success pull-right feedbackContinueTwo" data-dismiss="modal" aria-hidden="true">Continue</button>
+        <a id="feedbackPrevBtnTwo" href="#" class="btn" style="display: none;">Previous</a>
+        <a id="feedbackNextBtnTwo" href="#" class="btn btn-success">Next</a>
+      </div>
+    </div>
     <div id="practiseModal" class="modal hide">
       <div id="0" class="modal-body" style="display:none">
         <div class="modal-image">
@@ -701,6 +854,7 @@
           <h2>Press Start to begin analysing!</h2>
         </div>
       </div>
+
       <div class="modal-footer">
         <button type="button" class="btn btn-default pull-right" id="backToPractiseBtn" data-dismiss="modal" aria-hidden="true">Continue</button>
         <button class="btn btn-primary" id="startMechanicBtn" data-dismiss="modal" aria-hidden="true" style="display: none;">
@@ -1312,7 +1466,7 @@
           </div>
           <div class="proportion-slider__container" style="display: none;">
             <h2>Select proportion of cancer cells that are stained.</h2>
-            <div id="proportion-slider"></div>
+            <div id="proportion-slider" class="proportion-slider"></div>
             <div class="proportion-slider__valueContainer">
               <div class="proportion-slider__valueText">Your value: </div> <div class="proportion-slider__value"></div>
             </div>
@@ -1373,11 +1527,24 @@
       </div>
       <!-- RIGHT FEEDBACK INFO -->
       <div class="span6 grid-info" id="feedbackZoomWindowLocation">
-        <div class="feedback-proportion-container">
+        <div class="feedback-intensity-container" style="display: none;">
           <!-- Insert content here -->
+          <div id="feedback-intensity-slider"></div>
+          <div id="feedback-intensity-slider-pips">
+            <span class="intensity-slider-pips__weak">Faint</span>
+            <span class="intensity-slider-pips__moderate">Partial</span>
+            <span class="intensity-slider-pips__strong">Fully</span>
+          </div>
         </div>
-        <div class="feedback-intensity-container">
+        <div class="feedback-proportion-container" style="display: none;">
           <!-- Insert content here -->
+          <div class="proportion-slider__container">
+            <h2>Select proportion of cancer cells that are stained.</h2>
+            <div id="feedback-proportion-slider"></div>
+            <div class="proportion-slider__valueContainer">
+              <div class="proportion-slider__valueText">Your value: </div> <div class="feedback-proportion-slider__value"></div>
+            </div>
+          </div>
         </div>
         <div class="feedback-grid-container">
           <h3>Click once to mark cancer cells in <b class="text-error">Red</b></h3>
@@ -1396,20 +1563,21 @@
         <hr>
         <div id="feedbackProgressText"></div>
         <h3><b>Click 'What's in this image' button</b>, to see what our experts said before practising on another slide</h3>
+        <div class="userCheckFeedbackProportion" style="display: none;"></div>
+        <div class="userCheckFeedbackIntensity" style="display: none;"></div>
         <div class="progress progress-success progress-striped" style="display:none;">
           <div class="bar" id="feedbackProgress"></div>
         </div>
         <div class="grid-info-buttons clearfix">
-          <a class="btn btn-success disabled" id="checkMyWorkBtn" style="display:none;">
+          <a class="btn btn-success " id="checkMyWorkBtn" style="display:none;">
             Check my work
           </a>
           <button class="btn btn-answer" id="feedbackInfoBtn" style="margin-left: 10px;">What's in this image</button>
-          <a class="btn disabled" id="nextFeedbackStep" style="margin-left: 10px;">
+          <a class="btn disabled pull-right" id="nextFeedbackStep" style="margin-left: 10px;">
             Next slide
           </a>
-          <a class="btn disabled" id="feedbackNextQuestion" style="margin-left: 10px;">
-            Next Question
-          </a>
+          <button class="btn btn-success pull-right" id="nextFeedbackQuestion" style="margin-left: 10px; display: none;">Next</button>
+          <button class="btn btn-success pull-right" id="previousFeedbackQuestion" style="margin-left: 10px; display: none;">Back</button>
           <a class="btn disabled" id="finishFeedback" style="display:none; margin-left: 10px;">
             Next
           </a>
@@ -1557,164 +1725,164 @@
                  ]
              }
        },
-       {
-             "info": {
-                 "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/EGFR-19.jpg",
-                 "proportion": "100",
-                 "intensity": "2+",
-              "squares": [
-                  {
-                 "column": 0,
-                 "answer": null,
-                 "row": 0
-               }, {
-                 "column": 1,
-                 "answer": null,
-                 "row": 0
-               }, {
-                 "column": 2,
-                 "answer": null,
-                 "row": 0
-               }, {
-                 "column": 3,
-                 "answer": null,
-                 "row": 0
-               }, {
-                 "column": 4,
-                 "answer": null,
-                 "row": 0
-               }, {
-                 "column": 5,
-                 "answer": null,
-                 "row": 0
-               },
-                 {
-                   "column": 0,
-                   "answer": false,
-                   "row": 1
-                 }, {
-                   "column": 1,
-                   "answer": true,
-                   "row": 1
-                 }, {
-                   "column": 2,
-                   "answer": true,
-                   "row": 1
-                 }, {
-                   "column": 3,
-                   "answer": true,
-                   "row": 1
-                 }, {
-                   "column": 4,
-                   "answer": true,
-                   "row": 1
-                 }, {
-                   "column": 5,
-                   "answer": null,
-                   "row": 1
-                 },
-                 {
-                   "column": 0,
-                   "answer": false,
-                   "row": 2
-                 }, {
-                   "column": 1,
-                   "answer": true,
-                   "row": 2
-                 }, {
-                   "column": 2,
-                   "answer": true,
-                   "row": 2
-                 }, {
-                   "column": 3,
-                   "answer": true,
-                   "row": 2
-                 }, {
-                   "column": 4,
-                   "answer": true,
-                   "row": 2
-                 }, {
-                   "column": 5,
-                   "answer": true,
-                   "row": 2
-                 },
-                 {
-                   "column": 0,
-                   "answer": false,
-                   "row": 3
-                 }, {
-                   "column": 1,
-                   "answer": true,
-                   "row": 3
-                 }, {
-                   "column": 2,
-                   "answer": true,
-                   "row": 3
-                 }, {
-                   "column": 3,
-                   "answer": true,
-                   "row": 3
-                 }, {
-                   "column": 4,
-                   "answer": true,
-                   "row": 3
-                 }, {
-                   "column": 5,
-                   "answer": true,
-                   "row": 3
-                 },
-                 {
-                   "column": 0,
-                   "answer": false,
-                   "row": 4
-                 }, {
-                   "column": 1,
-                   "answer": true,
-                   "row": 4
-                 }, {
-                   "column": 2,
-                   "answer": true,
-                   "row": 4
-                 }, {
-                   "column": 3,
-                   "answer": true,
-                   "row": 4
-                 }, {
-                   "column": 4,
-                   "answer": true,
-                   "row": 4
-                 }, {
-                   "column": 5,
-                   "answer": null,
-                   "row": 4
-                 },
-                 {
-                   "column": 0,
-                   "answer": null,
-                   "row": 5
-                 }, {
-                   "column": 1,
-                   "answer": false,
-                   "row": 5
-                 }, {
-                   "column": 2,
-                   "answer": true,
-                   "row": 5
-                 }, {
-                   "column": 3,
-                   "answer": true,
-                   "row": 5
-                 }, {
-                   "column": 4,
-                   "answer": null,
-                   "row": 5
-                 }, {
-                   "column": 5,
-                   "answer": null,
-                   "row": 5
-                 }]
-             }
-       },
+      //  {
+      //        "info": {
+      //            "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/EGFR-19.jpg",
+      //            "proportion": "100",
+      //            "intensity": "2+",
+      //         "squares": [
+      //             {
+      //            "column": 0,
+      //            "answer": null,
+      //            "row": 0
+      //          }, {
+      //            "column": 1,
+      //            "answer": null,
+      //            "row": 0
+      //          }, {
+      //            "column": 2,
+      //            "answer": null,
+      //            "row": 0
+      //          }, {
+      //            "column": 3,
+      //            "answer": null,
+      //            "row": 0
+      //          }, {
+      //            "column": 4,
+      //            "answer": null,
+      //            "row": 0
+      //          }, {
+      //            "column": 5,
+      //            "answer": null,
+      //            "row": 0
+      //          },
+      //            {
+      //              "column": 0,
+      //              "answer": false,
+      //              "row": 1
+      //            }, {
+      //              "column": 1,
+      //              "answer": true,
+      //              "row": 1
+      //            }, {
+      //              "column": 2,
+      //              "answer": true,
+      //              "row": 1
+      //            }, {
+      //              "column": 3,
+      //              "answer": true,
+      //              "row": 1
+      //            }, {
+      //              "column": 4,
+      //              "answer": true,
+      //              "row": 1
+      //            }, {
+      //              "column": 5,
+      //              "answer": null,
+      //              "row": 1
+      //            },
+      //            {
+      //              "column": 0,
+      //              "answer": false,
+      //              "row": 2
+      //            }, {
+      //              "column": 1,
+      //              "answer": true,
+      //              "row": 2
+      //            }, {
+      //              "column": 2,
+      //              "answer": true,
+      //              "row": 2
+      //            }, {
+      //              "column": 3,
+      //              "answer": true,
+      //              "row": 2
+      //            }, {
+      //              "column": 4,
+      //              "answer": true,
+      //              "row": 2
+      //            }, {
+      //              "column": 5,
+      //              "answer": true,
+      //              "row": 2
+      //            },
+      //            {
+      //              "column": 0,
+      //              "answer": false,
+      //              "row": 3
+      //            }, {
+      //              "column": 1,
+      //              "answer": true,
+      //              "row": 3
+      //            }, {
+      //              "column": 2,
+      //              "answer": true,
+      //              "row": 3
+      //            }, {
+      //              "column": 3,
+      //              "answer": true,
+      //              "row": 3
+      //            }, {
+      //              "column": 4,
+      //              "answer": true,
+      //              "row": 3
+      //            }, {
+      //              "column": 5,
+      //              "answer": true,
+      //              "row": 3
+      //            },
+      //            {
+      //              "column": 0,
+      //              "answer": false,
+      //              "row": 4
+      //            }, {
+      //              "column": 1,
+      //              "answer": true,
+      //              "row": 4
+      //            }, {
+      //              "column": 2,
+      //              "answer": true,
+      //              "row": 4
+      //            }, {
+      //              "column": 3,
+      //              "answer": true,
+      //              "row": 4
+      //            }, {
+      //              "column": 4,
+      //              "answer": true,
+      //              "row": 4
+      //            }, {
+      //              "column": 5,
+      //              "answer": null,
+      //              "row": 4
+      //            },
+      //            {
+      //              "column": 0,
+      //              "answer": null,
+      //              "row": 5
+      //            }, {
+      //              "column": 1,
+      //              "answer": false,
+      //              "row": 5
+      //            }, {
+      //              "column": 2,
+      //              "answer": true,
+      //              "row": 5
+      //            }, {
+      //              "column": 3,
+      //              "answer": true,
+      //              "row": 5
+      //            }, {
+      //              "column": 4,
+      //              "answer": null,
+      //              "row": 5
+      //            }, {
+      //              "column": 5,
+      //              "answer": null,
+      //              "row": 5
+      //            }]
+      //        }
+      //  },
        {
              "info": {
                  "imgNumber": "//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/EGFR-24.jpg",
@@ -2544,7 +2712,8 @@
       });
 
       this.proportionSlider.noUiSlider.on('update', function(values, handle) {
-        $('.proportion-slider__value').text(values[handle]);
+        var roundedValue = Math.floor(values[handle]);
+        $('.proportion-slider__value').text(roundedValue);
         if(values[handle] == 0.00 && $proportionSlider.is(':visible')) {
           $(questions.nextSliderButton).hide();
           $nextImageButton.show();
@@ -2842,11 +3011,6 @@
 
   /**
    * FeedbackGrid Constructor function
-   * =======================
-   * Its a bit of a miss match of vanilla JS and jQuery...sorry,
-   * wanted to do everything in JS but for speed i did jQuery
-   * =======================
-   *
    *
    */
 
@@ -2860,6 +3024,8 @@
     };
     this.gridSquares = this.feedbackObj.answer.squares;
     this.zoomLensClickEvent();
+    this.initFeedbackIntensitySlider();
+    this.initFeedbackProportionSlider();
   }
 
   /*
@@ -2984,8 +3150,133 @@
     return activeSquare;
   };
 
-  FeedbackGrid.prototype.checkIntensityAnswer = function() {
+  FeedbackGrid.prototype.initFeedbackIntensitySlider = function() {
+    var target = document.getElementById('feedback-intensity-slider');
+    // Check target for existing slider, if so reset existing slider, if not create slider
+    if (target.className.length > 0) {
+      // Reset sliders here
+    } else {
+      noUiSlider.create(target, {
+        start: [ 0 ],
+        snap: true,
+        connect: "lower",
+        range: {
+          min: 0,
+          '50%': 50,
+          max: 100
+        }
+      });
+      target.noUiSlider.on('update', function(values, handle) {
+        if(values[handle] == 0.00) {
+          questions.removeActive();
+          questions.addActive('.intensity-slider-pips__weak', 'word');
+        } else if(values[handle] == 50.00) {
+          questions.removeActive();
+          questions.addActive('.intensity-slider-pips__moderate', 'word');
+        } else {
+          questions.removeActive();
+          questions.addActive('.intensity-slider-pips__strong', 'word');
+        }
+      });
+    }
+  };
 
+  FeedbackGrid.prototype.initFeedbackProportionSlider = function() {
+    var target = document.getElementById('feedback-proportion-slider');
+    // Check target for existing slider, if so reset existing slider, if not create slider
+    if (target.className.length > 0) {
+      // Reset sliders here
+    } else {
+      noUiSlider.create(target, {
+        start: [ 0 ],
+        snap: true,
+        connect: "lower",
+        // Set custom range.
+        range: {
+          min: 0,
+          '5%': 5,
+          '10%': 10,
+          '15%': 15,
+          '20%': 20,
+          '25%': 25,
+          '30%': 30,
+          '35%': 35,
+          '40%': 40,
+          '45%': 45,
+          '50%': 50,
+          '55%': 55,
+          '60%': 60,
+          '65%': 65,
+          '70%': 70,
+          '75%': 75,
+          '80%': 80,
+          '85%': 85,
+          '90%': 90,
+          '95%': 95,
+          max: 100
+        },
+        pips: {
+          mode: 'positions',
+          values: [0, 20, 40, 60, 80, 100],
+          density: 3
+        }
+      });
+      target.noUiSlider.on('update', function(values, handle){
+          var roundedValue = Math.floor(values[handle]);
+          $('.feedback-proportion-slider__value').text(roundedValue + "%");
+      });
+    }
+  };
+
+  FeedbackGrid.prototype.checkIntensityAnswer = function() {
+    var answer = feedbackData[step].info.intensity;
+    var getValue = $('#feedback-intensity-slider')[0].noUiSlider.get();
+    var roundValue = Math.floor(getValue);
+    var fully = 100, partially = 50, faintly = 0;
+    var answerCorrect;
+
+    if (roundValue === fully) {
+      roundValue = "3+";
+    } else if (roundValue === partially) {
+      roundValue = "2+";
+    } else if (roundValue === faintly) {
+      roundValue = "1+";
+    }
+
+    if (roundValue === answer) {
+      answerCorrect = true;
+    } else {
+      answerCorrect = false;
+    }
+
+    if (step === 4 || step === 5 || step === 6 ) {
+      return answer;
+    } else {
+      return answer;
+    }
+  };
+
+  FeedbackGrid.prototype.checkProportionAnswer = function(which) {
+    var parseAnswer = parseInt(feedbackData[step].info.proportion);
+    var answer = parseAnswer;
+    var getValue = $('#feedback-proportion-slider')[0].noUiSlider.get();
+    var roundValue = Math.floor(getValue);
+    var howClose;
+
+    if (roundValue === answer) {
+      howClose = "Exact";
+    } else if (roundValue <= answer + 10 && roundValue >= answer - 10) {
+      howClose = "Good";
+    } else if (roundValue <= answer + 20 && roundValue >= answer - 20) {
+      howClose = "Not Bad";
+    } else {
+      howClose = "Bad";
+    }
+    if (which === "one") {
+      return answer;
+    } else if (which === "two") {
+      return howClose;
+    }
   };
 
   /**
@@ -3126,7 +3417,6 @@
   // Displays the pathologist tick's and cross's by changing the opacity of the square
   FeedbackGrid.prototype.showMyAnalysis = function() {
     this.updateFeedbackProgress();
-
     var feedbackObjAnswer = this.feedbackObj.answer;
     var crosses = [];
 
@@ -3324,12 +3614,7 @@
 
 
       // If the carousel has not been opened before
-      //
-      //
       if (!$(currentModalCarousel).data("carousel")) {
-
-        console.log("HASNT BEEN OPENED BEFORE");
-
         $(currentModalCarousel).carousel({
           interval: false
         });
@@ -3633,7 +3918,6 @@
    *
    *
    */
-
 
   pybossa.taskLoaded(function(task, deferred) {
 
@@ -4136,11 +4420,80 @@
 
   var step = -1;
 
+  // Steven - Marks what i'm currently working on.
+  var $proportionContainer = $('.feedback-proportion-container');
+  var $intensityContainer = $('.feedback-intensity-container');
+  var $gridContainer = $('.feedback-grid-container');
+  var $nextFeedbackQuestion = $('#nextFeedbackQuestion');
+  var $nextFeedbackStep = $('#nextFeedbackStep');
+  var $checkMyWorkBtn = $('#checkMyWorkBtn');
+  var $gridFeedbackArea = $('#feedbackProgressText');
+  var $userFeedbackAreaProportion = $('.userCheckFeedbackProportion');
+  var $userFeedbackAreaIntensity = $('.userCheckFeedbackIntensity');
+
+  var feedbackNextQuestionButton = document.getElementById('nextFeedbackQuestion');
+  feedbackNextQuestionButton.onclick = function() {
+    if (step === 4 || step === 5 || step === 6) {
+      $userFeedbackAreaProportion.hide();
+      $userFeedbackAreaIntensity.show();
+      $proportionContainer.hide();
+      $intensityContainer.show();
+      $(this).hide();
+      $nextFeedbackStep.show();
+    } else {
+      if ($gridContainer.is(':visible')) {
+        questions.unFocus('grid-item');
+        $userFeedbackAreaProportion.show();
+        $gridFeedbackArea.hide();
+        $gridContainer.hide();
+        $proportionContainer.show();
+      } else if ($proportionContainer.is(':visible')) {
+        $proportionContainer.hide();
+        $userFeedbackAreaProportion.hide();
+        $userFeedbackAreaIntensity.show();
+        $(this).hide();
+        $intensityContainer.show();
+        $nextFeedbackStep.show();
+      }
+    }
+    $(feedbackPreviousQuestionButton).show();
+  };
+
+  var feedbackPreviousQuestionButton = document.getElementById('previousFeedbackQuestion');
+  feedbackPreviousQuestionButton.onclick = function() {
+    if (step === 4 || step === 5 || step === 6) {
+      $proportionContainer.show();
+      $userFeedbackAreaProportion.show();
+      $userFeedbackAreaIntensity.hide();
+      $intensityContainer.hide();
+      $(this).hide();
+      $nextFeedbackStep.hide();
+      $(feedbackNextQuestionButton).show();
+    } else {
+      if ($intensityContainer.is(':visible')) {
+        $proportionContainer.show();
+        $intensityContainer.hide();
+        $(feedbackNextQuestionButton).show();
+        $userFeedbackAreaProportion.show();
+        $userFeedbackAreaIntensity.hide();
+        $nextFeedbackStep.hide();
+      } else if ($proportionContainer.is(':visible')) {
+        $(this).hide();
+        $userFeedbackAreaProportion.hide();
+        $gridFeedbackArea.show();
+        $proportionContainer.hide();
+        questions.reFocus('grid-item');
+        $gridContainer.show();
+      }
+    }
+  };
+
   function showFeedbackStep(action) {
     $("svg").remove();
     $(".feedback-img-polaroid").remove();
     $(".zoomContainer").remove();
     $(".zoomWindowContainer").remove();
+    $(feedbackPreviousQuestionButton).hide();
 
     if (action == 'next') {
       step += 1;
@@ -4169,23 +4522,159 @@
 
     $(img).load(function() {
       feedbackGrid.createGrid("feedbackCanvas");
-      zoom.addZoom($(".feedback-img-polaroid"));
+      // zoom.addZoom($(".feedback-img-polaroid"));
+      $(".feedback-img-polaroid").elevateZoom({
+        zoomWindowPosition: "feedbackZoomWindowLocation",
+        lensFadeIn: 500,
+        lensFadeOut: 500,
+        zoomWindowHeight: 460,
+        zoomWindowWidth: 460,
+        cursor: "pointer"
+      });
     });
 
-    if (step >= 2) {
-      $("#nextFeedbackStep").addClass("disabled");
-      $("#checkMyWorkBtn").show().addClass("disabled");
+    // if (step >= 2) {
+    //   $("#nextFeedbackStep").addClass("disabled");
+    //   $("#checkMyWorkBtn").show().addClass("disabled");
+    // }
+
+    // if (step === 2) { // if is step 3
+    //   $("#practiseModal .modal-body").hide();
+    //   modal.open("#practiseModal", 5);
+    //   zIndexChange.reduce();
+    // }
+
+    var $continueBtn = $('.feedbackContinue');
+    var $targetClass = $('.feedTutOne');
+    var $targetClassTwo = $('.feedTutTwo');
+    var $feedbackContinueTwo = $('.feedbackContinueTwo');
+    var currentTutSlide = 0;
+
+    // Reset feedback area for each question.
+    $userFeedbackAreaProportion.children('h3').remove();
+    $userFeedbackAreaIntensity.children('h3').remove();
+    $('#feedback-intensity-slider')[0].noUiSlider.set(0);
+    $('#feedback-proportion-slider')[0].noUiSlider.set(0);
+
+    var feedbackNextButton = document.getElementById('feedbackNextBtn');
+    feedbackNextButton.onclick = function() {
+      if ($($targetClass[0]).is(':visible')) {
+        $($targetClass[0]).hide();
+        $($targetClass[1]).show();
+        $(this).hide();
+        $(feedbackPreviousButton).show();
+        $continueBtn.show();
+      } else {
+        return;
+      }
+    };
+    var feedbackPreviousButton = document.getElementById('feedbackPrevBtn');
+    feedbackPreviousButton.onclick = function() {
+      if ($($targetClass[1]).is(':visible')) {
+        $($targetClass[1]).hide();
+        $($targetClass[0]).show();
+        $(this).hide();
+        $(feedbackNextButton).show();
+        $continueBtn.hide();
+      } else {
+        return;
+      }
+    };
+    var feedbackNextButtonTwo = document.getElementById('feedbackNextBtnTwo');
+    feedbackNextButtonTwo.onclick = function() {
+      if (currentTutSlide === 0) {
+        $(feedbackPreviousButtonTwo).show();
+      }
+      if (currentTutSlide === 2) {
+        $feedbackContinueTwo.show();
+        $(this).hide();
+      }
+      if (currentTutSlide === 3) {
+        return;
+      } else {
+        $($targetClassTwo[currentTutSlide]).hide();
+        currentTutSlide += 1;
+        $($targetClassTwo[currentTutSlide]).show();
+      }
+
+      // if ($($targetClassTwo[0]).is(':visible')) {
+      //   $($targetClassTwo[0]).hide();
+      //   $($targetClassTwo[1]).show();
+      //   $(this).hide();
+      //   $(feedbackPreviousButton).show();
+      //   $continueBtn.show();
+      // } else {
+      //   return;
+      // }
+    };
+    var feedbackPreviousButtonTwo = document.getElementById('feedbackPrevBtnTwo');
+    feedbackPreviousButtonTwo.onclick = function() {
+      if (currentTutSlide === 3) {
+        $(feedbackNextBtnTwo).show();
+        $feedbackContinueTwo.hide();
+      }
+      if (currentTutSlide === 1) {
+        $(this).hide();
+      }
+      if (currentTutSlide === 0) {
+        return;
+      } else {
+        $($targetClassTwo[currentTutSlide]).hide();
+        currentTutSlide -= 1;
+        $($targetClassTwo[currentTutSlide]).show();
+      }
+
+      // if ($($targetClassTwo[1]).is(':visible')) {
+      //   $(this).hide();
+      //   $(feedbackNextButton).show();
+      //   $continueBtn.hide();
+      // } else {
+      //   return;
+      // }
+    };
+
+    if (step === 4) {
+      // Show second round Tutorial
+      $("#practiseModal .modal-body").hide();
+      modal.open("#feedbackTutorialOne", 0);
+      zIndexChange.reduce();
     }
 
-    if (step === 2) { // if is step 3
+    // Default
+    $gridContainer.show();
+    $intensityContainer.hide();
+    $proportionContainer.hide();
+
+    if (step === 4 || step === 5 || step === 6) {
+      $gridContainer.hide();
+      $proportionContainer.show();
+      $intensityContainer.hide();
+      $nextFeedbackQuestion.show();
+      $nextFeedbackStep.hide();
+      $checkMyWorkBtn.show();
+    }
+
+    if (step === 7) {
+      // Show second round Tutorial
       $("#practiseModal .modal-body").hide();
-      modal.open("#practiseModal", 5);
+      modal.open("#feedbackTutorialTwo", 0);
       zIndexChange.reduce();
+    }
+
+    if (step === 7 || step === 8 || step === 9 || step === 10) {
+      $proportionContainer.hide();
+      $intensityContainer.hide();
+      $nextFeedbackQuestion.show();
+      $nextFeedbackStep.hide();
     }
 
     var checkMyWork = document.getElementById("checkMyWorkBtn");
     checkMyWork.onclick = function() {
       if ($(this).hasClass("disabled")) return;
+
+      // Reset feedback area for each question.
+      $userFeedbackAreaProportion.children('h3').remove();
+      $userFeedbackAreaIntensity.children('h3').remove();
 
       if (totalGridPercentage >=  progressBarTargetValue) {
         $("#nextFeedbackStep").removeClass("disabled");
@@ -4195,7 +4684,121 @@
 
       //$(".taskTitle,.taskSubTitle, .taskParagraph ").hide();
       //$("#" + "feedbackStep" + step + " .taskFeedback").show();
-      feedbackGrid.showMyAnalysis();
+
+      if ($gridContainer.is(':visible')) {
+        feedbackGrid.showMyAnalysis();
+      } else if ($proportionContainer.is(':visible')) {
+        var exact = "Exact", good = "Good", notBad = "Not Bad", bad = "Bad";
+        if (step === 4 || step === 5 || step === 6) {
+          var userAnswerCheck = feedbackGrid.checkProportionAnswer("one");
+          var expertsText = "Our experts thought " + userAnswerCheck + "%" + " of the cancer cells are stained";
+          var expertsTextCont = $('<h3>');
+          var userAnswerLowest = userAnswerCheck - 15;
+          var userAnswerHighest = userAnswerCheck + 15;
+          // Check if breaks 0 - 100, set to either 0 or 100 if so.
+          if (userAnswerLowest < 0) {
+            userAnswerLowest = 0;
+          }
+          if (userAnswerHighest > 100) {
+            userAnswerHighest = 100;
+          }
+          var userText = "You only need to be within 15% of what our experts thought. So any guess between " + userAnswerLowest + "% and " + userAnswerHighest + "% is correct.";
+          var userTextCont = $('<h3>');
+
+          expertsTextCont.append(expertsText);
+          userTextCont.append(userText);
+          $userFeedbackAreaProportion.append(expertsTextCont, userTextCont);
+          $userFeedbackAreaProportion.show();
+
+        } else {
+          var userAnswerCheck = feedbackGrid.checkProportionAnswer("one");
+          var getValue = $('#feedback-proportion-slider')[0].noUiSlider.get();
+          var roundValue = Math.floor(getValue);
+          var expertsText = "Our experts thought " + userAnswerCheck + "%" + " of the cancer cells are stained";
+          var expertsTextCont = $('<h3>');
+          var userAnswerLowest = userAnswerCheck - 15;
+          var userAnswerHighest = userAnswerCheck + 15;
+          var userText;
+          // Check if breaks 0 - 100, set to either 0 or 100 if so.
+          if (userAnswerLowest < 0) {
+            userAnswerLowest = 0;
+          }
+          if (userAnswerHighest > 100) {
+            userAnswerHighest = 100;
+          }
+
+          if (roundValue === userAnswerCheck || roundValue <= userAnswerHighest && roundValue >= userAnswerLowest) {
+            userText = "And your answer " + roundValue + "% was a good enough match.";
+          } else {
+            userText = "You didn’t quite match our experts. <br> Move the mouse over the image to look at it in more detail. <br> Remember, we’re only interested in the cancer cells.";
+          }
+
+          var userTextCont = $('<h3>');
+
+          expertsTextCont.append(expertsText);
+          userTextCont.append(userText);
+          $userFeedbackAreaProportion.append(expertsTextCont, userTextCont);
+          $userFeedbackAreaProportion.show();
+        }
+      } else if ($intensityContainer.is(':visible')) {
+        if (step === 4 || step === 5 || step === 6) {
+          var userAnswerCheck = feedbackGrid.checkIntensityAnswer();
+          var feedbackText;
+          if (userAnswerCheck === "3+") {
+            userAnswerCheck = "FULLY";
+            feedbackText = "Even without zooming in, you can see dark brown lines forming full circles, diamonds or hexagons around the cells. <br> Zoom in and you might see the “chicken wire” effect. <br> You might also see some background brown staining. Ignore this. You are looking for the brown lines of the cell membrane (they will be invisible if they are not stained).";
+          } else if (userAnswerCheck === "2+"){
+            userAnswerCheck = "PARTIALLY";
+            feedbackText = "They thought you could see dark brown lines but zooming in reveals most were not forming complete circuits around the cells. <br> Don’t worry if you didn’t agree. Sometimes it’s just a matter of opinion. <br> You might also see some cloudy, background bstaining. Ignore this. You are looking for the brown lines of the cell membrane.";
+          } else if (userAnswerCheck === "1+") {
+            userAnswerCheck = "FAINTLY";
+            feedbackText = "They thought you have to zoom in to see the brown lines around the cancer cells. <br> Don’t worry if you thought this might be PARTIAL staining. Sometimes it’s just a matter of opinion. <br> You might also see some cloudy, background staining. Ignore this. You are looking for the brown lines of the cell membrane";
+          }
+          var expertsText = "Our experts thought MOST of the stained cancer cells had " + userAnswerCheck + " stained “membranes”";
+          var expertsTextCont = $('<h3>');
+          var feedbackCont = $('<h3>');
+          feedbackCont.append(feedbackText);
+          expertsTextCont.append(expertsText);
+          $userFeedbackAreaIntensity.append(expertsTextCont, feedbackCont);
+          $userFeedbackAreaIntensity.show();
+        } else {
+          var userAnswerCheck = feedbackGrid.checkIntensityAnswer();
+          var feedbackText;
+          var getValue = $('#feedback-intensity-slider')[0].noUiSlider.get();
+          var roundValue = Math.floor(getValue);
+          var fully = 100, partially = 50, faintly = 0;
+          debugger;
+
+          if (roundValue === fully) {
+            roundValue = "3+";
+          } else if (roundValue === partially) {
+            roundValue = "2+";
+          } else if (roundValue === faintly) {
+            roundValue = "1+";
+          }
+
+          if (userAnswerCheck === roundValue) {
+            feedbackText = "Well Done, you matched them exactly."
+          } else {
+            feedbackText = "You didn’t quite match our experts, they thought you could see dark brown lines go all the way around the cells even without zooming in. <br> But don’t worry if you got it wrong. This can be tricky and often just a matter of opinion";
+          }
+          // Convert expert text.
+          if (userAnswerCheck === "1+") {
+            userAnswerCheck = "FAINTLY";
+          } else if (userAnswerCheck === "2+") {
+            userAnswerCheck = "PARTIALLY";
+          } else if (userAnswerCheck === "3+") {
+            userAnswerCheck = "FULLY";
+          }
+          var expertsText = "Our experts thought MOST of the stained cancer cells had " + userAnswerCheck + " stained “membranes”";
+          var expertsTextCont = $('<h3>');
+          var feedbackCont = $('<h3>');
+          feedbackCont.append(feedbackText);
+          expertsTextCont.append(expertsText);
+          $userFeedbackAreaIntensity.append(expertsTextCont, feedbackCont);
+          $userFeedbackAreaIntensity.show();
+        }
+      }
     };
 
     var lastFeedbackStep = feedbackData.length;
@@ -4206,6 +4809,7 @@
 
     $("#feedbackStep" + step).show();
     $("#feedbackImageNumber").text(step + 1);
+
   }
 
   /*
@@ -4363,7 +4967,6 @@
     var feedbackInfoBtn = document.getElementById("feedbackInfoBtn");
     feedbackInfoBtn.onclick = function() {
       zIndexChange.reduce();
-
       $("#practiseModal .modal-body").hide();
 
       var annotatedImage = "#practiseModal" + " #" + step + " .annotatedImage";
@@ -4376,6 +4979,7 @@
       $('.zoomWindowContainer').remove();
 
       var practiseGridInfo = "annotatedImageZoomArea" + step;
+
       $(annotatedImage).elevateZoom({
         zoomWindowPosition: practiseGridInfo,
         lensFadeIn: 500,
