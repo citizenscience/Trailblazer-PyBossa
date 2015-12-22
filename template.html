@@ -419,7 +419,7 @@
   }
 
   .intensity-slider-pips__moderate {
-    left: 48%;
+    left: 45%;
   }
 
   .intensity-slider-pips__strong {
@@ -554,17 +554,33 @@
             We have two questions
           </h1>
           <h2>
-            Can you estimate the amount of CANCER cells that are stained?
+            Can you estimate the proportion of CANCER cells that are stained?
           </h2>
           <h2>
             For example if all the CANCER cells are stained, that’s 100%. If only half the cancer cells are stained, that’s 50%.
           </h2>
           <h2>
-            We also want to know how well stained MOST of the stained cancer cells are.
+            We also want to know how intensely stained MOST of the stained cancer cells are.
           </h2>
           <h2>
             For example are the membranes fully stained, partially stained or only faintly stained (we’ll explain this later).
           </h2>
+        </div>
+      </div>
+      <div id="1" class="modal-body feedTutOne" style="display:none">
+        <div class="modal-image">
+          <img src="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/tutorial/lung-egfr-gt-various-stained-images.jpg" />
+        </div>
+        <div class="modal-info">
+          <h1>
+            Here’s what we mean by FULLY, PARTIALLY or FAINTLY
+          </h1>
+          <ul>
+            <li>FULLY – Even without zooming in, you can see dark brown lines that go all the way around the cell. In clumps this can look like chicken wire.</li>
+            <li>PARTIAL – You can see dark brown lines around the cancer cells but when zoomed in, you see they do not go all the way around the cells.</li>
+            <li>FAINT – You can see brown lines  around the cells but they are only clear when you are zoomed in.</li>
+          </ul>
+          <h3>Let’s try with some real images.</h3>
         </div>
       </div>
       <div class="modal-footer">
@@ -653,7 +669,7 @@
         </div>
         <div class="modal-info">
           <h1>
-            What if there are no cancer cells
+            What if there are no cancer cells?
           </h1>
           <h2>
             We’ve got a button for that!
@@ -766,19 +782,19 @@
         </div>
         <div id="annotatedImageZoomArea3" class="modal-info">
           <h1>
-            Most of the cancer cells are in the right half of this image.
+            There are lots of different cell types in this image.
           </h1>
-          <ul>
-            <li>The cells are <b>mottled</b> and all <b>different shapes and sizes</b></li>
-            <li>They’ve formed an <b>unorganised, sprawling mass</b></li>
-            <li>In this case they have strongly marked brown edges</li>
-          </ul>
           <h2>
-            The pale regions are <b class="text-success">non-cancer</b>; look for the stromal cells and blood cells.
+            …but none of them are <b class="text-error">cancer</b>.
           </h2>
           <h3>
-            Hover your mouse over the image to take a closer look.
+            The most common <b class="text-success">non-cancer</b> cells in this image are:
           </h3>
+          <ul>
+            <li><b>Longer</b> and <b>thinner</b> blue stromal cells</li>
+            <li><b>Small, dark blue, round</b> cells, which are blood cells</li>
+            <li><b>Thin strands</b> of healthy, blue and brown lung cells around the airways (white spaces).</li>
+          </ul>
         </div>
       </div>
 
@@ -826,7 +842,31 @@
       </div>
 
       <!-- SUMMARY -->
-      <div id="6" class="modal-body">
+      <div id="19" class="modal-body">
+        <div class="modal-image">
+          <img src="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/tutorial/lung-egfr-gt-05-poor-quality-example.jpg" alt="" />
+        </div>
+        <div class="modal-info">
+          <h1>
+            What if you can't analyse an image?
+          </h1>
+          <h2>
+            We have included a <b>“Skip”</b> button in the analysis. Use this and tell us why. It could be because:
+          </h2>
+          <ul>
+            <li>
+              It is completely blank
+            </li>
+            <li>
+              It is a poor quality image
+            </li>
+            <li>
+              It is too difficult to tell the difference between cancer cells and non-cancer cells
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div id="20" class="modal-body">
         <div class="modal-image">
           <img class="annotatedImage" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/26-cancer.png" data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/26-cancer-outline@2x-min.png" alt="" />
         </div>
@@ -855,15 +895,139 @@
         </div>
       </div>
 
+      <div id="7" class="modal-body" style="display:none">
+        <div class="modal-image">
+          <img class="annotatedImage" src="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/tutorial/lung-egfr-gt-18-cancer-area.jpg" data-zoom-image="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/tutorial/lung-egfr-gt-18-cancer-outline.jpg" alt="" />
+        </div>
+        <div id="annotatedImageZoomArea4" class="modal-info">
+          <h1>
+            We’ve outlined the cancer cells in <b class="text-error">red</b>
+          </h1>
+          <ul>
+            <li>
+              They’re mostly <b>large</b>
+            </li>
+            <li>
+              The shape and size of each cell is very different from the others
+            </li>
+            <li>
+              They’ve formed uneven, overcrowded, lumpy rings and chains
+            </li>
+          </ul>
+          <h2>H1 Everything else is <b class="text-success">non-cancer</b> cells.</h2>
+          <ul>
+            They include:
+            <li>
+              Longer and thinner blue stromal cells.
+            </li>
+            <li>
+              Small, dark blue and round cells, which are blood cells.
+            </li>
+          </ul>
+          <h3>Hover your mouse over the image to take a closer look.</h3>
+        </div>
+      </div>
+      <div id="8" class="modal-body" style="display:none">
+        <div class="modal-image">
+          <img class="annotatedImage" src="http://citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/tutorial/lung-egfr-gt-24-cancer-area.jpg" data-zoom-image="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/tutorial/lung-egfr-gt-24-cancer-outline.jpg" alt="" />
+        </div>
+        <div id="annotatedImageZoomArea4" class="modal-info">
+          <h1>
+            We’ve outlined the cancer cells in <b class="text-error">red</b>
+          </h1>
+          <h2>They form jagged, loose rings and clumps of mottled, oval shaped cells of different sizes</h2>
+          <h3>Everything else is <b class="text-success">non-cancer</b> cells.</h2>
+          <ul>
+            They include:
+            <li>
+              Longer and thinner blue stromal cells.
+            </li>
+            <li>
+              Small, dark blue and round cells, which are blood cells.
+            </li>
+          </ul>
+          <h3>Hover your mouse over the image to take a closer look.</h3>
+        </div>
+      </div>
+      <div id="9" class="modal-body" style="display:none">
+        <div class="modal-image">
+          <img class="annotatedImage" src="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/tutorial/lung-egfr-gt-15-cancer-area.jpg" data-zoom-image="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/tutorial/lung-egfr-gt-15-cancer-outline.jpg" alt="" />
+        </div>
+        <div id="annotatedImageZoomArea4" class="modal-info">
+          <h1>
+            We’ve outlined the cancer cells in <b class="text-error">red</b>
+          </h1>
+          <h2>They’ve formed mottled and chunky rings with dead cells in the middle</h2>
+          <h3>Everything else is <b class="text-success">non-cancer</b> cells.</h2>
+          <ul>
+            They include:
+            <li>
+              Longer and thinner blue stromal cells.
+            </li>
+            <li>
+              Small, dark blue and round cells, which are blood cells.
+            </li>
+          </ul>
+          <h3>Hover your mouse over the image to take a closer look.</h3>
+        </div>
+      </div>
+      <div id="10" class="modal-body" style="display:none">
+        <div class="modal-image">
+          <img class="annotatedImage" src="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/tutorial/lung-egfr-gt-27-cancer_area.jpg" data-zoom-image="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/tutorial/lung-egfr-gt-27-cancer-outline.jpg" alt="" />
+        </div>
+        <div id="annotatedImageZoomArea4" class="modal-info">
+          <h1>
+            We’ve outlined the cancer cells in <b class="text-error">red</b>
+          </h1>
+          <ul>
+            <li>
+              They’re mostly <b>large</b>
+            </li>
+            <li>
+              The shape and size of each cell is very different from the others
+            </li>
+            <li>
+              They’ve formed uneven, overcrowded, lumpy rings and chains
+            </li>
+          </ul>
+          <h2>H1 Everything else is <b class="text-success">non-cancer</b> cells.</h2>
+          <ul>
+            They include:
+            <li>
+              Longer and thinner blue stromal cells.
+            </li>
+            <li>
+              Small, dark blue and round cells, which are blood cells.
+            </li>
+            <li>
+              Colourless or light grey, small cells which are another type of blood cell.
+            </li>
+          </ul>
+          <h3>Hover your mouse over the image to take a closer look.</h3>
+        </div>
+      </div><div id="11" class="modal-body" style="display:none">
+        <div class="modal-image">
+          <img class="annotatedImage" src="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/tutorial/lung-egfr-gt-03-with-no_cancer-button.jpg" data-zoom-image="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/tutorial/lung-egfr-gt-03-with-no_cancer-button.jpg" alt="" />
+        </div>
+        <div id="annotatedImageZoomArea4" class="modal-info">
+          <h1>
+            There is no cancer in this image
+          </h1>
+          <h2>These are all healthy lung cells. They form thin strands surrounding an airspace (white space)</h2>
+          <h2>If you get a sample with no cancer cells in it, Just press the “No Cancer” Button</h2>
+          <h2>Press Continue and find the No cancer button.</h2>
+        </div>
+      </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default pull-right" id="backToPractiseBtn" data-dismiss="modal" aria-hidden="true">Continue</button>
         <button class="btn btn-primary" id="startMechanicBtn" data-dismiss="modal" aria-hidden="true" style="display: none;">
           <i class="icon-thumbs-up"></i> Start
         </button>
+        <button class="btn btn-primary" id="startMechanicScreenBtn" data-dismiss="modal" style="display: none;">
+          Next
+        </button>
       </div>
     </div>
-
-
 
     <!-- Tutoiral Modal -->
     <div id="tutorialModal" class="modal hide ">
@@ -1294,31 +1458,7 @@
           </h2>
         </div>
       </div>
-      <div id="13" class="modal-body" style="display:none">
-        <div class="modal-image">
-          <img src="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/tutorial/mechanic-skip-popup.png " alt="" />
-        </div>
-        <div class="modal-info">
-          <h1>
-            What if you can't analyse an image?
-          </h1>
-          <h2>
-            We have included a <b>“Skip”</b> button in the analysis. Use this and tell us why. It could be because:
-          </h2>
-          <ul>
-            <li>
-              It is completely blank
-            </li>
-            <li>
-              It is a poor quality image
-            </li>
-            <li>
-              It is too difficult to tell the difference between cancer cells and non-cancer cells
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div id="14" class="modal-body" style="display:none;">
+      <div id="13" class="modal-body" style="display:none;">
         <div class="modal-image">
           <img src="//citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid.jpg" alt="" />
         </div>
@@ -1475,9 +1615,9 @@
             <h2>How intense is the staining of cancer cells?</h2>
             <div id="intensity-slider"></div>
             <div id="intensity-slider-pips">
-              <span class="intensity-slider-pips__weak">1+</span>
-              <span class="intensity-slider-pips__moderate">2+</span>
-              <span class="intensity-slider-pips__strong">3+</span>
+              <span class="intensity-slider-pips__weak">Faint</span>
+              <span class="intensity-slider-pips__moderate">Partial</span>
+              <span class="intensity-slider-pips__strong">Fully</span>
             </div>
           </div>
           <div class="progress progress-striped">
@@ -1486,7 +1626,7 @@
           <p class="imgId"></p>
           <!--<span id="proportion-slider-value">0</span>-->
           <div class="grid-info-buttons">
-            <button class="btn btn-danger pull-left noCancerBtn" style="margin-right:10px;" id="noCancerBtn" style="">No Cancer</button>
+            <button class="btn btn-warning pull-left noCancerBtn" style="margin-right:10px;" id="noCancerBtn">No Cancer</button>
             <button class="btn btn-warning pull-left" id="skipSlideBtn">Skip</button>
             <button class="btn btn-success nextSliderBtn" id="nextSliderBtn" style="margin-left:10px; float: right;">Next</button>
             <button class="btn btn-answer btn-success nextSlideBtn" id="nextSlideBtn" value="next" style="margin-left:10px; display: none;">Next slide</button>
@@ -1574,10 +1714,11 @@
             Check my work
           </a>
           <button class="btn btn-answer" id="feedbackInfoBtn" style="margin-left: 10px;">What's in this image</button>
+          <button class="btn btn-warning" id="feedbackNoCancer" style="margin-left: 10px; display: none;">No Cancer</button>
           <a class="btn disabled pull-right" id="nextFeedbackStep" style="margin-left: 10px;">
             Next slide
           </a>
-          <button class="btn btn-success pull-right" id="nextFeedbackQuestion" style="margin-left: 10px; display: none;">Next</button>
+          <button class="btn btn-success pull-right disabled" id="nextFeedbackQuestion" style="margin-left: 10px; display: none;">Next</button>
           <!-- <button class="btn btn-success pull-right" id="previousFeedbackQuestion" style="margin-left: 10px; display: none;">Back</button> -->
           <a class="btn disabled" id="finishFeedback" style="display:none; margin-left: 10px;">
             Next
@@ -1587,7 +1728,39 @@
     </div>
   </div>
   <!-- EXAMPLES -->
-  <div class="row-fluid">
+  <div class="row-fluid intensityReference">
+    <div class="example-list-intensity clearfix">
+      <figure class="example-list-item">
+        <img src="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/reference/lung-egfr-gt-stained-cancer-example-1.jpg" alt="" />
+        <figcaption class="description cancer">Stained Cancer</figcaption>
+      </figure>
+      <figure class="example-list-item">
+        <img src="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/reference/lung-egfr-gt-stained-cancer-example-2.jpg" alt="" />
+        <figcaption class="description cancer">Stained Cancer</figcaption>
+      </figure>
+      <figure class="example-list-item">
+        <img src="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/reference/lung-egfr-gt-stained-cancer-example-3.jpg" alt="" />
+        <figcaption class="description cancer">Stained Cancer</figcaption>
+      </figure>
+      <figure class="example-list-item">
+        <img src="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/reference/lung-egfr-gt-stained-cancer-example-4.jpg" alt="" />
+        <figcaption class="description cancer">Stained Cancer</figcaption>
+      </figure>
+      <figure class="example-list-item">
+        <img src="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/reference/lung-egfr-gt-stained-cancer-example-5.jpg" alt="" />
+        <figcaption class="description cancer">Stained Cancer</figcaption>
+      </figure>
+      <figure class="example-list-item">
+        <img src="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/reference/lung-egfr-gt-non-stained-cancer-example-1.jpg" alt="" />
+        <figcaption class="description non-cancer">Non-stained Cancer</figcaption>
+      </figure>
+      <figure class="example-list-item">
+        <img src="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/reference/lung-egfr-gt-non-stained-cancer-example-2.jpg" alt="" />
+        <figcaption class="description non-cancer">Non-stained Cancer</figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="row-fluid cancerReference">
     <div class="example-list clearfix">
       <figure class="example-list-item">
         <img src="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/examples/cancer-example-1.jpg" alt="" />
@@ -2873,6 +3046,8 @@
         } else {
           if (checkProportionValue > 0.00) {
             $intensitySlider.show();
+            $('.cancerReference').hide();
+            $('.intensityReference').show();
             $proportionSlider.hide();
             $(this).hide();
             $nextImageButton.show();
@@ -2915,7 +3090,7 @@
 
       this.proportionSlider.noUiSlider.on('update', function(values, handle) {
         var roundedValue = Math.floor(values[handle]);
-        $('.proportion-slider__value').text(roundedValue);
+        $('.proportion-slider__value').text(roundedValue + "%");
         if(values[handle] == 0.00 && $proportionSlider.is(':visible')) {
           $(questions.nextSliderButton).hide();
           $nextImageButton.show();
@@ -3616,18 +3791,33 @@
     //$("#pathologistFeedback p").delay(4000).fadeOut(500);
   };
 
+  FeedbackGrid.prototype.removeAllTicks = function() {
+    $.each(this.tickCross, function(idx, marking) {
+        marking.remove();
+    });
+  }
+
   // Displays the pathologist tick's and cross's by changing the opacity of the square
   FeedbackGrid.prototype.showMyAnalysis = function() {
     this.updateFeedbackProgress();
     var feedbackObjAnswer = this.feedbackObj.answer;
     var crosses = [];
-
     $.each(this.tickCross, function(key, value) {
       value.attr("opacity", 1);
       if (value.class === "cross") {
         findParentSquare(value, feedbackObjAnswer);
       }
     });
+
+      for (var i = 0; i < feedbackData[step].info.squares.length; i++) {
+        var profAnswer = feedbackData[step].info.squares[i].answer;
+        var userAnswer = feedbackObjAnswer.squares[i].has_cancer;
+
+        if (profAnswer === true) {
+
+        }
+      }
+
 
     function findParentSquare(cross, feedbackObjAnswer) {
       for (var i = 0; i < feedbackData[step].info.squares.length; i++) {
@@ -3859,6 +4049,7 @@
     }
 
     var $lastStep = $('#tutorialModal .modal-body').length - 1;
+
     if (this.step == $lastStep) {
       $("#nextBtn").hide();
 
@@ -4493,7 +4684,7 @@
          * Save the task information and send to PyBossa
          */
 
-        var checkSquaresForNoProgress = $('.grid-item-success').length === 0 && $('.grid-item-error').length === 0;
+        var checkSquaresForNoProgress = $('.unRed').length === 0 && $('.isGreen').length === 0;
         if (checkSquaresForNoProgress) {
              modal.open('#skipSlideModal');
              zIndexChange.reduce();
@@ -4507,6 +4698,8 @@
         }
 
         // Resets questions for next slide
+        $('.cancerReference').show();
+        $('.intensityReference').hide();
         $('.prevSliderBtn').hide();
         $('.grid-selection__container').show();
         $('.intensity-slider__container').hide();
@@ -4632,9 +4825,11 @@
   var $gridFeedbackArea = $('#feedbackProgressText');
   var $userFeedbackAreaProportion = $('.userCheckFeedbackProportion');
   var $userFeedbackAreaIntensity = $('.userCheckFeedbackIntensity');
+  var $feedbackNoCancerBtn = $('#feedbackNoCancer');
 
   var feedbackNextQuestionButton = document.getElementById('nextFeedbackQuestion');
   feedbackNextQuestionButton.onclick = function() {
+    if ($(this).hasClass('disabled')) return;
     if (step === 4 || step === 5 || step === 6) {
       $userFeedbackAreaProportion.hide();
       $userFeedbackAreaIntensity.show();
@@ -4644,22 +4839,40 @@
       $nextFeedbackStep.show();
     } else {
       if ($gridContainer.is(':visible')) {
-        $('.progress').hide();
-        questions.unFocus('grid-item');
-        $userFeedbackAreaProportion.show();
-        $gridFeedbackArea.hide();
-        $gridContainer.hide();
-        $proportionContainer.show();
+        if (step === 8) {
+          $(this).hide();
+          $nextFeedbackStep.show();
+          $proportionContainer.show();
+          $gridFeedbackArea.hide();
+          $('.progress').hide();
+          $gridContainer.hide();
+          $gridFeedbackArea.hide();
+          questions.unFocus('grid-item');
+        } else {
+            $('.progress').hide();
+            questions.unFocus('grid-item');
+            $userFeedbackAreaProportion.show();
+            $gridFeedbackArea.hide();
+            $gridContainer.hide();
+            $proportionContainer.show();
+            if ($('#feedbackCanvas').find('path')) {
+              $('#feedbackCanvas').find('path').remove();
+            }
+        }
       } else if ($proportionContainer.is(':visible')) {
         $proportionContainer.hide();
+        $('.cancerReference').hide();
+        $('.intensityReference').show();
         $userFeedbackAreaProportion.hide();
         $userFeedbackAreaIntensity.show();
         $(this).hide();
         $intensityContainer.show();
         $nextFeedbackStep.show();
+        $nextFeedbackStep.addClass('disabled');
       }
     }
     // $(feedbackPreviousQuestionButton).show();
+    $(this).addClass('disabled');
   };
 
   // var feedbackPreviousQuestionButton = document.getElementById('previousFeedbackQuestion');
@@ -4765,8 +4978,11 @@
       if ($($targetClass[0]).is(':visible')) {
         $($targetClass[0]).hide();
         $($targetClass[1]).show();
-        $(this).hide();
         $(feedbackPreviousButton).show();
+      } else if ($($targetClass[1]).is(':visible')) {
+        $($targetClass[1]).hide();
+        $($targetClass[2]).show();
+        $(this).hide();
         $continueBtn.show();
       } else {
         return;
@@ -4778,6 +4994,10 @@
         $($targetClass[1]).hide();
         $($targetClass[0]).show();
         $(this).hide();
+        $(feedbackNextButton).show();
+      } else if ($($targetClass[2]).is(':visible')) {
+        $($targetClass[2]).hide();
+        $($targetClass[1]).show();
         $(feedbackNextButton).show();
         $continueBtn.hide();
       } else {
@@ -4851,6 +5071,8 @@
 
     if (step === 4 || step === 5 || step === 6) {
       $gridContainer.hide();
+      $('.cancerReference').hide();
+      $('.intensityReference').show();
       $('#feedbackInfoBtn').hide();
       $('.text-whats-in-image').hide();
       $proportionContainer.show();
@@ -4859,6 +5081,13 @@
       $nextFeedbackQuestion.show();
       $nextFeedbackStep.hide();
       $checkMyWorkBtn.show();
+      $('.legend').hide();
+      if (!$('#nextFeedbackQuestion').hasClass('disabled')) {
+        $('#nextFeedbackQuestion').addClass('disabled');
+      }
+      if (!$('#nextFeedbackStep').hasClass('disabled')) {
+        $('#nextFeedbackStep').addClass('disabled');
+      }
     }
 
     if (step === 7) {
@@ -4869,25 +5098,52 @@
     }
 
     if (step === 7 || step === 8 || step === 9 || step === 10) {
+      $('.intensityReference').hide();
+      $('.cancerReference').show();
       $proportionContainer.hide();
       $intensityContainer.hide();
       $nextFeedbackQuestion.show();
       $nextFeedbackStep.hide();
       $gridFeedbackArea.show();
+      $feedbackNoCancerBtn.show();
+      $('#feedbackInfoBtn').show();
+      if (!$('.legend').is(':visible')) {
+        $('.legend').show();
+      }
+      if (!$('#nextFeedbackQuestion').hasClass('disabled')) {
+        $('#nextFeedbackQuestion').addClass('disabled');
+      }
+      if (!$('#nextFeedbackStep').hasClass('disabled')) {
+        $('#nextFeedbackStep').addClass('disabled');
+      }
     }
 
     var checkMyWork = document.getElementById("checkMyWorkBtn");
     checkMyWork.onclick = function() {
       if ($(this).hasClass("disabled")) return;
 
+      // Remove class disabled from next button.
+      $(nextFeedbackQuestion).removeClass('disabled');
+
       // Reset feedback area for each question.
       $userFeedbackAreaProportion.children('h3').remove();
       $userFeedbackAreaIntensity.children('h3').remove();
 
+      if ($gridContainer.is(':visible')) {
+        if (totalGridPercentage >=  progressBarTargetValue) {
+          $("#nextFeedbackStep").removeClass("disabled");
+          $("#nextFeedbackStep").addClass("btn-primary");
+        }
+      } else if ($proportionContainer.is(':visible')) {
+          $("#nextFeedbackStep").removeClass("disabled");
+          $("#nextFeedbackStep").addClass("btn-primary");
+      } else if ($intensityContainer.is(':visible')) {
+          $("#nextFeedbackStep").removeClass("disabled");
+          $("#nextFeedbackStep").addClass("btn-primary");
+      }
       if (totalGridPercentage >=  progressBarTargetValue) {
-        $("#nextFeedbackStep").removeClass("disabled");
         $("#finishFeedback").removeClass("disabled");
-        $("#nextFeedbackStep, #finishFeedback").addClass("btn-primary");
+        $("#nextFeedbackStep").addClass("btn-primary");
       }
 
       //$(".taskTitle,.taskSubTitle, .taskParagraph ").hide();
@@ -4937,7 +5193,7 @@
           if (roundValue === userAnswerCheck) {
             userText = "Well done, you matched them exactly.";
           } else if (roundValue <= userAnswerHighest && roundValue >= userAnswerLowest) {
-            userText = "And your answer <b>" + roundValue + "</b>% was a good enough match.";
+            userText = "And your answer <b>" + roundValue + "</b>% was a good match.";
           } else {
             userText = "<p>You didn’t quite match our experts.</p> <p>Move the mouse over the image to look at it in more detail.</p> <p>Remember, we’re only interested in the cancer cells.</p>";
           }
@@ -4998,7 +5254,7 @@
           } else if (userAnswerCheck === "3+") {
             userAnswerCheck = "FULLY";
           }
-          var expertsText = "<p>Our experts thought <b>MOST</b> of the stained cancer cells had <b>" + userAnswerCheck + "</b> stained “membranes”</p>";
+          var expertsText = "<p>Our experts thought <b>MOST</b> of the stained cancer cells had <b>" + userAnswerCheck + "</b> stained “membranes”.</p>";
           var expertsTextCont = $('<h3>');
           var feedbackCont = $('<h3>');
           feedbackCont.append(feedbackText);
@@ -5011,6 +5267,7 @@
 
     var lastFeedbackStep = feedbackData.length;
 
+    // Steven
     if (step === lastFeedbackStep - 1) {
       $("#nextFeedbackStep").hide();
       $("#finishFeedback").show().addClass("disabled");
@@ -5065,6 +5322,14 @@
         slidesToScroll: 5,
         slidesToShow: 5,
       });
+      $('.example-list-intensity').slick({
+        dots: false,
+        infinite: false,
+        speed: 300,
+        slidesToScroll: 5,
+        slidesToShow: 5,
+      });
+      $('.intensityReference').hide();
     }
 
     if (page_state == "tutorial") {
@@ -5123,17 +5388,28 @@
     //
     //
 
+    var showStartMechanicScreenBtn = document.getElementById('startMechanicScreenBtn');
+    showStartMechanicScreenBtn.onclick = function() {
+      var m = new Modal();
+      $(this).hide();
+      m.open("#practiseModal", 20);
+      zIndexChange.reduce();
+      $("#startMechanicBtn").show();
+    }
+
     var finishFeedback = document.getElementById("finishFeedback");
     finishFeedback.onclick = function() {
       if ($(this).hasClass("disabled")) return;
       $("svg, .feedback-img-polaroid, .zoomContainer, .zoomWindowContainer").remove();
       $("#backToPractiseBtn").hide();
+
       $("#startMechanicBtn").show();
+      // $('#startMechanicScreenBtn').show();
 
       $("#practiseModal .modal-body").hide();
 
       var m = new Modal();
-      m.open("#practiseModal", 6);
+      m.open("#practiseModal", 10);
       zIndexChange.reduce();
     }
 
