@@ -876,7 +876,7 @@
           </h1>
           <ul>
             <li>
-              You will be shown 10 images to analyse
+              You will be shown 12 images to analyse
             </li>
             <li>
               You can stop and resume later if you want to
@@ -914,7 +914,7 @@
               They’ve formed uneven, overcrowded, lumpy rings and chains
             </li>
           </ul>
-          <h2>H1 Everything else is <b class="text-success">non-cancer</b> cells.</h2>
+          <h2>Everything else is <b class="text-success">non-cancer</b> cells.</h2>
           <ul>
             They include:
             <li>
@@ -990,7 +990,7 @@
               They’ve formed uneven, overcrowded, lumpy rings and chains
             </li>
           </ul>
-          <h2>H1 Everything else is <b class="text-success">non-cancer</b> cells.</h2>
+          <h2>Everything else is <b class="text-success">non-cancer</b> cells.</h2>
           <ul>
             They include:
             <li>
@@ -1703,6 +1703,12 @@
         </div>
         <hr>
         <div id="feedbackProgressText"></div>
+        <div id="feedbackCancerTrue" style="display: none;">
+          <p style="font-weight: bold;">This image does contain cancer cells.</p>
+        </div>
+        <div id="feedbackCancerFalse" style="display: none;">
+          <p style="font-weight: bold;">Well done, you are correct. The image contains no cancer cells.</p>
+        </div>
         <h3 class="text-whats-in-image"><b>Click 'What's in this image' button</b>, to see what our experts said before practising on another slide</h3>
         <div class="userCheckFeedbackProportion" style="display: none;"></div>
         <div class="userCheckFeedbackIntensity" style="display: none;"></div>
@@ -1710,11 +1716,12 @@
           <div class="bar" id="feedbackProgress"></div>
         </div>
         <div class="grid-info-buttons clearfix">
+          <div class="inner-button-container" style="width: 100%; margin-bottom: 10px;">
           <a class="btn btn-success " id="checkMyWorkBtn" style="display:none;">
             Check my work
           </a>
           <button class="btn btn-answer" id="feedbackInfoBtn" style="margin-left: 10px;">What's in this image</button>
-          <button class="btn btn-warning" id="feedbackNoCancer" style="margin-left: 10px; display: none;">No Cancer</button>
+
           <a class="btn disabled pull-right" id="nextFeedbackStep" style="margin-left: 10px;">
             Next slide
           </a>
@@ -1723,6 +1730,8 @@
           <a class="btn disabled" id="finishFeedback" style="display:none; margin-left: 10px;">
             Next
           </a>
+        </div>
+        <button class="btn btn-warning" id="feedbackNoCancer" style="display: none;">No Cancer</button>
         </div>
       </div>
     </div>
@@ -3027,6 +3036,7 @@
       var $gridSelection = $('.grid-selection__container');
       var $nextImageButton = $('.nextSlideBtn');
       var $noCancerButton = $('.noCancerBtn');
+      var $skipImageButton = $('#skipSlideBtn');
 
       $(this.nextSliderButton).on('click', function() {
         var checkProportionValue = questions.proportionSlider.noUiSlider.get();
@@ -3037,6 +3047,7 @@
           $proportionSlider.show();
           $(questions.nextSliderButton).hide();
           $(questions.prevSliderButton).show();
+          $skipImageButton.hide();
           questions.unFocus('grid-item');
           if (checkProportionValue == 0) {
             $nextImageButton.show();
@@ -3063,6 +3074,7 @@
           $proportionSlider.hide();
           $gridSelection.show();
           $noCancerButton.show();
+          $skipImageButton.show();
           $(this).hide(); // This refers to button clicked.
           $nextImageButton.hide();
           questions.reFocus("grid-item");
@@ -3884,7 +3896,7 @@
   FeedbackGrid.prototype.percentageFeedbackText = function(pct) {
     var $feedbackText = $("#feedbackProgressText");
     var htmlString = '<h3>';
-    if (pct >= progressBarTargetValue ) {
+    if (pct >= progressBarTargetValue && pct > 0) {
       htmlString += 'Well done! ';
     }
     htmlString += 'You\'ve marked ';
@@ -4603,7 +4615,8 @@
         }
 
         // Possibley change - Steven
-        $('.noCancerBtn').show();
+        $('#noCancerBtn').show();
+        $('#skipSlideBtn').show();
 
         pybossa.saveTask(task.id, answer).done(function(data) {
           loadUserProgress();
@@ -4706,6 +4719,8 @@
         $('.proportion-slider__container').hide();
         $('.nextSlideBtn').hide();
         $(questions.nextSliderButton).show();
+        $('#noCancerBtn').show();
+        $('#skipSlideBtn').show();
       });
 
       $('.noCancerBtn').off('click').on('click', function() {
@@ -4788,6 +4803,8 @@
         $('.proportion-slider__container').hide();
         $('.nextSlideBtn').hide();
         $(questions.nextSliderButton).show();
+        $('#noCancerBtn').show();
+        $('#skipSlideBtn').show();
 
         pybossa.saveTask(task.id, answer).done(function(data) {
           loadUserProgress();
@@ -4825,7 +4842,33 @@
   var $gridFeedbackArea = $('#feedbackProgressText');
   var $userFeedbackAreaProportion = $('.userCheckFeedbackProportion');
   var $userFeedbackAreaIntensity = $('.userCheckFeedbackIntensity');
+  var $feedbackCancerTrue = $('#feedbackCancerTrue');
+  var $feedbackCancerFalse = $('#feedbackCancerFalse');
   var $feedbackNoCancerBtn = $('#feedbackNoCancer');
+
+  var feedbackNoCancerBtn = document.getElementById('feedbackNoCancer');
+  feedbackNoCancerBtn.onclick = function() {
+    var hasCancer;
+    for (var i = 0; i < feedbackData[step].info.squares.length; i++) {
+      var profAnswer = feedbackData[step].info.squares[i].answer;
+      if (profAnswer === true) {
+        hasCancer = true;
+        break; // Exit loop as we are only checking if any square has cancer.
+      } else {
+        hasCancer = false;
+      }
+    }
+    if (hasCancer === true) {
+      // Display true message
+      $('#feedbackCancerTrue').show();
+    } else {
+      // Display false message
+      $('#feedbackCancerFalse').show();
+    }
+    if ($("#finishFeedback").is(':visible')) {
+      $("#finishFeedback").removeClass('disabled');
+    }
+  };
 
   var feedbackNextQuestionButton = document.getElementById('nextFeedbackQuestion');
   feedbackNextQuestionButton.onclick = function() {
@@ -4834,6 +4877,7 @@
       $userFeedbackAreaProportion.hide();
       $userFeedbackAreaIntensity.show();
       $proportionContainer.hide();
+      $nextFeedbackStep.addClass('disabled');
       $intensityContainer.show();
       $(this).hide();
       $nextFeedbackStep.show();
@@ -4848,13 +4892,19 @@
           $gridContainer.hide();
           $gridFeedbackArea.hide();
           questions.unFocus('grid-item');
+          $feedbackNoCancerBtn.hide();
+          $feedbackCancerTrue.hide();
+          $feedbackCancerFalse.hide();
         } else {
             $('.progress').hide();
             questions.unFocus('grid-item');
             $userFeedbackAreaProportion.show();
             $gridFeedbackArea.hide();
+            $feedbackCancerTrue.hide();
+            $feedbackCancerFalse.hide();
             $gridContainer.hide();
             $proportionContainer.show();
+            $feedbackNoCancerBtn.hide();
             if ($('#feedbackCanvas').find('path')) {
               $('#feedbackCanvas').find('path').remove();
             }
@@ -5271,6 +5321,7 @@
     if (step === lastFeedbackStep - 1) {
       $("#nextFeedbackStep").hide();
       $("#finishFeedback").show().addClass("disabled");
+      $feedbackNoCancerBtn.show();
     }
 
     $("#feedbackStep" + step).show();
@@ -5409,7 +5460,7 @@
       $("#practiseModal .modal-body").hide();
 
       var m = new Modal();
-      m.open("#practiseModal", 10);
+      m.open("#practiseModal", 20);
       zIndexChange.reduce();
     }
 
