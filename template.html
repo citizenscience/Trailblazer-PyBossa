@@ -864,6 +864,7 @@
         </div>
       </div>
       <div id="20" class="modal-body">
+        <!-- Steven -->
         <div class="modal-image">
           <img class="annotatedImage" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/26-cancer.png" data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/26-cancer-outline@2x-min.png" alt="" />
         </div>
@@ -1020,7 +1021,7 @@
         <button class="btn btn-primary" id="startMechanicBtn" data-dismiss="modal" aria-hidden="true" style="display: none;">
           <i class="icon-thumbs-up"></i> Start
         </button>
-        <button class="btn btn-primary" id="startMechanicScreenBtn" data-dismiss="modal" style="display: none;">
+        <button class="btn btn-primary" id="startMechanicScreenBtn" style="display: none;">
           Next
         </button>
       </div>
@@ -4444,7 +4445,8 @@
    */
 
   pybossa.presentTask(function(task, deferred) {
-
+    // Steven
+    // debugger;
     if (!$.isEmptyObject(task)) {
 
 
@@ -4730,8 +4732,6 @@
           openModalCount: openModalCount
         };
 
-        console.log(answer);
-
         // Change the square object to have clearer values
         $.each(grid.task.answer.squares, function(key, value) {
           var obj = {
@@ -4826,8 +4826,6 @@
           proportion: proportionValue,
           openModalCount: openModalCount
         };
-
-        console.log(answer);
 
         // Change the square object to have clearer values
         $.each(grid.task.answer.squares, function(key, value) {
@@ -5395,6 +5393,8 @@
       $("#nextFeedbackStep").hide();
       $("#finishFeedback").show().addClass("disabled");
       $feedbackNoCancerBtn.show();
+      $('.intensityReference').hide();
+      $('.cancerReference').show();
     }
 
     $("#feedbackStep" + step).show();
@@ -5514,6 +5514,7 @@
 
     var showStartMechanicScreenBtn = document.getElementById('startMechanicScreenBtn');
     showStartMechanicScreenBtn.onclick = function() {
+      $('#19').hide();
       var m = new Modal();
       $(this).hide();
       m.open("#practiseModal", 20);
@@ -5524,16 +5525,17 @@
     var finishFeedback = document.getElementById("finishFeedback");
     finishFeedback.onclick = function() {
       if ($(this).hasClass("disabled")) return;
+
       $("svg, .feedback-img-polaroid, .zoomContainer, .zoomWindowContainer").remove();
       $("#backToPractiseBtn").hide();
 
-      $("#startMechanicBtn").show();
-      // $('#startMechanicScreenBtn').show();
+
+      $('#startMechanicScreenBtn').show();
 
       $("#practiseModal .modal-body").hide();
 
       var m = new Modal();
-      m.open("#practiseModal", 20);
+      m.open("#practiseModal", 19);
       zIndexChange.reduce();
     }
 
