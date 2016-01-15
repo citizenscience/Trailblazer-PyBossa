@@ -810,7 +810,6 @@
         </div>
       </div>
       <div id="20" class="modal-body">
-        <!-- Steven -->
         <div class="modal-image">
           <img class="annotatedImage" src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/26-cancer.png" data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/26-cancer-outline@2x-min.png" alt="" />
         </div>
@@ -4200,7 +4199,7 @@
     pybossa.userProgress('tb2-r2.0').done(function(data) {
       checkTask = data.done;
       var currentTask = data.done + 1;
-      $("#tasksCompleted").text(currentTask + " of " + data.total);
+      $("#tasksCompleted").text(currentTask + " of " + 10);
       var pct = Math.round((data.done * 100) / data.total);
       $("#progress").css("width", pct.toString() + "%");
       $("#total").text(data.total);
@@ -4379,10 +4378,12 @@
     reduce: function(disableZoom) {
       this.buttons.css('z-index', 1);
       this.nav.css('z-index', 2);
+      $('.zoomContainer').addClass('overwriteZindex');
     },
     increase: function() {
       this.buttons.css('z-index', 5);
       this.nav.css('z-index', 6);
+      $('.zoomContainer').removeClass('overwriteZindex');
     },
   }
 
@@ -4394,8 +4395,6 @@
    */
 
   pybossa.presentTask(function(task, deferred) {
-    // Steven
-    // debugger;
     if (!$.isEmptyObject(task) && checkTask != 9) {
 
 
@@ -4618,7 +4617,6 @@
           console.log("Radio buttons have been changed");
         }
 
-        // Possibley change - Steven
         $('#noCancerBtn').show();
         $('#skipSlideBtn').show();
 
@@ -4832,7 +4830,6 @@
 
   var step = -1;
 
-  // Steven - Marks what i'm currently working on.
   var $proportionContainer = $('.feedback-proportion-container');
   var $intensityContainer = $('.feedback-intensity-container');
   var $gridContainer = $('.feedback-grid-container');
@@ -5327,7 +5324,6 @@
 
     var lastFeedbackStep = feedbackData.length;
 
-    // Steven
     if (step === lastFeedbackStep - 1) {
       $("#nextFeedbackStep").hide();
       $("#finishFeedback").show().addClass("disabled");
