@@ -591,7 +591,7 @@
             This is what you’ll need to do to analyse the next samples.
           </h1>
           <h2>
-            This time, you only need to click on the sections that contain cancer.
+            This time, <b>you only need to click on the sections that contain cancer</b>.
           </h2>
           <h2>
             This may take you up to a minute.
@@ -3130,6 +3130,8 @@
           $(questions.nextSliderButton).show();
         } else {
           $proportionSlider.show();
+          $('.cancerReference').show();
+          $('.intensityReference').hide();
           $intensitySlider.hide();
           $nextImageButton.hide();
           $(questions.nextSliderButton).show();
@@ -4932,6 +4934,8 @@
       $intensityContainer.show();
       $(this).hide();
       $nextFeedbackStep.show();
+      $('.cancerReference').hide();
+      $('.intensityReference').show();
     } else {
       if ($gridContainer.is(':visible')) {
         if (step === 8) {
@@ -5175,8 +5179,7 @@
 
     if (step === 4 || step === 5 || step === 6) {
       $gridContainer.hide();
-      $('.cancerReference').hide();
-      $('.intensityReference').show();
+
       $('#feedbackInfoBtn').hide();
       $('.text-whats-in-image').hide();
       $proportionContainer.show();
@@ -5307,7 +5310,7 @@
             userAnswerHighest = 100;
           }
           if (roundValue === userAnswerCheck) {
-            userText = "Well done, you matched them exactly.";
+            userText = "Well done, you matched our experts exactly.";
           } else if (roundValue <= userAnswerHighest && roundValue >= userAnswerLowest) {
             userText = "And your answer <b>" + roundValue + "</b>% was a good match.";
           } else {
@@ -5357,7 +5360,7 @@
             roundValue = "1+";
           }
           if (userAnswerCheck === roundValue) {
-            feedbackText = "<p>Well done, you matched them exactly.</p>"
+            feedbackText = "<p>Well done, you matched our experts exactly.</p>"
           } else {
                 feedbackText = "<p>You didn't match our experts.</p>"
               if (userAnswerCheck === "3+") {
@@ -5564,6 +5567,10 @@
       if ($(this).hasClass("disabled")) return;
       $("#feedbackProgress").width("0%");
       $("#feedbackProgressText").text("");
+      if (step === 4 || step === 5 || step === 6) {
+        $('.intensityReference').hide();
+        $('.cancerReference').show();
+      }
       if (step != feedbackData.length - 1) {
         showFeedbackStep('next');
       }
