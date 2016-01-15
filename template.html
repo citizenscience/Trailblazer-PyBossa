@@ -546,45 +546,45 @@
         </div>
       </div>
 
-      <!--<div id="1" class="modal-body feedTutOne" style="display:none">-->
-        <!--<div class="modal-image">-->
-          <!--<img src="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/tutorial/lung-egfr-gt-various-stained-images.jpg" />-->
-        <!--</div>-->
-        <!--<div class="modal-info">-->
-          <!--<h1>-->
-            <!--We have two questions-->
-          <!--</h1>-->
-          <!--<h2>-->
-            <!--Can you estimate the proportion of <strong class="text-error">cancer cells</strong> that are stained?-->
-          <!--</h2>-->
-          <!--<h2>-->
-            <!--For example if all the <strong class="text-error">cancer cells</strong> are stained, that’s 100%. If only half the cancer cells are stained, that’s 50%.-->
-          <!--</h2>-->
-          <!--<h2>-->
-            <!--We also want to know how intensely stained <strong>most</strong> of the stained cancer cells are.-->
-          <!--</h2>-->
-          <!--<h2>-->
-            <!--For example are the membranes fully stained, partially stained or only faintly stained (we’ll explain this later).-->
-          <!--</h2>-->
-        <!--</div>-->
-      <!--</div>-->
+      <div id="1" class="modal-body feedTutOne" style="display:none">
+        <div class="modal-image">
+          <img src="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/tutorial/lung-egfr-gt-various-stained-images.jpg" />
+        </div>
+        <div class="modal-info">
+          <h1>
+            We have two questions
+          </h1>
+          <h2>
+            Can you estimate the proportion of <strong class="text-error">cancer cells</strong> that are stained?
+          </h2>
+          <h2>
+            For example if all the <strong class="text-error">cancer cells</strong> are stained, that’s 100%. If only half the cancer cells are stained, that’s 50%.
+          </h2>
+          <h2>
+            We also want to know how intensely stained <strong>most</strong> of the stained cancer cells are.
+          </h2>
+          <h2>
+            For example are the membranes fully stained, partially stained or only faintly stained (we’ll explain this later).
+          </h2>
+        </div>
+      </div>
 
-      <!--<div id="1" class="modal-body feedTutOne" style="display:none">-->
-        <!--<div class="modal-image">-->
-          <!--<img src="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/tutorial/lung-egfr-gt-various-stained-images.jpg" />-->
-        <!--</div>-->
-        <!--<div class="modal-info">-->
-          <!--<h1>-->
-            <!--Here’s what we mean by <strong>fully</strong>, <strong>partially</strong> or <strong>faintly</strong>-->
-          <!--</h1>-->
-          <!--<ul>-->
-            <!--<li><strong>Fully</strong> – Even without zooming in, you can see dark brown lines that go all the way around the cell. In clumps this can look like chicken wire.</li>-->
-            <!--<li><strong>Partially</strong> – You can see dark brown lines around the cancer cells but when zoomed in, you see they do not go all the way around the cells.</li>-->
-            <!--<li><strong>Faintly</strong> – You can see brown lines  around the cells but they are only clear when you are zoomed in.</li>-->
-          <!--</ul>-->
-          <!--<h3>Let’s try with some real images.</h3>-->
-        <!--</div>-->
-      <!--</div>-->
+      <div id="2" class="modal-body feedTutOne" style="display:none">
+        <div class="modal-image">
+          <img src="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/tutorial/lung-egfr-gt-various-stained-images.jpg" />
+        </div>
+        <div class="modal-info">
+          <h1>
+            Here’s what we mean by <strong>fully</strong>, <strong>partially</strong> or <strong>faintly</strong>
+          </h1>
+          <ul>
+            <li><strong>Fully</strong> – Even without zooming in, you can see dark brown lines that go all the way around the cell. In clumps this can look like chicken wire.</li>
+            <li><strong>Partially</strong> – You can see dark brown lines around the cancer cells but when zoomed in, you see they do not go all the way around the cells.</li>
+            <li><strong>Faintly</strong> – You can see brown lines  around the cells but they are only clear when you are zoomed in.</li>
+          </ul>
+          <h3>Let’s try with some real images.</h3>
+        </div>
+      </div>
 
       <div class="modal-footer">
         <button type="button" style="display: none; margin-left: 10px;" class="btn btn-success pull-right feedbackContinue" data-dismiss="modal" aria-hidden="true">Continue</button>
@@ -1592,7 +1592,7 @@
       Cancer =
       <div class="square square-red"></div>
     </div>
-    <div class="legend-item">
+    <div class="legend-item legend-item__non-cancer">
       Non-cancer =
       <div class="square square-green"></div>
     </div>
@@ -1730,8 +1730,8 @@
           </div>
         </div>
         <div class="feedback-grid-container">
-          <h3>Click once to mark cancer cells in <b class="text-error">Red</b></h3>
-          <h3>Click again to mark non-cancer cells in <b class="text-success">Green</b></h3>
+          <h3 class="feedback-grid-container__red">Click once to mark cancer cells in <b class="text-error">Red</b></h3>
+          <h3 class="feedback-grid-container__green">Click again to mark non-cancer cells in <b class="text-success">Green</b></h3>
           <h3>Empty sections of the image can be left <b>blank</b></h3>
           <ol>
             <li>
@@ -3351,6 +3351,7 @@
 
   Grid.prototype.zoomLensClickEvent = function() {
 
+
     var clicks = 0,
             timer = null,
             _this = this,
@@ -3508,6 +3509,7 @@
 
   FeedbackGrid.prototype.zoomLensClickEvent = function() {
     var _this = this;
+    if (step === 4 || step === 5 || step === 6) return;
 
     $("body").on("click", ".zoomLens", function(evt) {
       evt.preventDefault();
@@ -4937,6 +4939,9 @@
           $feedbackNoCancerBtn.hide();
           $feedbackCancerTrue.hide();
           $feedbackCancerFalse.hide();
+          if ($('#feedbackCanvas').find('path')) {
+            $('#feedbackCanvas').find('path').remove();
+          }
         } else {
             $('.progress').hide();
             questions.unFocus('grid-item');
@@ -5193,6 +5198,8 @@
       $('.intensityReference').hide();
       $('.cancerReference').show();
       $proportionContainer.hide();
+      $('.feedback-grid-container__green').hide();
+      $('.legend-item__non-cancer').hide();
       $intensityContainer.hide();
       $nextFeedbackQuestion.show();
       $nextFeedbackStep.hide();
@@ -5242,6 +5249,14 @@
       //$("#" + "feedbackStep" + step + " .taskFeedback").show();
 
       if ($gridContainer.is(':visible')) {
+        var $feedbackTrue = $('#feedbackCancerTrue');
+        var $feedbackFalse = $('#feedbackCancerFalse');
+        // Check if feedback visible.
+        if ($feedbackTrue.is(':visible')) {
+          $feedbackTrue.hide();
+        } else if ($feedbackFalse.is(':visible')) {
+          $feedbackFalse.hide();
+        }
         feedbackGrid.showMyAnalysis();
       } else if ($proportionContainer.is(':visible')) {
         var exact = "Exact", good = "Good", notBad = "Not Bad", bad = "Bad";
@@ -5267,6 +5282,8 @@
         //   $userFeedbackAreaProportion.show();
         //
         // } else {
+
+
           var userAnswerCheck = feedbackGrid.checkProportionAnswer("one");
           var getValue = $('#feedback-proportion-slider')[0].noUiSlider.get();
           var roundValue = Math.floor(getValue);
@@ -5332,11 +5349,17 @@
           } else if (roundValue === faintly) {
             roundValue = "1+";
           }
-
           if (userAnswerCheck === roundValue) {
             feedbackText = "<p>Well done, you matched them exactly.</p>"
           } else {
-            feedbackText = "<p>You didn’t quite match our experts, they thought you could see dark brown lines go all the way around the cells even without zooming in.</p> <p>But don’t worry if you got it wrong. This can be tricky and often just a matter of opinion</p>";
+                feedbackText = "<p>You didn't match our experts.</p>"
+              if (userAnswerCheck === "3+") {
+                feedbackText += "<p>Our experts thought most of the stained cancer cells had <b>fully</b> stained membranes.</p>";
+              } else if (userAnswerCheck === "2+") {
+                feedbackText += "<p>Our experts thought most of the stained cancer cells had <b>partially</b> stained membranes.</p> <p>They thought you could see dark brown lines but zooming in reveals most did not completely surround the cell.</p>";
+              } else if (userAnswerCheck === "1+") {
+                feedbackText += "<p>Our experts thought most of the stained cancer cells had <b>faintly</b> stained membranes.</p> <p>They thought you have to zoom in to see the brown lines around the cancer cells.</p>";
+              }
           }
           // Convert expert text.
           if (userAnswerCheck === "1+") {
@@ -5346,12 +5369,10 @@
           } else if (userAnswerCheck === "3+") {
             userAnswerCheck = "fully";
           }
-          var expertsText = "<p>Our experts thought <b>most</b> of the stained cancer cells had <b>" + userAnswerCheck + "</b> stained membranes.</p>";
-          var expertsTextCont = $('<h3>');
+
           var feedbackCont = $('<h3>');
           feedbackCont.append(feedbackText);
-          expertsTextCont.append(expertsText);
-          $userFeedbackAreaIntensity.append(expertsTextCont, feedbackCont);
+          $userFeedbackAreaIntensity.append(feedbackCont);
           $userFeedbackAreaIntensity.show();
         //}
       }
