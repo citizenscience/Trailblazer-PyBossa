@@ -524,19 +524,20 @@
       <!-- New feedback content -->
       <div id="0" class="modal-body feedTutOne" style="display:none">
         <div class="modal-image">
-          <img src="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/tutorial/lung-egfr-gt-various-stained-images.jpg" />
+          <img
+            src="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/tutorial/lung-egfr-gt-various-stained-images.jpg" />
         </div>
-        <div class="modal-info">
-          <h1>
-            Well done, let’s move on
-          </h1>
-          <h2>
-            Some cancer cells have had their outlines, known as membranes, stained dark brown.
-          </h2>
-          <h2>
-            Other cancer cells have not taken on any brown staining around their outline, or membrane.
-          </h2>
-        </div>
+          <div class="modal-info">
+            <h1>
+              Well done, let’s move on
+            </h1>
+            <h2>
+              Some cancer cells have had their outlines, known as membranes, stained dark brown.
+            </h2>
+            <h2>
+              Other cancer cells have not taken on any brown staining around their outline, or membrane.
+            </h2>
+          </div>
       </div>
 
       <div id="1" class="modal-body feedTutOne" style="display:none">
@@ -584,7 +585,7 @@
       <!-- New feedback content -->
       <div id="0" class="modal-body feedTutTwo" style="display:none">
         <div class="modal-image">
-          <img src="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/tutorial/lung-egfr-gt-11-part-analysed.jpg" />
+          <img src="http://citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid-red.jpg " />
         </div>
         <div class="modal-info">
           <h1>
@@ -607,7 +608,7 @@
 
       <div id="1" class="modal-body feedTutTwo" style="display:none">
         <div class="modal-image">
-          <img src="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/tutorial/lung-egfr-gt-11-part-analysed.jpg" />
+          <img src="http://citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid-red.jpg " />
         </div>
         <div class="modal-info">
           <h1>
@@ -629,7 +630,7 @@
       </div>
       <div id="2" class="modal-body feedTutTwo" style="display:none">
         <div class="modal-image">
-          <img src="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/tutorial/lung-egfr-gt-11-part-analysed.jpg" />
+          <img src="http://citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid-red.jpg " />
         </div>
         <div class="modal-info">
           <h1>
@@ -659,7 +660,7 @@
       </div>
       <div id="3" class="modal-body feedTutTwo" style="display:none">
         <div class="modal-image">
-          <img src="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/tutorial/lung-egfr-gt-11-part-analysed.jpg" />
+          <img src="http://citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid-red.jpg " />
         </div>
         <div class="modal-info">
           <h1>
@@ -3299,6 +3300,8 @@
    For creating a grid overlayed over the image
    */
 
+   var checkTask;
+
   Grid.prototype.createGrid = function(canvasElement) {
 
 
@@ -4250,6 +4253,7 @@
 
   function loadUserProgress() {
     pybossa.userProgress('tb2-r2.0').done(function(data) {
+      checkTask = data.done;
       var currentTask = data.done + 1;
       $("#tasksCompleted").text(currentTask + " of " + data.total);
       var pct = Math.round((data.done * 100) / data.total);
@@ -4427,7 +4431,7 @@
   var zIndexChange = {
     buttons: $('.grid-info-buttons'),
     nav: $('.navbar-fixed-top'),
-    reduce: function() {
+    reduce: function(disableZoom) {
       this.buttons.css('z-index', 1);
       this.nav.css('z-index', 2);
     },
@@ -4447,7 +4451,7 @@
   pybossa.presentTask(function(task, deferred) {
     // Steven
     // debugger;
-    if (!$.isEmptyObject(task)) {
+    if (!$.isEmptyObject(task) && checkTask != 9) {
 
 
       if (task.state == 'completed') {
@@ -5167,7 +5171,7 @@
       // Show second round Tutorial
       $("#practiseModal .modal-body").hide();
       modal.open("#feedbackTutorialOne", 0);
-      zIndexChange.reduce();
+      zIndexChange.reduce(true);
     }
 
     // Default
