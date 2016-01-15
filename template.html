@@ -589,10 +589,10 @@
         </div>
         <div class="modal-info">
           <h1>
-            This is what you’ll need to do to analyse the next samples.
+            From now on <b>you only need to click on the sections that contain cancer</b>.
           </h1>
           <h2>
-            This time, <b>you only need to click on the sections that contain cancer</b>.
+            Non-cancer sections can be left blank.
           </h2>
           <h2>
             This may take you up to a minute.
@@ -600,65 +600,10 @@
           <h2>
             Use the reference images at the bottom to help.
           </h2>
-          <h2>
-            Press “Next” to move on to the next question.
-          </h2>
         </div>
       </div>
 
       <div id="1" class="modal-body feedTutTwo" style="display:none">
-        <div class="modal-image">
-          <img src="http://citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid-red.jpg " />
-        </div>
-        <div class="modal-info">
-          <h1>
-            Take a close look at the cancer cells
-          </h1>
-          <h2>
-            Try and estimate how many of them have got stained membranes.
-          </h2>
-          <h2>
-            Use the reference images at the bottom to help.
-          </h2>
-          <h2>
-            This shouldn’t take more than a minute.
-          </h2>
-          <h2>
-            Use the slider to record your answer.
-          </h2>
-        </div>
-      </div>
-      <div id="2" class="modal-body feedTutTwo" style="display:none">
-        <div class="modal-image">
-          <img src="http://citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid-red.jpg " />
-        </div>
-        <div class="modal-info">
-          <h1>
-            Take a close look at the stained cancer cells
-          </h1>
-          <h2>
-            Do you think <strong>most</strong> of the stained cancer cells are <strong>fully</strong>, <strong>partially</strong> or <strong>faintly</strong> stained?
-          </h2>
-          <ul>
-            <li>
-              <strong>Fully</strong> – Even without zooming in, you can see dark brown lines that go all the way around the cell. In clumps this can look like chicken wire.
-            </li>
-            <li>
-              <strong>Partially</strong> – You can see dark brown lines around the cancer cells but when zoomed in, you see they do not go all the way around the cells.
-            </li>
-            <li>
-              <strong>Faintly</strong> – You can see brown lines  around the cells but they are only clear when you are zoomed in.
-            </li>
-          </ul>
-          <h2>
-            Use the reference images at the bottom to help.
-          </h2>
-          <h2>
-            Use the slider to record your answer.
-          </h2>
-        </div>
-      </div>
-      <div id="3" class="modal-body feedTutTwo" style="display:none">
         <div class="modal-image">
           <img src="http://citscitools.cancerresearchuk.org/static/img/mvp-01/tutorial/grid-red.jpg " />
         </div>
@@ -875,7 +820,7 @@
           </h1>
           <ul>
             <li>
-              You will be shown 12 images to analyse
+              You will be shown 10 images to analyse
             </li>
             <li>
               You can stop and resume later if you want to
@@ -5118,17 +5063,13 @@
     feedbackNextButtonTwo.onclick = function() {
       if (currentTutSlide === 0) {
         $(feedbackPreviousButtonTwo).show();
-      }
-      if (currentTutSlide === 2) {
         $feedbackContinueTwo.show();
         $(this).hide();
-      }
-      if (currentTutSlide === 3) {
-        return;
-      } else {
         $($targetClassTwo[currentTutSlide]).hide();
         currentTutSlide += 1;
         $($targetClassTwo[currentTutSlide]).show();
+      } else {
+        return;
       }
 
       // if ($($targetClassTwo[0]).is(':visible')) {
@@ -5143,16 +5084,10 @@
     };
     var feedbackPreviousButtonTwo = document.getElementById('feedbackPrevBtnTwo');
     feedbackPreviousButtonTwo.onclick = function() {
-      if (currentTutSlide === 3) {
+      if (currentTutSlide === 1) {
         $(feedbackNextBtnTwo).show();
         $feedbackContinueTwo.hide();
-      }
-      if (currentTutSlide === 1) {
         $(this).hide();
-      }
-      if (currentTutSlide === 0) {
-        return;
-      } else {
         $($targetClassTwo[currentTutSlide]).hide();
         currentTutSlide -= 1;
         $($targetClassTwo[currentTutSlide]).show();
