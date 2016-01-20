@@ -1790,7 +1790,7 @@
 <script type="text/javascript" async="async">
   var hasSeenGuidenceInfo = false;
   var totalGridPercentage = "";
-  var progressBarTargetValue =75;  // Normally 75, 0 for testing
+  var progressBarTargetValue =0;  // Normally 75, 0 for testing
 
   var project_short_name = "{{ project.short_name }}";
   if (project_short_name === "")
@@ -3999,10 +3999,6 @@
       $("#prevBtn").hide();
     } else {
       $("#prevBtn").show();
-    }
-
-    if (this.step >= 4) {
-      progressBarTargetValue = 0;
     }
 
     if ($("#mechanicContent").is(':visible')) {
