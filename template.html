@@ -1390,7 +1390,7 @@
               We’ll let you know if our expert pathologists agreed with your analysis. There will also be information about each image, to help you understand what you are seeing.
             </h2>
             <h2>
-              For the first four images we’ll give you immediate feedback on your work.
+              For the first four images we’ll give you immediate feedback on your answers.
             </h2>
           </div>
           <div id="mechanicTutorialSummary" style="display:none;">
@@ -1639,7 +1639,7 @@
         <div class="grid-info-buttons clearfix">
           <div class="inner-button-container" style="width: 100%; margin-bottom: 10px;">
           <a class="btn btn-success " id="checkMyWorkBtn" style="display:none;">
-            Check my work
+            Check my answer
           </a>
           <button class="btn btn-answer" id="feedbackInfoBtn" style="margin-left: 10px;">What's in this image</button>
 
@@ -3999,6 +3999,10 @@
       $("#prevBtn").hide();
     } else {
       $("#prevBtn").show();
+    }
+
+    if (this.step >= 4) {
+      progressBarTargetValue = 0;
     }
 
     if ($("#mechanicContent").is(':visible')) {
