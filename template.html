@@ -3798,11 +3798,17 @@
             totalSquares = 36,
             correctSquares = 0;
 
-    var blankSquares = this.checkBlankSquares();
-    var interactedBlankSquares = this.interactedBlanks();
 
-    totalSquares -= blankSquares;
-    totalSquares += interactedBlankSquares;
+    if (step >= 7) {
+      var interactedNonCancerBlanks = this.interactedBlanksNonCancer();
+      var cancerSquares = this.checkCancerSquares();
+      totalSquares = cancerSquares + interactedNonCancerBlanks;
+    } else {
+      var blankSquares = this.checkBlankSquares();
+      var interactedBlankSquares = this.interactedBlanks();
+      totalSquares -= blankSquares;
+      totalSquares += interactedBlankSquares;
+    }
 
     $.each(this.tickCross, function(key, value) {
       value.attr("opacity", 1);
@@ -3864,6 +3870,16 @@
     return blankSquares;
   };
 
+  FeedbackGrid.prototype.checkCancerSquares = function() {
+    var cancerSquares = 0;
+    $.each(feedbackData[step].info.squares, function(key, value) {
+      if (value.answer === true) {
+        cancerSquares++;
+      }
+    });
+    return cancerSquares;
+  };
+
   FeedbackGrid.prototype.interactedBlanks = function() {
     var pathologists = feedbackData[step].info.squares;
     var feedbackSquares = this.feedbackObj.answer.squares;
@@ -3881,6 +3897,30 @@
           })[0] !== undefined
       ;
       if (isBlank && isInteracted) {
+        result++;
+      }
+    });
+    return result;
+  };
+
+  FeedbackGrid.prototype.interactedBlanksNonCancer = function() {
+    var pathologists = feedbackData[step].info.squares;
+    var feedbackSquares = this.feedbackObj.answer.squares;
+    var _this = this;
+    var result = 0;
+
+    feedbackSquares.forEach(function(square, idx) {
+      var isBlank = (pathologists[idx].answer === null);
+      var isNonCancer = (pathologists[idx].answer === false);
+
+      // Loop through all of the items in the grid and find the ones which have been interacted with
+      var isInteracted =
+        _this.tickCross.filter(
+          function(sq) {
+            return sq["data-parent_id"] === square.id;
+          })[0] !== undefined
+      ;
+      if (isBlank && isInteracted || isNonCancer && isInteracted) {
         result++;
       }
     });
