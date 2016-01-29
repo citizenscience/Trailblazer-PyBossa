@@ -1450,7 +1450,7 @@
       <h2><strong>Thank you</strong> for completing the analysis part of Trailblazer!</h2>
       <h2>The final step is to provide some feedback on using the system.</h2>
       <div class="alert-actions">
-        <a class="btn small" href="http://citscitools.cancerresearchuk.org/community/tb2-r2.0-feedback/">Give feedback</a>
+        <a class="btn small" href="http://citscitools.cancerresearchuk.org/community/tb2-r2.0-public-feedback/">Give feedback</a>
       </div>
     </div>
     <div id="error" class="alert alert-error" style="display:none">
@@ -1794,7 +1794,7 @@
 
   var project_short_name = "{{ project.short_name }}";
   if (project_short_name === "")
-    project_short_name = "tb2-r2.0";
+    project_short_name = "tb2-r2.0-public";
 
   var cookie_feedback_name = project_short_name + 'feedback';
   var cookie_tutorial_name = project_short_name + 'tutorial';
@@ -4182,7 +4182,7 @@
    */
 
   function loadUserProgress() {
-    pybossa.userProgress('tb2-r2.0').done(function(data) {
+    pybossa.userProgress('tb2-r2.0-public').done(function(data) {
       checkTask = data.done;
       var currentTask = data.done + 1;
       $("#tasksCompleted").text(currentTask + " of " + 10);
@@ -5404,7 +5404,7 @@
       $("body").addClass("mechanic-active");
       $("body").removeClass("feedback-active");
       $("#mechanicContent").show();
-      pybossa.run("tb2-r2.0");
+      pybossa.run("tb2-r2.0-public");
     }
   }
 
