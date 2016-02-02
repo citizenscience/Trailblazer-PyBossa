@@ -1516,14 +1516,8 @@
       <div class="span6 grid-info" id="mechanicZoomWindowLocation">
         <div class="grid-info-content">
           <div class="grid-selection__container">
-            <h1>Select the grid sections that contain cancer cells</h1>
-            <h3>
-              Click once to mark <strong>cancer</strong> cells in <span class="text-error">Red</span>
-            </h3>
-            <h3>Click again to mark <strong>non-cancer</strong> cells in
-              <span class="text-success">Green</span>
-            </h3>
-            <h3>Empty sections of the image can be left blank</h3>
+            <h1>Replace me please</h1>
+            <h3>And me too</h3>
           </div>
           <div class="proportion-slider__container" style="display: none;">
             <h2>What proportion of cancer cells are stained.</h2>
@@ -1541,9 +1535,9 @@
               <span class="intensity-slider-pips__strong">Fully</span>
             </div>
           </div>
-          <div class="progress progress-striped">
+          <!-- <div class="progress progress-striped">
             <div id="progress" rel="tooltip" title="#" class="bar" style="width: 0%;"></div>
-          </div>
+          </div> -->
           <p class="imgId"></p>
           <!--<span id="proportion-slider-value">0</span>-->
           <div class="grid-info-buttons">
@@ -1790,7 +1784,7 @@
 <script type="text/javascript" async="async">
   var hasSeenGuidenceInfo = false;
   var totalGridPercentage = "";
-  var progressBarTargetValue =75;  // Normally 75, 0 for testing
+  var progressBarTargetValue = 0;  // Normally 75, 0 for testing
 
   var project_short_name = "{{ project.short_name }}";
   if (project_short_name === "")
@@ -4383,6 +4377,13 @@
   pybossa.presentTask(function(task, deferred) {
     if (!$.isEmptyObject(task) && checkTask != 9) {
 
+      // Steven - current
+
+      var $legend = $('.legend');
+
+      if ($legend.is(':visible')) {
+        $legend.hide();
+      }
 
       if (task.state == 'completed') {
         $("#loading").hide();
@@ -4411,12 +4412,16 @@
       $(".imgId").html("Image ID: " + "<strong>" + newStr + "</strong>");
 
 
-      /*
-       Initalise main mechanic, zoom and modal
+      // Initalise main mechanic, zoom and modal
+
+      /**
+       * Remove grid overlay for release 2.1.
+       * This disables grid functionality.
+       *
        */
 
-      var grid = new Grid(task);
-      grid.createGrid("mechanicCanvas");
+      // var grid = new Grid(task);
+      // grid.createGrid("mechanicCanvas");
 
       var zoom = new Zoom();
       zoom.addZoom($(".img-polaroid"));
@@ -5531,7 +5536,6 @@
     backToPractiseBtn.onclick = function() {
 
       zIndexChange.increase();
-
       if (totalGridPercentage >= progressBarTargetValue ) {
         $("#nextFeedbackStep").removeClass("disabled");
         $("#finishFeedback").removeClass("disabled");
