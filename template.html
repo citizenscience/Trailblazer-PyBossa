@@ -1542,6 +1542,7 @@
           <!--<span id="proportion-slider-value">0</span>-->
           <div class="grid-info-buttons">
             <button class="btn btn-warning pull-left noCancerBtn" style="margin-right:10px;" id="noCancerBtn">No Cancer</button>
+            <button class="btn btn-success pull-left hasCancerBtn" style="margin-right:10px;" id="hasCancerBtn">Has Cancer</button>
             <button class="btn btn-warning pull-left" id="skipSlideBtn">Skip</button>
             <button class="btn btn-success nextSliderBtn" id="nextSliderBtn" style="margin-left:10px; float: right;">Next</button>
             <button class="btn btn-answer btn-success nextSlideBtn" id="nextSlideBtn" value="next" style="margin-left:10px; display: none;">Next slide</button>
@@ -2972,6 +2973,7 @@
       var $gridSelection = $('.grid-selection__container');
       var $nextImageButton = $('.nextSlideBtn');
       var $noCancerButton = $('.noCancerBtn');
+      var $hasCancerButton = $('.hasCancerBtn');
       var $skipImageButton = $('#skipSlideBtn');
 
       $(this.nextSliderButton).on('click', function() {
@@ -2980,6 +2982,7 @@
         if ($gridSelection.is(':visible')) {
           $gridSelection.hide();
           $noCancerButton.hide();
+          $hasCancerButton.hide();
           $proportionSlider.show();
           $(questions.nextSliderButton).hide();
           $(questions.prevSliderButton).show();
@@ -3010,6 +3013,7 @@
           $proportionSlider.hide();
           $gridSelection.show();
           $noCancerButton.show();
+          $hasCancerButton.show();
           $skipImageButton.show();
           $(this).hide(); // This refers to button clicked.
           $nextImageButton.hide();
@@ -4483,10 +4487,11 @@
         zIndexChange.reduce();
       }
 
-      // Variables for skip data
+      // Variables for answer data
 
       var changeMind = false;
       var reason = null;
+      var cancerAnswer = null;
 
       var changeMindBtn = document.getElementById('changeMind');
       changeMindBtn.onclick = function() {
@@ -4525,9 +4530,17 @@
         $('#iWantToSkip-last').hide();
       });
 
-      /*
-       Skip Slide Button
-       */
+      $('.noCancerBtn, .hasCancerBtn').off('click').on('click', function() {
+        var noCancerBtn = 'noCancerBtn';
+        var hasCancerBtn = 'hasCancerBtn';
+        var currentBtn = $(this);
+
+        if (currentBtn.hasClass(noCancerBtn)) {
+          cancerAnswer = false;
+        } else if (currentBtn.hasClass(hasCancerBtn)) {
+          cancerAnswer = true;
+        }
+      });
 
       $('.iWantToSkip').off('click').on('click', function() {
         $('#skipSlideModal').hide();
@@ -4581,25 +4594,14 @@
           device: whatDevice(),
           browser: BrowserDetect.browser + " V." + BrowserDetect.version,
           imgNumber: result,
+          cancer: cancerAnswer,
           skipSlide: slideSkippedData,
           intensity: intensityValue,
           proportion: proportionValue,
           openModalCount: openModalCount
         };
 
-
-        // Change the square object to have clearer values
-        $.each(grid.task.answer.squares, function(key, value) {
-          var obj = {
-            column: value.column,
-            row: value.row,
-            answer: value.has_cancer
-          };
-          answer.squares.push(obj);
-        });
-
         console.log(answer);
-
         /*
          * Save the task information and send to PyBossa
          */
@@ -4639,100 +4641,6 @@
         if (intensityValue == 0) {
           intensityValue = "1+";
         } else if (intensityValue == 50) {
-          intensityValue = "2+";
-        } else if (intensityValue == 100) {
-          intensityValue = "3+";
-        }
-
-        if (proportionValue == 0.00) {
-          intensityValue = null;
-        }
-
-        // Pass image number into answer
-        var imgUrl = task.info.url_b;
-        var result = imgUrl.replace("//citscitools.cancerresearchuk.org/static/img/mvp-01/", "");
-
-        var slideSkippedData = {
-          skipped: false,
-          reason: null,
-          changeOfMind: changeMind
-        }
-
-        // Create the answer object
-        var answer = {
-          squares: [],
-          timeTaken: seconds,
-          device: whatDevice(),
-          browser: BrowserDetect.browser + " V." + BrowserDetect.version,
-          imgNumber: result,
-          skipSlide: slideSkippedData,
-          intensity: intensityValue,
-          proportion: proportionValue,
-          openModalCount: openModalCount
-        };
-
-        // Change the square object to have clearer values
-        $.each(grid.task.answer.squares, function(key, value) {
-          var obj = {
-            column: value.column,
-            row: value.row,
-            answer: value.has_cancer
-          };
-          answer.squares.push(obj);
-        });
-
-        // Reset value sliders to set value
-        questions.intensitySlider.noUiSlider.set(0);
-        questions.proportionSlider.noUiSlider.set(0);
-
-        /*
-         * Save the task information and send to PyBossa
-         */
-
-        var checkSquaresForNoProgress = $('.unRed').length === 0 && $('.isGreen').length === 0;
-        if (checkSquaresForNoProgress) {
-             modal.open('#skipSlideModal');
-             zIndexChange.reduce();
-        } else {
-            pybossa.saveTask(task.id, answer).done(function(data) {
-              loadUserProgress();
-              $("#success").fadeIn(500).delay(1500).fadeOut();
-              $("svg, .zoomContainer,.zoomWindowContainer").remove();
-              deferred.resolve();
-            });
-        }
-
-        // Resets questions for next slide
-        $('.cancerReference').show();
-        $('.intensityReference').hide();
-        $('.prevSliderBtn').hide();
-        $('.grid-selection__container').show();
-        $('.intensity-slider__container').hide();
-        $('.proportion-slider__container').hide();
-        $('.nextSlideBtn').hide();
-        $(questions.nextSliderButton).show();
-        $('#noCancerBtn').show();
-        $('#skipSlideBtn').show();
-      });
-
-      $('.noCancerBtn').off('click').on('click', function() {
-        // Grab a new timestamp and find out the difference
-        // This is how long the user has been on the task for
-        // Then pass it into the answer
-        var newTime = new Date(),
-                ms = newTime - oldTime,
-                x = ms / 1000,
-                seconds = secondsToString(x);
-
-        // Get all value slider values
-
-        var intensityValue = questions.intensitySlider.noUiSlider.get();
-        var proportionValue = questions.proportionSlider.noUiSlider.get();
-
-        // Switch intensity value to string
-
-        if (intensityValue == 0) {
-          intensityValue = "1+";
         } else if (intensityValue == 50) {
           intensityValue = "2+";
         } else if (intensityValue == 100) {
@@ -4760,33 +4668,30 @@
           device: whatDevice(),
           browser: BrowserDetect.browser + " V." + BrowserDetect.version,
           imgNumber: result,
+          cancer: cancerAnswer,
           skipSlide: slideSkippedData,
           intensity: intensityValue,
           proportion: proportionValue,
           openModalCount: openModalCount
         };
 
-        // Change the square object to have clearer values
-        $.each(grid.task.answer.squares, function(key, value) {
-          var obj = {
-            column: value.column,
-            row: value.row,
-            answer: value.has_cancer
-          };
-          answer.squares.push(obj);
-        });
+        console.log(answer);
 
         // Reset value sliders to set value
         questions.intensitySlider.noUiSlider.set(0);
         questions.proportionSlider.noUiSlider.set(0);
 
-        /*
-         * Save the task information and send to PyBossa
-         */
-
-        var checkSquaresForNoProgress = $('.grid-item-success').length === 0 && $('.grid-item-error').length === 0;
+        // Save the task information and send to PyBossa
+        pybossa.saveTask(task.id, answer).done(function(data) {
+          loadUserProgress();
+          $("#success").fadeIn(500).delay(1500).fadeOut();
+          $("svg, .zoomContainer,.zoomWindowContainer").remove();
+          deferred.resolve();
+        });
 
         // Resets questions for next slide
+        $('.cancerReference').show();
+        $('.intensityReference').hide();
         $('.prevSliderBtn').hide();
         $('.grid-selection__container').show();
         $('.intensity-slider__container').hide();
@@ -4794,15 +4699,11 @@
         $('.nextSlideBtn').hide();
         $(questions.nextSliderButton).show();
         $('#noCancerBtn').show();
+        $('#hasCancerBtn').show();
         $('#skipSlideBtn').show();
-
-        pybossa.saveTask(task.id, answer).done(function(data) {
-          loadUserProgress();
-          $("#success").fadeIn(500).delay(1500).fadeOut();
-          $("svg, .zoomContainer,.zoomWindowContainer").remove();
-          deferred.resolve();
-        });
+        cancerAnswer = null;
       });
+
     } else {
       $("#loading").hide();
       $("#progress").css("width", "100%");
