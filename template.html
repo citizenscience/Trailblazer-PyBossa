@@ -4630,6 +4630,17 @@
        "Next Slide" Button
        */
 
+      $("input[name='cancerAnswer']").on('click', function() {
+        var val = $(this).val();
+        if (val === "noCancer") {
+          $('.nextSliderBtn').hide();
+          $('.nextSlideBtn').show();
+        } else {
+          $('.nextSliderBtn').show();
+          $('.nextSlideBtn').hide();
+        }
+      });
+
       $('.btn-answer').off('click').on('click', function() {
 
         var newTime = new Date(),
@@ -4652,7 +4663,6 @@
         // Switch intensity value to string
         if (intensityValue == 0) {
           intensityValue = "1+";
-        } else if (intensityValue == 50) {
         } else if (intensityValue == 50) {
           intensityValue = "2+";
         } else if (intensityValue == 100) {
