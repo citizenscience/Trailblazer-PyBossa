@@ -465,6 +465,25 @@
     fill: transparent;
   }
 
+  .user-cancer-question {
+    margin-top: 20px;
+  }
+
+  .user-cancer-question input {
+    margin-top: 0;
+    margin-right: 10px;
+  }
+
+  .radio-spacing {
+    display: block;
+    margin-top: 10px;
+  }
+
+  .user-cancer-question span {
+    font-size: 16px;
+    vertical-align: middle;
+  }
+
 </style>
 <!--MODAL-->
 <div class="modals row">
@@ -1516,8 +1535,13 @@
       <div class="span6 grid-info" id="mechanicZoomWindowLocation">
         <div class="grid-info-content">
           <div class="grid-selection__container">
-            <h1>Replace me please</h1>
-            <h3>And me too</h3>
+            <h1>Does this image contain cancer?</h1>
+            <h3>Select your answer below.</h3>
+            <form class="user-cancer-question">
+              <input type="radio" name="cancerAnswer" value="hasCancer" checked="true"><span>This image contains cancer</span>
+              <div class="radio-spacing"></div>
+              <input type="radio" name="cancerAnswer" value="noCancer"><span>This image does not contain cancer</span>
+            </form>
           </div>
           <div class="proportion-slider__container" style="display: none;">
             <h2>What proportion of cancer cells are stained.</h2>
@@ -1541,8 +1565,6 @@
           <p class="imgId"></p>
           <!--<span id="proportion-slider-value">0</span>-->
           <div class="grid-info-buttons">
-            <button class="btn btn-warning pull-left noCancerBtn" style="margin-right:10px;" id="noCancerBtn">No Cancer</button>
-            <button class="btn btn-success pull-left hasCancerBtn" style="margin-right:10px;" id="hasCancerBtn">Has Cancer</button>
             <button class="btn btn-warning pull-left" id="skipSlideBtn">Skip</button>
             <button class="btn btn-success nextSliderBtn" id="nextSliderBtn" style="margin-left:10px; float: right;">Next</button>
             <button class="btn btn-answer btn-success nextSlideBtn" id="nextSlideBtn" value="next" style="margin-left:10px; display: none;">Next slide</button>
@@ -2972,8 +2994,6 @@
       var $proportionSlider = $('.proportion-slider__container');
       var $gridSelection = $('.grid-selection__container');
       var $nextImageButton = $('.nextSlideBtn');
-      var $noCancerButton = $('.noCancerBtn');
-      var $hasCancerButton = $('.hasCancerBtn');
       var $skipImageButton = $('#skipSlideBtn');
 
       $(this.nextSliderButton).on('click', function() {
@@ -2981,8 +3001,6 @@
 
         if ($gridSelection.is(':visible')) {
           $gridSelection.hide();
-          $noCancerButton.hide();
-          $hasCancerButton.hide();
           $proportionSlider.show();
           $(questions.nextSliderButton).hide();
           $(questions.prevSliderButton).show();
@@ -3012,8 +3030,6 @@
         if ($proportionSlider.is(':visible')) {
           $proportionSlider.hide();
           $gridSelection.show();
-          $noCancerButton.show();
-          $hasCancerButton.show();
           $skipImageButton.show();
           $(this).hide(); // This refers to button clicked.
           $nextImageButton.hide();
@@ -4530,18 +4546,6 @@
         $('#iWantToSkip-last').hide();
       });
 
-      $('.noCancerBtn, .hasCancerBtn').off('click').on('click', function() {
-        var noCancerBtn = 'noCancerBtn';
-        var hasCancerBtn = 'hasCancerBtn';
-        var currentBtn = $(this);
-
-        if (currentBtn.hasClass(noCancerBtn)) {
-          cancerAnswer = false;
-        } else if (currentBtn.hasClass(hasCancerBtn)) {
-          cancerAnswer = true;
-        }
-      });
-
       $('.iWantToSkip').off('click').on('click', function() {
         $('#skipSlideModal').hide();
         $('.skipModalFirst').show();
@@ -4636,6 +4640,14 @@
         // Get all value slider values
         var intensityValue = questions.intensitySlider.noUiSlider.get();
         var proportionValue = questions.proportionSlider.noUiSlider.get();
+        // Get cancer question value
+        var cancerValue = $("input[name='cancerAnswer']:checked").val();
+
+        if (cancerValue == 'noCancer') {
+          cancerAnswer = false;
+        } else if (cancerValue == 'hasCancer') {
+          cancerAnswer = true;
+        }
 
         // Switch intensity value to string
         if (intensityValue == 0) {
@@ -4676,7 +4688,6 @@
         };
 
         console.log(answer);
-
         // Reset value sliders to set value
         questions.intensitySlider.noUiSlider.set(0);
         questions.proportionSlider.noUiSlider.set(0);
