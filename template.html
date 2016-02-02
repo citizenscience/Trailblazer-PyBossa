@@ -1538,7 +1538,7 @@
             <h1>Does this image contain cancer?</h1>
             <h3>Select your answer below.</h3>
             <form class="user-cancer-question">
-              <input type="radio" name="cancerAnswer" value="hasCancer" checked="true"><span>This image contains cancer</span>
+              <input type="radio" name="cancerAnswer" value="hasCancer"><span>This image contains cancer</span>
               <div class="radio-spacing"></div>
               <input type="radio" name="cancerAnswer" value="noCancer"><span>This image does not contain cancer</span>
             </form>
@@ -1568,8 +1568,8 @@
             <button class="btn btn-warning pull-left" id="skipSlideBtn">Skip</button>
             <button class="btn btn-success nextSliderBtn" id="nextSliderBtn" style="margin-left:10px; float: right;">Next</button>
             <button class="btn btn-answer btn-success nextSlideBtn" id="nextSlideBtn" value="next" style="margin-left:10px; display: none;">Next slide</button>
-            <button class="btn prevSliderBtn" id="prevSliderBtn" style="margin-left:10px; float: right; display: none;">Back</button>
-            <button class="btn btn-primary pull-right" id="showTutorialModalBtn">Tutorial</button>
+            <button class="btn btn-primary pull-right" style="margin-left:10px;" id="showTutorialModalBtn">Tutorial</button>
+            <button class="btn prevSliderBtn" id="prevSliderBtn" style="float: right; display: none;">Back</button>
           </div>
         </div>
       </div>
@@ -4723,6 +4723,7 @@
         $('#hasCancerBtn').show();
         $('#skipSlideBtn').show();
         cancerAnswer = null;
+        $("input[name='cancerAnswer']:checked").prop('checked', false);
       });
 
     } else {
