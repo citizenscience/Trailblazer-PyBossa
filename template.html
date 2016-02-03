@@ -2997,6 +2997,9 @@
       var $skipImageButton = $('#skipSlideBtn');
 
       $(this.nextSliderButton).on('click', function() {
+
+        if ($(this).hasClass('disabled')) return;
+
         var checkProportionValue = questions.proportionSlider.noUiSlider.get();
 
         if ($gridSelection.is(':visible')) {
@@ -3955,7 +3958,6 @@
   Modal.prototype.open = function(modall, goToStep) {
 
     $('.zoomContainer').hide();
-    console.log($('.zoomContainer'));
 
     this.modal = modall;
     this.tutorialStep = $(this.modal + " #" + this.step);
@@ -4001,8 +4003,6 @@
 
     // If modal step has a carousel
     if ($(currentModalCarousel).length > 0) {
-
-      console.log("HAS CAROUSEL");
 
       $('.zoomContainer').remove();
       $('.zoomWindowContainer').remove();
@@ -4124,8 +4124,6 @@
         cursor: "pointer"
       });
 
-      console.log( $carouselSelectorValue );
-
       $('#myCarousel' + $modalId ).carousel($carouselSelectorValue);
 
     };
@@ -4161,7 +4159,6 @@
     var zoomWindowPosHeight = $("#" + zoomWindowPos).innerHeight(),
             zoomWindowPosWidth = $("#" + zoomWindowPos).innerWidth();
 
-    //console.log(zoomWindowPosHeight,zoomWindowPosWidth);
 
     element.elevateZoom({
       zoomWindowPosition: zoomWindowPos,
@@ -4398,9 +4395,9 @@
   pybossa.presentTask(function(task, deferred) {
     if (!$.isEmptyObject(task) && checkTask != 9) {
 
-      // Steven - current
-
       var $legend = $('.legend');
+
+      $('.nextSliderBtn').addClass('disabled');
 
       if ($legend.is(':visible')) {
         $legend.hide();
@@ -4457,7 +4454,6 @@
         $("#mechanicTutorialSummary").show();
         zoom.removeZoom($(".tutorialZoom"));
         openModalCount++;
-        console.log("oisehfoidhfd");
       };
 
       var closeMechanicTutorialBtn = document.getElementById("closeMechanicTutorialBtn");
@@ -4605,14 +4601,12 @@
           openModalCount: openModalCount
         };
 
-        console.log(answer);
         /*
          * Save the task information and send to PyBossa
          */
 
         if (skipRadioButtons) {
           skipRadioButtons.find('input:checked').prop('checked', false);
-          console.log("Radio buttons have been changed");
         }
 
         $('#noCancerBtn').show();
@@ -4631,7 +4625,11 @@
        */
 
       $("input[name='cancerAnswer']").on('click', function() {
+        var $nextSliderButton = $('.nextSliderBtn');
         var val = $(this).val();
+        if ($nextSliderButton.hasClass('disabled')) {
+          $nextSliderButton.removeClass('disabled');
+        }
         if (val === "noCancer") {
           $('.nextSliderBtn').hide();
           $('.nextSlideBtn').show();
@@ -4697,7 +4695,6 @@
           openModalCount: openModalCount
         };
 
-        console.log(answer);
         // Reset value sliders to set value
         questions.intensitySlider.noUiSlider.set(0);
         questions.proportionSlider.noUiSlider.set(0);
