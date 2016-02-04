@@ -944,6 +944,15 @@
           <h1>
             Welcome to Trailblazer!
           </h1>
+          <p>
+
+            {% if 'prolific' in current_user.email_addr %}
+              yes
+            {% else %}
+              no
+            {% endif %}
+          </p>
+
           <h2>
             We need your help identifying <strong class="text-error">lung cancer</strong> cells, distinguishing them from <strong class="text-success">non-cancer cells</strong> in images like the one to the left.
           </h2>
@@ -1466,7 +1475,7 @@
       <h2><strong>Thank you</strong> for completing the analysis part of Trailblazer!</h2>
       <h2>The final step is to provide some feedback on using the system.</h2>
       <div class="alert-actions">
-        <a class="btn small" href="http://citscitools.cancerresearchuk.org/community/tb2-r2.1-public-feedback/">Give feedback</a>
+        <a class="btn small" href="http://citscitools.cancerresearchuk.org/community/tb2-r2.1-public-feedback">Give feedback</a>
       </div>
     </div>
     <div id="error" class="alert alert-error" style="display:none">
