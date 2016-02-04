@@ -499,9 +499,6 @@
           </h1>
           <form class="skipReason">
             <div class="skipReason-choice">
-              <input class="reasonButton" type="radio" name="skipReason" value="no-cancer"> <span>There is no cancer in this image</span>
-            </div>
-            <div class="skipReason-choice">
               <input class="reasonButton" type="radio" name="skipReason" value="blank-image"> <span>There is nothing in this image</span>
             </div>
             <div class="skipReason-choice">
@@ -1475,11 +1472,11 @@
     <div id="error" class="alert alert-error" style="display:none">
       <h2><strong>Error!</strong> Something went wrong, please contact the site administrators</h2>
     </div>
-    <div id="errorClick" class="alert alert-info" style="display:none; position: relative;">
+    <!-- <div id="errorClick" class="alert alert-info" style="display:none; position: relative;">
       <i class="icon-remove" id="errorClickCross" style="position:absolute; right: 30px; cursor:pointer;"></i>
       <h2>If you are having problems clicking the grid, please refresh the page by clicking
         <b onclick="location.reload();" style="cursor:pointer;"><u>here</u></b></h2>
-    </div>
+    </div> -->
   </div>
 </header>
 
@@ -4460,7 +4457,6 @@
       closeMechanicTutorialBtn.onclick = function() {
         zoom.removeZoom($(".tutorialZoom"));
         zIndexChange.increase();
-        $("#errorClick").show();
         zoom.addZoom($(".img-polaroid"));
       };
 
@@ -4470,13 +4466,7 @@
         zoom.removeZoom($(".tutorialZoom"));
         zoom.addZoom($(".img-polaroid"));
         //$(".modal-body").hide();
-        $("#errorClick").show();
         zIndexChange.increase();
-      };
-
-      var errorClickCrossBtn = document.getElementById("errorClickCross");
-      errorClickCrossBtn.onclick = function() {
-        $("#errorClick").hide();
       };
 
       var nextBtn = document.getElementById("nextBtn");
