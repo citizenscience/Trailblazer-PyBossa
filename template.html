@@ -802,6 +802,15 @@
 
       <div id="20" class="modal-body">
         <div class="modal-image">
+          <img src="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/tutorial/lung-egfr-gt-05-poor-quality-example.jpg" alt="" />
+        </div>
+        <div class="modal-info">
+          <h1>Don't need to click squares, just yes/no?</h1>
+        </div>
+      </div>
+
+      <div id="21" class="modal-body">
+        <div class="modal-image">
           <img class="annotatedImage"
                src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/26-cancer.png"
                data-zoom-image="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/@2x-min/26-cancer-outline@2x-min.png"
@@ -1809,7 +1818,7 @@
 
   var project_short_name = "{{ project.short_name }}";
   if (project_short_name === "")
-    project_short_name = "tb2-r2.1-public";
+    project_short_name = "tb2-r2.1";
 
   var cookie_feedback_name = project_short_name + 'feedback';
   var cookie_tutorial_name = project_short_name + 'tutorial';
@@ -4191,7 +4200,7 @@
    */
 
   function loadUserProgress() {
-    pybossa.userProgress('tb2-r2.1-public').done(function(data) {
+    pybossa.userProgress('tb2-r2.1').done(function(data) {
       checkTask = data.done;
       var currentTask = data.done + 1;
       $("#tasksCompleted").text(currentTask + " of " + 10);
@@ -5320,7 +5329,7 @@
       $("body").addClass("mechanic-active");
       $("body").removeClass("feedback-active");
       $("#mechanicContent").show();
-      pybossa.run("tb2-r2.1-public");
+      pybossa.run("tb2-r2.1");
     }
   }
 
