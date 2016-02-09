@@ -785,7 +785,16 @@
       <!--</div>-->
 
       <!-- SUMMARY -->
-      <div id="19" class="modal-body">
+       <div id="19" class="modal-body">
+        <div class="modal-image">
+          <img src="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/tutorial/lung-egfr-gt-05-poor-quality-example.jpg" alt="" />
+        </div>
+        <div class="modal-info">
+          <h1>No more squares</h1>
+        </div>
+      </div>
+
+        <div id="20" class="modal-body">
         <div class="modal-image">
           <img src="//citscitools.cancerresearchuk.org/static/mvp-images/lung_egfr/tutorial/lung-egfr-gt-05-poor-quality-example.jpg" alt="" />
         </div>
@@ -800,7 +809,7 @@
         </div>
       </div>
 
-      <div id="20" class="modal-body">
+      <div id="21" class="modal-body">
         <div class="modal-image">
           <img class="annotatedImage"
                src="//citscitools.cancerresearchuk.org/static/img/mvp-02/tutorial-images/26-cancer.png"
@@ -5350,10 +5359,10 @@
 
     var showStartMechanicScreenBtn = document.getElementById('startMechanicScreenBtn');
     showStartMechanicScreenBtn.onclick = function() {
-      $('#19').hide();
+      $('#20').hide();
       var m = new Modal();
       $(this).hide();
-      m.open("#practiseModal", 20);
+      m.open("#practiseModal", 21);
       zIndexChange.reduce();
       $("#startMechanicBtn").show();
     }
